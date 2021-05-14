@@ -227,7 +227,22 @@ class TransactionDetailsScreen extends StatelessWidget {
                                     textAlign: TextAlign.center,
                                   ),
                                 ));
-                              })
+                              }),
+                        //Edit I18n to include Date/time, and add error check?
+                        Padding(
+                          padding: EdgeInsets.only(top: 25, bottom: 25),
+                          child: Divider(
+                            color: Color(0xFFE8E8E8),
+                            height: 1,
+                          ),
+                        ),
+                        rowItem(
+                            context,
+                            "Date",
+                            DateTime.fromMillisecondsSinceEpoch(
+                                    transfer.timestamp)
+                                .toString()) //format like "10 May 2021 at 13:53"
+
                         // transfer.timestamp == null
                         //     ? SizedBox.shrink()
                         //     : Padding(
