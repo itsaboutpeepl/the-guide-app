@@ -228,7 +228,8 @@ class TransactionDetailsScreen extends StatelessWidget {
                                   ),
                                 ));
                               }),
-                        //Edit I18n to include Date/time, and add error check?
+                        //Todo: Edit I18n to include Date/time, and add error check?
+                        //Todo: Add check for if top up, to just use Date Time(Non Eth.js call)
                         Padding(
                           padding: EdgeInsets.only(top: 25, bottom: 25),
                           child: Divider(
