@@ -40,7 +40,8 @@ class _TransactionTileState extends State<TransactionTile> {
               viewModel.contacts,
               viewModel.countryCode);
           Community community =
-              viewModel.communitiesMap[widget.transfer?.tokenAddress];
+              viewModel.communitiesMap[widget.transfer?.tokenAddress] ??
+                  viewModel.communitiesMap.values?.first;
           Token token = widget.token ??
               viewModel.tokens[widget.transfer?.tokenAddress?.toLowerCase()];
           ImageProvider<dynamic> image = getTransferImage(
