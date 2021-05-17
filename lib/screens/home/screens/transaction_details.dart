@@ -241,18 +241,21 @@ class TransactionDetailsScreen extends StatelessWidget {
                               }),
                         //Todo: Edit I18n to include Date/time, and add error check?
                         //Todo: Add check for if top up, to just use Date Time(Non Eth.js call)
-                        Padding(
-                          padding: EdgeInsets.only(top: 25, bottom: 25),
-                          child: Divider(
-                            color: Color(0xFFE8E8E8),
-                            height: 1,
-                          ),
-                        ),
+                        transfer.timestamp == null
+                            ? SizedBox.shrink()
+                            : Padding(
+                                padding: EdgeInsets.only(top: 25, bottom: 25),
+                                child: Divider(
+                                  color: Color(0xFFE8E8E8),
+                                  height: 1,
+                                ),
+                              ),
                         rowItem(
                             context,
                             "Date", //Add I18n here
                             "$showdate \n at $showtime"
-                            //format like "10 May 2021 at 13:53"
+
+                            //check if
 
                             // transfer.timestamp == null
                             //     ? SizedBox.shrink()
