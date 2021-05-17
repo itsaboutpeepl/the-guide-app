@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:intl/intl.dart';
+
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:peepl/models/transactions/transaction.dart';
 import 'package:peepl/screens/home/widgets/drawer.dart';
 import 'package:peepl/utils/addresses.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:peepl/generated/i18n.dart';
 import 'package:peepl/models/tokens/token.dart';
 import 'package:peepl/utils/format.dart';
@@ -28,9 +30,18 @@ class TransactionDetailsScreen extends StatelessWidget {
     this.transfer,
   });
 
+  final date = new DateFormat('MMM d ' 'yyyy');
+  final time = new DateFormat('h:mm a');
+
   @override
   Widget build(BuildContext context) {
     String amount = formatValue(transfer?.value, token?.decimals);
+    String showdate = date.format(new DateTime.fromMillisecondsSinceEpoch(
+      transfer.timestamp,
+    ));
+    String showtime = time.format(new DateTime.fromMillisecondsSinceEpoch(
+      transfer.timestamp,
+    ));
     return MainScaffold(
       withPadding: true,
       title: transfer.type.toUpperCase(),
@@ -239,43 +250,43 @@ class TransactionDetailsScreen extends StatelessWidget {
                         ),
                         rowItem(
                             context,
-                            "Date",
-                            DateTime.fromMillisecondsSinceEpoch(
-                                    transfer.timestamp)
-                                .toString()) //format like "10 May 2021 at 13:53"
+                            "Date", //Add I18n here
+                            "$showdate \n at $showtime"
+                            //format like "10 May 2021 at 13:53"
 
-                        // transfer.timestamp == null
-                        //     ? SizedBox.shrink()
-                        //     : Padding(
-                        //         padding: EdgeInsets.only(top: 25, bottom: 25),
-                        //         child: Divider(
-                        //           color: const Color(0xFFE8E8E8),
-                        //           height: 1,
-                        //         ),
-                        //       ),
-                        // transfer.timestamp == null
-                        //     ? SizedBox.shrink()
-                        //     : Row(
-                        //         crossAxisAlignment: CrossAxisAlignment.center,
-                        //         mainAxisAlignment:
-                        //             MainAxisAlignment.spaceEvenly,
-                        //         mainAxisSize: MainAxisSize.max,
-                        //         children: <Widget>[
-                        //           SizedBox(
-                        //             width:
-                        //                 MediaQuery.of(context).size.width * .3,
-                        //             child: Text('Date'),
-                        //           ),
-                        //           SizedBox(
-                        //             width:
-                        //                 MediaQuery.of(context).size.width * .3,
-                        //             child: Text(
-                        //                 DateTime.fromMillisecondsSinceEpoch(
-                        //                         transfer.timestamp)
-                        //                     .toString()),
-                        //           )
-                        //         ],
-                        //       )
+                            // transfer.timestamp == null
+                            //     ? SizedBox.shrink()
+                            //     : Padding(
+                            //         padding: EdgeInsets.only(top: 25, bottom: 25),
+                            //         child: Divider(
+                            //           color: const Color(0xFFE8E8E8),
+                            //           height: 1,
+                            //         ),
+                            //       ),
+                            // transfer.timestamp == null
+                            //     ? SizedBox.shrink()
+                            //     : Row(
+                            //         crossAxisAlignment: CrossAxisAlignment.center,
+                            //         mainAxisAlignment:
+                            //             MainAxisAlignment.spaceEvenly,
+                            //         mainAxisSize: MainAxisSize.max,
+                            //         children: <Widget>[
+                            //           SizedBox(
+                            //             width:
+                            //                 MediaQuery.of(context).size.width * .3,
+                            //             child: Text('Date'),
+                            //           ),
+                            //           SizedBox(
+                            //             width:
+                            //                 MediaQuery.of(context).size.width * .3,
+                            //             child: Text(
+                            //                 DateTime.fromMillisecondsSinceEpoch(
+                            //                         transfer.timestamp)
+                            //                     .toString()),
+                            //           )
+                            //         ],
+                            //       )
+                            )
                       ],
                     ),
                   )
