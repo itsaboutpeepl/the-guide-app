@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:io';
+import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -10,6 +11,7 @@ import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/cash_wallet_actions.dart';
 import 'package:peepl/screens/topup/dialogs/card_failed.dart';
 import 'package:peepl/screens/topup/dialogs/minting_dialog.dart';
+import 'package:peepl/screens/topup/dialogs/timed_out.dart';
 import 'package:peepl/services.dart';
 import 'package:peepl/utils/constans.dart';
 import 'package:peepl/utils/stripe.dart';
@@ -129,12 +131,25 @@ class _TopupScreenState extends State<TopupScreen>
       walletAddress: walletAddress,
       currency: 'GBP',
     );
+    Timer timer = Timer(Duration(seconds: 25), () {
+      Navigator.of(context, rootNavigator: true).pop();
+      showDialog(
+        context: context,
+        builder: (context) => TimedOut(),
+        barrierDismissible: true,
+      );
+    });
     if (response.ok) {
       showDialog(
         context: context,
-        builder: (context) => MintingDialog(amountText, true),
+        builder: (context) {
+          return MintingDialog(amountText, true);
+        },
         barrierDismissible: false,
-      );
+      ).then((value) {
+        timer?.cancel();
+        timer = null;
+      });
     } else {
       if (!response.msg.contains('Cancelled by user')) {
         showDialog(
