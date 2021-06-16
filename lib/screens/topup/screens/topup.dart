@@ -154,7 +154,7 @@ class _TopupScreenState extends State<TopupScreen>
       });
     } else {
       if (!response.msg.contains('Cancelled by user')) {
-        Segment.track(eventName: 'TopUp Failed');
+        Segment.track(eventName: 'TopUp failed');
         showDialog(
           context: context,
           builder: (context) => TopUpFailed(),
