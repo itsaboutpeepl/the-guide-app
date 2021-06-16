@@ -6,6 +6,7 @@ import 'package:peepl/models/community/community.dart';
 import 'package:peepl/models/tokens/token.dart';
 import 'package:peepl/screens/topup/dialogs/success_dialog.dart';
 import 'package:redux/redux.dart';
+import 'package:flutter_segment/flutter_segment.dart';
 
 class _MintingDialogViewModel extends Equatable {
   final Token secondaryToken;
@@ -83,6 +84,7 @@ class _MintingDialogState extends State<MintingDialog>
         if (prevVM.secondaryToken.amount != nextVM.secondaryToken.amount) {
           // close the dialog and show success dialog
           Navigator.of(context).pop();
+          Segment.track(eventName: 'Token Mint Success');
           showDialog(
             context: context,
             builder: (context) => TopUpSuccess(

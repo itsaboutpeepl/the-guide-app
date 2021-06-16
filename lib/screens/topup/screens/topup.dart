@@ -133,6 +133,7 @@ class _TopupScreenState extends State<TopupScreen>
     );
     Timer timer = Timer(Duration(seconds: 25), () {
       Navigator.of(context, rootNavigator: true).pop();
+      Segment.track(eventName: 'User timed out at topup');
       showDialog(
         context: context,
         builder: (context) => TimedOut(),
@@ -140,6 +141,7 @@ class _TopupScreenState extends State<TopupScreen>
       );
     });
     if (response.ok) {
+      Segment.track(eventName: 'Stripe TopUp success');
       showDialog(
         context: context,
         builder: (context) {
@@ -152,6 +154,7 @@ class _TopupScreenState extends State<TopupScreen>
       });
     } else {
       if (!response.msg.contains('Cancelled by user')) {
+        Segment.track(eventName: 'TopUp Failed');
         showDialog(
           context: context,
           builder: (context) => TopUpFailed(),
