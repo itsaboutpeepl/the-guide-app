@@ -39,26 +39,35 @@ class _WebViewWidgetState extends State<WebViewWidget> {
       walletAddress: widget.walletAddress,
       currency: 'GBP',
     );
-    Timer timer = Timer(Duration(seconds: 25), () {
-      Navigator.of(context, rootNavigator: true).pop();
-      showDialog(
-        context: context,
-        builder: (context) => TimedOut(),
-        barrierDismissible: true,
-      );
-    });
     if (response.ok) {
+      Segment.track(eventName: 'TopUp requested at Checkout');
+      Timer timer = Timer(Duration(seconds: 25), () {
+        Navigator.of(context, rootNavigator: true).pop();
+        Segment.track(eventName: 'User topup timed-out at checkout');
+        //Could cause issues with slow internet at checkout
+      });
       showDialog(
         context: context,
-        builder: (context) => MintingDialog(amount, false),
+        builder: (context) {
+          return MintingDialog(amount, false);
+        },
         barrierDismissible: false,
       ).then((value) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return TimedOut();
+          },
+          barrierDismissible: true,
+        );
         timer?.cancel();
         timer = null;
       });
+
       return true;
     } else {
       if (!response.msg.contains('Cancelled by user')) {
+        Segment.track(eventName: 'User cancelled topup at checkout');
         showDialog(
           context: context,
           builder: (context) => TopUpFailed(), // TopUpFailed
