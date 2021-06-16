@@ -131,17 +131,12 @@ class _TopupScreenState extends State<TopupScreen>
       walletAddress: walletAddress,
       currency: 'GBP',
     );
-    Timer timer = Timer(Duration(seconds: 25), () {
-      Navigator.of(context, rootNavigator: true).pop();
-      Segment.track(eventName: 'User timed out at topup');
-      showDialog(
-        context: context,
-        builder: (context) => TimedOut(),
-        barrierDismissible: true,
-      );
-    });
+
     if (response.ok) {
       Segment.track(eventName: 'Stripe TopUp success');
+      Timer timer = Timer(Duration(seconds: 25), () {
+        Navigator.of(context, rootNavigator: true).pop();
+      });
       showDialog(
         context: context,
         builder: (context) {
@@ -149,12 +144,19 @@ class _TopupScreenState extends State<TopupScreen>
         },
         barrierDismissible: false,
       ).then((value) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return TimedOut();
+          },
+          barrierDismissible: true,
+        );
         timer?.cancel();
         timer = null;
       });
     } else {
       if (!response.msg.contains('Cancelled by user')) {
-        Segment.track(eventName: 'TopUp failed');
+        Segment.track(eventName: 'TopUp Failed');
         showDialog(
           context: context,
           builder: (context) => TopUpFailed(),
