@@ -67,7 +67,7 @@ class _WebViewWidgetState extends State<WebViewWidget> {
       return true;
     } else {
       if (!response.msg.contains('Cancelled by user')) {
-        Segment.track(eventName: 'User TopUp failed at checkout');
+        Segment.track(eventName: 'TopUp failed at checkout');
         showDialog(
           context: context,
           builder: (context) => TopUpFailed(), // TopUpFailed
