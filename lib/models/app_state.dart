@@ -1,3 +1,4 @@
+import 'package:peepl/models/peepl_pay.dart';
 import 'package:peepl/models/user_state.dart';
 import 'package:peepl/models/cash_wallet_state.dart';
 import 'package:peepl/models/pro/pro_wallet_state.dart';
@@ -11,17 +12,24 @@ class AppState {
   final CashWalletState cashWalletState;
   @JsonKey(fromJson: _proStateFromJson)
   final ProWalletState proWalletState;
+  final List<PeeplPay> peeplPay;
 
   static ProWalletState _proStateFromJson(Map<String, dynamic> json) =>
       json == null ? ProWalletState.initial() : ProWalletState.fromJson(json);
 
-  AppState({this.userState, this.cashWalletState, this.proWalletState});
+  AppState({
+    this.userState,
+    this.cashWalletState,
+    this.proWalletState,
+    this.peeplPay,
+  });
 
   factory AppState.initial() {
     return AppState(
         userState: UserState.initial(),
         cashWalletState: CashWalletState.initial(),
-        proWalletState: ProWalletState.initial());
+        proWalletState: ProWalletState.initial(),
+        peeplPay: []);
   }
 
   AppState copyWith(UserState userState, CashWalletState cashWalletState,

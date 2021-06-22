@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:country_code_picker/country_code.dart';
@@ -5,8 +6,10 @@ import 'package:decimal/decimal.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:peepl/models/app_state.dart';
 import 'package:peepl/models/community/community.dart';
 import 'package:peepl/models/jobs/base.dart';
+import 'package:peepl/models/peepl_pay.dart';
 import 'package:peepl/models/pro/pro_wallet_state.dart';
 import 'package:peepl/models/tokens/token.dart';
 import 'package:peepl/models/transactions/transfer.dart';
@@ -30,6 +33,7 @@ import 'package:peepl/utils/phone.dart';
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_udid/flutter_udid.dart';
+import 'package:http/http.dart' as http;
 
 class CreateAccountWalletRequest {
   CreateAccountWalletRequest();
@@ -206,6 +210,13 @@ class SetIsVerifyRequest {
 class DeviceIdSuccess {
   final String identifier;
   DeviceIdSuccess(this.identifier);
+}
+
+class GetUserCartItems {
+  final List<PeeplPay> _peeplpay;
+  List<PeeplPay> get peeplpay => this._peeplpay;
+
+  GetUserCartItems(this._peeplpay);
 }
 
 ThunkAction setCountryCode(CountryCode countryCode) {
@@ -673,3 +684,15 @@ ThunkAction updateUserAvatarCall(ImageSource source) {
     } catch (e) {}
   };
 }
+
+ThunkAction<AppState> getUserCartItems = (Store<AppState> store) async {
+  http.Response response =
+      await http.get('https://api.itsaboutpeepl.com/v1/paymentintent/create');
+  final List<dynamic> responseData = json.decode(response.body);
+  print(responseData);
+  List<PeeplPay> peeplpay = [];
+  responseData.forEach((peeplpayData) {
+    final PeeplPay peeplPay = PeeplPay.fromJson(peeplpayData);
+  });
+  store.dispatch(GetUserCartItems(peeplpay));
+};
