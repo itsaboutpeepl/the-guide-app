@@ -39,6 +39,7 @@ class CashHeader extends StatelessWidget {
                   '${I10n.of(context).hi} ${viewModel.firstName()}',
                   style: TextStyle(
                     fontSize: 22,
+                    color: Colors.white,
                   ),
                 ),
               ),
