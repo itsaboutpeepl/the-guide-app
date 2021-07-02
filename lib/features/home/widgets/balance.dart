@@ -21,7 +21,7 @@ class Balance extends StatelessWidget {
             Text(
               I10n.of(context).balance,
               style: TextStyle(
-                color: Color(0xFF454545),
+                color: Colors.white,
                 fontSize: 13.0,
               ),
             ),
@@ -30,6 +30,7 @@ class Balance extends StatelessWidget {
                 '\$${viewModel.usdValue}',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
                 presetFontSizes: [
                   30,
