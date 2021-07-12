@@ -167,7 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Недовољно средстава"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Користи новчаник за слање новца \n пријатељима без провизије и наплате"),
+            "Подржите своје локалне ресторане на платформи која им даје већи део онога што плаћате"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Чувај Ethereum сретства и приступи \n децентрализиваним финансијама у неколико корака"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(

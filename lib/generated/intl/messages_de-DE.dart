@@ -168,7 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Unzureichende Mittel"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Bezahlen und werde bezahlt oder sende Geld an Freunde problemlos und ohne Gebühren"),
+            "Unterstützen Sie Ihre lokalen Restaurants auf einer Plattform, die ihnen einen größeren Anteil an dem gibt, was Sie bezahlen"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Erstelle eine sichere Wallet um am dezentralen Finanzwesen teilzunehmen"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(

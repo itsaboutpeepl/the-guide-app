@@ -171,7 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("ငွေမလုံလောက်ပါ"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "အခကြေးငွေ နှင့် friction မရှိဘဲ သင့်သူငယ်ချင်းများနဲ့ ငွေပေးချေခြင်း ငွေလက်ခံခြင်း ပြုလုပ်နိုင်ပါသည်။"),
+            "သင်၏ဒေသခံစားသောက်ဆိုင်များကိုသင်ပေးရသည့်အရာများထက်ပိုမိုသောပေးသည့်ပလက်ဖောင်းပေါ်တွင်ပံ့ပိုးပါ။"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "လုံခြုံစိတ်ချရပြီး စမတ်ဖြစ်သော တိုကင်အကောင့်တစ်ခု ပြုလုပ်ပြီး ဗဟိုထိန်းချုပ်မှုမရှိသော ဘဏ္ဍာရေးကို ရယူလိုက်ပါ"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(

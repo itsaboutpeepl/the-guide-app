@@ -144,8 +144,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "initializing_wallet":
             MessageLookupByLibrary.simpleMessage("在 Fuse 上初始化您的钱包"),
         "insufficient_fund": MessageLookupByLibrary.simpleMessage("资金不足"),
-        "intro_text_one":
-            MessageLookupByLibrary.simpleMessage("支付和收取报酬或汇款给朋友，没有费用或不便之处"),
+        "intro_text_one": MessageLookupByLibrary.simpleMessage(
+            "在一个平台上支持您当地的餐馆，让他们从您支付的费用中获得更大的份额"),
         "intro_text_three":
             MessageLookupByLibrary.simpleMessage("创建一个安全智能的代币账户，以访问去中心化金融"),
         "intro_text_two":

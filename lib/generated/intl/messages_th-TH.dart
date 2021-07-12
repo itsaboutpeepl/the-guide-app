@@ -166,7 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "กำลังเริ่มต้นกระเป๋าเงินของคุณบน Fuse"),
         "insufficient_fund": MessageLookupByLibrary.simpleMessage("เงินไม่พอ"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "จ่ายและรับเงินหรือส่งเงินให้เพื่อนโดยไม่มีค่าธรรมเนียมหรือความขัดแย้ง"),
+            "สนับสนุนร้านอาหารในพื้นที่ของคุณบนแพลตฟอร์มที่ให้ส่วนแบ่งในสิ่งที่คุณจ่ายมากขึ้น"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "สร้างบัญชีโทเค็นที่ปลอดภัยและชาญฉลาดเพื่อเข้าถึงการเงินแบบกระจายศูนย์"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(

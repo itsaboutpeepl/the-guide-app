@@ -1000,10 +1000,10 @@ class I10n {
     );
   }
 
-  /// `Support your local restaurants, on a platform that gives them a bigger share of what you pay`
+  /// `Pay and get paid or send money to friends without fees or friction`
   String get intro_text_one {
     return Intl.message(
-      'Support your local restaurants, on a platform that gives them a bigger share of what you pay',
+      'Pay and get paid or send money to friends without fees or friction',
       name: 'intro_text_one',
       desc: '',
       args: [],

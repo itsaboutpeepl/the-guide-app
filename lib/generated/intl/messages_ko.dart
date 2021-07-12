@@ -154,7 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("나의 Fuse 지갑 초기화 중"),
         "insufficient_fund": MessageLookupByLibrary.simpleMessage("자금 불충분"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "수수료나 프릭션 없이 친구에게 돈을 전송하거나 결제를 하고 결제를 받으세요"),
+            "지불하는 금액의 더 큰 몫을 제공하는 플랫폼에서 현지 레스토랑을 지원하십시오"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "안전하고 스마트한 토큰 계정을 생성해 디파이에 액세스하세요"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(

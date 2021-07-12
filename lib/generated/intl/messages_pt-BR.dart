@@ -172,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Fundos insuficientes"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Pague e receba pagamentos usando crypto facilmente e sem taxas"),
+            "Apoie seus restaurantes locais, em uma plataforma que lhes dá uma parcela maior do que você paga"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Mantenha ativos Ethereum e acesse"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(

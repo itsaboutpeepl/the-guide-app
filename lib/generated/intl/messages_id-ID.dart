@@ -167,7 +167,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Dana tidak cukup"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Bayar dan terima bayaran atau kirim uang ke teman tanpa biaya atau friksi"),
+            "Dukung restoran lokal Anda, pada platform yang memberi mereka bagian lebih besar dari apa yang Anda bayar"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Buat akun token aman dan cerdas untuk mengakses keuangan terdesentralisasi"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(

@@ -172,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Fonds insuffisants"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Payez et soyez payé ou envoyez de l\'argent à vos amis sans frais ni friction."),
+            "Soutenez vos restaurants locaux, sur une plateforme qui leur donne une plus grande part de ce que vous payez."),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Créez un compte de jetons sécurisé et intelligent pour accéder à la finance décentralisée"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
