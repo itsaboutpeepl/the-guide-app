@@ -1010,10 +1010,10 @@ class I10n {
     );
   }
 
-  /// `Create a secure and smart token account to access decentralized finance`
+  /// `Top up your Peepl wallet, as much or as little as you like, directly from your bank account using Stripe. It’s fast & secure`
   String get intro_text_three {
     return Intl.message(
-      'Create a secure and smart token account to access decentralized finance',
+      'Top up your Peepl wallet, as much or as little as you like, directly from your bank account using Stripe. It’s fast & secure',
       name: 'intro_text_three',
       desc: '',
       args: [],
@@ -1900,10 +1900,10 @@ class I10n {
     );
   }
 
-  /// `Smart`
+  /// `We give restaurants more by charging them fair fees`
   String get smart {
     return Intl.message(
-      'Smart',
+      'We give restaurants more by charging them fair fees',
       name: 'smart',
       desc: '',
       args: [],

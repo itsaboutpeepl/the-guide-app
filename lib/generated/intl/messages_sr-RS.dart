@@ -169,7 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "Подржите своје локалне ресторане на платформи која им даје већи део онога што плаћате"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Чувај Ethereum сретства и приступи \n децентрализиваним финансијама у неколико корака"),
+            "Допуните свој Пеепл новчаник, колико год желите или мање, директно са свог банковног рачуна користећи Стрипе. Брзо је и сигурно"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "Вратићете 10% у новчаник да бисте га у будућности потрошили поново"),
         "invalid_number": MessageLookupByLibrary.simpleMessage("Погрешан број"),
@@ -292,7 +292,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Једноставно"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Прескочи"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage("Паметно"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "Дајемо ресторанима више наплаћујући им поштене таксе"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Нешто није у реду"),
@@ -335,7 +336,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars can be freely moved between accounts on FuseCash, as well as to Fuse accounts outside Fuse Cash. They can also be swapped for other cryptocurrencies straight from Fuse Cash using the FuseSwap DEX, and will soon be usable for earning passive income."),
         "use_max": MessageLookupByLibrary.simpleMessage("Користи максимално"),
-        "useful": MessageLookupByLibrary.simpleMessage("Корисно"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "Награђујте за сваку потрошњу"),
         "version": MessageLookupByLibrary.simpleMessage("Верзија"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visit fuse.io to learn more about Fuse and how things work behind the scenes."),

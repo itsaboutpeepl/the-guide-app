@@ -173,7 +173,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "သင်၏ဒေသခံစားသောက်ဆိုင်များကိုသင်ပေးရသည့်အရာများထက်ပိုမိုသောပေးသည့်ပလက်ဖောင်းပေါ်တွင်ပံ့ပိုးပါ။"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "လုံခြုံစိတ်ချရပြီး စမတ်ဖြစ်သော တိုကင်အကောင့်တစ်ခု ပြုလုပ်ပြီး ဗဟိုထိန်းချုပ်မှုမရှိသော ဘဏ္ဍာရေးကို ရယူလိုက်ပါ"),
+            "Stripe ကိုအသုံးပြုပြီးသင်၏ဘဏ်အကောင့်မှသင်၏ Peepl ပိုက်ဆံအိတ်ကိုသင်ကြိုက်သလောက်သို့မဟုတ်အနည်းဆုံးဖြည့်ပါ။ မြန်ပြီးလုံခြုံပါတယ်"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "နောင်၌နောက်တဖန်ဖြုန်းရန်, သင်၏ပိုက်ဆံအိတ်ထဲမှာ 10% ကျော"),
         "invalid_number":
@@ -303,7 +303,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("ရိုးရှင်း"),
         "skip_button": MessageLookupByLibrary.simpleMessage("ကျော်မည်"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage("စမတ်"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "ကျမတို့စားသောက်ဆိုင်တွေကိုတရားမျှတတဲ့အခကြေးငွေတွေပေးပြီးပိုပေးပါတယ်"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("တခုခုမှားနေတယ်"),
@@ -344,7 +345,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseCash အကောင့် များကြားတွင် FuseDollar များကို စိတ်ကြိုက် ပြောင်းရွေ့နိုင်ပါတယ်။ Fuse Cash ပြင်ပ Fuse အကောင့်များကြားတွင်လဲ လုပ်ဆောင်နိုင်ပါတယ်။ FuseSwap DEX အသုံးပြု၍ Fuse Cash မှ အခြား Crypto ငွေကြေးစနစ်များသို့ တိုက်ရိုက် ပြောင်းလဲနိုင်ပါတယ်။ Passive Income များရရှိနိုင်ဖို့အတွက်လဲ မကြာမှီ အသုံးပြုလာနိုင်မှာပါ။"),
         "use_max": MessageLookupByLibrary.simpleMessage("အများဆုံးအသုံးပြုပါ"),
-        "useful": MessageLookupByLibrary.simpleMessage("အသုံးဝင်"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "အသုံးစရိတ်တစ်ခုစီအတွက်ဆုချပါ"),
         "version": MessageLookupByLibrary.simpleMessage("App ဗားရှင်း"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "fuse.io သို့ ဝင်ရောက်၍ Fuse နှင့် အလုပ်လုပ်ပုံများကို ပိုမို လေ့လာကြည့်ရှုနိုင်ပါတယ်။"),

@@ -174,7 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "Soutenez vos restaurants locaux, sur une plateforme qui leur donne une plus grande part de ce que vous payez."),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Créez un compte de jetons sécurisé et intelligent pour accéder à la finance décentralisée"),
+            "Rechargez votre portefeuille Peepl, autant ou aussi peu que vous le souhaitez, directement depuis votre compte bancaire en utilisant Stripe. C\'est rapide et sécurisé"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "10% de retour dans votre portefeuille, à dépenser à nouveau à l\'avenir"),
         "invalid_number":
@@ -301,7 +301,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Ignorer"),
         "slippage": MessageLookupByLibrary.simpleMessage("Glissement"),
-        "smart": MessageLookupByLibrary.simpleMessage("Smart"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "Nous donnons plus aux restaurants en leur facturant des frais équitables"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong": MessageLookupByLibrary.simpleMessage(
             "Quelque chose a mal tourné\n"),
@@ -345,7 +346,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars peuvent être librement transferer entre comptes sur FuseCash, aussi bien que avec les comptes Fuse en dehors de Fuse Cash. Ils peuvent aussi etre interchanger pour d\'autre crypto-monais directement de Fuse Cash en utilisant le FuseSwap DEX, et et sera bientôt utilisable pour gagner un revenu passif."),
         "use_max": MessageLookupByLibrary.simpleMessage("Utiliser le maximum"),
-        "useful": MessageLookupByLibrary.simpleMessage("Utile"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "Soyez récompensé pour chaque dépense"),
         "version":
             MessageLookupByLibrary.simpleMessage("Version de l\'application"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(

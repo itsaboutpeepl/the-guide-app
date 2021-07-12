@@ -168,7 +168,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "สนับสนุนร้านอาหารในพื้นที่ของคุณบนแพลตฟอร์มที่ให้ส่วนแบ่งในสิ่งที่คุณจ่ายมากขึ้น"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "สร้างบัญชีโทเค็นที่ปลอดภัยและชาญฉลาดเพื่อเข้าถึงการเงินแบบกระจายศูนย์"),
+            "เติมเงินในกระเป๋าเงิน Peepl ของคุณ มากหรือน้อยตามที่คุณต้องการ โดยตรงจากบัญชีธนาคารของคุณโดยใช้ Stripe รวดเร็วและปลอดภัย"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "กลับเข้ากระเป๋า 10% เพื่อใช้จ่ายอีกในอนาคต"),
         "invalid_number":
@@ -290,7 +290,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("เรียบง่าย"),
         "skip_button": MessageLookupByLibrary.simpleMessage("ข้าม"),
         "slippage": MessageLookupByLibrary.simpleMessage("เลื่อนไหล"),
-        "smart": MessageLookupByLibrary.simpleMessage("ฉลาด"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "เราให้ร้านอาหารมากขึ้นด้วยการเรียกเก็บค่าธรรมเนียมที่ยุติธรรม"),
         "social": MessageLookupByLibrary.simpleMessage("โซเชียล"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("เกิดข้อผิดพลาดขึ้น"),
@@ -332,7 +333,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars สามารถย้ายได้อย่างอิสระระหว่างบัญชีใน FuseCash เช่นเดียวกับย้ายไปยังบัญชี Fuse นอก Fuse Cash ทั้งยังสามารถแลกเปลี่ยนเป็นคริปโตเคอร์เรนซีอื่น ๆ ได้โดยตรงจาก Fuse Cash โดยใช้ FuseSwap DEX และจะสามารถใช้สร้างรายได้แบบพาสซีฟได้ในไม่ช้า"),
         "use_max": MessageLookupByLibrary.simpleMessage("ใช้สูงสุด"),
-        "useful": MessageLookupByLibrary.simpleMessage("มีประโยชน์"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "รับรางวัลสำหรับการใช้จ่ายแต่ละครั้ง"),
         "version": MessageLookupByLibrary.simpleMessage("แอปเวอร์ชัน"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "เข้าไปที่ fuse.io เพื่อเรียนรู้เพิ่มเติมเกี่ยวกับ Fuse และวิธีการทำงานเบื้องหลัง"),

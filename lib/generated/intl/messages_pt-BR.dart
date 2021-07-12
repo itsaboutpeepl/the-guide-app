@@ -174,7 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "Apoie seus restaurantes locais, em uma plataforma que lhes dá uma parcela maior do que você paga"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Mantenha ativos Ethereum e acesse"),
+            "Recarregue sua carteira Peepl, tanto ou quanto quiser, diretamente de sua conta bancária usando Stripe. É rápido e seguro"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "10% de volta em sua carteira, para gastar novamente no futuro"),
         "invalid_number":
@@ -300,7 +300,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Simples"),
         "skip_button": MessageLookupByLibrary.simpleMessage("pular"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage("Inteligente"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "Damos mais aos restaurantes cobrando taxas justas"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Ocorreu um erro"),
@@ -342,7 +343,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars podem ser movimentados livremente entre contas do FuseCash, bem como contas do Fuse fora do Fuse Cash. Elas também podem ser trocadas por outras criptomoedas do Fuse Cash usando o FuseSwap DEX, e em breve poderão ser usadas para o ganho de renda passiva."),
         "use_max": MessageLookupByLibrary.simpleMessage("Usar o máximo"),
-        "useful": MessageLookupByLibrary.simpleMessage("Útil"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "Seja recompensado por cada gasto"),
         "version": MessageLookupByLibrary.simpleMessage("versão"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visite o fuse.io para saber mais sobre o Fuse e como as coisas funcionam nos bastidores."),

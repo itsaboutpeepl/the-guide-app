@@ -164,7 +164,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "Suportahan ang iyong mga lokal na restawran, sa isang platform na nagbibigay sa kanila ng mas malaking bahagi ng binabayaran mo"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Hold DCA at Ethereum assets at i-access \n ang desentralisadong pananalapi sa ilang pindot"),
+            "I-top up ang iyong Peepl wallet, mas marami o kakaunti ang gusto mo, direkta mula sa iyong bank account gamit ang Stripe. Mabilis at ligtas ito"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "10% pabalik sa iyong pitaka, upang gumastos muli sa hinaharap"),
         "invalid_number":
@@ -285,7 +285,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Lagpasan"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage("Smart"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "Mas binibigyan namin ang mga restawran sa pamamagitan ng pagsingil sa kanila ng patas na bayarin"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
@@ -328,7 +329,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars can be freely moved between accounts on FuseCash, as well as to Fuse accounts outside Fuse Cash. They can also be swapped for other cryptocurrencies straight from Fuse Cash using the FuseSwap DEX, and they will soon be usable for earning passive income."),
         "use_max": MessageLookupByLibrary.simpleMessage("Use max"),
-        "useful": MessageLookupByLibrary.simpleMessage("Kapakipakinabang"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "Gantimpalaan Para sa bawat Gastos"),
         "version": MessageLookupByLibrary.simpleMessage("Bersyon"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visit fuse.io to learn more about Fuse and how things work behind the scene."),

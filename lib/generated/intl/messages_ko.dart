@@ -156,7 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "지불하는 금액의 더 큰 몫을 제공하는 플랫폼에서 현지 레스토랑을 지원하십시오"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "안전하고 스마트한 토큰 계정을 생성해 디파이에 액세스하세요"),
+            "Stripe를 사용하여 은행 계좌에서 직접 원하는만큼 Peepl 지갑을 충전하세요. 빠르고 안전합니다."),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "10 %는 지갑에 다시 넣어두고 나중에 다시 사용할 수 있습니다."),
         "invalid_number": MessageLookupByLibrary.simpleMessage("유효하지 않은 번호"),
@@ -267,7 +267,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("간편"),
         "skip_button": MessageLookupByLibrary.simpleMessage("건너뛰기"),
         "slippage": MessageLookupByLibrary.simpleMessage("슬리피지"),
-        "smart": MessageLookupByLibrary.simpleMessage("스마트"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "우리는 공정한 수수료를 부과하여 레스토랑을 더 많이 제공합니다."),
         "social": MessageLookupByLibrary.simpleMessage("소셜"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("오류가 발생했습니다"),
@@ -303,7 +304,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars는 FuseCash 계정간 이동하는 것뿐 아니라 Fuse Cash 외의 Fuse 계정으로 이동하는 것도 자유롭습니다. FuseSwap DEX를 이용하여 Fuse Cash에서 바로 타 암호화화폐로 전환할 수도 있으며, 패시브인컴을 벌어들일 수 있도록 곧 사용이 가능해집니다."),
         "use_max": MessageLookupByLibrary.simpleMessage("최대치 사용"),
-        "useful": MessageLookupByLibrary.simpleMessage("유용"),
+        "useful": MessageLookupByLibrary.simpleMessage("지출 할 때마다 보상 받기"),
         "version": MessageLookupByLibrary.simpleMessage("앱 버전"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "fuse.io를 방문하시면 Fuse가 어떤 곳이고 배후에서 어떤 식으로 일을 처리하는지 자세히 알아보실 수 있습니다."),

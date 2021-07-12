@@ -169,7 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "Dukung restoran lokal Anda, pada platform yang memberi mereka bagian lebih besar dari apa yang Anda bayar"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Buat akun token aman dan cerdas untuk mengakses keuangan terdesentralisasi"),
+            "Isi ulang dompet Peepl Anda, sebanyak atau sesedikit yang Anda suka, langsung dari rekening bank Anda menggunakan Stripe. Cepat & aman"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "10% kembali ke dompet Anda, untuk dibelanjakan lagi di masa mendatang"),
         "invalid_number": MessageLookupByLibrary.simpleMessage("Nomor salah"),
@@ -295,7 +295,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Mudah"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Lewati"),
         "slippage": MessageLookupByLibrary.simpleMessage("Kesenjangan"),
-        "smart": MessageLookupByLibrary.simpleMessage("Cerdas"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "Kami memberi restoran lebih banyak dengan membebankan biaya yang adil kepada mereka"),
         "social": MessageLookupByLibrary.simpleMessage("Sosial"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Terjadi sesuatu"),
@@ -337,7 +338,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars dapat bebas dipindahkan antar akun di FuseCash, selain juga akun Fuse di luar FuseCash. Itu juga dapat ditukar dengan mata uang kripto lainnya langsung dari FuseCash menggunakan FuseSwap DEX, dan sebentar lagi akan dapat digunakan untuk memperoleh pemasukan pasif."),
         "use_max": MessageLookupByLibrary.simpleMessage("Gunakan maks"),
-        "useful": MessageLookupByLibrary.simpleMessage("Berguna"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "Dapatkan Hadiah Untuk Setiap Pembelanjaan"),
         "version": MessageLookupByLibrary.simpleMessage("Versi aplikasi"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Kunjungi fuse.io untuk mempelajari lebih lanjut tentang Fuse dan cara kerjanya di balik layar."),

@@ -172,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
             "Поддерживайте местные рестораны на платформе, которая дает им большую долю от того, что вы платите."),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Создайте безопасную учетную запись для смарт токена чтобы получить доступ к децентрализованным финансам"),
+            "Пополняйте свой кошелек Peepl, сколько хотите, прямо со своего банковского счета с помощью Stripe. Это быстро и безопасно"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
             "10% обратно в кошелек, чтобы потратить снова в будущем"),
         "invalid_number":
@@ -299,7 +299,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Простой"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Пропустить"),
         "slippage": MessageLookupByLibrary.simpleMessage("Соскальзывание"),
-        "smart": MessageLookupByLibrary.simpleMessage("Умный"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "Мы даем ресторанам больше, взимая с них справедливую плату"),
         "social": MessageLookupByLibrary.simpleMessage("Социальное"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Что-то пошло не так"),
@@ -340,7 +341,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "Fuse Доллары можно свободно перемещать между счетами на Fuse Cash, а также на счета Fuse вне Fuse Cash кошелька. Их также можно обменять на другие криптовалюты прямо в кошельке Fuse Cash с помощью FuseSwap DEX, и вскоре их можно будет использовать для получения пассивного дохода."),
         "use_max": MessageLookupByLibrary.simpleMessage("Используйте макс."),
-        "useful": MessageLookupByLibrary.simpleMessage("Полезный"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "Получайте вознаграждение за каждую трату"),
         "version": MessageLookupByLibrary.simpleMessage("Версия приложения"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Посетите fuse.io, чтобы узнать больше о Fuse и о том, как все работает за кулисами."),
