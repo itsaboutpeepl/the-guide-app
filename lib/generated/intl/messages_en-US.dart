@@ -169,7 +169,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Create a secure and smart token account to access decentralized finance"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Deposit \b\$ and swap to other currencies with little to no fees"),
+            "10% back in your wallet, to spend again in future"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Invalid number"),
         "invalid_pincode":
@@ -332,7 +332,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars can be freely moved between accounts on FuseCash, as well as to Fuse accounts outside Fuse Cash. They can also be swapped for other cryptocurrencies straight from Fuse Cash using the FuseSwap DEX, and will soon be usable for earning passive income."),
         "use_max": MessageLookupByLibrary.simpleMessage("Use max"),
-        "useful": MessageLookupByLibrary.simpleMessage("Useful"),
+        "useful":
+            MessageLookupByLibrary.simpleMessage("Get Rewarded For Each Spend"),
         "version": MessageLookupByLibrary.simpleMessage("App version"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visit fuse.io to learn more about Fuse and how things work behind the scenes."),

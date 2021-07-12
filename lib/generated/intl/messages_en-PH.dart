@@ -166,7 +166,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Hold DCA at Ethereum assets at i-access \n ang desentralisadong pananalapi sa ilang pindot"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Gamiting pambayad at mabayaran gamit ang crypto \n at tingnan kung saan maaari kang makabili malapit sa iyo"),
+            "10% pabalik sa iyong pitaka, upang gumastos muli sa hinaharap"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Invalid number"),
         "invalid_pincode":

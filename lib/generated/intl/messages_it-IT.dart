@@ -172,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Tieni le risorse di Ethereum e accedi a \n finanziamenti decentralizzati con pochi tocchi"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Paga e ricevi pagamenti utilizzando crypto \n e vedi dove puoi fare acquisti nelle vicinanze"),
+            "10% di nuovo nel tuo portafoglio, da spendere ancora in futuro"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Numero invalido"),
         "invalid_pincode":

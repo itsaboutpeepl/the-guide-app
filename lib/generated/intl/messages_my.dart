@@ -175,7 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "လုံခြုံစိတ်ချရပြီး စမတ်ဖြစ်သော တိုကင်အကောင့်တစ်ခု ပြုလုပ်ပြီး ဗဟိုထိန်းချုပ်မှုမရှိသော ဘဏ္ဍာရေးကို ရယူလိုက်ပါ"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "\b\$ deposit ပြုလုပ်ပြီး အခြားငွေကြေးစနစ်များနဲ့ အခကြေးငွေ အနည်းငယ်မှ အခမဲ့အထိ လဲလှယ်နိုင်ပါသည်။"),
+            "နောင်၌နောက်တဖန်ဖြုန်းရန်, သင်၏ပိုက်ဆံအိတ်ထဲမှာ 10% ကျော"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("မှားယွင်းသော နံပါတ်"),
         "invalid_pincode":

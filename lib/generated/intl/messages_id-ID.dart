@@ -171,7 +171,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Buat akun token aman dan cerdas untuk mengakses keuangan terdesentralisasi"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Depositkan \$ dan tukarkan dengan mata uang lainnya dengan biaya minimal"),
+            "10% kembali ke dompet Anda, untuk dibelanjakan lagi di masa mendatang"),
         "invalid_number": MessageLookupByLibrary.simpleMessage("Nomor salah"),
         "invalid_pincode":
             MessageLookupByLibrary.simpleMessage("Kode pin salah"),

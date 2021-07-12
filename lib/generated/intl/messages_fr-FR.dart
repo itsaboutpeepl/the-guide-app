@@ -176,7 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Créez un compte de jetons sécurisé et intelligent pour accéder à la finance décentralisée"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Déposez des dollars et échangez-les contre d\'autres devises avec peu ou pas de frais."),
+            "10% de retour dans votre portefeuille, à dépenser à nouveau à l\'avenir"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Numéro non valide"),
         "invalid_pincode":

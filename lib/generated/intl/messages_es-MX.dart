@@ -175,7 +175,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Crea una cuenta de monedas segura e inteligente para acceder a las finanzas descentralizadas"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Deposita \b\$ y cambia a otras monedas con comisiones bajas o nulas"),
+            "10% de regreso en su billetera, para gastar nuevamente en el futuro"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Número inválido"),
         "invalid_pincode":

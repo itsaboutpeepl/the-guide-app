@@ -172,7 +172,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Erstelle eine sichere Wallet um am dezentralen Finanzwesen teilzunehmen"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Zahle \$ ein und tausche in andere Währungen mit geringen bis keinen Gebühren"),
+            "10% zurück in Ihrem Portemonnaie, um es in Zukunft wieder auszugeben"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Ungültige Nummer"),
         "invalid_pincode":

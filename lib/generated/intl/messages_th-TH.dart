@@ -170,7 +170,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "สร้างบัญชีโทเค็นที่ปลอดภัยและชาญฉลาดเพื่อเข้าถึงการเงินแบบกระจายศูนย์"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "ฝากเงิน \$ แล้วแลกเปลี่ยนเป็นสกุลเงินอื่นโดยมีค่าธรรมเนียมเพียงเล็กน้อยหรือไม่มีค่าธรรมเนียม"),
+            "กลับเข้ากระเป๋า 10% เพื่อใช้จ่ายอีกในอนาคต"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("ตัวเลขไม่ถูกต้อง"),
         "invalid_pincode":

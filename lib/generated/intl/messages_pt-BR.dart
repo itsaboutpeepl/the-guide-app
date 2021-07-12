@@ -176,7 +176,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Mantenha ativos Ethereum e acesse"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Use a carteira para enviar dinheiro para os amigos"),
+            "10% de volta em sua carteira, para gastar novamente no futuro"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Número inválido"),
         "invalid_pincode":

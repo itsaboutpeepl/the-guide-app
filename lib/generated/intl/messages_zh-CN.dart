@@ -149,7 +149,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three":
             MessageLookupByLibrary.simpleMessage("创建一个安全智能的代币账户，以访问去中心化金融"),
         "intro_text_two":
-            MessageLookupByLibrary.simpleMessage("存入 \$ 并兑换成其他货币，几乎不收取任何费用"),
+            MessageLookupByLibrary.simpleMessage("10% 退回您的钱包，以备将来再次使用"),
         "invalid_number": MessageLookupByLibrary.simpleMessage("无效的号码"),
         "invalid_pincode": MessageLookupByLibrary.simpleMessage("PIN 码无效"),
         "invalid_qa_code": MessageLookupByLibrary.simpleMessage("无效的 QA 代码"),

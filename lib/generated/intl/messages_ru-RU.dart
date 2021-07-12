@@ -174,7 +174,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "Создайте безопасную учетную запись для смарт токена чтобы получить доступ к децентрализованным финансам"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Внесите \$ и обменивайте его на другие валюты практически без комиссии"),
+            "10% обратно в кошелек, чтобы потратить снова в будущем"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Неправильный номер"),
         "invalid_pincode":

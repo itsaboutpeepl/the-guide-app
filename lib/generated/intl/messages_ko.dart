@@ -158,7 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
             "안전하고 스마트한 토큰 계정을 생성해 디파이에 액세스하세요"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "달러를 예치하고 거의 없다시피 한 수수료로 다른 통화로 전환하세요"),
+            "10 %는 지갑에 다시 넣어두고 나중에 다시 사용할 수 있습니다."),
         "invalid_number": MessageLookupByLibrary.simpleMessage("유효하지 않은 번호"),
         "invalid_pincode":
             MessageLookupByLibrary.simpleMessage("유효하지 않은 PIN 코드"),
