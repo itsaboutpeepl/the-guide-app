@@ -168,11 +168,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Fondi insufficienti"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Utilizza il portafoglio per inviare denaro \n agli amici senza commissioni o attriti"),
+            "Sostieni i tuoi ristoranti locali, su una piattaforma che dia loro una quota maggiore di ciò che paghi"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Tieni le risorse di Ethereum e accedi a \n finanziamenti decentralizzati con pochi tocchi"),
+            "Ricarica il tuo portafoglio Peepl, quanto vuoi, direttamente dal tuo conto bancario utilizzando Stripe. È veloce e sicuro"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Paga e ricevi pagamenti utilizzando crypto \n e vedi dove puoi fare acquisti nelle vicinanze"),
+            "10% di nuovo nel tuo portafoglio, da spendere ancora in futuro"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Numero invalido"),
         "invalid_pincode":
@@ -300,7 +300,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Semplice"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Salta"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage("Inteligente"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "Diamo di più ai ristoranti addebitando loro tariffe eque"),
         "social": MessageLookupByLibrary.simpleMessage("Sociale"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Qualcosa e andato storto"),
@@ -343,7 +344,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "I FuseDollars possono essere spostati liberamente tra conti su FuseCash, nonché su conti Fuse al di fuori di Fuse Cash. Possono anche essere scambiati con altre criptovalute direttamente da Fuse Cash utilizzando FuseSwap DEX e saranno presto utilizzabili per guadagnare reddito passivo."),
         "use_max": MessageLookupByLibrary.simpleMessage("Usa il massimo"),
-        "useful": MessageLookupByLibrary.simpleMessage("Utile"),
+        "useful": MessageLookupByLibrary.simpleMessage(
+            "Ricevi un premio per ogni spesa"),
         "version": MessageLookupByLibrary.simpleMessage("Versione"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visita fuse.io per saperne di più su Fuse e su come funzionano le cose dietro le quinte."),

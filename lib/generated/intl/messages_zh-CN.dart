@@ -144,12 +144,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "initializing_wallet":
             MessageLookupByLibrary.simpleMessage("在 Fuse 上初始化您的钱包"),
         "insufficient_fund": MessageLookupByLibrary.simpleMessage("资金不足"),
-        "intro_text_one":
-            MessageLookupByLibrary.simpleMessage("支付和收取报酬或汇款给朋友，没有费用或不便之处"),
-        "intro_text_three":
-            MessageLookupByLibrary.simpleMessage("创建一个安全智能的代币账户，以访问去中心化金融"),
+        "intro_text_one": MessageLookupByLibrary.simpleMessage(
+            "在一个平台上支持您当地的餐馆，让他们从您支付的费用中获得更大的份额"),
+        "intro_text_three": MessageLookupByLibrary.simpleMessage(
+            "使用 Stripe 直接从您的银行账户为您的 Peepl 钱包充值，无论您喜欢多少。快速且安全"),
         "intro_text_two":
-            MessageLookupByLibrary.simpleMessage("存入 \$ 并兑换成其他货币，几乎不收取任何费用"),
+            MessageLookupByLibrary.simpleMessage("10% 退回您的钱包，以备将来再次使用"),
         "invalid_number": MessageLookupByLibrary.simpleMessage("无效的号码"),
         "invalid_pincode": MessageLookupByLibrary.simpleMessage("PIN 码无效"),
         "invalid_qa_code": MessageLookupByLibrary.simpleMessage("无效的 QA 代码"),
@@ -248,7 +248,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("简单"),
         "skip_button": MessageLookupByLibrary.simpleMessage("跳过"),
         "slippage": MessageLookupByLibrary.simpleMessage("下跌"),
-        "smart": MessageLookupByLibrary.simpleMessage("智能"),
+        "smart": MessageLookupByLibrary.simpleMessage("我们通过向餐厅收取公平的费用来为他们提供更多"),
         "social": MessageLookupByLibrary.simpleMessage("社交媒体"),
         "something_went_wrong": MessageLookupByLibrary.simpleMessage("发生了一些错误"),
         "sqan_qr_code": MessageLookupByLibrary.simpleMessage("通过扫码来切换"),
@@ -281,7 +281,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollar 可以在 FuseCash 上的账户之间以及 Fuse Cash 之外的 Fuse 账户之间自由流动。用户也可以使用 FuseSwap DEX 从 Fuse Cash 直接将 FuseDollar 换成其他加密货币，并且很快将可用于赚取被动收入。"),
         "use_max": MessageLookupByLibrary.simpleMessage("使用最大值"),
-        "useful": MessageLookupByLibrary.simpleMessage("有用"),
+        "useful": MessageLookupByLibrary.simpleMessage("每次消费获得奖励"),
         "version": MessageLookupByLibrary.simpleMessage("应用版本"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "访问 fuse.io 以了解有关 Fuse 及其后台工作原理的更多信息。"),

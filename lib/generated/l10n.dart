@@ -1000,30 +1000,30 @@ class I10n {
     );
   }
 
-  /// `Pay and get paid or send money to friends without fees or friction`
+  /// `Support your local restaurants, on a platform that gives them a bigger share of what you pay`
   String get intro_text_one {
     return Intl.message(
-      'Pay and get paid or send money to friends without fees or friction',
+      'Support your local restaurants, on a platform that gives them a bigger share of what you pay',
       name: 'intro_text_one',
       desc: '',
       args: [],
     );
   }
 
-  /// `Create a secure and smart token account to access decentralized finance`
+  /// `Top up your Peepl wallet, as much or as little as you like, directly from your bank account using Stripe. It’s fast & secure`
   String get intro_text_three {
     return Intl.message(
-      'Create a secure and smart token account to access decentralized finance',
+      'Top up your Peepl wallet, as much or as little as you like, directly from your bank account using Stripe. It’s fast & secure',
       name: 'intro_text_three',
       desc: '',
       args: [],
     );
   }
 
-  /// `Deposit \b$ and swap to other currencies with little to no fees`
+  /// `10% back in your wallet, to spend again in future`
   String get intro_text_two {
     return Intl.message(
-      'Deposit \b\$ and swap to other currencies with little to no fees',
+      '10% back in your wallet, to spend again in future',
       name: 'intro_text_two',
       desc: '',
       args: [],
@@ -1900,10 +1900,10 @@ class I10n {
     );
   }
 
-  /// `Smart`
+  /// `We give restaurants more by charging them fair fees`
   String get smart {
     return Intl.message(
-      'Smart',
+      'We give restaurants more by charging them fair fees',
       name: 'smart',
       desc: '',
       args: [],
@@ -2180,10 +2180,10 @@ class I10n {
     );
   }
 
-  /// `Useful`
+  /// `Get Rewarded For Each Spend`
   String get useful {
     return Intl.message(
-      'Useful',
+      'Get Rewarded For Each Spend',
       name: 'useful',
       desc: '',
       args: [],

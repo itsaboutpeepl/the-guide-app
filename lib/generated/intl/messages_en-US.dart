@@ -165,11 +165,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Insufficient funds"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Pay and get paid or send money to friends without fees or friction"),
+            "Support your local restaurants, on a platform that gives them a bigger share of what you pay"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Create a secure and smart token account to access decentralized finance"),
+            "Top up your Peepl wallet, as much or as little as you like, directly from your bank account using Stripe. It’s fast & secure"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Deposit \b\$ and swap to other currencies with little to no fees"),
+            "10% back in your wallet, to spend again in future"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Invalid number"),
         "invalid_pincode":
@@ -291,7 +291,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Skip"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage("Smart"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "We give restaurants more by charging them fair fees"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
@@ -332,7 +333,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars can be freely moved between accounts on FuseCash, as well as to Fuse accounts outside Fuse Cash. They can also be swapped for other cryptocurrencies straight from Fuse Cash using the FuseSwap DEX, and will soon be usable for earning passive income."),
         "use_max": MessageLookupByLibrary.simpleMessage("Use max"),
-        "useful": MessageLookupByLibrary.simpleMessage("Useful"),
+        "useful":
+            MessageLookupByLibrary.simpleMessage("Get Rewarded For Each Spend"),
         "version": MessageLookupByLibrary.simpleMessage("App version"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visit fuse.io to learn more about Fuse and how things work behind the scenes."),

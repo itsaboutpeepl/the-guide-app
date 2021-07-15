@@ -160,11 +160,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("קרן לא מספקת"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Pay and get paid using crypto\nwithout fees or friction"),
+            "Support your local restaurants, on a platform that gives them a bigger share of what you pay"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "Hold Ethereum assets and\naccess decentralized finance"),
+            "מלאו את ארנק ה- Peepl שלכם, כמה שיותר או כמה שתרצו, ישירות מחשבון הבנק שלכם באמצעות Stripe. זה מהיר ומאובטח"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "Use the wallet to send\nmoney to friends"),
+            "10% back in your wallet, to spend again in future"),
         "invalid_number": MessageLookupByLibrary.simpleMessage("מספר לא תקין"),
         "invalid_pincode": MessageLookupByLibrary.simpleMessage("הקוד שגוי"),
         "invalid_qa_code":
@@ -278,7 +278,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("פשוט"),
         "skip_button": MessageLookupByLibrary.simpleMessage("דלג"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage("חכם"),
+        "smart": MessageLookupByLibrary.simpleMessage(
+            "אנו נותנים למסעדות יותר על ידי חיוב בהן בתשלום הוגן"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("משהו השתבש"),
@@ -317,7 +318,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars can be freely moved between accounts on FuseCash, as well as to Fuse accounts outside Fuse Cash. They can also be swapped for other cryptocurrencies straight from Fuse Cash using the FuseSwap DEX, and will soon be usable for earning passive income."),
         "use_max": MessageLookupByLibrary.simpleMessage("Use max"),
-        "useful": MessageLookupByLibrary.simpleMessage("שימושי"),
+        "useful": MessageLookupByLibrary.simpleMessage("קבל תגמול על כל הוצאה"),
         "version": MessageLookupByLibrary.simpleMessage("גרסא"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visit fuse.io to learn more about Fuse and how things work behind the scenes."),

@@ -40,9 +40,8 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Color(0xFFB1FDC0),
-              Color(0xFFE6FD99),
-              Color(0xFFFEFD86),
+              Color(0xFFFC0C1A),
+              Color(0xFFFC870C),
             ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
@@ -67,7 +66,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset('assets/images/pincode_logo.png',
+                        Image.asset('assets/images/splash.png',
                             width: 71, height: 61),
                       ],
                     ),
@@ -83,7 +82,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                           I10n.of(context).enter_pincode,
                           style: TextStyle(
                             fontSize: 25,
-                            color: Color(0xFF575757),
+                            color: Colors.white,
                           ),
                         ),
                         SizedBox(
@@ -118,7 +117,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                                         : null,
                                 textStyle: TextStyle(
                                   fontSize: 30,
-                                  color: Color(0xFF575757),
+                                  color: Colors.white,
                                   fontWeight: FontWeight.bold,
                                 ),
                                 pinTheme: PinTheme(
@@ -126,9 +125,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                                   borderWidth: 4,
                                   fieldWidth: 35,
                                   shape: PinCodeFieldShape.underline,
-                                  inactiveColor: Color(0xFF575757),
-                                  selectedColor: Color(0xFF575757),
-                                  activeColor: Color(0xFF575757),
+                                  inactiveColor: Colors.white,
+                                  selectedColor: Colors.white,
+                                  activeColor: Colors.white,
                                   inactiveFillColor: Colors.transparent,
                                   selectedFillColor: Colors.transparent,
                                   disabledColor: Colors.transparent,
