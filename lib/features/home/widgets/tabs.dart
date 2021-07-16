@@ -39,7 +39,6 @@ class Tabs extends StatelessWidget {
                       fontFamily: 'Europa',
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
-                      color: Colors.deepOrange,
                     ),
                     indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),
