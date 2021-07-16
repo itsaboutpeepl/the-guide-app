@@ -141,7 +141,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("지갑 생성 실패"),
         "generated_wallet":
-            MessageLookupByLibrary.simpleMessage("Fuse 지갑에 어서 오세요"),
+            MessageLookupByLibrary.simpleMessage("Peepl 지갑에 오신 것을 환영합니다"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Fuse 지갑 생성 중"),
         "hi": MessageLookupByLibrary.simpleMessage("안녕하세요"),

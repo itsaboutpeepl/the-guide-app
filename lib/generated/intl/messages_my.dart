@@ -156,8 +156,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "generate_wallet_failed": MessageLookupByLibrary.simpleMessage(
             "wallet ပြုလုပ်မှု မအောင်မြင်ပါ"),
-        "generated_wallet":
-            MessageLookupByLibrary.simpleMessage("Fuse wallet မှ ကြိုဆိုပါသည်"),
+        "generated_wallet": MessageLookupByLibrary.simpleMessage(
+            "သင်၏ Peepl ပိုက်ဆံအိတ်မှကြိုဆိုပါသည်"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Fuse wallet ပြုလုပ်နေပါသည်"),
         "hi": MessageLookupByLibrary.simpleMessage("မင်္ဂလာပါ"),

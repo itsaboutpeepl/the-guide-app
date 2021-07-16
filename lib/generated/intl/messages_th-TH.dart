@@ -153,7 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("ไม่สามารถสร้างกระเป๋าเงิน"),
         "generated_wallet": MessageLookupByLibrary.simpleMessage(
-            "ยินดีต้อนรับสู่กระเป๋าเงิน Fuse"),
+            "ยินดีต้อนรับสู่กระเป๋าเงิน Peepl ของคุณ"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("กำลังสร้างกระเป๋าเงิน fuse"),
         "hi": MessageLookupByLibrary.simpleMessage("สวัสดี"),

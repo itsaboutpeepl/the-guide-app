@@ -153,8 +153,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "generate_wallet_failed": MessageLookupByLibrary.simpleMessage(
             "Nabigo ang paglikha ng wallet"),
-        "generated_wallet":
-            MessageLookupByLibrary.simpleMessage("Nakagawa na ng wallet"),
+        "generated_wallet": MessageLookupByLibrary.simpleMessage(
+            "Maligayang pagdating sa iyong Peepl wallet"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Gumagawa ng wallet"),
         "hi": MessageLookupByLibrary.simpleMessage("Hello"),

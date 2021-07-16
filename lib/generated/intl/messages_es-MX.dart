@@ -157,7 +157,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("Error al generar billetera"),
         "generated_wallet": MessageLookupByLibrary.simpleMessage(
-            "Bienvenido a la billetera Fuse"),
+            "Bienvenido a su billetera Peepl"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Generando billetera Fuse"),
         "hi": MessageLookupByLibrary.simpleMessage("Hola"),

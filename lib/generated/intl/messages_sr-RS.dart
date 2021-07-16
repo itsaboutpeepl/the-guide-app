@@ -152,8 +152,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gallery": MessageLookupByLibrary.simpleMessage("Gallery"),
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("Generate wallet failed"),
-        "generated_wallet":
-            MessageLookupByLibrary.simpleMessage("Нови новчаник"),
+        "generated_wallet": MessageLookupByLibrary.simpleMessage(
+            "Добродошли у свој Пеепл новчаник"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Правим новчаник"),
         "hi": MessageLookupByLibrary.simpleMessage("Здраво"),

@@ -24,6 +24,7 @@ class MyScaffold extends StatelessWidget {
         title: Text(
           title,
           style: TextStyle(
+            color: Colors.black,
             fontWeight: FontWeight.bold,
             fontSize: 22,
             fontFamily: 'Europa',

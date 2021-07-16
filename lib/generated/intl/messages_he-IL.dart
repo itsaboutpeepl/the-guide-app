@@ -147,7 +147,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gallery": MessageLookupByLibrary.simpleMessage("גלריה"),
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("Generate wallet failed"),
-        "generated_wallet": MessageLookupByLibrary.simpleMessage("ארנק נוצר"),
+        "generated_wallet":
+            MessageLookupByLibrary.simpleMessage("ברוך הבא לארנק Peepl שלך"),
         "generating_wallet": MessageLookupByLibrary.simpleMessage("מייצר ארנק"),
         "hi": MessageLookupByLibrary.simpleMessage("שלום"),
         "home": MessageLookupByLibrary.simpleMessage("בית"),

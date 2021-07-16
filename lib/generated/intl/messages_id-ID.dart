@@ -153,7 +153,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("Gagal membuat dompet"),
         "generated_wallet": MessageLookupByLibrary.simpleMessage(
-            "Selamat datang di dompet Fuse"),
+            "Selamat datang di dompet Peepl Anda"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Membuat dompet Fuse"),
         "hi": MessageLookupByLibrary.simpleMessage("Halo"),

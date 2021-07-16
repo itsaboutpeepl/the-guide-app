@@ -133,7 +133,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("钱包生成失败"),
         "generated_wallet":
-            MessageLookupByLibrary.simpleMessage("欢迎使用 Fuse 钱包"),
+            MessageLookupByLibrary.simpleMessage("欢迎使用您的 Peepl 钱包"),
         "generating_wallet": MessageLookupByLibrary.simpleMessage("生成 Fuse 钱包"),
         "hi": MessageLookupByLibrary.simpleMessage("您好"),
         "home": MessageLookupByLibrary.simpleMessage("主页"),

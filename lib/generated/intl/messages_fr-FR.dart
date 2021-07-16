@@ -158,7 +158,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generate_wallet_failed": MessageLookupByLibrary.simpleMessage(
             "La génération du portefeuille a échoué"),
         "generated_wallet": MessageLookupByLibrary.simpleMessage(
-            "Bienvenue au portefeuille Fuse "),
+            "Bienvenue dans votre portefeuille Peepl"),
         "generating_wallet": MessageLookupByLibrary.simpleMessage(
             "Génération du portefeuille Fuse"),
         "hi": MessageLookupByLibrary.simpleMessage("Bonjour"),

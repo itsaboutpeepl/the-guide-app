@@ -34,10 +34,12 @@ class Tabs extends StatelessWidget {
                       fontSize: 17,
                     ),
                     unselectedLabelColor: Color(0xFFA2A2A2),
+                    labelColor: Colors.black,
                     labelStyle: TextStyle(
                       fontFamily: 'Europa',
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
+                      color: Colors.deepOrange,
                     ),
                     indicator: BoxDecoration(
                       borderRadius: BorderRadius.circular(50),

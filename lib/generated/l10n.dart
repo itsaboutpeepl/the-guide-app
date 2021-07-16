@@ -900,10 +900,10 @@ class I10n {
     );
   }
 
-  /// `Welcome to Fuse wallet`
+  /// `Welcome to your Peepl wallet`
   String get generated_wallet {
     return Intl.message(
-      'Welcome to Fuse wallet',
+      'Welcome to your Peepl wallet',
       name: 'generated_wallet',
       desc: '',
       args: [],

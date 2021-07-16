@@ -156,7 +156,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("Не удалось создать кошелек"),
         "generated_wallet": MessageLookupByLibrary.simpleMessage(
-            "Добро пожаловать в кошелек Fuse"),
+            "Добро пожаловать в ваш кошелек Peepl"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Создание fuse кошелька"),
         "hi": MessageLookupByLibrary.simpleMessage("Здравствуйте"),

@@ -154,8 +154,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gallery": MessageLookupByLibrary.simpleMessage("Galerij"),
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("Generate wallet failed"),
-        "generated_wallet":
-            MessageLookupByLibrary.simpleMessage("Wallet aangemaakt"),
+        "generated_wallet": MessageLookupByLibrary.simpleMessage(
+            "Welkom bij je Peepl-portemonnee"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Genereer wallet"),
         "hi": MessageLookupByLibrary.simpleMessage("Hallo"),

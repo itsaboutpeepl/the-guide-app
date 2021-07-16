@@ -157,8 +157,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "gallery": MessageLookupByLibrary.simpleMessage("Galeria"),
         "generate_wallet_failed":
             MessageLookupByLibrary.simpleMessage("Falha ao gerar carteira"),
-        "generated_wallet":
-            MessageLookupByLibrary.simpleMessage("Carteira gerada"),
+        "generated_wallet": MessageLookupByLibrary.simpleMessage(
+            "Bem-vindo à sua carteira Peepl"),
         "generating_wallet":
             MessageLookupByLibrary.simpleMessage("Gerando carteira"),
         "hi": MessageLookupByLibrary.simpleMessage("ola"),
