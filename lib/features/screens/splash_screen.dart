@@ -128,9 +128,8 @@ class _SplashScreenState extends State<SplashScreen> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color(0xFFB1FDC0),
-                  Color(0xFFE6FD99),
-                  Color(0xFFFEFD86)
+                  Color(0xFFFC0C1A),
+                  Color(0xFFFC870C),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -155,7 +154,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
-                              'assets/images/pincode_logo.png',
+                              'assets/images/splash.png',
                               width: 71,
                               height: 61,
                             ),

@@ -66,7 +66,7 @@ class LearnMoreDialogState extends State<LearnMoreDialog>
                           end: Alignment.bottomRight,
                           colors: [
                             Color(0xFFB1FDC0),
-                            Color(0xFFFEFD86),
+                            Color(0xFFFEFD86), //TODO
                           ],
                         ),
                         borderRadius: BorderRadius.only(
