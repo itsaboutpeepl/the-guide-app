@@ -122,7 +122,7 @@ class _MyAppState extends State<MyApp> {
           colors: FlexSchemeColor.from(
             secondary: Color(0xFFF5F5F5),
             secondaryVariant: Colors.black,
-            primary: Color(0xFFFC0C1A), //makes 'Feed' text white
+            primary: Color(0xFFFC0C1A),
             primaryVariant: Color(0xFFFC870C),
             appBarColor: Color(0xFFFFFFFF),
           ),

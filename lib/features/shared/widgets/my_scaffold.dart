@@ -18,6 +18,7 @@ class MyScaffold extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: resizeToAvoidBottomInset,
       appBar: AppBar(
+        iconTheme: IconThemeData(color: Colors.black),
         automaticallyImplyLeading: automaticallyImplyLeading,
         backgroundColor: Theme.of(context).colorScheme.secondary,
         centerTitle: true,
