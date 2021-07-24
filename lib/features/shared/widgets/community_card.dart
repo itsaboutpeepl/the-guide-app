@@ -1,9 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/community/community.dart';
-import 'package:fusecash/models/tokens/token.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/community/community.dart';
+import 'package:peepl/models/tokens/token.dart';
 
 class SelectedCommunityCard extends StatefulWidget {
   SelectedCommunityCard({

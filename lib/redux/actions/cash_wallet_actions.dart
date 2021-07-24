@@ -1,34 +1,34 @@
 import 'dart:async';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:dio/dio.dart';
 import 'package:ethereum_address/ethereum_address.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:fusecash/common/di/di.dart';
-import 'package:fusecash/constants/addresses.dart';
-import 'package:fusecash/constants/variables.dart';
-import 'package:fusecash/models/actions/actions.dart';
-import 'package:fusecash/models/actions/wallet_action.dart';
-import 'package:fusecash/models/community/business.dart';
-import 'package:fusecash/models/cash_wallet_state.dart';
-import 'package:fusecash/models/community/business_metadata.dart';
-import 'package:fusecash/models/community/community.dart';
-import 'package:fusecash/models/community/community_metadata.dart';
-import 'package:fusecash/models/plugins/plugins.dart';
-import 'package:fusecash/models/swap/swap.dart';
-import 'package:fusecash/models/tokens/price.dart';
-import 'package:fusecash/models/tokens/stats.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/models/user_state.dart';
-import 'package:fusecash/redux/actions/user_actions.dart';
-import 'package:fusecash/utils/addresses.dart';
-import 'package:fusecash/utils/constants.dart';
-import 'package:fusecash/utils/format.dart';
+import 'package:peepl/common/di/di.dart';
+import 'package:peepl/constants/addresses.dart';
+import 'package:peepl/constants/variables.dart';
+import 'package:peepl/models/actions/actions.dart';
+import 'package:peepl/models/actions/wallet_action.dart';
+import 'package:peepl/models/community/business.dart';
+import 'package:peepl/models/cash_wallet_state.dart';
+import 'package:peepl/models/community/business_metadata.dart';
+import 'package:peepl/models/community/community.dart';
+import 'package:peepl/models/community/community_metadata.dart';
+import 'package:peepl/models/plugins/plugins.dart';
+import 'package:peepl/models/swap/swap.dart';
+import 'package:peepl/models/tokens/price.dart';
+import 'package:peepl/models/tokens/stats.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/models/user_state.dart';
+import 'package:peepl/redux/actions/user_actions.dart';
+import 'package:peepl/utils/addresses.dart';
+import 'package:peepl/utils/constants.dart';
+import 'package:peepl/utils/format.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:fusecash/services.dart';
-import 'package:fusecash/utils/log/log.dart';
+import 'package:peepl/services.dart';
+import 'package:peepl/utils/log/log.dart';
 import 'package:wallet_core/wallet_core.dart' show EtherAmount;
 
 class AddCashTokens {
@@ -225,15 +225,6 @@ class ResetTokenTxs {
   ResetTokenTxs();
 }
 
-class BranchCommunityToUpdate {
-  final String communityAddress;
-  BranchCommunityToUpdate(this.communityAddress);
-}
-
-class BranchListening {}
-
-class BranchListeningStopped {}
-
 class SetIsFetchingBalances {
   final bool isFetching;
   SetIsFetchingBalances({
@@ -286,22 +277,6 @@ ThunkAction segmentIdentifyCall(Map<String, dynamic>? traits) {
     } catch (e, s) {
       log.error('ERROR - segment identify call: $e');
       await Sentry.captureException(e, stackTrace: s);
-    }
-  };
-}
-
-ThunkAction setDefaultCommunity() {
-  return (Store store) async {
-    final String communityAddress =
-        store.state.cashWalletState.communityAddress;
-    if ([null, ''].contains(communityAddress)) {
-      final String branchAddress = store.state.cashWalletState.branchAddress;
-      if (![null, ''].contains(branchAddress)) {
-        store.dispatch(SetDefaultCommunity(branchAddress.toLowerCase()));
-      } else {
-        store.dispatch(
-            SetDefaultCommunity(defaultCommunityAddress.toLowerCase()));
-      }
     }
   };
 }
@@ -635,14 +610,13 @@ ThunkAction sendTokenCall(
         if (fuseWeb3 == null) {
           throw 'web3 is empty';
         }
-        String tokenAddress = token.address;
 
         log.info(
-            'Sending $tokensAmount tokens of $tokenAddress from wallet $walletAddress to $receiverAddress');
+            'Sending ${token.name} $tokensAmount from $walletAddress to $receiverAddress');
         dynamic response = await api.tokenTransfer(
           fuseWeb3!,
           walletAddress,
-          tokenAddress,
+          token.address,
           receiverAddress,
           tokensAmount,
         );
@@ -731,6 +705,37 @@ ThunkAction fetchCommunityMetadataCall(
         hint:
             'ERROR while trying to fetch community metadata for $communityAddress',
       );
+    }
+  };
+}
+
+ThunkAction fetchSecondaryTokenCall(
+  String tokenAddress,
+  String communityAddress,
+) {
+  return (Store store) async {
+    try {
+      dynamic tokenDetails = await fuseWeb3!.getTokenDetails(
+        tokenAddress,
+      );
+      final int decimals = tokenDetails['decimals'].toInt();
+      Token? tokenInfo = new Token.fromJson({
+        'name': formatTokenName(tokenDetails['name']),
+        'symbol': tokenDetails['symbol'],
+        'decimals': decimals,
+        'amount': '0',
+        'address': communityAddress.toLowerCase(),
+      });
+      CashWalletState cashWalletState = store.state.cashWalletState;
+      final Map<String, Token> tokens = cashWalletState.tokens;
+      Token secondaryToken = tokens.containsKey(tokenAddress)
+          ? tokenInfo.copyWith(
+              amount: tokens[tokenAddress]!.amount,
+            )
+          : tokenInfo;
+      store.dispatch(AddCashToken(token: secondaryToken));
+    } catch (e) {
+      log.info('ERROR - fetchSecondaryTokenCall $e');
     }
   };
 }
@@ -834,6 +839,14 @@ ThunkAction switchToNewCommunityCall(String communityAddress) {
           homeTokenAddress: communityToken.address,
         ),
       ));
+      if (![null, ''].contains(newCommunity.secondaryTokenAddress)) {
+        store.dispatch(
+          fetchSecondaryTokenCall(
+            newCommunity.secondaryTokenAddress!.toLowerCase(),
+            communityAddress.toLowerCase(),
+          ),
+        );
+      }
       store.dispatch(
         fetchCommunityMetadataCall(
           communityAddress,
@@ -847,12 +860,15 @@ ThunkAction switchToNewCommunityCall(String communityAddress) {
           isRopsten: isRopsten,
         ),
       );
-      store.dispatch(
-        joinCommunityCall(
-          newCommunity,
-          communityToken,
-        ),
-      );
+      if (communityAddress.toLowerCase() !=
+          defaultCommunityAddress.toLowerCase()) {
+        store.dispatch(
+          joinCommunityCall(
+            newCommunity,
+            communityToken,
+          ),
+        );
+      }
       store.dispatch(getTokenPriceCall(communityToken));
     } catch (e, s) {
       log.error('ERROR - switchToNewCommunityCall $e');
@@ -892,12 +908,23 @@ ThunkAction switchToExistingCommunityCall(String communityAddress) {
           homeTokenAddress: communityToken.address,
         ),
       ));
-      store.dispatch(
-        getBusinessListCall(
-          communityAddress: communityAddress,
-          isRopsten: isRopsten,
-        ),
-      );
+      if (![null, ''].contains(newCommunity.secondaryTokenAddress)) {
+        store.dispatch(
+          fetchSecondaryTokenCall(
+            newCommunity.secondaryTokenAddress!.toLowerCase(),
+            communityAddress.toLowerCase(),
+          ),
+        );
+      }
+      if (communityAddress.toLowerCase() !=
+          defaultCommunityAddress.toLowerCase()) {
+        store.dispatch(
+          getBusinessListCall(
+            communityAddress: communityAddress,
+            isRopsten: isRopsten,
+          ),
+        );
+      }
       store.dispatch(
         fetchCommunityMetadataCall(
           communityAddress,
@@ -1072,8 +1099,7 @@ ThunkAction getWalletActionsCall() {
         ));
       }
     } catch (e, s) {
-      log.error('ERROR - getWalletActionsCall ${e.toString()}}');
-      log.error('ERROR stack trace - getWalletActionsCall ${s.toString()}}');
+      log.error('ERROR - getWalletActionsCall ${e.toString()} ${s.toString()}');
     }
   };
 }
@@ -1084,7 +1110,7 @@ ThunkAction updateTokensPrices() {
     for (Token token in tokens.values) {
       store.dispatch(getTokenPriceCall(token));
       store.dispatch(getTokenPriceChangeCall(token));
-      store.dispatch(getTokenStatsCall(token));
+      // store.dispatch(getTokenStatsCall(token));
     }
   };
 }
@@ -1156,7 +1182,10 @@ ThunkAction getTokenPriceChangeCall(Token token) {
   };
 }
 
-ThunkAction getTokenStatsCall(Token token) {
+ThunkAction getTokenStatsCall(
+  Token token, {
+  String limit = '30',
+}) {
   return (Store store) async {
     try {
       void Function(List<Stats>) onDone = (List<Stats> stats) {
@@ -1167,13 +1196,16 @@ ThunkAction getTokenStatsCall(Token token) {
           ),
         );
       };
-      void Function(Object error, StackTrace stackTrace) onError =
-          (Object error, StackTrace stackTrace) {
+      void Function(Object error, StackTrace stackTrace) onError = (
+        Object error,
+        StackTrace stackTrace,
+      ) {
         log.error('Error getTokenStatsCall - ${token.name} - $error ');
       };
       await token.fetchStats(
         onDone: onDone,
         onError: onError,
+        limit: limit,
       );
     } catch (e) {
       log.error('Error getTokenStatsCall for ${token.name}');
@@ -1325,5 +1357,50 @@ ThunkAction refresh() {
     store.dispatch(startFetchingCall());
     store.dispatch(startFetchTokensBalances());
     store.dispatch(updateTokensPrices());
+  };
+}
+
+ThunkAction sendTokenFromWebViewCall(
+  String currency,
+  String receiverAddress,
+  num tokensAmount,
+  dynamic orderId,
+  Function(dynamic) sendSuccessCallback,
+  VoidCallback sendFailureCallback,
+) {
+  return (Store store) async {
+    try {
+      Token token = store.state.cashWalletState.tokens.values.firstWhere(
+        (token) =>
+            token.symbol.toLowerCase() == currency.toString().toLowerCase(),
+      );
+      String walletAddress = store.state.userState.walletAddress;
+      dynamic response = await api.tokenTransfer(
+        fuseWeb3!,
+        walletAddress,
+        token.address,
+        receiverAddress,
+        tokensAmount,
+      );
+      dynamic jobId = response['job']['_id'];
+      log.info('Job $jobId for sending token sent to the relay service');
+      Response responseSubmitted = await getIt<Dio>().post(
+        '$peeplUrl/api/v1/orders/payment-submitted',
+        options: Options(
+          headers: {
+            "Authorization": "Bearer keywI4WPG7mJVm2XU",
+          },
+        ),
+        data: {
+          'orderId': orderId,
+          'jobId': jobId,
+        },
+      );
+      log.info('responseSubmitted ${responseSubmitted.data.toString()}');
+      sendSuccessCallback(response);
+    } catch (e) {
+      log.error('ERROR - sendTokenFromWebViewCall $e');
+      sendFailureCallback();
+    }
   };
 }

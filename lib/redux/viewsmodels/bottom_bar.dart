@@ -1,22 +1,22 @@
 import 'package:equatable/equatable.dart';
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/models/app_state.dart';
 import 'package:redux/redux.dart';
-import 'package:fusecash/utils/addresses.dart' as util;
 
 class BottomBarViewModel extends Equatable {
-  final bool isDefaultCommunity;
+  final String walletAddress;
 
   BottomBarViewModel({
-    required this.isDefaultCommunity,
+    required this.walletAddress,
   });
 
   static BottomBarViewModel fromStore(Store<AppState> store) {
-    String communityAddress = store.state.cashWalletState.communityAddress;
     return BottomBarViewModel(
-      isDefaultCommunity: util.isDefaultCommunity(communityAddress),
+      walletAddress: store.state.userState.walletAddress,
     );
   }
 
   @override
-  List<Object> get props => [isDefaultCommunity];
+  List<Object> get props => [
+        walletAddress,
+      ];
 }

@@ -1,4 +1,4 @@
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/models/app_state.dart';
 import 'package:redux/redux.dart';
 import 'package:equatable/equatable.dart';
 

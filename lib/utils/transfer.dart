@@ -1,7 +1,7 @@
 import 'package:contacts_service/contacts_service.dart';
-import 'package:fusecash/models/community/business.dart';
-import 'package:fusecash/utils/format.dart';
-import 'package:fusecash/utils/phone.dart';
+import 'package:peepl/models/community/business.dart';
+import 'package:peepl/utils/format.dart';
+import 'package:peepl/utils/phone.dart';
 
 Contact? getContact(
   String? accountAddress,

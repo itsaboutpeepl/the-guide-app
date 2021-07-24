@@ -2,7 +2,7 @@
 // import 'package:dio/dio.dart';
 // // import 'package:flutter/foundation.dart';
 // import 'package:flutter_dotenv/flutter_dotenv.dart';
-// import 'package:fusecash/common/di/di.dart';
+// import 'package:peepl/common/di/di.dart';
 // import 'package:injectable/injectable.dart';
 // // import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

@@ -2,11 +2,11 @@ import 'dart:async';
 import 'package:auto_route/auto_route.dart';
 import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/generated/l10n.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/generated/l10n.dart';
 
-import 'package:fusecash/features/contacts/send_amount_arguments.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/contacts/send_amount_arguments.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
 
 class SendSuccessScreen extends StatefulWidget {
   final SendFlowArguments pageArgs;

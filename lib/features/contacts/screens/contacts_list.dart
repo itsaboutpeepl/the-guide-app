@@ -2,21 +2,20 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:contacts_service/contacts_service.dart';
-import 'package:fusecash/features/contacts/send_amount_arguments.dart';
-import 'package:fusecash/features/contacts/widgets/empty_state.dart';
-// import 'package:fusecash/features/contacts/widgets/recent_contacts.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/redux/viewsmodels/contacts.dart';
-import 'package:fusecash/features/contacts/widgets/send_to_account.dart';
-import 'package:fusecash/features/contacts/widgets/contact_tile.dart';
-import 'package:fusecash/features/contacts/widgets/list_header.dart';
-import 'package:fusecash/features/contacts/widgets/search_panel.dart';
-import 'package:fusecash/utils/phone.dart';
-import 'package:fusecash/utils/send.dart';
+import 'package:peepl/features/contacts/send_amount_arguments.dart';
+import 'package:peepl/features/contacts/widgets/empty_state.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/redux/viewsmodels/contacts.dart';
+import 'package:peepl/features/contacts/widgets/send_to_account.dart';
+import 'package:peepl/features/contacts/widgets/contact_tile.dart';
+import 'package:peepl/features/contacts/widgets/list_header.dart';
+import 'package:peepl/features/contacts/widgets/search_panel.dart';
+import 'package:peepl/utils/phone.dart';
+import 'package:peepl/utils/send.dart';
 import "package:ethereum_address/ethereum_address.dart";
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
-import 'package:fusecash/features/shared/widgets/preloader.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/shared/widgets/preloader.dart';
 
 class ContactsList extends StatefulWidget {
   final SendFlowArguments? pageArgs;
@@ -115,11 +114,11 @@ class _ContactsListState extends State<ContactsList> {
   }
 
   void resetSearch() {
-    FocusScope.of(context).unfocus();
     if (mounted) {
       setState(() {
         searchController.text = '';
       });
+      WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus();
     }
   }
 
@@ -196,6 +195,14 @@ class _ContactsListState extends State<ContactsList> {
             EmptyState(),
           ]),
         ));
+        // if (searchController.text.isEmpty) {
+        //   listItems.insert(
+        //     1,
+        //     RecentContacts(
+        //       token: widget.pageArgs?.tokenToSend,
+        //     ),
+        //   );
+        // }
       } else {
         List<String> titles = groups.keys.toList()..sort();
         for (String title in titles) {
@@ -203,12 +210,14 @@ class _ContactsListState extends State<ContactsList> {
           listItems.add(ListHeader(title: title));
           listItems.add(listBody(viewModel, group));
         }
-        // listItems.insert(
-        //   1,
-        //   RecentContacts(
-        //     token: widget.pageArgs?.tokenToSend,
-        //   ),
-        // );
+        // if (searchController.text.isEmpty) {
+        //   listItems.insert(
+        //     1,
+        //     RecentContacts(
+        //       token: widget.pageArgs?.tokenToSend,
+        //     ),
+        //   );
+        // }
       }
     }
 

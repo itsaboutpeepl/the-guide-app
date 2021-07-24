@@ -4,14 +4,14 @@
 // import 'package:flutter/material.dart';
 // import 'package:flutter_segment/flutter_segment.dart';
 // import 'package:flutter_svg/svg.dart';
-// import 'package:fusecash/generated/i18n.dart';
-// import 'package:fusecash/models/app_state.dart';
+// import 'package:peepl/generated/i18n.dart';
+// import 'package:peepl/models/app_state.dart';
 // import 'package:flutter_redux/flutter_redux.dart';
-// import 'package:fusecash/redux/viewsmodels/drawer.dart';
-// import 'package:fusecash/features/home/router/home_router.gr.dart';
-// import 'package:fusecash/utils/format.dart';
-// import 'package:fusecash/utils/webview.dart';
-// import 'package:fusecash/common/router/routes.gr.dart';
+// import 'package:peepl/redux/viewsmodels/drawer.dart';
+// import 'package:peepl/features/home/router/home_router.gr.dart';
+// import 'package:peepl/utils/format.dart';
+// import 'package:peepl/utils/webview.dart';
+// import 'package:peepl/common/router/routes.gr.dart';
 
 // class DrawerWidget extends StatefulWidget {
 //   @override

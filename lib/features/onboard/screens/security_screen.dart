@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:fusecash/constants/enums.dart';
-import 'package:fusecash/common/router/routes.dart';
+import 'package:peepl/constants/enums.dart';
+import 'package:peepl/common/router/routes.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fusecash/features/screens/set_up_pincode.dart';
-import 'package:fusecash/redux/viewsmodels/security.dart';
-import 'package:fusecash/utils/biometric_local_auth.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/screens/set_up_pincode.dart';
+import 'package:peepl/redux/viewsmodels/security.dart';
+import 'package:peepl/utils/biometric_local_auth.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
 
 class ChooseSecurityOption extends StatefulWidget {
   @override
@@ -34,6 +34,7 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
           return MyScaffold(
             title: I10n.of(context).protect_wallet,
             body: Container(
+              height: MediaQuery.of(context).size.height * .9,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -116,9 +117,12 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                               Row(
                                                 children: <Widget>[
                                                   SvgPicture.asset(
-                                                      'assets/images/${BiometricAuth.faceID == {
-                                                            snapshot.requireData
-                                                          } ? 'face_id' : 'fingerprint'}.svg'),
+                                                    'assets/images/${BiometricAuth.faceID == {
+                                                          snapshot.requireData
+                                                        } ? 'face_id' : 'fingerprint'}.svg',
+                                                    color: Theme.of(context)
+                                                        .canvasColor,
+                                                  ),
                                                   SizedBox(
                                                     width: 10,
                                                   ),
@@ -131,8 +135,7 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                                     style: TextStyle(
                                                         fontSize: 18,
                                                         color: Theme.of(context)
-                                                            .colorScheme
-                                                            .onSurface),
+                                                            .canvasColor),
                                                   )
                                                 ],
                                               ),
@@ -142,6 +145,8 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                                 children: <Widget>[
                                                   SvgPicture.asset(
                                                     'assets/images/info_black.svg',
+                                                    color: Theme.of(context)
+                                                        .canvasColor,
                                                   ),
                                                   SizedBox(
                                                     width: 3,
@@ -152,8 +157,7 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                                     style: TextStyle(
                                                         fontSize: 12,
                                                         color: Theme.of(context)
-                                                            .colorScheme
-                                                            .onSurface),
+                                                            .canvasColor),
                                                   ),
                                                 ],
                                               )
@@ -184,7 +188,6 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                               viewModel.setSecurityType(
                                                 snapshot.requireData,
                                               );
-                                              context.router.popUntilRoot();
                                               Segment.track(
                                                 eventName:
                                                     'Sign up: Protection Done',
@@ -249,7 +252,6 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                                   eventName:
                                                       'Sign up: Protection Done',
                                                 );
-                                                context.router.popUntilRoot();
                                                 context.router
                                                     .push(MainScreen());
                                               },

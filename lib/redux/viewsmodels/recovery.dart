@@ -1,11 +1,15 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:fusecash/redux/actions/user_actions.dart';
+import 'package:peepl/redux/actions/user_actions.dart';
 import 'package:redux/redux.dart';
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/models/app_state.dart';
 
 class RecoveryViewModel {
-  final Function(String, VoidCallback) generateWalletFromBackup;
+  final Function(
+    String,
+    VoidCallback successCallback,
+    VoidCallback failureCallback,
+  ) generateWalletFromBackup;
 
   RecoveryViewModel({
     required this.generateWalletFromBackup,
@@ -16,11 +20,13 @@ class RecoveryViewModel {
       generateWalletFromBackup: (
         mnemonic,
         VoidCallback successCallback,
+        VoidCallback failureCallback,
       ) {
         store.dispatch(
           restoreWalletCall(
             mnemonic.split(' ').toList(),
             successCallback,
+            failureCallback,
           ),
         );
       },

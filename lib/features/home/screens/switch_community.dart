@@ -1,16 +1,16 @@
 import 'dart:convert';
-import 'package:fusecash/features/shared/dialogs/scan_qr.dart';
+import 'package:peepl/features/shared/dialogs/scan_qr.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/models/community/community.dart';
-import 'package:fusecash/redux/viewsmodels/switch_community.dart';
-import 'package:fusecash/utils/log/log.dart';
-import 'package:fusecash/features/shared/widgets/community_card.dart';
-import 'package:fusecash/features/shared/widgets/community_card_small.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/community/community.dart';
+import 'package:peepl/redux/viewsmodels/switch_community.dart';
+import 'package:peepl/utils/log/log.dart';
+import 'package:peepl/features/shared/widgets/community_card.dart';
+import 'package:peepl/features/shared/widgets/community_card_small.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
 
 class SwitchCommunityScreen extends StatelessWidget {
   Widget scanQRButton(

@@ -31,7 +31,7 @@
 		<key>CFBundleInfoDictionaryVersion</key>
 		<string>6.0</string>
 		<key>CFBundleName</key>
-		<string>Fuse wallet</string>
+		<string>Peepl</string>
 		<key>CFBundlePackageType</key>
 		<string>APPL</string>
 		<key>CFBundleShortVersionString</key>
@@ -47,15 +47,7 @@
 				<string>Editor</string>
 				<key>CFBundleURLSchemes</key>
 				<array>
-					<string>fuse</string>
-				</array>
-			</dict>
-			<dict>
-				<key>CFBundleTypeRole</key>
-				<string>Editor</string>
-				<key>CFBundleURLSchemes</key>
-				<array>
-					<string>com.googleusercontent.apps.863692183597-dj519lg1gf92k0d41a5pe94bio1k14v8</string>
+					<string>com.googleusercontent.apps.629222004995-d9beogo7m7ojbmtidnsqn0vi358bmuju</string>
 				</array>
 			</dict>
 		</array>
@@ -108,13 +100,11 @@
 		</array>
 		<key>UIViewControllerBasedStatusBarAppearance</key>
 		<false/>
-		<key>branch_app_domain</key>
-		<string>fuseio.app.link</string>
-		<key>branch_key</key>
-		<string>key_live_aaSvQXmuELUQfsYeG4UfWemnqEiq04hr</string>
 		<key>com.claimsforce.segment.WRITE_KEY</key>
-		<string>n2yoAnpD1bpDmAXBhUloLYpS1U5f7W09</string>
+		<string>izeqGK11dEvFjpsiEwlFEkmXRtrZgef8</string>
 		<key>com.claimsforce.segment.TRACK_APPLICATION_LIFECYCLE_EVENTS</key>
+		<true/>
+		<key>com.claimsforce.segment.ENABLE_AMPLITUDE_INTEGRATION</key>
 		<true/>
 		<key>LSApplicationQueriesSchemes</key>
 		<array>

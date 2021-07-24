@@ -30,21 +30,13 @@ class _$CashWalletStateTearOff {
       @JsonKey(fromJson: walletActionsFromJson)
           WalletActions? walletActions,
       @JsonKey(ignore: true)
-          String? branchAddress = null,
-      @JsonKey(ignore: true)
           bool isCommunityLoading = false,
       @JsonKey(ignore: true)
           bool isCommunityFetched = false,
       @JsonKey(ignore: true)
           bool isTransfersFetchingStarted = false,
       @JsonKey(ignore: true)
-          bool isListeningToBranch = false,
-      @JsonKey(ignore: true)
-          bool isBranchDataReceived = false,
-      @JsonKey(ignore: true)
           bool isCommunityBusinessesFetched = false,
-      @JsonKey(ignore: true)
-          bool isJobProcessingStarted = false,
       @JsonKey(ignore: true)
           bool isFetchingBalances = false}) {
     return _CashWalletState(
@@ -53,14 +45,10 @@ class _$CashWalletStateTearOff {
       tokens: tokens,
       communities: communities,
       walletActions: walletActions,
-      branchAddress: branchAddress,
       isCommunityLoading: isCommunityLoading,
       isCommunityFetched: isCommunityFetched,
       isTransfersFetchingStarted: isTransfersFetchingStarted,
-      isListeningToBranch: isListeningToBranch,
-      isBranchDataReceived: isBranchDataReceived,
       isCommunityBusinessesFetched: isCommunityBusinessesFetched,
-      isJobProcessingStarted: isJobProcessingStarted,
       isFetchingBalances: isFetchingBalances,
     );
   }
@@ -84,21 +72,13 @@ mixin _$CashWalletState {
   @JsonKey(fromJson: walletActionsFromJson)
   WalletActions? get walletActions => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  String? get branchAddress => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
   bool get isCommunityLoading => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   bool get isCommunityFetched => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   bool get isTransfersFetchingStarted => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  bool get isListeningToBranch => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  bool get isBranchDataReceived => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
   bool get isCommunityBusinessesFetched => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  bool get isJobProcessingStarted => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   bool get isFetchingBalances => throw _privateConstructorUsedError;
 
@@ -123,21 +103,13 @@ abstract class $CashWalletStateCopyWith<$Res> {
       @JsonKey(fromJson: walletActionsFromJson)
           WalletActions? walletActions,
       @JsonKey(ignore: true)
-          String? branchAddress,
-      @JsonKey(ignore: true)
           bool isCommunityLoading,
       @JsonKey(ignore: true)
           bool isCommunityFetched,
       @JsonKey(ignore: true)
           bool isTransfersFetchingStarted,
       @JsonKey(ignore: true)
-          bool isListeningToBranch,
-      @JsonKey(ignore: true)
-          bool isBranchDataReceived,
-      @JsonKey(ignore: true)
           bool isCommunityBusinessesFetched,
-      @JsonKey(ignore: true)
-          bool isJobProcessingStarted,
       @JsonKey(ignore: true)
           bool isFetchingBalances});
 
@@ -160,14 +132,10 @@ class _$CashWalletStateCopyWithImpl<$Res>
     Object? tokens = freezed,
     Object? communities = freezed,
     Object? walletActions = freezed,
-    Object? branchAddress = freezed,
     Object? isCommunityLoading = freezed,
     Object? isCommunityFetched = freezed,
     Object? isTransfersFetchingStarted = freezed,
-    Object? isListeningToBranch = freezed,
-    Object? isBranchDataReceived = freezed,
     Object? isCommunityBusinessesFetched = freezed,
-    Object? isJobProcessingStarted = freezed,
     Object? isFetchingBalances = freezed,
   }) {
     return _then(_value.copyWith(
@@ -191,10 +159,6 @@ class _$CashWalletStateCopyWithImpl<$Res>
           ? _value.walletActions
           : walletActions // ignore: cast_nullable_to_non_nullable
               as WalletActions?,
-      branchAddress: branchAddress == freezed
-          ? _value.branchAddress
-          : branchAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
       isCommunityLoading: isCommunityLoading == freezed
           ? _value.isCommunityLoading
           : isCommunityLoading // ignore: cast_nullable_to_non_nullable
@@ -207,21 +171,9 @@ class _$CashWalletStateCopyWithImpl<$Res>
           ? _value.isTransfersFetchingStarted
           : isTransfersFetchingStarted // ignore: cast_nullable_to_non_nullable
               as bool,
-      isListeningToBranch: isListeningToBranch == freezed
-          ? _value.isListeningToBranch
-          : isListeningToBranch // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isBranchDataReceived: isBranchDataReceived == freezed
-          ? _value.isBranchDataReceived
-          : isBranchDataReceived // ignore: cast_nullable_to_non_nullable
-              as bool,
       isCommunityBusinessesFetched: isCommunityBusinessesFetched == freezed
           ? _value.isCommunityBusinessesFetched
           : isCommunityBusinessesFetched // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isJobProcessingStarted: isJobProcessingStarted == freezed
-          ? _value.isJobProcessingStarted
-          : isJobProcessingStarted // ignore: cast_nullable_to_non_nullable
               as bool,
       isFetchingBalances: isFetchingBalances == freezed
           ? _value.isFetchingBalances
@@ -259,21 +211,13 @@ abstract class _$CashWalletStateCopyWith<$Res>
       @JsonKey(fromJson: walletActionsFromJson)
           WalletActions? walletActions,
       @JsonKey(ignore: true)
-          String? branchAddress,
-      @JsonKey(ignore: true)
           bool isCommunityLoading,
       @JsonKey(ignore: true)
           bool isCommunityFetched,
       @JsonKey(ignore: true)
           bool isTransfersFetchingStarted,
       @JsonKey(ignore: true)
-          bool isListeningToBranch,
-      @JsonKey(ignore: true)
-          bool isBranchDataReceived,
-      @JsonKey(ignore: true)
           bool isCommunityBusinessesFetched,
-      @JsonKey(ignore: true)
-          bool isJobProcessingStarted,
       @JsonKey(ignore: true)
           bool isFetchingBalances});
 
@@ -299,14 +243,10 @@ class __$CashWalletStateCopyWithImpl<$Res>
     Object? tokens = freezed,
     Object? communities = freezed,
     Object? walletActions = freezed,
-    Object? branchAddress = freezed,
     Object? isCommunityLoading = freezed,
     Object? isCommunityFetched = freezed,
     Object? isTransfersFetchingStarted = freezed,
-    Object? isListeningToBranch = freezed,
-    Object? isBranchDataReceived = freezed,
     Object? isCommunityBusinessesFetched = freezed,
-    Object? isJobProcessingStarted = freezed,
     Object? isFetchingBalances = freezed,
   }) {
     return _then(_CashWalletState(
@@ -330,10 +270,6 @@ class __$CashWalletStateCopyWithImpl<$Res>
           ? _value.walletActions
           : walletActions // ignore: cast_nullable_to_non_nullable
               as WalletActions?,
-      branchAddress: branchAddress == freezed
-          ? _value.branchAddress
-          : branchAddress // ignore: cast_nullable_to_non_nullable
-              as String?,
       isCommunityLoading: isCommunityLoading == freezed
           ? _value.isCommunityLoading
           : isCommunityLoading // ignore: cast_nullable_to_non_nullable
@@ -346,21 +282,9 @@ class __$CashWalletStateCopyWithImpl<$Res>
           ? _value.isTransfersFetchingStarted
           : isTransfersFetchingStarted // ignore: cast_nullable_to_non_nullable
               as bool,
-      isListeningToBranch: isListeningToBranch == freezed
-          ? _value.isListeningToBranch
-          : isListeningToBranch // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isBranchDataReceived: isBranchDataReceived == freezed
-          ? _value.isBranchDataReceived
-          : isBranchDataReceived // ignore: cast_nullable_to_non_nullable
-              as bool,
       isCommunityBusinessesFetched: isCommunityBusinessesFetched == freezed
           ? _value.isCommunityBusinessesFetched
           : isCommunityBusinessesFetched // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isJobProcessingStarted: isJobProcessingStarted == freezed
-          ? _value.isJobProcessingStarted
-          : isJobProcessingStarted // ignore: cast_nullable_to_non_nullable
               as bool,
       isFetchingBalances: isFetchingBalances == freezed
           ? _value.isFetchingBalances
@@ -380,14 +304,10 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
       @JsonKey(fromJson: tokensFromJson) this.tokens = const {},
       @JsonKey(fromJson: communitiesFromJson) this.communities = const {},
       @JsonKey(fromJson: walletActionsFromJson) this.walletActions,
-      @JsonKey(ignore: true) this.branchAddress = null,
       @JsonKey(ignore: true) this.isCommunityLoading = false,
       @JsonKey(ignore: true) this.isCommunityFetched = false,
       @JsonKey(ignore: true) this.isTransfersFetchingStarted = false,
-      @JsonKey(ignore: true) this.isListeningToBranch = false,
-      @JsonKey(ignore: true) this.isBranchDataReceived = false,
       @JsonKey(ignore: true) this.isCommunityBusinessesFetched = false,
-      @JsonKey(ignore: true) this.isJobProcessingStarted = false,
       @JsonKey(ignore: true) this.isFetchingBalances = false})
       : super._();
 
@@ -411,9 +331,6 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
   final WalletActions? walletActions;
   @override
   @JsonKey(ignore: true)
-  final String? branchAddress;
-  @override
-  @JsonKey(ignore: true)
   final bool isCommunityLoading;
   @override
   @JsonKey(ignore: true)
@@ -423,23 +340,14 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
   final bool isTransfersFetchingStarted;
   @override
   @JsonKey(ignore: true)
-  final bool isListeningToBranch;
-  @override
-  @JsonKey(ignore: true)
-  final bool isBranchDataReceived;
-  @override
-  @JsonKey(ignore: true)
   final bool isCommunityBusinessesFetched;
-  @override
-  @JsonKey(ignore: true)
-  final bool isJobProcessingStarted;
   @override
   @JsonKey(ignore: true)
   final bool isFetchingBalances;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'CashWalletState(communityAddress: $communityAddress, isDepositBanner: $isDepositBanner, tokens: $tokens, communities: $communities, walletActions: $walletActions, branchAddress: $branchAddress, isCommunityLoading: $isCommunityLoading, isCommunityFetched: $isCommunityFetched, isTransfersFetchingStarted: $isTransfersFetchingStarted, isListeningToBranch: $isListeningToBranch, isBranchDataReceived: $isBranchDataReceived, isCommunityBusinessesFetched: $isCommunityBusinessesFetched, isJobProcessingStarted: $isJobProcessingStarted, isFetchingBalances: $isFetchingBalances)';
+    return 'CashWalletState(communityAddress: $communityAddress, isDepositBanner: $isDepositBanner, tokens: $tokens, communities: $communities, walletActions: $walletActions, isCommunityLoading: $isCommunityLoading, isCommunityFetched: $isCommunityFetched, isTransfersFetchingStarted: $isTransfersFetchingStarted, isCommunityBusinessesFetched: $isCommunityBusinessesFetched, isFetchingBalances: $isFetchingBalances)';
   }
 
   @override
@@ -452,17 +360,12 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('tokens', tokens))
       ..add(DiagnosticsProperty('communities', communities))
       ..add(DiagnosticsProperty('walletActions', walletActions))
-      ..add(DiagnosticsProperty('branchAddress', branchAddress))
       ..add(DiagnosticsProperty('isCommunityLoading', isCommunityLoading))
       ..add(DiagnosticsProperty('isCommunityFetched', isCommunityFetched))
       ..add(DiagnosticsProperty(
           'isTransfersFetchingStarted', isTransfersFetchingStarted))
-      ..add(DiagnosticsProperty('isListeningToBranch', isListeningToBranch))
-      ..add(DiagnosticsProperty('isBranchDataReceived', isBranchDataReceived))
       ..add(DiagnosticsProperty(
           'isCommunityBusinessesFetched', isCommunityBusinessesFetched))
-      ..add(
-          DiagnosticsProperty('isJobProcessingStarted', isJobProcessingStarted))
       ..add(DiagnosticsProperty('isFetchingBalances', isFetchingBalances));
   }
 
@@ -484,9 +387,6 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
             (identical(other.walletActions, walletActions) ||
                 const DeepCollectionEquality()
                     .equals(other.walletActions, walletActions)) &&
-            (identical(other.branchAddress, branchAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.branchAddress, branchAddress)) &&
             (identical(other.isCommunityLoading, isCommunityLoading) ||
                 const DeepCollectionEquality()
                     .equals(other.isCommunityLoading, isCommunityLoading)) &&
@@ -498,20 +398,11 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
                 const DeepCollectionEquality().equals(
                     other.isTransfersFetchingStarted,
                     isTransfersFetchingStarted)) &&
-            (identical(other.isListeningToBranch, isListeningToBranch) ||
-                const DeepCollectionEquality()
-                    .equals(other.isListeningToBranch, isListeningToBranch)) &&
-            (identical(other.isBranchDataReceived, isBranchDataReceived) ||
-                const DeepCollectionEquality().equals(
-                    other.isBranchDataReceived, isBranchDataReceived)) &&
             (identical(other.isCommunityBusinessesFetched,
                     isCommunityBusinessesFetched) ||
                 const DeepCollectionEquality().equals(
                     other.isCommunityBusinessesFetched,
                     isCommunityBusinessesFetched)) &&
-            (identical(other.isJobProcessingStarted, isJobProcessingStarted) ||
-                const DeepCollectionEquality().equals(
-                    other.isJobProcessingStarted, isJobProcessingStarted)) &&
             (identical(other.isFetchingBalances, isFetchingBalances) ||
                 const DeepCollectionEquality()
                     .equals(other.isFetchingBalances, isFetchingBalances)));
@@ -525,14 +416,10 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(tokens) ^
       const DeepCollectionEquality().hash(communities) ^
       const DeepCollectionEquality().hash(walletActions) ^
-      const DeepCollectionEquality().hash(branchAddress) ^
       const DeepCollectionEquality().hash(isCommunityLoading) ^
       const DeepCollectionEquality().hash(isCommunityFetched) ^
       const DeepCollectionEquality().hash(isTransfersFetchingStarted) ^
-      const DeepCollectionEquality().hash(isListeningToBranch) ^
-      const DeepCollectionEquality().hash(isBranchDataReceived) ^
       const DeepCollectionEquality().hash(isCommunityBusinessesFetched) ^
-      const DeepCollectionEquality().hash(isJobProcessingStarted) ^
       const DeepCollectionEquality().hash(isFetchingBalances);
 
   @JsonKey(ignore: true)
@@ -557,21 +444,13 @@ abstract class _CashWalletState extends CashWalletState {
       @JsonKey(fromJson: walletActionsFromJson)
           WalletActions? walletActions,
       @JsonKey(ignore: true)
-          String? branchAddress,
-      @JsonKey(ignore: true)
           bool isCommunityLoading,
       @JsonKey(ignore: true)
           bool isCommunityFetched,
       @JsonKey(ignore: true)
           bool isTransfersFetchingStarted,
       @JsonKey(ignore: true)
-          bool isListeningToBranch,
-      @JsonKey(ignore: true)
-          bool isBranchDataReceived,
-      @JsonKey(ignore: true)
           bool isCommunityBusinessesFetched,
-      @JsonKey(ignore: true)
-          bool isJobProcessingStarted,
       @JsonKey(ignore: true)
           bool isFetchingBalances}) = _$_CashWalletState;
   _CashWalletState._() : super._();
@@ -594,9 +473,6 @@ abstract class _CashWalletState extends CashWalletState {
   WalletActions? get walletActions => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  String? get branchAddress => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
   bool get isCommunityLoading => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
@@ -606,16 +482,7 @@ abstract class _CashWalletState extends CashWalletState {
   bool get isTransfersFetchingStarted => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isListeningToBranch => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  bool get isBranchDataReceived => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
   bool get isCommunityBusinessesFetched => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  bool get isJobProcessingStarted => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   bool get isFetchingBalances => throw _privateConstructorUsedError;

@@ -1,10 +1,10 @@
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/models/plugins/plugins.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/utils/constants.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/plugins/plugins.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/utils/constants.dart';
 import 'package:redux/redux.dart';
 import 'package:equatable/equatable.dart';
-import 'package:fusecash/models/community/community.dart';
+import 'package:peepl/models/community/community.dart';
 
 class SwapViewModel extends Equatable {
   final String walletAddress;
@@ -49,7 +49,7 @@ class SwapViewModel extends Equatable {
               element.address == wbtc.address),
       )
       ..removeWhere(
-          (token) => [null, '', 'NaN'].contains(token.priceInfo?.quote));
+          (token) => [null, '', 'NaN', '0'].contains(token.priceInfo?.quote));
 
     final List<Token> tokenList = store.state.swapState.tokens.values.toList()
       ..where(

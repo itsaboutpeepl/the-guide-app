@@ -2,19 +2,19 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/redux/viewsmodels/send_amount.dart';
-import 'package:fusecash/features/home/widgets/token_tile.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/features/contacts/send_amount_arguments.dart';
-import 'package:fusecash/utils/format.dart';
-import 'package:fusecash/utils/log/log.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
-import 'package:fusecash/features/shared/widgets/numeric_keyboard.dart';
-import 'package:fusecash/features/shared/widgets/primary_button.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/redux/viewsmodels/send_amount.dart';
+import 'package:peepl/features/home/widgets/token_tile.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/features/contacts/send_amount_arguments.dart';
+import 'package:peepl/utils/format.dart';
+import 'package:peepl/utils/log/log.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/shared/widgets/numeric_keyboard.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/models/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/services.dart';
 
@@ -66,10 +66,8 @@ class SendAmountScreen extends StatefulWidget {
 class _SendAmountScreenState extends State<SendAmountScreen>
     with SingleTickerProviderStateMixin {
   TextEditingController textEditingController = TextEditingController();
-  bool hasBalance = true;
   late AnimationController controller;
   late Animation<Offset> offset;
-  bool isPreloading = false;
   Token? selectedToken;
   final _amountValidator = RegExInputFormatter.withRegex(
       '^\$|^(0|([1-9][0-9]{0,}))(\\.[0-9]{0,})?\$');
@@ -454,6 +452,7 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                           children: [
                             PrimaryButton(
                               opacity: 1,
+                              disabled: !hasFund,
                               label: hasFund
                                   ? I10n.of(context).next_button
                                   : I10n.of(context).insufficient_fund,
@@ -464,8 +463,6 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                                 context.router
                                     .push(SendReviewScreen(pageArgs: args));
                               },
-                              preload: isPreloading,
-                              disabled: isPreloading || !hasFund,
                             ),
                           ],
                         ),

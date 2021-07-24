@@ -1,8 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fusecash/models/community/business.dart';
-import 'package:fusecash/models/community/community_metadata.dart';
-import 'package:fusecash/models/plugins/plugins.dart';
+import 'package:peepl/models/community/business.dart';
+import 'package:peepl/models/community/community_metadata.dart';
+import 'package:peepl/models/plugins/plugins.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'community.freezed.dart';
@@ -18,8 +18,8 @@ class Community with _$Community {
     @Default(false) bool isMultiBridge,
     @Default(false) bool isClosed,
     @Default(false) bool isMember,
-    @JsonKey(includeIfNull: false, defaultValue: '') String? homeTokenAddress,
-    @JsonKey(includeIfNull: false)
+    @JsonKey(includeIfNull: false) String? homeTokenAddress,
+    @JsonKey(includeIfNull: false) String? secondaryTokenAddress,
     @JsonKey(includeIfNull: false)
     @CommunityMetadataConverter()
         CommunityMetadata? metadata,

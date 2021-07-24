@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fusecash/models/plugins/plugin_base.dart';
+import 'package:peepl/models/plugins/plugin_base.dart';
 
 part 'transak.freezed.dart';
 part 'transak.g.dart';

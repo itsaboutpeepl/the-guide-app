@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "activate": MessageLookupByLibrary.simpleMessage("Activar"),
         "activity": MessageLookupByLibrary.simpleMessage("Actividad"),
         "address": MessageLookupByLibrary.simpleMessage("Dirección"),
+        "address_on_fuse": MessageLookupByLibrary.simpleMessage(
+            "Please make sure the address you are sending funds to is on the Fuse Network."),
+        "address_on_other": MessageLookupByLibrary.simpleMessage(
+            "To send funds between Fuse and other networks like Ethereum of BSC please use the link below:"),
         "amount": MessageLookupByLibrary.simpleMessage("Cantidad"),
         "approved": MessageLookupByLibrary.simpleMessage("Aprobado"),
         "assets_and_contracts":
@@ -68,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_us": MessageLookupByLibrary.simpleMessage("Contáctanos"),
         "contact_us_for_support":
             MessageLookupByLibrary.simpleMessage("Contáctanos para soporte"),
+        "continue_button": MessageLookupByLibrary.simpleMessage("Continue"),
         "continue_with": MessageLookupByLibrary.simpleMessage("Continuar con"),
         "copied_to_clipboard":
             MessageLookupByLibrary.simpleMessage("Copiado al portapapeles"),
@@ -107,6 +112,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "didnt_get_message":
             MessageLookupByLibrary.simpleMessage("¿No recibiste el mensaje?"),
         "dismiss": MessageLookupByLibrary.simpleMessage("Descartar"),
+        "dont_show_next_time":
+            MessageLookupByLibrary.simpleMessage("Don\'t show next time"),
         "dont_worry": MessageLookupByLibrary.simpleMessage("No te preocupes:"),
         "earn": MessageLookupByLibrary.simpleMessage("Ganancias"),
         "earn_description": MessageLookupByLibrary.simpleMessage(
@@ -240,6 +247,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pending": MessageLookupByLibrary.simpleMessage("PENDIENTE"),
         "phoneNumber":
             MessageLookupByLibrary.simpleMessage("Número de teléfono"),
+        "phrase_invaild": MessageLookupByLibrary.simpleMessage(
+            "Una de las 12 palabras es inválida"),
         "pickup_display_name": MessageLookupByLibrary.simpleMessage(
             "Elige tu nombre para mostrar"),
         "pickup_display_name_text": MessageLookupByLibrary.simpleMessage(

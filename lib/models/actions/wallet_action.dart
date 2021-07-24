@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/swap/swap.dart';
-import 'package:fusecash/models/tokens/price.dart';
-import 'package:fusecash/utils/format.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/swap/swap.dart';
+import 'package:peepl/models/tokens/price.dart';
+import 'package:peepl/utils/format.dart';
 
 part 'wallet_action.freezed.dart';
 part 'wallet_action.g.dart';

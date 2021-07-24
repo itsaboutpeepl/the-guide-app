@@ -1,11 +1,11 @@
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/models/plugins/plugins.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/redux/actions/cash_wallet_actions.dart';
-import 'package:fusecash/redux/actions/swap_actions.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/plugins/plugins.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/redux/actions/cash_wallet_actions.dart';
+import 'package:peepl/redux/actions/swap_actions.dart';
 import 'package:redux/redux.dart';
 import 'package:equatable/equatable.dart';
-import 'package:fusecash/models/community/community.dart';
+import 'package:peepl/models/community/community.dart';
 
 class TokenTileViewModel extends Equatable {
   final List<Community> communities;

@@ -1,21 +1,24 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fusecash/common/router/route_guards.dart';
-import 'package:fusecash/features/account/router/router.dart';
-import 'package:fusecash/features/buy/router/router.dart';
-import 'package:fusecash/features/contacts/router/router.dart';
-// import 'package:fusecash/features/earn/router/router.dart';
-import 'package:fusecash/features/home/router/router.dart';
-import 'package:fusecash/features/screens/main_screen.dart';
-import 'package:fusecash/features/onboard/screens/security_screen.dart';
-import 'package:fusecash/features/onboard/screens/restore_wallet_screen.dart';
-import 'package:fusecash/features/onboard/screens/username_screen.dart';
-import 'package:fusecash/features/onboard/screens/signup_screen.dart';
-import 'package:fusecash/features/onboard/screens/verify_screen.dart';
-import 'package:fusecash/features/screens/on_board_screen.dart';
-import 'package:fusecash/features/screens/pincode_screen.dart';
-import 'package:fusecash/features/screens/splash_screen.dart';
-import 'package:fusecash/features/screens/webview_screen.dart';
-import 'package:fusecash/features/swap/router/swap_router.dart';
+import 'package:peepl/common/router/route_guards.dart';
+import 'package:peepl/features/account/router/router.dart';
+import 'package:peepl/features/buy/router/router.dart';
+import 'package:peepl/features/contacts/router/router.dart';
+import 'package:peepl/features/help/router/router.dart';
+// import 'package:peepl/features/earn/router/router.dart';
+import 'package:peepl/features/home/router/router.dart';
+import 'package:peepl/features/screens/main_screen.dart';
+import 'package:peepl/features/onboard/screens/security_screen.dart';
+import 'package:peepl/features/onboard/screens/restore_wallet_screen.dart';
+import 'package:peepl/features/onboard/screens/username_screen.dart';
+import 'package:peepl/features/onboard/screens/signup_screen.dart';
+import 'package:peepl/features/onboard/screens/verify_screen.dart';
+import 'package:peepl/features/screens/on_board_screen.dart';
+import 'package:peepl/features/screens/pincode_screen.dart';
+import 'package:peepl/features/screens/splash_screen.dart';
+import 'package:peepl/features/screens/webview_screen.dart';
+import 'package:peepl/features/swap/router/swap_router.dart';
+import 'package:peepl/features/topup/router/topup_router.dart';
+import 'package:peepl/features/webview/router/router.dart';
 
 export 'routes.gr.dart';
 
@@ -36,10 +39,12 @@ export 'routes.gr.dart';
       guards: [AuthGuard],
       children: [
         homeTab,
+        topupTab,
+        helpTab,
         contactsTab,
+        webviewTab,
         buyTab,
         swapTab,
-        // earnTab,
         accountTab,
       ],
     ),

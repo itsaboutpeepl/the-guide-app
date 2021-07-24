@@ -1,19 +1,19 @@
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:fusecash/constants/enums.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/redux/actions/user_actions.dart';
-import 'package:fusecash/redux/viewsmodels/backup.dart';
+import 'package:peepl/constants/enums.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/redux/actions/user_actions.dart';
+import 'package:peepl/redux/viewsmodels/backup.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/models/user_state.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/utils/biometric_local_auth.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/user_state.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/utils/biometric_local_auth.dart';
 
 class SplashScreen extends StatefulWidget {
   final void Function(bool isLoggedIn)? onLoginResult;
@@ -128,9 +128,8 @@ class _SplashScreenState extends State<SplashScreen> {
             decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [
-                  Color(0xFFB1FDC0),
-                  Color(0xFFE6FD99),
-                  Color(0xFFFEFD86)
+                  Theme.of(context).colorScheme.primaryVariant,
+                  Theme.of(context).colorScheme.primary,
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -155,7 +154,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Image.asset(
-                              'assets/images/pincode_logo.png',
+                              'assets/images/splash.png',
                               width: 71,
                               height: 61,
                             ),

@@ -13,7 +13,8 @@ _$_Community _$_$_CommunityFromJson(Map<String, dynamic> json) {
     isMultiBridge: json['isMultiBridge'] as bool? ?? false,
     isClosed: json['isClosed'] as bool? ?? false,
     isMember: json['isMember'] as bool? ?? false,
-    homeTokenAddress: json['homeTokenAddress'] as String? ?? '',
+    homeTokenAddress: json['homeTokenAddress'] as String?,
+    secondaryTokenAddress: json['secondaryTokenAddress'] as String?,
     metadata: const CommunityMetadataConverter()
         .fromJson(json['metadata'] as Map<String, dynamic>?),
     webUrl: json['webUrl'] as String?,
@@ -47,6 +48,7 @@ Map<String, dynamic> _$_$_CommunityToJson(_$_Community instance) {
   }
 
   writeNotNull('homeTokenAddress', instance.homeTokenAddress);
+  writeNotNull('secondaryTokenAddress', instance.secondaryTokenAddress);
   writeNotNull(
       'metadata', const CommunityMetadataConverter().toJson(instance.metadata));
   writeNotNull('webUrl', instance.webUrl);

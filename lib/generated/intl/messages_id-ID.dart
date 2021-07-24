@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "activate": MessageLookupByLibrary.simpleMessage("Aktivasi"),
         "activity": MessageLookupByLibrary.simpleMessage("Aktivitas"),
         "address": MessageLookupByLibrary.simpleMessage("Alamat"),
+        "address_on_fuse": MessageLookupByLibrary.simpleMessage(
+            "Please make sure the address you are sending funds to is on the Fuse Network."),
+        "address_on_other": MessageLookupByLibrary.simpleMessage(
+            "To send funds between Fuse and other networks like Ethereum of BSC please use the link below:"),
         "amount": MessageLookupByLibrary.simpleMessage("Nominal"),
         "approved": MessageLookupByLibrary.simpleMessage("Disetujui"),
         "assets_and_contracts":
@@ -67,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_us": MessageLookupByLibrary.simpleMessage("Hubungi kami"),
         "contact_us_for_support":
             MessageLookupByLibrary.simpleMessage("Hubungi kami untuk bantuan"),
+        "continue_button": MessageLookupByLibrary.simpleMessage("Continue"),
         "continue_with":
             MessageLookupByLibrary.simpleMessage("Lanjutkan dengan"),
         "copied_to_clipboard":
@@ -105,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "didnt_get_message":
             MessageLookupByLibrary.simpleMessage("Tidak menerima pesan? -"),
         "dismiss": MessageLookupByLibrary.simpleMessage("Tutup"),
+        "dont_show_next_time":
+            MessageLookupByLibrary.simpleMessage("Don\'t show next time"),
         "dont_worry": MessageLookupByLibrary.simpleMessage("Jangan khawatir:"),
         "earn": MessageLookupByLibrary.simpleMessage("Hasilkan"),
         "earn_description": MessageLookupByLibrary.simpleMessage(
@@ -234,6 +241,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "FuseDollar sepenuhnya dijamin oleh USD Coin (USDC) di Fuse. Diterbitkan oleh circle.com, USDC adalah stablecoin beregulasi yang sepenuhnya didukung oleh dollar dan diakui luas di dunia mata uang kripto."),
         "pending": MessageLookupByLibrary.simpleMessage("TERTUNDA"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("Nomor telepon"),
+        "phrase_invaild": MessageLookupByLibrary.simpleMessage(
+            "One of the 12 words is invalid"),
         "pickup_display_name":
             MessageLookupByLibrary.simpleMessage("Pilih nama tampilan Anda"),
         "pickup_display_name_text": MessageLookupByLibrary.simpleMessage(

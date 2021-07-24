@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:fusecash/common/router/routes.gr.dart';
-import 'package:fusecash/generated/l10n.dart';
+import 'package:peepl/common/router/routes.gr.dart';
+import 'package:peepl/generated/l10n.dart';
 import 'dart:core';
 
-import 'package:fusecash/features/shared/widgets/primary_button.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
 
 class SignUpDialog extends StatefulWidget {
   SignUpDialog();

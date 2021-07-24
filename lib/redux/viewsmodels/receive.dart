@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/models/app_state.dart';
 import 'package:redux/redux.dart';
 
 class ReceiveModel extends Equatable {
@@ -10,7 +10,7 @@ class ReceiveModel extends Equatable {
 
   static ReceiveModel fromStore(Store<AppState> store) {
     return ReceiveModel(
-      walletAddress: store.state.userState.walletAddress.replaceFirst('x', 'f'),
+      walletAddress: store.state.userState.walletAddress,
     );
   }
 

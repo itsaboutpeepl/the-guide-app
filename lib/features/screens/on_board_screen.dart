@@ -1,9 +1,8 @@
-import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
-import 'package:fusecash/features/onboard/widegts/flare_controller.dart';
-import 'package:fusecash/features/onboard/widegts/on_boarding_pages.dart';
-import 'package:fusecash/features/onboard/widegts/sign_up_buttons.dart';
-import 'package:fusecash/generated/l10n.dart';
+import 'package:peepl/features/onboard/widegts/flare_controller.dart';
+import 'package:peepl/features/onboard/widegts/on_boarding_page.dart';
+import 'package:peepl/features/onboard/widegts/sign_up_buttons.dart';
+import 'package:peepl/generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardScreen extends StatefulWidget {
@@ -55,17 +54,25 @@ class _OnBoardScreenState extends State<OnBoardScreen>
   Widget build(BuildContext context) {
     final List<Widget> welcomeScreens = [
       WelcomeFrame(
-        title: I10n.of(context).simple,
-        subTitle: I10n.of(context).intro_text_one,
+        I10n.of(context).simple,
+        I10n.of(context).intro_text_one,
+        '1-cake.png',
       ),
       WelcomeFrame(
-        title: I10n.of(context).useful,
-        subTitle: I10n.of(context).intro_text_two,
+        I10n.of(context).useful,
+        I10n.of(context).intro_text_two,
+        '2-rewards.png',
       ),
       WelcomeFrame(
-        title: I10n.of(context).smart,
-        subTitle: I10n.of(context).intro_text_three,
+        I10n.of(context).smart,
+        I10n.of(context).intro_text_three,
+        '3-wallet.png',
       ),
+      // WelcomeFrame(
+      //   "Top up. Pay. Enjoy.",
+      //   "We’re bringing people and restaurants together, over the food we all love. Thank you for joining us at the start of our journey!",
+      //   '4-enjoy.png',
+      // ),
       SignUpButtons()
     ];
     return Scaffold(
@@ -75,44 +82,39 @@ class _OnBoardScreenState extends State<OnBoardScreen>
             Expanded(
               flex: 20,
               child: Container(
-                child: Stack(
+                child: Column(
                   children: <Widget>[
-                    Padding(
-                      padding: EdgeInsets.only(
-                        bottom: 100,
-                        left: 20,
-                        right: 20,
-                      ),
-                      child: FlareActor(
-                        "assets/images/animation.flr",
-                        alignment: Alignment.center,
-                        fit: BoxFit.contain,
-                        controller: _slideController,
-                      ),
-                    ),
-                    PageView.builder(
-                      physics: AlwaysScrollableScrollPhysics(),
-                      controller: _pageController,
-                      itemCount: welcomeScreens.length,
-                      itemBuilder: (_, index) => welcomeScreens[index % 4],
-                    ),
-                    Positioned(
-                      bottom: 15.0,
-                      left: 0.0,
-                      right: 0.0,
-                      child: Container(
-                        padding: EdgeInsets.all(20.0),
-                        child: Center(
-                          child: SmoothPageIndicator(
+                    Expanded(
+                      child: Stack(
+                        children: <Widget>[
+                          PageView.builder(
+                            physics: AlwaysScrollableScrollPhysics(),
+                            itemCount: welcomeScreens.length,
                             controller: _pageController,
-                            count: 4,
-                            effect: JumpingDotEffect(
-                                dotWidth: 9.0,
-                                dotHeight: 9.0,
-                                activeDotColor: Color(0xFF696B6D)),
-                            onDotClicked: gotoPage,
+                            itemBuilder: (BuildContext context, int index) =>
+                                welcomeScreens[index % welcomeScreens.length],
                           ),
-                        ),
+                          Positioned(
+                            bottom: 15.0,
+                            left: 0.0,
+                            right: 0.0,
+                            child: Container(
+                              padding: EdgeInsets.all(20.0),
+                              child: Center(
+                                child: SmoothPageIndicator(
+                                  controller: _pageController,
+                                  count: welcomeScreens.length,
+                                  effect: JumpingDotEffect(
+                                    dotWidth: 9.0,
+                                    dotHeight: 9.0,
+                                    activeDotColor: Color(0xFF696B6D),
+                                  ),
+                                  onDotClicked: gotoPage,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

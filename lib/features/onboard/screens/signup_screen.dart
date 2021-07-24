@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:country_code_picker/country_codes.dart';
-import 'package:fusecash/services.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
-import 'package:fusecash/features/shared/widgets/primary_button.dart';
-import 'package:fusecash/features/onboard/dialogs/signup.dart';
-import 'package:fusecash/redux/viewsmodels/onboard.dart';
-import 'package:fusecash/features/shared/widgets/snackbars.dart';
+import 'package:peepl/services.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
+import 'package:peepl/features/onboard/dialogs/signup.dart';
+import 'package:peepl/redux/viewsmodels/onboard.dart';
+import 'package:peepl/features/shared/widgets/snackbars.dart';
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final fullNameController = TextEditingController(text: "");
   final phoneController = TextEditingController(text: "");
   final _formKey = GlobalKey<FormState>();
-  CountryCode countryCode = CountryCode(dialCode: '‎+1', code: 'US');
+  CountryCode countryCode = CountryCode(dialCode: '+1', code: 'US');
 
   @override
   void initState() {

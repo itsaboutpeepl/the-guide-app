@@ -2,9 +2,9 @@ import 'dart:async';
 import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/redux/viewsmodels/buy_page.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/redux/viewsmodels/buy_page.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapScreen extends StatefulWidget {
@@ -31,17 +31,15 @@ class _MapScreenState extends State<MapScreen> {
       distinct: true,
       converter: BuyViewModel.fromStore,
       builder: (_, viewModel) {
-        return MaterialApp(
-          home: Scaffold(
-            appBar: AppBar(
-              title: Text(I10n.of(context).map),
-            ),
-            body: GoogleMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: CameraPosition(
-                target: _center,
-                zoom: 11.0,
-              ),
+        return Scaffold(
+          appBar: AppBar(
+            title: Text(I10n.of(context).map),
+          ),
+          body: GoogleMap(
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+              target: _center,
+              zoom: 11.0,
             ),
           ),
         );

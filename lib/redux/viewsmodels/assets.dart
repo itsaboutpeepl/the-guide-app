@@ -1,8 +1,8 @@
-import 'package:fusecash/constants/addresses.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/models/tokens/token.dart';
+import 'package:peepl/constants/addresses.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/tokens/token.dart';
 import 'package:redux/redux.dart';
-import 'package:fusecash/redux/actions/cash_wallet_actions.dart';
+import 'package:peepl/redux/actions/cash_wallet_actions.dart';
 import 'package:equatable/equatable.dart';
 
 class TokensListViewModel extends Equatable {
@@ -26,8 +26,8 @@ class TokensListViewModel extends Equatable {
         List<Token>.from(store.state.cashWalletState.tokens.values)
             .where((Token token) {
               if ([
-                Addresses.ZERO_ADDRESS,
-                Addresses.FUSE_DOLLAR_TOKEN_ADDRESS,
+                Addresses.PPL_TOKEN_ADDRESS,
+                Addresses.GBPX_TOKEN_ADDRESS,
               ].contains(token.address)) {
                 return true;
               } else if (num.parse(token.getBalance(true)).compareTo(0) == 1) {

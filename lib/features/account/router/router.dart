@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fusecash/common/router/route_guards.dart';
-import 'package:fusecash/features/account/screens/account_screen.dart';
-import 'package:fusecash/features/account/screens/done_backup_screen.dart';
-import 'package:fusecash/features/account/screens/profile.dart';
-import 'package:fusecash/features/account/screens/protect_your_wallet.dart';
-import 'package:fusecash/features/account/screens/settings.dart';
-import 'package:fusecash/features/account/screens/show_mnemonic.dart';
-import 'package:fusecash/features/account/screens/social_screen.dart';
-import 'package:fusecash/features/account/screens/verify_mnemonic.dart';
-import 'package:fusecash/features/home/screens/switch_community.dart';
+import 'package:peepl/common/router/route_guards.dart';
+import 'package:peepl/features/account/screens/account_screen.dart';
+import 'package:peepl/features/account/screens/done_backup_screen.dart';
+import 'package:peepl/features/account/screens/profile.dart';
+import 'package:peepl/features/account/screens/protect_your_wallet.dart';
+import 'package:peepl/features/account/screens/settings.dart';
+import 'package:peepl/features/account/screens/show_mnemonic.dart';
+import 'package:peepl/features/account/screens/social_screen.dart';
+import 'package:peepl/features/account/screens/verify_mnemonic.dart';
+import 'package:peepl/features/topup/screens/topup.dart';
 
 const accountTab = AutoRoute(
   path: 'account',
@@ -22,10 +22,10 @@ const accountTab = AutoRoute(
       initial: true,
       guards: [AuthGuard],
     ),
-    AutoRoute(
-      page: SwitchCommunityScreen,
-      guards: [AuthGuard],
-    ),
+    // AutoRoute(
+    //   page: SwitchCommunityScreen,
+    //   guards: [AuthGuard],
+    // ),
     AutoRoute(
       page: ShowMnemonic,
       guards: [AuthGuard],
@@ -52,6 +52,11 @@ const accountTab = AutoRoute(
     ),
     AutoRoute(
       page: SocialScreen,
+      guards: [AuthGuard],
+    ),
+    AutoRoute(
+      path: 'topUp',
+      page: TopupScreen,
       guards: [AuthGuard],
     ),
   ],

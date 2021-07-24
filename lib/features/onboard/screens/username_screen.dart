@@ -2,13 +2,13 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/redux/viewsmodels/onboard.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
-import 'package:fusecash/features/shared/widgets/primary_button.dart';
-import 'package:fusecash/utils/string.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/redux/viewsmodels/onboard.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
+import 'package:peepl/utils/string.dart';
 
 class UserNameScreen extends StatelessWidget {
   final displayNameController = TextEditingController(text: "");

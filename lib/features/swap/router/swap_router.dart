@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:fusecash/common/router/route_guards.dart';
-import 'package:fusecash/features/swap/screens/review_swap.dart';
-import 'package:fusecash/features/swap/screens/swap.dart';
+import 'package:peepl/common/router/route_guards.dart';
+import 'package:peepl/features/swap/screens/review_swap.dart';
+import 'package:peepl/features/swap/screens/swap.dart';
 
 const swapTab = AutoRoute(
   path: 'swap',

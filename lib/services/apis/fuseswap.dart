@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 // import 'package:flutter/foundation.dart';
-import 'package:fusecash/constants/urls.dart';
-import 'package:fusecash/models/swap/swap.dart';
-import 'package:fusecash/models/tokens/price.dart';
-import 'package:fusecash/models/tokens/stats.dart';
+import 'package:peepl/constants/urls.dart';
+import 'package:peepl/models/swap/swap.dart';
+import 'package:peepl/models/tokens/price.dart';
+import 'package:peepl/models/tokens/stats.dart';
 import 'package:injectable/injectable.dart';
 // import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

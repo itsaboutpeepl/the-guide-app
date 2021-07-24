@@ -1,6 +1,6 @@
-import 'package:fusecash/models/swap_state.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/redux/actions/swap_actions.dart';
+import 'package:peepl/models/swap_state.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/redux/actions/swap_actions.dart';
 import 'package:redux/redux.dart';
 
 final swapReducers = combineReducers<SwapState>([

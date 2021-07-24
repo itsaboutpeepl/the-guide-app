@@ -1,4 +1,4 @@
-package io.fuse.fusecash
+package com.itsaboutpeepl.peepl
 
 import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterFragmentActivity

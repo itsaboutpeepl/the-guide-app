@@ -2,16 +2,17 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' hide Router;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:fusecash/app.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/common/di/di.dart';
-import 'package:fusecash/utils/log/log.dart';
-import 'package:fusecash/utils/storage.dart';
+import 'package:peepl/app.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/common/di/di.dart';
+import 'package:peepl/utils/log/log.dart';
+import 'package:peepl/utils/storage.dart';
+import 'package:peepl/utils/stripe.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/services.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import 'package:fusecash/redux/reducers/app_reducer.dart';
+import 'package:peepl/redux/reducers/app_reducer.dart';
 import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux_logging/redux_logging.dart';
@@ -33,8 +34,8 @@ Future<void> mainCommon(String env) async {
   ]);
   final envFile = env == 'prod' ? '.env' : '.env_qa';
   await dotenv.load(fileName: 'environment/$envFile');
+  new StripeService()..init();
   configureDependencies();
-  await getIt.allReady();
   final Persistor<AppState> persistor = Persistor<AppState>(
     storage: SecureStorage(FlutterSecureStorage()),
     serializer: JsonSerializer<AppState>((json) => AppState.fromJson(json)),

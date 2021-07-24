@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/redux/actions/cash_wallet_actions.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/redux/actions/cash_wallet_actions.dart';
 import 'package:redux/redux.dart';
 
 class PriceDiffViewModel extends Equatable {
   final Map<String, Token> tokens;
   final Function(
-    String tokenAddress,
+    Token token,
     String limit,
   ) fetchPriceDiff;
 
@@ -20,13 +20,19 @@ class PriceDiffViewModel extends Equatable {
     return PriceDiffViewModel(
       tokens: store.state.cashWalletState.tokens,
       fetchPriceDiff: (
-        tokenAddress,
+        token,
         limit,
       ) {
         store.dispatch(
           getTokenPriceDiffCall(
-            tokenAddress,
+            token.address,
             limit,
+          ),
+        );
+        store.dispatch(
+          getTokenStatsCall(
+            token,
+            limit: limit,
           ),
         );
       },

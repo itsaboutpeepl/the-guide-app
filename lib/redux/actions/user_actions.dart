@@ -1,31 +1,31 @@
 import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:fusecash/common/di/di.dart';
+import 'package:peepl/common/di/di.dart';
 import 'package:country_code_picker/country_code.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/constants/enums.dart';
-import 'package:fusecash/constants/variables.dart';
-import 'package:fusecash/models/user_state.dart';
-import 'package:fusecash/redux/actions/cash_wallet_actions.dart';
-import 'package:fusecash/redux/actions/pro_mode_wallet_actions.dart';
-import 'package:fusecash/utils/addresses.dart';
-import 'package:fusecash/utils/contacts.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/constants/enums.dart';
+import 'package:peepl/constants/variables.dart';
+import 'package:peepl/models/user_state.dart';
+import 'package:peepl/redux/actions/cash_wallet_actions.dart';
+import 'package:peepl/redux/actions/pro_mode_wallet_actions.dart';
+import 'package:peepl/utils/addresses.dart';
+import 'package:peepl/utils/contacts.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:wallet_core/wallet_core.dart';
-import 'package:fusecash/services.dart';
+import 'package:peepl/services.dart';
 import 'package:contacts_service/contacts_service.dart';
-import 'package:fusecash/utils/phone.dart';
+import 'package:peepl/utils/phone.dart';
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_udid/flutter_udid.dart';
-import 'package:fusecash/utils/log/log.dart';
+import 'package:peepl/utils/log/log.dart';
 import 'package:wallet_core/wallet_core.dart' show Web3;
 
 class UpdateCurrency {
@@ -36,6 +36,13 @@ class UpdateCurrency {
 class UpdateLocale {
   final Locale locale;
   UpdateLocale({required this.locale});
+}
+
+class WarnSendDialogShowed {
+  final bool value;
+  WarnSendDialogShowed(
+    this.value,
+  );
 }
 
 class HomeBackupDialogShowed {
@@ -188,13 +195,13 @@ ThunkAction loginHandler(
         ),
       );
     } catch (e, s) {
+      loginFailureCallback();
+      store.dispatch(SetIsLoginRequest(isLoading: false, message: ''));
+      log.error('ERROR - LoginRequest $e');
       Segment.track(
         eventName: 'Sign up: FAILED - Phone_NextBtn_Press',
         properties: Map.from({"error": e.toString()}),
       );
-      store.dispatch(SetIsLoginRequest(isLoading: false, message: ''));
-      loginFailureCallback();
-      log.error('ERROR - LoginRequest $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
@@ -226,7 +233,6 @@ ThunkAction verifyHandler(
         },
       );
     } catch (error, s) {
-      log.info('Error verifyHandler: ${error.toString()} ${s.toString()}');
       store.dispatch(SetIsVerifyRequest(
         isLoading: false,
         message: error,
@@ -263,6 +269,7 @@ ThunkAction backupWalletCall() {
 ThunkAction restoreWalletCall(
   List<String> _mnemonic,
   VoidCallback successCallback,
+  VoidCallback failureCallback,
 ) {
   return (Store store) async {
     try {
@@ -270,30 +277,39 @@ ThunkAction restoreWalletCall(
       String mnemonic = _mnemonic.join(' ');
       log.info('mnemonic: $mnemonic');
       log.info('compute pk');
-      String privateKey = await compute(
-        Web3.privateKeyFromMnemonic,
-        mnemonic,
-      );
-      log.info('privateKey: $privateKey');
-      Credentials credentials = EthPrivateKey.fromHex(privateKey);
-      EthereumAddress accountAddress = await credentials.extractAddress();
-      store.dispatch(
-        CreateLocalAccountSuccess(
-          mnemonic.split(' '),
-          privateKey,
-          accountAddress.toString(),
-        ),
-      );
-      store.dispatch(setDefaultCommunity());
-      successCallback();
-      Segment.track(
-        eventName: 'Existing User: Successful Restore wallet from backup',
-      );
+      if (Web3.validateMnemonic(mnemonic)) {
+        String privateKey = await compute(
+          Web3.privateKeyFromMnemonic,
+          mnemonic,
+        );
+        log.info('privateKey: $privateKey');
+        Credentials credentials = EthPrivateKey.fromHex(privateKey);
+        EthereumAddress accountAddress = await credentials.extractAddress();
+        store.dispatch(
+          CreateLocalAccountSuccess(
+            mnemonic.split(' '),
+            privateKey,
+            accountAddress.toString(),
+          ),
+        );
+        store.dispatch(
+          SetDefaultCommunity(
+            defaultCommunityAddress.toLowerCase(),
+          ),
+        );
+        successCallback();
+        Segment.track(
+          eventName: 'Existing User: Successful Restore wallet from backup',
+        );
+      } else {
+        throw Exception('invalid mnemonic');
+      }
     } catch (e, s) {
       log.error('ERROR - restoreWalletCall $e');
       Segment.track(
         eventName: 'Existing User: Failed to restore wallet from backup',
       );
+      failureCallback();
       await Sentry.captureException(
         e,
         stackTrace: s,
@@ -325,9 +341,18 @@ ThunkAction createLocalAccountCall(
       log.info('privateKey: $privateKey');
       Credentials credentials = EthPrivateKey.fromHex(privateKey);
       EthereumAddress accountAddress = await credentials.extractAddress();
-      store.dispatch(CreateLocalAccountSuccess(
-          mnemonic.split(' '), privateKey, accountAddress.toString()));
-      store.dispatch(setDefaultCommunity());
+      store.dispatch(
+        CreateLocalAccountSuccess(
+          mnemonic.split(' '),
+          privateKey,
+          accountAddress.toString(),
+        ),
+      );
+      store.dispatch(
+        SetDefaultCommunity(
+          defaultCommunityAddress.toLowerCase(),
+        ),
+      );
       Segment.track(
         eventName: 'New User: Create Wallet',
       );
@@ -575,8 +600,7 @@ ThunkAction updateDisplayNameCall(String displayName) {
 
 ThunkAction updateUserAvatarCall(ImageSource source) {
   return (Store store) async {
-    final picker = ImagePicker();
-    final file = await picker.getImage(source: source);
+    final file = await ImagePicker().pickImage(source: source);
     try {
       final uploadResponse = await api.uploadImage(File(file!.path));
       String accountAddress = store.state.userState.accountAddress;

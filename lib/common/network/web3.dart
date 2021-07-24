@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:fusecash/constants/urls.dart';
-import 'package:fusecash/constants/variables.dart';
+import 'package:peepl/constants/urls.dart';
+import 'package:peepl/constants/variables.dart';
 import 'package:injectable/injectable.dart';
 import 'package:wallet_core/wallet_core.dart' show Web3;
 

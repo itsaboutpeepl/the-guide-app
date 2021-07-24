@@ -3,26 +3,26 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:decimal/decimal.dart';
 // import 'package:flutter_segment/flutter_segment.dart';
-// import 'package:fusecash/features/account/screens/top_up.dart';
-import 'package:fusecash/features/contacts/screens/send_amount.dart';
-import 'package:fusecash/features/home/widgets/token_tile.dart';
-import 'package:fusecash/features/swap/widgets/card.dart';
-import 'package:fusecash/models/swap/swap.dart';
-import 'package:fusecash/redux/viewsmodels/swap.dart';
-import 'package:fusecash/services.dart';
-import 'package:fusecash/utils/constants.dart';
-import 'package:fusecash/utils/debouncer.dart';
+// import 'package:peepl/features/account/screens/top_up.dart';
+import 'package:peepl/features/contacts/screens/send_amount.dart';
+import 'package:peepl/features/home/widgets/token_tile.dart';
+import 'package:peepl/features/swap/widgets/card.dart';
+import 'package:peepl/models/swap/swap.dart';
+import 'package:peepl/redux/viewsmodels/swap.dart';
+import 'package:peepl/services.dart';
+import 'package:peepl/utils/constants.dart';
+import 'package:peepl/utils/debouncer.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/utils/format.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
-import 'package:fusecash/features/shared/widgets/preloader.dart';
-import 'package:fusecash/features/shared/widgets/primary_button.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/utils/format.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/shared/widgets/preloader.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:fusecash/common/router/routes.dart';
+import 'package:peepl/common/router/routes.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class SwapScreen extends StatefulWidget {
@@ -504,7 +504,7 @@ class _SwapScreenState extends State<SwapScreen> {
                                     }
                                   },
                                   isSwapped: isSwapped,
-                                  useMaxWidget: maxButton(),
+                                  // useMaxWidget: maxButton(),
                                   textEditingController: tokenOutController,
                                   token: tokenOut,
                                   title: I10n.of(context).pay_with,

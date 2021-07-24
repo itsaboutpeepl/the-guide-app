@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fusecash/constants/enums.dart';
+import 'package:peepl/constants/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_state.freezed.dart';
@@ -45,6 +45,7 @@ class UserState with _$UserState {
     @Default('') String countryCode,
     @Default('') String phoneNumber,
     @Default(false) bool receiveBackupDialogShowed,
+    @Default(false) bool warnSendDialogShowed,
     @Default('') String isoCode,
     @Default('') String jwtToken,
     @Default('Anom') String displayName,

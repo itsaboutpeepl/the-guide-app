@@ -1,7 +1,7 @@
-import 'package:flushbar/flushbar.dart';
+import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fusecash/generated/l10n.dart';
+import 'package:peepl/generated/l10n.dart';
 
 void showErrorSnack({
   required BuildContext context,
@@ -30,7 +30,9 @@ void showErrorSnack({
       ),
       backgroundColor: Theme.of(context).bottomAppBarColor,
       margin: margin ?? EdgeInsets.only(top: 8, right: 8, left: 8, bottom: 80),
-      borderRadius: 8,
+      borderRadius: BorderRadius.all(
+        Radius.circular(8.0),
+      ),
       icon: SvgPicture.asset(
         'assets/images/failed_icon.svg',
         width: 20,
@@ -59,6 +61,8 @@ void showCopiedFlushbar(context) {
       left: 8,
       bottom: 100,
     ),
-    borderRadius: 8,
+    borderRadius: BorderRadius.all(
+      Radius.circular(8.0),
+    ),
   )..show(context);
 }

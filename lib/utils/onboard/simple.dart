@@ -1,10 +1,10 @@
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/constants/enums.dart';
-import 'package:fusecash/redux/actions/user_actions.dart';
-import 'package:fusecash/services.dart';
-import 'package:fusecash/utils/log/log.dart';
-import 'package:fusecash/utils/onboard/Istrategy.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/constants/enums.dart';
+import 'package:peepl/redux/actions/user_actions.dart';
+import 'package:peepl/services.dart';
+import 'package:peepl/utils/onboard/Istrategy.dart';
+import 'package:peepl/constants/strings.dart';
 
 class SimpleStrategy implements IOnBoardStrategy {
   final OnboardStrategy strategy;
@@ -13,8 +13,11 @@ class SimpleStrategy implements IOnBoardStrategy {
   @override
   Future login(store, phoneNumber) async {
     final String accountAddress = store.state.userState.accountAddress;
-    final jwtToken = await api.requestToken(phoneNumber, accountAddress);
-    log.info('jwtToken $jwtToken');
+    final jwtToken = await api.requestToken(
+      phoneNumber,
+      accountAddress,
+      appName: Strings.appName,
+    );
     store.dispatch(LoginVerifySuccess(jwtToken));
     store.dispatch(SetIsVerifyRequest(isLoading: false));
     Segment.track(

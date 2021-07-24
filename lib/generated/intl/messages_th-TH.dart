@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "activate": MessageLookupByLibrary.simpleMessage("เปิดใช้งาน"),
         "activity": MessageLookupByLibrary.simpleMessage("กิจกรรม"),
         "address": MessageLookupByLibrary.simpleMessage("ที่อยู่"),
+        "address_on_fuse": MessageLookupByLibrary.simpleMessage(
+            "Please make sure the address you are sending funds to is on the Fuse Network."),
+        "address_on_other": MessageLookupByLibrary.simpleMessage(
+            "To send funds between Fuse and other networks like Ethereum of BSC please use the link below:"),
         "amount": MessageLookupByLibrary.simpleMessage("จำนวน"),
         "approved": MessageLookupByLibrary.simpleMessage("ได้รับการอนุมัติ"),
         "assets_and_contracts":
@@ -68,6 +72,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "contact_us": MessageLookupByLibrary.simpleMessage("ติดต่อเรา"),
         "contact_us_for_support": MessageLookupByLibrary.simpleMessage(
             "ติดต่อเราเพื่อรับการสนับสนุน"),
+        "continue_button": MessageLookupByLibrary.simpleMessage("Continue"),
         "continue_with":
             MessageLookupByLibrary.simpleMessage("ดำเนินการต่อไปด้วย"),
         "copied_to_clipboard":
@@ -105,6 +110,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "didnt_get_message":
             MessageLookupByLibrary.simpleMessage("ไม่ได้รับข้อความหรือ"),
         "dismiss": MessageLookupByLibrary.simpleMessage("ไม่สนใจ"),
+        "dont_show_next_time":
+            MessageLookupByLibrary.simpleMessage("Don\'t show next time"),
         "dont_worry": MessageLookupByLibrary.simpleMessage("ไม่ต้องเป็นห่วง:"),
         "earn": MessageLookupByLibrary.simpleMessage("รับ"),
         "earn_description": MessageLookupByLibrary.simpleMessage(
@@ -229,6 +236,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "FuseDollar ค้ำประกันโดย USD Coin (USDC) บน Fuse USDC ซึ่งออกโดย circle.com เป็นเหรียญ stablecoin ที่ได้รับการสนับสนุนจากดอลลาร์และได้รับการกำกับดูแลเป็นอย่างดีจนเป็นที่ยอมรับอย่างกว้างขวางในวงการ"),
         "pending": MessageLookupByLibrary.simpleMessage("อยู่ระหว่างดำเนินการ"),
         "phoneNumber": MessageLookupByLibrary.simpleMessage("หมายเลขโทรศัพท์"),
+        "phrase_invaild": MessageLookupByLibrary.simpleMessage(
+            "One of the 12 words is invalid"),
         "pickup_display_name":
             MessageLookupByLibrary.simpleMessage("เลือกชื่อที่ใช้แสดงของคุณ"),
         "pickup_display_name_text": MessageLookupByLibrary.simpleMessage(

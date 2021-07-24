@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fusecash/models/swap_state.dart';
-import 'package:fusecash/models/user_state.dart';
-import 'package:fusecash/models/cash_wallet_state.dart';
-import 'package:fusecash/models/pro_wallet_state.dart';
+import 'package:peepl/models/swap_state.dart';
+import 'package:peepl/models/user_state.dart';
+import 'package:peepl/models/cash_wallet_state.dart';
+import 'package:peepl/models/pro_wallet_state.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'app_state.freezed.dart';

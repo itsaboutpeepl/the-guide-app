@@ -1,7 +1,8 @@
-import 'package:fusecash/constants/addresses.dart';
-import 'package:fusecash/models/actions/actions.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/utils/string.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:peepl/constants/addresses.dart';
+import 'package:peepl/models/actions/actions.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/utils/string.dart';
 
 final String wethTokenAddress = '0xa722c13135930332eb3d749b2f0906559d2c5b99';
 final String wbtcTokenAddress = '0x33284f95ccb7b948d9d352e1439561cf83d8d00d';
@@ -20,6 +21,31 @@ final Token fuseToken = Token(
   walletActions: WalletActions.initial(),
 );
 
+final Token GBPxToken = Token(
+  name: 'GBPx',
+  symbol: 'GBPX',
+  // imageUrl: "https://fuselogo.s3.eu-central-1.amazonaws.com/fuse-dollar.png",
+  decimals: 18,
+  address: Addresses.GBPX_TOKEN_ADDRESS,
+  originNetwork: 'fuse',
+  timestamp: 0,
+  amount: BigInt.zero,
+  walletActions: WalletActions.initial(),
+);
+
+final Token PeeplToken = Token(
+  name: 'Peepl',
+  symbol: 'PPL',
+  // imageUrl: 'https://fuselogo.s3.eu-central-1.amazonaws.com/fuse-token.png',
+  decimals: 18,
+  address: Addresses.PPL_TOKEN_ADDRESS,
+  originNetwork: 'fuse',
+  isNative: true,
+  timestamp: 0,
+  amount: BigInt.zero,
+  walletActions: WalletActions.initial(),
+);
+
 final Token fuseDollarToken = Token(
   name: 'Fuse Dollar',
   symbol: 'fUSD',
@@ -31,6 +57,10 @@ final Token fuseDollarToken = Token(
   amount: BigInt.zero,
   walletActions: WalletActions.initial(),
 );
+
+final String peeplUrl = dotenv.env['PEEPL_URL']!;
+
+final String topUpService = dotenv.env['TOP_UP_SERVICE_URL']!;
 
 String toShortName(networkType) =>
     networkType == 'mainnet' ? 'main' : networkType;

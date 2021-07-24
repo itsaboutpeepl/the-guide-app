@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fusecash/constants/addresses.dart';
-import 'package:fusecash/models/actions/actions.dart';
-import 'package:fusecash/models/actions/wallet_action.dart';
-import 'package:fusecash/models/community/community.dart';
-import 'package:fusecash/models/tokens/token.dart';
-import 'package:fusecash/utils/constants.dart';
+import 'package:peepl/constants/addresses.dart';
+import 'package:peepl/models/actions/actions.dart';
+import 'package:peepl/models/actions/wallet_action.dart';
+import 'package:peepl/models/community/community.dart';
+import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/utils/constants.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'cash_wallet_state.freezed.dart';
@@ -29,12 +29,12 @@ Map<String, Token> tokensFromJson(Map<String, dynamic>? tokens) =>
             ),
           )
       ..putIfAbsent(
-        Addresses.ZERO_ADDRESS,
-        () => fuseToken.copyWith(),
+        Addresses.PPL_TOKEN_ADDRESS,
+        () => PeeplToken.copyWith(),
       )
       ..putIfAbsent(
-        Addresses.FUSE_DOLLAR_TOKEN_ADDRESS,
-        () => fuseDollarToken.copyWith(),
+        Addresses.GBPX_TOKEN_ADDRESS,
+        () => GBPxToken.copyWith(),
       );
 
 Map<String, Community> communitiesFromJson(Map<String, dynamic>? list) {
@@ -69,21 +69,25 @@ class CashWalletState with _$CashWalletState {
     @Default({})
         Map<String, Community> communities,
     @JsonKey(fromJson: walletActionsFromJson) WalletActions? walletActions,
-    @JsonKey(ignore: true) @Default(null) String? branchAddress,
     @JsonKey(ignore: true) @Default(false) bool isCommunityLoading,
     @JsonKey(ignore: true) @Default(false) bool isCommunityFetched,
     @JsonKey(ignore: true) @Default(false) bool isTransfersFetchingStarted,
-    @JsonKey(ignore: true) @Default(false) bool isListeningToBranch,
-    @JsonKey(ignore: true) @Default(false) bool isBranchDataReceived,
     @JsonKey(ignore: true) @Default(false) bool isCommunityBusinessesFetched,
-    @JsonKey(ignore: true) @Default(false) bool isJobProcessingStarted,
     @JsonKey(ignore: true) @Default(false) bool isFetchingBalances,
   }) = _CashWalletState;
 
   factory CashWalletState.initial() {
     return CashWalletState(
       communities: Map<String, Community>(),
-      tokens: Map<String, Token>(),
+      tokens: Map<String, Token>()
+        ..putIfAbsent(
+          Addresses.PPL_TOKEN_ADDRESS,
+          () => PeeplToken.copyWith(),
+        )
+        ..putIfAbsent(
+          Addresses.GBPX_TOKEN_ADDRESS,
+          () => GBPxToken.copyWith(),
+        ),
       walletActions: WalletActions().copyWith(
         list: <WalletAction>[],
         updatedAt: 0,

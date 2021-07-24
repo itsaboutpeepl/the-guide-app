@@ -3,9 +3,9 @@ import 'dart:typed_data';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:fusecash/constants/addresses.dart';
-import 'package:fusecash/models/actions/wallet_action.dart';
-import 'package:fusecash/models/community/community.dart';
+import 'package:peepl/constants/addresses.dart';
+import 'package:peepl/models/actions/wallet_action.dart';
+import 'package:peepl/models/community/community.dart';
 
 class ImageUrl {
   static bool _isIpfsHash(String hash) => hash.length == 46;
@@ -76,7 +76,8 @@ class ImageUrl {
       ),
       joinCommunity: (value) =>
           NetworkImage(ImageUrl.getLink(community?.metadata?.image)),
-      fiatDeposit: (value) => tokensImages.containsKey(value.tokenAddress)
+      fiatDeposit: (value) => tokensImages
+              .containsKey(value.tokenAddress.toLowerCase())
           ? NetworkImage(getTokenByAddress(value.tokenAddress, tokensImages)!)
           : NetworkImage(ImageUrl.getLink(community?.metadata?.image)),
       bonus: (value) => AssetImage(

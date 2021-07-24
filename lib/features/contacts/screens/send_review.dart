@@ -2,14 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/redux/viewsmodels/send_amount.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/features/contacts/send_amount_arguments.dart';
-import 'package:fusecash/utils/format.dart';
-import 'package:fusecash/features/shared/widgets/my_scaffold.dart';
-import 'package:fusecash/features/shared/widgets/primary_button.dart';
-import 'package:fusecash/models/app_state.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/redux/viewsmodels/send_amount.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/features/contacts/send_amount_arguments.dart';
+import 'package:peepl/utils/format.dart';
+import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
+import 'package:peepl/models/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class SendReviewScreen extends StatefulWidget {

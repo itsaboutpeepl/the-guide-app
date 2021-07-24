@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="gradientStart">#FEFD86</color>
-  <color name="gradientCenter">#E6FD99</color>
-  <color name="gradientEnd">#B1FDC0</color>
+  <color name="gradientStart">#FC870C</color>
+  <color name="gradientCenter">#FC870C</color>
+  <color name="gradientEnd">#FC0C1A</color>
+  <color name="ic_launcher_background">#ffffff</color>
 </resources>

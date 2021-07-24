@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:fusecash/common/router/routes.dart';
-import 'package:fusecash/features/home/dialogs/receive.dart';
-import 'package:fusecash/generated/l10n.dart';
-import 'package:fusecash/models/app_state.dart';
-import 'package:fusecash/redux/viewsmodels/account.dart';
-import 'package:fusecash/utils/format.dart';
-import 'package:fusecash/features/shared/widgets/snackbars.dart';
+import 'package:peepl/common/router/routes.dart';
+import 'package:peepl/features/home/dialogs/receive.dart';
+import 'package:peepl/generated/l10n.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/redux/viewsmodels/account.dart';
+import 'package:peepl/utils/format.dart';
+import 'package:peepl/features/shared/widgets/snackbars.dart';
 
 class Avatar extends StatelessWidget {
   const Avatar({Key? key}) : super(key: key);

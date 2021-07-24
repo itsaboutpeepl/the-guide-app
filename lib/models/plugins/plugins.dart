@@ -1,12 +1,12 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:fusecash/models/plugins/backup_bonus.dart';
-import 'package:fusecash/models/plugins/invite_bonus.dart';
-import 'package:fusecash/models/plugins/join_bonus.dart';
-import 'package:fusecash/models/plugins/moonpay.dart';
-import 'package:fusecash/models/plugins/rampInstant.dart';
-import 'package:fusecash/models/plugins/transak.dart';
-import 'package:fusecash/models/plugins/wallet_banner.dart';
+import 'package:peepl/models/plugins/backup_bonus.dart';
+import 'package:peepl/models/plugins/invite_bonus.dart';
+import 'package:peepl/models/plugins/join_bonus.dart';
+import 'package:peepl/models/plugins/moonpay.dart';
+import 'package:peepl/models/plugins/rampInstant.dart';
+import 'package:peepl/models/plugins/transak.dart';
+import 'package:peepl/models/plugins/wallet_banner.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'plugins.freezed.dart';

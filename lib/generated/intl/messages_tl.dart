@@ -29,6 +29,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "activate": MessageLookupByLibrary.simpleMessage("i-Activate"),
         "activity": MessageLookupByLibrary.simpleMessage("Aktibidad"),
         "address": MessageLookupByLibrary.simpleMessage("Address"),
+        "address_on_fuse": MessageLookupByLibrary.simpleMessage(
+            "Please make sure the address you are sending funds to is on the Fuse Network."),
+        "address_on_other": MessageLookupByLibrary.simpleMessage(
+            "To send funds between Fuse and other networks like Ethereum of BSC please use the link below:"),
         "amount": MessageLookupByLibrary.simpleMessage("Halaga"),
         "approved": MessageLookupByLibrary.simpleMessage("APPROVED"),
         "assets_and_contracts":
@@ -105,6 +109,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "didnt_get_message": MessageLookupByLibrary.simpleMessage(
             "Hindi nakuha ang mensahe? - "),
         "dismiss": MessageLookupByLibrary.simpleMessage("I-dismiss"),
+        "dont_show_next_time":
+            MessageLookupByLibrary.simpleMessage("Don\'t show next time"),
         "dont_worry": MessageLookupByLibrary.simpleMessage("Huwag Mag alala:"),
         "earn": MessageLookupByLibrary.simpleMessage("Kumita"),
         "earn_description": MessageLookupByLibrary.simpleMessage(
@@ -236,6 +242,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "pending": MessageLookupByLibrary.simpleMessage("NAKABINBIN"),
         "phoneNumber":
             MessageLookupByLibrary.simpleMessage("Numero ng telepono"),
+        "phrase_invaild": MessageLookupByLibrary.simpleMessage(
+            "One of the 12 words is invalid"),
         "pickup_display_name": MessageLookupByLibrary.simpleMessage(
             "Piliin ang pangalan ng iyong Display"),
         "pickup_display_name_text": MessageLookupByLibrary.simpleMessage(
