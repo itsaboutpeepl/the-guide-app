@@ -88,7 +88,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               ),
                             ),
                             MenuTile(
-                              label: '${I10n.of(context).top_up} \$',
+                              label: '${I10n.of(context).top_up} £',
                               menuIcon: 'top_up_icon.svg',
                               onTap: () {
                                 context.navigateTo(TopupScreen());
@@ -101,7 +101,7 @@ class _AccountScreenState extends State<AccountScreen> {
                                 context.router.root.push(
                                   Webview(
                                     title: I10n.of(context).legal,
-                                    url: 'https://fuse.cash/privacy',
+                                    url: 'https://itsaboutpeepl.com/privacy/',
                                   ),
                                 );
                               },
