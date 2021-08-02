@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_segment/flutter_segment.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:peepl/common/di/di.dart';
 import 'package:peepl/features/shared/widgets/my_scaffold.dart';
@@ -48,10 +50,11 @@ class TopupScreen extends StatefulWidget {
 
 class _TopupScreenState extends State<TopupScreen>
     with SingleTickerProviderStateMixin {
+  Map<String, dynamic>? _paymentSheetData;
   String amountText = "25";
   bool isPreloading = false;
 
-  void _onSuccessCallback(
+/*   void _onSuccessCallback(
     String publicToken,
     LinkSuccessMetadata metadata,
     String walletAddress,
@@ -87,7 +90,7 @@ class _TopupScreenState extends State<TopupScreen>
     //     headers: {"Content-Type": 'application/json'},
     //   ),
     // );
-  }
+  } */
 
   void _onEventCallback(String event, LinkEventMetadata metadata) {
     print("onEvent: $event, metadata: ${metadata.description()}");
@@ -107,7 +110,7 @@ class _TopupScreenState extends State<TopupScreen>
     super.initState();
   }
 
-  void _handlePlaid(String walletAddress) async {
+  /* void _handlePlaid(String walletAddress) async {
     PlaidLink _plaidLinkToken;
 
     Response response = await getIt<Dio>().post(
@@ -140,22 +143,111 @@ class _TopupScreenState extends State<TopupScreen>
       );
       _plaidLinkToken.open();
     }
+  } */
+
+  String _paymentApiUrl = '$topUpService/stripe/createPaymentIntent';
+  String _apiKey = dotenv.env['STRIPE_API_KEY']!;
+
+  void init() {
+    Stripe.publishableKey = _apiKey;
   }
 
-  void _handleStripe(String walletAddress) async {
+  // Main function to initiate a payment.
+  Future<void> _handleStripe({
+    required String walletAddress,
+  }) async {
+    try {
+      _paymentSheetData = await this._createPaymentIntent(
+        amount: amountText,
+        currency: 'gbp',
+        walletAddress: walletAddress,
+      );
+
+      await Stripe.instance.initPaymentSheet(
+        paymentSheetParameters: SetupPaymentSheetParameters(
+          applePay: true,
+          googlePay: true,
+          style: ThemeMode.dark,
+          testEnv: true,
+          merchantCountryCode: 'GB',
+          merchantDisplayName: 'Peepl',
+          paymentIntentClientSecret: _paymentSheetData!['clientSecret'],
+        ),
+      );
+      setState(() {});
+
+      displayPaymentSheet();
+    } on Exception catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Unforeseen error: ${e}'),
+        ),
+      );
+    }
+  }
+
+  Future<Map<String, dynamic>> _createPaymentIntent({
+    required String amount,
+    required String currency,
+    required String walletAddress,
+  }) async {
+    try {
+      final int amountNew =
+          (double.parse(amount) * 100).toInt(); // Pounds to pence
+      final Response response = await getIt<Dio>().post(
+        _paymentApiUrl,
+        data: {
+          'amount': amountNew,
+          'currency': currency,
+          'walletAddress': walletAddress
+        },
+        options: Options(
+          headers: {"Content-Type": 'application/json'},
+        ),
+      );
+      return response.data['data']['paymentIntent'];
+    } catch (e) {
+      print('Error _createPaymentIntent ${e.toString()}');
+      return {'error': e.toString()};
+    }
+  }
+
+  Future<void> displayPaymentSheet() async {
+    await Stripe.instance.presentPaymentSheet(
+        parameters: PresentPaymentSheetParameters(
+      clientSecret: _paymentSheetData!['clientSecret'],
+      confirmPayment: true,
+    ));
+
+    setState(() {
+      _paymentSheetData = null;
+    });
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return MintingDialog(amountText, true);
+      },
+      barrierDismissible: false,
+    );
+  }
+
+/*   void _handleStripe(String walletAddress) async {
     final StripeCustomResponse response = await StripeService().payWithNewCard(
       amount: amountText,
       walletAddress: walletAddress,
       currency: 'GBP',
     );
-    Timer timer = Timer(Duration(seconds: 25), () {
-      Navigator.of(context, rootNavigator: true).pop();
-      showDialog(
-        context: context,
-        builder: (context) => TimedOut(),
-        barrierDismissible: true,
-      );
-    });
+
+    // Timer timer = Timer(Duration(seconds: 25), () {
+    //   Navigator.of(context, rootNavigator: true).pop();
+    //   showDialog(
+    //     context: context,
+    //     builder: (context) => TimedOut(),
+    //     barrierDismissible: true,
+    //   );
+    // });
+
     if (response.ok) {
       Segment.track(eventName: 'TopUp Success, Token Minting..');
       showDialog(
@@ -165,8 +257,7 @@ class _TopupScreenState extends State<TopupScreen>
         },
         barrierDismissible: false,
       ).then((value) {
-        timer.cancel();
-        // timer = null;
+        // timer.cancel();
       });
     } else {
       if (!response.msg!.contains('Cancelled by user')) {
@@ -177,14 +268,14 @@ class _TopupScreenState extends State<TopupScreen>
         );
       }
     }
-  }
+  } */
 
   _onPress(String walletAddress) async {
-    if (widget.topupType == TopupType.PLAID) {
+    /* if (widget.topupType == TopupType.PLAID) {
       _handlePlaid(walletAddress);
-    } else if (widget.topupType == TopupType.STRIPE) {
-      _handleStripe(walletAddress);
-    }
+    } else if (widget.topupType == TopupType.STRIPE) { */
+    _handleStripe(walletAddress: walletAddress);
+    // }
   }
 
   //decimal place checker
