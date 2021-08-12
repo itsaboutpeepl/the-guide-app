@@ -38,7 +38,7 @@ class _ScanQRDialogState extends State<ScanQRDialog>
   }
 
   @override
-  Widget build(BuildContext _context) {
+  Widget build(BuildContext context) {
     return ScaleTransition(
       scale: scaleAnimatoin,
       child: AlertDialog(

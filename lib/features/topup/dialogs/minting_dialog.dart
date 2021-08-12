@@ -67,7 +67,7 @@ class _MintingDialogState extends State<MintingDialog>
   }
 
   @override
-  Widget build(BuildContext _context) {
+  Widget build(BuildContext context) {
     return StoreConnector<AppState, _MintingDialogViewModel>(
       distinct: true,
       converter: _MintingDialogViewModel.fromStore,

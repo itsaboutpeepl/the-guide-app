@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:peepl/common/router/routes.dart';
 import 'package:peepl/features/shared/widgets/primary_button.dart';
+import 'package:peepl/features/topup/screens/topup.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/utils/constants.dart';
 
 class TopUpSuccess extends StatefulWidget {
   final String amountText;
@@ -38,7 +44,7 @@ class _TopUpSuccessState extends State<TopUpSuccess>
   }
 
   @override
-  Widget build(BuildContext _context) {
+  Widget build(BuildContext context) {
     return ScaleTransition(
         scale: scaleAnimation,
         child: AlertDialog(
@@ -87,18 +93,27 @@ class _TopUpSuccessState extends State<TopUpSuccess>
                     : SizedBox.shrink(),
                 widget.showOrderNow
                     ? Center(
-                        child: PrimaryButton(
-                          label: 'Order now',
-                          fontSize: 20,
-                          // labelFontWeight: FontWeight.normal,
-                          onPressed: () async {
-                            // Navigator.of(context).pop();
-                            // final BottomNavigationBar navigationBar =
-                            //     AppKeys.bottomBarKey.currentWidget;
-                            // navigationBar.onTap(2);
-                            // ExtendedNavigator.named('topupRouter')
-                            //     .popUntilRoot();
-                          },
+                        child: StoreConnector<AppState, TopUpViewModel>(
+                          distinct: true,
+                          converter: TopUpViewModel.fromStore,
+                          builder: (_, viewModel) => PrimaryButton(
+                            label: 'Order now',
+                            fontSize: 20,
+                            onPressed: () {
+                              context.router.popUntilRoot();
+                              context.navigateTo(
+                                WebviewTab(
+                                  children: [
+                                    WebViewWidget(
+                                      url:
+                                          '$peeplUrl/vendors?wallet=${viewModel.walletAddress}',
+                                      walletAddress: viewModel.walletAddress,
+                                    )
+                                  ],
+                                ),
+                              );
+                            },
+                          ),
                         ),
                       )
                     : SizedBox.shrink()

@@ -1,11 +1,8 @@
-import 'dart:io';
 import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_segment/flutter_segment.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:peepl/common/di/di.dart';
@@ -14,23 +11,21 @@ import 'package:peepl/features/shared/widgets/numeric_keyboard.dart';
 import 'package:peepl/features/shared/widgets/primary_button.dart';
 import 'package:peepl/features/topup/dialogs/card_failed.dart';
 import 'package:peepl/features/topup/dialogs/minting_dialog.dart';
-import 'package:peepl/features/topup/dialogs/timed_out.dart';
 import 'package:peepl/generated/l10n.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/utils/constants.dart';
-import 'package:peepl/utils/stripe.dart';
-import 'package:plaid_flutter/plaid_flutter.dart';
+import 'package:peepl/utils/log/log.dart';
 import 'package:redux/redux.dart';
 
-class _TopUpViewModel {
+class TopUpViewModel {
   final String walletAddress;
 
-  _TopUpViewModel({
+  TopUpViewModel({
     required this.walletAddress,
   });
 
-  static _TopUpViewModel fromStore(Store<AppState> store) {
-    return _TopUpViewModel(
+  static TopUpViewModel fromStore(Store<AppState> store) {
+    return TopUpViewModel(
       walletAddress: store.state.userState.walletAddress,
     );
   }
@@ -50,7 +45,6 @@ class TopupScreen extends StatefulWidget {
 
 class _TopupScreenState extends State<TopupScreen>
     with SingleTickerProviderStateMixin {
-  Map<String, dynamic>? _paymentSheetData;
   String amountText = "25";
   bool isPreloading = false;
 
@@ -92,13 +86,13 @@ class _TopupScreenState extends State<TopupScreen>
     // );
   } */
 
-  void _onEventCallback(String event, LinkEventMetadata metadata) {
-    print("onEvent: $event, metadata: ${metadata.description()}");
-  }
+  // void _onEventCallback(String event, LinkEventMetadata metadata) {
+  //   print("onEvent: $event, metadata: ${metadata.description()}");
+  // }
 
-  void _onExitCallback(LinkError? error, LinkExitMetadata? metadata) {
-    print("onExit: $error, metadata: ${metadata?.description()}");
-  }
+  // void _onExitCallback(LinkError? error, LinkExitMetadata? metadata) {
+  //   print("onExit: $error, metadata: ${metadata?.description()}");
+  // }
 
   @override
   void dispose() {
@@ -146,23 +140,20 @@ class _TopupScreenState extends State<TopupScreen>
   } */
 
   String _paymentApiUrl = '$topUpService/stripe/createPaymentIntent';
-  String _apiKey = dotenv.env['STRIPE_API_KEY']!;
-
-  void init() {
-    Stripe.publishableKey = _apiKey;
-  }
 
   // Main function to initiate a payment.
   Future<void> _handleStripe({
     required String walletAddress,
   }) async {
     try {
-      _paymentSheetData = await this._createPaymentIntent(
+      Map<String, dynamic> _paymentSheetData = await _createPaymentIntent(
         amount: amountText,
         currency: 'gbp',
         walletAddress: walletAddress,
       );
 
+      final paymentIntentClientSecret = _paymentSheetData['clientSecret'];
+      log.info('clientSecret $paymentIntentClientSecret');
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
           applePay: true,
@@ -171,13 +162,27 @@ class _TopupScreenState extends State<TopupScreen>
           testEnv: true,
           merchantCountryCode: 'GB',
           merchantDisplayName: 'Peepl',
-          paymentIntentClientSecret: _paymentSheetData!['clientSecret'],
+          paymentIntentClientSecret: paymentIntentClientSecret,
         ),
       );
-      setState(() {});
-
-      displayPaymentSheet();
+      await Stripe.instance.presentPaymentSheet(
+        parameters: PresentPaymentSheetParameters(
+          clientSecret: paymentIntentClientSecret,
+          confirmPayment: true,
+        ),
+      );
+      showDialog(
+        context: context,
+        builder: (context) {
+          return MintingDialog(amountText, true);
+        },
+        barrierDismissible: false,
+      );
     } on Exception catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => TopUpFailed(),
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Unforeseen error: ${e}'),
@@ -191,9 +196,9 @@ class _TopupScreenState extends State<TopupScreen>
     required String currency,
     required String walletAddress,
   }) async {
+    final int amountNew =
+        (double.parse(amount) * 100).toInt(); // Pounds to pence
     try {
-      final int amountNew =
-          (double.parse(amount) * 100).toInt(); // Pounds to pence
       final Response response = await getIt<Dio>().post(
         _paymentApiUrl,
         data: {
@@ -207,29 +212,9 @@ class _TopupScreenState extends State<TopupScreen>
       );
       return response.data['data']['paymentIntent'];
     } catch (e) {
-      print('Error _createPaymentIntent ${e.toString()}');
+      log.info('Error _createPaymentIntent ${e.toString()}');
       return {'error': e.toString()};
     }
-  }
-
-  Future<void> displayPaymentSheet() async {
-    await Stripe.instance.presentPaymentSheet(
-        parameters: PresentPaymentSheetParameters(
-      clientSecret: _paymentSheetData!['clientSecret'],
-      confirmPayment: true,
-    ));
-
-    setState(() {
-      _paymentSheetData = null;
-    });
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return MintingDialog(amountText, true);
-      },
-      barrierDismissible: false,
-    );
   }
 
 /*   void _handleStripe(String walletAddress) async {
@@ -417,9 +402,9 @@ class _TopupScreenState extends State<TopupScreen>
                 ),
               ],
             ),
-            StoreConnector<AppState, _TopUpViewModel>(
+            StoreConnector<AppState, TopUpViewModel>(
               distinct: true,
-              converter: _TopUpViewModel.fromStore,
+              converter: TopUpViewModel.fromStore,
               builder: (_, viewModel) => Center(
                 child: PrimaryButton(
                   opacity: 1,
