@@ -156,8 +156,8 @@ class _TopupScreenState extends State<TopupScreen>
       log.info('clientSecret $paymentIntentClientSecret');
       await Stripe.instance.initPaymentSheet(
         paymentSheetParameters: SetupPaymentSheetParameters(
-          applePay: true,
-          googlePay: true,
+          applePay: false,
+          googlePay: false,
           style: ThemeMode.dark,
           testEnv: true,
           merchantCountryCode: 'GB',
@@ -178,7 +178,7 @@ class _TopupScreenState extends State<TopupScreen>
         },
         barrierDismissible: false,
       );
-    } on Exception catch (e) {
+    } catch (e) {
       showDialog(
         context: context,
         builder: (context) => TopUpFailed(),
