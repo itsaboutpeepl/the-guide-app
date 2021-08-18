@@ -1,5 +1,5 @@
 name: peepl
-version: 1.0.19+61
+version: 1.0.20+62
 description: Cross platform mobile Ethereum wallet.
 environment:
   sdk: ">=2.12.0 <3.0.0"
