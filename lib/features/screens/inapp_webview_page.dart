@@ -66,7 +66,9 @@ class _WebViewWidgetState extends State<WebViewWidget> {
                   PlatformIcons(context).back,
                   color: Colors.black,
                 ),
-                onPressed: webView.goBack,
+                onPressed: () async {
+                  await webView.goBack();
+                },
               ),
             ),
           ),

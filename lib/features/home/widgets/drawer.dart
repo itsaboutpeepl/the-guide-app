@@ -253,7 +253,7 @@
 //   }
 
 //   @override
-//   Widget build(BuildContext _context) {
+//   Widget build(BuildContext context) {
 //     return new StoreConnector<AppState, DrawerViewModel>(
 //       distinct: true,
 //       converter: DrawerViewModel.fromStore,

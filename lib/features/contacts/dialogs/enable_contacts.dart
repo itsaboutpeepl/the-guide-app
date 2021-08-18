@@ -43,7 +43,7 @@ class _ContactsConfirmationScreenState extends State<ContactsConfirmationScreen>
   }
 
   @override
-  Widget build(BuildContext _context) {
+  Widget build(BuildContext context) {
     return new StoreConnector<AppState, ContactsViewModel>(
       distinct: true,
       converter: ContactsViewModel.fromStore,
