@@ -17,6 +17,7 @@ import 'package:peepl/utils/constants.dart';
 import 'package:peepl/utils/log/log.dart';
 import 'package:redux/redux.dart';
 
+//TODO: add save card functionality
 class TopUpViewModel {
   final String walletAddress;
 
@@ -171,6 +172,7 @@ class _TopupScreenState extends State<TopupScreen>
           confirmPayment: true,
         ),
       );
+      //TODO: add timer for dialog
       showDialog(
         context: context,
         builder: (context) {

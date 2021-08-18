@@ -239,25 +239,27 @@ class _TokenTileState extends State<TokenTile> {
                       //         },
                       //       )
                       //     : SizedBox.shrink(),
-                      Button(
-                        text: I10n.of(context).send_button,
-                        icon: 'send_action',
-                        width: MediaQuery.of(context).size.width * .9,
-                        onPressed: () {
-                          context.router.pop();
-                          context.navigateTo(
-                            ContactsTab(
-                              children: [
-                                ContactsList(
-                                  pageArgs: SendFlowArguments(
-                                    tokenToSend: widget.token,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
+
+                      //Save for when KYC is clear
+                      // Button(
+                      //   text: I10n.of(context).send_button,
+                      //   icon: 'send_action',
+                      //   width: MediaQuery.of(context).size.width * .9,
+                      //   onPressed: () {
+                      //     context.router.pop();
+                      //     context.navigateTo(
+                      //       ContactsTab(
+                      //         children: [
+                      //           ContactsList(
+                      //             pageArgs: SendFlowArguments(
+                      //               tokenToSend: widget.token,
+                      //             ),
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     );
+                      //   },
+                      // ),
                       // isFUSD
                       //     ? Button(
                       //         text: I10n.of(context).buy,
