@@ -282,9 +282,12 @@ class _TopupScreenState extends State<TopupScreen>
       } else {
         if (amountText == '0' && value == '0') {
           amountText = amountText;
-        } else {
+        } else if (!(num.parse(amountText + value) > 250) &&
+            !(decimalChecker(double.parse(amountText + value)) == 'Too long')) {
           amountText = amountText + value;
         }
+        // Prevent deposits greater than 250
+
       }
       setState(() {});
     }
@@ -301,7 +304,7 @@ class _TopupScreenState extends State<TopupScreen>
             Container(
               padding: EdgeInsets.symmetric(horizontal: 40),
               child: Text(
-                I10n.of(context).how_much,
+                I10n.of(context).how_much + ' limit: 250',
                 style: TextStyle(
                   color: Color(
                     0xFF898989,
