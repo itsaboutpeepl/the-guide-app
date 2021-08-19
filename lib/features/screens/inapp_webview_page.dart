@@ -52,6 +52,10 @@ class _WebViewWidgetState extends State<WebViewWidget> {
 
   @override
   Widget build(BuildContext context) {
+    VoidCallback sendFailureCallback;
+    Function(dynamic) sendSuccessCallback;
+
+    ;
     return StoreConnector<AppState, InAppWebViewViewModel>(
       converter: InAppWebViewViewModel.fromStore,
       builder: (_, InAppWebViewViewModel viewModel) {
@@ -72,51 +76,77 @@ class _WebViewWidgetState extends State<WebViewWidget> {
               ),
             ),
           ),
-          body: InAppWebView(
-            initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
-            onWebViewCreated: (InAppWebViewController controller) {
-              webView = controller;
-              webView.addJavaScriptHandler(
-                handlerName: "pay",
-                callback: (args) {
-                  Map<String, dynamic> paymentDetails = Map.from(args[0]);
-                  sendSuccessCallback(jobId) async {}
+          body: Stack(
+            children: [
+              InAppWebView(
+                initialUrlRequest: URLRequest(url: Uri.parse(widget.url)),
+                onWebViewCreated: (InAppWebViewController controller) {
+                  webView = controller;
+                  webView.addJavaScriptHandler(
+                    handlerName: "pay",
+                    callback: (args) {
+                      Map<String, dynamic> paymentDetails = Map.from(args[0]);
+                      sendSuccessCallback(jobId) async {}
 
-                  sendFailureCallback() {}
+                      sendFailureCallback() {}
 
-                  viewModel.sendTokenFromWebView(
-                    paymentDetails['currency'],
-                    paymentDetails['destination'],
-                    paymentDetails['amount'],
-                    paymentDetails['orderId'],
-                    sendSuccessCallback,
-                    sendFailureCallback,
+                      viewModel.sendTokenFromWebView(
+                        paymentDetails['currency'],
+                        paymentDetails['destination'],
+                        paymentDetails['amount'],
+                        paymentDetails['orderId'],
+                        sendSuccessCallback,
+                        sendFailureCallback,
+                      );
+                    },
+                  );
+
+                  webView.addJavaScriptHandler(
+                    handlerName: "topup",
+                    callback: (args) {
+                      Map<String, dynamic> data = Map.from(args[0]);
+                      num amount = num.parse(data['amount']);
+
+                      // TODO: Remove eventually
+                      if (amount > 250) {
+                        // TODO: Add error message for large top up
+                        return false;
+                      }
+                      return _handleStripe(amount.toString());
+
+                      /* if (amount > viewModel.secondaryTokenAmount) {
+                                  num value = amount - viewModel.secondaryTokenAmount;
+                                  return _handleStripe(value.toString());
+                                } else {
+                                  return _handleStripe(amount.toString());
+                                } */
+                    },
                   );
                 },
-              );
-
-              webView.addJavaScriptHandler(
-                handlerName: "topup",
-                callback: (args) {
-                  Map<String, dynamic> data = Map.from(args[0]);
-                  num amount = num.parse(data['amount']);
-
-                  // TODO: Remove eventually
-                  if (amount > 250) {
-                    // TODO: Add error message for large top up
-                    return false;
-                  }
-                  return _handleStripe(amount.toString());
-
-                  /* if (amount > viewModel.secondaryTokenAmount) {
-                    num value = amount - viewModel.secondaryTokenAmount;
-                    return _handleStripe(value.toString());
-                  } else {
-                    return _handleStripe(amount.toString());
-                  } */
-                },
-              );
-            },
+              ),
+              Positioned(
+                bottom: 30,
+                right: 30,
+                child: ElevatedButton(
+                  onPressed: () {
+                    sendTokenFromWebViewCall(
+                      "GBP",
+                      "0f8Ad4098Febe6Dbf5032547713D62c5096fB9F066",
+                      50,
+                      500,
+                      (jobId) async {},
+                      () {},
+                    );
+                  },
+                  child: Text('Pls'),
+                  style: ElevatedButton.styleFrom(
+                    shape: CircleBorder(),
+                    padding: EdgeInsets.all(24),
+                    primary: Colors.purple,
+                  ),
+                ),
+              ),
+            ],
           ),
         );
       },
