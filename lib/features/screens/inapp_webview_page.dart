@@ -52,10 +52,6 @@ class _WebViewWidgetState extends State<WebViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    VoidCallback sendFailureCallback;
-    Function(dynamic) sendSuccessCallback;
-
-    ;
     return StoreConnector<AppState, InAppWebViewViewModel>(
       converter: InAppWebViewViewModel.fromStore,
       builder: (_, InAppWebViewViewModel viewModel) {
@@ -134,7 +130,7 @@ class _WebViewWidgetState extends State<WebViewWidget> {
                       "0f8Ad4098Febe6Dbf5032547713D62c5096fB9F066",
                       50,
                       500,
-                      (jobId) async {},
+                      (jobID) async {},
                       () {},
                     );
                   },
