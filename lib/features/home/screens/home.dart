@@ -14,6 +14,9 @@ class HomeScreen extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
     return new StoreConnector<AppState, HomeViewModel>(
       distinct: true,
       converter: HomeViewModel.fromStore,
@@ -33,7 +36,73 @@ class HomeScreen extends StatelessWidget {
             backgroundColor: Colors.black,
             child: Header(),
           ),
-          body: Tabs(),
+          body: Stack(
+            children: [
+              Tabs(),
+              Positioned(
+                bottom: 34,
+                right: 20,
+                child: ElevatedButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        context: context,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.only(
+                            topLeft: const Radius.circular(10),
+                            topRight: const Radius.circular(10.0),
+                          ),
+                        ),
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: height * 0.3,
+                            color: Colors.transparent,
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Text('Add Peepl.pay'),
+                                      ),
+                                      Spacer(),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: TextButton(
+                                            style: ButtonStyle(
+                                              overlayColor:
+                                                  MaterialStateProperty.all(
+                                                      Colors.transparent),
+                                            ),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                            child: Text(
+                                              'Cancel',
+                                              style: TextStyle(
+                                                color: Colors.blueGrey,
+                                              ),
+                                            )),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          );
+                        });
+                  },
+                  child: Text('Peepl.Pay'),
+                  style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 40.0, vertical: 20.0),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                      primary: Colors.purple),
+                ),
+              ),
+            ],
+          ),
         );
       },
     );

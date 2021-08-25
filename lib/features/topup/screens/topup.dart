@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
@@ -172,14 +173,18 @@ class _TopupScreenState extends State<TopupScreen>
           confirmPayment: true,
         ),
       );
-      //TODO: add timer for dialog
       showDialog(
         context: context,
         builder: (context) {
           return MintingDialog(amountText, true);
         },
-        barrierDismissible: false,
+        barrierDismissible: true,
       );
+
+      // final status = await PaymentIntentsStatus.values;
+      // print(status);
+      //TODO: add timer for dialog
+
     } catch (e) {
       showDialog(
         context: context,
@@ -212,6 +217,7 @@ class _TopupScreenState extends State<TopupScreen>
           headers: {"Content-Type": 'application/json'},
         ),
       );
+
       return response.data['data']['paymentIntent'];
     } catch (e) {
       log.info('Error _createPaymentIntent ${e.toString()}');
