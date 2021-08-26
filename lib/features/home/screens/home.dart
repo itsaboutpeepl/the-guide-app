@@ -60,7 +60,9 @@ class HomeScreen extends StatelessWidget {
                             height: height * 0.6,
                             color: Colors.transparent,
                             child: Padding(
-                              padding: const EdgeInsets.all(15.0),
+                              padding: const EdgeInsets.only(
+                                left: 15,
+                              ),
                               child: Center(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +73,6 @@ class HomeScreen extends StatelessWidget {
                                           padding: const EdgeInsets.only(
                                             left: 8.0,
                                             right: 8.0,
-                                            top: 8.0,
                                           ),
                                           child: Text('Peepl.pay'),
                                         ),
@@ -80,7 +81,6 @@ class HomeScreen extends StatelessWidget {
                                           padding: const EdgeInsets.only(
                                             left: 8.0,
                                             right: 8.0,
-                                            top: 8.0,
                                           ),
                                           child: IconButton(
                                             icon: Icon(
@@ -138,50 +138,77 @@ class HomeScreen extends StatelessWidget {
                                       ],
                                     ),
                                     Divider(),
-                                    Text(
-                                      "To pay send amount to the address:",
-                                      style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.blueGrey,
-                                      ),
-                                    ),
-                                    Text("Amount"),
-                                    TextFormField(
-                                      enabled: false,
-                                      decoration: InputDecoration(
-                                        hintText: '50 GBPx',
-                                        contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20.0, vertical: 5.0),
-                                        filled: true,
-                                        floatingLabelBehavior:
-                                            FloatingLabelBehavior.never,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          borderSide: BorderSide.none,
+                                    Padding(
+                                      padding: const EdgeInsets.only(left: 8.0),
+                                      child: Text(
+                                        "To pay send amount to the address:",
+                                        style: TextStyle(
+                                          fontSize: 15,
+                                          color: Colors.blueGrey,
                                         ),
                                       ),
                                     ),
-                                    Text("Address"),
-                                    TextFormField(
-                                      enabled: false,
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            '0xc0ffee254729296a45a3885639AC7E10F9d54979',
-                                        contentPadding: EdgeInsets.symmetric(
-                                            horizontal: 20.0, vertical: 5.0),
-                                        filled: true,
-                                        floatingLabelBehavior:
-                                            FloatingLabelBehavior.never,
-                                        border: OutlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                          borderSide: BorderSide.none,
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Amount",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
                                         ),
-                                        suffixIcon: IconButton(
-                                          onPressed: () {},
-                                          icon: Icon(
-                                            Icons.copy_all_outlined,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 15.0),
+                                      child: TextFormField(
+                                        enabled: false,
+                                        decoration: InputDecoration(
+                                          hintText: '50 GBPx',
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 20.0, vertical: 5.0),
+                                          filled: true,
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.never,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text(
+                                        "Address",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(right: 15.0),
+                                      child: TextFormField(
+                                        enabled: false,
+                                        decoration: InputDecoration(
+                                          hintText:
+                                              '0xc0ffee254729296a45a3885639AC7E10F9d54979',
+                                          contentPadding: EdgeInsets.symmetric(
+                                              horizontal: 20.0, vertical: 5.0),
+                                          filled: true,
+                                          floatingLabelBehavior:
+                                              FloatingLabelBehavior.never,
+                                          border: OutlineInputBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10.0),
+                                            borderSide: BorderSide.none,
+                                          ),
+                                          suffixIcon: IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(
+                                              Icons.copy_all_outlined,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -190,13 +217,16 @@ class HomeScreen extends StatelessWidget {
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
-                                        PrimaryButton(
-                                          opacity: 1,
-                                          // labelFontWeight: FontWeight.normal,
-                                          label: "Pay",
-                                          onPressed: () {},
+                                        Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: PrimaryButton(
+                                            opacity: 1,
+                                            // labelFontWeight: FontWeight.normal,
+                                            label: "Pay",
+                                            onPressed: () {},
 
-                                          width: width * 0.3,
+                                            width: width * 0.3,
+                                          ),
                                         ),
                                       ],
                                     ),
