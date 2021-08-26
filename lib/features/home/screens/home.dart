@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         builder: (BuildContext context) {
                           return Container(
-                            height: height * 0.3,
+                            height: height * 0.5,
                             color: Colors.transparent,
                             child: Center(
                               child: Column(
@@ -63,27 +63,51 @@ class HomeScreen extends StatelessWidget {
                                     children: [
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: Text('Add Peepl.pay'),
+                                        child: Text('Peepl.pay'),
                                       ),
                                       Spacer(),
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
-                                        child: TextButton(
-                                            style: ButtonStyle(
-                                              overlayColor:
-                                                  MaterialStateProperty.all(
-                                                      Colors.transparent),
-                                            ),
-                                            onPressed: () {
-                                              Navigator.of(context).pop();
-                                            },
-                                            child: Text(
-                                              'Cancel',
-                                              style: TextStyle(
-                                                color: Colors.blueGrey,
-                                              ),
-                                            )),
+                                        child: IconButton(
+                                          icon: Icon(
+                                            Icons.cancel_outlined,
+                                            color: Colors.blueGrey,
+                                          ),
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                        ),
                                       ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Container(
+                                          color: Colors.red,
+                                          child: Text("Company Logo"),
+                                          height: height * 0.1,
+                                          width: width * 0.2,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text("Company Name"),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Text("Pay with Peepl.Pay"),
+                                            )
+                                          ],
+                                        ),
+                                      )
                                     ],
                                   ),
                                 ],
