@@ -313,18 +313,31 @@ class _PaymentSheetState extends State<PaymentSheet> {
               children: [
                 Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
-                    child: Text("Cancel"),
-                    onPressed: () {
-                      setState(() {
-                        Navigator.pop(context);
-                      });
-                    },
+                  child: Container(
+                    height: height * 0.05,
+                    width: width * 0.3,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                      ),
+                      child: Text(
+                        "Cancel",
+                        style: TextStyle(
+                          color: Theme.of(context).buttonColor,
+                        ),
+                      ),
+                      onPressed: () {
+                        setState(() {
+                          Navigator.pop(context);
+                        });
+                      },
+                    ),
                   ),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: PrimaryButton(
+                    height: height * 0.05,
                     opacity: 1,
                     // labelFontWeight: FontWeight.normal,
                     label: "Pay",
