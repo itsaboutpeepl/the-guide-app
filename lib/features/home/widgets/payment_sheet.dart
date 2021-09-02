@@ -10,6 +10,7 @@ class PaymentSheet extends StatefulWidget {
 class _PaymentSheetState extends State<PaymentSheet> {
   bool _isConfirming = false;
   bool _showDetails = false;
+  bool _value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -203,7 +204,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
         child: Column(
           children: [
             Container(
-              height: height * 0.22,
+              height: height * 0.25,
               margin: EdgeInsets.all(8),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
@@ -280,6 +281,13 @@ class _PaymentSheetState extends State<PaymentSheet> {
                         Divider(),
                         Row(
                           children: [
+                            Checkbox(
+                                value: _value,
+                                onChanged: (_value) {
+                                  setState(() {
+                                    _value = true;
+                                  });
+                                }),
                             Text('Use PPL rewards token?'),
                           ],
                         ),
@@ -301,27 +309,33 @@ class _PaymentSheetState extends State<PaymentSheet> {
               ),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
-                  child: Text("Cancel"),
-                  onPressed: () {
-                    setState(() {
-                      Navigator.pop(context);
-                    });
-                  },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    child: Text("Cancel"),
+                    onPressed: () {
+                      setState(() {
+                        Navigator.pop(context);
+                      });
+                    },
+                  ),
                 ),
-                Spacer(),
-                PrimaryButton(
-                  opacity: 1,
-                  // labelFontWeight: FontWeight.normal,
-                  label: "Pay",
-                  onPressed: () {
-                    setState(() {
-                      _isConfirming = true;
-                    });
-                  },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: PrimaryButton(
+                    opacity: 1,
+                    // labelFontWeight: FontWeight.normal,
+                    label: "Pay",
+                    onPressed: () {
+                      setState(() {
+                        _isConfirming = true;
+                      });
+                    },
 
-                  width: width * 0.3,
+                    width: width * 0.3,
+                  ),
                 ),
               ],
             )
