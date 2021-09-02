@@ -319,11 +319,17 @@ class _PaymentSheetState extends State<PaymentSheet> {
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(
+                            10.0,
+                          ),
+                        ),
                       ),
                       child: Text(
                         "Cancel",
                         style: TextStyle(
-                          color: Theme.of(context).buttonColor,
+                          color: Colors.deepOrange[300],
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
                       onPressed: () {
