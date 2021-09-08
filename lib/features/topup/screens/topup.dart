@@ -17,6 +17,8 @@ import 'package:peepl/models/app_state.dart';
 import 'package:peepl/utils/constants.dart';
 import 'package:peepl/utils/log/log.dart';
 import 'package:redux/redux.dart';
+import 'package:stripe_platform_interface/stripe_platform_interface.dart'
+    as exc;
 
 //TODO: add save card functionality
 class TopUpViewModel {
@@ -143,7 +145,6 @@ class _TopupScreenState extends State<TopupScreen>
 
   String _paymentApiUrl = '$topUpService/stripe/createPaymentIntent';
 
-  // Main function to initiate a payment.
   Future<void> _handleStripe({
     required String walletAddress,
   }) async {
@@ -167,24 +168,23 @@ class _TopupScreenState extends State<TopupScreen>
           paymentIntentClientSecret: paymentIntentClientSecret,
         ),
       );
-      await Stripe.instance.presentPaymentSheet(
+      final paysheet = await Stripe.instance.presentPaymentSheet(
         parameters: PresentPaymentSheetParameters(
           clientSecret: paymentIntentClientSecret,
           confirmPayment: true,
         ),
       );
-      showDialog(
-        context: context,
-        builder: (context) {
-          return MintingDialog(amountText, true);
-        },
-        barrierDismissible: true,
-      );
 
-      // final status = await PaymentIntentsStatus.values;
-      // print(status);
-      //TODO: add timer for dialog
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return MintingDialog(amountText, true);
+      //   },
+      //   barrierDismissible: true,
+      // );
+      final _error = StripeException;
 
+      print(_error);
     } catch (e) {
       showDialog(
         context: context,
