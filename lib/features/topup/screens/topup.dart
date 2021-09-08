@@ -17,8 +17,6 @@ import 'package:peepl/models/app_state.dart';
 import 'package:peepl/utils/constants.dart';
 import 'package:peepl/utils/log/log.dart';
 import 'package:redux/redux.dart';
-import 'package:stripe_platform_interface/stripe_platform_interface.dart'
-    as exc;
 
 //TODO: add save card functionality
 class TopUpViewModel {
