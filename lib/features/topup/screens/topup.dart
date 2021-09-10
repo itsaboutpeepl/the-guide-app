@@ -159,37 +159,41 @@ class _TopupScreenState extends State<TopupScreen>
         paymentSheetParameters: SetupPaymentSheetParameters(
           applePay: false,
           googlePay: false,
-          style: ThemeMode.dark,
+          style: ThemeMode.light,
           testEnv: true,
           merchantCountryCode: 'GB',
           merchantDisplayName: 'Peepl',
           paymentIntentClientSecret: paymentIntentClientSecret,
         ),
       );
-      await Stripe.instance.presentPaymentSheet(
-        parameters: PresentPaymentSheetParameters(
-          clientSecret: paymentIntentClientSecret,
-          confirmPayment: true,
-        ),
-      );
+      await Stripe.instance.presentPaymentSheet();
       //TODO: add timer for dialog
-      showDialog(
-        context: context,
-        builder: (context) {
-          return MintingDialog(amountText, true);
-        },
-        barrierDismissible: false,
-      );
-    } catch (e) {
-      showDialog(
-        context: context,
-        builder: (context) => TopUpFailed(),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Unforeseen error: ${e}'),
-        ),
-      );
+      // showDialog(
+      //   context: context,
+      //   builder: (context) {
+      //     return MintingDialog(amountText, true);
+      //   },
+      //   barrierDismissible: false,
+      // );
+
+    } on Exception catch (e) {
+      if (e is StripeException) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
+          ),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (context) => TopUpFailed(),
+        );
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Unforeseen error: ${e}'),
+          ),
+        );
+      }
     }
   }
 
