@@ -81,3 +81,5 @@ start_qa.sh
 /lib/main_qa.dart
 
 .fvm/flutter_sdk
+
+**/dgph
