@@ -145,6 +145,7 @@ class _TopupScreenState extends State<TopupScreen>
   // Main function to initiate a payment.
   Future<void> _handleStripe({
     required String walletAddress,
+    String? errorMessage,
   }) async {
     try {
       Map<String, dynamic> _paymentSheetData = await _createPaymentIntent(
@@ -168,33 +169,40 @@ class _TopupScreenState extends State<TopupScreen>
       );
       await Stripe.instance.presentPaymentSheet();
       //TODO: add timer for dialog
-      // showDialog(
-      //   context: context,
-      //   builder: (context) {
-      //     return MintingDialog(amountText, true);
-      //   },
-      //   barrierDismissible: false,
-      // );
 
     } on Exception catch (e) {
       if (e is StripeException) {
+        errorMessage = e.error.localizedMessage;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Error from Stripe: ${e.error.localizedMessage}'),
-          ),
-        );
-      } else {
-        showDialog(
-          context: context,
-          builder: (context) => TopUpFailed(),
-        );
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text('Unforeseen error: ${e}'),
+            content: Text("$errorMessage"),
           ),
         );
       }
     }
+
+    if (errorMessage == null) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return MintingDialog(amountText, true);
+        },
+        barrierDismissible: false,
+      );
+    }
+
+    //   else {
+    //     showDialog(
+    //       context: context,
+    //       builder: (context) => TopUpFailed(),
+    //     );
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //       SnackBar(
+    //         content: Text('Unforeseen error: ${e}'),
+    //       ),
+    //     );
+    //   }
+    // }
   }
 
   Future<Map<String, dynamic>> _createPaymentIntent({
