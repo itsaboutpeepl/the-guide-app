@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:peepl/features/shared/widgets/primary_button.dart';
 
 class PaymentSheet extends StatefulWidget {
+  final String amount;
+  final String balance;
+  final String companyName;
+  PaymentSheet(
+    this.amount,
+    this.balance,
+    this.companyName,
+  );
+
   @override
   _PaymentSheetState createState() => _PaymentSheetState();
 }
@@ -51,7 +60,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                             top: 8.0,
                           ),
                           child: Text(
-                            "Company Name",
+                            widget.companyName,
                             style:
                                 TextStyle(color: Colors.blueGrey, fontSize: 15),
                           ),
@@ -86,7 +95,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                 child: TextFormField(
                   enabled: false,
                   decoration: InputDecoration(
-                    hintText: '50 GBPx',
+                    hintText: widget.amount,
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
                     filled: true,
