@@ -9,6 +9,8 @@ import 'package:peepl/features/topup/dialogs/minting_dialog.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/cash_wallet_actions.dart';
 import 'package:peepl/utils/stripe.dart';
+import 'package:peepl/models/community/community.dart';
+import 'package:peepl/models/tokens/token.dart';
 
 class WebViewWidget extends StatefulWidget {
   final String url;
@@ -146,11 +148,10 @@ class InAppWebViewViewModel extends Equatable {
   });
 
   static InAppWebViewViewModel fromStore(Store<AppState> store) {
-    // String communityAddress = store.state.cashWalletState.communityAddress;
-    // Community community =
-    //     store.state.cashWalletState.communities[communityAddress] ??
-    //         Community.initial();
-    // final Token token = store.state.cashWalletState.tokens
+    String communityAddress = store.state.cashWalletState.communityAddress;
+    Community? community =
+        store.state.cashWalletState.communities[communityAddress];
+    // final Token token? = store.state.cashWalletState.tokens
     //         .containsKey(community?.secondaryTokenAddress?.toLowerCase())
     //     ? store.state.cashWalletState
     //         .tokens[community?.secondaryTokenAddress?.toLowerCase()]
