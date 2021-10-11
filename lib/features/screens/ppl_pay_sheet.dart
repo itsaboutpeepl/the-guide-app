@@ -4,7 +4,7 @@ import 'package:peepl/features/shared/widgets/primary_button.dart';
 
 class PaymentSheet extends StatefulWidget {
   final String amount;
-  final Function sent;
+  final Function() sent;
 
   PaymentSheet(
     this.amount,
@@ -175,7 +175,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                       opacity: 1,
                       // labelFontWeight: FontWeight.normal,
                       label: "Pay",
-                      onPressed: widget.sent(),
+                      onPressed: widget.sent,
 
                       width: width * 0.3,
                     ),
