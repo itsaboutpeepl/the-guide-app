@@ -1,5 +1,8 @@
+import 'package:decimal/decimal.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
+import 'package:peepl/features/contacts/send_amount_arguments.dart';
+import 'package:peepl/features/screens/ppl_pay_sheet.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -11,14 +14,17 @@ import 'package:peepl/redux/actions/cash_wallet_actions.dart';
 import 'package:peepl/utils/stripe.dart';
 import 'package:peepl/models/community/community.dart';
 import 'package:peepl/models/tokens/token.dart';
+import 'package:peepl/features/contacts/send_amount_arguments.dart';
 
 class WebViewWidget extends StatefulWidget {
   final String url;
   final String walletAddress;
+  final SendFlowArguments pageArgs;
 
   WebViewWidget({
     required this.url,
     required this.walletAddress,
+    required this.pageArgs,
   });
 
   @override
@@ -54,6 +60,7 @@ class _WebViewWidgetState extends State<WebViewWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final SendFlowArguments args = this.widget.pageArgs;
     return StoreConnector<AppState, InAppWebViewViewModel>(
       converter: InAppWebViewViewModel.fromStore,
       builder: (_, InAppWebViewViewModel viewModel) {
@@ -86,14 +93,16 @@ class _WebViewWidgetState extends State<WebViewWidget> {
 
                   sendFailureCallback() {}
 
-                  viewModel.sendTokenFromWebView(
-                    paymentDetails['currency'],
-                    paymentDetails['destination'],
-                    paymentDetails['amount'],
-                    paymentDetails['orderId'],
-                    sendSuccessCallback,
-                    sendFailureCallback,
-                  );
+                  PaymentSheet(
+                      paymentDetails['amount'],
+                      viewModel.sendTokenFromWebView(
+                        paymentDetails['currency'],
+                        paymentDetails['destination'],
+                        paymentDetails['amount'],
+                        paymentDetails['orderId'],
+                        sendSuccessCallback,
+                        sendFailureCallback,
+                      ));
                 },
               );
 
