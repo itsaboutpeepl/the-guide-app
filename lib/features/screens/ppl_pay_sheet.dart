@@ -4,12 +4,11 @@ import 'package:peepl/features/shared/widgets/primary_button.dart';
 
 class PaymentSheet extends StatefulWidget {
   final String amount;
-  final String balance;
-  final String companyName;
+  final Function sent;
+
   PaymentSheet(
     this.amount,
-    this.balance,
-    this.companyName,
+    this.sent,
   );
 
   @override
@@ -60,7 +59,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                             top: 8.0,
                           ),
                           child: Text(
-                            widget.companyName,
+                            "Company",
                             style:
                                 TextStyle(color: Colors.blueGrey, fontSize: 15),
                           ),
@@ -176,7 +175,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                       opacity: 1,
                       // labelFontWeight: FontWeight.normal,
                       label: "Pay",
-                      onPressed: () {},
+                      onPressed: widget.sent(),
 
                       width: width * 0.3,
                     ),
