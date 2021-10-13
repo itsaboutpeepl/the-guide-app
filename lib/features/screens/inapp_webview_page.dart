@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:peepl/features/contacts/send_amount_arguments.dart';
 import 'package:peepl/features/screens/ppl_pay_sheet.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
@@ -61,6 +62,12 @@ class _WebViewWidgetState extends State<WebViewWidget> {
   @override
   Widget build(BuildContext context) {
     // final SendFlowArguments args = this.widget.pageArgs;
+
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
+
+    bool _value = false;
+
     return StoreConnector<AppState, InAppWebViewViewModel>(
       converter: InAppWebViewViewModel.fromStore,
       builder: (_, InAppWebViewViewModel viewModel) {
@@ -96,18 +103,187 @@ class _WebViewWidgetState extends State<WebViewWidget> {
                   showModalBottomSheet(
                       context: context,
                       builder: (builder) {
-                        return PaymentSheet(
-                          paymentDetails['amount'],
-                          viewModel.sendTokenFromWebView(
-                            paymentDetails['currency'],
-                            paymentDetails['destination'],
-                            paymentDetails['amount'],
-                            paymentDetails['orderId'],
-                            sendSuccessCallback,
-                            sendFailureCallback,
+                        return Container(
+                          height: height,
+                          color: Colors.transparent,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                              left: 15,
+                            ),
+                            child: Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                bottom: 8.0,
+                                                top: 8.0,
+                                              ),
+                                              child: Text(
+                                                "Pay with Peepl.Pay",
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                bottom: 8.0,
+                                                top: 8.0,
+                                              ),
+                                              child: Text(
+                                                "Company",
+                                                style: TextStyle(
+                                                    color: Colors.blueGrey,
+                                                    fontSize: 15),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                  Divider(),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(
+                                      "To pay send amount to the address:",
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        color: Colors.blueGrey,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Amount",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 15.0),
+                                    child: TextFormField(
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        hintText: "${paymentDetails['amount']}",
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 20.0, vertical: 5.0),
+                                        filled: true,
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Text(
+                                      "Address",
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(right: 15.0),
+                                    child: TextFormField(
+                                      enabled: false,
+                                      decoration: InputDecoration(
+                                        hintText:
+                                            '0xc0ffee254729296a45a3885639AC7E10F9d54979',
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: 20.0, vertical: 5.0),
+                                        filled: true,
+                                        floatingLabelBehavior:
+                                            FloatingLabelBehavior.never,
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          borderSide: BorderSide.none,
+                                        ),
+                                        suffixIcon: IconButton(
+                                          onPressed: () {},
+                                          icon: Icon(
+                                            Icons.copy_all_outlined,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Checkbox(
+                                          value: true,
+                                          onChanged: (_value) {
+                                            setState(() {
+                                              _value = false;
+                                            });
+                                          }),
+                                      Text('Use PPL rewards token?'),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                          right: 12.0,
+                                        ),
+                                        child: Text(
+                                          "Available: 2200 PPL(£22)",
+                                          style: TextStyle(
+                                            color: Colors.blueGrey,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(8.0),
+                                        child: PrimaryButton(
+                                          opacity: 1,
+                                          // labelFontWeight: FontWeight.normal,
+                                          label: "Pay",
+                                          onPressed: () {
+                                            viewModel.sendTokenFromWebView(
+                                              paymentDetails['currency'],
+                                              paymentDetails['destination'],
+                                              paymentDetails['amount'],
+                                              paymentDetails['orderId'],
+                                              sendSuccessCallback,
+                                              sendFailureCallback,
+                                            );
+                                            Navigator.of(context).pop();
+                                          },
+
+                                          width: width * 0.3,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         );
-                        ;
                       });
                 },
               );
