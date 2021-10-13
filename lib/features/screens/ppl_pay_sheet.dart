@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:peepl/features/shared/widgets/primary_button.dart';
 
 class PaymentSheet extends StatefulWidget {
-  final String amount;
-  final Function() sent;
+  final int amount;
+  final Function? sent;
 
   PaymentSheet(
     this.amount,
@@ -94,7 +94,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                 child: TextFormField(
                   enabled: false,
                   decoration: InputDecoration(
-                    hintText: widget.amount,
+                    hintText: "${widget.amount}",
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
                     filled: true,
@@ -175,7 +175,10 @@ class _PaymentSheetState extends State<PaymentSheet> {
                       opacity: 1,
                       // labelFontWeight: FontWeight.normal,
                       label: "Pay",
-                      onPressed: widget.sent,
+                      onPressed: () {
+                        widget.sent!();
+                        Navigator.pop(context);
+                      },
 
                       width: width * 0.3,
                     ),
