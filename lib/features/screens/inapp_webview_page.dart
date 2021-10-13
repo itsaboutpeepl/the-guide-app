@@ -19,12 +19,12 @@ import 'package:peepl/features/contacts/send_amount_arguments.dart';
 class WebViewWidget extends StatefulWidget {
   final String url;
   final String walletAddress;
-  final SendFlowArguments pageArgs;
+  // final SendFlowArguments pageArgs;
 
   WebViewWidget({
     required this.url,
     required this.walletAddress,
-    required this.pageArgs,
+    // required this.pageArgs,
   });
 
   @override
@@ -60,7 +60,7 @@ class _WebViewWidgetState extends State<WebViewWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final SendFlowArguments args = this.widget.pageArgs;
+    // final SendFlowArguments args = this.widget.pageArgs;
     return StoreConnector<AppState, InAppWebViewViewModel>(
       converter: InAppWebViewViewModel.fromStore,
       builder: (_, InAppWebViewViewModel viewModel) {
