@@ -1,10 +1,13 @@
 import 'dart:core';
+import 'dart:math' as math;
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:peepl/common/di/package_info.dart';
 import 'package:peepl/features/account/widgets/menu_tile.dart';
+import 'package:peepl/features/shared/widgets/primary_button.dart';
 import 'package:peepl/generated/l10n.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/viewsmodels/settings.dart';
@@ -14,6 +17,8 @@ import 'package:peepl/features/shared/widgets/my_scaffold.dart';
 
 class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
+    final width = MediaQuery.of(context).size.width;
     return MyScaffold(
       title: I10n.of(context).settings,
       body: StoreConnector<AppState, SettingsViewModel>(
