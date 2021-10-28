@@ -38,14 +38,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Theme.of(context).colorScheme.primaryVariant,
-              Theme.of(context).colorScheme.primary,
-            ],
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-          ),
+          color: Theme.of(context).colorScheme.primaryVariant,
         ),
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
@@ -67,7 +60,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Image.asset(
-                          'assets/images/splash.png',
+                          'assets/images/logo-4 1.svg',
                           width: 71,
                           height: 61,
                         ),

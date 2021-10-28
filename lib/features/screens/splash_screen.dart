@@ -126,15 +126,7 @@ class _SplashScreenState extends State<SplashScreen> {
         return Scaffold(
           body: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).colorScheme.primaryVariant,
-                  Theme.of(context).colorScheme.primary,
-                ],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
+                color: Theme.of(context).colorScheme.secondaryVariant),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(
