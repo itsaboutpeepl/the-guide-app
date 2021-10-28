@@ -34,7 +34,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
               Expanded(
                 flex: 6,
                 child: Image.asset(
-                  'assets/images/create-wallet-logo.png',
+                  'assets/images/splash.png',
                   width: 350,
                   height: 350,
                 ),

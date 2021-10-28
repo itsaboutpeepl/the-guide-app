@@ -126,7 +126,7 @@ class _SplashScreenState extends State<SplashScreen> {
         return Scaffold(
           body: Container(
             decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.secondaryVariant),
+                color: Theme.of(context).colorScheme.primaryVariant),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(

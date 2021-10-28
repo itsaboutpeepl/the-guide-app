@@ -60,9 +60,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Image.asset(
-                          'assets/images/logo-4 1.svg',
-                          width: 71,
-                          height: 61,
+                          'assets/images/splash.png',
+                          width: 80,
+                          height: 71,
                         ),
                       ],
                     ),
