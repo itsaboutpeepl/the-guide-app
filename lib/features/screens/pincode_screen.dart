@@ -47,7 +47,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
           children: <Widget>[
             Container(
               height: MediaQuery.of(context).size.height * .5,
-              width: MediaQuery.of(context).size.height * .5,
+              width: MediaQuery.of(context).size.width * .9,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -56,19 +56,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                     height: 100,
                   ),
                   Expanded(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Image.asset(
-                          'assets/images/splash.png',
-                          width: 80,
-                          height: 71,
-                        ),
-                      ],
+                    child: Image.asset(
+                      'assets/images/splash.png',
                     ),
-                  ),
-                  SizedBox(
-                    height: 100,
                   ),
                   Expanded(
                     child: Column(
