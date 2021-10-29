@@ -42,15 +42,15 @@ class _HeaderState extends State<Header> {
                 child: Text(
                   '${I10n.of(context).hi} ${viewModel.firstName()}',
                   style: TextStyle(
-                    color: Theme.of(context).canvasColor,
-                    fontSize: 22,
-                  ),
+                      color: Theme.of(context).canvasColor,
+                      fontSize: 32,
+                      fontWeight: FontWeight.w800),
                 ),
               ),
               Flexible(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
                       child: Balance(),

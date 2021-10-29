@@ -18,68 +18,82 @@ class Balance extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            Flexible(
-              child: Text(
-                I10n.of(context).balance,
-                style: TextStyle(
-                  color: Theme.of(context).canvasColor,
-                  fontSize: 13.0,
+            Row(
+              children: [
+                Flexible(
+                  child: Text(
+                    I10n.of(context).balance,
+                    style: TextStyle(
+                      color: Theme.of(context).canvasColor,
+                      fontSize: 13.0,
+                    ),
+                  ),
                 ),
-              ),
+                SizedBox(
+                  width: 35,
+                ),
+                Flexible(
+                  child: Text(
+                    I10n.of(context).rewards,
+                    style: TextStyle(
+                      color: Theme.of(context).canvasColor,
+                      fontSize: 13.0,
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Flexible(
-              child: Row(
-                children: [
-                  AutoSizeText.rich(
-                    TextSpan(
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: viewModel.gbpxbalance,
+            Row(
+              children: [
+                AutoSizeText.rich(
+                  TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: viewModel.gbpxbalance,
+                      ),
+                      TextSpan(
+                        text: ' GBPX',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w100,
+                          fontSize: 14,
+                          color: Theme.of(context).canvasColor,
                         ),
-                        TextSpan(
-                          text: ' GBPX',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Theme.of(context).canvasColor,
-                          ),
+                      ),
+                    ],
+                  ),
+                  style: TextStyle(
+                    color: Theme.of(context).canvasColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
+                  ),
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                AutoSizeText.rich(
+                  TextSpan(
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: viewModel.pplBalance,
+                      ),
+                      TextSpan(
+                        text: ' PPL',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w100,
+                          fontSize: 14,
+                          color: Theme.of(context).canvasColor,
                         ),
-                      ],
-                    ),
-                    style: TextStyle(
-                      color: Theme.of(context).canvasColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32,
-                    ),
+                      )
+                    ],
                   ),
-                  SizedBox(
-                    width: 30,
+                  style: TextStyle(
+                    color: Theme.of(context).canvasColor,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 40,
                   ),
-                  AutoSizeText.rich(
-                    TextSpan(
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: viewModel.pplBalance,
-                        ),
-                        TextSpan(
-                          text: ' Rewards',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                            color: Theme.of(context).canvasColor,
-                          ),
-                        )
-                      ],
-                    ),
-                    style: TextStyle(
-                      color: Theme.of(context).canvasColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 32,
-                    ),
-                  ),
-                ],
-              ),
-            )
+                ),
+              ],
+            ),
             // Flexible(
             //   child: AutoSizeText(
             //     '\$${viewModel.usdValue}',
