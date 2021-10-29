@@ -33,7 +33,11 @@ class GuideHomeScreen extends StatelessWidget {
             backgroundColor: Colors.black,
             child: Header(),
           ),
-          body: Tabs(),
+          body: Container(
+            child: Center(
+              child: Text("hello"),
+            ),
+          ),
         );
       },
     );
