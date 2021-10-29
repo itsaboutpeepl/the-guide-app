@@ -62,10 +62,11 @@ class BottomBar extends StatelessWidget {
         currentIndex: tabsRouter.activeIndex,
         backgroundColor: Theme.of(context).bottomAppBarColor,
         showUnselectedLabels: true,
+        //To do: Add internationalisation
         items: [
           bottomBarItem(I10n.of(context).home, 'home'),
-          bottomBarItem(I10n.of(context).top_up, 'topup'),
-          bottomBarItem('Order', 'order'),
+          bottomBarItem('Wallet', 'wallet'),
+          bottomBarItem('Shop', 'order'),
           bottomBarItem('Help', 'help'),
           // bottomBarItem('Tips', 'tips'),
           BottomNavigationBarItem(
