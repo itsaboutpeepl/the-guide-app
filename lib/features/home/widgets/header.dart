@@ -21,14 +21,7 @@ class _HeaderState extends State<Header> {
         return Container(
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                Theme.of(context).colorScheme.primaryVariant,
-                Theme.of(context).colorScheme.primary,
-              ],
-            ),
+            color: Theme.of(context).colorScheme.primaryVariant,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30.0),
               bottomRight: Radius.circular(30.0),
