@@ -36,10 +36,7 @@ enum TopupType { STRIPE, PLAID }
 
 class TopupScreen extends StatefulWidget {
   final TopupType topupType;
-  TopupScreen({
-    Key? key,
-    this.topupType = TopupType.STRIPE,
-  });
+  TopupScreen({Key? key, required this.topupType});
   @override
   _TopupScreenState createState() => _TopupScreenState();
 }

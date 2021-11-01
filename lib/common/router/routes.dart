@@ -3,6 +3,7 @@ import 'package:peepl/common/router/route_guards.dart';
 import 'package:peepl/features/account/router/router.dart';
 import 'package:peepl/features/buy/router/router.dart';
 import 'package:peepl/features/contacts/router/router.dart';
+import 'package:peepl/features/guideHome/router/router.dart';
 import 'package:peepl/features/help/router/router.dart';
 // import 'package:peepl/features/earn/router/router.dart';
 import 'package:peepl/features/home/router/router.dart';
@@ -38,6 +39,7 @@ export 'routes.gr.dart';
       page: MainScreen,
       guards: [AuthGuard],
       children: [
+        guideHomeTab,
         homeTab,
         topupTab,
         helpTab,
