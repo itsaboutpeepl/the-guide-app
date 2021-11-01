@@ -67,7 +67,7 @@ class BottomBar extends StatelessWidget {
           bottomBarItem(I10n.of(context).home, 'home'),
           bottomBarItem('Wallet', 'wallet'),
           bottomBarItem('Shop', 'order'),
-          bottomBarItem('Help', 'help'),
+          bottomBarItem('Top Up', 'topup'),
           // bottomBarItem('Tips', 'tips'),
           BottomNavigationBarItem(
             icon: Padding(

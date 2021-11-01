@@ -410,7 +410,8 @@ ThunkAction getTokenBalanceCall(Token token) {
         Object e,
         StackTrace s,
       ) {
-        log.error('Error - fetch token balance ${token.name} ${e.toString()}');
+        log.error(
+            'Error - fetch token balance ${token.name} ${e.toString()}, stack trace \n ${s.toString()}');
       };
       await token.fetchBalance(
         walletAddress,

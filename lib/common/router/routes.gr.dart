@@ -187,9 +187,8 @@ class RootRouter extends _i1.RootStackRouter {
         }),
     TopupScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (data) {
-          final args = data.argsAs<TopupScreenArgs>();
-          return _i17.TopupScreen(key: args.key, topupType: args.topupType);
+        builder: (_) {
+          return _i17.TopupScreen();
         }),
     TopupExplained.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -324,15 +323,13 @@ class RootRouter extends _i1.RootStackRouter {
         _i1.RouteConfig(MainScreen.name, path: '/main-screen', guards: [
           authGuard
         ], children: [
-          _i1.RouteConfig(GuideHomeTab.name,
-              path: 'guideHome',
-              guards: [authGuard],
-              children: [_i1.RouteConfig(GuideHomeScreen.name, path: '')]),
+          _i1.RouteConfig(GuideHomeTab.name, path: 'guideHome', children: [
+            _i1.RouteConfig(GuideHomeScreen.name, path: '', guards: [authGuard])
+          ]),
           _i1.RouteConfig(HomeTab.name, path: 'home', guards: [
             authGuard
           ], children: [
-            _i1.RouteConfig(HomeScreen.name,
-                path: 'home-screen', guards: [authGuard]),
+            _i1.RouteConfig(HomeScreen.name, path: '', guards: [authGuard]),
             _i1.RouteConfig(ActionDetailsScreen.name,
                 path: 'action-details-screen', guards: [authGuard])
           ]),
@@ -576,7 +573,7 @@ class GuideHomeScreen extends _i1.PageRouteInfo {
 }
 
 class HomeScreen extends _i1.PageRouteInfo {
-  const HomeScreen() : super(name, path: 'home-screen');
+  const HomeScreen() : super(name, path: '');
 
   static const String name = 'HomeScreen';
 }
@@ -624,21 +621,10 @@ class ActionDetailsScreenArgs {
   final _i38.Contact? contact;
 }
 
-class TopupScreen extends _i1.PageRouteInfo<TopupScreenArgs> {
-  TopupScreen({_i2.Key? key, required _i17.TopupType topupType})
-      : super(name,
-            path: 'topUp',
-            args: TopupScreenArgs(key: key, topupType: topupType));
+class TopupScreen extends _i1.PageRouteInfo {
+  const TopupScreen() : super(name, path: 'topUp');
 
   static const String name = 'TopupScreen';
-}
-
-class TopupScreenArgs {
-  const TopupScreenArgs({this.key, required this.topupType});
-
-  final _i2.Key? key;
-
-  final _i17.TopupType topupType;
 }
 
 class TopupExplained extends _i1.PageRouteInfo<TopupExplainedArgs> {

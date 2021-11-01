@@ -10,6 +10,7 @@ const homeTab = AutoRoute(
   guards: [AuthGuard],
   children: [
     AutoRoute(
+      initial: true,
       page: HomeScreen,
       name: 'homeScreen',
       guards: [AuthGuard],

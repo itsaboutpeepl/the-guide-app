@@ -60,7 +60,6 @@ class _MainScreenState extends State<MainScreen> {
           routes: [
             GuideHomeTab(),
             HomeTab(),
-            TopupTab(),
             WebviewTab(
               children: [
                 WebViewWidget(
@@ -69,7 +68,8 @@ class _MainScreenState extends State<MainScreen> {
                 )
               ],
             ),
-            HelpTab(),
+            TopupTab(),
+            // HelpTab(),
             // BuyTab(),
             AccountTab(),
             // ContactsTab(),

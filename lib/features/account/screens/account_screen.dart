@@ -7,8 +7,6 @@ import 'package:peepl/common/router/routes.dart';
 import 'package:peepl/common/router/routes.gr.dart';
 import 'package:peepl/features/account/widgets/avatar.dart';
 import 'package:peepl/features/account/widgets/menu_tile.dart';
-import 'package:peepl/features/topup/screens/topup.dart'
-    as topup; //was done because name is ambigous in the navigator push
 import 'package:peepl/generated/l10n.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/viewsmodels/account.dart';
@@ -93,8 +91,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               label: '${I10n.of(context).top_up} £',
                               menuIcon: 'top_up_icon.svg',
                               onTap: () {
-                                context.navigateTo(TopupScreen(
-                                    topupType: topup.TopupType.STRIPE));
+                                context.navigateTo(TopupScreen());
                               },
                             ),
                             MenuTile(
