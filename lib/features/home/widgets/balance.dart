@@ -34,7 +34,7 @@ class Balance extends StatelessWidget {
                 ),
                 Flexible(
                   child: Text(
-                    I10n.of(context).rewards,
+                    'Rewards',
                     style: TextStyle(
                       color: Theme.of(context).canvasColor,
                       fontSize: 13.0,

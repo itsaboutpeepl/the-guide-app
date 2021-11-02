@@ -2499,15 +2499,6 @@ class I10n {
       args: [],
     );
   }
-
-  String get rewards {
-    return Intl.message(
-      'Rewards',
-      name: 'rewards',
-      desc: '',
-      args: [],
-    );
-  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<I10n> {
