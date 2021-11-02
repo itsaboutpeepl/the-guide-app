@@ -63,7 +63,7 @@ class _MainScreenState extends State<MainScreen> {
             WebviewTab(
               children: [
                 WebViewWidget(
-                  url: '$peeplUrl/vendors?wallet=${vm.walletAddress}',
+                  url: 'https://www.shocal.org',
                   walletAddress: vm.walletAddress,
                 )
               ],

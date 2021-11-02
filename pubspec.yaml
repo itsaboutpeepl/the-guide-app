@@ -119,6 +119,19 @@ flutter:
           weight: 800
         - asset: assets/fonts/europa-bold-webfont.ttf
           weight: 900
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato/Lato-Light.ttf
+          weight: 100
+        - asset: assets/fonts/Lato/Lato-Thin.ttf
+          weight: 300
+        - asset: assets/fonts/Lato/Lato-Regular.ttf
+          weight: 500
+        - asset: assets/fonts/Lato/Lato-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Lato/Lato-Black.ttf
+          weight: 900
+
   uses-material-design: true
 flutter_intl:
   enabled: true
