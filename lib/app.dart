@@ -37,6 +37,7 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  //Authentication token used for calls with Fuse
   void setJwtToken(Store<AppState> store) {
     final String jwtToken = store.state.userState.jwtToken;
     if (![null, ''].contains(jwtToken)) {

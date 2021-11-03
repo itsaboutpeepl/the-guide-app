@@ -29,34 +29,50 @@ Future<AppState> loadState(persistor) async {
 
 Future<void> mainCommon(String env) async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //Makes it so that you cannot use the app in landscape mode
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
+
+  //choose a dev environment and load that file from .env folder
   final envFile = env == 'prod' ? '.env' : '.env_qa';
   await dotenv.load(fileName: 'environment/$envFile');
+
+// initialize stripe for payment
   new StripeService()..init();
+
   configureDependencies();
+
+//gets the entire app state from the user device storage.
   final Persistor<AppState> persistor = Persistor<AppState>(
     storage: SecureStorage(FlutterSecureStorage()),
     serializer: JsonSerializer<AppState>((json) => AppState.fromJson(json)),
     debug: kDebugMode,
   );
+
+//initial state is taken from the device storage
   AppState initialState = await loadState(persistor);
+
+//TODO: Ask what is this for?
   final List<Middleware<AppState>> wms = [
     thunkMiddleware,
     persistor.createMiddleware(),
   ];
 
+// If the app is built in Debug mode, you want to add a logger which prints
   if (kDebugMode) {
     wms.add(LoggingMiddleware.printer());
   }
 
+// Initialize the Redux Store with the initial state from the user device (if it exists)
   final Store<AppState> store = Store<AppState>(
     appReducer,
     initialState: initialState,
     middleware: wms,
   );
 
+//Sentry initialization for logging
   runZonedGuarded(() async {
     await SentryFlutter.init(
       (options) {
@@ -65,6 +81,8 @@ Future<void> mainCommon(String env) async {
         options.environment = env;
       },
     );
+
+    //Pass the store to the Main App which injects it into the entire tree.
     runApp(MyApp(store));
   }, (exception, stackTrace) async {
     if (kReleaseMode) {
