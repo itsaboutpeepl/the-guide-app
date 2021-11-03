@@ -22,12 +22,12 @@ class _CategoryTabBarState extends State<CategoryTabBar> {
         labelColor: Theme.of(context).colorScheme.primaryVariant,
         unselectedLabelColor: Colors.grey[400],
         labelStyle: TextStyle(
-            fontWeight: FontWeight.w900, fontSize: 20, fontFamily: 'Europa'),
+            fontWeight: FontWeight.w900, fontSize: 15, fontFamily: 'Europa'),
         labelPadding: EdgeInsets.symmetric(horizontal: 15),
         indicatorSize: TabBarIndicatorSize.label,
         tabs: [
           Tab(
-            child: Text("Watch & Earn"),
+            child: Text("Latest"),
           ),
           Tab(
             child: Text("Food & Drink"),
