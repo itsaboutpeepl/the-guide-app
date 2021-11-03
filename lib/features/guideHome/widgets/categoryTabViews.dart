@@ -14,14 +14,14 @@ class _CategoryTabViewsState extends State<CategoryTabViews> {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: EdgeInsets.all(15.0),
+      padding: EdgeInsets.only(left: 15.0, right: 15.0),
       sliver: SliverToBoxAdapter(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.32,
           child: TabBarView(
             controller: widget.tabController,
             children: [
-              //ToDo: Change to listviewbuilder
+              //ToDo: Change to listviewbuilders
               ListView(
                 children: [
                   CategoryArticle(),

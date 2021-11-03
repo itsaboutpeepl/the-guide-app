@@ -23,7 +23,7 @@ class _CategoryTabBarState extends State<CategoryTabBar> {
         unselectedLabelColor: Colors.grey[400],
         labelStyle: TextStyle(
             fontWeight: FontWeight.w900, fontSize: 15, fontFamily: 'Europa'),
-        labelPadding: EdgeInsets.symmetric(horizontal: 15),
+        labelPadding: EdgeInsets.symmetric(horizontal: 8),
         indicatorSize: TabBarIndicatorSize.label,
         tabs: [
           Tab(
