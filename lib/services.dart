@@ -5,6 +5,7 @@ import 'package:peepl/common/router/routes.gr.dart';
 import 'package:peepl/constants/urls.dart';
 import 'package:peepl/services/apis/explorer.dart';
 import 'package:peepl/services/apis/fuseswap.dart';
+import 'package:peepl/services/apis/news.dart';
 import 'package:peepl/utils/onboard/Istrategy.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:wallet_core/wallet_core.dart';
@@ -25,6 +26,8 @@ final Explorer ethereumExplorerApi = getIt<Explorer>(
 final API api = getIt<API>();
 
 final FuseSwapService fuseSwapService = getIt<FuseSwapService>();
+
+final NewsService newsService = getIt<NewsService>();
 
 final Graph graph = getIt<Graph>();
 
