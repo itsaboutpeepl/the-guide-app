@@ -9,7 +9,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:peepl/main_common.dart';
+import 'package:peepl/main.dart';
 import 'package:peepl/redux/reducers/app_reducer.dart';
 import 'package:peepl/utils/storage.dart';
 import 'package:redux/redux.dart';

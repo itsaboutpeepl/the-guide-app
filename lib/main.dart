@@ -27,7 +27,7 @@ Future<AppState> loadState(persistor) async {
   }
 }
 
-Future<void> mainCommon(String env) async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   //Makes it so that you cannot use the app in landscape mode
@@ -36,8 +36,8 @@ Future<void> mainCommon(String env) async {
   ]);
 
   //choose a dev environment and load that file from .env folder
-  final envFile = env == 'prod' ? '.env' : '.env_qa';
-  await dotenv.load(fileName: 'environment/$envFile');
+  // final envFile = env == 'prod' ? '.env' : '.env_qa';
+  await dotenv.load(fileName: 'environment/.env');
 
 // initialize stripe for payment
   new StripeService()..init();
@@ -78,7 +78,7 @@ Future<void> mainCommon(String env) async {
       (options) {
         options.debug = !kReleaseMode;
         options.dsn = dotenv.env['SENTRY_DSN'];
-        options.environment = env;
+        options.environment = "prod";
       },
     );
 
