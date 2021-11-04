@@ -21,42 +21,13 @@ class _CategoryTabViewsState extends State<CategoryTabViews> {
           child: TabBarView(
             controller: widget.tabController,
             children: [
-              //ToDo: Change to listviewbuilders
-              ListView(
-                children: [
-                  CategoryArticle(),
-                  CategoryArticle(),
-                  CategoryArticle(),
-                  CategoryArticle(),
-                  CategoryArticle(),
-                  CategoryArticle(),
-                  CategoryArticle(),
-                ],
-              ),
-              ListView(
-                children: [
-                  CategoryArticle(),
-                  CategoryArticle(),
-                ],
-              ),
-              ListView(
-                children: [
-                  CategoryArticle(),
-                  CategoryArticle(),
-                ],
-              ),
-              ListView(
-                children: [
-                  CategoryArticle(),
-                  CategoryArticle(),
-                ],
-              ),
-              ListView(
-                children: [
-                  CategoryArticle(),
-                  CategoryArticle(),
-                ],
-              ),
+              for (var index = 0; index < widget.tabController.length; index++)
+                ListView.separated(
+                    scrollDirection: Axis.vertical,
+                    itemBuilder: (_, index) => CategoryArticle(),
+                    separatorBuilder: (_, index) =>
+                        Padding(padding: EdgeInsets.only(bottom: 20)),
+                    itemCount: 5),
             ],
           ),
         ),
