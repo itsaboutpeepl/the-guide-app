@@ -13,6 +13,7 @@ class NewsService {
     dio.options.headers = Map.from({"Content-Type": 'application/json'});
   }
 
+  //TODO: need to start working with wordpress
   Future<BlogArticle> featuredArticle() async {
     Response response = await dio.get(
         'everything?q=tesla&from=2021-10-04&sortBy=publishedAt&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
