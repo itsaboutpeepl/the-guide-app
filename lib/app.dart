@@ -132,8 +132,6 @@ class _MyAppState extends State<MyApp> {
                 child: Center(
                   child: Image.asset(
                     'assets/images/splash.png',
-                    width: 71,
-                    height: 61,
                   ),
                 ),
               ),
