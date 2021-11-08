@@ -37,6 +37,7 @@ class _DetailVideoArticleState extends State<DetailVideoArticle> {
     super.dispose();
   }
 
+  //TODO: style and fix
   @override
   Widget build(BuildContext context) {
     return Scaffold(
