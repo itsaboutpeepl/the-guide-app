@@ -38,7 +38,7 @@ class CategoryArticle extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadius.all(Radius.circular(10)),
               child: Image.network(
-                "https://theguideliverpooldo.ams3.digitaloceanspaces.com/2021/10/image003-3.png",
+                "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
               ),
             ),
           ),

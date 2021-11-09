@@ -66,3 +66,29 @@ void showCopiedFlushbar(context) {
     ),
   )..show(context);
 }
+
+void showPlayBackCompletedFlushBar(context) {
+  Flushbar(
+    duration: Duration(seconds: 4),
+    boxShadows: [
+      BoxShadow(
+        offset: Offset(0.5, 0.5),
+        blurRadius: 5,
+      ),
+    ],
+    messageText: Text(
+      "Thanks for watching. Your Reward will be added to your wallet.",
+      textAlign: TextAlign.center,
+    ),
+    backgroundColor: Theme.of(context).bottomAppBarColor,
+    margin: EdgeInsets.only(
+      top: 8,
+      right: 8,
+      left: 8,
+      bottom: 10,
+    ),
+    borderRadius: BorderRadius.all(
+      Radius.circular(8.0),
+    ),
+  )..show(context);
+}

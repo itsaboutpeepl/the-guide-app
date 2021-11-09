@@ -181,7 +181,7 @@ class RootRouter extends _i1.RootStackRouter {
     DetailVideoArticle.name: (routeData) => _i1.CustomPage<dynamic>(
         routeData: routeData,
         builder: (_) {
-          return const _i16.DetailVideoArticle();
+          return _i16.DetailVideoArticle();
         },
         transitionsBuilder: _i1.TransitionsBuilders.slideBottom,
         durationInMilliseconds: 400,
