@@ -34,7 +34,7 @@ class _RecommendedArticlesState extends State<RecommendedArticles> {
               height: 15,
             ),
             Container(
-                height: MediaQuery.of(context).size.height * 0.45,
+                height: MediaQuery.of(context).size.height * 0.38,
                 child: ListView.separated(
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (_, index) => SingleRecommendedArticle(),

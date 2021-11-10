@@ -14,7 +14,7 @@ class _CategoryTabViewsState extends State<CategoryTabViews> {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: EdgeInsets.only(left: 15.0, right: 15.0),
+      padding: EdgeInsets.symmetric(horizontal: 7.0),
       sliver: SliverToBoxAdapter(
         child: Container(
           height: MediaQuery.of(context).size.height * 0.32,
@@ -23,6 +23,7 @@ class _CategoryTabViewsState extends State<CategoryTabViews> {
             children: [
               for (var index = 0; index < widget.tabController.length; index++)
                 ListView.separated(
+                    padding: EdgeInsets.symmetric(vertical: 10),
                     scrollDirection: Axis.vertical,
                     itemBuilder: (_, index) => CategoryArticle(),
                     separatorBuilder: (_, index) =>

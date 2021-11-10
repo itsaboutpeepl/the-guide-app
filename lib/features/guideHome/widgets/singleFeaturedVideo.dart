@@ -1,12 +1,9 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:peepl/common/router/routes.gr.dart';
 import 'package:peepl/features/guideHome/helpers/customControls.dart';
 import 'package:peepl/features/shared/widgets/snackbars.dart';
 import 'package:video_player/video_player.dart';
-import 'package:chewie/src/center_play_button.dart';
 
 class SingleFeaturedVideo extends StatefulWidget {
   const SingleFeaturedVideo({Key? key}) : super(key: key);
@@ -18,7 +15,6 @@ class SingleFeaturedVideo extends StatefulWidget {
 class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
-  bool isPlayBackCompleted = false;
 
   @override
   void initState() {
@@ -47,7 +43,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
   void _createChewieController() {
     _chewieController = ChewieController(
       videoPlayerController: _videoPlayerController,
-      autoPlay: true,
+      autoPlay: false,
       looping: false,
       autoInitialize: true,
       customControls: CustomControls(),
@@ -73,6 +69,13 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
         }
       },
     );
+  }
+
+  void _playAndToggle() {
+    _chewieController!.toggleFullScreen();
+    _chewieController!.isPlaying
+        ? _chewieController!.pause()
+        : _chewieController!.play();
   }
 
   @override
@@ -157,25 +160,8 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
               ),
             ),
           ),
-          // Positioned.fill(
-          //   child: CenterPlayButton(
-          //     backgroundColor: Colors.black54,
-          //     iconColor: Colors.white,
-          //     isFinished: _videoPlayerController.value.isLooping,
-          //     isPlaying: _videoPlayerController.value.isPlaying,
-          //     show: false,
-          //     onPressed: () => {_playAndToggle()},
-          //   ),
-          // ),
         ],
       ),
     );
-  }
-
-  void _playAndToggle() {
-    _chewieController!.toggleFullScreen();
-    _chewieController!.isPlaying
-        ? _chewieController!.pause()
-        : _chewieController!.play();
   }
 }

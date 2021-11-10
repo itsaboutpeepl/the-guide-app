@@ -47,10 +47,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
             FeaturedPost(),
             RecommendedArticles(),
             SliverPadding(
-                padding: EdgeInsets.only(
-                  right: 15.0,
-                  left: 15.0,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: 7),
                 sliver: CategoryTabBar(tabController: _tabController)),
             CategoryTabViews(tabController: _tabController),
             FeaturedVideos(),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/guideHome/screens/guideHome.dart';
 
 class SliverTabBarHeader extends SliverPersistentHeaderDelegate {
   final TabBar tabBar;
