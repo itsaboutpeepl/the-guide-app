@@ -31,7 +31,7 @@ class _FeaturedVideosState extends State<FeaturedVideos> {
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 20),
-              height: MediaQuery.of(context).size.height * 0.315,
+              height: MediaQuery.of(context).size.height * 0.26,
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, index) => SingleFeaturedVideo(),

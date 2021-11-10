@@ -1,7 +1,7 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:peepl/features/guideHome/widgets/customControls.dart';
+import 'package:peepl/features/guideHome/helpers/customControls.dart';
 import 'package:peepl/features/shared/widgets/snackbars.dart';
 import 'package:video_player/video_player.dart';
 
@@ -57,22 +57,19 @@ class _DetailVideoArticleState extends State<DetailVideoArticle> {
       deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
       allowPlaybackSpeedChanging: false,
       allowedScreenSleep: false,
-      // materialProgressColors: ChewieProgressColors(
-      //   playedColor: Colors.red,
-      //   handleColor: Colors.blue,
-      //   backgroundColor: Colors.grey,
-      //   bufferedColor: Colors.lightGreen,
-      // )
     );
 
-    _videoPlayerController.addListener(() {
-      if (_videoPlayerController.value.position ==
-          _videoPlayerController.value.duration) {
-        _chewieController!.exitFullScreen();
-        Future.delayed(Duration(seconds: 1),
-            () => {showPlayBackCompletedFlushBar(context)});
-      }
-    });
+    //Listener that checks for playback completion.
+    _videoPlayerController.addListener(
+      () {
+        if (_videoPlayerController.value.position ==
+            _videoPlayerController.value.duration) {
+          _chewieController!.exitFullScreen();
+          Future.delayed(Duration(seconds: 1),
+              () => {showPlayBackCompletedFlushBar(context)});
+        }
+      },
+    );
   }
 
   @override
@@ -83,7 +80,11 @@ class _DetailVideoArticleState extends State<DetailVideoArticle> {
               automaticallyImplyLeading: true,
               actions: [
                 IconButton(
-                    onPressed: () => {}, icon: Icon(Icons.share, size: 25.0))
+                    onPressed: () => {},
+                    icon: Icon(
+                      Icons.share,
+                      size: 25.0,
+                    ))
               ],
             ),
             body: Padding(
@@ -149,9 +150,4 @@ class _DetailVideoArticleState extends State<DetailVideoArticle> {
             child: Text("Playback Finished"),
           );
   }
-}
-
-bool isPlayBackCompleted(ChewieController chewieController) {
-  return chewieController.videoPlayerController.value.position ==
-      chewieController.videoPlayerController.value.duration;
 }

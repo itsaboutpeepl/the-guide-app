@@ -6,7 +6,6 @@ import 'package:peepl/features/guideHome/widgets/categoryTabViews.dart';
 import 'package:peepl/features/guideHome/widgets/featuredPost.dart';
 import 'package:peepl/features/guideHome/widgets/featuredVideos.dart';
 import 'package:peepl/features/guideHome/widgets/recommendedArticles.dart';
-import 'package:peepl/features/home/widgets/header.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/news_actions.dart';
 import 'package:peepl/redux/viewsmodels/featuredPost.dart';
