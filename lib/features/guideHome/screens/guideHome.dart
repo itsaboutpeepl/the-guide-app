@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideHome/widgets/SliverAppBar.dart';
 import 'package:peepl/features/guideHome/widgets/categoryTabBar.dart';
 import 'package:peepl/features/guideHome/widgets/categoryTabViews.dart';
+import 'package:peepl/features/guideHome/widgets/eventsCalendar.dart';
 import 'package:peepl/features/guideHome/widgets/featuredPost.dart';
 import 'package:peepl/features/guideHome/widgets/featuredVideos.dart';
 import 'package:peepl/features/guideHome/widgets/recommendedArticles.dart';
@@ -51,6 +52,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
                 sliver: CategoryTabBar(tabController: _tabController)),
             CategoryTabViews(tabController: _tabController),
             FeaturedVideos(),
+            EventCalendar(),
           ],
         );
       },

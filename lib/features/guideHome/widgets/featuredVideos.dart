@@ -30,8 +30,8 @@ class _FeaturedVideosState extends State<FeaturedVideos> {
               color: Theme.of(context).colorScheme.primaryVariant,
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 20),
-              height: MediaQuery.of(context).size.height * 0.26,
+              margin: EdgeInsets.symmetric(vertical: 10),
+              height: MediaQuery.of(context).size.height * 0.3,
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (_, index) => SingleFeaturedVideo(),

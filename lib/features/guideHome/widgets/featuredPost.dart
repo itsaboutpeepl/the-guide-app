@@ -1,7 +1,7 @@
-import 'package:auto_route/src/router/auto_router_x.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/common/router/routes.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:peepl/features/guideHome/helpers/detailArticleBottomModal.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/viewsmodels/featuredPost.dart';
 
@@ -29,8 +29,13 @@ Widget featuredPost(BuildContext context, FeaturedPostViewModel viewModel) {
     sliver: SliverToBoxAdapter(
       child: InkWell(
         onTap: () => {
-          context.router
-              .push(DetailBlogArticle(blogArticle: viewModel.blogArticle))
+          // context.router
+          //     .push(DetailBlogArticle(blogArticle: viewModel.blogArticle))
+          showBarModalBottomSheet(
+            context: context,
+            builder: (context) =>
+                DetailArticleBottomModel(articleData: viewModel.blogArticle),
+          )
         },
         child: Card(
           color: Colors.grey[100],

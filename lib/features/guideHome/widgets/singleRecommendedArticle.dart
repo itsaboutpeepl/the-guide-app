@@ -14,6 +14,7 @@ class SingleRecommendedArticle extends StatelessWidget {
             borderRadius: BorderRadius.all(Radius.circular(10)),
             child: Image.network(
               "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
+              fit: BoxFit.cover,
             ),
           ),
           SizedBox(height: 10),

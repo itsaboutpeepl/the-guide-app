@@ -9,7 +9,7 @@ import 'package:peepl/features/shared/widgets/my_scaffold.dart';
 import 'package:peepl/features/shared/widgets/primary_button.dart';
 import 'dart:core';
 import 'package:qr_flutter/qr_flutter.dart';
-import 'package:share/share.dart';
+import 'package:share_plus/share_plus.dart';
 
 class ReceiveScreen extends StatelessWidget {
   @override

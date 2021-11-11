@@ -18,7 +18,6 @@ class CategoryArticle extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width * 0.65,
             child: Column(
-              mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
                   "City Council release statement following news that Liverpool is to be given £22m of Government funding",
@@ -32,13 +31,17 @@ class CategoryArticle extends StatelessWidget {
             ),
           ),
           SizedBox(
-            width: 15,
+            width: 10,
           ),
           Expanded(
-            child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: Image.network(
-                "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
+            child: Container(
+              height: 90,
+              child: ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(5)),
+                child: Image.network(
+                  "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),

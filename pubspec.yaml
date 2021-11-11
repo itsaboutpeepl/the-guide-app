@@ -42,7 +42,7 @@ dependencies:
   google_maps_flutter: ^2.0.6
   equatable: ^2.0.3
   package_info: ^2.0.2
-  share: ^2.0.4
+  share_plus: ^3.0.4
   flutter_svg: ^0.22.0
   cupertino_icons: ^1.0.2
   flutter_secure_storage: ^4.2.0
