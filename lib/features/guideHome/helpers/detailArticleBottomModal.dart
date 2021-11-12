@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:contacts_service/contacts_service.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:peepl/models/articles/blogArticle.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 // Widget detailedBlogArticleView(
 //     BuildContext context, BlogArticle articleData, List<String> images) {}
@@ -29,11 +31,19 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
     "https://images2.markets.businessinsider.com/6126706ea86463001841ef9a?format=jpeg",
     "https://s.hdnux.com/photos/01/22/61/74/21700373/3/rawImage.jpg",
   ];
+
+  List<NetworkImage> _networkImages = [];
+
   late Timer _timer;
 
   @override
   void initState() {
     super.initState();
+
+    _images.forEach((element) {
+      _networkImages.add(NetworkImage(element));
+    });
+
     _timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       if (mounted) {
         setState(() {
@@ -68,25 +78,22 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
               Container(
                 width: double.infinity,
                 height: 300.0,
-                child: CachedNetworkImage(
-                  fadeInDuration: Duration(seconds: 1),
-                  fadeOutCurve: Curves.easeOutQuad,
-                  fadeOutDuration: Duration(seconds: 1),
-                  imageUrl: _images[_currentIndex],
-                  fit: BoxFit.cover,
+                child: CarouselSlider(
+                  items: _images
+                      .map(
+                        (item) => CachedNetworkImage(
+                          imageUrl: item,
+                          fit: BoxFit.cover,
+                        ),
+                      )
+                      .toList(),
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    height: double.infinity,
+                    viewportFraction: 1,
+                    autoPlayCurve: Curves.slowMiddle,
+                  ),
                 ),
-                // child: AnimatedSwitcher(
-                //   duration: Duration(milliseconds: 1000),
-                //   transitionBuilder:
-                //       (Widget child, Animation<double> animation) {
-                //     return FadeTransition(child: child, opacity: animation);
-                //   },
-                //   child: CachedNetworkImage(
-                //     imageUrl:
-                //         "https://s.hdnux.com/photos/01/22/61/74/21700373/3/rawImage.jpg",
-                //     fit: BoxFit.cover,
-                //   ),
-                // ),
               ),
               Padding(
                 padding: EdgeInsets.all(15.0),
@@ -121,10 +128,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                       height: 10,
                     ),
                     Text(
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." +
-                          "Tempor orci dapibus ultrices in iaculis nunc sed augue lacus. Venenatis cras sed felis eget. " +
-                          "Adipiscing vitae proin sagittis nisl rhoncus. Sagittis orci a scelerisque purus semper. " +
-                          "Non quam lacus suspendisse faucibus interdum posuere lorem.",
+                      widget.articleData.content,
                       style: TextStyle(fontSize: 18.0),
                     )
                   ],

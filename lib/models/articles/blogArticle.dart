@@ -16,6 +16,7 @@ class BlogArticle with _$BlogArticle {
     required List<String> category,
     required int postID,
     required String postURL,
+    required String content,
   }) = _BlogArticle;
 
   factory BlogArticle.fromJson(dynamic json) => _$BlogArticleFromJson(json);

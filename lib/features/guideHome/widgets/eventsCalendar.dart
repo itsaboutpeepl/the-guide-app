@@ -24,7 +24,7 @@ class _EventCalendarState extends State<EventCalendar> {
               ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 child: Image.network(
-                  "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
+                  "https://www.ssearena.co.uk/assets/img/fbs-1440x810-c08f628e73.jpg",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -72,7 +72,7 @@ class _EventCalendarState extends State<EventCalendar> {
                         Colors.transparent,
                         Colors.black,
                       ],
-                      stops: [0.4, 1.0],
+                      stops: [0.4, 0.8],
                     ),
                   ),
                   child: Padding(

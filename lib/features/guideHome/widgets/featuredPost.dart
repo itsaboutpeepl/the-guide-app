@@ -32,6 +32,8 @@ Widget featuredPost(BuildContext context, FeaturedPostViewModel viewModel) {
           // context.router
           //     .push(DetailBlogArticle(blogArticle: viewModel.blogArticle))
           showBarModalBottomSheet(
+            useRootNavigator: true,
+            backgroundColor: Colors.cyan,
             context: context,
             builder: (context) =>
                 DetailArticleBottomModel(articleData: viewModel.blogArticle),
@@ -86,7 +88,7 @@ Widget featuredPost(BuildContext context, FeaturedPostViewModel viewModel) {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Text(
-                  "Liverpool City Council’s culture and development leads have welcomed the first significant, direct DCMS capital investment in Liverpool for ten years.",
+                  viewModel.blogArticle.content,
                   style: TextStyle(fontSize: 15),
                 ),
               ),

@@ -15,6 +15,7 @@ class SingleFeaturedVideo extends StatefulWidget {
 class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
+  bool _isPlayBackCompletedOnce = false;
 
   @override
   void initState() {
@@ -63,20 +64,31 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
     _videoPlayerController.addListener(
       () {
         if (_videoPlayerController.value.position ==
-            _videoPlayerController.value.duration) {
+                _videoPlayerController.value.duration &&
+            !_isPlayBackCompletedOnce) {
           _chewieController!.exitFullScreen();
-          Future.delayed(Duration(seconds: 1),
-              () => {showPlayBackCompletedFlushBar(context)});
+          _isPlayBackCompletedOnce = true;
+
+          Future.delayed(
+            Duration(seconds: 1),
+            () => {
+              showPlayBackCompletedFlushBar(context),
+            },
+          );
+
+          if (!_chewieController!.isFullScreen) {
+            _videoPlayerController.pause();
+          }
         }
       },
     );
   }
 
   void _playAndToggle() {
-    _chewieController!.toggleFullScreen();
     _chewieController!.isPlaying
         ? _chewieController!.pause()
         : _chewieController!.play();
+    _chewieController!.toggleFullScreen();
   }
 
   @override

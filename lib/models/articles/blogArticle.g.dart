@@ -14,6 +14,7 @@ _$_BlogArticle _$_$_BlogArticleFromJson(Map<String, dynamic> json) {
         (json['category'] as List<dynamic>).map((e) => e as String).toList(),
     postID: json['postID'] as int,
     postURL: json['postURL'] as String,
+    content: json['content'] as String,
   );
 }
 
@@ -24,4 +25,5 @@ Map<String, dynamic> _$_$_BlogArticleToJson(_$_BlogArticle instance) =>
       'category': instance.category,
       'postID': instance.postID,
       'postURL': instance.postURL,
+      'content': instance.content,
     };

@@ -25,13 +25,15 @@ class _$BlogArticleTearOff {
       required String imageURL,
       required List<String> category,
       required int postID,
-      required String postURL}) {
+      required String postURL,
+      required String content}) {
     return _BlogArticle(
       title: title,
       imageURL: imageURL,
       category: category,
       postID: postID,
       postURL: postURL,
+      content: content,
     );
   }
 
@@ -50,6 +52,7 @@ mixin _$BlogArticle {
   List<String> get category => throw _privateConstructorUsedError;
   int get postID => throw _privateConstructorUsedError;
   String get postURL => throw _privateConstructorUsedError;
+  String get content => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -67,7 +70,8 @@ abstract class $BlogArticleCopyWith<$Res> {
       String imageURL,
       List<String> category,
       int postID,
-      String postURL});
+      String postURL,
+      String content});
 }
 
 /// @nodoc
@@ -85,6 +89,7 @@ class _$BlogArticleCopyWithImpl<$Res> implements $BlogArticleCopyWith<$Res> {
     Object? category = freezed,
     Object? postID = freezed,
     Object? postURL = freezed,
+    Object? content = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -107,6 +112,10 @@ class _$BlogArticleCopyWithImpl<$Res> implements $BlogArticleCopyWith<$Res> {
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
+      content: content == freezed
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -123,7 +132,8 @@ abstract class _$BlogArticleCopyWith<$Res>
       String imageURL,
       List<String> category,
       int postID,
-      String postURL});
+      String postURL,
+      String content});
 }
 
 /// @nodoc
@@ -143,6 +153,7 @@ class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
     Object? category = freezed,
     Object? postID = freezed,
     Object? postURL = freezed,
+    Object? content = freezed,
   }) {
     return _then(_BlogArticle(
       title: title == freezed
@@ -165,6 +176,10 @@ class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
+      content: content == freezed
+          ? _value.content
+          : content // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -178,7 +193,8 @@ class _$_BlogArticle extends _BlogArticle {
       required this.imageURL,
       required this.category,
       required this.postID,
-      required this.postURL})
+      required this.postURL,
+      required this.content})
       : super._();
 
   factory _$_BlogArticle.fromJson(Map<String, dynamic> json) =>
@@ -194,10 +210,12 @@ class _$_BlogArticle extends _BlogArticle {
   final int postID;
   @override
   final String postURL;
+  @override
+  final String content;
 
   @override
   String toString() {
-    return 'BlogArticle(title: $title, imageURL: $imageURL, category: $category, postID: $postID, postURL: $postURL)';
+    return 'BlogArticle(title: $title, imageURL: $imageURL, category: $category, postID: $postID, postURL: $postURL, content: $content)';
   }
 
   @override
@@ -215,7 +233,10 @@ class _$_BlogArticle extends _BlogArticle {
             (identical(other.postID, postID) ||
                 const DeepCollectionEquality().equals(other.postID, postID)) &&
             (identical(other.postURL, postURL) ||
-                const DeepCollectionEquality().equals(other.postURL, postURL)));
+                const DeepCollectionEquality()
+                    .equals(other.postURL, postURL)) &&
+            (identical(other.content, content) ||
+                const DeepCollectionEquality().equals(other.content, content)));
   }
 
   @override
@@ -225,7 +246,8 @@ class _$_BlogArticle extends _BlogArticle {
       const DeepCollectionEquality().hash(imageURL) ^
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(postID) ^
-      const DeepCollectionEquality().hash(postURL);
+      const DeepCollectionEquality().hash(postURL) ^
+      const DeepCollectionEquality().hash(content);
 
   @JsonKey(ignore: true)
   @override
@@ -244,7 +266,8 @@ abstract class _BlogArticle extends BlogArticle {
       required String imageURL,
       required List<String> category,
       required int postID,
-      required String postURL}) = _$_BlogArticle;
+      required String postURL,
+      required String content}) = _$_BlogArticle;
   _BlogArticle._() : super._();
 
   factory _BlogArticle.fromJson(Map<String, dynamic> json) =
@@ -260,6 +283,8 @@ abstract class _BlogArticle extends BlogArticle {
   int get postID => throw _privateConstructorUsedError;
   @override
   String get postURL => throw _privateConstructorUsedError;
+  @override
+  String get content => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BlogArticleCopyWith<_BlogArticle> get copyWith =>

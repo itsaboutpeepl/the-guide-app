@@ -284,6 +284,7 @@ class _CustomControlsState extends State<CustomControls>
       notifier.hideStuff = true;
 
       chewieController.toggleFullScreen();
+      chewieController.pause();
       _showAfterExpandCollapseTimer =
           Timer(const Duration(milliseconds: 300), () {
         setState(() {

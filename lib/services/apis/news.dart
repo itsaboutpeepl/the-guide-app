@@ -22,7 +22,6 @@ class NewsService {
 
     List<String> category = [];
     category.add(results[0]['author']);
-    category.add("hello");
 
     return BlogArticle(
       postID: 21312,
@@ -30,6 +29,7 @@ class NewsService {
       title: results[0]['title'],
       postURL: results[0]['url'],
       category: category,
+      content: results[0]['content'],
     );
   }
 }
