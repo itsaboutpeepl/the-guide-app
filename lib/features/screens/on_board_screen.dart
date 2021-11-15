@@ -82,6 +82,7 @@ class _OnBoardScreenState extends State<OnBoardScreen>
             Expanded(
               flex: 20,
               child: Container(
+                color: Color(0xFF011C35),
                 child: Column(
                   children: <Widget>[
                     Expanded(

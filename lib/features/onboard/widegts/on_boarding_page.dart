@@ -33,7 +33,11 @@ class WelcomeFrame extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 30.0, top: 30),
               child: Text(
                 title,
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
