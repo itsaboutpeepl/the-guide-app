@@ -204,12 +204,15 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - Stripe (21.5.1):
-    - Stripe/Stripe3DS2 (= 21.5.1)
-  - Stripe/Stripe3DS2 (21.5.1)
+  - Stripe (21.7.0):
+    - Stripe/Stripe3DS2 (= 21.7.0)
+    - StripeCore (= 21.7.0)
+  - Stripe/Stripe3DS2 (21.7.0):
+    - StripeCore (= 21.7.0)
   - stripe_ios (0.0.1):
     - Flutter
-    - Stripe (~> 21.5.1)
+    - Stripe (~> 21.7.0)
+  - StripeCore (21.7.0)
   - url_launcher (0.0.1):
     - Flutter
   - video_player (0.0.1):
@@ -282,6 +285,7 @@ SPEC REPOS:
     - Segment-Amplitude
     - Sentry
     - Stripe
+    - StripeCore
 
 EXTERNAL SOURCES:
   app_tracking_transparency:
@@ -402,8 +406,9 @@ SPEC CHECKSUMS:
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences: af6bfa751691cdc24be3045c43ec037377ada40d
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  Stripe: 515db5536fd659b5d79a0898ce1b882b61ab597e
-  stripe_ios: ce035050135b58a5a838e0d410d53b26f1dc026a
+  Stripe: 90596971ef49bade169f68bc59369a796b30a045
+  stripe_ios: 669a91fd06d17954dedeaebec35c56bf1c72a602
+  StripeCore: c09b492efc3b269a6ff875ad738ca366db97e03b
   url_launcher: 6fef411d543ceb26efce54b05a0a40bfd74cbbef
   video_player: ecd305f42e9044793efd34846e1ce64c31ea6fcb
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f

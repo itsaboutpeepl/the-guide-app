@@ -35,6 +35,11 @@ class TopUpViewModel {
 enum TopupType { STRIPE, PLAID }
 
 class TopupScreen extends StatefulWidget {
+  final TopupType topupType;
+  TopupScreen({
+    Key? key,
+    this.topupType = TopupType.STRIPE,
+  });
   @override
   _TopupScreenState createState() => _TopupScreenState();
 }
@@ -102,7 +107,6 @@ class _TopupScreenState extends State<TopupScreen>
 
   /* void _handlePlaid(String walletAddress) async {
     PlaidLink _plaidLinkToken;
-
     Response response = await getIt<Dio>().post(
       '$topUpService/plaid/create_link_token_for_payment',
       options: Options(
@@ -117,7 +121,6 @@ class _TopupScreenState extends State<TopupScreen>
         'isAndroid': Platform.isAndroid
       },
     );
-
     if (response.data['link_token'] != null) {
       _plaidLinkToken = PlaidLink(
         configuration: LinkTokenConfiguration(
@@ -140,6 +143,7 @@ class _TopupScreenState extends State<TopupScreen>
   // Main function to initiate a payment.
   Future<void> _handleStripe({
     required String walletAddress,
+    String? errorMessage,
   }) async {
     try {
       Map<String, dynamic> _paymentSheetData = await _createPaymentIntent(
@@ -154,20 +158,28 @@ class _TopupScreenState extends State<TopupScreen>
         paymentSheetParameters: SetupPaymentSheetParameters(
           applePay: false,
           googlePay: false,
-          style: ThemeMode.dark,
+          style: ThemeMode.light,
           testEnv: true,
           merchantCountryCode: 'GB',
           merchantDisplayName: 'Peepl',
           paymentIntentClientSecret: paymentIntentClientSecret,
         ),
       );
-      await Stripe.instance.presentPaymentSheet(
-        parameters: PresentPaymentSheetParameters(
-          clientSecret: paymentIntentClientSecret,
-          confirmPayment: true,
-        ),
-      );
+      await Stripe.instance.presentPaymentSheet();
       //TODO: add timer for dialog
+
+    } on Exception catch (e) {
+      if (e is StripeException) {
+        errorMessage = e.error.localizedMessage;
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("$errorMessage"),
+          ),
+        );
+      }
+    }
+
+    if (errorMessage == null) {
       showDialog(
         context: context,
         builder: (context) {
@@ -175,17 +187,20 @@ class _TopupScreenState extends State<TopupScreen>
         },
         barrierDismissible: false,
       );
-    } catch (e) {
-      showDialog(
-        context: context,
-        builder: (context) => TopUpFailed(),
-      );
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          content: Text('Unforeseen error: ${e}'),
-        ),
-      );
     }
+
+    //   else {
+    //     showDialog(
+    //       context: context,
+    //       builder: (context) => TopUpFailed(),
+    //     );
+    //     ScaffoldMessenger.of(context).showSnackBar(
+    //       SnackBar(
+    //         content: Text('Unforeseen error: ${e}'),
+    //       ),
+    //     );
+    //   }
+    // }
   }
 
   Future<Map<String, dynamic>> _createPaymentIntent({
@@ -220,7 +235,6 @@ class _TopupScreenState extends State<TopupScreen>
       walletAddress: walletAddress,
       currency: 'GBP',
     );
-
     // Timer timer = Timer(Duration(seconds: 25), () {
     //   Navigator.of(context, rootNavigator: true).pop();
     //   showDialog(
@@ -229,7 +243,6 @@ class _TopupScreenState extends State<TopupScreen>
     //     barrierDismissible: true,
     //   );
     // });
-
     if (response.ok) {
       Segment.track(eventName: 'TopUp Success, Token Minting..');
       showDialog(
