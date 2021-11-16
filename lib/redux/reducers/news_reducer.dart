@@ -10,5 +10,5 @@ NewsState _getFeaturedPost(
   NewsState state,
   UpdateFeaturedPost action,
 ) {
-  return state.copyWith(featuredPost: action.newArticle);
+  return state.copyWith(featuredPosts: action.listOfFeaturedArticles);
 }
