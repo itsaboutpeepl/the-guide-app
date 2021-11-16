@@ -17,7 +17,7 @@ class _CategoryTabViewsState extends State<CategoryTabViews> {
       padding: EdgeInsets.symmetric(horizontal: 7.0),
       sliver: SliverToBoxAdapter(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.32,
+          height: MediaQuery.of(context).size.height * 0.2,
           child: TabBarView(
             controller: widget.tabController,
             children: [
