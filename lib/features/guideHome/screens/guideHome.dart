@@ -4,12 +4,11 @@ import 'package:peepl/features/guideHome/widgets/SliverAppBar.dart';
 import 'package:peepl/features/guideHome/widgets/categoryTabBar.dart';
 import 'package:peepl/features/guideHome/widgets/categoryTabViews.dart';
 import 'package:peepl/features/guideHome/widgets/eventsCalendar.dart';
-import 'package:peepl/features/guideHome/widgets/featuredPost.dart';
+import 'package:peepl/features/guideHome/widgets/featuredPostStack.dart';
 import 'package:peepl/features/guideHome/widgets/featuredVideos.dart';
-import 'package:peepl/features/guideHome/widgets/recommendedArticles.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/news_actions.dart';
-import 'package:peepl/redux/viewsmodels/featuredPost.dart';
+import 'package:peepl/redux/viewsmodels/featuredPostStack.dart';
 
 class GuideHomeScreen extends StatefulWidget {
   const GuideHomeScreen({
@@ -34,9 +33,9 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, FeaturedPostViewModel>(
+    return StoreConnector<AppState, FeaturedPostStackViewModel>(
       distinct: true,
-      converter: FeaturedPostViewModel.fromStore,
+      converter: FeaturedPostStackViewModel.fromStore,
       onInit: (store) {
         store.dispatch(fetchFeaturedPost());
       },
@@ -45,14 +44,15 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
           controller: _scrollController,
           slivers: [
             MySliverAppBar(),
-            FeaturedPost(),
-            RecommendedArticles(),
-            SliverPadding(
-                padding: EdgeInsets.symmetric(horizontal: 7),
-                sliver: CategoryTabBar(tabController: _tabController)),
-            CategoryTabViews(tabController: _tabController),
-            FeaturedVideos(),
+            FeaturedPostStack(
+              onCardChanged: () {
+                setState(() {});
+              },
+            ),
             EventCalendar(),
+            FeaturedVideos(),
+            CategoryTabBar(tabController: _tabController),
+            CategoryTabViews(tabController: _tabController),
           ],
         );
       },
