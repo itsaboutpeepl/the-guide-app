@@ -14,7 +14,7 @@ class NewsState with _$NewsState {
 
   @JsonSerializable()
   factory NewsState({
-    required BlogArticle featuredPost,
+    required List<BlogArticle> featuredPosts,
     required List<BlogArticle> listOfRecommendedArticles,
     required List<String> categoryNames,
     required List<CategoryArticles> categoryArticles,
@@ -22,13 +22,7 @@ class NewsState with _$NewsState {
   }) = _NewsState;
 
   factory NewsState.initial() => NewsState(
-      featuredPost: BlogArticle(
-          category: ["Test Category"],
-          title: "TESTING BLOGS",
-          imageURL: "https://picsum.photos/200/300",
-          postID: 21312,
-          postURL: "google.com",
-          content: ""),
+      featuredPosts: [],
       categoryArticles: [],
       listOfRecommendedArticles: [],
       categoryNames: ["Latest, Features, Eat, Club, Test"],

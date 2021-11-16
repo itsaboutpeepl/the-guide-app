@@ -8,7 +8,9 @@ part of 'news_state.dart';
 
 _$_NewsState _$_$_NewsStateFromJson(Map<String, dynamic> json) {
   return _$_NewsState(
-    featuredPost: BlogArticle.fromJson(json['featuredPost']),
+    featuredPosts: (json['featuredPosts'] as List<dynamic>)
+        .map((e) => BlogArticle.fromJson(e))
+        .toList(),
     listOfRecommendedArticles:
         (json['listOfRecommendedArticles'] as List<dynamic>)
             .map((e) => BlogArticle.fromJson(e))
@@ -27,7 +29,7 @@ _$_NewsState _$_$_NewsStateFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_NewsStateToJson(_$_NewsState instance) =>
     <String, dynamic>{
-      'featuredPost': instance.featuredPost.toJson(),
+      'featuredPosts': instance.featuredPosts.map((e) => e.toJson()).toList(),
       'listOfRecommendedArticles':
           instance.listOfRecommendedArticles.map((e) => e.toJson()).toList(),
       'categoryNames': instance.categoryNames,

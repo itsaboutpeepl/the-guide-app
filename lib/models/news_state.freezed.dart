@@ -21,13 +21,13 @@ class _$NewsStateTearOff {
   const _$NewsStateTearOff();
 
   _NewsState call(
-      {required BlogArticle featuredPost,
+      {required List<BlogArticle> featuredPosts,
       required List<BlogArticle> listOfRecommendedArticles,
       required List<String> categoryNames,
       required List<CategoryArticles> categoryArticles,
       required List<VideoArticle> featuredVideos}) {
     return _NewsState(
-      featuredPost: featuredPost,
+      featuredPosts: featuredPosts,
       listOfRecommendedArticles: listOfRecommendedArticles,
       categoryNames: categoryNames,
       categoryArticles: categoryArticles,
@@ -45,7 +45,7 @@ const $NewsState = _$NewsStateTearOff();
 
 /// @nodoc
 mixin _$NewsState {
-  BlogArticle get featuredPost => throw _privateConstructorUsedError;
+  List<BlogArticle> get featuredPosts => throw _privateConstructorUsedError;
   List<BlogArticle> get listOfRecommendedArticles =>
       throw _privateConstructorUsedError;
   List<String> get categoryNames => throw _privateConstructorUsedError;
@@ -64,13 +64,11 @@ abstract class $NewsStateCopyWith<$Res> {
   factory $NewsStateCopyWith(NewsState value, $Res Function(NewsState) then) =
       _$NewsStateCopyWithImpl<$Res>;
   $Res call(
-      {BlogArticle featuredPost,
+      {List<BlogArticle> featuredPosts,
       List<BlogArticle> listOfRecommendedArticles,
       List<String> categoryNames,
       List<CategoryArticles> categoryArticles,
       List<VideoArticle> featuredVideos});
-
-  $BlogArticleCopyWith<$Res> get featuredPost;
 }
 
 /// @nodoc
@@ -83,17 +81,17 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? featuredPost = freezed,
+    Object? featuredPosts = freezed,
     Object? listOfRecommendedArticles = freezed,
     Object? categoryNames = freezed,
     Object? categoryArticles = freezed,
     Object? featuredVideos = freezed,
   }) {
     return _then(_value.copyWith(
-      featuredPost: featuredPost == freezed
-          ? _value.featuredPost
-          : featuredPost // ignore: cast_nullable_to_non_nullable
-              as BlogArticle,
+      featuredPosts: featuredPosts == freezed
+          ? _value.featuredPosts
+          : featuredPosts // ignore: cast_nullable_to_non_nullable
+              as List<BlogArticle>,
       listOfRecommendedArticles: listOfRecommendedArticles == freezed
           ? _value.listOfRecommendedArticles
           : listOfRecommendedArticles // ignore: cast_nullable_to_non_nullable
@@ -112,13 +110,6 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
               as List<VideoArticle>,
     ));
   }
-
-  @override
-  $BlogArticleCopyWith<$Res> get featuredPost {
-    return $BlogArticleCopyWith<$Res>(_value.featuredPost, (value) {
-      return _then(_value.copyWith(featuredPost: value));
-    });
-  }
 }
 
 /// @nodoc
@@ -128,14 +119,11 @@ abstract class _$NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
       __$NewsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {BlogArticle featuredPost,
+      {List<BlogArticle> featuredPosts,
       List<BlogArticle> listOfRecommendedArticles,
       List<String> categoryNames,
       List<CategoryArticles> categoryArticles,
       List<VideoArticle> featuredVideos});
-
-  @override
-  $BlogArticleCopyWith<$Res> get featuredPost;
 }
 
 /// @nodoc
@@ -149,17 +137,17 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? featuredPost = freezed,
+    Object? featuredPosts = freezed,
     Object? listOfRecommendedArticles = freezed,
     Object? categoryNames = freezed,
     Object? categoryArticles = freezed,
     Object? featuredVideos = freezed,
   }) {
     return _then(_NewsState(
-      featuredPost: featuredPost == freezed
-          ? _value.featuredPost
-          : featuredPost // ignore: cast_nullable_to_non_nullable
-              as BlogArticle,
+      featuredPosts: featuredPosts == freezed
+          ? _value.featuredPosts
+          : featuredPosts // ignore: cast_nullable_to_non_nullable
+              as List<BlogArticle>,
       listOfRecommendedArticles: listOfRecommendedArticles == freezed
           ? _value.listOfRecommendedArticles
           : listOfRecommendedArticles // ignore: cast_nullable_to_non_nullable
@@ -185,7 +173,7 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NewsState extends _NewsState {
   _$_NewsState(
-      {required this.featuredPost,
+      {required this.featuredPosts,
       required this.listOfRecommendedArticles,
       required this.categoryNames,
       required this.categoryArticles,
@@ -196,7 +184,7 @@ class _$_NewsState extends _NewsState {
       _$_$_NewsStateFromJson(json);
 
   @override
-  final BlogArticle featuredPost;
+  final List<BlogArticle> featuredPosts;
   @override
   final List<BlogArticle> listOfRecommendedArticles;
   @override
@@ -208,16 +196,16 @@ class _$_NewsState extends _NewsState {
 
   @override
   String toString() {
-    return 'NewsState(featuredPost: $featuredPost, listOfRecommendedArticles: $listOfRecommendedArticles, categoryNames: $categoryNames, categoryArticles: $categoryArticles, featuredVideos: $featuredVideos)';
+    return 'NewsState(featuredPosts: $featuredPosts, listOfRecommendedArticles: $listOfRecommendedArticles, categoryNames: $categoryNames, categoryArticles: $categoryArticles, featuredVideos: $featuredVideos)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _NewsState &&
-            (identical(other.featuredPost, featuredPost) ||
+            (identical(other.featuredPosts, featuredPosts) ||
                 const DeepCollectionEquality()
-                    .equals(other.featuredPost, featuredPost)) &&
+                    .equals(other.featuredPosts, featuredPosts)) &&
             (identical(other.listOfRecommendedArticles,
                     listOfRecommendedArticles) ||
                 const DeepCollectionEquality().equals(
@@ -237,7 +225,7 @@ class _$_NewsState extends _NewsState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(featuredPost) ^
+      const DeepCollectionEquality().hash(featuredPosts) ^
       const DeepCollectionEquality().hash(listOfRecommendedArticles) ^
       const DeepCollectionEquality().hash(categoryNames) ^
       const DeepCollectionEquality().hash(categoryArticles) ^
@@ -256,7 +244,7 @@ class _$_NewsState extends _NewsState {
 
 abstract class _NewsState extends NewsState {
   factory _NewsState(
-      {required BlogArticle featuredPost,
+      {required List<BlogArticle> featuredPosts,
       required List<BlogArticle> listOfRecommendedArticles,
       required List<String> categoryNames,
       required List<CategoryArticles> categoryArticles,
@@ -267,7 +255,7 @@ abstract class _NewsState extends NewsState {
       _$_NewsState.fromJson;
 
   @override
-  BlogArticle get featuredPost => throw _privateConstructorUsedError;
+  List<BlogArticle> get featuredPosts => throw _privateConstructorUsedError;
   @override
   List<BlogArticle> get listOfRecommendedArticles =>
       throw _privateConstructorUsedError;
