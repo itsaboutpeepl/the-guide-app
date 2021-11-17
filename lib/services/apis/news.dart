@@ -8,6 +8,10 @@ import 'package:injectable/injectable.dart';
 class NewsService {
   final Dio dio;
 
+  //TODO: Remove when actual API is completed.
+  String loremImpsum =
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
+
   NewsService(this.dio) {
     dio.options.baseUrl = UrlConstants.THEGUIDE_WORDPRESS_API;
     dio.options.headers = Map.from({"Content-Type": 'application/json'});
@@ -50,7 +54,7 @@ class NewsService {
         postID: 23132,
         postURL: results[i]['url'] ??
             "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
-        content: results[i]['content'] ?? "Lorem imsum io",
+        content: results[i]['content'] ?? loremImpsum,
       ));
     }
 
