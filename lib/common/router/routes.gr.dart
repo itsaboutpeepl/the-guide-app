@@ -196,8 +196,10 @@ class RootRouter extends _i1.RootStackRouter {
         }),
     TopupScreen.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
-        builder: (_) {
-          return _i18.TopupScreen();
+        builder: (data) {
+          final args = data.argsAs<TopupScreenArgs>(
+              orElse: () => const TopupScreenArgs());
+          return _i18.TopupScreen(key: args.key, topupType: args.topupType);
         }),
     TopupExplained.name: (routeData) => _i1.MaterialPageX<dynamic>(
         routeData: routeData,
@@ -650,10 +652,21 @@ class ActionDetailsScreenArgs {
   final _i40.Contact? contact;
 }
 
-class TopupScreen extends _i1.PageRouteInfo {
-  const TopupScreen() : super(name, path: 'topUp');
+class TopupScreen extends _i1.PageRouteInfo<TopupScreenArgs> {
+  TopupScreen({_i2.Key? key, _i18.TopupType topupType})
+      : super(name,
+            path: 'topUp',
+            args: TopupScreenArgs(key: key, topupType: topupType));
 
   static const String name = 'TopupScreen';
+}
+
+class TopupScreenArgs {
+  const TopupScreenArgs({this.key, this.topupType});
+
+  final _i2.Key? key;
+
+  final _i18.TopupType topupType;
 }
 
 class TopupExplained extends _i1.PageRouteInfo<TopupExplainedArgs> {
