@@ -17,7 +17,7 @@ class _CategoryTabViewsState extends State<CategoryTabViews> {
       padding: EdgeInsets.symmetric(horizontal: 7.0),
       sliver: SliverToBoxAdapter(
         child: Container(
-          height: MediaQuery.of(context).size.height * 0.2,
+          height: MediaQuery.of(context).size.height * 0.5,
           child: TabBarView(
             controller: widget.tabController,
             children: [
@@ -28,7 +28,7 @@ class _CategoryTabViewsState extends State<CategoryTabViews> {
                     itemBuilder: (_, index) => CategoryArticle(),
                     separatorBuilder: (_, index) =>
                         Padding(padding: EdgeInsets.only(bottom: 20)),
-                    itemCount: 5),
+                    itemCount: 3),
             ],
           ),
         ),
