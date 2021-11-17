@@ -1,4 +1,4 @@
-import 'article_Model.dart';
+import 'articleModel.dart';
 
 class NewsResponse {
   String? status;
