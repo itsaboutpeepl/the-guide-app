@@ -60,15 +60,15 @@ class _MainScreenState extends State<MainScreen> {
           routes: [
             GuideHomeTab(),
             HomeTab(),
-            WebviewTab(
-              children: [
-                WebViewWidget(
-                  url: 'https://www.shocal.org',
-                  walletAddress: vm.walletAddress,
-                )
-              ],
-            ),
-            TopupTab(),
+            // WebviewTab(
+            //   children: [
+            //     WebViewWidget(
+            //       url: 'https://www.shocal.org',
+            //       walletAddress: vm.walletAddress,
+            //     )
+            //   ],
+            // ),
+            //TopupTab(),
             // HelpTab(),
             // BuyTab(),
             AccountTab(),
