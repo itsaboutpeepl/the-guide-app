@@ -34,7 +34,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
               Expanded(
                 flex: 6,
                 child: Image.asset(
-                  'assets/images/splash.png',
+                  'assets/images/guide-logo-horizontal.png',
                   width: 350,
                   height: 350,
                 ),

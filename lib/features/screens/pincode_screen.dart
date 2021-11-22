@@ -57,7 +57,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                   ),
                   Expanded(
                     child: Image.asset(
-                      'assets/images/splash.png',
+                      'assets/images/guide-logo-horizontal.png',
                     ),
                   ),
                   Expanded(

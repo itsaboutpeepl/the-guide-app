@@ -131,7 +131,7 @@ class _MyAppState extends State<MyApp> {
                 ),
                 child: Center(
                   child: Image.asset(
-                    'assets/images/splash.png',
+                    'assets/images/guide-logo.png',
                   ),
                 ),
               ),
