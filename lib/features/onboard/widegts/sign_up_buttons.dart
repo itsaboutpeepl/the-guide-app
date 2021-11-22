@@ -46,12 +46,32 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    PrimaryButton(
-                      disabled: isPrimaryPreloading,
-                      preload: isPrimaryPreloading,
-                      label: viewModel.isLoggedOut
-                          ? I10n.of(context).login
-                          : I10n.of(context).create_new_wallet,
+                    OutlinedButton(
+                      style: OutlinedButton.styleFrom(
+                        primary: Colors.white,
+                        side: BorderSide(
+                          color: Colors.white,
+                          width: 2,
+                          style: BorderStyle.solid,
+                        ),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 15,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: Text(
+                        viewModel.isLoggedOut
+                            ? I10n.of(context).login
+                            : I10n.of(context).create_new_wallet,
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w800,
+                          color: Colors.white,
+                        ),
+                      ),
                       onPressed: () {
                         if (viewModel.isLoggedOut) {
                           viewModel.loginAgain();
