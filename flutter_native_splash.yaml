@@ -1,7 +1,7 @@
 flutter_native_splash:
-  image: assets/images/splash.png
+  image: assets/images/guide-logo.png
   fill: false
   android_gravity: center
   ios_content_mode: center
-  color: "FC0C1A"
+  color: "011C35"
   ios: true
