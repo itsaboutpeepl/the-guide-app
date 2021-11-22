@@ -22,16 +22,18 @@ class _$NewsStateTearOff {
 
   _NewsState call(
       {required List<BlogArticle> featuredPosts,
-      required List<BlogArticle> listOfRecommendedArticles,
       required List<String> categoryNames,
       required List<CategoryArticles> categoryArticles,
-      required List<VideoArticle> featuredVideos}) {
+      required List<VideoArticle> featuredVideos,
+      required List<Events> eventList,
+      required List<Directory> directoryList}) {
     return _NewsState(
       featuredPosts: featuredPosts,
-      listOfRecommendedArticles: listOfRecommendedArticles,
       categoryNames: categoryNames,
       categoryArticles: categoryArticles,
       featuredVideos: featuredVideos,
+      eventList: eventList,
+      directoryList: directoryList,
     );
   }
 
@@ -46,12 +48,12 @@ const $NewsState = _$NewsStateTearOff();
 /// @nodoc
 mixin _$NewsState {
   List<BlogArticle> get featuredPosts => throw _privateConstructorUsedError;
-  List<BlogArticle> get listOfRecommendedArticles =>
-      throw _privateConstructorUsedError;
   List<String> get categoryNames => throw _privateConstructorUsedError;
   List<CategoryArticles> get categoryArticles =>
       throw _privateConstructorUsedError;
   List<VideoArticle> get featuredVideos => throw _privateConstructorUsedError;
+  List<Events> get eventList => throw _privateConstructorUsedError;
+  List<Directory> get directoryList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -65,10 +67,11 @@ abstract class $NewsStateCopyWith<$Res> {
       _$NewsStateCopyWithImpl<$Res>;
   $Res call(
       {List<BlogArticle> featuredPosts,
-      List<BlogArticle> listOfRecommendedArticles,
       List<String> categoryNames,
       List<CategoryArticles> categoryArticles,
-      List<VideoArticle> featuredVideos});
+      List<VideoArticle> featuredVideos,
+      List<Events> eventList,
+      List<Directory> directoryList});
 }
 
 /// @nodoc
@@ -82,19 +85,16 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
   @override
   $Res call({
     Object? featuredPosts = freezed,
-    Object? listOfRecommendedArticles = freezed,
     Object? categoryNames = freezed,
     Object? categoryArticles = freezed,
     Object? featuredVideos = freezed,
+    Object? eventList = freezed,
+    Object? directoryList = freezed,
   }) {
     return _then(_value.copyWith(
       featuredPosts: featuredPosts == freezed
           ? _value.featuredPosts
           : featuredPosts // ignore: cast_nullable_to_non_nullable
-              as List<BlogArticle>,
-      listOfRecommendedArticles: listOfRecommendedArticles == freezed
-          ? _value.listOfRecommendedArticles
-          : listOfRecommendedArticles // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
       categoryNames: categoryNames == freezed
           ? _value.categoryNames
@@ -108,6 +108,14 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
           ? _value.featuredVideos
           : featuredVideos // ignore: cast_nullable_to_non_nullable
               as List<VideoArticle>,
+      eventList: eventList == freezed
+          ? _value.eventList
+          : eventList // ignore: cast_nullable_to_non_nullable
+              as List<Events>,
+      directoryList: directoryList == freezed
+          ? _value.directoryList
+          : directoryList // ignore: cast_nullable_to_non_nullable
+              as List<Directory>,
     ));
   }
 }
@@ -120,10 +128,11 @@ abstract class _$NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   @override
   $Res call(
       {List<BlogArticle> featuredPosts,
-      List<BlogArticle> listOfRecommendedArticles,
       List<String> categoryNames,
       List<CategoryArticles> categoryArticles,
-      List<VideoArticle> featuredVideos});
+      List<VideoArticle> featuredVideos,
+      List<Events> eventList,
+      List<Directory> directoryList});
 }
 
 /// @nodoc
@@ -138,19 +147,16 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? featuredPosts = freezed,
-    Object? listOfRecommendedArticles = freezed,
     Object? categoryNames = freezed,
     Object? categoryArticles = freezed,
     Object? featuredVideos = freezed,
+    Object? eventList = freezed,
+    Object? directoryList = freezed,
   }) {
     return _then(_NewsState(
       featuredPosts: featuredPosts == freezed
           ? _value.featuredPosts
           : featuredPosts // ignore: cast_nullable_to_non_nullable
-              as List<BlogArticle>,
-      listOfRecommendedArticles: listOfRecommendedArticles == freezed
-          ? _value.listOfRecommendedArticles
-          : listOfRecommendedArticles // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
       categoryNames: categoryNames == freezed
           ? _value.categoryNames
@@ -164,6 +170,14 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
           ? _value.featuredVideos
           : featuredVideos // ignore: cast_nullable_to_non_nullable
               as List<VideoArticle>,
+      eventList: eventList == freezed
+          ? _value.eventList
+          : eventList // ignore: cast_nullable_to_non_nullable
+              as List<Events>,
+      directoryList: directoryList == freezed
+          ? _value.directoryList
+          : directoryList // ignore: cast_nullable_to_non_nullable
+              as List<Directory>,
     ));
   }
 }
@@ -174,10 +188,11 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 class _$_NewsState extends _NewsState {
   _$_NewsState(
       {required this.featuredPosts,
-      required this.listOfRecommendedArticles,
       required this.categoryNames,
       required this.categoryArticles,
-      required this.featuredVideos})
+      required this.featuredVideos,
+      required this.eventList,
+      required this.directoryList})
       : super._();
 
   factory _$_NewsState.fromJson(Map<String, dynamic> json) =>
@@ -186,17 +201,19 @@ class _$_NewsState extends _NewsState {
   @override
   final List<BlogArticle> featuredPosts;
   @override
-  final List<BlogArticle> listOfRecommendedArticles;
-  @override
   final List<String> categoryNames;
   @override
   final List<CategoryArticles> categoryArticles;
   @override
   final List<VideoArticle> featuredVideos;
+  @override
+  final List<Events> eventList;
+  @override
+  final List<Directory> directoryList;
 
   @override
   String toString() {
-    return 'NewsState(featuredPosts: $featuredPosts, listOfRecommendedArticles: $listOfRecommendedArticles, categoryNames: $categoryNames, categoryArticles: $categoryArticles, featuredVideos: $featuredVideos)';
+    return 'NewsState(featuredPosts: $featuredPosts, categoryNames: $categoryNames, categoryArticles: $categoryArticles, featuredVideos: $featuredVideos, eventList: $eventList, directoryList: $directoryList)';
   }
 
   @override
@@ -206,11 +223,6 @@ class _$_NewsState extends _NewsState {
             (identical(other.featuredPosts, featuredPosts) ||
                 const DeepCollectionEquality()
                     .equals(other.featuredPosts, featuredPosts)) &&
-            (identical(other.listOfRecommendedArticles,
-                    listOfRecommendedArticles) ||
-                const DeepCollectionEquality().equals(
-                    other.listOfRecommendedArticles,
-                    listOfRecommendedArticles)) &&
             (identical(other.categoryNames, categoryNames) ||
                 const DeepCollectionEquality()
                     .equals(other.categoryNames, categoryNames)) &&
@@ -219,17 +231,24 @@ class _$_NewsState extends _NewsState {
                     .equals(other.categoryArticles, categoryArticles)) &&
             (identical(other.featuredVideos, featuredVideos) ||
                 const DeepCollectionEquality()
-                    .equals(other.featuredVideos, featuredVideos)));
+                    .equals(other.featuredVideos, featuredVideos)) &&
+            (identical(other.eventList, eventList) ||
+                const DeepCollectionEquality()
+                    .equals(other.eventList, eventList)) &&
+            (identical(other.directoryList, directoryList) ||
+                const DeepCollectionEquality()
+                    .equals(other.directoryList, directoryList)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(featuredPosts) ^
-      const DeepCollectionEquality().hash(listOfRecommendedArticles) ^
       const DeepCollectionEquality().hash(categoryNames) ^
       const DeepCollectionEquality().hash(categoryArticles) ^
-      const DeepCollectionEquality().hash(featuredVideos);
+      const DeepCollectionEquality().hash(featuredVideos) ^
+      const DeepCollectionEquality().hash(eventList) ^
+      const DeepCollectionEquality().hash(directoryList);
 
   @JsonKey(ignore: true)
   @override
@@ -245,10 +264,11 @@ class _$_NewsState extends _NewsState {
 abstract class _NewsState extends NewsState {
   factory _NewsState(
       {required List<BlogArticle> featuredPosts,
-      required List<BlogArticle> listOfRecommendedArticles,
       required List<String> categoryNames,
       required List<CategoryArticles> categoryArticles,
-      required List<VideoArticle> featuredVideos}) = _$_NewsState;
+      required List<VideoArticle> featuredVideos,
+      required List<Events> eventList,
+      required List<Directory> directoryList}) = _$_NewsState;
   _NewsState._() : super._();
 
   factory _NewsState.fromJson(Map<String, dynamic> json) =
@@ -257,15 +277,16 @@ abstract class _NewsState extends NewsState {
   @override
   List<BlogArticle> get featuredPosts => throw _privateConstructorUsedError;
   @override
-  List<BlogArticle> get listOfRecommendedArticles =>
-      throw _privateConstructorUsedError;
-  @override
   List<String> get categoryNames => throw _privateConstructorUsedError;
   @override
   List<CategoryArticles> get categoryArticles =>
       throw _privateConstructorUsedError;
   @override
   List<VideoArticle> get featuredVideos => throw _privateConstructorUsedError;
+  @override
+  List<Events> get eventList => throw _privateConstructorUsedError;
+  @override
+  List<Directory> get directoryList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NewsStateCopyWith<_NewsState> get copyWith =>

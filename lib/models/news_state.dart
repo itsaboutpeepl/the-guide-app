@@ -2,6 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:peepl/models/articles/blogArticle.dart';
 import 'package:peepl/models/articles/categoryArticles.dart';
+import 'package:peepl/models/articles/directory.dart';
+import 'package:peepl/models/articles/events.dart';
 import 'package:peepl/models/articles/videoArticle.dart';
 
 part 'news_state.freezed.dart';
@@ -15,18 +17,21 @@ class NewsState with _$NewsState {
   @JsonSerializable()
   factory NewsState({
     required List<BlogArticle> featuredPosts,
-    required List<BlogArticle> listOfRecommendedArticles,
     required List<String> categoryNames,
     required List<CategoryArticles> categoryArticles,
     required List<VideoArticle> featuredVideos,
+    required List<Events> eventList,
+    required List<Directory> directoryList,
   }) = _NewsState;
 
   factory NewsState.initial() => NewsState(
-      featuredPosts: [],
-      categoryArticles: [],
-      listOfRecommendedArticles: [],
-      categoryNames: ["Latest, Features, Eat, Club, Test"],
-      featuredVideos: []);
+        featuredPosts: [],
+        categoryArticles: [],
+        categoryNames: ["Latest, Eat, Blah"],
+        featuredVideos: [],
+        eventList: [],
+        directoryList: [],
+      );
 
   factory NewsState.fromJson(dynamic json) => _$NewsStateFromJson(json);
 }
