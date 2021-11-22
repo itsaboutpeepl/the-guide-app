@@ -59,7 +59,9 @@ class _MainScreenState extends State<MainScreen> {
           animationDuration: Duration(milliseconds: 0),
           routes: [
             GuideHomeTab(),
+            NewsHomeTab(),
             HomeTab(),
+
             // WebviewTab(
             //   children: [
             //     WebViewWidget(
