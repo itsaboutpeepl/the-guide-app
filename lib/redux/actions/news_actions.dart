@@ -61,17 +61,16 @@ ThunkAction fetchCategoryList() {
     try {
       List<Map> categoryNames = await newsService.categoryNames();
       List<CategoryArticles> categoryList = [];
+      var temp;
 
       categoryNames.forEach(
         (element) async {
+          temp = await newsService.articlesByCategoryID("3242");
           categoryList.add(
             CategoryArticles(
-              categoryID: element[0],
-              categoryName: element[1],
-              articleList: await newsService.articlesByCategoryID(
-                element[0],
-              ),
-            ),
+                categoryID: element['id'],
+                categoryName: element['name'],
+                articleList: temp),
           );
         },
       );
