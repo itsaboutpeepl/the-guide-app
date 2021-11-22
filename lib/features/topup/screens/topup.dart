@@ -35,11 +35,8 @@ class TopUpViewModel {
 enum TopupType { STRIPE, PLAID }
 
 class TopupScreen extends StatefulWidget {
-  final TopupType topupType;
-  TopupScreen({
-    Key? key,
-    this.topupType = TopupType.STRIPE,
-  });
+  final TopupType topupType = TopupType.STRIPE;
+
   @override
   _TopupScreenState createState() => _TopupScreenState();
 }
