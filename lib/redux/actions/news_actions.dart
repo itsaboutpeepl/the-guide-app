@@ -135,3 +135,22 @@ ThunkAction fetchDirectoryList() {
     }
   };
 }
+
+ThunkAction fetchHomePageData() {
+  return (Store store) async {
+    try {
+      fetchFeaturedPost();
+      fetchCategoryList();
+      fetchFeaturedVideos();
+      fetchEventsList();
+      fetchDirectoryList();
+    } catch (e, s) {
+      log.error('ERROR - fetchHomePageData $e');
+      await Sentry.captureException(
+        e,
+        stackTrace: s,
+        hint: 'ERROR - fetchHomePageData $e',
+      );
+    }
+  };
+}
