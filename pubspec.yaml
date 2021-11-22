@@ -51,7 +51,6 @@ dependencies:
   local_auth: ^1.1.6
   logger: ^1.0.0
   modal_bottom_sheet: ^2.0.0
-  motion_tab_bar: ^0.1.5
   number_display: ^3.0.0
   package_info: ^2.0.2
   permission_handler: ^8.1.3
