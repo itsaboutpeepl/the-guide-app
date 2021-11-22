@@ -21,32 +21,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final fullNameController = TextEditingController(text: "");
   final phoneController = TextEditingController(text: "");
   final _formKey = GlobalKey<FormState>();
-  CountryCode countryCode = CountryCode(dialCode: '+1', code: 'US');
+  CountryCode countryCode = CountryCode.fromCountryCode("GB");
 
   @override
   void initState() {
-    WidgetsBinding.instance!.addPostFrameCallback(_updateCountryCode);
+    //WidgetsBinding.instance!.addPostFrameCallback(_updateCountryCode);
     super.initState();
   }
 
-  _updateCountryCode(_) {
-    Locale myLocale = Localizations.localeOf(context);
-    if (myLocale.countryCode != null) {
-      Map localeData = codes.firstWhere(
-        (Map code) => code['code'] == myLocale.countryCode,
-      );
-      if (mounted &&
-          localeData.containsKey('dial_code') &&
-          localeData.containsKey('code')) {
-        setState(() {
-          countryCode = CountryCode(
-            dialCode: localeData['dial_code'],
-            code: localeData['code'],
-          );
-        });
-      }
-    }
-  }
+  // _updateCountryCode(_) {
+  //   Locale myLocale = Localizations.localeOf(context);
+  //   if (myLocale.countryCode != null) {
+  //     Map localeData = codes.firstWhere(
+  //       (Map code) => code['code'] == myLocale.countryCode,
+  //     );
+  //     if (mounted &&
+  //         localeData.containsKey('dial_code') &&
+  //         localeData.containsKey('code')) {
+  //       setState(() {
+  //         countryCode = CountryCode(
+  //           dialCode: localeData['dial_code'],
+  //           code: localeData['code'],
+  //         );
+  //       });
+  //     }
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
