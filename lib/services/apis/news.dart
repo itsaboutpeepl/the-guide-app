@@ -44,10 +44,10 @@ class NewsService {
   }
 
   Future<List<Map<String, String>>> categoryNames() async {
-    Response response = await dio.get(
-        'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+    // Response response = await dio.get(
+    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
 
-    List<dynamic> results = response.data['articles'] as List;
+    //List<dynamic> results = response.data['articles'] as List;
 
     List<Map<String, String>> test = [
       {"id": "3212", "name": "Latest"},
@@ -84,10 +84,10 @@ class NewsService {
   }
 
   Future<List<VideoArticle>> featuredVideos() async {
-    Response response = await dio.get(
-        'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+    // Response response = await dio.get(
+    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
 
-    List<dynamic> results = response.data['articles'] as List;
+    // List<dynamic> results = response.data['articles'] as List;
 
     List<VideoArticle> videos = [];
 
@@ -109,10 +109,10 @@ class NewsService {
   }
 
   Future<List<Events>> eventsList() async {
-    Response response = await dio.get(
-        'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+    // Response response = await dio.get(
+    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
 
-    List<dynamic> results = response.data['articles'] as List;
+    // List<dynamic> results = response.data['articles'] as List;
 
     List<Events> events = [];
 
@@ -132,10 +132,10 @@ class NewsService {
   }
 
   Future<List<Directory>> directoryList() async {
-    Response response = await dio.get(
-        'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+    // Response response = await dio.get(
+    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
 
-    List<dynamic> results = response.data['articles'] as List;
+    // List<dynamic> results = response.data['articles'] as List;
 
     List<Directory> directory = [];
 
