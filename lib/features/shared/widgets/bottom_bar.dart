@@ -65,6 +65,7 @@ class BottomBar extends StatelessWidget {
         //To do: Add internationalisation
         items: [
           bottomBarItem(I10n.of(context).home, 'home'),
+          bottomBarItem("News", "news"),
           bottomBarItem('Wallet', 'wallet'),
           //bottomBarItem('Shop', 'order'),
           //bottomBarItem('Top Up', 'topup'),
