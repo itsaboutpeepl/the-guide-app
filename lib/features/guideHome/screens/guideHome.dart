@@ -7,7 +7,6 @@ import 'package:peepl/features/guideHome/widgets/eventsCalendar.dart';
 import 'package:peepl/features/guideHome/widgets/featuredBusinesses.dart';
 import 'package:peepl/features/guideHome/widgets/featuredPostStack.dart';
 import 'package:peepl/features/guideHome/widgets/featuredVideos.dart';
-import 'package:peepl/features/guideHome/widgets/singleDirectoryItem.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/news_actions.dart';
 import 'package:peepl/redux/viewsmodels/featuredPostStack.dart';
@@ -39,7 +38,8 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
       distinct: true,
       converter: FeaturedPostStackViewModel.fromStore,
       onInit: (store) {
-        store.dispatch(fetchFeaturedPost());
+        // store.dispatch(fetchFeaturedPost());
+        store.dispatch(fetchHomePageData());
       },
       builder: (_, viewModel) {
         return CustomScrollView(
@@ -54,8 +54,8 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
             EventCalendar(),
             FeaturedBusinesses(),
             FeaturedVideos(),
-            CategoryTabBar(tabController: _tabController),
-            CategoryTabViews(tabController: _tabController),
+            // CategoryTabBar(tabController: _tabController),
+            // CategoryTabViews(tabController: _tabController),
           ],
         );
       },
