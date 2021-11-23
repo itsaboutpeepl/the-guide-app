@@ -9,28 +9,25 @@ import 'package:peepl/models/articles/videoArticle.dart';
 part 'news_state.freezed.dart';
 part 'news_state.g.dart';
 
-@immutable
 @freezed
 class NewsState with _$NewsState {
   const NewsState._();
 
   @JsonSerializable()
   factory NewsState({
-    required List<BlogArticle> featuredPosts,
     required List<String> categoryNames,
-    required List<CategoryArticles> categoryArticles,
-    required List<VideoArticle> featuredVideos,
-    required List<Events> eventList,
-    required List<Directory> directoryList,
+    required List<CategoryArticles> articles,
+    required bool loading,
+    required bool paginate,
+    required int page,
   }) = _NewsState;
 
   factory NewsState.initial() => NewsState(
-        featuredPosts: [],
-        categoryArticles: [],
-        categoryNames: ["Latest, Eat, Blah"],
-        featuredVideos: [],
-        eventList: [],
-        directoryList: [],
+        categoryNames: [],
+        articles: [],
+        loading: false,
+        paginate: false,
+        page: 1,
       );
 
   factory NewsState.fromJson(dynamic json) => _$NewsStateFromJson(json);
