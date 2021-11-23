@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:peepl/models/home_page_state.dart';
 import 'package:peepl/models/news_state.dart';
 import 'package:peepl/models/swap_state.dart';
 import 'package:peepl/models/user_state.dart';
@@ -21,16 +22,19 @@ class AppState with _$AppState {
     @CashWalletStateConverter() required CashWalletState cashWalletState,
     @ProWalletStateConverter() required ProWalletState proWalletState,
     @SwapStateConverter() required SwapState swapState,
+    @HomePageStateConverter() required HomePageState homePageState,
     @NewsStateConverter() required NewsState newsState,
   }) = _AppState;
 
   factory AppState.initial() {
     return AppState(
-        userState: UserState.initial(),
-        cashWalletState: CashWalletState.initial(),
-        proWalletState: ProWalletState.initial(),
-        swapState: SwapState.initial(),
-        newsState: NewsState.initial());
+      userState: UserState.initial(),
+      cashWalletState: CashWalletState.initial(),
+      proWalletState: ProWalletState.initial(),
+      swapState: SwapState.initial(),
+      homePageState: HomePageState.initial(),
+      newsState: NewsState.initial(),
+    );
   }
 
   factory AppState.fromJson(dynamic json) => _$AppStateFromJson(json);

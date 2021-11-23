@@ -25,12 +25,14 @@ class _$AppStateTearOff {
       @CashWalletStateConverter() required CashWalletState cashWalletState,
       @ProWalletStateConverter() required ProWalletState proWalletState,
       @SwapStateConverter() required SwapState swapState,
+      @HomePageStateConverter() required HomePageState homePageState,
       @NewsStateConverter() required NewsState newsState}) {
     return _AppState(
       userState: userState,
       cashWalletState: cashWalletState,
       proWalletState: proWalletState,
       swapState: swapState,
+      homePageState: homePageState,
       newsState: newsState,
     );
   }
@@ -53,6 +55,8 @@ mixin _$AppState {
   ProWalletState get proWalletState => throw _privateConstructorUsedError;
   @SwapStateConverter()
   SwapState get swapState => throw _privateConstructorUsedError;
+  @HomePageStateConverter()
+  HomePageState get homePageState => throw _privateConstructorUsedError;
   @NewsStateConverter()
   NewsState get newsState => throw _privateConstructorUsedError;
 
@@ -71,12 +75,14 @@ abstract class $AppStateCopyWith<$Res> {
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @ProWalletStateConverter() ProWalletState proWalletState,
       @SwapStateConverter() SwapState swapState,
+      @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState});
 
   $UserStateCopyWith<$Res> get userState;
   $CashWalletStateCopyWith<$Res> get cashWalletState;
   $ProWalletStateCopyWith<$Res> get proWalletState;
   $SwapStateCopyWith<$Res> get swapState;
+  $HomePageStateCopyWith<$Res> get homePageState;
   $NewsStateCopyWith<$Res> get newsState;
 }
 
@@ -94,6 +100,7 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
     Object? cashWalletState = freezed,
     Object? proWalletState = freezed,
     Object? swapState = freezed,
+    Object? homePageState = freezed,
     Object? newsState = freezed,
   }) {
     return _then(_value.copyWith(
@@ -113,6 +120,10 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.swapState
           : swapState // ignore: cast_nullable_to_non_nullable
               as SwapState,
+      homePageState: homePageState == freezed
+          ? _value.homePageState
+          : homePageState // ignore: cast_nullable_to_non_nullable
+              as HomePageState,
       newsState: newsState == freezed
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
@@ -149,6 +160,13 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   }
 
   @override
+  $HomePageStateCopyWith<$Res> get homePageState {
+    return $HomePageStateCopyWith<$Res>(_value.homePageState, (value) {
+      return _then(_value.copyWith(homePageState: value));
+    });
+  }
+
+  @override
   $NewsStateCopyWith<$Res> get newsState {
     return $NewsStateCopyWith<$Res>(_value.newsState, (value) {
       return _then(_value.copyWith(newsState: value));
@@ -166,6 +184,7 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @ProWalletStateConverter() ProWalletState proWalletState,
       @SwapStateConverter() SwapState swapState,
+      @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState});
 
   @override
@@ -176,6 +195,8 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   $ProWalletStateCopyWith<$Res> get proWalletState;
   @override
   $SwapStateCopyWith<$Res> get swapState;
+  @override
+  $HomePageStateCopyWith<$Res> get homePageState;
   @override
   $NewsStateCopyWith<$Res> get newsState;
 }
@@ -195,6 +216,7 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     Object? cashWalletState = freezed,
     Object? proWalletState = freezed,
     Object? swapState = freezed,
+    Object? homePageState = freezed,
     Object? newsState = freezed,
   }) {
     return _then(_AppState(
@@ -214,6 +236,10 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.swapState
           : swapState // ignore: cast_nullable_to_non_nullable
               as SwapState,
+      homePageState: homePageState == freezed
+          ? _value.homePageState
+          : homePageState // ignore: cast_nullable_to_non_nullable
+              as HomePageState,
       newsState: newsState == freezed
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
@@ -231,6 +257,7 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       @CashWalletStateConverter() required this.cashWalletState,
       @ProWalletStateConverter() required this.proWalletState,
       @SwapStateConverter() required this.swapState,
+      @HomePageStateConverter() required this.homePageState,
       @NewsStateConverter() required this.newsState})
       : super._();
 
@@ -250,12 +277,15 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
   @SwapStateConverter()
   final SwapState swapState;
   @override
+  @HomePageStateConverter()
+  final HomePageState homePageState;
+  @override
   @NewsStateConverter()
   final NewsState newsState;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, proWalletState: $proWalletState, swapState: $swapState, newsState: $newsState)';
+    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, proWalletState: $proWalletState, swapState: $swapState, homePageState: $homePageState, newsState: $newsState)';
   }
 
   @override
@@ -267,6 +297,7 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('cashWalletState', cashWalletState))
       ..add(DiagnosticsProperty('proWalletState', proWalletState))
       ..add(DiagnosticsProperty('swapState', swapState))
+      ..add(DiagnosticsProperty('homePageState', homePageState))
       ..add(DiagnosticsProperty('newsState', newsState));
   }
 
@@ -286,6 +317,9 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
             (identical(other.swapState, swapState) ||
                 const DeepCollectionEquality()
                     .equals(other.swapState, swapState)) &&
+            (identical(other.homePageState, homePageState) ||
+                const DeepCollectionEquality()
+                    .equals(other.homePageState, homePageState)) &&
             (identical(other.newsState, newsState) ||
                 const DeepCollectionEquality()
                     .equals(other.newsState, newsState)));
@@ -298,6 +332,7 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(cashWalletState) ^
       const DeepCollectionEquality().hash(proWalletState) ^
       const DeepCollectionEquality().hash(swapState) ^
+      const DeepCollectionEquality().hash(homePageState) ^
       const DeepCollectionEquality().hash(newsState);
 
   @JsonKey(ignore: true)
@@ -317,6 +352,7 @@ abstract class _AppState extends AppState {
       @CashWalletStateConverter() required CashWalletState cashWalletState,
       @ProWalletStateConverter() required ProWalletState proWalletState,
       @SwapStateConverter() required SwapState swapState,
+      @HomePageStateConverter() required HomePageState homePageState,
       @NewsStateConverter() required NewsState newsState}) = _$_AppState;
   _AppState._() : super._();
 
@@ -334,6 +370,9 @@ abstract class _AppState extends AppState {
   @override
   @SwapStateConverter()
   SwapState get swapState => throw _privateConstructorUsedError;
+  @override
+  @HomePageStateConverter()
+  HomePageState get homePageState => throw _privateConstructorUsedError;
   @override
   @NewsStateConverter()
   NewsState get newsState => throw _privateConstructorUsedError;
