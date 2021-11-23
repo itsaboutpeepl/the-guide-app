@@ -5,23 +5,23 @@ import 'package:redux/redux.dart';
 
 class NewsScreenViewModel extends Equatable {
   final List<String> tabNames;
-  final List<CategoryArticles> categoryArticles;
+  final List<CategoryArticles> articles;
 
   NewsScreenViewModel({
     required this.tabNames,
-    required this.categoryArticles,
+    required this.articles,
   });
 
   static NewsScreenViewModel fromStore(Store<AppState> store) {
     List<String> tabNames = [];
 
-    store.state.newsState.categoryArticles.forEach((element) {
+    store.state.newsState.articles.forEach((element) {
       tabNames.add(element.categoryName);
     });
 
     return NewsScreenViewModel(
       tabNames: tabNames,
-      categoryArticles: store.state.newsState.categoryArticles,
+      articles: store.state.newsState.articles,
     );
   }
 
