@@ -10,7 +10,7 @@ class DirectoryViewModel extends Equatable {
 
   static DirectoryViewModel fromStore(Store<AppState> store) {
     return DirectoryViewModel(
-      directoryList: store.state.newsState.directoryList,
+      directoryList: store.state.homePageState.directoryList,
     );
   }
 

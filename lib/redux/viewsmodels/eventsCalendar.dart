@@ -10,7 +10,7 @@ class EventsCalendarViewModel extends Equatable {
 
   static EventsCalendarViewModel fromStore(Store<AppState> store) {
     return EventsCalendarViewModel(
-      eventsList: store.state.newsState.eventList,
+      eventsList: store.state.homePageState.eventList,
     );
   }
 

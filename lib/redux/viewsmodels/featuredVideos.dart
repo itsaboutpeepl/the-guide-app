@@ -10,7 +10,7 @@ class FeaturedVideosViewModel extends Equatable {
 
   static FeaturedVideosViewModel fromStore(Store<AppState> store) {
     return FeaturedVideosViewModel(
-      featuredVideos: store.state.newsState.featuredVideos,
+      featuredVideos: store.state.homePageState.featuredVideos,
     );
   }
 

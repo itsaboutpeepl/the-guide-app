@@ -56,10 +56,10 @@ class _FeaturedPostStackState extends State<FeaturedPostStack>
     return StoreConnector<AppState, FeaturedPostStackViewModel>(
       distinct: true,
       onInit: (store) => {
-        store.state.newsState.featuredPosts.forEach((element) {
+        store.state.homePageState.featuredPosts.forEach((element) {
           _listOfPosts.add(
             FeaturedPost(
-                index: store.state.newsState.featuredPosts.indexOf(element),
+                index: store.state.homePageState.featuredPosts.indexOf(element),
                 article: element),
           );
         })

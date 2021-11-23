@@ -10,7 +10,7 @@ class FeaturedPostStackViewModel extends Equatable {
 
   static FeaturedPostStackViewModel fromStore(Store<AppState> store) {
     return FeaturedPostStackViewModel(
-      featuredArticles: store.state.newsState.featuredPosts,
+      featuredArticles: store.state.homePageState.featuredPosts,
     );
   }
 
