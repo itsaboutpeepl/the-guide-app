@@ -7,6 +7,8 @@ import 'package:peepl/models/cash_wallet_state.dart';
 import 'package:peepl/models/pro_wallet_state.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'news/articleModel.dart';
+
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';
 
@@ -26,11 +28,12 @@ class AppState with _$AppState {
 
   factory AppState.initial() {
     return AppState(
-        userState: UserState.initial(),
-        cashWalletState: CashWalletState.initial(),
-        proWalletState: ProWalletState.initial(),
-        swapState: SwapState.initial(),
-        newsState: NewsState.initial());
+      userState: UserState.initial(),
+      cashWalletState: CashWalletState.initial(),
+      proWalletState: ProWalletState.initial(),
+      swapState: SwapState.initial(),
+      newsState: NewsState.initial(),
+    );
   }
 
   factory AppState.fromJson(dynamic json) => _$AppStateFromJson(json);
