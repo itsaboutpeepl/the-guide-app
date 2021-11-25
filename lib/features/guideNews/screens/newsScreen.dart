@@ -7,7 +7,16 @@ import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/news_actions.dart';
 import 'package:peepl/redux/viewsmodels/newsScreen.dart';
 
-List<String> randomQueries = ['tesla', "Liverpool", "elon", "US"];
+List<String> randomQueries = [
+  'business',
+  "entertainment",
+  "general",
+  "health",
+  "science",
+  "sports",
+  "technology"
+];
+
 final random = new Random();
 
 String getRandomQuery() =>

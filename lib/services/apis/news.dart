@@ -70,8 +70,9 @@ class NewsService {
 
   Future<List<BlogArticle>> pagedArticlesByCategoryID(String query,
       {int page = 0}) async {
-    Response response = await dio.get(
-        'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+    Response response = await dio.get('top-headlines?category=' +
+        query +
+        '&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
 
     List<dynamic> results = response.data['articles'] as List;
 
