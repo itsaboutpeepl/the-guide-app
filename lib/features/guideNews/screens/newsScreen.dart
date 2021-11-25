@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideNews/widgets/categoryArticlesList.dart';
 import 'package:peepl/models/app_state.dart';
+import 'package:peepl/redux/actions/news_actions.dart';
 import 'package:peepl/redux/viewsmodels/newsScreen.dart';
 
 class NewsScreen extends StatefulWidget {
@@ -18,8 +19,18 @@ class _NewsScreenState extends State<NewsScreen>
     return StoreConnector<AppState, NewsScreenViewModel>(
       distinct: true,
       onInit: (store) => {
+        store.dispatch(UpdateCurrentTabIndex(currentTabIndex: 0)),
+        store.dispatch(fetchCategoryNames()),
+        store.dispatch(updateCurrentTabList()),
         _tabController = TabController(
-            length: store.state.newsState.categoryNames.length, vsync: this)
+            length: store.state.newsState.categoryNames.length, vsync: this),
+        _tabController.addListener(() {
+          if (_tabController.indexIsChanging) {
+            store.dispatch(
+                UpdateCurrentTabIndex(currentTabIndex: _tabController.index));
+            store.dispatch(updateCurrentTabList());
+          }
+        })
       },
       converter: NewsScreenViewModel.fromStore,
       builder: (_, viewmodel) => Scaffold(
@@ -53,18 +64,3 @@ class _NewsScreenState extends State<NewsScreen>
     );
   }
 }
-
-
-// viewmodel.articles
-//               .map(
-//                 (e) => ListView.separated(
-//                   padding: EdgeInsets.symmetric(vertical: 10),
-//                   scrollDirection: Axis.vertical,
-//                   itemBuilder: (_, index) => CategoryArticle(),
-//                   separatorBuilder: (_, index) => Padding(
-//                     padding: EdgeInsets.only(bottom: 20),
-//                   ),
-//                   itemCount: e.articleList.length,
-//                 ),
-//               )
-//               .toList(),
