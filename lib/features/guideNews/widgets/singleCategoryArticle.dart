@@ -19,7 +19,7 @@ class SingleCategoryArticle extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
-            width: MediaQuery.of(context).size.width * 0.65,
+            width: MediaQuery.of(context).size.width * 0.93,
             child: Column(
               children: [
                 Text(
@@ -27,25 +27,34 @@ class SingleCategoryArticle extends StatelessWidget {
                   style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
                 ),
                 SizedBox(height: 5),
-                Text(
-                  article.content,
-                ),
+                Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        article.content,
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 15,
+                    ),
+                    Expanded(
+                      child: Container(
+                        height: 90,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.all(Radius.circular(5)),
+                          child: Image.network(
+                            article.imageURL,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
               ],
-            ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          Expanded(
-            child: Container(
-              height: 90,
-              child: ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(5)),
-                child: Image.network(
-                  article.imageURL,
-                  fit: BoxFit.cover,
-                ),
-              ),
             ),
           ),
         ],
