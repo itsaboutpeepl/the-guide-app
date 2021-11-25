@@ -43,24 +43,33 @@ class NewsService {
     return articles;
   }
 
-  Future<List<Map<String, String>>> categoryNames() async {
+  Future<List<String>> categoryNames() async {
     // Response response = await dio.get(
     //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
 
     //List<dynamic> results = response.data['articles'] as List;
 
-    List<Map<String, String>> test = [
-      {"id": "3212", "name": "Latest"},
-      {"id": "8217", "name": "Features"},
-      {"id": "9721", "name": "Eat"},
-      {"id": "2668", "name": "Club"},
-      {"id": "8540", "name": "Test"},
+    // List<Map<String, String>> test = [
+    //   {"id": "3212", "name": "Latest"},
+    //   {"id": "8217", "name": "Features"},
+    //   {"id": "9721", "name": "Eat"},
+    //   {"id": "2668", "name": "Club"},
+    //   {"id": "8540", "name": "Test"},
+    // ];
+
+    List<String> test = [
+      "Latest",
+      "Features",
+      "Eat",
+      "Club",
+      "Test",
     ];
 
     return test;
   }
 
-  Future<List<BlogArticle>> articlesByCategoryID(String categoryID) async {
+  Future<List<BlogArticle>> pagedArticlesByCategoryID(String categoryID,
+      {int page = 0}) async {
     Response response = await dio.get(
         'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
 
