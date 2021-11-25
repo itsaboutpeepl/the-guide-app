@@ -13,18 +13,12 @@ class NewsScreenViewModel extends Equatable {
   });
 
   static NewsScreenViewModel fromStore(Store<AppState> store) {
-    List<String> tabNames = [];
-
-    store.state.newsState.articles.forEach((element) {
-      tabNames.add(element.categoryName);
-    });
-
     return NewsScreenViewModel(
-      tabNames: tabNames,
+      tabNames: store.state.newsState.categoryNames,
       articles: store.state.newsState.articles,
     );
   }
 
   @override
-  List<Object> get props => [tabNames];
+  List<Object> get props => [tabNames, articles];
 }
