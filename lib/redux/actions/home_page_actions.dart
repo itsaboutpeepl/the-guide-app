@@ -56,37 +56,6 @@ ThunkAction fetchFeaturedPost() {
   };
 }
 
-ThunkAction fetchCategoryList() {
-  return (Store store) async {
-    try {
-      List<Map> categoryNames = await newsService.categoryNames();
-      List<CategoryArticles> categoryList = [];
-      var temp;
-
-      categoryNames.forEach(
-        (element) async {
-          temp = await newsService.articlesByCategoryID("3242");
-          categoryList.add(
-            CategoryArticles(
-                categoryID: element['id'],
-                categoryName: element['name'],
-                articleList: temp),
-          );
-        },
-      );
-
-      store.dispatch(UpdateCategoryList(categoryList: categoryList));
-    } catch (e, s) {
-      log.error('ERROR - fetchCategoryList $e');
-      await Sentry.captureException(
-        e,
-        stackTrace: s,
-        hint: 'ERROR - fetchCategoryList $e',
-      );
-    }
-  };
-}
-
 ThunkAction fetchFeaturedVideos() {
   return (Store store) async {
     try {
@@ -139,7 +108,6 @@ ThunkAction fetchHomePageData() {
   return (Store store) async {
     try {
       fetchFeaturedPost();
-      fetchCategoryList();
       fetchFeaturedVideos();
       fetchEventsList();
       fetchDirectoryList();
