@@ -1,9 +1,17 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideNews/widgets/categoryArticlesList.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/news_actions.dart';
 import 'package:peepl/redux/viewsmodels/newsScreen.dart';
+
+List<String> randomQueries = ['tesla', "Liverpool", "elon", "US"];
+final random = new Random();
+
+String getRandomQuery() =>
+    randomQueries[random.nextInt(randomQueries.length - 1)];
 
 class NewsScreen extends StatefulWidget {
   @override
@@ -21,14 +29,20 @@ class _NewsScreenState extends State<NewsScreen>
       onInit: (store) => {
         store.dispatch(UpdateCurrentTabIndex(currentTabIndex: 0)),
         store.dispatch(fetchCategoryNames()),
-        store.dispatch(updateCurrentTabList()),
+        store.dispatch(
+          updateCurrentTabList(
+            query: getRandomQuery(),
+          ),
+        ),
         _tabController = TabController(
             length: store.state.newsState.categoryNames.length, vsync: this),
         _tabController.addListener(() {
           if (_tabController.indexIsChanging) {
             store.dispatch(
                 UpdateCurrentTabIndex(currentTabIndex: _tabController.index));
-            store.dispatch(updateCurrentTabList());
+            store.dispatch(updateCurrentTabList(
+              query: getRandomQuery(),
+            ));
           }
         })
       },

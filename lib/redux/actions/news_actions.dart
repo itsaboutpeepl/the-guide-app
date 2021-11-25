@@ -54,47 +54,47 @@ ThunkAction fetchCategoryNames() {
       store.dispatch(UpdateCategoryNames(categoryNames: categoryNames));
       store.dispatch(UpdateCategoryList(categoryList: categoryArticles));
     } catch (e, s) {
-      log.error('ERROR - fetchCategoryList $e');
+      log.error('ERROR - fetchCategoryNames $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchCategoryList $e',
+        hint: 'ERROR - fetchCategoryNames $e',
       );
     }
   };
 }
 
-ThunkAction fetchCategoryList(String categoryName, {int page = 0}) {
+// ThunkAction fetchCategoryList(String categoryName, {int page = 0}) {
+//   return (Store store) async {
+//     try {
+//       List<BlogArticle> newListOfArticles =
+//           await newsService.pagedArticlesByCategoryID("2313");
+
+//       List<CategoryArticles> articles = store.state.newsState.articles;
+
+//       articles
+//           .firstWhere((element) => element.categoryName == categoryName)
+//           .articleList
+//           .addAll(newListOfArticles);
+
+//       store.dispatch(UpdateCategoryList(categoryList: articles));
+//       print("DONE CALLING NEW LISt");
+//     } catch (e, s) {
+//       log.error('ERROR - fetchCategoryList $e');
+//       await Sentry.captureException(
+//         e,
+//         stackTrace: s,
+//         hint: 'ERROR - fetchCategoryList $e',
+//       );
+//     }
+//   };
+// }
+
+ThunkAction updateCurrentTabList({int page = 0, String query = ""}) {
   return (Store store) async {
     try {
       List<BlogArticle> newListOfArticles =
-          await newsService.pagedArticlesByCategoryID("2313");
-
-      List<CategoryArticles> articles = store.state.newsState.articles;
-
-      articles
-          .firstWhere((element) => element.categoryName == categoryName)
-          .articleList
-          .addAll(newListOfArticles);
-
-      store.dispatch(UpdateCategoryList(categoryList: articles));
-      print("DONE CALLING NEW LISt");
-    } catch (e, s) {
-      log.error('ERROR - fetchCategoryList $e');
-      await Sentry.captureException(
-        e,
-        stackTrace: s,
-        hint: 'ERROR - fetchCategoryList $e',
-      );
-    }
-  };
-}
-
-ThunkAction updateCurrentTabList({int page = 0}) {
-  return (Store store) async {
-    try {
-      List<BlogArticle> newListOfArticles =
-          await newsService.pagedArticlesByCategoryID("2313");
+          await newsService.pagedArticlesByCategoryID(query);
 
       // List<BlogArticle> oldListOfArticles = store.state.newsState
       //     .articles[store.state.newsState.currentTabIndex].articleList;
@@ -107,11 +107,11 @@ ThunkAction updateCurrentTabList({int page = 0}) {
 
       print("DONE CALLING NEW LISt");
     } catch (e, s) {
-      log.error('ERROR - fetchCategoryList $e');
+      log.error('ERROR - updateCurrentTabList $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchCategoryList $e',
+        hint: 'ERROR - updateCurrentTabList $e',
       );
     }
   };

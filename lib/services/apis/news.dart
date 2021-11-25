@@ -68,7 +68,7 @@ class NewsService {
     return test;
   }
 
-  Future<List<BlogArticle>> pagedArticlesByCategoryID(String categoryID,
+  Future<List<BlogArticle>> pagedArticlesByCategoryID(String query,
       {int page = 0}) async {
     Response response = await dio.get(
         'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
@@ -77,7 +77,7 @@ class NewsService {
 
     List<BlogArticle> articles = [];
 
-    for (var i = 0; i < 3; i++) {
+    for (var i = 0; i <= 5; i++) {
       articles.add(BlogArticle(
         title: results[i]['title'] ?? "",
         imageURL: results[i]['urlToImage'] ??
