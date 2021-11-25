@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideNews/widgets/singleCategoryArticle.dart';
 import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/articles/categoryArticles.dart';
+import 'package:peepl/redux/actions/news_actions.dart';
+import 'package:peepl/redux/viewsmodels/categoryArticleList.dart';
 import 'package:peepl/redux/viewsmodels/newsScreen.dart';
 
 class CategoryArticlesList extends StatefulWidget {
@@ -13,17 +16,10 @@ class CategoryArticlesList extends StatefulWidget {
 
 class _CategoryArticlesListState extends State<CategoryArticlesList> {
   final ScrollController _scrollController = new ScrollController();
+  late int indexOfCurrentTab;
 
   @override
   void initState() {
-    _scrollController.addListener(
-      () {
-        if (_scrollController.position.pixels ==
-            _scrollController.position.maxScrollExtent) {
-          // TODO: Add call to make another call to API for pagination (maybe do at 100px before max scroll extent)
-        }
-      },
-    );
     super.initState();
   }
 
@@ -35,21 +31,22 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, NewsScreenViewModel>(
-      distinct: true,
-      converter: (store) => NewsScreenViewModel.fromStore(store),
-      onInit: (store) => {},
+    return StoreConnector<AppState, CategoryArticleListViewModel>(
+      distinct: false,
+      converter: (store) => CategoryArticleListViewModel.fromStore(store),
+      onInit: (store) => {
+        _scrollController.addListener(
+          () {
+            if (_scrollController.position.pixels ==
+                _scrollController.position.maxScrollExtent) {
+              var store = StoreProvider.of<AppState>(context);
+              store.dispatch(updateCurrentTabList());
+              print("CALLING NEW LIST");
+            }
+          },
+        ),
+      },
       builder: (_, vm) {
-        // global and first loading indicator
-        // if (vm.state.loading) {
-        //   return Center(
-        //     child: Theme(
-        //       data: Theme.of(context),
-        //       child: CircularProgressIndicator(),
-        //     ),
-        //   );
-        // }
-
         return RefreshIndicator(
           onRefresh: () async {
             // vm.onLoad();
@@ -58,7 +55,23 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
           child: ListView.separated(
             controller: _scrollController,
             itemCount: vm.articles.length,
-            itemBuilder: (_, int index) => CategoryArticle(),
+            itemBuilder: (_, int index) {
+              if (vm.articles.length - 1 == index) {
+                return Container(
+                  height: 50,
+                  child: Center(
+                    child: Theme(
+                      data:
+                          Theme.of(context).copyWith(accentColor: Colors.blue),
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                );
+              }
+              return SingleCategoryArticle(
+                article: vm.articles[index],
+              );
+            },
             separatorBuilder: (_, index) =>
                 Padding(padding: EdgeInsets.only(bottom: 20)),
           ),
