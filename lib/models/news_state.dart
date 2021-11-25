@@ -9,6 +9,7 @@ import 'package:peepl/models/articles/videoArticle.dart';
 part 'news_state.freezed.dart';
 part 'news_state.g.dart';
 
+@immutable
 @freezed
 class NewsState with _$NewsState {
   const NewsState._();
@@ -17,17 +18,13 @@ class NewsState with _$NewsState {
   factory NewsState({
     required List<String> categoryNames,
     required List<CategoryArticles> articles,
-    required bool loading,
-    required bool paginate,
-    required int page,
+    required int currentTabIndex,
   }) = _NewsState;
 
   factory NewsState.initial() => NewsState(
         categoryNames: [],
         articles: [],
-        loading: false,
-        paginate: false,
-        page: 1,
+        currentTabIndex: 0,
       );
 
   factory NewsState.fromJson(dynamic json) => _$NewsStateFromJson(json);

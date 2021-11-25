@@ -23,15 +23,11 @@ class _$NewsStateTearOff {
   _NewsState call(
       {required List<String> categoryNames,
       required List<CategoryArticles> articles,
-      required bool loading,
-      required bool paginate,
-      required int page}) {
+      required int currentTabIndex}) {
     return _NewsState(
       categoryNames: categoryNames,
       articles: articles,
-      loading: loading,
-      paginate: paginate,
-      page: page,
+      currentTabIndex: currentTabIndex,
     );
   }
 
@@ -47,9 +43,7 @@ const $NewsState = _$NewsStateTearOff();
 mixin _$NewsState {
   List<String> get categoryNames => throw _privateConstructorUsedError;
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
-  bool get loading => throw _privateConstructorUsedError;
-  bool get paginate => throw _privateConstructorUsedError;
-  int get page => throw _privateConstructorUsedError;
+  int get currentTabIndex => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -64,9 +58,7 @@ abstract class $NewsStateCopyWith<$Res> {
   $Res call(
       {List<String> categoryNames,
       List<CategoryArticles> articles,
-      bool loading,
-      bool paginate,
-      int page});
+      int currentTabIndex});
 }
 
 /// @nodoc
@@ -81,9 +73,7 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
   $Res call({
     Object? categoryNames = freezed,
     Object? articles = freezed,
-    Object? loading = freezed,
-    Object? paginate = freezed,
-    Object? page = freezed,
+    Object? currentTabIndex = freezed,
   }) {
     return _then(_value.copyWith(
       categoryNames: categoryNames == freezed
@@ -94,17 +84,9 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<CategoryArticles>,
-      loading: loading == freezed
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      paginate: paginate == freezed
-          ? _value.paginate
-          : paginate // ignore: cast_nullable_to_non_nullable
-              as bool,
-      page: page == freezed
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      currentTabIndex: currentTabIndex == freezed
+          ? _value.currentTabIndex
+          : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -119,9 +101,7 @@ abstract class _$NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   $Res call(
       {List<String> categoryNames,
       List<CategoryArticles> articles,
-      bool loading,
-      bool paginate,
-      int page});
+      int currentTabIndex});
 }
 
 /// @nodoc
@@ -137,9 +117,7 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
   $Res call({
     Object? categoryNames = freezed,
     Object? articles = freezed,
-    Object? loading = freezed,
-    Object? paginate = freezed,
-    Object? page = freezed,
+    Object? currentTabIndex = freezed,
   }) {
     return _then(_NewsState(
       categoryNames: categoryNames == freezed
@@ -150,17 +128,9 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<CategoryArticles>,
-      loading: loading == freezed
-          ? _value.loading
-          : loading // ignore: cast_nullable_to_non_nullable
-              as bool,
-      paginate: paginate == freezed
-          ? _value.paginate
-          : paginate // ignore: cast_nullable_to_non_nullable
-              as bool,
-      page: page == freezed
-          ? _value.page
-          : page // ignore: cast_nullable_to_non_nullable
+      currentTabIndex: currentTabIndex == freezed
+          ? _value.currentTabIndex
+          : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
     ));
   }
@@ -173,9 +143,7 @@ class _$_NewsState extends _NewsState {
   _$_NewsState(
       {required this.categoryNames,
       required this.articles,
-      required this.loading,
-      required this.paginate,
-      required this.page})
+      required this.currentTabIndex})
       : super._();
 
   factory _$_NewsState.fromJson(Map<String, dynamic> json) =>
@@ -186,15 +154,11 @@ class _$_NewsState extends _NewsState {
   @override
   final List<CategoryArticles> articles;
   @override
-  final bool loading;
-  @override
-  final bool paginate;
-  @override
-  final int page;
+  final int currentTabIndex;
 
   @override
   String toString() {
-    return 'NewsState(categoryNames: $categoryNames, articles: $articles, loading: $loading, paginate: $paginate, page: $page)';
+    return 'NewsState(categoryNames: $categoryNames, articles: $articles, currentTabIndex: $currentTabIndex)';
   }
 
   @override
@@ -207,14 +171,9 @@ class _$_NewsState extends _NewsState {
             (identical(other.articles, articles) ||
                 const DeepCollectionEquality()
                     .equals(other.articles, articles)) &&
-            (identical(other.loading, loading) ||
+            (identical(other.currentTabIndex, currentTabIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.loading, loading)) &&
-            (identical(other.paginate, paginate) ||
-                const DeepCollectionEquality()
-                    .equals(other.paginate, paginate)) &&
-            (identical(other.page, page) ||
-                const DeepCollectionEquality().equals(other.page, page)));
+                    .equals(other.currentTabIndex, currentTabIndex)));
   }
 
   @override
@@ -222,9 +181,7 @@ class _$_NewsState extends _NewsState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(categoryNames) ^
       const DeepCollectionEquality().hash(articles) ^
-      const DeepCollectionEquality().hash(loading) ^
-      const DeepCollectionEquality().hash(paginate) ^
-      const DeepCollectionEquality().hash(page);
+      const DeepCollectionEquality().hash(currentTabIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -241,9 +198,7 @@ abstract class _NewsState extends NewsState {
   factory _NewsState(
       {required List<String> categoryNames,
       required List<CategoryArticles> articles,
-      required bool loading,
-      required bool paginate,
-      required int page}) = _$_NewsState;
+      required int currentTabIndex}) = _$_NewsState;
   _NewsState._() : super._();
 
   factory _NewsState.fromJson(Map<String, dynamic> json) =
@@ -254,11 +209,7 @@ abstract class _NewsState extends NewsState {
   @override
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
   @override
-  bool get loading => throw _privateConstructorUsedError;
-  @override
-  bool get paginate => throw _privateConstructorUsedError;
-  @override
-  int get page => throw _privateConstructorUsedError;
+  int get currentTabIndex => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NewsStateCopyWith<_NewsState> get copyWith =>

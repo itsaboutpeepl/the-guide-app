@@ -14,9 +14,7 @@ _$_NewsState _$_$_NewsStateFromJson(Map<String, dynamic> json) {
     articles: (json['articles'] as List<dynamic>)
         .map((e) => CategoryArticles.fromJson(e))
         .toList(),
-    loading: json['loading'] as bool,
-    paginate: json['paginate'] as bool,
-    page: json['page'] as int,
+    currentTabIndex: json['currentTabIndex'] as int,
   );
 }
 
@@ -24,7 +22,5 @@ Map<String, dynamic> _$_$_NewsStateToJson(_$_NewsState instance) =>
     <String, dynamic>{
       'categoryNames': instance.categoryNames,
       'articles': instance.articles.map((e) => e.toJson()).toList(),
-      'loading': instance.loading,
-      'paginate': instance.paginate,
-      'page': instance.page,
+      'currentTabIndex': instance.currentTabIndex,
     };
