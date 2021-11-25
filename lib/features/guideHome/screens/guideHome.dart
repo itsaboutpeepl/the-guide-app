@@ -37,7 +37,6 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
       converter: FeaturedPostStackViewModel.fromStore,
       onInit: (store) {
         store.dispatch(fetchFeaturedPost());
-        store.dispatch(fetchCategoryList());
       },
       builder: (_, viewModel) {
         return CustomScrollView(
