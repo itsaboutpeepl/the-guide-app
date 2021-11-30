@@ -15,6 +15,7 @@ class _FeaturedDirectoryState extends State<FeaturedDirectory> {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, DirectoryViewModel>(
+      distinct: true,
       converter: DirectoryViewModel.fromStore,
       builder: (_, viewmodel) {
         return SliverPadding(
