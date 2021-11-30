@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/guideHome/widgets/SliverAppBar.dart';
+import 'package:peepl/features/guideHome/widgets/App%20Bar/SliverAppBar.dart';
+import 'package:peepl/features/guideHome/widgets/Featured%20Posts/featuredPostStack.dart';
 import 'package:peepl/features/guideHome/widgets/confettiWidget.dart';
-import 'package:peepl/features/guideHome/widgets/eventsCalendar.dart';
-import 'package:peepl/features/guideHome/widgets/featuredBusinesses.dart';
-import 'package:peepl/features/guideHome/widgets/featuredPostStack.dart';
-import 'package:peepl/features/guideHome/widgets/featuredVideos.dart';
+import 'package:peepl/features/guideHome/widgets/Events Calendar/eventsCalendar.dart';
+import 'package:peepl/features/guideHome/widgets/Featured%20Directory/featuredDirectory.dart';
+import 'package:peepl/features/guideHome/widgets/Featured%20Videos/featuredVideos.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/home_page_actions.dart';
 import 'package:peepl/redux/viewsmodels/featuredPostStack.dart';
@@ -52,7 +52,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
                 },
               ),
               EventCalendar(),
-              FeaturedBusinesses(),
+              FeaturedDirectory(),
               FeaturedVideos(),
             ],
           ),
