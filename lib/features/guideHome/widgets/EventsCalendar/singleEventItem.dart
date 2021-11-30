@@ -13,7 +13,7 @@ class _SingleEventItemState extends State<SingleEventItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 30, top: 10, bottom: 12, right: 20),
+      padding: const EdgeInsets.only(left: 30, right: 20),
       child: Row(
         children: [
           Column(
