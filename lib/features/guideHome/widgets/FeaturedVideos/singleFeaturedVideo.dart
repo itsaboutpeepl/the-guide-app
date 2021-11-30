@@ -112,12 +112,12 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
     return GestureDetector(
       onTap: () => {_playAndToggle()},
       child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.93,
+        width: MediaQuery.of(context).size.width * 0.91,
         child: Stack(
           alignment: Alignment.center,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
+              borderRadius: BorderRadius.all(Radius.circular(20)),
               child: _chewieController != null &&
                       _chewieController!
                           .videoPlayerController.value.isInitialized

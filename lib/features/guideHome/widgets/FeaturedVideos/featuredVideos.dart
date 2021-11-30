@@ -40,11 +40,12 @@ class _FeaturedVideosState extends State<FeaturedVideos> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   height: MediaQuery.of(context).size.height * 0.3,
                   child: ListView.separated(
+                      physics: PageScrollPhysics(),
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (_, index) => SingleFeaturedVideo(
                           videoArticleItem: viewmodel.featuredVideos[index]),
-                      separatorBuilder: (_, index) => Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10)),
+                      separatorBuilder: (_, index) =>
+                          Padding(padding: EdgeInsets.symmetric(horizontal: 5)),
                       itemCount: viewmodel.featuredVideos.length),
                 )
               ],
