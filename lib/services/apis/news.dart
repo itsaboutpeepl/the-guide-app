@@ -129,8 +129,8 @@ class NewsService {
     for (var i = 0; i < 3; i++) {
       events.add(
         Events(
-          startDate: DateTime.parse("09-04-2021"),
-          endDate: DateTime.parse("22-12-2021"),
+          startDate: DateTime.parse("2021-04-09"),
+          endDate: DateTime.parse("2021-12-21"),
           eventTitle: "Test Title Event",
           location: "Test Event Location wow",
           coordinates: "53.12618, 2.79123",
