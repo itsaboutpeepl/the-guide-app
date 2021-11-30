@@ -63,7 +63,7 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
             separatorBuilder: (_, index) => Divider(
               indent: MediaQuery.of(context).size.width * 0.3,
               endIndent: MediaQuery.of(context).size.width * 0.3,
-              height: 20,
+              height: 40,
               thickness: 2,
               color: Colors.grey[200],
             ),

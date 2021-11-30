@@ -48,6 +48,7 @@ class SingleCategoryArticle extends StatelessWidget {
                       flex: 2,
                       child: Text(
                         article.content,
+                        textAlign: TextAlign.justify,
                         maxLines: 5,
                         overflow: TextOverflow.ellipsis,
                       ),
