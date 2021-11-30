@@ -10,6 +10,7 @@ import 'package:peepl/common/router/route_guards.dart';
 import 'package:peepl/constants/strings.dart';
 import 'package:peepl/generated/l10n.dart';
 import 'package:peepl/models/app_state.dart';
+import 'package:peepl/redux/actions/home_page_actions.dart';
 import 'package:peepl/services.dart';
 import 'package:peepl/utils/log/log.dart';
 import 'package:redux/redux.dart';
@@ -51,6 +52,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     setJwtToken(widget.store);
+    widget.store.dispatch(fetchHomePageData());
     _locale = widget.store.state.userState.locale;
   }
 
