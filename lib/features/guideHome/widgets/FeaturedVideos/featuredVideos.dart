@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/guideHome/widgets/Featured%20Videos/singleFeaturedVideo.dart';
+import 'package:peepl/features/guideHome/widgets/FeaturedVideos/singleFeaturedVideo.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/viewsmodels/featuredVideos.dart';
 
