@@ -2,7 +2,6 @@ import 'dart:math';
 
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
-import 'package:confetti/src/enums/confetti_controller_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/viewsmodels/confetti.dart';
@@ -27,10 +26,6 @@ class _MyConfettiWidgetState extends State<MyConfettiWidget> {
     controller = ConfettiController(duration: Duration(seconds: 5));
     controller.play();
   }
-
-  static final double down = pi / 2;
-
-  final double blastDirection = down;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +52,7 @@ class _MyConfettiWidgetState extends State<MyConfettiWidget> {
             Colors.purple,
             Colors.lightBlue,
           ],
-          blastDirection: blastDirection,
+          blastDirection: pi / 2,
           blastDirectionality: BlastDirectionality.directional,
           shouldLoop: false,
           emissionFrequency: 0.1,
