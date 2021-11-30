@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/guideHome/widgets/singleFeaturedVideo.dart';
+import 'package:peepl/features/guideHome/widgets/Featured%20Directory/singleDirectoryItem.dart';
 
-class FeaturedVideos extends StatefulWidget {
-  const FeaturedVideos({Key? key}) : super(key: key);
+class FeaturedDirectory extends StatefulWidget {
+  const FeaturedDirectory({Key? key}) : super(key: key);
 
   @override
-  _FeaturedVideosState createState() => _FeaturedVideosState();
+  _FeaturedDirectoryState createState() => _FeaturedDirectoryState();
 }
 
-class _FeaturedVideosState extends State<FeaturedVideos> {
+class _FeaturedDirectoryState extends State<FeaturedDirectory> {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: EdgeInsets.all(15),
+      padding: EdgeInsets.only(top: 15, left: 15, right: 15),
       sliver: SliverToBoxAdapter(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Watch & Earn",
+              "The Hottest Places",
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
             ),
             SizedBox(
@@ -31,10 +31,10 @@ class _FeaturedVideosState extends State<FeaturedVideos> {
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
-              height: MediaQuery.of(context).size.height * 0.3,
+              height: MediaQuery.of(context).size.height * 0.33,
               child: ListView.separated(
                   scrollDirection: Axis.horizontal,
-                  itemBuilder: (_, index) => SingleFeaturedVideo(),
+                  itemBuilder: (_, index) => SingleDirectoryItem(),
                   separatorBuilder: (_, index) =>
                       Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
                   itemCount: 2),
