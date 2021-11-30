@@ -24,9 +24,9 @@ class SingleCategoryArticle extends StatelessWidget {
               children: [
                 Text(
                   article.title,
-                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 17),
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 18),
                 ),
-                SizedBox(height: 5),
+                SizedBox(height: 15),
                 Row(
                   children: [
                     Expanded(
@@ -38,7 +38,7 @@ class SingleCategoryArticle extends StatelessWidget {
                       ),
                     ),
                     SizedBox(
-                      width: 15,
+                      width: 10,
                     ),
                     Expanded(
                       child: Container(
