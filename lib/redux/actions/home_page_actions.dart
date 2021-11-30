@@ -44,7 +44,7 @@ class UpdatePlayConfetti {
   UpdatePlayConfetti({required this.playConfetti});
 }
 
-ThunkAction fetchFeaturedPost() {
+ThunkAction fetchFeaturedPosts() {
   return (Store store) async {
     try {
       List<BlogArticle> articles = await newsService.featuredArticles();
@@ -112,10 +112,10 @@ ThunkAction fetchDirectoryList() {
 ThunkAction fetchHomePageData() {
   return (Store store) async {
     try {
-      fetchFeaturedPost();
-      fetchFeaturedVideos();
-      fetchEventsList();
-      fetchDirectoryList();
+      store.dispatch(fetchFeaturedPosts());
+      store.dispatch(fetchFeaturedVideos());
+      store.dispatch(fetchEventsList());
+      store.dispatch(fetchDirectoryList());
     } catch (e, s) {
       log.error('ERROR - fetchHomePageData $e');
       await Sentry.captureException(
