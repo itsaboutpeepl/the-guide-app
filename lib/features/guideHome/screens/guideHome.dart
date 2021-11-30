@@ -37,7 +37,6 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
       distinct: true,
       converter: FeaturedPostStackViewModel.fromStore,
       onInit: (store) {
-        store.dispatch(fetchFeaturedPost());
         store.dispatch(UpdatePlayConfetti(playConfetti: false));
       },
       builder: (_, viewModel) {
