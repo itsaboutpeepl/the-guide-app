@@ -14,6 +14,7 @@ dependencies:
   cached_network_image: ^3.1.0
   carousel_slider: ^4.0.0
   chewie: ^1.2.2
+  confetti: ^0.6.0
   contacts_service: ^0.6.1
   country_code_picker: ^2.0.2
   cupertino_icons: ^1.0.2
