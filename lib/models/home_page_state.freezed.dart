@@ -24,12 +24,14 @@ class _$HomePageStateTearOff {
       {required List<BlogArticle> featuredPosts,
       required List<VideoArticle> featuredVideos,
       required List<Events> eventList,
-      required List<Directory> directoryList}) {
+      required List<Directory> directoryList,
+      required bool playConfetti}) {
     return _HomePageState(
       featuredPosts: featuredPosts,
       featuredVideos: featuredVideos,
       eventList: eventList,
       directoryList: directoryList,
+      playConfetti: playConfetti,
     );
   }
 
@@ -47,6 +49,7 @@ mixin _$HomePageState {
   List<VideoArticle> get featuredVideos => throw _privateConstructorUsedError;
   List<Events> get eventList => throw _privateConstructorUsedError;
   List<Directory> get directoryList => throw _privateConstructorUsedError;
+  bool get playConfetti => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,7 +66,8 @@ abstract class $HomePageStateCopyWith<$Res> {
       {List<BlogArticle> featuredPosts,
       List<VideoArticle> featuredVideos,
       List<Events> eventList,
-      List<Directory> directoryList});
+      List<Directory> directoryList,
+      bool playConfetti});
 }
 
 /// @nodoc
@@ -81,6 +85,7 @@ class _$HomePageStateCopyWithImpl<$Res>
     Object? featuredVideos = freezed,
     Object? eventList = freezed,
     Object? directoryList = freezed,
+    Object? playConfetti = freezed,
   }) {
     return _then(_value.copyWith(
       featuredPosts: featuredPosts == freezed
@@ -99,6 +104,10 @@ class _$HomePageStateCopyWithImpl<$Res>
           ? _value.directoryList
           : directoryList // ignore: cast_nullable_to_non_nullable
               as List<Directory>,
+      playConfetti: playConfetti == freezed
+          ? _value.playConfetti
+          : playConfetti // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -114,7 +123,8 @@ abstract class _$HomePageStateCopyWith<$Res>
       {List<BlogArticle> featuredPosts,
       List<VideoArticle> featuredVideos,
       List<Events> eventList,
-      List<Directory> directoryList});
+      List<Directory> directoryList,
+      bool playConfetti});
 }
 
 /// @nodoc
@@ -134,6 +144,7 @@ class __$HomePageStateCopyWithImpl<$Res>
     Object? featuredVideos = freezed,
     Object? eventList = freezed,
     Object? directoryList = freezed,
+    Object? playConfetti = freezed,
   }) {
     return _then(_HomePageState(
       featuredPosts: featuredPosts == freezed
@@ -152,6 +163,10 @@ class __$HomePageStateCopyWithImpl<$Res>
           ? _value.directoryList
           : directoryList // ignore: cast_nullable_to_non_nullable
               as List<Directory>,
+      playConfetti: playConfetti == freezed
+          ? _value.playConfetti
+          : playConfetti // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -164,7 +179,8 @@ class _$_HomePageState extends _HomePageState {
       {required this.featuredPosts,
       required this.featuredVideos,
       required this.eventList,
-      required this.directoryList})
+      required this.directoryList,
+      required this.playConfetti})
       : super._();
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
@@ -178,10 +194,12 @@ class _$_HomePageState extends _HomePageState {
   final List<Events> eventList;
   @override
   final List<Directory> directoryList;
+  @override
+  final bool playConfetti;
 
   @override
   String toString() {
-    return 'HomePageState(featuredPosts: $featuredPosts, featuredVideos: $featuredVideos, eventList: $eventList, directoryList: $directoryList)';
+    return 'HomePageState(featuredPosts: $featuredPosts, featuredVideos: $featuredVideos, eventList: $eventList, directoryList: $directoryList, playConfetti: $playConfetti)';
   }
 
   @override
@@ -199,7 +217,10 @@ class _$_HomePageState extends _HomePageState {
                     .equals(other.eventList, eventList)) &&
             (identical(other.directoryList, directoryList) ||
                 const DeepCollectionEquality()
-                    .equals(other.directoryList, directoryList)));
+                    .equals(other.directoryList, directoryList)) &&
+            (identical(other.playConfetti, playConfetti) ||
+                const DeepCollectionEquality()
+                    .equals(other.playConfetti, playConfetti)));
   }
 
   @override
@@ -208,7 +229,8 @@ class _$_HomePageState extends _HomePageState {
       const DeepCollectionEquality().hash(featuredPosts) ^
       const DeepCollectionEquality().hash(featuredVideos) ^
       const DeepCollectionEquality().hash(eventList) ^
-      const DeepCollectionEquality().hash(directoryList);
+      const DeepCollectionEquality().hash(directoryList) ^
+      const DeepCollectionEquality().hash(playConfetti);
 
   @JsonKey(ignore: true)
   @override
@@ -226,7 +248,8 @@ abstract class _HomePageState extends HomePageState {
       {required List<BlogArticle> featuredPosts,
       required List<VideoArticle> featuredVideos,
       required List<Events> eventList,
-      required List<Directory> directoryList}) = _$_HomePageState;
+      required List<Directory> directoryList,
+      required bool playConfetti}) = _$_HomePageState;
   _HomePageState._() : super._();
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
@@ -240,6 +263,8 @@ abstract class _HomePageState extends HomePageState {
   List<Events> get eventList => throw _privateConstructorUsedError;
   @override
   List<Directory> get directoryList => throw _privateConstructorUsedError;
+  @override
+  bool get playConfetti => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HomePageStateCopyWith<_HomePageState> get copyWith =>

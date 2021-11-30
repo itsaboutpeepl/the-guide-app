@@ -20,6 +20,7 @@ _$_HomePageState _$_$_HomePageStateFromJson(Map<String, dynamic> json) {
     directoryList: (json['directoryList'] as List<dynamic>)
         .map((e) => Directory.fromJson(e))
         .toList(),
+    playConfetti: json['playConfetti'] as bool,
   );
 }
 
@@ -29,4 +30,5 @@ Map<String, dynamic> _$_$_HomePageStateToJson(_$_HomePageState instance) =>
       'featuredVideos': instance.featuredVideos.map((e) => e.toJson()).toList(),
       'eventList': instance.eventList.map((e) => e.toJson()).toList(),
       'directoryList': instance.directoryList.map((e) => e.toJson()).toList(),
+      'playConfetti': instance.playConfetti,
     };
