@@ -39,6 +39,11 @@ class UpdateDirectoryList {
   UpdateDirectoryList({required this.directoryList});
 }
 
+class UpdatePlayConfetti {
+  final bool playConfetti;
+  UpdatePlayConfetti({required this.playConfetti});
+}
+
 ThunkAction fetchFeaturedPost() {
   return (Store store) async {
     try {
