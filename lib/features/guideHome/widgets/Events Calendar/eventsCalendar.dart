@@ -32,8 +32,10 @@ class _EventCalendarState extends State<EventCalendar> {
                   height: MediaQuery.of(context).size.height * 0.24,
                   child: ListView.builder(
                       padding: EdgeInsets.symmetric(vertical: 10),
-                      itemBuilder: (context, index) => SingleEventItem(),
-                      itemCount: 2),
+                      itemBuilder: (context, index) => SingleEventItem(
+                            eventItem: viewmodel.eventsList[index],
+                          ),
+                      itemCount: viewmodel.eventsList.length),
                 )),
           ),
         );

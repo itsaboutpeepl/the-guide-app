@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:peepl/models/articles/events.dart';
 
 class SingleEventItem extends StatefulWidget {
-  const SingleEventItem({Key? key}) : super(key: key);
+  final Events eventItem;
+  const SingleEventItem({Key? key, required this.eventItem}) : super(key: key);
 
   @override
   _SingleEventItemState createState() => _SingleEventItemState();
