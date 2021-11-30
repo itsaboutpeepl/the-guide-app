@@ -69,7 +69,10 @@ Widget featuredPost(BuildContext context, BlogArticle article) {
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: Row(
                 children: [
-                  Text(article.category[0]),
+                  Text(
+                    article.category[0].substring(0, 10),
+                    //TODO: Remove Once API
+                  ),
                   SizedBox(
                     width: 5,
                   ),
