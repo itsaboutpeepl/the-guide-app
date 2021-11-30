@@ -5,12 +5,15 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideHome/helpers/customControls.dart';
 import 'package:peepl/features/shared/widgets/snackbars.dart';
 import 'package:peepl/models/app_state.dart';
+import 'package:peepl/models/articles/videoArticle.dart';
 import 'package:peepl/redux/actions/home_page_actions.dart';
 import 'package:video_player/video_player.dart';
 import 'package:redux/redux.dart';
 
 class SingleFeaturedVideo extends StatefulWidget {
-  const SingleFeaturedVideo({Key? key}) : super(key: key);
+  final VideoArticle videoArticleItem;
+  const SingleFeaturedVideo({Key? key, required this.videoArticleItem})
+      : super(key: key);
 
   @override
   State<SingleFeaturedVideo> createState() => _SingleFeaturedVideoState();
