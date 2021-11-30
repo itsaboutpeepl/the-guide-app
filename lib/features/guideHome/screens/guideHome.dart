@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideHome/widgets/SliverAppBar.dart';
+import 'package:peepl/features/guideHome/widgets/confettiWidget.dart';
 import 'package:peepl/features/guideHome/widgets/eventsCalendar.dart';
 import 'package:peepl/features/guideHome/widgets/featuredBusinesses.dart';
 import 'package:peepl/features/guideHome/widgets/featuredPostStack.dart';
@@ -37,23 +38,24 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
       converter: FeaturedPostStackViewModel.fromStore,
       onInit: (store) {
         store.dispatch(fetchFeaturedPost());
+        store.dispatch(UpdatePlayConfetti(playConfetti: false));
       },
       builder: (_, viewModel) {
-        return CustomScrollView(
-          controller: _scrollController,
-          slivers: [
-            MySliverAppBar(),
-            FeaturedPostStack(
-              onCardChanged: () {
-                setState(() {});
-              },
-            ),
-            EventCalendar(),
-            FeaturedBusinesses(),
-            FeaturedVideos(),
-            // CategoryTabBar(tabController: _tabController),
-            // CategoryTabViews(tabController: _tabController),
-          ],
+        return MyConfettiWidget(
+          child: CustomScrollView(
+            controller: _scrollController,
+            slivers: [
+              MySliverAppBar(),
+              FeaturedPostStack(
+                onCardChanged: () {
+                  setState(() {});
+                },
+              ),
+              EventCalendar(),
+              FeaturedBusinesses(),
+              FeaturedVideos(),
+            ],
+          ),
         );
       },
     );
