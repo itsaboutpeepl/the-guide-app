@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideNews/screens/newsScreen.dart';
 import 'package:peepl/features/guideNews/widgets/singleCategoryArticle.dart';
+import 'package:peepl/features/guideNews/widgets/testCard.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:peepl/redux/actions/news_actions.dart';
 import 'package:peepl/redux/viewsmodels/categoryArticleList.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class CategoryArticlesList extends StatefulWidget {
   const CategoryArticlesList({Key? key}) : super(key: key);
@@ -71,3 +73,37 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
     );
   }
 }
+
+// return RefreshIndicator(
+//           onRefresh: () async {},
+//           child: StaggeredGridView.countBuilder(
+//             crossAxisCount: 4,
+//             mainAxisSpacing: 10,
+//             crossAxisSpacing: 10,
+//             staggeredTileBuilder: (index) =>
+//                 StaggeredTile.fit(index.isEven ? 2 : 2),
+//             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+//             controller: _scrollController,
+//             itemCount: vm.articles.length,
+//             itemBuilder: (_, int index) {
+//               if (vm.articles.length - 1 == index) {
+//                 return Container(
+//                   height: 50,
+//                   child: Center(
+//                     child: CircularProgressIndicator(),
+//                   ),
+//                 );
+//               }
+//               return TestCard(
+//                 article: vm.articles[index],
+//               );
+//             },
+//             // separatorBuilder: (_, index) => Divider(
+//             //   indent: MediaQuery.of(context).size.width * 0.3,
+//             //   endIndent: MediaQuery.of(context).size.width * 0.3,
+//             //   height: 20,
+//             //   thickness: 2,
+//             //   color: Colors.grey[200],
+//             // ),
+//           ),
+//         );
