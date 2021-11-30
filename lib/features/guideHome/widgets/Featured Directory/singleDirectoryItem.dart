@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:peepl/features/guideHome/helpers/UrlLaunch.dart';
+import 'package:peepl/models/articles/directory.dart';
 
 class SingleDirectoryItem extends StatefulWidget {
-  const SingleDirectoryItem({Key? key}) : super(key: key);
+  final Directory directoryItem;
+  const SingleDirectoryItem({Key? key, required this.directoryItem})
+      : super(key: key);
 
   @override
   _SingleDirectoryItemState createState() => _SingleDirectoryItemState();
