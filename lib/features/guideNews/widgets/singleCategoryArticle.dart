@@ -30,17 +30,6 @@ class SingleCategoryArticle extends StatelessWidget {
                 Row(
                   children: [
                     Expanded(
-                      flex: 2,
-                      child: Text(
-                        article.content,
-                        maxLines: 5,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    Expanded(
                       child: Container(
                         height: 90,
                         child: ClipRRect(
@@ -50,6 +39,17 @@ class SingleCategoryArticle extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                         ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Text(
+                        article.content,
+                        maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ],
