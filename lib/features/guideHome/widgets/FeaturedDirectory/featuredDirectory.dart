@@ -40,12 +40,14 @@ class _FeaturedDirectoryState extends State<FeaturedDirectory> {
                   margin: EdgeInsets.symmetric(vertical: 10),
                   height: MediaQuery.of(context).size.height * 0.33,
                   child: ListView.separated(
+                      physics: PageScrollPhysics(),
                       scrollDirection: Axis.horizontal,
+                      padding: EdgeInsets.zero,
                       itemBuilder: (_, index) => SingleDirectoryItem(
                             directoryItem: viewmodel.directoryList[index],
                           ),
-                      separatorBuilder: (_, index) => Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10)),
+                      separatorBuilder: (_, index) =>
+                          Padding(padding: EdgeInsets.only(right: 10)),
                       itemCount: viewmodel.directoryList.length),
                 )
               ],
