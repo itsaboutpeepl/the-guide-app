@@ -1,9 +1,13 @@
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/features/guideHome/helpers/customControls.dart';
 import 'package:peepl/features/shared/widgets/snackbars.dart';
+import 'package:peepl/models/app_state.dart';
+import 'package:peepl/redux/actions/home_page_actions.dart';
 import 'package:video_player/video_player.dart';
+import 'package:redux/redux.dart';
 
 class SingleFeaturedVideo extends StatefulWidget {
   const SingleFeaturedVideo({Key? key}) : super(key: key);
@@ -16,11 +20,18 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
   late VideoPlayerController _videoPlayerController;
   ChewieController? _chewieController;
   bool _isPlayBackCompletedOnce = false;
+  late Store store;
 
   @override
   void initState() {
     super.initState();
     initializePlayer();
+  }
+
+  @override
+  void didChangeDependencies() {
+    store = StoreProvider.of<AppState>(context);
+    super.didChangeDependencies();
   }
 
   @override
@@ -66,6 +77,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
         if (_videoPlayerController.value.position ==
                 _videoPlayerController.value.duration &&
             !_isPlayBackCompletedOnce) {
+          store.dispatch(UpdatePlayConfetti(playConfetti: true));
           _chewieController!.exitFullScreen();
           _isPlayBackCompletedOnce = true;
 
@@ -73,6 +85,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
             Duration(seconds: 1),
             () => {
               showPlayBackCompletedFlushBar(context),
+              //store.dispatch(UpdatePlayConfetti(playConfetti: false))
             },
           );
 
