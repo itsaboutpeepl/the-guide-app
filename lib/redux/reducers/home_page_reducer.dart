@@ -8,6 +8,7 @@ final HomePageReducers = combineReducers<HomePageState>(
     TypedReducer<HomePageState, UpdateFeaturedVideos>(_getFeaturedVideos),
     TypedReducer<HomePageState, UpdateEventsList>(_getEventsList),
     TypedReducer<HomePageState, UpdateDirectoryList>(_getDirectoryList),
+    TypedReducer<HomePageState, UpdatePlayConfetti>(_getPlayConfetti),
   ],
 );
 
@@ -30,4 +31,8 @@ HomePageState _getEventsList(HomePageState state, UpdateEventsList action) {
 HomePageState _getDirectoryList(
     HomePageState state, UpdateDirectoryList action) {
   return state.copyWith(directoryList: action.directoryList);
+}
+
+HomePageState _getPlayConfetti(HomePageState state, UpdatePlayConfetti action) {
+  return state.copyWith(playConfetti: action.playConfetti);
 }
