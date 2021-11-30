@@ -106,6 +106,18 @@ class _AccountScreenState extends State<AccountScreen> {
                                 );
                               },
                             ),
+                            MenuTile(
+                              label: "About",
+                              menuIcon: 'info_black.svg',
+                              onTap: () {
+                                context.router.root.push(
+                                  Webview(
+                                    title: I10n.of(context).legal,
+                                    url: 'https://itsaboutpeepl.com/privacy/',
+                                  ),
+                                );
+                              },
+                            ),
                           ],
                         ),
                       ),
