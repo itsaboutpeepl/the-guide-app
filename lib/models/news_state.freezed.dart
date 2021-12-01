@@ -23,13 +23,11 @@ class _$NewsStateTearOff {
   _NewsState call(
       {required List<String> categoryNames,
       required List<CategoryArticles> articles,
-      required int currentTabIndex,
-      required bool isRefreshing}) {
+      required int currentTabIndex}) {
     return _NewsState(
       categoryNames: categoryNames,
       articles: articles,
       currentTabIndex: currentTabIndex,
-      isRefreshing: isRefreshing,
     );
   }
 
@@ -46,7 +44,6 @@ mixin _$NewsState {
   List<String> get categoryNames => throw _privateConstructorUsedError;
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
   int get currentTabIndex => throw _privateConstructorUsedError;
-  bool get isRefreshing => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -61,8 +58,7 @@ abstract class $NewsStateCopyWith<$Res> {
   $Res call(
       {List<String> categoryNames,
       List<CategoryArticles> articles,
-      int currentTabIndex,
-      bool isRefreshing});
+      int currentTabIndex});
 }
 
 /// @nodoc
@@ -78,7 +74,6 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
     Object? categoryNames = freezed,
     Object? articles = freezed,
     Object? currentTabIndex = freezed,
-    Object? isRefreshing = freezed,
   }) {
     return _then(_value.copyWith(
       categoryNames: categoryNames == freezed
@@ -93,10 +88,6 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      isRefreshing: isRefreshing == freezed
-          ? _value.isRefreshing
-          : isRefreshing // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -110,8 +101,7 @@ abstract class _$NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   $Res call(
       {List<String> categoryNames,
       List<CategoryArticles> articles,
-      int currentTabIndex,
-      bool isRefreshing});
+      int currentTabIndex});
 }
 
 /// @nodoc
@@ -128,7 +118,6 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
     Object? categoryNames = freezed,
     Object? articles = freezed,
     Object? currentTabIndex = freezed,
-    Object? isRefreshing = freezed,
   }) {
     return _then(_NewsState(
       categoryNames: categoryNames == freezed
@@ -143,10 +132,6 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      isRefreshing: isRefreshing == freezed
-          ? _value.isRefreshing
-          : isRefreshing // ignore: cast_nullable_to_non_nullable
-              as bool,
     ));
   }
 }
@@ -158,8 +143,7 @@ class _$_NewsState extends _NewsState {
   _$_NewsState(
       {required this.categoryNames,
       required this.articles,
-      required this.currentTabIndex,
-      required this.isRefreshing})
+      required this.currentTabIndex})
       : super._();
 
   factory _$_NewsState.fromJson(Map<String, dynamic> json) =>
@@ -171,12 +155,10 @@ class _$_NewsState extends _NewsState {
   final List<CategoryArticles> articles;
   @override
   final int currentTabIndex;
-  @override
-  final bool isRefreshing;
 
   @override
   String toString() {
-    return 'NewsState(categoryNames: $categoryNames, articles: $articles, currentTabIndex: $currentTabIndex, isRefreshing: $isRefreshing)';
+    return 'NewsState(categoryNames: $categoryNames, articles: $articles, currentTabIndex: $currentTabIndex)';
   }
 
   @override
@@ -191,10 +173,7 @@ class _$_NewsState extends _NewsState {
                     .equals(other.articles, articles)) &&
             (identical(other.currentTabIndex, currentTabIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentTabIndex, currentTabIndex)) &&
-            (identical(other.isRefreshing, isRefreshing) ||
-                const DeepCollectionEquality()
-                    .equals(other.isRefreshing, isRefreshing)));
+                    .equals(other.currentTabIndex, currentTabIndex)));
   }
 
   @override
@@ -202,8 +181,7 @@ class _$_NewsState extends _NewsState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(categoryNames) ^
       const DeepCollectionEquality().hash(articles) ^
-      const DeepCollectionEquality().hash(currentTabIndex) ^
-      const DeepCollectionEquality().hash(isRefreshing);
+      const DeepCollectionEquality().hash(currentTabIndex);
 
   @JsonKey(ignore: true)
   @override
@@ -220,8 +198,7 @@ abstract class _NewsState extends NewsState {
   factory _NewsState(
       {required List<String> categoryNames,
       required List<CategoryArticles> articles,
-      required int currentTabIndex,
-      required bool isRefreshing}) = _$_NewsState;
+      required int currentTabIndex}) = _$_NewsState;
   _NewsState._() : super._();
 
   factory _NewsState.fromJson(Map<String, dynamic> json) =
@@ -233,8 +210,6 @@ abstract class _NewsState extends NewsState {
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
   @override
   int get currentTabIndex => throw _privateConstructorUsedError;
-  @override
-  bool get isRefreshing => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NewsStateCopyWith<_NewsState> get copyWith =>

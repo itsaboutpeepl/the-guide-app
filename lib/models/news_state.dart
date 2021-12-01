@@ -1,10 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:peepl/models/articles/blogArticle.dart';
 import 'package:peepl/models/articles/categoryArticles.dart';
-import 'package:peepl/models/articles/directory.dart';
-import 'package:peepl/models/articles/events.dart';
-import 'package:peepl/models/articles/videoArticle.dart';
 
 part 'news_state.freezed.dart';
 part 'news_state.g.dart';
@@ -19,14 +15,12 @@ class NewsState with _$NewsState {
     required List<String> categoryNames,
     required List<CategoryArticles> articles,
     required int currentTabIndex,
-    required bool isRefreshing,
   }) = _NewsState;
 
   factory NewsState.initial() => NewsState(
         categoryNames: [],
         articles: [],
         currentTabIndex: 0,
-        isRefreshing: false,
       );
 
   factory NewsState.fromJson(dynamic json) => _$NewsStateFromJson(json);
