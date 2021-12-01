@@ -77,12 +77,9 @@ class _NewsScreenState extends State<NewsScreen>
           ),
         ),
         body: TabBarView(
-          controller: _tabController,
-          children: [
-            //add X number of screens for the tabs
-            for (var item in viewmodel.articles) CategoryArticlesList(),
-          ],
-        ),
+            controller: _tabController,
+            children:
+                viewmodel.articles.map((e) => CategoryArticlesList()).toList()),
       ),
     );
   }
