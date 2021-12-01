@@ -27,6 +27,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
 
   List<NetworkImage> _networkImages = [];
 
+  // ignore: unused_field
   late Timer _timer;
 
   @override

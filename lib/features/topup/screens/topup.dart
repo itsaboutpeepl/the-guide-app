@@ -9,7 +9,6 @@ import 'package:peepl/common/di/di.dart';
 import 'package:peepl/features/shared/widgets/my_scaffold.dart';
 import 'package:peepl/features/shared/widgets/numeric_keyboard.dart';
 import 'package:peepl/features/shared/widgets/primary_button.dart';
-import 'package:peepl/features/topup/dialogs/card_failed.dart';
 import 'package:peepl/features/topup/dialogs/minting_dialog.dart';
 import 'package:peepl/generated/l10n.dart';
 import 'package:peepl/models/app_state.dart';

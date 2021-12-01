@@ -4,7 +4,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:peepl/generated/l10n.dart';
 import 'package:peepl/models/app_state.dart';
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:country_code_picker/country_codes.dart';
 import 'package:peepl/services.dart';
 import 'package:peepl/features/shared/widgets/my_scaffold.dart';
 import 'package:peepl/features/shared/widgets/primary_button.dart';
