@@ -19,12 +19,14 @@ class NewsState with _$NewsState {
     required List<String> categoryNames,
     required List<CategoryArticles> articles,
     required int currentTabIndex,
+    required bool isRefreshing,
   }) = _NewsState;
 
   factory NewsState.initial() => NewsState(
         categoryNames: [],
         articles: [],
         currentTabIndex: 0,
+        isRefreshing: false,
       );
 
   factory NewsState.fromJson(dynamic json) => _$NewsStateFromJson(json);
