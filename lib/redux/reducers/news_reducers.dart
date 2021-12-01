@@ -10,6 +10,7 @@ final NewsStateReducers = combineReducers<NewsState>(
     TypedReducer<NewsState, UpdateCategoryNames>(_getCategoryNames),
     TypedReducer<NewsState, UpdateCurrentTabList>(_getCurrentTabList),
     TypedReducer<NewsState, UpdateCurrentTabIndex>(_updateCurrentTabIndex),
+    TypedReducer<NewsState, UpdateIsRefresh>(_updateIsRefreshing),
   ],
 );
 
@@ -37,4 +38,8 @@ NewsState _getCurrentTabList(NewsState state, UpdateCurrentTabList action) {
 NewsState _updateCurrentTabIndex(
     NewsState state, UpdateCurrentTabIndex action) {
   return state.copyWith(currentTabIndex: action.currentTabIndex);
+}
+
+NewsState _updateIsRefreshing(NewsState state, UpdateIsRefresh action) {
+  return state.copyWith(isRefreshing: action.isRefreshing);
 }

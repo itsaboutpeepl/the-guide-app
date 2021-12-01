@@ -27,7 +27,6 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
 
   @override
   Widget build(BuildContext context) {
-    final store = StoreProvider.of<AppState>(context);
     return StoreConnector<AppState, CategoryArticleListViewModel>(
       distinct: false,
       converter: (store) => CategoryArticleListViewModel.fromStore(store),
@@ -44,7 +43,9 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
       },
       builder: (_, vm) {
         return RefreshIndicator(
-          onRefresh: () async {},
+          onRefresh: () async {
+            vm.refreshList;
+          },
           child: !vm.isRefreshing
               ? ListView.separated(
                   padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),

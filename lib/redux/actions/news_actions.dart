@@ -8,6 +8,12 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:redux/redux.dart';
 
+class UpdateIsRefresh {
+  final bool isRefreshing;
+
+  UpdateIsRefresh({required this.isRefreshing});
+}
+
 class UpdateCategoryList {
   final List<CategoryArticles> categoryList;
 

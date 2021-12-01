@@ -27,8 +27,10 @@ class CategoryArticleListViewModel extends Equatable {
         tabID: store.state.newsState.articles[currentTabIndex].categoryID,
         articles: store.state.newsState.articles[currentTabIndex].articleList,
         isRefreshing: false,
-        refreshList:
-            store.dispatch(updateCurrentTabList(query: getRandomQuery())));
+        refreshList: () {
+          store.dispatch(UpdateIsRefresh(isRefreshing: true));
+          store.dispatch(updateCurrentTabList(query: getRandomQuery()));
+        });
   }
 
   @override
