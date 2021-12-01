@@ -8,12 +8,6 @@ import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:redux/redux.dart';
 
-class UpdateIsRefresh {
-  final bool isRefreshing;
-
-  UpdateIsRefresh({required this.isRefreshing});
-}
-
 class UpdateCategoryList {
   final List<CategoryArticles> categoryList;
 
@@ -36,6 +30,14 @@ class UpdateCurrentTabList {
   final int currentTabIndex;
 
   UpdateCurrentTabList(
+      {required this.articleList, required this.currentTabIndex});
+}
+
+class RefreshCurrentTabList {
+  final List<BlogArticle> articleList;
+  final int currentTabIndex;
+
+  RefreshCurrentTabList(
       {required this.articleList, required this.currentTabIndex});
 }
 
@@ -70,42 +72,33 @@ ThunkAction fetchCategoryNames() {
   };
 }
 
-// ThunkAction fetchCategoryList(String categoryName, {int page = 0}) {
-//   return (Store store) async {
-//     try {
-//       List<BlogArticle> newListOfArticles =
-//           await newsService.pagedArticlesByCategoryID("2313");
+ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
+  return (Store store) async {
+    try {
+      List<BlogArticle> newListOfArticles =
+          await newsService.pagedArticlesByCategoryID(query);
 
-//       List<CategoryArticles> articles = store.state.newsState.articles;
+      store.dispatch(RefreshCurrentTabList(
+          articleList: newListOfArticles,
+          currentTabIndex: store.state.newsState.currentTabIndex));
 
-//       articles
-//           .firstWhere((element) => element.categoryName == categoryName)
-//           .articleList
-//           .addAll(newListOfArticles);
-
-//       store.dispatch(UpdateCategoryList(categoryList: articles));
-//       print("DONE CALLING NEW LISt");
-//     } catch (e, s) {
-//       log.error('ERROR - fetchCategoryList $e');
-//       await Sentry.captureException(
-//         e,
-//         stackTrace: s,
-//         hint: 'ERROR - fetchCategoryList $e',
-//       );
-//     }
-//   };
-// }
+      print("DONE CALLING NEW LISt");
+    } catch (e, s) {
+      log.error('ERROR - updateCurrentTabList $e');
+      await Sentry.captureException(
+        e,
+        stackTrace: s,
+        hint: 'ERROR - updateCurrentTabList $e',
+      );
+    }
+  };
+}
 
 ThunkAction updateCurrentTabList({int page = 0, String query = ""}) {
   return (Store store) async {
     try {
       List<BlogArticle> newListOfArticles =
           await newsService.pagedArticlesByCategoryID(query);
-
-      // List<BlogArticle> oldListOfArticles = store.state.newsState
-      //     .articles[store.state.newsState.currentTabIndex].articleList;
-
-      // oldListOfArticles.addAll(newListOfArticles);
 
       store.dispatch(UpdateCurrentTabList(
           articleList: newListOfArticles,
