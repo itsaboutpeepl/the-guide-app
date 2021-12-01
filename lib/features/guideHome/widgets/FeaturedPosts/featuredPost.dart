@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:peepl/features/guideHome/helpers/detailArticleBottomModal.dart';
-import 'package:peepl/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/detailArticleBottomModal.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
 
 class FeaturedPost extends StatefulWidget {
   const FeaturedPost({Key? key, required this.index, required this.article})

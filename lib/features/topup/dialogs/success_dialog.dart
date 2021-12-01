@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/features/shared/widgets/primary_button.dart';
-import 'package:peepl/features/topup/screens/topup.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/utils/constants.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
+import 'package:guide_liverpool/features/topup/screens/topup.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 
 class TopUpSuccess extends StatefulWidget {
   final String amountText;

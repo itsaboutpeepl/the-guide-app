@@ -1,9 +1,9 @@
-import 'package:peepl/models/community/business.dart';
-import 'package:peepl/models/community/community.dart';
-import 'package:peepl/models/plugins/wallet_banner.dart';
-import 'package:peepl/models/tokens/token.dart';
+import 'package:guide_liverpool/models/community/business.dart';
+import 'package:guide_liverpool/models/community/community.dart';
+import 'package:guide_liverpool/models/plugins/wallet_banner.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
 import 'package:redux/redux.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 import 'package:equatable/equatable.dart';
 
 class BuyViewModel extends Equatable {

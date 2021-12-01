@@ -1,9 +1,9 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:peepl/models/articles/blogArticle.dart';
-import 'package:peepl/models/articles/directory.dart';
-import 'package:peepl/models/articles/events.dart';
-import 'package:peepl/models/articles/videoArticle.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/directory.dart';
+import 'package:guide_liverpool/models/articles/events.dart';
+import 'package:guide_liverpool/models/articles/videoArticle.dart';
 
 part 'home_page_state.freezed.dart';
 part 'home_page_state.g.dart';

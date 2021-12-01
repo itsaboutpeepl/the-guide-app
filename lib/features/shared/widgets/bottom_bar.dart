@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/constants/theme.dart';
-import 'package:peepl/features/shared/widgets/motionTabBar.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/main_page.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/constants/theme.dart';
+import 'package:guide_liverpool/features/shared/widgets/motionTabBar.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/main_page.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 
 class BottomBar extends StatelessWidget {
   late final TabsRouter tabsRouter;

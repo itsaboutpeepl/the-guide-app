@@ -9,13 +9,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:peepl/main.dart';
-import 'package:peepl/redux/reducers/app_reducer.dart';
-import 'package:peepl/utils/storage.dart';
+import 'package:guide_liverpool/main.dart';
+import 'package:guide_liverpool/redux/reducers/app_reducer.dart';
+import 'package:guide_liverpool/utils/storage.dart';
 import 'package:redux/redux.dart';
 
-import 'package:peepl/app.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/app.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 

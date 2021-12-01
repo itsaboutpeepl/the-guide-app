@@ -4,11 +4,11 @@ import 'package:redux/redux.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/topup/dialogs/card_failed.dart';
-import 'package:peepl/features/topup/dialogs/minting_dialog.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
-import 'package:peepl/utils/stripe.dart';
+import 'package:guide_liverpool/features/topup/dialogs/card_failed.dart';
+import 'package:guide_liverpool/features/topup/dialogs/minting_dialog.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/utils/stripe.dart';
 
 class WebViewWidget extends StatefulWidget {
   final String url;

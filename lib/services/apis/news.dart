@@ -1,11 +1,11 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:peepl/constants/urls.dart';
-import 'package:peepl/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/constants/urls.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:injectable/injectable.dart';
-import 'package:peepl/models/articles/directory.dart';
-import 'package:peepl/models/articles/events.dart';
-import 'package:peepl/models/articles/videoArticle.dart';
+import 'package:guide_liverpool/models/articles/directory.dart';
+import 'package:guide_liverpool/models/articles/events.dart';
+import 'package:guide_liverpool/models/articles/videoArticle.dart';
 
 @lazySingleton
 class NewsService {

@@ -2,17 +2,17 @@ import 'dart:core';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/models/community/business.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/redux/viewsmodels/buy_page.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/features/contacts/send_amount_arguments.dart';
-import 'package:peepl/utils/images.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/community/business.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/redux/viewsmodels/buy_page.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/features/contacts/send_amount_arguments.dart';
+import 'package:guide_liverpool/utils/images.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 
 class BuyScreen extends StatelessWidget {
   @override

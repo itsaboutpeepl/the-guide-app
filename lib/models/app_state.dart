@@ -1,11 +1,11 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/models/home_page_state.dart';
-import 'package:peepl/models/news_state.dart';
-import 'package:peepl/models/swap_state.dart';
-import 'package:peepl/models/user_state.dart';
-import 'package:peepl/models/cash_wallet_state.dart';
-import 'package:peepl/models/pro_wallet_state.dart';
+import 'package:guide_liverpool/models/home_page_state.dart';
+import 'package:guide_liverpool/models/news_state.dart';
+import 'package:guide_liverpool/models/swap_state.dart';
+import 'package:guide_liverpool/models/user_state.dart';
+import 'package:guide_liverpool/models/cash_wallet_state.dart';
+import 'package:guide_liverpool/models/pro_wallet_state.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'app_state.freezed.dart';

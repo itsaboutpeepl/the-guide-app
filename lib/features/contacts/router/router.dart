@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/common/router/route_guards.dart';
-import 'package:peepl/features/contacts/screens/contacts_list.dart';
-import 'package:peepl/features/contacts/screens/send_amount.dart';
-import 'package:peepl/features/contacts/screens/send_review.dart';
-import 'package:peepl/features/contacts/screens/send_success.dart';
+import 'package:guide_liverpool/common/router/route_guards.dart';
+import 'package:guide_liverpool/features/contacts/screens/contacts_list.dart';
+import 'package:guide_liverpool/features/contacts/screens/send_amount.dart';
+import 'package:guide_liverpool/features/contacts/screens/send_review.dart';
+import 'package:guide_liverpool/features/contacts/screens/send_success.dart';
 
 const contactsTab = AutoRoute(
   path: 'contacts',

@@ -1,12 +1,12 @@
 import 'package:ethereum_address/ethereum_address.dart';
-import 'package:peepl/models/actions/actions.dart';
-import 'package:peepl/models/actions/wallet_action.dart';
-import 'package:peepl/models/community/community.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
-import 'package:peepl/redux/actions/user_actions.dart';
-import 'package:peepl/models/cash_wallet_state.dart';
-import 'package:peepl/redux/reducers/pro_mode_reducer.dart';
+import 'package:guide_liverpool/models/actions/actions.dart';
+import 'package:guide_liverpool/models/actions/wallet_action.dart';
+import 'package:guide_liverpool/models/community/community.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
+import 'package:guide_liverpool/models/cash_wallet_state.dart';
+import 'package:guide_liverpool/redux/reducers/pro_mode_reducer.dart';
 import 'package:redux/redux.dart';
 
 final cashWalletReducers = combineReducers<CashWalletState>([

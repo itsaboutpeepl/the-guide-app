@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/models/tokens/token.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'swap_state.freezed.dart';

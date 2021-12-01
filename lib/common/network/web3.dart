@@ -1,6 +1,6 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:peepl/constants/urls.dart';
-import 'package:peepl/constants/variables.dart';
+import 'package:guide_liverpool/constants/urls.dart';
+import 'package:guide_liverpool/constants/variables.dart';
 import 'package:injectable/injectable.dart';
 import 'package:wallet_core/wallet_core.dart' show Web3;
 

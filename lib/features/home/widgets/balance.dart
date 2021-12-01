@@ -1,9 +1,9 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/redux/viewsmodels/balance.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/redux/viewsmodels/balance.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 
 class Balance extends StatelessWidget {
   const Balance({Key? key}) : super(key: key);

@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:peepl/common/di/di.dart';
-import 'package:peepl/common/router/routes.gr.dart';
-import 'package:peepl/constants/urls.dart';
-import 'package:peepl/services/apis/explorer.dart';
-import 'package:peepl/services/apis/fuseswap.dart';
-import 'package:peepl/services/apis/news.dart';
-import 'package:peepl/utils/onboard/Istrategy.dart';
+import 'package:guide_liverpool/common/di/di.dart';
+import 'package:guide_liverpool/common/router/routes.gr.dart';
+import 'package:guide_liverpool/constants/urls.dart';
+import 'package:guide_liverpool/services/apis/explorer.dart';
+import 'package:guide_liverpool/services/apis/fuseswap.dart';
+import 'package:guide_liverpool/services/apis/news.dart';
+import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:wallet_core/wallet_core.dart';
 

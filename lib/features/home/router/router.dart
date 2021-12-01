@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/common/router/route_guards.dart';
-import 'package:peepl/features/home/screens/action_details.dart';
-import 'package:peepl/features/home/screens/home.dart';
+import 'package:guide_liverpool/common/router/route_guards.dart';
+import 'package:guide_liverpool/features/home/screens/action_details.dart';
+import 'package:guide_liverpool/features/home/screens/home.dart';
 
 const homeTab = AutoRoute(
   path: 'home',

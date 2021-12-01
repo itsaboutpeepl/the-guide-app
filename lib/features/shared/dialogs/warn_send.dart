@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:peepl/generated/l10n.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
 import 'dart:core';
-import 'package:peepl/features/shared/widgets/primary_button.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/warn_send.dart';
+import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/warn_send.dart';
 
 class WarnSendDialog extends StatefulWidget {
   WarnSendDialog();

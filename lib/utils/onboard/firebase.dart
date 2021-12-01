@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/constants/enums.dart';
-import 'package:peepl/redux/actions/user_actions.dart';
-import 'package:peepl/services.dart';
-import 'package:peepl/utils/log/log.dart';
-import 'package:peepl/utils/onboard/Istrategy.dart';
-import 'package:peepl/constants/strings.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/constants/enums.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
+import 'package:guide_liverpool/services.dart';
+import 'package:guide_liverpool/utils/log/log.dart';
+import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
+import 'package:guide_liverpool/constants/strings.dart';
 import 'package:sentry_flutter/sentry_flutter.dart' show Sentry;
 
 class FirebaseStrategy implements IOnBoardStrategy {

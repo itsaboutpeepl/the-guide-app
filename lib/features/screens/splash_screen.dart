@@ -4,16 +4,16 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:peepl/constants/enums.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/redux/actions/user_actions.dart';
-import 'package:peepl/redux/viewsmodels/backup.dart';
+import 'package:guide_liverpool/constants/enums.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
+import 'package:guide_liverpool/redux/viewsmodels/backup.dart';
 import 'package:flutter/material.dart';
 import 'package:redux/redux.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/models/user_state.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/utils/biometric_local_auth.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/user_state.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/utils/biometric_local_auth.dart';
 
 class SplashScreen extends StatefulWidget {
   final void Function(bool isLoggedIn)? onLoginResult;

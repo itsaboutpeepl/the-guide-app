@@ -1,6 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:peepl/features/shared/widgets/my_app_bar.dart';
+import 'package:guide_liverpool/features/shared/widgets/my_app_bar.dart';
 
 class MyScaffold extends StatelessWidget {
   MyScaffold({

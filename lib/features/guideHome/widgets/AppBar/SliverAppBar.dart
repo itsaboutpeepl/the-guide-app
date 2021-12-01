@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/home/widgets/header.dart';
+import 'package:guide_liverpool/features/home/widgets/header.dart';
 
 class MySliverAppBar extends StatelessWidget {
   const MySliverAppBar({Key? key}) : super(key: key);

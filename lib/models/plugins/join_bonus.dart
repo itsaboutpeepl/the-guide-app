@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/models/plugins/plugin_base.dart';
+import 'package:guide_liverpool/models/plugins/plugin_base.dart';
 
 part 'join_bonus.freezed.dart';
 part 'join_bonus.g.dart';

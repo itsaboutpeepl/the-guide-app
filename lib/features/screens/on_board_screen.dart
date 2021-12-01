@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/onboard/widegts/flare_controller.dart';
-import 'package:peepl/features/onboard/widegts/on_boarding_page.dart';
-import 'package:peepl/features/onboard/widegts/sign_up_buttons.dart';
-import 'package:peepl/generated/l10n.dart';
+import 'package:guide_liverpool/features/onboard/widegts/flare_controller.dart';
+import 'package:guide_liverpool/features/onboard/widegts/on_boarding_page.dart';
+import 'package:guide_liverpool/features/onboard/widegts/sign_up_buttons.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardScreen extends StatefulWidget {

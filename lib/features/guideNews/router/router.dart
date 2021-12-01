@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/common/router/route_guards.dart';
-import 'package:peepl/features/guideNews/screens/newsScreen.dart';
+import 'package:guide_liverpool/common/router/route_guards.dart';
+import 'package:guide_liverpool/features/guideNews/screens/newsScreen.dart';
 
 const newsTab = AutoRoute(
   path: 'newsHome',

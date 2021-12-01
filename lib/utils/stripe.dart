@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
-import 'package:peepl/common/di/di.dart';
-import 'package:peepl/utils/constants.dart';
+import 'package:guide_liverpool/common/di/di.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 
 class StripeCustomResponse {
   final bool ok;

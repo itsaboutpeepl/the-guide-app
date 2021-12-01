@@ -2,12 +2,12 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/features/onboard/dialogs/warn_before_recreate.dart';
-import 'package:peepl/redux/viewsmodels/splash.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/features/shared/widgets/transparent_button.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/features/onboard/dialogs/warn_before_recreate.dart';
+import 'package:guide_liverpool/redux/viewsmodels/splash.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/features/shared/widgets/transparent_button.dart';
 
 class SignUpButtons extends StatefulWidget {
   @override

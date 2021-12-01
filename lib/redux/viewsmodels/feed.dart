@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:peepl/models/actions/wallet_action.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/models/actions/wallet_action.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:redux/redux.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 
 class FeedViewModel extends Equatable {
   final List<WalletAction> walletActions;

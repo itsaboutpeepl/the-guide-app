@@ -1,9 +1,9 @@
 import 'dart:math';
 
-import 'package:peepl/models/articles/blogArticle.dart';
-import 'package:peepl/models/articles/categoryArticles.dart';
-import 'package:peepl/services.dart';
-import 'package:peepl/utils/log/log.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/categoryArticles.dart';
+import 'package:guide_liverpool/services.dart';
+import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:redux/redux.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/bottom_bar.dart';
-import 'package:peepl/features/shared/widgets/bottom_bar.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/bottom_bar.dart';
+import 'package:guide_liverpool/features/shared/widgets/bottom_bar.dart';
 import 'package:auto_route/auto_route.dart';
 
 class MainScreen extends StatefulWidget {

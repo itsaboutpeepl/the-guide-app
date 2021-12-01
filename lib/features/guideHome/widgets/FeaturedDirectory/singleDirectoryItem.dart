@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/guideHome/helpers/UrlLaunch.dart';
-import 'package:peepl/models/articles/directory.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
+import 'package:guide_liverpool/models/articles/directory.dart';
 
 class SingleDirectoryItem extends StatefulWidget {
   final Directory directoryItem;

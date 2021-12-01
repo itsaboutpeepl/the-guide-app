@@ -1,14 +1,14 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/common/router/route_guards.dart';
-import 'package:peepl/features/account/screens/account_screen.dart';
-import 'package:peepl/features/account/screens/done_backup_screen.dart';
-import 'package:peepl/features/account/screens/profile.dart';
-import 'package:peepl/features/account/screens/protect_your_wallet.dart';
-import 'package:peepl/features/account/screens/settings.dart';
-import 'package:peepl/features/account/screens/show_mnemonic.dart';
-import 'package:peepl/features/account/screens/social_screen.dart';
-import 'package:peepl/features/account/screens/verify_mnemonic.dart';
-import 'package:peepl/features/topup/screens/topup.dart';
+import 'package:guide_liverpool/common/router/route_guards.dart';
+import 'package:guide_liverpool/features/account/screens/account_screen.dart';
+import 'package:guide_liverpool/features/account/screens/done_backup_screen.dart';
+import 'package:guide_liverpool/features/account/screens/profile.dart';
+import 'package:guide_liverpool/features/account/screens/protect_your_wallet.dart';
+import 'package:guide_liverpool/features/account/screens/settings.dart';
+import 'package:guide_liverpool/features/account/screens/show_mnemonic.dart';
+import 'package:guide_liverpool/features/account/screens/social_screen.dart';
+import 'package:guide_liverpool/features/account/screens/verify_mnemonic.dart';
+import 'package:guide_liverpool/features/topup/screens/topup.dart';
 
 const accountTab = AutoRoute(
   path: 'account',

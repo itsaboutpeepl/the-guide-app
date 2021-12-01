@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/features/shared/widgets/snackbars.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 
 class CopyToClipboard extends StatelessWidget {
   CopyToClipboard({

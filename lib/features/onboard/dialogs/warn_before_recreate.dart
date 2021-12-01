@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:peepl/generated/l10n.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
 
 class WarnBeforeReCreation extends StatefulWidget {
   @override

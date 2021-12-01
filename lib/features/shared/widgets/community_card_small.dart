@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:peepl/models/community/community.dart';
-import 'package:peepl/models/tokens/token.dart';
+import 'package:guide_liverpool/models/community/community.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
 
 class CommunityCard extends StatelessWidget {
   CommunityCard({

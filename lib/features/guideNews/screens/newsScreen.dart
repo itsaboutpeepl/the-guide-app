@@ -2,10 +2,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/guideNews/widgets/categoryArticlesList.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/actions/news_actions.dart';
-import 'package:peepl/redux/viewsmodels/newsScreen.dart';
+import 'package:guide_liverpool/features/guideNews/widgets/categoryArticlesList.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/actions/news_actions.dart';
+import 'package:guide_liverpool/redux/viewsmodels/newsScreen.dart';
 
 List<String> randomQueries = [
   'business',

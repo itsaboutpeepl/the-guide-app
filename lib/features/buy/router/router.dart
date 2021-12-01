@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/features/buy/screens/business.dart';
-import 'package:peepl/features/buy/screens/buy.dart';
+import 'package:guide_liverpool/features/buy/screens/business.dart';
+import 'package:guide_liverpool/features/buy/screens/buy.dart';
 
 const buyTab = AutoRoute(
   path: 'buy',

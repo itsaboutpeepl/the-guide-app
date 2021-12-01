@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/guideHome/widgets/FeaturedDirectory/singleDirectoryItem.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/directory.dart';
+import 'package:guide_liverpool/features/guideHome/widgets/FeaturedDirectory/singleDirectoryItem.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/directory.dart';
 
 class FeaturedDirectory extends StatefulWidget {
   const FeaturedDirectory({Key? key}) : super(key: key);

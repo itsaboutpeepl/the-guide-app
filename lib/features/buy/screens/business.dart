@@ -5,14 +5,14 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/community/business.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/features/contacts/send_amount_arguments.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/utils/images.dart';
-import 'package:peepl/utils/string.dart';
-import 'package:peepl/utils/url.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/community/business.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/features/contacts/send_amount_arguments.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/utils/images.dart';
+import 'package:guide_liverpool/utils/string.dart';
+import 'package:guide_liverpool/utils/url.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class BusinessScreen extends StatefulWidget {

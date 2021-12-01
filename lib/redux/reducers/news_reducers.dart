@@ -1,5 +1,5 @@
-import 'package:peepl/models/news_state.dart';
-import 'package:peepl/redux/actions/news_actions.dart';
+import 'package:guide_liverpool/models/news_state.dart';
+import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:redux/redux.dart';
 
 final NewsStateReducers = combineReducers<NewsState>(

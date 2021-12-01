@@ -1,6 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
-import 'package:peepl/features/shared/widgets/primary_button.dart';
+import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 
 class TopupExplained extends StatefulWidget {
   TopupExplained({

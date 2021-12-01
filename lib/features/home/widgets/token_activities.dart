@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:peepl/features/home/widgets/action_tile.dart';
-import 'package:peepl/generated/l10n.dart';
+import 'package:guide_liverpool/features/home/widgets/action_tile.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/models/actions/wallet_action.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/assets.dart';
+import 'package:guide_liverpool/models/actions/wallet_action.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/assets.dart';
 import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 

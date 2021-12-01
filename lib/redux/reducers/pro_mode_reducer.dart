@@ -1,11 +1,11 @@
 import 'dart:math';
 
-import 'package:peepl/models/actions/actions.dart';
-import 'package:peepl/models/pro_wallet_state.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
-import 'package:peepl/redux/actions/pro_mode_wallet_actions.dart';
-import 'package:peepl/redux/actions/user_actions.dart';
+import 'package:guide_liverpool/models/actions/actions.dart';
+import 'package:guide_liverpool/models/pro_wallet_state.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/redux/actions/pro_mode_wallet_actions.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:redux/redux.dart';
 
 bool Function(String, Token) clearTokensWithZero = (key, token) {

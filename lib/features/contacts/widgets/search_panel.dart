@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/shared/widgets/barcode_scanner.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/features/shared/widgets/silver_app_bar.dart';
+import 'package:guide_liverpool/features/shared/widgets/barcode_scanner.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/features/shared/widgets/silver_app_bar.dart';
 
 class SearchPanel extends StatelessWidget {
   SearchPanel({

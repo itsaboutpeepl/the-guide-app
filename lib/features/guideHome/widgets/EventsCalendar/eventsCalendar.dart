@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/guideHome/widgets/EventsCalendar/singleEventItem.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/eventsCalendar.dart';
+import 'package:guide_liverpool/features/guideHome/widgets/EventsCalendar/singleEventItem.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/eventsCalendar.dart';
 
 class EventCalendar extends StatefulWidget {
   const EventCalendar({Key? key}) : super(key: key);

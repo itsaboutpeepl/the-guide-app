@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_segment/flutter_segment.dart';
-import 'package:peepl/features/topup/dialogs/success_dialog.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/utils/constants.dart';
+import 'package:guide_liverpool/features/topup/dialogs/success_dialog.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 import 'package:redux/redux.dart';
 
 class _MintingDialogViewModel extends Equatable {

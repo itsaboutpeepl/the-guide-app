@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:peepl/features/contacts/dialogs/enable_contacts.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/contacts.dart';
+import 'package:guide_liverpool/features/contacts/dialogs/enable_contacts.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/contacts.dart';
 
 class EmptyState extends StatelessWidget {
   const EmptyState({Key? key}) : super(key: key);

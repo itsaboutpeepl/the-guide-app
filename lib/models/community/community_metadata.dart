@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/utils/images.dart';
+import 'package:guide_liverpool/utils/images.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'community_metadata.freezed.dart';

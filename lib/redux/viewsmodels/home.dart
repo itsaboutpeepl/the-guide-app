@@ -1,7 +1,7 @@
-import 'package:peepl/utils/addresses.dart';
+import 'package:guide_liverpool/utils/addresses.dart';
 import 'package:redux/redux.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 
 class HomeViewModel {
   final Function() onStart;

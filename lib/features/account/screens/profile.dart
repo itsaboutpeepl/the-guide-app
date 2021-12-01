@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/profile.dart';
-import 'package:peepl/utils/format.dart';
-import 'package:peepl/features/shared/widgets/my_scaffold.dart';
-import 'package:peepl/features/shared/widgets/snackbars.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/profile.dart';
+import 'package:guide_liverpool/utils/format.dart';
+import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 

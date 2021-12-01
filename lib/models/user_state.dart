@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:contacts_service/contacts_service.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/constants/enums.dart';
+import 'package:guide_liverpool/constants/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'user_state.freezed.dart';

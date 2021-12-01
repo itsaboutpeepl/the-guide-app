@@ -3,14 +3,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:peepl/common/di/package_info.dart';
-import 'package:peepl/features/account/widgets/menu_tile.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/settings.dart';
-import 'package:peepl/features/shared/widgets/language_selector.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:guide_liverpool/common/di/package_info.dart';
+import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/settings.dart';
+import 'package:guide_liverpool/features/shared/widgets/language_selector.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 
 class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {

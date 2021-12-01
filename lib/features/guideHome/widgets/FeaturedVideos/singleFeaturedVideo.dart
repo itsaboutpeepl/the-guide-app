@@ -2,11 +2,11 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/guideHome/helpers/customControls.dart';
-import 'package:peepl/features/shared/widgets/snackbars.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/models/articles/videoArticle.dart';
-import 'package:peepl/redux/actions/home_page_actions.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/customControls.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/articles/videoArticle.dart';
+import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:video_player/video_player.dart';
 import 'package:redux/redux.dart';
 

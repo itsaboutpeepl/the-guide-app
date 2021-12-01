@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/common/router/route_guards.dart';
-import 'package:peepl/features/guideHome/screens/guideHome.dart';
+import 'package:guide_liverpool/common/router/route_guards.dart';
+import 'package:guide_liverpool/features/guideHome/screens/guideHome.dart';
 
 const guideHomeTab = AutoRoute(
   path: 'guideHome',

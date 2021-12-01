@@ -2,13 +2,13 @@ import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/contacts/screens/send_amount.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/tokens/token.dart';
+import 'package:guide_liverpool/features/contacts/screens/send_amount.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
 import 'package:flutter/material.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/trade_card.dart';
-import 'package:peepl/features/shared/widgets/default_logo.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/trade_card.dart';
+import 'package:guide_liverpool/features/shared/widgets/default_logo.dart';
 
 class TradeCard extends StatelessWidget {
   final Token? token;

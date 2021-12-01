@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
 
 class SingleCategoryArticle extends StatelessWidget {
   final BlogArticle article;

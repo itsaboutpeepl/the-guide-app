@@ -1,10 +1,10 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 // import 'package:flutter/foundation.dart';
-import 'package:peepl/constants/urls.dart';
-import 'package:peepl/models/swap/swap.dart';
-import 'package:peepl/models/tokens/price.dart';
-import 'package:peepl/models/tokens/stats.dart';
+import 'package:guide_liverpool/constants/urls.dart';
+import 'package:guide_liverpool/models/swap/swap.dart';
+import 'package:guide_liverpool/models/tokens/price.dart';
+import 'package:guide_liverpool/models/tokens/stats.dart';
 import 'package:injectable/injectable.dart';
 // import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
@@ -82,7 +82,7 @@ class FuseSwapService {
     String tokenAddress,
     String days,
   ) async {
-        Response response = await dio.post(
+    Response response = await dio.post(
       '/pricechange/$tokenAddress',
       data: Map.from({
         "duration": {

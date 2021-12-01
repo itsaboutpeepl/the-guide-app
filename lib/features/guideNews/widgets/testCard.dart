@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 import 'package:flutter/material.dart';
-import 'package:peepl/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
 
 final Uint8List kTransparentImage = Uint8List.fromList(<int>[
   0x89,

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/shared/dialogs/scan_qr.dart';
-import 'package:peepl/features/shared/dialogs/warn_send.dart';
-import 'package:peepl/redux/viewsmodels/warn_send.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/features/shared/dialogs/scan_qr.dart';
+import 'package:guide_liverpool/features/shared/dialogs/warn_send.dart';
+import 'package:guide_liverpool/redux/viewsmodels/warn_send.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/utils/send.dart';
+import 'package:guide_liverpool/utils/send.dart';
 
 class BarcodeScanner extends StatelessWidget {
   const BarcodeScanner({

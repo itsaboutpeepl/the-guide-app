@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/models/articles/events.dart';
+import 'package:guide_liverpool/models/articles/events.dart';
 
 class SingleEventItem extends StatefulWidget {
   final Events eventItem;

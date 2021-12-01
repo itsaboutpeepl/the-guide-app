@@ -1,5 +1,5 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:peepl/common/router/routes.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
 
 bool isAuthenticated = false;
 

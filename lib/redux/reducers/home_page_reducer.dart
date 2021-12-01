@@ -1,5 +1,5 @@
-import 'package:peepl/models/home_page_state.dart';
-import 'package:peepl/redux/actions/home_page_actions.dart';
+import 'package:guide_liverpool/models/home_page_state.dart';
+import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:redux/redux.dart';
 
 final HomePageReducers = combineReducers<HomePageState>(

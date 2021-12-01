@@ -1,7 +1,7 @@
 // import 'dart:async';
 // import 'package:dio/dio.dart';
 // // import 'package:flutter/foundation.dart';
-// import 'package:peepl/constants/urls.dart';
+// import 'package:guide_liverpool/constants/urls.dart';
 // import 'package:injectable/injectable.dart';
 // // import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 

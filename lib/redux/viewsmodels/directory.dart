@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/models/articles/directory.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/articles/directory.dart';
 import 'package:redux/redux.dart';
 
 class DirectoryViewModel extends Equatable {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/constants/addresses.dart';
-import 'package:peepl/models/actions/actions.dart';
-import 'package:peepl/models/actions/wallet_action.dart';
-import 'package:peepl/models/community/community.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/utils/constants.dart';
+import 'package:guide_liverpool/constants/addresses.dart';
+import 'package:guide_liverpool/models/actions/actions.dart';
+import 'package:guide_liverpool/models/actions/wallet_action.dart';
+import 'package:guide_liverpool/models/community/community.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'cash_wallet_state.freezed.dart';

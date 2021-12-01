@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:peepl/models/articles/categoryArticles.dart';
+import 'package:guide_liverpool/models/articles/categoryArticles.dart';
 
 part 'news_state.freezed.dart';
 part 'news_state.g.dart';

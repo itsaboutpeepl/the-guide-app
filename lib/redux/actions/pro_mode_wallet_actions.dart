@@ -1,22 +1,22 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:peepl/constants/addresses.dart';
-import 'package:peepl/constants/variables.dart';
-import 'package:peepl/models/community/community.dart';
-import 'package:peepl/models/tokens/price.dart';
-import 'package:peepl/models/pro_wallet_state.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/models/user_state.dart';
-import 'package:peepl/redux/actions/user_actions.dart';
-import 'package:peepl/services.dart';
-import 'package:peepl/utils/addresses.dart';
-import 'package:peepl/utils/format.dart';
-import 'package:peepl/utils/images.dart';
+import 'package:guide_liverpool/constants/addresses.dart';
+import 'package:guide_liverpool/constants/variables.dart';
+import 'package:guide_liverpool/models/community/community.dart';
+import 'package:guide_liverpool/models/tokens/price.dart';
+import 'package:guide_liverpool/models/pro_wallet_state.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/models/user_state.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
+import 'package:guide_liverpool/services.dart';
+import 'package:guide_liverpool/utils/addresses.dart';
+import 'package:guide_liverpool/utils/format.dart';
+import 'package:guide_liverpool/utils/images.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux/redux.dart';
 import 'package:wallet_core/wallet_core.dart' show EtherAmount;
-import 'package:peepl/utils/log/log.dart';
+import 'package:guide_liverpool/utils/log/log.dart';
 
 class UpdateEtherBalance {
   final BigInt balance;

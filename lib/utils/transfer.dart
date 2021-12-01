@@ -1,7 +1,7 @@
 import 'package:contacts_service/contacts_service.dart';
-import 'package:peepl/models/community/business.dart';
-import 'package:peepl/utils/format.dart';
-import 'package:peepl/utils/phone.dart';
+import 'package:guide_liverpool/models/community/business.dart';
+import 'package:guide_liverpool/utils/format.dart';
+import 'package:guide_liverpool/utils/phone.dart';
 
 Contact? getContact(
   String? accountAddress,

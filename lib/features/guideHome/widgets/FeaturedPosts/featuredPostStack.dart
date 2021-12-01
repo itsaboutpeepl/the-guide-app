@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/features/guideHome/widgets/FeaturedPosts/featuredPost.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/redux/viewsmodels/featuredPostStack.dart';
+import 'package:guide_liverpool/features/guideHome/widgets/FeaturedPosts/featuredPost.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/viewsmodels/featuredPostStack.dart';
 
 class FeaturedPostStack extends StatefulWidget {
   final Function onCardChanged;

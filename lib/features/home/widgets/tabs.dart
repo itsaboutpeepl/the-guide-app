@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/home/widgets/feed.dart';
-import 'package:peepl/features/home/widgets/wallet.dart';
-import 'package:peepl/generated/l10n.dart';
+import 'package:guide_liverpool/features/home/widgets/feed.dart';
+import 'package:guide_liverpool/features/home/widgets/wallet.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
 
 class Tabs extends StatelessWidget {
   final int initialIndex;

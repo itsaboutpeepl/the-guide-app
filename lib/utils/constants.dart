@@ -1,8 +1,8 @@
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:peepl/constants/addresses.dart';
-import 'package:peepl/models/actions/actions.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/utils/string.dart';
+import 'package:guide_liverpool/constants/addresses.dart';
+import 'package:guide_liverpool/models/actions/actions.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/utils/string.dart';
 
 final String wethTokenAddress = '0xa722c13135930332eb3d749b2f0906559d2c5b99';
 final String wbtcTokenAddress = '0x33284f95ccb7b948d9d352e1439561cf83d8d00d';

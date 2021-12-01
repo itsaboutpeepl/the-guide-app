@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/constants/enums.dart';
-import 'package:peepl/generated/l10n.dart';
+import 'package:guide_liverpool/constants/enums.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:local_auth/local_auth.dart';
 
 class BiometricUtils {

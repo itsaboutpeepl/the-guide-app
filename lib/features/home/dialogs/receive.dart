@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/generated/l10n.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
 import 'dart:core';
 
-import 'package:peepl/features/shared/widgets/primary_button.dart';
+import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 
 class ReceiveDialog extends StatefulWidget {

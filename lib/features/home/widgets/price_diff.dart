@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/redux/actions/cash_wallet_actions.dart';
-import 'package:peepl/redux/viewsmodels/price_diff.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/redux/viewsmodels/price_diff.dart';
 import 'package:number_display/number_display.dart';
 
 class PriceDiff extends StatefulWidget {

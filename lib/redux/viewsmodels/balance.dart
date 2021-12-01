@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:peepl/models/cash_wallet_state.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/utils/constants.dart';
-// import 'package:peepl/utils/format.dart';
+import 'package:guide_liverpool/models/cash_wallet_state.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/utils/constants.dart';
+// import 'package:guide_liverpool/utils/format.dart';
 import 'package:redux/redux.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 
 num combiner(num previousValue, Token token) =>
     ![null, '', '0', 0, 'NaN'].contains(token.priceInfo?.quote)

@@ -1,16 +1,16 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:peepl/common/router/routes.dart';
-import 'package:peepl/constants/enums.dart';
-import 'package:peepl/features/account/widgets/menu_tile.dart';
-import 'package:peepl/features/screens/set_up_pincode.dart';
-import 'package:peepl/redux/viewsmodels/security.dart';
-import 'package:peepl/utils/biometric_local_auth.dart';
-import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/constants/enums.dart';
+import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
+import 'package:guide_liverpool/features/screens/set_up_pincode.dart';
+import 'package:guide_liverpool/redux/viewsmodels/security.dart';
+import 'package:guide_liverpool/utils/biometric_local_auth.dart';
+import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 
 class ProtectYourWallet extends StatelessWidget {
   @override

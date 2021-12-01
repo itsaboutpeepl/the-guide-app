@@ -1,10 +1,10 @@
-import 'package:peepl/models/app_state.dart';
-import 'package:peepl/models/plugins/plugins.dart';
-import 'package:peepl/models/tokens/token.dart';
-import 'package:peepl/utils/constants.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/plugins/plugins.dart';
+import 'package:guide_liverpool/models/tokens/token.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 import 'package:redux/redux.dart';
 import 'package:equatable/equatable.dart';
-import 'package:peepl/models/community/community.dart';
+import 'package:guide_liverpool/models/community/community.dart';
 
 class SwapViewModel extends Equatable {
   final String walletAddress;

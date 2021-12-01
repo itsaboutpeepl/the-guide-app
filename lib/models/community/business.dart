@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/models/community/business_metadata.dart';
+import 'package:guide_liverpool/models/community/business_metadata.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'business.freezed.dart';

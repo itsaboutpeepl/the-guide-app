@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:peepl/models/plugins/plugin_base.dart';
+import 'package:guide_liverpool/models/plugins/plugin_base.dart';
 
 part 'wallet_banner.freezed.dart';
 part 'wallet_banner.g.dart';

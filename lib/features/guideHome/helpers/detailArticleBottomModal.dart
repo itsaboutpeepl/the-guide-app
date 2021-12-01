@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:peepl/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/features/home/widgets/balance.dart';
-// import 'package:peepl/features/shared/widgets/barcode_scanner.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/redux/viewsmodels/header.dart';
-import 'package:peepl/models/app_state.dart';
+import 'package:guide_liverpool/features/home/widgets/balance.dart';
+// import 'package:guide_liverpool/features/shared/widgets/barcode_scanner.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/redux/viewsmodels/header.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 class Header extends StatefulWidget {

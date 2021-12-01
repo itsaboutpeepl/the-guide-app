@@ -1,11 +1,11 @@
 import 'dart:core';
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:peepl/features/account/widgets/menu_tile.dart';
-import 'package:peepl/generated/l10n.dart';
-import 'package:peepl/utils/log/log.dart';
-import 'package:peepl/utils/url.dart';
-import 'package:peepl/features/shared/widgets/my_scaffold.dart';
+import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
+import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/utils/log/log.dart';
+import 'package:guide_liverpool/utils/url.dart';
+import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:rate_my_app/rate_my_app.dart';
 
 class SocialScreen extends StatelessWidget {

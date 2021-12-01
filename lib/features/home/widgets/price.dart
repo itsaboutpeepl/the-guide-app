@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:peepl/models/tokens/price.dart';
-import 'package:peepl/services.dart';
-import 'package:peepl/utils/format.dart';
+import 'package:guide_liverpool/models/tokens/price.dart';
+import 'package:guide_liverpool/services.dart';
+import 'package:guide_liverpool/utils/format.dart';
 import 'package:number_display/number_display.dart';
 
 final Display display2 = createDisplay(
