@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/detailArticleBottomModal.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:intl/intl.dart';
 
 class FeaturedPost extends StatefulWidget {
   const FeaturedPost({Key? key, required this.index, required this.article})
@@ -70,8 +72,7 @@ Widget featuredPost(BuildContext context, BlogArticle article) {
               child: Row(
                 children: [
                   Text(
-                    article.category[0].substring(0, 10),
-                    //TODO: Remove Once API
+                    article.category[0],
                   ),
                   SizedBox(
                     width: 5,
@@ -85,7 +86,7 @@ Widget featuredPost(BuildContext context, BlogArticle article) {
                     width: 5,
                   ),
                   Text(
-                    "3 min ago",
+                    DateFormat("EEE, MMM d, ''yy").format(article.publishedAt),
                     style: TextStyle(color: Colors.grey[500]),
                   )
                 ],
@@ -94,7 +95,7 @@ Widget featuredPost(BuildContext context, BlogArticle article) {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Text(
-                article.content,
+                parseHtmlString(article.content),
                 style: TextStyle(fontSize: 15),
                 overflow: TextOverflow.ellipsis,
                 maxLines: 4,
