@@ -7,7 +7,8 @@ class UrlConstants {
   static const String FUSESWAP_TOKEN_LIST =
       'https://raw.githubusercontent.com/fuseio/fuseswap-default-token-list/master/build/fuseswap-default.tokenlist.json';
   static const String FUSESWAP_SERVICE_API = 'https://api.fuseswap.com/api/v1';
-  static const String THEGUIDE_WORDPRESS_API = "https://newsapi.org/v2/";
+  static const String THEGUIDE_WORDPRESS_API =
+      "https://theguideliverpool.com/wp-json/peepl/v1";
 
   // APIs
   static const String COINGECKO_BASE_URL = 'https://api.coingecko.com/api/v3';
