@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/guideNews/widgets/categoryArticlesList.dart';
 import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/newsScreen.dart';
 
@@ -40,17 +41,19 @@ class _NewsScreenState extends State<NewsScreen>
         store.dispatch(fetchCategoryNames()),
         store.dispatch(
           updateCurrentTabList(
-            query: getRandomQuery(),
+            query: store
+                .state.newsState.categories[_tabController.index].categoryName,
           ),
         ),
         _tabController = TabController(
-            length: store.state.newsState.categoryNames.length, vsync: this),
+            length: store.state.newsState.categories.length, vsync: this),
         _tabController.addListener(() {
           if (_tabController.indexIsChanging) {
             store.dispatch(
                 UpdateCurrentTabIndex(currentTabIndex: _tabController.index));
             store.dispatch(updateCurrentTabList(
-              query: getRandomQuery(),
+              query: store.state.newsState.categories[_tabController.index]
+                  .categoryName,
             ));
           }
         })
@@ -65,10 +68,10 @@ class _NewsScreenState extends State<NewsScreen>
                 controller: _tabController,
                 isScrollable: true,
                 labelColor: Colors.white,
-                tabs: viewmodel.tabNames
+                tabs: viewmodel.categories
                     .map(
-                      (String tabName) => Tab(
-                        child: Text(tabName),
+                      (Category category) => Tab(
+                        child: Text(category.categoryName),
                       ),
                     )
                     .toList(),
