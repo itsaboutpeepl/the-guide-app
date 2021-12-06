@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:guide_liverpool/constants/urls.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:injectable/injectable.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
 import 'package:guide_liverpool/models/articles/events.dart';
@@ -21,75 +22,89 @@ class NewsService {
   }
 
   Future<List<BlogArticle>> featuredArticles() async {
-    Response response = await dio.get(
-        'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+    Response response = await dio.get('/posts?page=1');
 
-    List<dynamic> results = response.data['articles'] as List;
+    List<dynamic> results = response.data as List;
 
     List<BlogArticle> articles = [];
 
-    for (var i = 0; i < 3; i++) {
-      articles.add(BlogArticle(
-        title: results[i]['title'] ?? "",
-        imageURL: results[i]['urlToImage'] ??
-            "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
-        category: [results[i]['author'] ?? "Hussain Surti"],
-        postID: 23132,
-        postURL: results[i]['url'] ??
-            "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
-        content: results[i]['content'] ?? loremImpsum,
-      ));
-    }
+    results.forEach(
+      (element) {
+        // var test = element['categories'] as List<String>;
+        // var test2 = element['attachments'] as List<String>;
+
+        // print(test);
+        // print('\n\n\n\n\n\n');
+        // print(test2);
+        articles.add(
+          BlogArticle(
+            title: element['title'],
+            imageURL: element['featured_image'],
+            category: element['categories'].cast<String>(),
+            postID: element['id'],
+            postURL: element['link'],
+            content: element['content'],
+            description: element['description'],
+            publishedAt: DateTime.parse(element['date']),
+            gallery: element['attachments'].cast<String>(),
+          ),
+        );
+      },
+    );
+
     return articles;
   }
 
-  Future<List<String>> categoryNames() async {
-    // Response response = await dio.get(
-    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+  Future<List<Category>> getCategories() async {
+    Response response = await dio.get('/categories');
 
     //List<dynamic> results = response.data['articles'] as List;
 
-    // List<Map<String, String>> test = [
-    //   {"id": "3212", "name": "Latest"},
-    //   {"id": "8217", "name": "Features"},
-    //   {"id": "9721", "name": "Eat"},
-    //   {"id": "2668", "name": "Club"},
-    //   {"id": "8540", "name": "Test"},
+    // List<Map<String, String>> demoCategories = [
+    //   {"id": "13866", "name": "Latest"},
+    //   {"id": "16630", "name": "Features"},
+    //   {"id": "13873", "name": "LifeStyle"},
+    //   {"id": "21554", "name": "Entertainment"},
+    //   {"id": "13876", "name": "Food & Drink"},
     // ];
 
-    List<String> test = [
-      "Latest",
-      "Features",
-      "Eat",
-      "Club",
-      "Test",
+    List<Category> demoCategories = [
+      Category(categoryID: 13866, categoryName: "Latest"),
+      Category(categoryID: 16630, categoryName: "Features"),
+      Category(categoryID: 13873, categoryName: "LifeStyle"),
+      Category(categoryID: 21554, categoryName: "Entertainment"),
+      Category(categoryID: 13876, categoryName: "Food & Drink"),
     ];
 
-    return test;
+    return demoCategories;
   }
 
   Future<List<BlogArticle>> pagedArticlesByCategoryID(String query,
-      {int page = 0}) async {
-    Response response = await dio.get('top-headlines?category=' +
-        query +
-        '&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
+      {int page = 1}) async {
+    Response response = await dio.get('/posts?category=$query&page=$page');
 
-    List<dynamic> results = response.data['articles'] as List;
+    List<dynamic> results = response.data as List;
 
     List<BlogArticle> articles = [];
 
-    for (var i = 0; i <= 5; i++) {
-      articles.add(BlogArticle(
-        title: results[i]['title'] ?? "",
-        imageURL: results[i]['urlToImage'] ??
-            "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
-        category: [results[i]['author'] ?? "Hussain Surti"],
-        postID: 23132,
-        postURL: results[i]['url'] ??
-            "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
-        content: results[i]['content'] ?? loremImpsum,
-      ));
-    }
+    results.forEach(
+      (element) {
+        articles.add(
+          BlogArticle(
+            title: element['title'],
+            imageURL: element['featured_image'],
+            category: element['categories'],
+            postID: element['id'],
+            postURL: element['link'],
+            content: element['content'],
+            description: element['description'],
+            publishedAt: DateTime.parse(element['date']),
+            gallery: element['attachments'],
+          ),
+        );
+      },
+    );
+
     return articles;
   }
 
