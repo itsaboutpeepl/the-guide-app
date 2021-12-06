@@ -21,11 +21,11 @@ class _$NewsStateTearOff {
   const _$NewsStateTearOff();
 
   _NewsState call(
-      {required List<String> categoryNames,
+      {required List<Category> categories,
       required List<CategoryArticles> articles,
       required int currentTabIndex}) {
     return _NewsState(
-      categoryNames: categoryNames,
+      categories: categories,
       articles: articles,
       currentTabIndex: currentTabIndex,
     );
@@ -41,7 +41,7 @@ const $NewsState = _$NewsStateTearOff();
 
 /// @nodoc
 mixin _$NewsState {
-  List<String> get categoryNames => throw _privateConstructorUsedError;
+  List<Category> get categories => throw _privateConstructorUsedError;
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
   int get currentTabIndex => throw _privateConstructorUsedError;
 
@@ -56,7 +56,7 @@ abstract class $NewsStateCopyWith<$Res> {
   factory $NewsStateCopyWith(NewsState value, $Res Function(NewsState) then) =
       _$NewsStateCopyWithImpl<$Res>;
   $Res call(
-      {List<String> categoryNames,
+      {List<Category> categories,
       List<CategoryArticles> articles,
       int currentTabIndex});
 }
@@ -71,15 +71,15 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? categoryNames = freezed,
+    Object? categories = freezed,
     Object? articles = freezed,
     Object? currentTabIndex = freezed,
   }) {
     return _then(_value.copyWith(
-      categoryNames: categoryNames == freezed
-          ? _value.categoryNames
-          : categoryNames // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      categories: categories == freezed
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<Category>,
       articles: articles == freezed
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
@@ -99,7 +99,7 @@ abstract class _$NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
       __$NewsStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {List<String> categoryNames,
+      {List<Category> categories,
       List<CategoryArticles> articles,
       int currentTabIndex});
 }
@@ -115,15 +115,15 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? categoryNames = freezed,
+    Object? categories = freezed,
     Object? articles = freezed,
     Object? currentTabIndex = freezed,
   }) {
     return _then(_NewsState(
-      categoryNames: categoryNames == freezed
-          ? _value.categoryNames
-          : categoryNames // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+      categories: categories == freezed
+          ? _value.categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<Category>,
       articles: articles == freezed
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
@@ -141,7 +141,7 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NewsState extends _NewsState {
   _$_NewsState(
-      {required this.categoryNames,
+      {required this.categories,
       required this.articles,
       required this.currentTabIndex})
       : super._();
@@ -150,7 +150,7 @@ class _$_NewsState extends _NewsState {
       _$_$_NewsStateFromJson(json);
 
   @override
-  final List<String> categoryNames;
+  final List<Category> categories;
   @override
   final List<CategoryArticles> articles;
   @override
@@ -158,16 +158,16 @@ class _$_NewsState extends _NewsState {
 
   @override
   String toString() {
-    return 'NewsState(categoryNames: $categoryNames, articles: $articles, currentTabIndex: $currentTabIndex)';
+    return 'NewsState(categories: $categories, articles: $articles, currentTabIndex: $currentTabIndex)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _NewsState &&
-            (identical(other.categoryNames, categoryNames) ||
+            (identical(other.categories, categories) ||
                 const DeepCollectionEquality()
-                    .equals(other.categoryNames, categoryNames)) &&
+                    .equals(other.categories, categories)) &&
             (identical(other.articles, articles) ||
                 const DeepCollectionEquality()
                     .equals(other.articles, articles)) &&
@@ -179,7 +179,7 @@ class _$_NewsState extends _NewsState {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(categoryNames) ^
+      const DeepCollectionEquality().hash(categories) ^
       const DeepCollectionEquality().hash(articles) ^
       const DeepCollectionEquality().hash(currentTabIndex);
 
@@ -196,7 +196,7 @@ class _$_NewsState extends _NewsState {
 
 abstract class _NewsState extends NewsState {
   factory _NewsState(
-      {required List<String> categoryNames,
+      {required List<Category> categories,
       required List<CategoryArticles> articles,
       required int currentTabIndex}) = _$_NewsState;
   _NewsState._() : super._();
@@ -205,7 +205,7 @@ abstract class _NewsState extends NewsState {
       _$_NewsState.fromJson;
 
   @override
-  List<String> get categoryNames => throw _privateConstructorUsedError;
+  List<Category> get categories => throw _privateConstructorUsedError;
   @override
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
   @override

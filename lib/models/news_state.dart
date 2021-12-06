@@ -1,24 +1,24 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:guide_liverpool/models/articles/categoryArticles.dart';
 
 part 'news_state.freezed.dart';
 part 'news_state.g.dart';
 
-@immutable
 @freezed
 class NewsState with _$NewsState {
   const NewsState._();
 
   @JsonSerializable()
   factory NewsState({
-    required List<String> categoryNames,
+    required List<Category> categories,
     required List<CategoryArticles> articles,
     required int currentTabIndex,
   }) = _NewsState;
 
   factory NewsState.initial() => NewsState(
-        categoryNames: [],
+        categories: [],
         articles: [],
         currentTabIndex: 0,
       );

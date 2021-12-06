@@ -8,8 +8,8 @@ part of 'news_state.dart';
 
 _$_NewsState _$_$_NewsStateFromJson(Map<String, dynamic> json) {
   return _$_NewsState(
-    categoryNames: (json['categoryNames'] as List<dynamic>)
-        .map((e) => e as String)
+    categories: (json['categories'] as List<dynamic>)
+        .map((e) => Category.fromJson(e))
         .toList(),
     articles: (json['articles'] as List<dynamic>)
         .map((e) => CategoryArticles.fromJson(e))
@@ -20,7 +20,7 @@ _$_NewsState _$_$_NewsStateFromJson(Map<String, dynamic> json) {
 
 Map<String, dynamic> _$_$_NewsStateToJson(_$_NewsState instance) =>
     <String, dynamic>{
-      'categoryNames': instance.categoryNames,
+      'categories': instance.categories.map((e) => e.toJson()).toList(),
       'articles': instance.articles.map((e) => e.toJson()).toList(),
       'currentTabIndex': instance.currentTabIndex,
     };
