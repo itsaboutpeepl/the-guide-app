@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:share_plus/share_plus.dart';
@@ -19,13 +21,6 @@ class DetailArticleBottomModel extends StatefulWidget {
 
 class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
   int _currentIndex = 0;
-  List<String> _images = [
-    "https://www.reuters.com/resizer/2FSUCYV7sQyThNN4skKe45ZGJ-w=/1200x628/smart/filters:quality(80)/cloudfront-us-east-2.images.arcpublishing.com/reuters/BI3AUAEKOFM6TLZX7G3SXOLLXA.jpg",
-    "https://images2.markets.businessinsider.com/6126706ea86463001841ef9a?format=jpeg",
-    "https://s.hdnux.com/photos/01/22/61/74/21700373/3/rawImage.jpg",
-  ];
-
-  List<NetworkImage> _networkImages = [];
 
   // ignore: unused_field
   late Timer _timer;
@@ -34,14 +29,10 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
   void initState() {
     super.initState();
 
-    _images.forEach((element) {
-      _networkImages.add(NetworkImage(element));
-    });
-
     _timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       if (mounted) {
         setState(() {
-          if (_currentIndex + 1 == _images.length) {
+          if (_currentIndex + 1 == widget.articleData.gallery.length) {
             _currentIndex = 0;
           } else {
             _currentIndex = _currentIndex + 1;
@@ -73,7 +64,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                 width: double.infinity,
                 height: 300.0,
                 child: CarouselSlider(
-                  items: _images
+                  items: widget.articleData.gallery
                       .map(
                         (item) => CachedNetworkImage(
                           imageUrl: item,
@@ -121,10 +112,11 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                     SizedBox(
                       height: 10,
                     ),
-                    Text(
-                      widget.articleData.content,
-                      style: TextStyle(fontSize: 18.0),
-                    )
+                    Html(data: widget.articleData.content),
+                    // Text(
+                    //   parseHtmlString(widget.articleData.content),
+                    //   style: TextStyle(fontSize: 18.0),
+                    // )
                   ],
                 ),
               )
