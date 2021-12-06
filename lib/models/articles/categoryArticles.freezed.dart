@@ -21,12 +21,9 @@ class _$CategoryArticlesTearOff {
   const _$CategoryArticlesTearOff();
 
   _CategoryArticles call(
-      {required String categoryID,
-      required String categoryName,
-      required List<BlogArticle> articleList}) {
+      {required Category category, required List<BlogArticle> articleList}) {
     return _CategoryArticles(
-      categoryID: categoryID,
-      categoryName: categoryName,
+      category: category,
       articleList: articleList,
     );
   }
@@ -41,8 +38,7 @@ const $CategoryArticles = _$CategoryArticlesTearOff();
 
 /// @nodoc
 mixin _$CategoryArticles {
-  String get categoryID => throw _privateConstructorUsedError;
-  String get categoryName => throw _privateConstructorUsedError;
+  Category get category => throw _privateConstructorUsedError;
   List<BlogArticle> get articleList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -56,8 +52,9 @@ abstract class $CategoryArticlesCopyWith<$Res> {
   factory $CategoryArticlesCopyWith(
           CategoryArticles value, $Res Function(CategoryArticles) then) =
       _$CategoryArticlesCopyWithImpl<$Res>;
-  $Res call(
-      {String categoryID, String categoryName, List<BlogArticle> articleList});
+  $Res call({Category category, List<BlogArticle> articleList});
+
+  $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -71,24 +68,26 @@ class _$CategoryArticlesCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? categoryID = freezed,
-    Object? categoryName = freezed,
+    Object? category = freezed,
     Object? articleList = freezed,
   }) {
     return _then(_value.copyWith(
-      categoryID: categoryID == freezed
-          ? _value.categoryID
-          : categoryID // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryName: categoryName == freezed
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category,
       articleList: articleList == freezed
           ? _value.articleList
           : articleList // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
     ));
+  }
+
+  @override
+  $CategoryCopyWith<$Res> get category {
+    return $CategoryCopyWith<$Res>(_value.category, (value) {
+      return _then(_value.copyWith(category: value));
+    });
   }
 }
 
@@ -99,8 +98,10 @@ abstract class _$CategoryArticlesCopyWith<$Res>
           _CategoryArticles value, $Res Function(_CategoryArticles) then) =
       __$CategoryArticlesCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String categoryID, String categoryName, List<BlogArticle> articleList});
+  $Res call({Category category, List<BlogArticle> articleList});
+
+  @override
+  $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
@@ -116,19 +117,14 @@ class __$CategoryArticlesCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? categoryID = freezed,
-    Object? categoryName = freezed,
+    Object? category = freezed,
     Object? articleList = freezed,
   }) {
     return _then(_CategoryArticles(
-      categoryID: categoryID == freezed
-          ? _value.categoryID
-          : categoryID // ignore: cast_nullable_to_non_nullable
-              as String,
-      categoryName: categoryName == freezed
-          ? _value.categoryName
-          : categoryName // ignore: cast_nullable_to_non_nullable
-              as String,
+      category: category == freezed
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as Category,
       articleList: articleList == freezed
           ? _value.articleList
           : articleList // ignore: cast_nullable_to_non_nullable
@@ -141,37 +137,29 @@ class __$CategoryArticlesCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_CategoryArticles extends _CategoryArticles {
-  _$_CategoryArticles(
-      {required this.categoryID,
-      required this.categoryName,
-      required this.articleList})
+  _$_CategoryArticles({required this.category, required this.articleList})
       : super._();
 
   factory _$_CategoryArticles.fromJson(Map<String, dynamic> json) =>
       _$_$_CategoryArticlesFromJson(json);
 
   @override
-  final String categoryID;
-  @override
-  final String categoryName;
+  final Category category;
   @override
   final List<BlogArticle> articleList;
 
   @override
   String toString() {
-    return 'CategoryArticles(categoryID: $categoryID, categoryName: $categoryName, articleList: $articleList)';
+    return 'CategoryArticles(category: $category, articleList: $articleList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _CategoryArticles &&
-            (identical(other.categoryID, categoryID) ||
+            (identical(other.category, category) ||
                 const DeepCollectionEquality()
-                    .equals(other.categoryID, categoryID)) &&
-            (identical(other.categoryName, categoryName) ||
-                const DeepCollectionEquality()
-                    .equals(other.categoryName, categoryName)) &&
+                    .equals(other.category, category)) &&
             (identical(other.articleList, articleList) ||
                 const DeepCollectionEquality()
                     .equals(other.articleList, articleList)));
@@ -180,8 +168,7 @@ class _$_CategoryArticles extends _CategoryArticles {
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(categoryID) ^
-      const DeepCollectionEquality().hash(categoryName) ^
+      const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(articleList);
 
   @JsonKey(ignore: true)
@@ -197,8 +184,7 @@ class _$_CategoryArticles extends _CategoryArticles {
 
 abstract class _CategoryArticles extends CategoryArticles {
   factory _CategoryArticles(
-      {required String categoryID,
-      required String categoryName,
+      {required Category category,
       required List<BlogArticle> articleList}) = _$_CategoryArticles;
   _CategoryArticles._() : super._();
 
@@ -206,9 +192,7 @@ abstract class _CategoryArticles extends CategoryArticles {
       _$_CategoryArticles.fromJson;
 
   @override
-  String get categoryID => throw _privateConstructorUsedError;
-  @override
-  String get categoryName => throw _privateConstructorUsedError;
+  Category get category => throw _privateConstructorUsedError;
   @override
   List<BlogArticle> get articleList => throw _privateConstructorUsedError;
   @override

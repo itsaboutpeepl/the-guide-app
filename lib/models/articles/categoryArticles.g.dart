@@ -8,8 +8,7 @@ part of 'categoryArticles.dart';
 
 _$_CategoryArticles _$_$_CategoryArticlesFromJson(Map<String, dynamic> json) {
   return _$_CategoryArticles(
-    categoryID: json['categoryID'] as String,
-    categoryName: json['categoryName'] as String,
+    category: Category.fromJson(json['category']),
     articleList: (json['articleList'] as List<dynamic>)
         .map((e) => BlogArticle.fromJson(e))
         .toList(),
@@ -19,7 +18,6 @@ _$_CategoryArticles _$_$_CategoryArticlesFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$_$_CategoryArticlesToJson(
         _$_CategoryArticles instance) =>
     <String, dynamic>{
-      'categoryID': instance.categoryID,
-      'categoryName': instance.categoryName,
+      'category': instance.category.toJson(),
       'articleList': instance.articleList.map((e) => e.toJson()).toList(),
     };
