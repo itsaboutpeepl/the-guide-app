@@ -1,18 +1,17 @@
 import 'package:equatable/equatable.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:redux/redux.dart';
 
 class CategoryArticleListViewModel extends Equatable {
-  final String tabName;
-  final String tabID;
+  final Category category;
   final List<BlogArticle> articles;
   final void Function() refreshList;
 
   CategoryArticleListViewModel({
-    required this.tabName,
-    required this.tabID,
+    required this.category,
     required this.articles,
     required this.refreshList,
   });
@@ -20,8 +19,7 @@ class CategoryArticleListViewModel extends Equatable {
   static CategoryArticleListViewModel fromStore(Store<AppState> store) {
     int currentTabIndex = store.state.newsState.currentTabIndex;
     return CategoryArticleListViewModel(
-        tabName: store.state.newsState.articles[currentTabIndex].categoryName,
-        tabID: store.state.newsState.articles[currentTabIndex].categoryID,
+        category: store.state.newsState.categories[currentTabIndex],
         articles: store.state.newsState.articles[currentTabIndex].articleList,
         refreshList: () {
           store.dispatch(refreshCurrentTabList(query: "entertainment"));
@@ -29,5 +27,5 @@ class CategoryArticleListViewModel extends Equatable {
   }
 
   @override
-  List<Object> get props => [tabName, tabID, articles];
+  List<Object> get props => [category, articles];
 }
