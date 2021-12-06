@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:guide_liverpool/models/articles/categoryArticles.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
@@ -14,10 +15,10 @@ class UpdateCategoryList {
   UpdateCategoryList({required this.categoryList});
 }
 
-class UpdateCategoryNames {
-  final List<String> categoryNames;
+class UpdateCategories {
+  final List<Category> categories;
 
-  UpdateCategoryNames({required this.categoryNames});
+  UpdateCategories({required this.categories});
 }
 
 class UpdateCurrentTabIndex {
@@ -44,22 +45,21 @@ class RefreshCurrentTabList {
 ThunkAction fetchCategoryNames() {
   return (Store store) async {
     try {
-      List<String> categoryNames = await newsService.categoryNames();
+      List<Category> categories = await newsService.getCategories();
       List<CategoryArticles> categoryArticles = [];
 
-      categoryNames.forEach(
+      categories.forEach(
         (element) {
           categoryArticles.add(
             CategoryArticles(
-              categoryID: Random().nextInt(127371).toString(),
-              categoryName: element,
+              category: element,
               articleList: [],
             ),
           );
         },
       );
 
-      store.dispatch(UpdateCategoryNames(categoryNames: categoryNames));
+      store.dispatch(UpdateCategories(categories: categories));
       store.dispatch(UpdateCategoryList(categoryList: categoryArticles));
     } catch (e, s) {
       log.error('ERROR - fetchCategoryNames $e');
