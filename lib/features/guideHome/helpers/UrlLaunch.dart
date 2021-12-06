@@ -1,4 +1,5 @@
 import 'package:url_launcher/url_launcher.dart';
+import 'package:html/parser.dart';
 
 class UrlLaunch {
   UrlLaunch._();
@@ -15,4 +16,11 @@ class UrlLaunch {
 
   static void launchURL(String url) async =>
       await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+}
+
+String parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body!.text).documentElement!.text;
+
+  return parsedString;
 }
