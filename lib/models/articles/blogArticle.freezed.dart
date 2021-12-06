@@ -26,7 +26,10 @@ class _$BlogArticleTearOff {
       required List<String> category,
       required int postID,
       required String postURL,
-      required String content}) {
+      required String content,
+      required DateTime publishedAt,
+      required List<String> gallery,
+      required String description}) {
     return _BlogArticle(
       title: title,
       imageURL: imageURL,
@@ -34,6 +37,9 @@ class _$BlogArticleTearOff {
       postID: postID,
       postURL: postURL,
       content: content,
+      publishedAt: publishedAt,
+      gallery: gallery,
+      description: description,
     );
   }
 
@@ -53,6 +59,9 @@ mixin _$BlogArticle {
   int get postID => throw _privateConstructorUsedError;
   String get postURL => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  DateTime get publishedAt => throw _privateConstructorUsedError;
+  List<String> get gallery => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -71,7 +80,10 @@ abstract class $BlogArticleCopyWith<$Res> {
       List<String> category,
       int postID,
       String postURL,
-      String content});
+      String content,
+      DateTime publishedAt,
+      List<String> gallery,
+      String description});
 }
 
 /// @nodoc
@@ -90,6 +102,9 @@ class _$BlogArticleCopyWithImpl<$Res> implements $BlogArticleCopyWith<$Res> {
     Object? postID = freezed,
     Object? postURL = freezed,
     Object? content = freezed,
+    Object? publishedAt = freezed,
+    Object? gallery = freezed,
+    Object? description = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -116,6 +131,18 @@ class _$BlogArticleCopyWithImpl<$Res> implements $BlogArticleCopyWith<$Res> {
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      publishedAt: publishedAt == freezed
+          ? _value.publishedAt
+          : publishedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      gallery: gallery == freezed
+          ? _value.gallery
+          : gallery // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -133,7 +160,10 @@ abstract class _$BlogArticleCopyWith<$Res>
       List<String> category,
       int postID,
       String postURL,
-      String content});
+      String content,
+      DateTime publishedAt,
+      List<String> gallery,
+      String description});
 }
 
 /// @nodoc
@@ -154,6 +184,9 @@ class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
     Object? postID = freezed,
     Object? postURL = freezed,
     Object? content = freezed,
+    Object? publishedAt = freezed,
+    Object? gallery = freezed,
+    Object? description = freezed,
   }) {
     return _then(_BlogArticle(
       title: title == freezed
@@ -180,6 +213,18 @@ class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      publishedAt: publishedAt == freezed
+          ? _value.publishedAt
+          : publishedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      gallery: gallery == freezed
+          ? _value.gallery
+          : gallery // ignore: cast_nullable_to_non_nullable
+              as List<String>,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -194,7 +239,10 @@ class _$_BlogArticle extends _BlogArticle {
       required this.category,
       required this.postID,
       required this.postURL,
-      required this.content})
+      required this.content,
+      required this.publishedAt,
+      required this.gallery,
+      required this.description})
       : super._();
 
   factory _$_BlogArticle.fromJson(Map<String, dynamic> json) =>
@@ -212,10 +260,16 @@ class _$_BlogArticle extends _BlogArticle {
   final String postURL;
   @override
   final String content;
+  @override
+  final DateTime publishedAt;
+  @override
+  final List<String> gallery;
+  @override
+  final String description;
 
   @override
   String toString() {
-    return 'BlogArticle(title: $title, imageURL: $imageURL, category: $category, postID: $postID, postURL: $postURL, content: $content)';
+    return 'BlogArticle(title: $title, imageURL: $imageURL, category: $category, postID: $postID, postURL: $postURL, content: $content, publishedAt: $publishedAt, gallery: $gallery, description: $description)';
   }
 
   @override
@@ -236,7 +290,17 @@ class _$_BlogArticle extends _BlogArticle {
                 const DeepCollectionEquality()
                     .equals(other.postURL, postURL)) &&
             (identical(other.content, content) ||
-                const DeepCollectionEquality().equals(other.content, content)));
+                const DeepCollectionEquality()
+                    .equals(other.content, content)) &&
+            (identical(other.publishedAt, publishedAt) ||
+                const DeepCollectionEquality()
+                    .equals(other.publishedAt, publishedAt)) &&
+            (identical(other.gallery, gallery) ||
+                const DeepCollectionEquality()
+                    .equals(other.gallery, gallery)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)));
   }
 
   @override
@@ -247,7 +311,10 @@ class _$_BlogArticle extends _BlogArticle {
       const DeepCollectionEquality().hash(category) ^
       const DeepCollectionEquality().hash(postID) ^
       const DeepCollectionEquality().hash(postURL) ^
-      const DeepCollectionEquality().hash(content);
+      const DeepCollectionEquality().hash(content) ^
+      const DeepCollectionEquality().hash(publishedAt) ^
+      const DeepCollectionEquality().hash(gallery) ^
+      const DeepCollectionEquality().hash(description);
 
   @JsonKey(ignore: true)
   @override
@@ -267,7 +334,10 @@ abstract class _BlogArticle extends BlogArticle {
       required List<String> category,
       required int postID,
       required String postURL,
-      required String content}) = _$_BlogArticle;
+      required String content,
+      required DateTime publishedAt,
+      required List<String> gallery,
+      required String description}) = _$_BlogArticle;
   _BlogArticle._() : super._();
 
   factory _BlogArticle.fromJson(Map<String, dynamic> json) =
@@ -285,6 +355,12 @@ abstract class _BlogArticle extends BlogArticle {
   String get postURL => throw _privateConstructorUsedError;
   @override
   String get content => throw _privateConstructorUsedError;
+  @override
+  DateTime get publishedAt => throw _privateConstructorUsedError;
+  @override
+  List<String> get gallery => throw _privateConstructorUsedError;
+  @override
+  String get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$BlogArticleCopyWith<_BlogArticle> get copyWith =>
