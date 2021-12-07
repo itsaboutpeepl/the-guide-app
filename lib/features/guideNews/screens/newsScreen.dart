@@ -37,26 +37,23 @@ class _NewsScreenState extends State<NewsScreen>
     return StoreConnector<AppState, NewsScreenViewModel>(
       distinct: true,
       onInit: (store) => {
-        store.dispatch(UpdateCurrentTabIndex(currentTabIndex: 0)),
-        store.dispatch(fetchCategoryNames()),
-        store.dispatch(
-          updateCurrentTabList(
-            query: store
-                .state.newsState.categories[_tabController.index].categoryName,
-          ),
-        ),
         _tabController = TabController(
             length: store.state.newsState.categories.length, vsync: this),
-        _tabController.addListener(() {
-          if (_tabController.indexIsChanging) {
-            store.dispatch(
-                UpdateCurrentTabIndex(currentTabIndex: _tabController.index));
-            store.dispatch(updateCurrentTabList(
-              query: store.state.newsState.categories[_tabController.index]
-                  .categoryName,
-            ));
-          }
-        })
+        _tabController.addListener(
+          () {
+            if (_tabController.indexIsChanging) {
+              store.dispatch(
+                  UpdateCurrentTabIndex(currentTabIndex: _tabController.index));
+              store.dispatch(
+                updateCurrentTabList(
+                  query: store.state.newsState.categories[_tabController.index]
+                      .categoryID
+                      .toString(),
+                ),
+              );
+            }
+          },
+        )
       },
       converter: NewsScreenViewModel.fromStore,
       builder: (_, viewmodel) => Scaffold(
@@ -80,6 +77,7 @@ class _NewsScreenState extends State<NewsScreen>
           ),
         ),
         body: TabBarView(
+            physics: NeverScrollableScrollPhysics(),
             controller: _tabController,
             children:
                 viewmodel.articles.map((e) => CategoryArticlesList()).toList()),
