@@ -11,6 +11,7 @@ import 'package:guide_liverpool/constants/strings.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
+import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux/redux.dart';
@@ -53,6 +54,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     setJwtToken(widget.store);
     widget.store.dispatch(fetchHomePageData());
+    widget.store.dispatch(fetchNewsScreenData());
     _locale = widget.store.state.userState.locale;
   }
 
