@@ -94,11 +94,11 @@ ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
   };
 }
 
-ThunkAction updateCurrentTabList({int page = 0, String query = ""}) {
+ThunkAction updateCurrentTabList({int page = 1, String query = ""}) {
   return (Store store) async {
     try {
       List<BlogArticle> newListOfArticles =
-          await newsService.pagedArticlesByCategoryID(query);
+          await newsService.pagedArticlesByCategoryID(query, page: page);
 
       store.dispatch(UpdateCurrentTabList(
           articleList: newListOfArticles,
@@ -111,6 +111,27 @@ ThunkAction updateCurrentTabList({int page = 0, String query = ""}) {
         e,
         stackTrace: s,
         hint: 'ERROR - updateCurrentTabList $e',
+      );
+    }
+  };
+}
+
+ThunkAction fetchNewsScreenData() {
+  return (Store store) async {
+    try {
+      store.dispatch(UpdateCurrentTabIndex(currentTabIndex: 0));
+      store.dispatch(fetchCategoryNames());
+      store.dispatch(
+        updateCurrentTabList(
+          query: store.state.newsState.categories[0].categoryID.toString(),
+        ),
+      );
+    } catch (e, s) {
+      log.error('ERROR - fetchHomePageData $e');
+      await Sentry.captureException(
+        e,
+        stackTrace: s,
+        hint: 'ERROR - fetchHomePageData $e',
       );
     }
   };
