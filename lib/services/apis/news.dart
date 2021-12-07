@@ -93,13 +93,13 @@ class NewsService {
           BlogArticle(
             title: element['title'],
             imageURL: element['featured_image'],
-            category: element['categories'],
+            category: element['categories'].cast<String>(),
             postID: element['id'],
             postURL: element['link'],
             content: element['content'],
             description: element['description'],
             publishedAt: DateTime.parse(element['date']),
-            gallery: element['attachments'],
+            gallery: element['attachments'].cast<String>(),
           ),
         );
       },
