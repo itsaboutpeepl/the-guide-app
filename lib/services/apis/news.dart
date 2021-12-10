@@ -12,10 +12,6 @@ import 'package:guide_liverpool/models/articles/videoArticle.dart';
 class NewsService {
   final Dio dio;
 
-  //TODO: Remove when actual API is completed.
-  String loremImpsum =
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
   NewsService(this.dio) {
     dio.options.baseUrl = UrlConstants.THEGUIDE_WORDPRESS_API;
     dio.options.headers = Map.from({"Content-Type": 'application/json'});
@@ -30,12 +26,6 @@ class NewsService {
 
     results.forEach(
       (element) {
-        // var test = element['categories'] as List<String>;
-        // var test2 = element['attachments'] as List<String>;
-
-        // print(test);
-        // print('\n\n\n\n\n\n');
-        // print(test2);
         articles.add(
           BlogArticle(
             title: element['title'],
@@ -56,18 +46,7 @@ class NewsService {
   }
 
   Future<List<Category>> getCategories() async {
-    Response response = await dio.get('/categories');
-
-    //List<dynamic> results = response.data['articles'] as List;
-
-    // List<Map<String, String>> demoCategories = [
-    //   {"id": "13866", "name": "Latest"},
-    //   {"id": "16630", "name": "Features"},
-    //   {"id": "13873", "name": "LifeStyle"},
-    //   {"id": "21554", "name": "Entertainment"},
-    //   {"id": "13876", "name": "Food & Drink"},
-    // ];
-
+    //Response response = await dio.get('/categories');
     List<Category> demoCategories = [
       Category(categoryID: 13866, categoryName: "Latest"),
       Category(categoryID: 16630, categoryName: "Features"),
@@ -109,11 +88,6 @@ class NewsService {
   }
 
   Future<List<VideoArticle>> featuredVideos() async {
-    // Response response = await dio.get(
-    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
-
-    // List<dynamic> results = response.data['articles'] as List;
-
     Response response = await dio.get('/videos');
 
     List<dynamic> results = response.data as List;
@@ -137,11 +111,6 @@ class NewsService {
   }
 
   Future<List<Events>> eventsList() async {
-    // Response response = await dio.get(
-    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
-
-    // List<dynamic> results = response.data['articles'] as List;
-
     List<Events> events = [];
 
     for (var i = 0; i < 3; i++) {
@@ -160,11 +129,6 @@ class NewsService {
   }
 
   Future<List<Directory>> directoryList() async {
-    // Response response = await dio.get(
-    //     'top-headlines?country=us&category=business&apiKey=a920ad97e9fc4e84933b96be2f3a1ad3');
-
-    // List<dynamic> results = response.data['articles'] as List;
-
     List<Directory> directory = [];
 
     for (var i = 0; i < 3; i++) {
