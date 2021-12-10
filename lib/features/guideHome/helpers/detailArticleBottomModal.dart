@@ -116,7 +116,11 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                     SizedBox(
                       height: 10,
                     ),
-                    Html(data: widget.articleData.content),
+                    Html(
+                      data: widget.articleData.content,
+                      onLinkTap: (url, context, attributes, element) =>
+                          {UrlLaunch.launchURL(url!), print(url)},
+                    ),
                     // Text(
                     //   parseHtmlString(widget.articleData.content),
                     //   style: TextStyle(fontSize: 18.0),
