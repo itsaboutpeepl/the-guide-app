@@ -7,6 +7,7 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:intl/intl.dart';
 
 class DetailArticleBottomModel extends StatefulWidget {
   const DetailArticleBottomModel({Key? key, required this.articleData})
@@ -106,7 +107,10 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                         SizedBox(
                           width: 5,
                         ),
-                        Text("36 min ago")
+                        Text(
+                          DateFormat("EEE, MMM d, ''yy")
+                              .format(widget.articleData.publishedAt),
+                        )
                       ],
                     ),
                     SizedBox(
