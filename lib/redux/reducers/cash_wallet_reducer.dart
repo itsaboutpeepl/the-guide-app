@@ -1,4 +1,4 @@
-import 'package:ethereum_address/ethereum_address.dart';
+import 'package:ethereum_addresses/ethereum_addresses.dart';
 import 'package:guide_liverpool/models/actions/actions.dart';
 import 'package:guide_liverpool/models/actions/wallet_action.dart';
 import 'package:guide_liverpool/models/community/community.dart';

@@ -13,7 +13,7 @@ import 'package:guide_liverpool/features/contacts/widgets/list_header.dart';
 import 'package:guide_liverpool/features/contacts/widgets/search_panel.dart';
 import 'package:guide_liverpool/utils/phone.dart';
 import 'package:guide_liverpool/utils/send.dart';
-import "package:ethereum_address/ethereum_address.dart";
+import 'package:ethereum_addresses/ethereum_addresses.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/preloader.dart';
 

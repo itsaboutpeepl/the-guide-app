@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:dio/dio.dart';
-import 'package:ethereum_address/ethereum_address.dart';
+import 'package:ethereum_addresses/ethereum_addresses.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_segment/flutter_segment.dart';
 import 'package:guide_liverpool/common/di/di.dart';
