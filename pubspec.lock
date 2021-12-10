@@ -273,7 +273,7 @@ packages:
       name: convert
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.0"
+    version: "3.0.1"
   country_code_picker:
     dependency: "direct main"
     description:
@@ -351,15 +351,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.3"
-  ethereum_address:
+  ethereum_addresses:
     dependency: "direct main"
     description:
       path: "."
       ref: master
-      resolved-ref: fc5d5b7d94834884c55ac9ce1f82c3bf9611b63b
+      resolved-ref: ef167941c49ee787298ed40f4f46d2bd8bea47d2
       url: "https://github.com/fuseio/dart-ethereum_address.git"
     source: git
-    version: "1.0.1"
+    version: "1.0.2"
   fake_async:
     dependency: transitive
     description:
@@ -689,7 +689,7 @@ packages:
       name: freezed_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.14.2"
+    version: "0.14.3"
   frontend_server_client:
     dependency: transitive
     description:
@@ -913,7 +913,7 @@ packages:
       name: json_annotation
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.0.1"
+    version: "4.1.0"
   json_rpc_2:
     dependency: transitive
     description:
@@ -927,7 +927,7 @@ packages:
       name: json_serializable
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.3"
+    version: "4.1.4"
   lint:
     dependency: "direct dev"
     description:
@@ -1158,7 +1158,7 @@ packages:
       name: petitparser
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "4.1.0"
+    version: "4.4.0"
   phone_number:
     dependency: "direct main"
     description:
@@ -1200,7 +1200,7 @@ packages:
       name: pointycastle
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "3.0.1"
+    version: "3.4.0"
   pool:
     dependency: transitive
     description:
@@ -1748,12 +1748,12 @@ packages:
     source: hosted
     version: "0.2.0"
   xml:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: xml
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.1.0"
+    version: "5.3.1"
   yaml:
     dependency: transitive
     description:
@@ -1761,6 +1761,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.1.0"
+  youtube_explode_dart:
+    dependency: "direct main"
+    description:
+      name: youtube_explode_dart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.10.8"
 sdks:
   dart: ">=2.14.0 <3.0.0"
   flutter: ">=2.5.0"
