@@ -133,7 +133,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                     )
                   : SizedBox.shrink(),
               ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
                 child: Image(
                   image: CachedNetworkImageProvider(
                     widget.videoArticleItem.placeholderImageURL,
