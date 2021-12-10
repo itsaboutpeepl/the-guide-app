@@ -93,11 +93,12 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                 ),
               ),
             ),
-            Positioned(
-              top: 25,
-              left: 25,
-              child: Container(),
-            ),
+            //TODO: Check wtf this is for?
+            // Positioned(
+            //   top: 25,
+            //   left: 25,
+            //   child: Container(),
+            // ),
           ],
         ),
       ),
