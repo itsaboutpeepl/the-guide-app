@@ -14,92 +14,96 @@ class SingleDirectoryItem extends StatefulWidget {
 class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => {UrlLaunch.openMap(53.40232093140704, -2.9833307421239623)},
-      child: SizedBox(
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-              child: ClipRRect(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.network(
-                    mapPreviewImage(
-                        latitude: 53.40232093140704,
-                        longitude: -2.9833307421239623),
-                    fit: BoxFit.cover,
-                  )),
-            ),
-            Positioned.fill(
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Colors.white,
-                  gradient: LinearGradient(
-                    begin: FractionalOffset.centerLeft,
-                    end: FractionalOffset.centerRight,
-                    colors: [
-                      Color(0xDD071A34),
-                      Colors.transparent,
-                    ],
-                    stops: [0.1, 1],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 5),
+      child: GestureDetector(
+        onTap: () =>
+            {UrlLaunch.openMap(53.40232093140704, -2.9833307421239623)},
+        child: SizedBox(
+          child: Stack(
+            alignment: Alignment.center,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    child: Image.network(
+                      mapPreviewImage(
+                          latitude: 53.40232093140704,
+                          longitude: -2.9833307421239623),
+                      fit: BoxFit.cover,
+                    )),
+              ),
+              Positioned.fill(
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                    gradient: LinearGradient(
+                      begin: FractionalOffset.centerLeft,
+                      end: FractionalOffset.centerRight,
+                      colors: [
+                        Color(0xDD071A34),
+                        Colors.transparent,
+                      ],
+                      stops: [0.1, 1],
+                    ),
                   ),
                 ),
               ),
-            ),
-            Positioned.fill(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 25, bottom: 25, top: 25),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Expanded(
-                      child: IconButton(
-                        padding: EdgeInsets.zero,
-                        alignment: Alignment.topLeft,
-                        icon: Icon(
-                          Icons.launch,
-                          color: Colors.white,
-                        ),
-                        onPressed: () => {
-                          UrlLaunch.launchURL(
-                              "https://www.entrybarliverpool.co.uk/")
-                        },
-                      ),
-                    ),
-                    Row(
-                      children: [
-                        Text(
-                          "Seel Street, Liverpool, UK",
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.grey[200],
+              Positioned.fill(
+                child: Padding(
+                  padding: const EdgeInsets.only(left: 25, bottom: 25, top: 25),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Expanded(
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          alignment: Alignment.topLeft,
+                          icon: Icon(
+                            Icons.launch,
+                            color: Colors.white,
                           ),
-                        )
-                      ],
-                    ),
-                    Text(
-                      "Entry Bar",
-                      style: TextStyle(
-                        color: Colors.grey[200],
-                        fontWeight: FontWeight.w900,
-                        fontSize: 34,
+                          onPressed: () => {
+                            UrlLaunch.launchURL(
+                                "https://www.entrybarliverpool.co.uk/")
+                          },
+                        ),
                       ),
-                    ),
-                  ],
+                      Row(
+                        children: [
+                          Text(
+                            "Seel Street, Liverpool, UK",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey[200],
+                            ),
+                          )
+                        ],
+                      ),
+                      Text(
+                        "Entry Bar",
+                        style: TextStyle(
+                          color: Colors.grey[200],
+                          fontWeight: FontWeight.w900,
+                          fontSize: 34,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            //TODO: Check wtf this is for?
-            // Positioned(
-            //   top: 25,
-            //   left: 25,
-            //   child: Container(),
-            // ),
-          ],
+              //TODO: Check wtf this is for?
+              // Positioned(
+              //   top: 25,
+              //   left: 25,
+              //   child: Container(),
+              // ),
+            ],
+          ),
         ),
       ),
     );
