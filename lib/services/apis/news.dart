@@ -114,22 +114,25 @@ class NewsService {
 
     // List<dynamic> results = response.data['articles'] as List;
 
-    List<VideoArticle> videos = [];
+    Response response = await dio.get('/videos');
 
-    for (var i = 0; i < 3; i++) {
-      videos.add(
-        VideoArticle(
-            title: "Test Article",
-            placeholderImageURL:
-                "https://www.cityam.com/wp-content/uploads/2021/07/CAMD-G89-1024-GBrown-copy-1.jpg",
-            videoURL:
-                "https://assets.mixkit.co/videos/preview/mixkit-daytime-city-traffic-aerial-view-56-large.mp4",
-            category: ["Test Category"],
-            rewardAmount: 50,
-            postID: 2698,
-            postURL: "google.com"),
-      );
-    }
+    List<dynamic> results = response.data as List;
+    List<VideoArticle> videos = [];
+    results.forEach(
+      (element) {
+        videos.add(
+          VideoArticle(
+            title: element['description'],
+            placeholderImageURL: element['picture'],
+            category: [""],
+            videoURL: element['url'],
+            postID: 000,
+            postURL: element['read_more_url'] ?? "",
+            rewardAmount: 0,
+          ),
+        );
+      },
+    );
     return videos;
   }
 
