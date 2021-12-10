@@ -1,8 +1,11 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/customControls.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/youtubeToStream.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
@@ -45,9 +48,9 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
   }
 
   Future<void> initializePlayer() async {
-    _videoPlayerController = VideoPlayerController.network(
-      'https://assets.mixkit.co/videos/preview/mixkit-daytime-city-traffic-aerial-view-56-large.mp4',
-    );
+    String streamURL = await extractVideoUrl(widget.videoArticleItem.videoURL);
+
+    _videoPlayerController = VideoPlayerController.network(streamURL);
     await Future.wait([
       _videoPlayerController.initialize(),
     ]);
@@ -127,13 +130,9 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                         controller: _chewieController!,
                       ),
                     )
-                  : Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        CircularProgressIndicator(),
-                        SizedBox(height: 20),
-                        Text('Loading'),
-                      ],
+                  : CachedNetworkImage(
+                      imageUrl: widget.videoArticleItem.placeholderImageURL,
+                      fit: BoxFit.cover,
                     ),
             ),
             Positioned.fill(
@@ -154,13 +153,13 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                 ),
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 20),
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                   child: Text(
-                    "City Council release statement following news that Liverpool is to be given £22m of Government funding",
+                    parseHtmlString(widget.videoArticleItem.title),
                     style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w800,
-                        fontSize: 20),
+                        fontSize: 25),
                   ),
                 ),
               ),
