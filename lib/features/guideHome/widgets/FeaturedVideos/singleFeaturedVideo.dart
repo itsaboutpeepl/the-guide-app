@@ -63,7 +63,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
       videoPlayerController: _videoPlayerController,
       autoPlay: false,
       looping: false,
-      autoInitialize: true,
+      autoInitialize: false,
       customControls: CustomControls(),
       deviceOrientationsOnEnterFullScreen: [
         DeviceOrientation.landscapeRight,
@@ -112,99 +112,106 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => {_playAndToggle()},
-      child: SizedBox(
-        width: MediaQuery.of(context).size.width * 0.91,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
-              child: _chewieController != null &&
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 5),
+      child: GestureDetector(
+        onTap: () => {_playAndToggle()},
+        child: SizedBox(
+          width: MediaQuery.of(context).size.width * 0.92,
+          child: Stack(
+            fit: StackFit.expand,
+            alignment: Alignment.center,
+            children: [
+              _chewieController != null &&
                       _chewieController!
                           .videoPlayerController.value.isInitialized
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ? Positioned(
+                      width: MediaQuery.of(context).size.width * 0.55,
                       child: Chewie(
                         controller: _chewieController!,
                       ),
                     )
-                  : CachedNetworkImage(
-                      imageUrl: widget.videoArticleItem.placeholderImageURL,
-                      fit: BoxFit.cover,
-                    ),
-            ),
-            Positioned.fill(
-              child: Container(
-                alignment: Alignment.bottomCenter,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Colors.white,
-                  gradient: LinearGradient(
-                    begin: FractionalOffset.topCenter,
-                    end: FractionalOffset.bottomCenter,
-                    colors: [
-                      Colors.transparent,
-                      Colors.black,
-                    ],
-                    stops: [0.4, 0.8],
+                  : SizedBox.shrink(),
+              ClipRRect(
+                borderRadius: BorderRadius.all(Radius.circular(20)),
+                child: Image(
+                  image: CachedNetworkImageProvider(
+                    widget.videoArticleItem.placeholderImageURL,
                   ),
-                ),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                  child: Text(
-                    parseHtmlString(widget.videoArticleItem.title),
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w800,
-                        fontSize: 25),
-                  ),
+                  fit: BoxFit.cover,
                 ),
               ),
-            ),
-            Positioned(
-              top: 20,
-              right: 20,
-              child: Container(
-                height: 55,
-                width: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(10)),
-                  color: Colors.white,
-                  gradient: LinearGradient(
-                    begin: FractionalOffset.topCenter,
-                    end: FractionalOffset.bottomCenter,
-                    colors: [
-                      Color.fromRGBO(235, 138, 64, 1),
-                      Color.fromRGBO(215, 55, 48, 1),
-                    ],
-                    stops: [0.4, 0.9],
+              Positioned.fill(
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                    gradient: LinearGradient(
+                      begin: FractionalOffset.topCenter,
+                      end: FractionalOffset.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black,
+                      ],
+                      stops: [0.4, 0.8],
+                    ),
                   ),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "50",
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: Text(
+                      parseHtmlString(widget.videoArticleItem.title),
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,
                           fontSize: 25),
                     ),
-                    Text(
-                      "PPL",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w300,
-                          fontSize: 14),
-                    ),
-                  ],
+                  ),
                 ),
               ),
-            ),
-          ],
+              Positioned(
+                top: 20,
+                right: 20,
+                child: Container(
+                  height: 55,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
+                    gradient: LinearGradient(
+                      begin: FractionalOffset.topCenter,
+                      end: FractionalOffset.bottomCenter,
+                      colors: [
+                        Color.fromRGBO(235, 138, 64, 1),
+                        Color.fromRGBO(215, 55, 48, 1),
+                      ],
+                      stops: [0.4, 0.9],
+                    ),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "50",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 25),
+                      ),
+                      Text(
+                        "PPL",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w300,
+                            fontSize: 14),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
