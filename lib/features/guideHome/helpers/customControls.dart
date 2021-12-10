@@ -69,7 +69,9 @@ class _CustomControlsState extends State<CustomControls>
             children: [
               if (_latestValue.isBuffering)
                 const Center(
-                  child: CircularProgressIndicator(),
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
                 )
               else
                 _buildHitArea(),
