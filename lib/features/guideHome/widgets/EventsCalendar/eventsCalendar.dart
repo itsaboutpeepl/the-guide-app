@@ -30,14 +30,11 @@ class _EventCalendarState extends State<EventCalendar> {
                 ),
                 child: Container(
                   height: MediaQuery.of(context).size.height * 0.24,
-                  child: ListView.separated(
+                  child: PageView.builder(
+                      scrollDirection: Axis.vertical,
                       physics: PageScrollPhysics(),
-                      padding: EdgeInsets.symmetric(vertical: 20),
                       itemBuilder: (context, index) => SingleEventItem(
                             eventItem: viewmodel.eventsList[index],
-                          ),
-                      separatorBuilder: (_, index) => Padding(
-                            padding: EdgeInsets.symmetric(vertical: 20),
                           ),
                       itemCount: viewmodel.eventsList.length),
                 )),
