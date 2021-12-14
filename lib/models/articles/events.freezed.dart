@@ -25,15 +25,19 @@ class _$EventsTearOff {
       required DateTime endDate,
       required String eventTitle,
       required String location,
-      required String coordinates,
-      required String time}) {
+      required String latitude,
+      required String longitude,
+      required String description,
+      required String bookingLink}) {
     return _Events(
       startDate: startDate,
       endDate: endDate,
       eventTitle: eventTitle,
       location: location,
-      coordinates: coordinates,
-      time: time,
+      latitude: latitude,
+      longitude: longitude,
+      description: description,
+      bookingLink: bookingLink,
     );
   }
 
@@ -51,8 +55,10 @@ mixin _$Events {
   DateTime get endDate => throw _privateConstructorUsedError;
   String get eventTitle => throw _privateConstructorUsedError;
   String get location => throw _privateConstructorUsedError;
-  String get coordinates => throw _privateConstructorUsedError;
-  String get time => throw _privateConstructorUsedError;
+  String get latitude => throw _privateConstructorUsedError;
+  String get longitude => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get bookingLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,8 +74,10 @@ abstract class $EventsCopyWith<$Res> {
       DateTime endDate,
       String eventTitle,
       String location,
-      String coordinates,
-      String time});
+      String latitude,
+      String longitude,
+      String description,
+      String bookingLink});
 }
 
 /// @nodoc
@@ -86,8 +94,10 @@ class _$EventsCopyWithImpl<$Res> implements $EventsCopyWith<$Res> {
     Object? endDate = freezed,
     Object? eventTitle = freezed,
     Object? location = freezed,
-    Object? coordinates = freezed,
-    Object? time = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+    Object? description = freezed,
+    Object? bookingLink = freezed,
   }) {
     return _then(_value.copyWith(
       startDate: startDate == freezed
@@ -106,13 +116,21 @@ class _$EventsCopyWithImpl<$Res> implements $EventsCopyWith<$Res> {
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
-          ? _value.coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
+      latitude: latitude == freezed
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      time: time == freezed
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
+      longitude: longitude == freezed
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookingLink: bookingLink == freezed
+          ? _value.bookingLink
+          : bookingLink // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -128,8 +146,10 @@ abstract class _$EventsCopyWith<$Res> implements $EventsCopyWith<$Res> {
       DateTime endDate,
       String eventTitle,
       String location,
-      String coordinates,
-      String time});
+      String latitude,
+      String longitude,
+      String description,
+      String bookingLink});
 }
 
 /// @nodoc
@@ -147,8 +167,10 @@ class __$EventsCopyWithImpl<$Res> extends _$EventsCopyWithImpl<$Res>
     Object? endDate = freezed,
     Object? eventTitle = freezed,
     Object? location = freezed,
-    Object? coordinates = freezed,
-    Object? time = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+    Object? description = freezed,
+    Object? bookingLink = freezed,
   }) {
     return _then(_Events(
       startDate: startDate == freezed
@@ -167,13 +189,21 @@ class __$EventsCopyWithImpl<$Res> extends _$EventsCopyWithImpl<$Res>
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      coordinates: coordinates == freezed
-          ? _value.coordinates
-          : coordinates // ignore: cast_nullable_to_non_nullable
+      latitude: latitude == freezed
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      time: time == freezed
-          ? _value.time
-          : time // ignore: cast_nullable_to_non_nullable
+      longitude: longitude == freezed
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      bookingLink: bookingLink == freezed
+          ? _value.bookingLink
+          : bookingLink // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -188,8 +218,10 @@ class _$_Events extends _Events {
       required this.endDate,
       required this.eventTitle,
       required this.location,
-      required this.coordinates,
-      required this.time})
+      required this.latitude,
+      required this.longitude,
+      required this.description,
+      required this.bookingLink})
       : super._();
 
   factory _$_Events.fromJson(Map<String, dynamic> json) =>
@@ -204,13 +236,17 @@ class _$_Events extends _Events {
   @override
   final String location;
   @override
-  final String coordinates;
+  final String latitude;
   @override
-  final String time;
+  final String longitude;
+  @override
+  final String description;
+  @override
+  final String bookingLink;
 
   @override
   String toString() {
-    return 'Events(startDate: $startDate, endDate: $endDate, eventTitle: $eventTitle, location: $location, coordinates: $coordinates, time: $time)';
+    return 'Events(startDate: $startDate, endDate: $endDate, eventTitle: $eventTitle, location: $location, latitude: $latitude, longitude: $longitude, description: $description, bookingLink: $bookingLink)';
   }
 
   @override
@@ -229,11 +265,18 @@ class _$_Events extends _Events {
             (identical(other.location, location) ||
                 const DeepCollectionEquality()
                     .equals(other.location, location)) &&
-            (identical(other.coordinates, coordinates) ||
+            (identical(other.latitude, latitude) ||
                 const DeepCollectionEquality()
-                    .equals(other.coordinates, coordinates)) &&
-            (identical(other.time, time) ||
-                const DeepCollectionEquality().equals(other.time, time)));
+                    .equals(other.latitude, latitude)) &&
+            (identical(other.longitude, longitude) ||
+                const DeepCollectionEquality()
+                    .equals(other.longitude, longitude)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.bookingLink, bookingLink) ||
+                const DeepCollectionEquality()
+                    .equals(other.bookingLink, bookingLink)));
   }
 
   @override
@@ -243,8 +286,10 @@ class _$_Events extends _Events {
       const DeepCollectionEquality().hash(endDate) ^
       const DeepCollectionEquality().hash(eventTitle) ^
       const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(coordinates) ^
-      const DeepCollectionEquality().hash(time);
+      const DeepCollectionEquality().hash(latitude) ^
+      const DeepCollectionEquality().hash(longitude) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(bookingLink);
 
   @JsonKey(ignore: true)
   @override
@@ -263,8 +308,10 @@ abstract class _Events extends Events {
       required DateTime endDate,
       required String eventTitle,
       required String location,
-      required String coordinates,
-      required String time}) = _$_Events;
+      required String latitude,
+      required String longitude,
+      required String description,
+      required String bookingLink}) = _$_Events;
   _Events._() : super._();
 
   factory _Events.fromJson(Map<String, dynamic> json) = _$_Events.fromJson;
@@ -278,9 +325,13 @@ abstract class _Events extends Events {
   @override
   String get location => throw _privateConstructorUsedError;
   @override
-  String get coordinates => throw _privateConstructorUsedError;
+  String get latitude => throw _privateConstructorUsedError;
   @override
-  String get time => throw _privateConstructorUsedError;
+  String get longitude => throw _privateConstructorUsedError;
+  @override
+  String get description => throw _privateConstructorUsedError;
+  @override
+  String get bookingLink => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$EventsCopyWith<_Events> get copyWith => throw _privateConstructorUsedError;

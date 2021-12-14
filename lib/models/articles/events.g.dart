@@ -12,8 +12,10 @@ _$_Events _$_$_EventsFromJson(Map<String, dynamic> json) {
     endDate: DateTime.parse(json['endDate'] as String),
     eventTitle: json['eventTitle'] as String,
     location: json['location'] as String,
-    coordinates: json['coordinates'] as String,
-    time: json['time'] as String,
+    latitude: json['latitude'] as String,
+    longitude: json['longitude'] as String,
+    description: json['description'] as String,
+    bookingLink: json['bookingLink'] as String,
   );
 }
 
@@ -22,6 +24,8 @@ Map<String, dynamic> _$_$_EventsToJson(_$_Events instance) => <String, dynamic>{
       'endDate': instance.endDate.toIso8601String(),
       'eventTitle': instance.eventTitle,
       'location': instance.location,
-      'coordinates': instance.coordinates,
-      'time': instance.time,
+      'latitude': instance.latitude,
+      'longitude': instance.longitude,
+      'description': instance.description,
+      'bookingLink': instance.bookingLink,
     };
