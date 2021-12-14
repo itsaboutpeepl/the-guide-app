@@ -111,20 +111,27 @@ class NewsService {
   }
 
   Future<List<Events>> eventsList() async {
+    Response response = await dio.get('/events');
+
+    List<dynamic> results = response.data as List;
     List<Events> events = [];
 
-    for (var i = 0; i < 3; i++) {
+    results.forEach((element) {
       events.add(
         Events(
-          startDate: DateTime.parse("2021-04-09"),
-          endDate: DateTime.parse("2021-12-21"),
-          eventTitle: "Test Title Event",
-          location: "Test Event Location wow",
-          coordinates: "53.12618, 2.79123",
-          time: "08:00 - 12:00",
-        ),
+            startDate: DateTime.parse(element['start_date']),
+            endDate: DateTime.parse(element['end_date']),
+            eventTitle: element['title'],
+            location: element['location']['name'] +
+                ", " +
+                element['location']['street_name_short'],
+            description: element['description'],
+            latitude: element['location']['lat'].toString(),
+            longitude: element['location']['lng'].toString(),
+            bookingLink: element['book_link']),
       );
-    }
+    });
+
     return events;
   }
 
