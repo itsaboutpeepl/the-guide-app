@@ -2,7 +2,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
-import 'package:wallet_core/wallet_core.dart' show API, Graph;
+import 'package:wallet_core/wallet_core.dart' show API, Graph, WalletApi;
 
 @module
 abstract class ServicesModule {
@@ -16,6 +16,11 @@ abstract class ServicesModule {
   @lazySingleton
   API get api => API(
         dotenv.env['API_BASE_URL']!,
+      );
+
+  @lazySingleton
+  WalletApi get walletApi => WalletApi(
+        dotenv.env['WALLET_API_BASE_URL']!,
       );
 
   @singleton
