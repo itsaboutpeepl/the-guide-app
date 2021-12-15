@@ -4,3 +4,4 @@ analyzer:
     - "**/*.freezed.dart"
   errors:
     todo: ignore
+    invalid_annotation_target: ignore
