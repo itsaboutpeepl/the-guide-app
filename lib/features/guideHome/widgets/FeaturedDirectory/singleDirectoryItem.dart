@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
 
@@ -25,20 +27,27 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
         },
         child: SizedBox(
           child: Stack(
+            fit: StackFit.expand,
             alignment: Alignment.center,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(10)),
-                  child: Image.network(
-                    widget.directoryItem.imageURL,
-                    // mapPreviewImage(
-                    //   latitude: double.parse(widget.directoryItem.latitude),
-                    //   longitude: double.parse(widget.directoryItem.longitude),
-                    // ),
+                  child: Image(
+                    image: CachedNetworkImageProvider(
+                      widget.directoryItem.imageURL,
+                    ),
                     fit: BoxFit.cover,
                   ),
+                  // child: Image.network(
+                  //   widget.directoryItem.imageURL,
+                  //   // mapPreviewImage(
+                  //   //   latitude: double.parse(widget.directoryItem.latitude),
+                  //   //   longitude: double.parse(widget.directoryItem.longitude),
+                  //   // ),
+                  //   fit: BoxFit.fill,
+                  //),
                 ),
               ),
               Positioned.fill(
@@ -48,8 +57,8 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                     borderRadius: BorderRadius.all(Radius.circular(10)),
                     color: Colors.white,
                     gradient: LinearGradient(
-                      begin: FractionalOffset.centerLeft,
-                      end: FractionalOffset.centerRight,
+                      begin: FractionalOffset.bottomCenter,
+                      end: FractionalOffset.topCenter,
                       colors: [
                         Color(0xDD071A34),
                         Colors.transparent,
@@ -67,29 +76,85 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Expanded(
-                        child: IconButton(
-                          padding: EdgeInsets.zero,
-                          alignment: Alignment.topLeft,
-                          icon: Icon(
-                            Icons.launch,
-                            color: Colors.white,
-                          ),
-                          onPressed: () => {
-                            UrlLaunch.launchURL(
-                              "https://www.entrybarliverpool.co.uk/",
-                            )
-                          },
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            widget.directoryItem.website != ""
+                                ? IconButton(
+                                    padding: EdgeInsets.zero,
+                                    alignment: Alignment.topLeft,
+                                    icon: Icon(
+                                      Icons.launch,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () => {
+                                      UrlLaunch.launchURL(
+                                        widget.directoryItem.website,
+                                      )
+                                    },
+                                  )
+                                : SizedBox.shrink(),
+                            widget.directoryItem.facebookLink != ""
+                                ? IconButton(
+                                    padding: EdgeInsets.zero,
+                                    alignment: Alignment.topLeft,
+                                    icon: Icon(
+                                      FaIcon(FontAwesomeIcons.facebookSquare)
+                                          .icon,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () => {
+                                      UrlLaunch.launchURL(
+                                        widget.directoryItem.facebookLink,
+                                      )
+                                    },
+                                  )
+                                : SizedBox.shrink(),
+                            widget.directoryItem.twitterLink != ""
+                                ? IconButton(
+                                    padding: EdgeInsets.zero,
+                                    alignment: Alignment.topLeft,
+                                    icon: Icon(
+                                      FaIcon(FontAwesomeIcons.twitter).icon,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () => {
+                                      UrlLaunch.launchURL(
+                                        widget.directoryItem.twitterLink,
+                                      )
+                                    },
+                                  )
+                                : SizedBox.shrink(),
+                            widget.directoryItem.instaLink != ""
+                                ? IconButton(
+                                    padding: EdgeInsets.zero,
+                                    alignment: Alignment.topLeft,
+                                    icon: Icon(
+                                      FaIcon(FontAwesomeIcons.instagram).icon,
+                                      color: Colors.white,
+                                    ),
+                                    onPressed: () => {
+                                      UrlLaunch.launchURL(
+                                        widget.directoryItem.instaLink,
+                                      )
+                                    },
+                                  )
+                                : SizedBox.shrink(),
+                          ],
                         ),
                       ),
                       Row(
                         children: [
-                          Text(
-                            widget.directoryItem.address,
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey[200],
+                          Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Text(
+                              widget.directoryItem.address,
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey[200],
+                              ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Text(
@@ -97,7 +162,7 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                         style: TextStyle(
                           color: Colors.grey[200],
                           fontWeight: FontWeight.w900,
-                          fontSize: 34,
+                          fontSize: 28,
                         ),
                       ),
                     ],
@@ -110,9 +175,4 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
       ),
     );
   }
-}
-
-//TODO: Change API key, this is a personal Key!
-String mapPreviewImage({required double latitude, required double longitude}) {
-  return 'https://maps.googleapis.com/maps/api/staticmap?center=&$latitude,$longitude&zoom=14&size=1000x500&maptype=roadmap&markers=color:red%7Clabel:A%7C$latitude,$longitude&key=AIzaSyDaInwx4OK0CQ2G3dEQ5BLq4QU7W3-H6w8&style=feature:|element:|visibility:simplified';
 }
