@@ -137,17 +137,32 @@ class NewsService {
   }
 
   Future<List<Directory>> directoryList() async {
+    Response response = await dio.get('/events');
+
+    List<dynamic> results = response.data as List;
+
     List<Directory> directory = [];
 
-    for (var i = 0; i < 3; i++) {
-      directory.add(
-        Directory(
-            directoryTitle: "Test Directory Title",
-            directoryLocation: "52.761181",
-            directoryCoordinates: "23.83721, 12.74719",
-            directoryWebsiteURL: "https://google.com"),
-      );
-    }
+    results.forEach(
+      (element) {
+        directory.add(
+          Directory(
+            title: parseHtmlString(element['title']),
+            latitude: element['location']['lat'].toString(),
+            longitude: element['location']['lng'].toString(),
+            address: element['location']['name'] +
+                ", " +
+                element['location']['street_name_short'],
+            description: element['description'],
+            website: element['website'],
+            twitterLink: element['twitter'],
+            instaLink: element['instagram'],
+            facebookLink: element['facebook'],
+            imageURL: element['featured_image'],
+          ),
+        );
+      },
+    );
     return directory;
   }
 }
