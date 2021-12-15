@@ -17,8 +17,12 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: GestureDetector(
-        onTap: () =>
-            {UrlLaunch.openMap(53.40232093140704, -2.9833307421239623)},
+        onTap: () => {
+          UrlLaunch.openMap(
+            double.parse(widget.directoryItem.latitude),
+            double.parse(widget.directoryItem.longitude),
+          ),
+        },
         child: SizedBox(
           child: Stack(
             alignment: Alignment.center,
@@ -26,13 +30,16 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
               ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(10)),
                 child: ClipRRect(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    child: Image.network(
-                      mapPreviewImage(
-                          latitude: 53.40232093140704,
-                          longitude: -2.9833307421239623),
-                      fit: BoxFit.cover,
-                    )),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  child: Image.network(
+                    widget.directoryItem.imageURL,
+                    // mapPreviewImage(
+                    //   latitude: double.parse(widget.directoryItem.latitude),
+                    //   longitude: double.parse(widget.directoryItem.longitude),
+                    // ),
+                    fit: BoxFit.cover,
+                  ),
+                ),
               ),
               Positioned.fill(
                 child: Container(
@@ -69,14 +76,15 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                           ),
                           onPressed: () => {
                             UrlLaunch.launchURL(
-                                "https://www.entrybarliverpool.co.uk/")
+                              "https://www.entrybarliverpool.co.uk/",
+                            )
                           },
                         ),
                       ),
                       Row(
                         children: [
                           Text(
-                            "Seel Street, Liverpool, UK",
+                            widget.directoryItem.address,
                             style: TextStyle(
                               fontSize: 16,
                               color: Colors.grey[200],
@@ -85,7 +93,7 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                         ],
                       ),
                       Text(
-                        "Entry Bar",
+                        widget.directoryItem.title,
                         style: TextStyle(
                           color: Colors.grey[200],
                           fontWeight: FontWeight.w900,
@@ -96,12 +104,6 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                   ),
                 ),
               ),
-              //TODO: Check wtf this is for?
-              // Positioned(
-              //   top: 25,
-              //   left: 25,
-              //   child: Container(),
-              // ),
             ],
           ),
         ),
