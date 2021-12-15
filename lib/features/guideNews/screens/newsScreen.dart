@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/guideNews/widgets/categoryArticlesList.dart';
@@ -7,21 +5,6 @@ import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/newsScreen.dart';
-
-List<String> randomQueries = [
-  'business',
-  "entertainment",
-  "general",
-  "health",
-  "science",
-  "sports",
-  "technology"
-];
-
-final random = new Random();
-
-String getRandomQuery() =>
-    randomQueries[random.nextInt(randomQueries.length - 1)];
 
 class NewsScreen extends StatefulWidget {
   @override
