@@ -6,20 +6,19 @@ part of 'videoArticle.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_VideoArticle _$_$_VideoArticleFromJson(Map<String, dynamic> json) {
-  return _$_VideoArticle(
-    title: json['title'] as String,
-    placeholderImageURL: json['placeholderImageURL'] as String,
-    videoURL: json['videoURL'] as String,
-    category:
-        (json['category'] as List<dynamic>).map((e) => e as String).toList(),
-    rewardAmount: json['rewardAmount'] as int,
-    postID: json['postID'] as int,
-    postURL: json['postURL'] as String,
-  );
-}
+_$_VideoArticle _$$_VideoArticleFromJson(Map<String, dynamic> json) =>
+    _$_VideoArticle(
+      title: json['title'] as String,
+      placeholderImageURL: json['placeholderImageURL'] as String,
+      videoURL: json['videoURL'] as String,
+      category:
+          (json['category'] as List<dynamic>).map((e) => e as String).toList(),
+      rewardAmount: json['rewardAmount'] as int,
+      postID: json['postID'] as int,
+      postURL: json['postURL'] as String,
+    );
 
-Map<String, dynamic> _$_$_VideoArticleToJson(_$_VideoArticle instance) =>
+Map<String, dynamic> _$$_VideoArticleToJson(_$_VideoArticle instance) =>
     <String, dynamic>{
       'title': instance.title,
       'placeholderImageURL': instance.placeholderImageURL,

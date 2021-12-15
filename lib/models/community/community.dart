@@ -3,7 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:guide_liverpool/models/community/business.dart';
 import 'package:guide_liverpool/models/community/community_metadata.dart';
 import 'package:guide_liverpool/models/plugins/plugins.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'community.freezed.dart';
 part 'community.g.dart';

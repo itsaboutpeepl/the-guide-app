@@ -6,15 +6,17 @@ part of 'pro_wallet_state.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_ProWalletState _$_$_ProWalletStateFromJson(Map<String, dynamic> json) {
-  return _$_ProWalletState(
-    etherBalance: balanceFromJson(json['etherBalance'] as String?),
-    erc20Tokens:
-        erc20TokensFromJson(json['erc20Tokens'] as Map<String, dynamic>?),
-  );
-}
+_$_ProWalletState _$$_ProWalletStateFromJson(Map<String, dynamic> json) =>
+    _$_ProWalletState(
+      etherBalance: json['etherBalance'] == null
+          ? null
+          : balanceFromJson(json['etherBalance'] as String?),
+      erc20Tokens: json['erc20Tokens'] == null
+          ? const {}
+          : erc20TokensFromJson(json['erc20Tokens'] as Map<String, dynamic>?),
+    );
 
-Map<String, dynamic> _$_$_ProWalletStateToJson(_$_ProWalletState instance) =>
+Map<String, dynamic> _$$_ProWalletStateToJson(_$_ProWalletState instance) =>
     <String, dynamic>{
       'etherBalance': instance.etherBalance?.toString(),
       'erc20Tokens':

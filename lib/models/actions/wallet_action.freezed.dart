@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'wallet_action.dart';
 
@@ -13,7 +14,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 WalletAction _$WalletActionFromJson(Map<String, dynamic> json) {
-  switch (json['runtimeType'] as String) {
+  switch (json['runtimeType'] as String?) {
     case 'createWallet':
       return CreateWallet.fromJson(json);
     case 'fiatDeposit':
@@ -30,7 +31,8 @@ WalletAction _$WalletActionFromJson(Map<String, dynamic> json) {
       return Swap.fromJson(json);
 
     default:
-      throw FallThroughError();
+      throw CheckedFromJsonException(json, 'runtimeType', 'WalletAction',
+          'Invalid union type "${json['runtimeType']}"!');
   }
 }
 
@@ -330,6 +332,94 @@ mixin _$WalletAction {
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -427,6 +517,17 @@ mixin _$WalletAction {
     required TResult Function(Send value) send,
     required TResult Function(Receive value) receive,
     required TResult Function(Swap value) swap,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -585,7 +686,7 @@ class _$CreateWallet extends CreateWallet with DiagnosticableTreeMixin {
       : super._();
 
   factory _$CreateWallet.fromJson(Map<String, dynamic> json) =>
-      _$_$CreateWalletFromJson(json);
+      _$$CreateWalletFromJson(json);
 
   @JsonKey(defaultValue: 0)
   @override
@@ -751,6 +852,97 @@ class _$CreateWallet extends CreateWallet with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) {
+    return createWallet?.call(timestamp, id, name, txHash, status, blockNumber);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -860,6 +1052,20 @@ class _$CreateWallet extends CreateWallet with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
+  }) {
+    return createWallet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateWallet value)? createWallet,
     TResult Function(FiatDeposit value)? fiatDeposit,
@@ -878,7 +1084,7 @@ class _$CreateWallet extends CreateWallet with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$CreateWalletToJson(this)..['runtimeType'] = 'createWallet';
+    return _$$CreateWalletToJson(this)..['runtimeType'] = 'createWallet';
   }
 }
 
@@ -1041,7 +1247,7 @@ class _$FiatDeposit extends FiatDeposit with DiagnosticableTreeMixin {
       : super._();
 
   factory _$FiatDeposit.fromJson(Map<String, dynamic> json) =>
-      _$_$FiatDepositFromJson(json);
+      _$$FiatDepositFromJson(json);
 
   @JsonKey(defaultValue: 0)
   @override
@@ -1256,6 +1462,98 @@ class _$FiatDeposit extends FiatDeposit with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) {
+    return fiatDeposit?.call(timestamp, id, name, txHash, status, blockNumber,
+        tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -1366,6 +1664,20 @@ class _$FiatDeposit extends FiatDeposit with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
+  }) {
+    return fiatDeposit?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateWallet value)? createWallet,
     TResult Function(FiatDeposit value)? fiatDeposit,
@@ -1384,7 +1696,7 @@ class _$FiatDeposit extends FiatDeposit with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$FiatDepositToJson(this)..['runtimeType'] = 'fiatDeposit';
+    return _$$FiatDepositToJson(this)..['runtimeType'] = 'fiatDeposit';
   }
 }
 
@@ -1533,7 +1845,7 @@ class _$JoinCommunity extends JoinCommunity with DiagnosticableTreeMixin {
       : super._();
 
   factory _$JoinCommunity.fromJson(Map<String, dynamic> json) =>
-      _$_$JoinCommunityFromJson(json);
+      _$$JoinCommunityFromJson(json);
 
   @JsonKey(defaultValue: 0)
   @override
@@ -1722,6 +2034,98 @@ class _$JoinCommunity extends JoinCommunity with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) {
+    return joinCommunity?.call(timestamp, id, name, txHash, status, blockNumber,
+        communityAddress, tokenAddress, communityName);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -1832,6 +2236,20 @@ class _$JoinCommunity extends JoinCommunity with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
+  }) {
+    return joinCommunity?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateWallet value)? createWallet,
     TResult Function(FiatDeposit value)? fiatDeposit,
@@ -1850,7 +2268,7 @@ class _$JoinCommunity extends JoinCommunity with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$JoinCommunityToJson(this)..['runtimeType'] = 'joinCommunity';
+    return _$$JoinCommunityToJson(this)..['runtimeType'] = 'joinCommunity';
   }
 }
 
@@ -2022,8 +2440,7 @@ class _$Bonus extends Bonus with DiagnosticableTreeMixin {
       this.bonusType})
       : super._();
 
-  factory _$Bonus.fromJson(Map<String, dynamic> json) =>
-      _$_$BonusFromJson(json);
+  factory _$Bonus.fromJson(Map<String, dynamic> json) => _$$BonusFromJson(json);
 
   @JsonKey(defaultValue: 0)
   @override
@@ -2245,6 +2662,111 @@ class _$Bonus extends Bonus with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) {
+    return bonus?.call(
+        timestamp,
+        id,
+        name,
+        txHash,
+        status,
+        blockNumber,
+        tokenAddress,
+        from,
+        to,
+        value,
+        tokenName,
+        tokenSymbol,
+        tokenDecimal,
+        bonusType);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -2368,6 +2890,20 @@ class _$Bonus extends Bonus with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
+  }) {
+    return bonus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateWallet value)? createWallet,
     TResult Function(FiatDeposit value)? fiatDeposit,
@@ -2386,7 +2922,7 @@ class _$Bonus extends Bonus with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$BonusToJson(this)..['runtimeType'] = 'bonus';
+    return _$$BonusToJson(this)..['runtimeType'] = 'bonus';
   }
 }
 
@@ -2559,7 +3095,7 @@ class _$Send extends Send with DiagnosticableTreeMixin {
       this.tokenDecimal = 18})
       : super._();
 
-  factory _$Send.fromJson(Map<String, dynamic> json) => _$_$SendFromJson(json);
+  factory _$Send.fromJson(Map<String, dynamic> json) => _$$SendFromJson(json);
 
   @JsonKey(defaultValue: 0)
   @override
@@ -2774,6 +3310,98 @@ class _$Send extends Send with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) {
+    return send?.call(timestamp, id, name, txHash, status, blockNumber,
+        tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -2884,6 +3512,20 @@ class _$Send extends Send with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
+  }) {
+    return send?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateWallet value)? createWallet,
     TResult Function(FiatDeposit value)? fiatDeposit,
@@ -2902,7 +3544,7 @@ class _$Send extends Send with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$SendToJson(this)..['runtimeType'] = 'send';
+    return _$$SendToJson(this)..['runtimeType'] = 'send';
   }
 }
 
@@ -3074,7 +3716,7 @@ class _$Receive extends Receive with DiagnosticableTreeMixin {
       : super._();
 
   factory _$Receive.fromJson(Map<String, dynamic> json) =>
-      _$_$ReceiveFromJson(json);
+      _$$ReceiveFromJson(json);
 
   @JsonKey(defaultValue: 0)
   @override
@@ -3289,6 +3931,98 @@ class _$Receive extends Receive with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) {
+    return receive?.call(timestamp, id, name, txHash, status, blockNumber,
+        tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -3399,6 +4133,20 @@ class _$Receive extends Receive with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
+  }) {
+    return receive?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateWallet value)? createWallet,
     TResult Function(FiatDeposit value)? fiatDeposit,
@@ -3417,7 +4165,7 @@ class _$Receive extends Receive with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$ReceiveToJson(this)..['runtimeType'] = 'receive';
+    return _$$ReceiveToJson(this)..['runtimeType'] = 'receive';
   }
 }
 
@@ -3559,7 +4307,7 @@ class _$Swap extends Swap with DiagnosticableTreeMixin {
       @JsonKey(name: 'metadata') this.tradeInfo = null})
       : super._();
 
-  factory _$Swap.fromJson(Map<String, dynamic> json) => _$_$SwapFromJson(json);
+  factory _$Swap.fromJson(Map<String, dynamic> json) => _$$SwapFromJson(json);
 
   @JsonKey(defaultValue: 0)
   @override
@@ -3733,6 +4481,98 @@ class _$Swap extends Swap with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+            String name, String? txHash, String status, int? blockNumber)?
+        createWallet,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        fiatDeposit,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String? communityAddress,
+            String? tokenAddress,
+            String? communityName)?
+        joinCommunity,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal,
+            String? bonusType)?
+        bonus,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        send,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            String tokenAddress,
+            String? from,
+            String to,
+            BigInt value,
+            String? tokenName,
+            String? tokenSymbol,
+            int tokenDecimal)?
+        receive,
+    TResult Function(
+            int timestamp,
+            @JsonKey(name: '_id') String id,
+            String name,
+            String? txHash,
+            String status,
+            int? blockNumber,
+            @JsonKey(name: 'metadata') TradeInfo? tradeInfo)?
+        swap,
+  }) {
+    return swap?.call(
+        timestamp, id, name, txHash, status, blockNumber, tradeInfo);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
@@ -3842,6 +4682,20 @@ class _$Swap extends Swap with DiagnosticableTreeMixin {
 
   @override
   @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(CreateWallet value)? createWallet,
+    TResult Function(FiatDeposit value)? fiatDeposit,
+    TResult Function(JoinCommunity value)? joinCommunity,
+    TResult Function(Bonus value)? bonus,
+    TResult Function(Send value)? send,
+    TResult Function(Receive value)? receive,
+    TResult Function(Swap value)? swap,
+  }) {
+    return swap?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(CreateWallet value)? createWallet,
     TResult Function(FiatDeposit value)? fiatDeposit,
@@ -3860,7 +4714,7 @@ class _$Swap extends Swap with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$SwapToJson(this)..['runtimeType'] = 'swap';
+    return _$$SwapToJson(this)..['runtimeType'] = 'swap';
   }
 }
 

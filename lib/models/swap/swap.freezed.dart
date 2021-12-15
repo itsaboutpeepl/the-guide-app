@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'swap.dart';
 
@@ -226,7 +227,7 @@ class _$_TradeInfo implements _TradeInfo {
       required this.priceImpact});
 
   factory _$_TradeInfo.fromJson(Map<String, dynamic> json) =>
-      _$_$_TradeInfoFromJson(json);
+      _$$_TradeInfoFromJson(json);
 
   @override
   final String inputAmount;
@@ -298,7 +299,7 @@ class _$_TradeInfo implements _TradeInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_TradeInfoToJson(this);
+    return _$$_TradeInfoToJson(this);
   }
 }
 
@@ -493,7 +494,7 @@ class _$_SwapCallParameters implements _SwapCallParameters {
       required this.rawTxn});
 
   factory _$_SwapCallParameters.fromJson(Map<String, dynamic> json) =>
-      _$_$_SwapCallParametersFromJson(json);
+      _$$_SwapCallParametersFromJson(json);
 
   @override
   final String methodName;
@@ -539,7 +540,7 @@ class _$_SwapCallParameters implements _SwapCallParameters {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_SwapCallParametersToJson(this);
+    return _$$_SwapCallParametersToJson(this);
   }
 }
 
@@ -722,7 +723,7 @@ class _$_SwapRequestBody implements _SwapRequestBody {
       this.recipient = ''});
 
   factory _$_SwapRequestBody.fromJson(Map<String, dynamic> json) =>
-      _$_$_SwapRequestBodyFromJson(json);
+      _$$_SwapRequestBodyFromJson(json);
 
   @JsonKey(defaultValue: '')
   @override
@@ -775,7 +776,7 @@ class _$_SwapRequestBody implements _SwapRequestBody {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_SwapRequestBodyToJson(this);
+    return _$$_SwapRequestBodyToJson(this);
   }
 }
 

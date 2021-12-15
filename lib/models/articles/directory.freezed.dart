@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'directory.dart';
 
@@ -21,15 +22,27 @@ class _$DirectoryTearOff {
   const _$DirectoryTearOff();
 
   _Directory call(
-      {required String directoryTitle,
-      required String directoryLocation,
-      required String directoryCoordinates,
-      required String directoryWebsiteURL}) {
+      {required String title,
+      required String latitude,
+      required String longitude,
+      required String website,
+      required String twitterLink,
+      required String instaLink,
+      required String facebookLink,
+      required String imageURL,
+      required String description,
+      required String address}) {
     return _Directory(
-      directoryTitle: directoryTitle,
-      directoryLocation: directoryLocation,
-      directoryCoordinates: directoryCoordinates,
-      directoryWebsiteURL: directoryWebsiteURL,
+      title: title,
+      latitude: latitude,
+      longitude: longitude,
+      website: website,
+      twitterLink: twitterLink,
+      instaLink: instaLink,
+      facebookLink: facebookLink,
+      imageURL: imageURL,
+      description: description,
+      address: address,
     );
   }
 
@@ -43,10 +56,16 @@ const $Directory = _$DirectoryTearOff();
 
 /// @nodoc
 mixin _$Directory {
-  String get directoryTitle => throw _privateConstructorUsedError;
-  String get directoryLocation => throw _privateConstructorUsedError;
-  String get directoryCoordinates => throw _privateConstructorUsedError;
-  String get directoryWebsiteURL => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
+  String get latitude => throw _privateConstructorUsedError;
+  String get longitude => throw _privateConstructorUsedError;
+  String get website => throw _privateConstructorUsedError;
+  String get twitterLink => throw _privateConstructorUsedError;
+  String get instaLink => throw _privateConstructorUsedError;
+  String get facebookLink => throw _privateConstructorUsedError;
+  String get imageURL => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,10 +78,16 @@ abstract class $DirectoryCopyWith<$Res> {
   factory $DirectoryCopyWith(Directory value, $Res Function(Directory) then) =
       _$DirectoryCopyWithImpl<$Res>;
   $Res call(
-      {String directoryTitle,
-      String directoryLocation,
-      String directoryCoordinates,
-      String directoryWebsiteURL});
+      {String title,
+      String latitude,
+      String longitude,
+      String website,
+      String twitterLink,
+      String instaLink,
+      String facebookLink,
+      String imageURL,
+      String description,
+      String address});
 }
 
 /// @nodoc
@@ -75,27 +100,57 @@ class _$DirectoryCopyWithImpl<$Res> implements $DirectoryCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? directoryTitle = freezed,
-    Object? directoryLocation = freezed,
-    Object? directoryCoordinates = freezed,
-    Object? directoryWebsiteURL = freezed,
+    Object? title = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+    Object? website = freezed,
+    Object? twitterLink = freezed,
+    Object? instaLink = freezed,
+    Object? facebookLink = freezed,
+    Object? imageURL = freezed,
+    Object? description = freezed,
+    Object? address = freezed,
   }) {
     return _then(_value.copyWith(
-      directoryTitle: directoryTitle == freezed
-          ? _value.directoryTitle
-          : directoryTitle // ignore: cast_nullable_to_non_nullable
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      directoryLocation: directoryLocation == freezed
-          ? _value.directoryLocation
-          : directoryLocation // ignore: cast_nullable_to_non_nullable
+      latitude: latitude == freezed
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      directoryCoordinates: directoryCoordinates == freezed
-          ? _value.directoryCoordinates
-          : directoryCoordinates // ignore: cast_nullable_to_non_nullable
+      longitude: longitude == freezed
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
               as String,
-      directoryWebsiteURL: directoryWebsiteURL == freezed
-          ? _value.directoryWebsiteURL
-          : directoryWebsiteURL // ignore: cast_nullable_to_non_nullable
+      website: website == freezed
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String,
+      twitterLink: twitterLink == freezed
+          ? _value.twitterLink
+          : twitterLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      instaLink: instaLink == freezed
+          ? _value.instaLink
+          : instaLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      facebookLink: facebookLink == freezed
+          ? _value.facebookLink
+          : facebookLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageURL: imageURL == freezed
+          ? _value.imageURL
+          : imageURL // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -108,10 +163,16 @@ abstract class _$DirectoryCopyWith<$Res> implements $DirectoryCopyWith<$Res> {
       __$DirectoryCopyWithImpl<$Res>;
   @override
   $Res call(
-      {String directoryTitle,
-      String directoryLocation,
-      String directoryCoordinates,
-      String directoryWebsiteURL});
+      {String title,
+      String latitude,
+      String longitude,
+      String website,
+      String twitterLink,
+      String instaLink,
+      String facebookLink,
+      String imageURL,
+      String description,
+      String address});
 }
 
 /// @nodoc
@@ -125,27 +186,57 @@ class __$DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? directoryTitle = freezed,
-    Object? directoryLocation = freezed,
-    Object? directoryCoordinates = freezed,
-    Object? directoryWebsiteURL = freezed,
+    Object? title = freezed,
+    Object? latitude = freezed,
+    Object? longitude = freezed,
+    Object? website = freezed,
+    Object? twitterLink = freezed,
+    Object? instaLink = freezed,
+    Object? facebookLink = freezed,
+    Object? imageURL = freezed,
+    Object? description = freezed,
+    Object? address = freezed,
   }) {
     return _then(_Directory(
-      directoryTitle: directoryTitle == freezed
-          ? _value.directoryTitle
-          : directoryTitle // ignore: cast_nullable_to_non_nullable
+      title: title == freezed
+          ? _value.title
+          : title // ignore: cast_nullable_to_non_nullable
               as String,
-      directoryLocation: directoryLocation == freezed
-          ? _value.directoryLocation
-          : directoryLocation // ignore: cast_nullable_to_non_nullable
+      latitude: latitude == freezed
+          ? _value.latitude
+          : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      directoryCoordinates: directoryCoordinates == freezed
-          ? _value.directoryCoordinates
-          : directoryCoordinates // ignore: cast_nullable_to_non_nullable
+      longitude: longitude == freezed
+          ? _value.longitude
+          : longitude // ignore: cast_nullable_to_non_nullable
               as String,
-      directoryWebsiteURL: directoryWebsiteURL == freezed
-          ? _value.directoryWebsiteURL
-          : directoryWebsiteURL // ignore: cast_nullable_to_non_nullable
+      website: website == freezed
+          ? _value.website
+          : website // ignore: cast_nullable_to_non_nullable
+              as String,
+      twitterLink: twitterLink == freezed
+          ? _value.twitterLink
+          : twitterLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      instaLink: instaLink == freezed
+          ? _value.instaLink
+          : instaLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      facebookLink: facebookLink == freezed
+          ? _value.facebookLink
+          : facebookLink // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageURL: imageURL == freezed
+          ? _value.imageURL
+          : imageURL // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      address: address == freezed
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -156,54 +247,94 @@ class __$DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_Directory extends _Directory {
   _$_Directory(
-      {required this.directoryTitle,
-      required this.directoryLocation,
-      required this.directoryCoordinates,
-      required this.directoryWebsiteURL})
+      {required this.title,
+      required this.latitude,
+      required this.longitude,
+      required this.website,
+      required this.twitterLink,
+      required this.instaLink,
+      required this.facebookLink,
+      required this.imageURL,
+      required this.description,
+      required this.address})
       : super._();
 
   factory _$_Directory.fromJson(Map<String, dynamic> json) =>
-      _$_$_DirectoryFromJson(json);
+      _$$_DirectoryFromJson(json);
 
   @override
-  final String directoryTitle;
+  final String title;
   @override
-  final String directoryLocation;
+  final String latitude;
   @override
-  final String directoryCoordinates;
+  final String longitude;
   @override
-  final String directoryWebsiteURL;
+  final String website;
+  @override
+  final String twitterLink;
+  @override
+  final String instaLink;
+  @override
+  final String facebookLink;
+  @override
+  final String imageURL;
+  @override
+  final String description;
+  @override
+  final String address;
 
   @override
   String toString() {
-    return 'Directory(directoryTitle: $directoryTitle, directoryLocation: $directoryLocation, directoryCoordinates: $directoryCoordinates, directoryWebsiteURL: $directoryWebsiteURL)';
+    return 'Directory(title: $title, latitude: $latitude, longitude: $longitude, website: $website, twitterLink: $twitterLink, instaLink: $instaLink, facebookLink: $facebookLink, imageURL: $imageURL, description: $description, address: $address)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _Directory &&
-            (identical(other.directoryTitle, directoryTitle) ||
+            (identical(other.title, title) ||
+                const DeepCollectionEquality().equals(other.title, title)) &&
+            (identical(other.latitude, latitude) ||
                 const DeepCollectionEquality()
-                    .equals(other.directoryTitle, directoryTitle)) &&
-            (identical(other.directoryLocation, directoryLocation) ||
+                    .equals(other.latitude, latitude)) &&
+            (identical(other.longitude, longitude) ||
                 const DeepCollectionEquality()
-                    .equals(other.directoryLocation, directoryLocation)) &&
-            (identical(other.directoryCoordinates, directoryCoordinates) ||
-                const DeepCollectionEquality().equals(
-                    other.directoryCoordinates, directoryCoordinates)) &&
-            (identical(other.directoryWebsiteURL, directoryWebsiteURL) ||
+                    .equals(other.longitude, longitude)) &&
+            (identical(other.website, website) ||
                 const DeepCollectionEquality()
-                    .equals(other.directoryWebsiteURL, directoryWebsiteURL)));
+                    .equals(other.website, website)) &&
+            (identical(other.twitterLink, twitterLink) ||
+                const DeepCollectionEquality()
+                    .equals(other.twitterLink, twitterLink)) &&
+            (identical(other.instaLink, instaLink) ||
+                const DeepCollectionEquality()
+                    .equals(other.instaLink, instaLink)) &&
+            (identical(other.facebookLink, facebookLink) ||
+                const DeepCollectionEquality()
+                    .equals(other.facebookLink, facebookLink)) &&
+            (identical(other.imageURL, imageURL) ||
+                const DeepCollectionEquality()
+                    .equals(other.imageURL, imageURL)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.address, address) ||
+                const DeepCollectionEquality().equals(other.address, address)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(directoryTitle) ^
-      const DeepCollectionEquality().hash(directoryLocation) ^
-      const DeepCollectionEquality().hash(directoryCoordinates) ^
-      const DeepCollectionEquality().hash(directoryWebsiteURL);
+      const DeepCollectionEquality().hash(title) ^
+      const DeepCollectionEquality().hash(latitude) ^
+      const DeepCollectionEquality().hash(longitude) ^
+      const DeepCollectionEquality().hash(website) ^
+      const DeepCollectionEquality().hash(twitterLink) ^
+      const DeepCollectionEquality().hash(instaLink) ^
+      const DeepCollectionEquality().hash(facebookLink) ^
+      const DeepCollectionEquality().hash(imageURL) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(address);
 
   @JsonKey(ignore: true)
   @override
@@ -212,29 +343,47 @@ class _$_Directory extends _Directory {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_DirectoryToJson(this);
+    return _$$_DirectoryToJson(this);
   }
 }
 
 abstract class _Directory extends Directory {
   factory _Directory(
-      {required String directoryTitle,
-      required String directoryLocation,
-      required String directoryCoordinates,
-      required String directoryWebsiteURL}) = _$_Directory;
+      {required String title,
+      required String latitude,
+      required String longitude,
+      required String website,
+      required String twitterLink,
+      required String instaLink,
+      required String facebookLink,
+      required String imageURL,
+      required String description,
+      required String address}) = _$_Directory;
   _Directory._() : super._();
 
   factory _Directory.fromJson(Map<String, dynamic> json) =
       _$_Directory.fromJson;
 
   @override
-  String get directoryTitle => throw _privateConstructorUsedError;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get directoryLocation => throw _privateConstructorUsedError;
+  String get latitude => throw _privateConstructorUsedError;
   @override
-  String get directoryCoordinates => throw _privateConstructorUsedError;
+  String get longitude => throw _privateConstructorUsedError;
   @override
-  String get directoryWebsiteURL => throw _privateConstructorUsedError;
+  String get website => throw _privateConstructorUsedError;
+  @override
+  String get twitterLink => throw _privateConstructorUsedError;
+  @override
+  String get instaLink => throw _privateConstructorUsedError;
+  @override
+  String get facebookLink => throw _privateConstructorUsedError;
+  @override
+  String get imageURL => throw _privateConstructorUsedError;
+  @override
+  String get description => throw _privateConstructorUsedError;
+  @override
+  String get address => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$DirectoryCopyWith<_Directory> get copyWith =>

@@ -6,7 +6,6 @@ import 'package:guide_liverpool/models/swap_state.dart';
 import 'package:guide_liverpool/models/user_state.dart';
 import 'package:guide_liverpool/models/cash_wallet_state.dart';
 import 'package:guide_liverpool/models/pro_wallet_state.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';

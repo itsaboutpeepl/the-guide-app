@@ -1,5 +1,6 @@
+// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'plugins.dart';
 
@@ -374,7 +375,7 @@ class _$_Plugins extends _Plugins with DiagnosticableTreeMixin {
       : super._();
 
   factory _$_Plugins.fromJson(Map<String, dynamic> json) =>
-      _$_$_PluginsFromJson(json);
+      _$$_PluginsFromJson(json);
 
   @override
   @JsonKey(includeIfNull: false)
@@ -468,7 +469,7 @@ class _$_Plugins extends _Plugins with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$_$_PluginsToJson(this);
+    return _$$_PluginsToJson(this);
   }
 }
 
