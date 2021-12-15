@@ -72,7 +72,7 @@ Widget featuredPost(BuildContext context, BlogArticle article) {
               child: Row(
                 children: [
                   Text(
-                    article.category[0],
+                    parseHtmlString(article.category[0]),
                   ),
                   SizedBox(
                     width: 5,

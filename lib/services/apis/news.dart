@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:guide_liverpool/constants/urls.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:injectable/injectable.dart';
@@ -28,13 +29,13 @@ class NewsService {
       (element) {
         articles.add(
           BlogArticle(
-            title: element['title'],
+            title: parseHtmlString(element['title']),
             imageURL: element['featured_image'],
             category: element['categories'].cast<String>(),
             postID: element['id'],
             postURL: element['link'],
             content: element['content'],
-            description: element['description'],
+            description: parseHtmlString(element['description']),
             publishedAt: DateTime.parse(element['date']),
             gallery: element['attachments'].cast<String>(),
           ),
@@ -70,13 +71,13 @@ class NewsService {
       (element) {
         articles.add(
           BlogArticle(
-            title: element['title'],
+            title: parseHtmlString(element['title']),
             imageURL: element['featured_image'],
             category: element['categories'].cast<String>(),
             postID: element['id'],
             postURL: element['link'],
             content: element['content'],
-            description: element['description'],
+            description: parseHtmlString(element['description']),
             publishedAt: DateTime.parse(element['date']),
             gallery: element['attachments'].cast<String>(),
           ),
@@ -96,7 +97,7 @@ class NewsService {
       (element) {
         videos.add(
           VideoArticle(
-            title: element['description'],
+            title: parseHtmlString(element['description']),
             placeholderImageURL: element['picture'],
             category: [""],
             videoURL: element['url'],
@@ -121,11 +122,11 @@ class NewsService {
         Events(
             startDate: DateTime.parse(element['start_date']),
             endDate: DateTime.parse(element['end_date']),
-            eventTitle: element['title'],
+            eventTitle: parseHtmlString(element['title']),
             location: element['location']['name'] +
                 ", " +
                 element['location']['street_name_short'],
-            description: element['description'],
+            description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
             bookingLink: element['book_link']),
