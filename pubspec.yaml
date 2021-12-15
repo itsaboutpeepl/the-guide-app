@@ -5,10 +5,10 @@ description: The Guide Liverpool app is a blog reader application for local news
 environment:
   sdk: ">=2.12.0 <3.0.0"
 dependencies:
-  analyzer: ^1.7.2
+  analyzer: ^2.7.0
   another_flushbar: ^1.10.24
   app_tracking_transparency: ^2.0.1
-  auto_route: ^2.2.0
+  auto_route: ^3.1.3
   auto_size_text: ^3.0.0-nullsafety.0
   auto_size_text_field: ^1.0.0-nullsafety.1
   cached_network_image: ^3.1.0
@@ -18,7 +18,7 @@ dependencies:
   contacts_service: ^0.6.1
   country_code_picker: ^2.0.2
   cupertino_icons: ^1.0.2
-  decimal: ^1.2.0
+  decimal: ^2.0.0
   dio: ^4.0.0
   enum_to_string: ^2.0.1
   equatable: ^2.0.3
@@ -53,7 +53,7 @@ dependencies:
   grouped_list: ^4.0.0
   image_picker: ^0.8.2
   injectable: ^1.4.1
-  json_annotation: ^4.0.1
+  json_annotation: ^4.3.0
   local_auth: ^1.1.6
   logger: ^1.0.0
   modal_bottom_sheet: ^2.0.0
@@ -78,7 +78,7 @@ dependencies:
   wallet_core:
     git:
       url: https://github.com/fuseio/wallet_core.git
-      ref: feat/null-safety
+      ref: master
   ethereum_addresses:
     git:
       url: https://github.com/fuseio/dart-ethereum_address.git
@@ -92,14 +92,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 dev_dependencies:
-  auto_route_generator: ^2.1.0
+  auto_route_generator: ^3.1.0
   build_runner: ^2.0.6
   dependency_validator: ^3.1.0
   flutter_launcher_icons: ^0.9.0
   flutter_native_splash: ^1.1.8+4
   freezed: ^0.14.2
   injectable_generator: ^1.4.1
-  json_serializable: ^4.1.3
+  json_serializable: ^6.0.1
   lint: ^1.5.3
   flutter_test:
     sdk: flutter
