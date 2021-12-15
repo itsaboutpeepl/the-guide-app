@@ -25,7 +25,7 @@ Future<Map> fetchWalletByPhone(
       phone,
       regionCode: isoCode,
     );
-    Map? wallet = await api.getWalletByPhoneNumber(phoneNumber.e164);
+    Map? wallet = await walletApi.getWalletByPhoneNumber(phoneNumber.e164);
     String? walletAddress = (wallet != null) ? wallet["walletAddress"] : null;
     return {
       'phoneNumber': phoneNumber.e164,
@@ -39,7 +39,7 @@ Future<Map> fetchWalletByPhone(
         formatted,
         regionCode: isoCode,
       );
-      Map? wallet = await api.getWalletByPhoneNumber(phoneNumber.e164);
+      Map? wallet = await walletApi.getWalletByPhoneNumber(phoneNumber.e164);
       String? walletAddress = (wallet != null) ? wallet["walletAddress"] : null;
       return {
         'phoneNumber': phoneNumber.e164,

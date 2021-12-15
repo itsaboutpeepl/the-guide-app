@@ -26,7 +26,6 @@ import 'package:firebase_auth_platform_interface/firebase_auth_platform_interfac
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
-import 'package:wallet_core/wallet_core.dart' show Web3;
 
 class UpdateCurrency {
   final String currency;
@@ -258,7 +257,7 @@ ThunkAction backupWalletCall() {
     try {
       String communityAddress = store.state.cashWalletState.communityAddress;
       store.dispatch(BackupRequest());
-      await api.backupWallet(communityAddress: communityAddress);
+      await walletApi.backupWallet(communityAddress: communityAddress);
       store.dispatch(BackupSuccess());
     } catch (e) {
       store.dispatch(BackupSuccess());
@@ -425,19 +424,19 @@ ThunkAction syncContactsCall() {
         }
       }
       if (newPhones.length == 0) {
-        dynamic response = await api.syncContacts(newPhones);
+        dynamic response = await walletApi.syncContacts(newPhones);
         store.dispatch(SyncContactsProgress(newPhones,
             List<Map<String, dynamic>>.from(response['newContacts'])));
-        await api.ackSync(response['nonce']);
+        await walletApi.ackSync(response['nonce']);
       } else {
         int limit = 100;
         List<String> partial = newPhones.take(limit).toList();
         while (partial.length > 0) {
-          dynamic response = await api.syncContacts(partial);
+          dynamic response = await walletApi.syncContacts(partial);
           store.dispatch(SyncContactsProgress(partial,
               List<Map<String, dynamic>>.from(response['newContacts'])));
 
-          await api.ackSync(response['nonce']);
+          await walletApi.ackSync(response['nonce']);
           newPhones = newPhones.sublist(partial.length);
           partial = newPhones.take(limit).toList();
         }
@@ -495,10 +494,18 @@ ThunkAction identifyCall() {
   };
 }
 
-ThunkAction saveUserInDB(walletAddress) {
+ThunkAction saveUserProfile(walletAddress) {
   return (Store store) async {
     String displayName = store.state.userState.displayName;
     try {
+      Map<String, dynamic> userProfile =
+          await walletApi.getUserProfile(walletAddress);
+      if (userProfile.isNotEmpty) {
+        if (userProfile.containsKey('avatarHash')) {
+          store.dispatch(SetUserAvatar(userProfile['imageUri']));
+        }
+      }
+    } catch (e) {
       Map user = {
         "accountAddress": walletAddress,
         "email": 'wallet-user@fuse.io',
@@ -507,11 +514,7 @@ ThunkAction saveUserInDB(walletAddress) {
         "source": 'wallet-v2',
         "displayName": displayName
       };
-      await api.saveUserToDb(user);
-      log.info('save user $walletAddress');
-    } catch (e, s) {
-      log.error('user $walletAddress already saved');
-      await Sentry.captureException(e, stackTrace: s);
+      await walletApi.saveUserProfile(user);
     }
   };
 }
@@ -573,7 +576,7 @@ ThunkAction setupWalletCall(walletData) {
 ThunkAction getWalletAddressesCall() {
   return (Store store) async {
     try {
-      dynamic walletData = await api.getWallet();
+      dynamic walletData = await walletApi.getWallet();
       store.dispatch(setupWalletCall(walletData));
     } catch (e, s) {
       log.error('ERROR - getWalletAddressCall $e');
@@ -590,7 +593,7 @@ ThunkAction updateDisplayNameCall(String displayName) {
   return (Store store) async {
     try {
       String accountAddress = store.state.userState.accountAddress;
-      await api.updateDisplayName(accountAddress, displayName);
+      await walletApi.updateDisplayName(accountAddress, displayName);
       store.dispatch(SetDisplayName(displayName));
     } catch (e, s) {
       await Sentry.captureException(e, stackTrace: s);
@@ -604,7 +607,7 @@ ThunkAction updateUserAvatarCall(ImageSource source) {
     try {
       final uploadResponse = await api.uploadImage(File(file!.path));
       String accountAddress = store.state.userState.accountAddress;
-      await api.updateAvatar(accountAddress, uploadResponse['hash']);
+      await walletApi.updateAvatar(accountAddress, uploadResponse['hash']);
       store.dispatch(SetUserAvatar(uploadResponse['uri']));
     } catch (e, s) {
       await Sentry.captureException(e, stackTrace: s);

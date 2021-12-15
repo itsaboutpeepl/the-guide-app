@@ -13,7 +13,7 @@ class SimpleStrategy implements IOnBoardStrategy {
   @override
   Future login(store, phoneNumber) async {
     final String accountAddress = store.state.userState.accountAddress;
-    final jwtToken = await api.requestToken(
+    final jwtToken = await walletApi.requestToken(
       phoneNumber,
       accountAddress,
       appName: Strings.appName,

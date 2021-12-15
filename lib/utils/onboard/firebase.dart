@@ -28,7 +28,7 @@ class FirebaseStrategy implements IOnBoardStrategy {
       final String accountAddress = store.state.userState.accountAddress;
       final String identifier = store.state.userState.identifier;
       String token = await user!.getIdToken();
-      String jwtToken = await api.loginWithFirebase(
+      String jwtToken = await walletApi.loginWithFirebase(
         token,
         accountAddress,
         identifier,
@@ -109,7 +109,7 @@ class FirebaseStrategy implements IOnBoardStrategy {
     final String accountAddress = store.state.userState.accountAddress;
     final String identifier = store.state.userState.identifier;
     String token = await userCredential.user!.getIdToken();
-    final String jwtToken = await api.loginWithFirebase(
+    final String jwtToken = await walletApi.loginWithFirebase(
       token,
       accountAddress,
       identifier,
