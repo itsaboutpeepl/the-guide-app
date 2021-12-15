@@ -161,7 +161,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                     padding:
                         const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
                     child: Text(
-                      parseHtmlString(widget.videoArticleItem.title),
+                      widget.videoArticleItem.title,
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w800,

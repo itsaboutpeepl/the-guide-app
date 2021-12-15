@@ -82,7 +82,7 @@ class _SingleEventItemState extends State<SingleEventItem> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        parseHtmlString(widget.eventItem.eventTitle),
+                        widget.eventItem.eventTitle,
                         textAlign: TextAlign.start,
                         style: TextStyle(
                           fontSize: 20,
@@ -92,7 +92,7 @@ class _SingleEventItemState extends State<SingleEventItem> {
                       ),
                       SizedBox(height: 5),
                       Text(
-                        parseHtmlString(widget.eventItem.description),
+                        widget.eventItem.description,
                         maxLines: 3,
                         style: TextStyle(
                           color: Colors.grey[100],
