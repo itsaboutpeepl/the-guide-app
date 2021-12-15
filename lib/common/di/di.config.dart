@@ -69,6 +69,7 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.singleton<_i16.RootRouter>(servicesModule.rootRouter);
   gh.factory<String>(() => web3Di.defaultCommunityAddress,
       instanceName: 'defaultCommunityAddress');
+  gh.lazySingleton<_i3.WalletApi>(() => servicesModule.walletApi);
   gh.factoryParam<_i3.Web3, Map<dynamic, dynamic>?, dynamic>(
       (walletModules, _) => web3Di.fuseWeb3(
           get<String>(instanceName: 'defaultCommunityAddress'), walletModules),
