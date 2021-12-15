@@ -25,6 +25,8 @@ final Explorer ethereumExplorerApi = getIt<Explorer>(
 
 final API api = getIt<API>();
 
+final WalletApi walletApi = getIt<WalletApi>();
+
 final FuseSwapService fuseSwapService = getIt<FuseSwapService>();
 
 final NewsService newsService = getIt<NewsService>();
