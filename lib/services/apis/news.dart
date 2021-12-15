@@ -154,10 +154,10 @@ class NewsService {
                 ", " +
                 element['location']['street_name_short'],
             description: element['description'],
-            website: element['website'],
-            twitterLink: element['twitter'],
-            instaLink: element['instagram'],
-            facebookLink: element['facebook'],
+            website: element['website'] ?? "",
+            twitterLink: element['twitter'] ?? "",
+            instaLink: element['instagram'] ?? "",
+            facebookLink: element['facebook'] ?? "",
             imageURL: element['featured_image'],
           ),
         );
