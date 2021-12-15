@@ -58,11 +58,13 @@ class StripeService {
       );
 
       // 3. display the payment sheet.
-      await Stripe.instance.presentPaymentSheet(
-          parameters: PresentPaymentSheetParameters(
-        clientSecret: _paymentSheetData!['clientSecret'],
-        confirmPayment: true,
-      ));
+      // await Stripe.instance.presentPaymentSheet(
+      //     parameters: PresentPaymentSheetParameters(
+      //   clientSecret: _paymentSheetData!['clientSecret'],
+      //   confirmPayment: true,
+      // ));
+
+      await Stripe.instance.presentPaymentSheet();
 
       return StripeCustomResponse(ok: true);
     } catch (e) {
