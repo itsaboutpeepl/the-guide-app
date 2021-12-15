@@ -1,6 +1,5 @@
 import 'package:auto_size_text_field/auto_size_text_field.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/contacts/screens/send_amount.dart';
 import 'package:guide_liverpool/generated/l10n.dart';

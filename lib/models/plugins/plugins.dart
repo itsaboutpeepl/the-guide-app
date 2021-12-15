@@ -7,7 +7,6 @@ import 'package:guide_liverpool/models/plugins/moonpay.dart';
 import 'package:guide_liverpool/models/plugins/rampInstant.dart';
 import 'package:guide_liverpool/models/plugins/transak.dart';
 import 'package:guide_liverpool/models/plugins/wallet_banner.dart';
-import 'package:json_annotation/json_annotation.dart';
 
 part 'plugins.freezed.dart';
 part 'plugins.g.dart';

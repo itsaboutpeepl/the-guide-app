@@ -3,7 +3,6 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/customControls.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/youtubeToStream.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
