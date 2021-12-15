@@ -137,7 +137,7 @@ class NewsService {
   }
 
   Future<List<Directory>> directoryList() async {
-    Response response = await dio.get('/events');
+    Response response = await dio.get('/directory');
 
     List<dynamic> results = response.data as List;
 
@@ -150,9 +150,10 @@ class NewsService {
             title: parseHtmlString(element['title']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
-            address: element['location']['name'] +
-                ", " +
-                element['location']['street_name_short'],
+            address: element['location']['address'] ??
+                (element['location']['name'] +
+                    ", " +
+                    element['location']['street_name_short']),
             description: element['description'],
             website: element['website'] ?? "",
             twitterLink: element['twitter'] ?? "",
