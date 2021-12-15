@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:guide_liverpool/models/articles/categoryArticles.dart';
