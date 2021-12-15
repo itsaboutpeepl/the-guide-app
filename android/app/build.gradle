@@ -73,6 +73,17 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    // check this in future versions of Stripe and remove if possible. Dependecy error, two JDKs are being referenced, so the compiler doesnt know which one to use. 
+    configurations.all {
+    c -> c.resolutionStrategy.eachDependency {
+        DependencyResolveDetails dependency ->
+             if (dependency.requested.group == 'org.bouncycastle') {
+                dependency.useTarget 'org.bouncycastle:bcprov-jdk15to18:1.68'
+            }
+        }
+    }
+
 }
 
 flutter {
