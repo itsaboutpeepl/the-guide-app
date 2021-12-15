@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:629222004995:android:20efad9be3131fc5be3136",
         "android_client_info": {
-          "package_name": "com.itsaboutpeepl.peepl"
+          "package_name": "com.theguideliverpool.theguideapp"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "629222004995-gm9q1qfaokk7l2g37e9ati63dn2j046t.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "8a21e38629c880fda8a845383c1be537263c015f"
           }
         },
@@ -26,7 +26,7 @@
           "client_id": "629222004995-g80kmj1nt3uaf2u9f2414nh3vdkuniga.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "65ebe54df2b42c5ff5d5c3384dd443cbc5b1d76f"
           }
         },
@@ -34,7 +34,7 @@
           "client_id": "629222004995-huflf8nq9d81olv20h51j1bubb0e76v6.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "2f493d75c6927e23c3b8ac7f10f61ffcc39d5704"
           }
         },
@@ -42,7 +42,7 @@
           "client_id": "629222004995-0svkfvbp0tkve35b6ab4nj759h7sfko8.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "9dcf5c9d9b14e1969b0b0f31b20d173f95257dcf"
           }
         },
@@ -50,7 +50,7 @@
           "client_id": "629222004995-s3hv5cc8gkqdphgkv3f9h37rlh1dh6he.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "6ef39bd8ccb23c9a98a00f615c21c0732cc8097b"
           }
         },
@@ -58,7 +58,7 @@
           "client_id": "629222004995-q8inlcf0d1fnv1t8m66epb6p96i1br49.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "ff0350a69bf0ce5bd0840044ecc754e7d3680e74"
           }
         },
@@ -66,7 +66,7 @@
           "client_id": "629222004995-7v6jlbagi0l4ujnc6iprdlgp09se6kpu.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "45ceff1f5f49fdecae14ccc13974544f97fa83bf"
           }
         },
@@ -74,7 +74,7 @@
           "client_id": "629222004995-3lqrcvicjs8qjuos1mol0nkd8m2q5b88.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "e69185290b29a29589349975b5cdebc080f0d7d5"
           }
         },
@@ -82,7 +82,7 @@
           "client_id": "629222004995-rtoof5b4pipseubm7rppi8c883pgshih.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "6ca2aa88d7f3894dacc644063e3b1049ec5b5a53"
           }
         },
@@ -90,7 +90,7 @@
           "client_id": "629222004995-iicsed927o3pl4phe2t0vqmpc40np1v2.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.itsaboutpeepl.peepl",
+            "package_name": "com.theguideliverpool.theguideapp",
             "certificate_hash": "64a998c9100ef3d9cfd6b33f942e3a7e13fa78df"
           }
         },
@@ -115,7 +115,7 @@
               "client_id": "629222004995-d9beogo7m7ojbmtidnsqn0vi358bmuju.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.itsaboutpeepl.peepl"
+                "bundle_id": "com.theguideliverpool.theguideapp"
               }
             }
           ]
@@ -223,7 +223,7 @@
               "client_id": "629222004995-d9beogo7m7ojbmtidnsqn0vi358bmuju.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.itsaboutpeepl.peepl"
+                "bundle_id": "com.theguideliverpool.theguideapp"
               }
             }
           ]
@@ -323,7 +323,7 @@
               "client_id": "629222004995-d9beogo7m7ojbmtidnsqn0vi358bmuju.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.itsaboutpeepl.peepl"
+                "bundle_id": "com.theguideliverpool.theguideapp"
               }
             }
           ]
