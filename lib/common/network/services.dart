@@ -9,6 +9,8 @@ abstract class ServicesModule {
   @lazySingleton
   Graph get graph => Graph(
         dotenv.env['GRAPH_BASE_URL']!,
+        dotenv.env['NFT_SUB_GRAPH_URL'] ??
+            'https://api.thegraph.com/subgraphs/name/mul53/nft-subgraph',
       );
 
   @lazySingleton
