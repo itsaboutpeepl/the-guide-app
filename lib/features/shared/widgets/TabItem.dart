@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 const double ICON_OFF = -3;
-const double ICON_ON = 0;
-const double TEXT_OFF = 10;
+const double ICON_ON = -1;
+const double TEXT_OFF = 1;
 const double TEXT_ON = 1;
 const double ALPHA_OFF = 0;
 const double ALPHA_ON = 1;
