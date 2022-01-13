@@ -124,8 +124,9 @@ class NewsService {
             endDate: DateTime.parse(element['end_date']),
             eventTitle: parseHtmlString(element['title']),
             location: element['location']['name'] +
-                ", " +
-                element['location']['street_name_short'],
+                    ", " +
+                    element['location']['street_name_short'] ??
+                "UK",
             description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
