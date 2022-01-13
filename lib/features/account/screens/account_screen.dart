@@ -5,12 +5,14 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/common/router/routes.gr.dart';
+import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/account/widgets/avatar.dart';
 import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class AccountScreen extends StatefulWidget {
   @override
@@ -87,13 +89,13 @@ class _AccountScreenState extends State<AccountScreen> {
                                 ],
                               ),
                             ),
-                            MenuTile(
-                              label: '${I10n.of(context).top_up} £',
-                              menuIcon: 'top_up_icon.svg',
-                              onTap: () {
-                                context.navigateTo(TopupScreen());
-                              },
-                            ),
+                            // MenuTile(
+                            //   label: '${I10n.of(context).top_up} £',
+                            //   menuIcon: 'top_up_icon.svg',
+                            //   onTap: () {
+                            //     context.navigateTo(TopupScreen());
+                            //   },
+                            // ),
                             MenuTile(
                               label: I10n.of(context).legal,
                               menuIcon: 'legal_icon.svg',
@@ -110,12 +112,11 @@ class _AccountScreenState extends State<AccountScreen> {
                               label: "About",
                               menuIcon: 'info_black.svg',
                               onTap: () {
-                                context.router.root.push(
-                                  Webview(
-                                    title: I10n.of(context).legal,
-                                    url: 'https://itsaboutpeepl.com/privacy/',
-                                  ),
-                                );
+                                showBarModalBottomSheet(
+                                    useRootNavigator: true,
+                                    backgroundColor: Colors.cyan,
+                                    context: context,
+                                    builder: (context) => aboutModal(context));
                               },
                             ),
                           ],
@@ -131,4 +132,69 @@ class _AccountScreenState extends State<AccountScreen> {
       ),
     );
   }
+}
+
+Widget aboutModal(BuildContext context) {
+  return SingleChildScrollView(
+    child: Padding(
+      padding: const EdgeInsets.all(15.0),
+      child: Column(
+        children: [
+          Image.asset("assets/images/logo-color.png"),
+          Divider(
+            thickness: 3,
+            height: 50,
+            indent: 50,
+            endIndent: 50,
+          ),
+          Text(
+            "Liverpool's premier what's on platform",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                color: flexColorSchemeLight.primary,
+                fontSize: 30,
+                fontFamily: "Europa",
+                fontWeight: FontWeight.w900),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          RichText(
+            text: TextSpan(
+              style: TextStyle(
+                  color: Colors.grey[800],
+                  fontSize: 19,
+                  fontFamily: "Europa",
+                  fontWeight: FontWeight.w500),
+              children: [
+                TextSpan(
+                  text:
+                      "We shout loud and proud about the latest good news from the world’s greatest city, so you never miss a moment. \n\n",
+                ),
+                TextSpan(
+                  text:
+                      "From events and attractions to bars and restaurants and all the important stuff in between - if it’s on in Liverpool - it’s on The Guide Liverpool.\n\n",
+                ),
+                TextSpan(
+                  text:
+                      "To bring you closer to the city than ever before, we’ve teamed up with Peepl so you can buy your favorite things from your best loved independent retailers in a socially conscious way.\n\n",
+                ),
+                TextSpan(
+                  text:
+                      "Buy from local businesses using your Peepl wallet and, not only will you help them thrive, you’ll be rewarded too.\n\n",
+                ),
+                TextSpan(
+                  style: TextStyle(fontWeight: FontWeight.w900),
+                  text: "What’s not to love?",
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+        ],
+      ),
+    ),
+  );
 }
