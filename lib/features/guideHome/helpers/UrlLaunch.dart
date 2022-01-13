@@ -14,8 +14,19 @@ class UrlLaunch {
     }
   }
 
-  static void launchURL(String url) async =>
-      await canLaunch(url) ? await launch(url) : throw 'Could not launch $url';
+  static void launchURL(String url) async {
+    final bool nativeAppLaunchSucceeded = await launch(
+      url,
+      forceSafariVC: false,
+      universalLinksOnly: true,
+    );
+    if (!nativeAppLaunchSucceeded) {
+      await launch(
+        url,
+        forceSafariVC: true,
+      );
+    }
+  }
 }
 
 String parseHtmlString(String htmlString) {
