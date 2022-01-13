@@ -101,16 +101,22 @@ class _SingleEventItemState extends State<SingleEventItem> {
                       SizedBox(height: 10),
                       Row(
                         children: [
-                          Icon(
-                            Icons.location_on_outlined,
-                            size: 15,
-                            color: Colors.grey[100],
+                          Flexible(
+                            flex: 1,
+                            child: Icon(
+                              Icons.location_on_outlined,
+                              size: 15,
+                              color: Colors.grey[100],
+                            ),
                           ),
                           SizedBox(width: 5),
-                          Text(
-                            widget.eventItem.location,
-                            style: TextStyle(
-                              color: Colors.grey[100],
+                          Flexible(
+                            flex: 9,
+                            child: Text(
+                              widget.eventItem.location,
+                              style: TextStyle(
+                                color: Colors.grey[100],
+                              ),
                             ),
                           )
                         ],
