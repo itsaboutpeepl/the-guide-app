@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
@@ -8,6 +10,7 @@ import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
+import 'package:webview_flutter/webview_flutter.dart' as WebView;
 
 class DetailArticleBottomModel extends StatefulWidget {
   const DetailArticleBottomModel({Key? key, required this.articleData})
@@ -25,6 +28,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
 
   // ignore: unused_field
   late Timer _timer;
+  late Widget htmlWidget;
 
   @override
   void initState() {
@@ -41,6 +45,51 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
         });
       }
     });
+
+    htmlWidget = Html(
+      data: widget.articleData.content,
+      onLinkTap: (url, context, attributes, element) =>
+          {UrlLaunch.launchURL(url!), print(url)},
+      customRender: {
+        "iframe": (RenderContext context, Widget child) {
+          final attrs = context.tree.element?.attributes;
+          if (attrs != null) {
+            double? width = double.tryParse(attrs['width'] ?? "");
+            double? height = double.tryParse(attrs['height'] ?? "");
+            return Container(
+              width: width ?? (height ?? 150) * 2,
+              height: height ?? (width ?? 300) / 2,
+              child: WebView.WebView(
+                initialUrl: attrs['src'] ?? "about:blank",
+                javascriptMode: WebView.JavascriptMode.unrestricted,
+                //no need for scrolling gesture recognizers on embedded youtube, so set gestureRecognizers null
+                //on other iframe content scrolling might be necessary, so use VerticalDragGestureRecognizer
+                gestureRecognizers: attrs['src'] != null &&
+                        attrs['src']!.contains("youtube.com/embed")
+                    ? null
+                    : [Factory(() => VerticalDragGestureRecognizer())].toSet(),
+                navigationDelegate: (WebView.NavigationRequest request) async {
+                  //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
+                  //on other iframe content allow all url loading
+                  if (attrs['src'] != null &&
+                      attrs['src']!.contains("youtube.com/embed")) {
+                    if (!request.url.contains("youtube.com/embed")) {
+                      return WebView.NavigationDecision.prevent;
+                    } else {
+                      return WebView.NavigationDecision.navigate;
+                    }
+                  } else {
+                    return WebView.NavigationDecision.navigate;
+                  }
+                },
+              ),
+            );
+          } else {
+            return Container(height: 0);
+          }
+        },
+      },
+    );
   }
 
   @override
@@ -116,13 +165,9 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                     SizedBox(
                       height: 10,
                     ),
-                    Html(
-                      data: widget.articleData.content,
-                      onLinkTap: (url, context, attributes, element) =>
-                          {UrlLaunch.launchURL(url!), print(url)},
-                    ),
+                    htmlWidget,
                     // Text(
-                    //   parseHtmlString(widget.articleData.content),
+                    //parseHtmlString(widget.articleData.content),
                     //   style: TextStyle(fontSize: 18.0),
                     // )
                   ],
@@ -135,3 +180,48 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
     );
   }
 }
+
+// Widget html = flutterHTML.Html(data: """
+//    <h3>Google iframe:</h3>
+//    <iframe src="https://google.com"></iframe>
+//    <h3>YouTube iframe:</h3>
+//    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+//    """, customRender: {
+//   "iframe": (flutterHTML.RenderContext context, Widget child) {
+//     final attrs = context.tree.element?.attributes;
+//     if (attrs != null) {
+//       double? width = double.tryParse(attrs['width'] ?? "");
+//       double? height = double.tryParse(attrs['height'] ?? "");
+//       return Container(
+//         width: width ?? (height ?? 150) * 2,
+//         height: height ?? (width ?? 300) / 2,
+//         child: WebView(
+//           initialUrl: attrs['src'] ?? "about:blank",
+//           javascriptMode: JavascriptMode.unrestricted,
+//           //no need for scrolling gesture recognizers on embedded youtube, so set gestureRecognizers null
+//           //on other iframe content scrolling might be necessary, so use VerticalDragGestureRecognizer
+//           gestureRecognizers: attrs['src'] != null &&
+//                   attrs['src']!.contains("youtube.com/embed")
+//               ? null
+//               : [Factory(() => VerticalDragGestureRecognizer())].toSet(),
+//           navigationDelegate: (NavigationRequest request) async {
+//             //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
+//             //on other iframe content allow all url loading
+//             if (attrs['src'] != null &&
+//                 attrs['src']!.contains("youtube.com/embed")) {
+//               if (!request.url.contains("youtube.com/embed")) {
+//                 return NavigationDecision.prevent;
+//               } else {
+//                 return NavigationDecision.navigate;
+//               }
+//             } else {
+//               return NavigationDecision.navigate;
+//             }
+//           },
+//         ),
+//       );
+//     } else {
+//       return Container(height: 0);
+//     }
+//   }
+// });
