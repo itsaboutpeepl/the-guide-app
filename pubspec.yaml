@@ -31,7 +31,7 @@ dependencies:
   flex_color_scheme: ^3.0.1
   flutter_cupertino_localizations: ^1.0.1
   flutter_dotenv: ^5.0.0
-  flutter_html: ^2.1.5
+  flutter_html: ^2.2.1
   flutter_inappwebview: ^5.3.2
   flutter_localized_locales: ^2.0.2
   flutter_platform_widgets: ^1.9.5
@@ -71,7 +71,7 @@ dependencies:
   redux_thunk: ^0.4.0
   responsive_framework: ^0.1.4
   scan: ^1.4.3
-  sentry_flutter: ^5.1.0
+  sentry_flutter: ^6.2.0
   share_plus: ^3.0.4
   smooth_page_indicator: ^0.3.0-nullsafety.0
   url_launcher: ^6.0.9
