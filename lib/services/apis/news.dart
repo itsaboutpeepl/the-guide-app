@@ -129,7 +129,7 @@ class NewsService {
             description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
-            bookingLink: element['book_link']),
+            bookingLink: element['link']),
       );
     });
 
@@ -159,6 +159,7 @@ class NewsService {
             twitterLink: element['twitter'] ?? "",
             instaLink: element['instagram'] ?? "",
             facebookLink: element['facebook'] ?? "",
+            guideWebLink: element['link'],
             imageURL: element['featured_image'],
           ),
         );
