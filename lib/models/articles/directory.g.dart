@@ -17,6 +17,7 @@ _$_Directory _$$_DirectoryFromJson(Map<String, dynamic> json) => _$_Directory(
       imageURL: json['imageURL'] as String,
       description: json['description'] as String,
       address: json['address'] as String,
+      guideWebLink: json['guideWebLink'] as String,
     );
 
 Map<String, dynamic> _$$_DirectoryToJson(_$_Directory instance) =>
@@ -31,4 +32,5 @@ Map<String, dynamic> _$$_DirectoryToJson(_$_Directory instance) =>
       'imageURL': instance.imageURL,
       'description': instance.description,
       'address': instance.address,
+      'guideWebLink': instance.guideWebLink,
     };

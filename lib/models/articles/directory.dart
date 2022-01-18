@@ -19,6 +19,7 @@ class Directory with _$Directory {
     required String imageURL,
     required String description,
     required String address,
+    required String guideWebLink,
   }) = _Directory;
 
   factory Directory.fromJson(dynamic json) => _$DirectoryFromJson(json);

@@ -31,7 +31,8 @@ class _$DirectoryTearOff {
       required String facebookLink,
       required String imageURL,
       required String description,
-      required String address}) {
+      required String address,
+      required String guideWebLink}) {
     return _Directory(
       title: title,
       latitude: latitude,
@@ -43,6 +44,7 @@ class _$DirectoryTearOff {
       imageURL: imageURL,
       description: description,
       address: address,
+      guideWebLink: guideWebLink,
     );
   }
 
@@ -66,6 +68,7 @@ mixin _$Directory {
   String get imageURL => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String get address => throw _privateConstructorUsedError;
+  String get guideWebLink => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -87,7 +90,8 @@ abstract class $DirectoryCopyWith<$Res> {
       String facebookLink,
       String imageURL,
       String description,
-      String address});
+      String address,
+      String guideWebLink});
 }
 
 /// @nodoc
@@ -110,6 +114,7 @@ class _$DirectoryCopyWithImpl<$Res> implements $DirectoryCopyWith<$Res> {
     Object? imageURL = freezed,
     Object? description = freezed,
     Object? address = freezed,
+    Object? guideWebLink = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -152,6 +157,10 @@ class _$DirectoryCopyWithImpl<$Res> implements $DirectoryCopyWith<$Res> {
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      guideWebLink: guideWebLink == freezed
+          ? _value.guideWebLink
+          : guideWebLink // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -172,7 +181,8 @@ abstract class _$DirectoryCopyWith<$Res> implements $DirectoryCopyWith<$Res> {
       String facebookLink,
       String imageURL,
       String description,
-      String address});
+      String address,
+      String guideWebLink});
 }
 
 /// @nodoc
@@ -196,6 +206,7 @@ class __$DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
     Object? imageURL = freezed,
     Object? description = freezed,
     Object? address = freezed,
+    Object? guideWebLink = freezed,
   }) {
     return _then(_Directory(
       title: title == freezed
@@ -238,6 +249,10 @@ class __$DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
+      guideWebLink: guideWebLink == freezed
+          ? _value.guideWebLink
+          : guideWebLink // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -256,7 +271,8 @@ class _$_Directory extends _Directory {
       required this.facebookLink,
       required this.imageURL,
       required this.description,
-      required this.address})
+      required this.address,
+      required this.guideWebLink})
       : super._();
 
   factory _$_Directory.fromJson(Map<String, dynamic> json) =>
@@ -282,10 +298,12 @@ class _$_Directory extends _Directory {
   final String description;
   @override
   final String address;
+  @override
+  final String guideWebLink;
 
   @override
   String toString() {
-    return 'Directory(title: $title, latitude: $latitude, longitude: $longitude, website: $website, twitterLink: $twitterLink, instaLink: $instaLink, facebookLink: $facebookLink, imageURL: $imageURL, description: $description, address: $address)';
+    return 'Directory(title: $title, latitude: $latitude, longitude: $longitude, website: $website, twitterLink: $twitterLink, instaLink: $instaLink, facebookLink: $facebookLink, imageURL: $imageURL, description: $description, address: $address, guideWebLink: $guideWebLink)';
   }
 
   @override
@@ -319,7 +337,11 @@ class _$_Directory extends _Directory {
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
             (identical(other.address, address) ||
-                const DeepCollectionEquality().equals(other.address, address)));
+                const DeepCollectionEquality()
+                    .equals(other.address, address)) &&
+            (identical(other.guideWebLink, guideWebLink) ||
+                const DeepCollectionEquality()
+                    .equals(other.guideWebLink, guideWebLink)));
   }
 
   @override
@@ -334,7 +356,8 @@ class _$_Directory extends _Directory {
       const DeepCollectionEquality().hash(facebookLink) ^
       const DeepCollectionEquality().hash(imageURL) ^
       const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(address);
+      const DeepCollectionEquality().hash(address) ^
+      const DeepCollectionEquality().hash(guideWebLink);
 
   @JsonKey(ignore: true)
   @override
@@ -358,7 +381,8 @@ abstract class _Directory extends Directory {
       required String facebookLink,
       required String imageURL,
       required String description,
-      required String address}) = _$_Directory;
+      required String address,
+      required String guideWebLink}) = _$_Directory;
   _Directory._() : super._();
 
   factory _Directory.fromJson(Map<String, dynamic> json) =
@@ -384,6 +408,8 @@ abstract class _Directory extends Directory {
   String get description => throw _privateConstructorUsedError;
   @override
   String get address => throw _privateConstructorUsedError;
+  @override
+  String get guideWebLink => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$DirectoryCopyWith<_Directory> get copyWith =>
