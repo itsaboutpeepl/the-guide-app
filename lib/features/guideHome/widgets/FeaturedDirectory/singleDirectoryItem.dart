@@ -19,12 +19,7 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5),
       child: GestureDetector(
-        onTap: () => {
-          UrlLaunch.openMap(
-            double.parse(widget.directoryItem.latitude),
-            double.parse(widget.directoryItem.longitude),
-          ),
-        },
+        onTap: () => UrlLaunch.launchURL(widget.directoryItem.guideWebLink),
         child: SizedBox(
           child: Stack(
             fit: StackFit.expand,
