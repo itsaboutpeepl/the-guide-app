@@ -89,8 +89,9 @@ class _FeaturedPostStackState extends State<FeaturedPostStack>
               ),
             ),
             Stack(
-                clipBehavior: Clip.antiAlias,
-                children: _listOfPosts.reversed.map((featuredPost) {
+              clipBehavior: Clip.antiAlias,
+              children: _listOfPosts.reversed.map(
+                (featuredPost) {
                   if (_listOfPosts.indexOf(featuredPost) <= 3) {
                     return GestureDetector(
                       onHorizontalDragEnd: _horizontalDragEnd,
@@ -107,7 +108,9 @@ class _FeaturedPostStackState extends State<FeaturedPostStack>
                   } else {
                     return Container();
                   }
-                }).toList()),
+                },
+              ).toList(),
+            ),
           ],
         ),
       ),
