@@ -18,12 +18,6 @@ class _EventCalendarState extends State<EventCalendar> {
   @override
   void initState() {
     _pageController = new PageController();
-
-    _pageController.addListener(() {
-      setState(() {
-        _currentIndex = _pageController.page!.toInt();
-      });
-    });
     super.initState();
   }
 
@@ -61,6 +55,9 @@ class _EventCalendarState extends State<EventCalendar> {
                   Container(
                     height: MediaQuery.of(context).size.height * 0.24,
                     child: PageView.builder(
+                        onPageChanged: (page) => setState(() {
+                              _currentIndex = page;
+                            }),
                         controller: _pageController,
                         scrollDirection: Axis.vertical,
                         physics: PageScrollPhysics(),
