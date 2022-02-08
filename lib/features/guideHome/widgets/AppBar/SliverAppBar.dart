@@ -12,7 +12,7 @@ class MySliverAppBar extends StatelessWidget {
       pinned: false,
       snap: false,
       centerTitle: false,
-      expandedHeight: MediaQuery.of(context).size.height * 0.18,
+      expandedHeight: MediaQuery.of(context).size.height * 0.22,
       flexibleSpace: FlexibleSpaceBar(
         background: Header(),
         centerTitle: true,
