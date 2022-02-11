@@ -79,8 +79,6 @@ ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
       store.dispatch(RefreshCurrentTabList(
           articleList: newListOfArticles,
           currentTabIndex: store.state.newsState.currentTabIndex));
-
-      print("DONE CALLING NEW LISt");
     } catch (e, s) {
       log.error('ERROR - updateCurrentTabList $e');
       await Sentry.captureException(
@@ -101,8 +99,6 @@ ThunkAction updateCurrentTabList({int page = 1, String query = ""}) {
       store.dispatch(UpdateCurrentTabList(
           articleList: newListOfArticles,
           currentTabIndex: store.state.newsState.currentTabIndex));
-
-      print("DONE CALLING NEW LISt");
     } catch (e, s) {
       log.error('ERROR - updateCurrentTabList $e');
       await Sentry.captureException(
