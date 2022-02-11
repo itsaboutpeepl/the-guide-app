@@ -32,10 +32,13 @@ class _SignUpButtonsState extends State<SignUpButtons> {
             children: [
               Expanded(
                 flex: 6,
-                child: Image.asset(
-                  'assets/images/guide-logo-horizontal.png',
-                  width: 350,
-                  height: 350,
+                child: Transform.rotate(
+                  angle: 50,
+                  child: Image.asset(
+                    'assets/images/guide-logo-horizontal.png',
+                    width: 350,
+                    height: 350,
+                  ),
                 ),
               ),
               Flexible(
