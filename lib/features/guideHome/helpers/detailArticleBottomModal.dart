@@ -49,7 +49,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
     htmlWidget = Html(
       data: widget.articleData.content,
       onLinkTap: (url, context, attributes, element) =>
-          {UrlLaunch.launchURL(url!), print(url)},
+          {UrlLaunch.launchURL(url!)},
       customRender: {
         "iframe": (RenderContext context, Widget child) {
           final attrs = context.tree.element?.attributes;
@@ -180,48 +180,3 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
     );
   }
 }
-
-// Widget html = flutterHTML.Html(data: """
-//    <h3>Google iframe:</h3>
-//    <iframe src="https://google.com"></iframe>
-//    <h3>YouTube iframe:</h3>
-//    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
-//    """, customRender: {
-//   "iframe": (flutterHTML.RenderContext context, Widget child) {
-//     final attrs = context.tree.element?.attributes;
-//     if (attrs != null) {
-//       double? width = double.tryParse(attrs['width'] ?? "");
-//       double? height = double.tryParse(attrs['height'] ?? "");
-//       return Container(
-//         width: width ?? (height ?? 150) * 2,
-//         height: height ?? (width ?? 300) / 2,
-//         child: WebView(
-//           initialUrl: attrs['src'] ?? "about:blank",
-//           javascriptMode: JavascriptMode.unrestricted,
-//           //no need for scrolling gesture recognizers on embedded youtube, so set gestureRecognizers null
-//           //on other iframe content scrolling might be necessary, so use VerticalDragGestureRecognizer
-//           gestureRecognizers: attrs['src'] != null &&
-//                   attrs['src']!.contains("youtube.com/embed")
-//               ? null
-//               : [Factory(() => VerticalDragGestureRecognizer())].toSet(),
-//           navigationDelegate: (NavigationRequest request) async {
-//             //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
-//             //on other iframe content allow all url loading
-//             if (attrs['src'] != null &&
-//                 attrs['src']!.contains("youtube.com/embed")) {
-//               if (!request.url.contains("youtube.com/embed")) {
-//                 return NavigationDecision.prevent;
-//               } else {
-//                 return NavigationDecision.navigate;
-//               }
-//             } else {
-//               return NavigationDecision.navigate;
-//             }
-//           },
-//         ),
-//       );
-//     } else {
-//       return Container(height: 0);
-//     }
-//   }
-// });
