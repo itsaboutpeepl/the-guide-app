@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>629222004995-d9beogo7m7ojbmtidnsqn0vi358bmuju.apps.googleusercontent.com</string>
+	<string>1044608870893-qdujufpfbe9fe1lheg8oiec7grg2fvbu.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.629222004995-d9beogo7m7ojbmtidnsqn0vi358bmuju</string>
+	<string>com.googleusercontent.apps.1044608870893-qdujufpfbe9fe1lheg8oiec7grg2fvbu</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>629222004995-0sbf591mhkv6dk3kn3tts8je8uodjgbv.apps.googleusercontent.com</string>
+	<string>1044608870893-4lqmkl9u2vcrg36kra9stqna6sqva0sh.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAoWtl4KOuR_F45q4wIfnRuKtxsmgzmY4I</string>
+	<string>AIzaSyCYzfDbY-WTHY4_0jRTZBXlDKqxrMdef64</string>
 	<key>GCM_SENDER_ID</key>
-	<string>629222004995</string>
+	<string>1044608870893</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.itsaboutpeepl.peepl</string>
+	<string>com.theguideliverpool.theguideapp</string>
 	<key>PROJECT_ID</key>
-	<string>roost-60f71</string>
+	<string>theguideliverpool-51e81</string>
 	<key>STORAGE_BUCKET</key>
-	<string>roost-60f71.appspot.com</string>
+	<string>theguideliverpool-51e81.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,8 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:629222004995:ios:9d3826a77000cbe7be3136</string>
-	<key>DATABASE_URL</key>
-	<string>https://roost-60f71.firebaseio.com</string>
+	<string>1:1044608870893:ios:c472d230ab798a35021fe4</string>
 </dict>
 </plist>
