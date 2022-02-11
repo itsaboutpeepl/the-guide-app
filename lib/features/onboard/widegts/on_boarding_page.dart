@@ -24,17 +24,17 @@ class WelcomeFrame extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               'assets/images/' + img,
-              width: MediaQuery.of(context).size.width * .8,
+              width: MediaQuery.of(context).size.width * 0.9,
             ),
             SizedBox(
-              height: 30,
+              height: 10,
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 30.0, top: 30),
+              padding: const EdgeInsets.only(bottom: 5.0, top: 10),
               child: Text(
                 title,
                 style: TextStyle(
-                  fontSize: 22,
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.white,
                 ),
