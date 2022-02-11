@@ -72,6 +72,10 @@
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>Not in use right now</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_dartobservatory._tcp</string>
+	</array>
 	<key>NSCalendarsUsageDescription</key>
 	<string>Not in use right now</string>
 	<key>NSCameraUsageDescription</key>
@@ -135,9 +139,5 @@
 	<string>izeqGK11dEvFjpsiEwlFEkmXRtrZgef8</string>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
-	<key>NSBonjourServices</key>
-<array>
-    <string>_dartobservatory._tcp</string>
-</array>
 </dict>
 </plist>
