@@ -18,6 +18,22 @@ class NewsService {
     dio.options.headers = Map.from({"Content-Type": 'application/json'});
   }
 
+  Future<BlogArticle> getArticleByID(int articleID) async {
+    Response response = await dio.get('/post/$articleID');
+
+    return BlogArticle(
+      title: parseHtmlString(response.data['title']),
+      imageURL: response.data['featured_image'],
+      category: response.data['categories'].cast<String>(),
+      postID: int.parse(response.data['id']),
+      postURL: response.data['link'],
+      content: response.data['content'],
+      description: parseHtmlString(response.data['description']),
+      publishedAt: DateTime.parse(response.data['date']),
+      gallery: response.data['attachments'].cast<String>(),
+    );
+  }
+
   Future<List<BlogArticle>> featuredArticles() async {
     Response response = await dio.get('/posts?page=1');
 
@@ -47,7 +63,6 @@ class NewsService {
   }
 
   Future<List<Category>> getCategories() async {
-    //Response response = await dio.get('/categories');
     List<Category> demoCategories = [
       Category(categoryID: 13866, categoryName: "Latest"),
       Category(categoryID: 16630, categoryName: "Features"),
