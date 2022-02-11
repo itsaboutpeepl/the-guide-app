@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:guide_liverpool/features/onboard/widegts/flare_controller.dart';
 import 'package:guide_liverpool/features/onboard/widegts/on_boarding_page.dart';
 import 'package:guide_liverpool/features/onboard/widegts/sign_up_buttons.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/features/screens/OnBoardingScreens/firstScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardScreen extends StatefulWidget {
@@ -53,26 +53,37 @@ class _OnBoardScreenState extends State<OnBoardScreen>
   @override
   Widget build(BuildContext context) {
     final List<Widget> welcomeScreens = [
+      FirstScreen(),
       WelcomeFrame(
-        I10n.of(context).simple,
-        I10n.of(context).intro_text_one,
-        '1-cake.png',
+        "The Latest Stories",
+        "from Liverpool City Region",
+        'onboarding-1.png',
       ),
       WelcomeFrame(
-        I10n.of(context).useful,
-        I10n.of(context).intro_text_two,
-        '2-rewards.png',
+        "The Hottest Events",
+        "Keep up with the latest events happening in our city",
+        'onboarding-2.png',
       ),
       WelcomeFrame(
-        I10n.of(context).smart,
-        I10n.of(context).intro_text_three,
-        '3-wallet.png',
+        "The Hottest New Places",
+        "Check out our recommendations on what to explore",
+        'onboarding-3.png',
       ),
-      // WelcomeFrame(
-      //   "Top up. Pay. Enjoy.",
-      //   "We’re bringing people and restaurants together, over the food we all love. Thank you for joining us at the start of our journey!",
-      //   '4-enjoy.png',
-      // ),
+      WelcomeFrame(
+        "Watch, Learn, and Earn",
+        "Enjoy our videos and get rewarded in Peepl Tokens for watching.",
+        'onboarding-4.png',
+      ),
+      WelcomeFrame(
+        "We aren’t just another news app",
+        "We reward you for keeping up to date with what’s happening in the city.",
+        'onboarding-5.png',
+      ),
+      WelcomeFrame(
+        "A Rewarding Experience",
+        "We’ve partnered with Peepl to allow you to spend rewards on sustainable, local businesses",
+        'onboarding-6.png',
+      ),
       SignUpButtons()
     ];
     return Scaffold(
