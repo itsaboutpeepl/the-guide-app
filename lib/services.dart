@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:guide_liverpool/common/di/di.dart';
 import 'package:guide_liverpool/common/router/routes.gr.dart';
@@ -34,6 +35,8 @@ final NewsService newsService = getIt<NewsService>();
 final Graph graph = getIt<Graph>();
 
 final FirebaseAuth firebaseAuth = getIt<FirebaseAuth>();
+
+final FirebaseMessaging firebaseMessaging = getIt<FirebaseMessaging>();
 
 final PhoneNumberUtil phoneNumberUtil = getIt<PhoneNumberUtil>();
 
