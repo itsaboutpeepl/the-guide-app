@@ -69,6 +69,9 @@ class NewsService {
       Category(categoryID: 13873, categoryName: "LifeStyle"),
       Category(categoryID: 21554, categoryName: "Entertainment"),
       Category(categoryID: 13876, categoryName: "Food & Drink"),
+      Category(categoryID: 13894, categoryName: "Culture"),
+      Category(categoryID: 13930, categoryName: "Nightlife"),
+      Category(categoryID: 13886, categoryName: "Family"),
     ];
 
     return demoCategories;
