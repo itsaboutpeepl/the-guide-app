@@ -44,6 +44,11 @@ class UpdatePlayConfetti {
   UpdatePlayConfetti({required this.playConfetti});
 }
 
+class UpdateIsLoading {
+  final bool isLoading;
+  UpdateIsLoading({required this.isLoading});
+}
+
 ThunkAction fetchFeaturedPosts() {
   return (Store store) async {
     try {
@@ -98,6 +103,7 @@ ThunkAction fetchDirectoryList() {
     try {
       List<Directory> directoryList = await newsService.directoryList();
       store.dispatch(UpdateDirectoryList(directoryList: directoryList));
+      store.dispatch(UpdateIsLoading(isLoading: false));
     } catch (e, s) {
       log.error('ERROR - fetchDirectoryList $e');
       await Sentry.captureException(
