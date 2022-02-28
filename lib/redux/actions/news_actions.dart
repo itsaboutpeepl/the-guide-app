@@ -40,6 +40,11 @@ class RefreshCurrentTabList {
       {required this.articleList, required this.currentTabIndex});
 }
 
+class UpdateIsLoading {
+  final bool isLoading;
+  UpdateIsLoading({required this.isLoading});
+}
+
 ThunkAction fetchCategoryNames() {
   return (Store store) async {
     try {
@@ -99,6 +104,7 @@ ThunkAction updateCurrentTabList({int page = 1, String query = ""}) {
       store.dispatch(UpdateCurrentTabList(
           articleList: newListOfArticles,
           currentTabIndex: store.state.newsState.currentTabIndex));
+      store.dispatch(UpdateIsLoading(isLoading: false));
     } catch (e, s) {
       log.error('ERROR - updateCurrentTabList $e');
       await Sentry.captureException(
@@ -120,6 +126,7 @@ ThunkAction fetchNewsScreenData() {
           query: store.state.newsState.categories[0].categoryID.toString(),
         ),
       );
+      store.dispatch(UpdateIsLoading(isLoading: false));
     } catch (e, s) {
       log.error('ERROR - fetchHomePageData $e');
       await Sentry.captureException(
