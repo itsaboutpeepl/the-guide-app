@@ -23,28 +23,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   void initState() {
-    //WidgetsBinding.instance!.addPostFrameCallback(_updateCountryCode);
     super.initState();
   }
-
-  // _updateCountryCode(_) {
-  //   Locale myLocale = Localizations.localeOf(context);
-  //   if (myLocale.countryCode != null) {
-  //     Map localeData = codes.firstWhere(
-  //       (Map code) => code['code'] == myLocale.countryCode,
-  //     );
-  //     if (mounted &&
-  //         localeData.containsKey('dial_code') &&
-  //         localeData.containsKey('code')) {
-  //       setState(() {
-  //         countryCode = CountryCode(
-  //           dialCode: localeData['dial_code'],
-  //           code: localeData['code'],
-  //         );
-  //       });
-  //     }
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +37,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
         },
         child: Container(
           child: Column(
-            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
                 padding: EdgeInsets.all(20.0),
