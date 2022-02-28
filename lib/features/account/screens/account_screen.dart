@@ -103,7 +103,21 @@ class _AccountScreenState extends State<AccountScreen> {
                                 context.router.root.push(
                                   Webview(
                                     title: I10n.of(context).legal,
-                                    url: 'https://itsaboutpeepl.com/privacy/',
+                                    url:
+                                        'https://theguideliverpool.com/the-guide-liverpool-app-privacy-policy/',
+                                  ),
+                                );
+                              },
+                            ),
+                            MenuTile(
+                              label: "Contact",
+                              menuIcon: 'contact_us_icon.svg',
+                              onTap: () {
+                                context.router.root.push(
+                                  Webview(
+                                    title: "Contact",
+                                    url:
+                                        'https://theguideliverpool.com/contact-us/',
                                   ),
                                 );
                               },
