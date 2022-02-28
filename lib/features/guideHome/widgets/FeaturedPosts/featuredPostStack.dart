@@ -5,50 +5,52 @@ import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/featuredPostStack.dart';
 
 class FeaturedPostStack extends StatefulWidget {
-  final Function onCardChanged;
-
-  FeaturedPostStack({required this.onCardChanged});
   @override
   _FeaturedPostStackState createState() => _FeaturedPostStackState();
 }
 
 class _FeaturedPostStackState extends State<FeaturedPostStack>
-    with SingleTickerProviderStateMixin {
-  // var cards = [
-  //   FeaturedPost(index: 0),
-  //   FeaturedPost(index: 1),
-  //   FeaturedPost(index: 2),
-  // ];
-
+    with TickerProviderStateMixin {
   int currentIndex = 0;
-  late AnimationController controller;
-  late CurvedAnimation curvedAnimation;
+  late AnimationController _animationController;
+  late CurvedAnimation _curvedAnimation;
   late Animation<Offset> _translationAnim;
   late Animation<Offset> _moveAnim;
   late Animation<double> _scaleAnim;
+  late TabController _tabController;
 
   List<FeaturedPost> _listOfPosts = [];
 
   @override
   void initState() {
+    _tabController = TabController(length: 5, vsync: this);
+    _tabController.addListener(() => setState(() {}));
     super.initState();
     currentIndex = 0;
-    controller = AnimationController(
+    _animationController = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 150),
     );
-    curvedAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.easeOut);
+    _curvedAnimation =
+        CurvedAnimation(parent: _animationController, curve: Curves.easeOut);
 
     _translationAnim = Tween(begin: Offset(0.0, 0.0), end: Offset(-1000.0, 0.0))
-        .animate(controller)
+        .animate(_animationController)
       ..addListener(() {
         setState(() {});
       });
 
-    _scaleAnim = Tween(begin: 0.965, end: 1.0).animate(curvedAnimation);
+    _scaleAnim = Tween(begin: 0.965, end: 1.0).animate(_curvedAnimation);
     _moveAnim = Tween(begin: Offset(0.0, 0.05), end: Offset(0.0, 0.0))
-        .animate(curvedAnimation);
+        .animate(_curvedAnimation);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _animationController.dispose();
+
+    super.dispose();
   }
 
   @override
@@ -85,7 +87,7 @@ class _FeaturedPostStackState extends State<FeaturedPostStack>
               child: Divider(
                 thickness: 3,
                 endIndent: MediaQuery.of(context).size.width * 0.8,
-                color: Theme.of(context).colorScheme.primaryVariant,
+                color: Theme.of(context).colorScheme.primary,
               ),
             ),
             Stack(
@@ -149,13 +151,16 @@ class _FeaturedPostStackState extends State<FeaturedPostStack>
   void _horizontalDragEnd(DragEndDetails details) {
     if (details.primaryVelocity! < 0) {
       // Swiped Right to Left
-      controller.forward().whenComplete(() {
+      _animationController.forward().whenComplete(() {
         setState(() {
-          controller.reset();
+          _animationController.reset();
           FeaturedPost removedCard = _listOfPosts.removeAt(0);
           _listOfPosts.add(removedCard);
           currentIndex = _listOfPosts[0].index;
-          widget.onCardChanged(_listOfPosts[0]);
+          // widget.onCardChanged(_listOfPosts[0]);
+          setState(() {
+            _listOfPosts[0];
+          });
         });
       });
     }

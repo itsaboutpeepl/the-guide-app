@@ -22,12 +22,9 @@ class GuideHomeScreen extends StatefulWidget {
 class _GuideHomeScreenState extends State<GuideHomeScreen>
     with SingleTickerProviderStateMixin {
   ScrollController? _scrollController;
-  late TabController _tabController;
 
   @override
   void initState() {
-    _tabController = TabController(length: 5, vsync: this);
-    _tabController.addListener(() => setState(() {}));
     super.initState();
   }
 
@@ -45,11 +42,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
             controller: _scrollController,
             slivers: [
               MySliverAppBar(),
-              FeaturedPostStack(
-                onCardChanged: () {
-                  setState(() {});
-                },
-              ),
+              FeaturedPostStack(),
               EventCalendar(),
               FeaturedDirectory(),
               FeaturedVideos(),
