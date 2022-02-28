@@ -26,13 +26,17 @@ class _$HomePageStateTearOff {
       required List<VideoArticle> featuredVideos,
       required List<Events> eventList,
       required List<Directory> directoryList,
-      required bool playConfetti}) {
+      required bool playConfetti,
+      required bool isLoading,
+      required bool isError}) {
     return _HomePageState(
       featuredPosts: featuredPosts,
       featuredVideos: featuredVideos,
       eventList: eventList,
       directoryList: directoryList,
       playConfetti: playConfetti,
+      isLoading: isLoading,
+      isError: isError,
     );
   }
 
@@ -51,6 +55,8 @@ mixin _$HomePageState {
   List<Events> get eventList => throw _privateConstructorUsedError;
   List<Directory> get directoryList => throw _privateConstructorUsedError;
   bool get playConfetti => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -68,7 +74,9 @@ abstract class $HomePageStateCopyWith<$Res> {
       List<VideoArticle> featuredVideos,
       List<Events> eventList,
       List<Directory> directoryList,
-      bool playConfetti});
+      bool playConfetti,
+      bool isLoading,
+      bool isError});
 }
 
 /// @nodoc
@@ -87,6 +95,8 @@ class _$HomePageStateCopyWithImpl<$Res>
     Object? eventList = freezed,
     Object? directoryList = freezed,
     Object? playConfetti = freezed,
+    Object? isLoading = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_value.copyWith(
       featuredPosts: featuredPosts == freezed
@@ -109,6 +119,14 @@ class _$HomePageStateCopyWithImpl<$Res>
           ? _value.playConfetti
           : playConfetti // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -125,7 +143,9 @@ abstract class _$HomePageStateCopyWith<$Res>
       List<VideoArticle> featuredVideos,
       List<Events> eventList,
       List<Directory> directoryList,
-      bool playConfetti});
+      bool playConfetti,
+      bool isLoading,
+      bool isError});
 }
 
 /// @nodoc
@@ -146,6 +166,8 @@ class __$HomePageStateCopyWithImpl<$Res>
     Object? eventList = freezed,
     Object? directoryList = freezed,
     Object? playConfetti = freezed,
+    Object? isLoading = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_HomePageState(
       featuredPosts: featuredPosts == freezed
@@ -168,6 +190,14 @@ class __$HomePageStateCopyWithImpl<$Res>
           ? _value.playConfetti
           : playConfetti // ignore: cast_nullable_to_non_nullable
               as bool,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -181,7 +211,9 @@ class _$_HomePageState extends _HomePageState {
       required this.featuredVideos,
       required this.eventList,
       required this.directoryList,
-      required this.playConfetti})
+      required this.playConfetti,
+      required this.isLoading,
+      required this.isError})
       : super._();
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
@@ -197,10 +229,14 @@ class _$_HomePageState extends _HomePageState {
   final List<Directory> directoryList;
   @override
   final bool playConfetti;
+  @override
+  final bool isLoading;
+  @override
+  final bool isError;
 
   @override
   String toString() {
-    return 'HomePageState(featuredPosts: $featuredPosts, featuredVideos: $featuredVideos, eventList: $eventList, directoryList: $directoryList, playConfetti: $playConfetti)';
+    return 'HomePageState(featuredPosts: $featuredPosts, featuredVideos: $featuredVideos, eventList: $eventList, directoryList: $directoryList, playConfetti: $playConfetti, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -221,7 +257,12 @@ class _$_HomePageState extends _HomePageState {
                     .equals(other.directoryList, directoryList)) &&
             (identical(other.playConfetti, playConfetti) ||
                 const DeepCollectionEquality()
-                    .equals(other.playConfetti, playConfetti)));
+                    .equals(other.playConfetti, playConfetti)) &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.isError, isError) ||
+                const DeepCollectionEquality().equals(other.isError, isError)));
   }
 
   @override
@@ -231,7 +272,9 @@ class _$_HomePageState extends _HomePageState {
       const DeepCollectionEquality().hash(featuredVideos) ^
       const DeepCollectionEquality().hash(eventList) ^
       const DeepCollectionEquality().hash(directoryList) ^
-      const DeepCollectionEquality().hash(playConfetti);
+      const DeepCollectionEquality().hash(playConfetti) ^
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(isError);
 
   @JsonKey(ignore: true)
   @override
@@ -250,7 +293,9 @@ abstract class _HomePageState extends HomePageState {
       required List<VideoArticle> featuredVideos,
       required List<Events> eventList,
       required List<Directory> directoryList,
-      required bool playConfetti}) = _$_HomePageState;
+      required bool playConfetti,
+      required bool isLoading,
+      required bool isError}) = _$_HomePageState;
   _HomePageState._() : super._();
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
@@ -266,6 +311,10 @@ abstract class _HomePageState extends HomePageState {
   List<Directory> get directoryList => throw _privateConstructorUsedError;
   @override
   bool get playConfetti => throw _privateConstructorUsedError;
+  @override
+  bool get isLoading => throw _privateConstructorUsedError;
+  @override
+  bool get isError => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$HomePageStateCopyWith<_HomePageState> get copyWith =>

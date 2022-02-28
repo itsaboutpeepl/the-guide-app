@@ -13,12 +13,15 @@ class HomePageState with _$HomePageState {
   const HomePageState._();
 
   @JsonSerializable()
-  factory HomePageState(
-      {required List<BlogArticle> featuredPosts,
-      required List<VideoArticle> featuredVideos,
-      required List<Events> eventList,
-      required List<Directory> directoryList,
-      required bool playConfetti}) = _HomePageState;
+  factory HomePageState({
+    required List<BlogArticle> featuredPosts,
+    required List<VideoArticle> featuredVideos,
+    required List<Events> eventList,
+    required List<Directory> directoryList,
+    required bool playConfetti,
+    required bool isLoading,
+    required bool isError,
+  }) = _HomePageState;
 
   factory HomePageState.initial() => HomePageState(
         featuredPosts: [],
@@ -26,6 +29,8 @@ class HomePageState with _$HomePageState {
         eventList: [],
         directoryList: [],
         playConfetti: false,
+        isLoading: false,
+        isError: false,
       );
 
   factory HomePageState.fromJson(dynamic json) => _$HomePageStateFromJson(json);
