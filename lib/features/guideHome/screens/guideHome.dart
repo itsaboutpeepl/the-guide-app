@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/AppBar/SliverAppBar.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/FeaturedPosts/featuredPostStack.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/confettiWidget.dart';
@@ -8,7 +9,7 @@ import 'package:guide_liverpool/features/guideHome/widgets/FeaturedDirectory/fea
 import 'package:guide_liverpool/features/guideHome/widgets/FeaturedVideos/featuredVideos.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
-import 'package:guide_liverpool/redux/viewsmodels/featuredPostStack.dart';
+import 'package:guide_liverpool/redux/viewsmodels/homePageViewModel.dart';
 
 class GuideHomeScreen extends StatefulWidget {
   const GuideHomeScreen({
@@ -19,8 +20,7 @@ class GuideHomeScreen extends StatefulWidget {
   State<GuideHomeScreen> createState() => _GuideHomeScreenState();
 }
 
-class _GuideHomeScreenState extends State<GuideHomeScreen>
-    with SingleTickerProviderStateMixin {
+class _GuideHomeScreenState extends State<GuideHomeScreen> {
   ScrollController? _scrollController;
 
   @override
@@ -30,23 +30,43 @@ class _GuideHomeScreenState extends State<GuideHomeScreen>
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, FeaturedPostStackViewModel>(
+    return StoreConnector<AppState, HomePageViewModel>(
       distinct: true,
-      converter: FeaturedPostStackViewModel.fromStore,
+      converter: HomePageViewModel.fromStore,
       onInit: (store) {
         store.dispatch(UpdatePlayConfetti(playConfetti: false));
       },
       builder: (_, viewModel) {
-        return MyConfettiWidget(
-          child: CustomScrollView(
-            controller: _scrollController,
-            slivers: [
-              MySliverAppBar(),
-              FeaturedPostStack(),
-              EventCalendar(),
-              FeaturedDirectory(),
-              FeaturedVideos(),
-            ],
+        return RefreshIndicator(
+          onRefresh: () async {
+            viewModel.onRefresh();
+            return;
+          },
+          child: MyConfettiWidget(
+            child: CustomScrollView(
+              controller: _scrollController,
+              slivers: viewModel.isLoading
+                  ? [
+                      MySliverAppBar(),
+                      SliverToBoxAdapter(
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.5,
+                          child: Center(
+                            child: CircularProgressIndicator(
+                              color: flexColorSchemeLight.primary,
+                            ),
+                          ),
+                        ),
+                      )
+                    ]
+                  : [
+                      MySliverAppBar(),
+                      FeaturedPostStack(),
+                      EventCalendar(),
+                      FeaturedDirectory(),
+                      FeaturedVideos(),
+                    ],
+            ),
           ),
         );
       },
