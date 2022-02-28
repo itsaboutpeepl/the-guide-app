@@ -14,6 +14,8 @@ _$_NewsState _$$_NewsStateFromJson(Map<String, dynamic> json) => _$_NewsState(
           .map((e) => CategoryArticles.fromJson(e))
           .toList(),
       currentTabIndex: json['currentTabIndex'] as int,
+      isLoading: json['isLoading'] as bool,
+      isError: json['isError'] as bool,
     );
 
 Map<String, dynamic> _$$_NewsStateToJson(_$_NewsState instance) =>
@@ -21,4 +23,6 @@ Map<String, dynamic> _$$_NewsStateToJson(_$_NewsState instance) =>
       'categories': instance.categories.map((e) => e.toJson()).toList(),
       'articles': instance.articles.map((e) => e.toJson()).toList(),
       'currentTabIndex': instance.currentTabIndex,
+      'isLoading': instance.isLoading,
+      'isError': instance.isError,
     };

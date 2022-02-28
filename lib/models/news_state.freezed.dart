@@ -24,11 +24,15 @@ class _$NewsStateTearOff {
   _NewsState call(
       {required List<Category> categories,
       required List<CategoryArticles> articles,
-      required int currentTabIndex}) {
+      required int currentTabIndex,
+      required bool isLoading,
+      required bool isError}) {
     return _NewsState(
       categories: categories,
       articles: articles,
       currentTabIndex: currentTabIndex,
+      isLoading: isLoading,
+      isError: isError,
     );
   }
 
@@ -45,6 +49,8 @@ mixin _$NewsState {
   List<Category> get categories => throw _privateConstructorUsedError;
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
   int get currentTabIndex => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isError => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +65,9 @@ abstract class $NewsStateCopyWith<$Res> {
   $Res call(
       {List<Category> categories,
       List<CategoryArticles> articles,
-      int currentTabIndex});
+      int currentTabIndex,
+      bool isLoading,
+      bool isError});
 }
 
 /// @nodoc
@@ -75,6 +83,8 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
     Object? categories = freezed,
     Object? articles = freezed,
     Object? currentTabIndex = freezed,
+    Object? isLoading = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_value.copyWith(
       categories: categories == freezed
@@ -89,6 +99,14 @@ class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -102,7 +120,9 @@ abstract class _$NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
   $Res call(
       {List<Category> categories,
       List<CategoryArticles> articles,
-      int currentTabIndex});
+      int currentTabIndex,
+      bool isLoading,
+      bool isError});
 }
 
 /// @nodoc
@@ -119,6 +139,8 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
     Object? categories = freezed,
     Object? articles = freezed,
     Object? currentTabIndex = freezed,
+    Object? isLoading = freezed,
+    Object? isError = freezed,
   }) {
     return _then(_NewsState(
       categories: categories == freezed
@@ -133,6 +155,14 @@ class __$NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isError: isError == freezed
+          ? _value.isError
+          : isError // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -144,7 +174,9 @@ class _$_NewsState extends _NewsState {
   _$_NewsState(
       {required this.categories,
       required this.articles,
-      required this.currentTabIndex})
+      required this.currentTabIndex,
+      required this.isLoading,
+      required this.isError})
       : super._();
 
   factory _$_NewsState.fromJson(Map<String, dynamic> json) =>
@@ -156,10 +188,14 @@ class _$_NewsState extends _NewsState {
   final List<CategoryArticles> articles;
   @override
   final int currentTabIndex;
+  @override
+  final bool isLoading;
+  @override
+  final bool isError;
 
   @override
   String toString() {
-    return 'NewsState(categories: $categories, articles: $articles, currentTabIndex: $currentTabIndex)';
+    return 'NewsState(categories: $categories, articles: $articles, currentTabIndex: $currentTabIndex, isLoading: $isLoading, isError: $isError)';
   }
 
   @override
@@ -174,7 +210,12 @@ class _$_NewsState extends _NewsState {
                     .equals(other.articles, articles)) &&
             (identical(other.currentTabIndex, currentTabIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.currentTabIndex, currentTabIndex)));
+                    .equals(other.currentTabIndex, currentTabIndex)) &&
+            (identical(other.isLoading, isLoading) ||
+                const DeepCollectionEquality()
+                    .equals(other.isLoading, isLoading)) &&
+            (identical(other.isError, isError) ||
+                const DeepCollectionEquality().equals(other.isError, isError)));
   }
 
   @override
@@ -182,7 +223,9 @@ class _$_NewsState extends _NewsState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(categories) ^
       const DeepCollectionEquality().hash(articles) ^
-      const DeepCollectionEquality().hash(currentTabIndex);
+      const DeepCollectionEquality().hash(currentTabIndex) ^
+      const DeepCollectionEquality().hash(isLoading) ^
+      const DeepCollectionEquality().hash(isError);
 
   @JsonKey(ignore: true)
   @override
@@ -199,7 +242,9 @@ abstract class _NewsState extends NewsState {
   factory _NewsState(
       {required List<Category> categories,
       required List<CategoryArticles> articles,
-      required int currentTabIndex}) = _$_NewsState;
+      required int currentTabIndex,
+      required bool isLoading,
+      required bool isError}) = _$_NewsState;
   _NewsState._() : super._();
 
   factory _NewsState.fromJson(Map<String, dynamic> json) =
@@ -211,6 +256,10 @@ abstract class _NewsState extends NewsState {
   List<CategoryArticles> get articles => throw _privateConstructorUsedError;
   @override
   int get currentTabIndex => throw _privateConstructorUsedError;
+  @override
+  bool get isLoading => throw _privateConstructorUsedError;
+  @override
+  bool get isError => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$NewsStateCopyWith<_NewsState> get copyWith =>
