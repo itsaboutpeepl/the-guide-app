@@ -64,7 +64,10 @@ class _GuideHomeScreenState extends State<GuideHomeScreen> {
                       FeaturedPostStack(),
                       EventCalendar(),
                       FeaturedDirectory(),
-                      FeaturedVideos(),
+                      const SliverToBoxAdapter(
+                        child: SizedBox(height: 50),
+                      )
+                      //FeaturedVideos(),
                     ],
             ),
           ),
