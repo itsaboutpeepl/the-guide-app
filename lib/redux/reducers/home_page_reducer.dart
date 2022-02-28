@@ -9,6 +9,7 @@ final HomePageReducers = combineReducers<HomePageState>(
     TypedReducer<HomePageState, UpdateEventsList>(_getEventsList),
     TypedReducer<HomePageState, UpdateDirectoryList>(_getDirectoryList),
     TypedReducer<HomePageState, UpdatePlayConfetti>(_getPlayConfetti),
+    TypedReducer<HomePageState, UpdateIsLoading>(_updateIsLoading),
   ],
 );
 
@@ -35,4 +36,8 @@ HomePageState _getDirectoryList(
 
 HomePageState _getPlayConfetti(HomePageState state, UpdatePlayConfetti action) {
   return state.copyWith(playConfetti: action.playConfetti);
+}
+
+HomePageState _updateIsLoading(HomePageState state, UpdateIsLoading action) {
+  return state.copyWith(isLoading: action.isLoading);
 }
