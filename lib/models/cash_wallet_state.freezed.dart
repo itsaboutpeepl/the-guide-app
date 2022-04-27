@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'cash_wallet_state.dart';
@@ -54,7 +55,7 @@ class _$CashWalletStateTearOff {
     );
   }
 
-  CashWalletState fromJson(Map<String, Object> json) {
+  CashWalletState fromJson(Map<String, Object?> json) {
     return CashWalletState.fromJson(json);
   }
 }
@@ -315,10 +316,10 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
   factory _$_CashWalletState.fromJson(Map<String, dynamic> json) =>
       _$$_CashWalletStateFromJson(json);
 
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String communityAddress;
-  @JsonKey(defaultValue: true)
+  @JsonKey()
   @override
   final bool isDepositBanner;
   @override
@@ -373,55 +374,43 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CashWalletState &&
-            (identical(other.communityAddress, communityAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.communityAddress, communityAddress)) &&
-            (identical(other.isDepositBanner, isDepositBanner) ||
-                const DeepCollectionEquality()
-                    .equals(other.isDepositBanner, isDepositBanner)) &&
-            (identical(other.tokens, tokens) ||
-                const DeepCollectionEquality().equals(other.tokens, tokens)) &&
-            (identical(other.communities, communities) ||
-                const DeepCollectionEquality()
-                    .equals(other.communities, communities)) &&
-            (identical(other.walletActions, walletActions) ||
-                const DeepCollectionEquality()
-                    .equals(other.walletActions, walletActions)) &&
-            (identical(other.isCommunityLoading, isCommunityLoading) ||
-                const DeepCollectionEquality()
-                    .equals(other.isCommunityLoading, isCommunityLoading)) &&
-            (identical(other.isCommunityFetched, isCommunityFetched) ||
-                const DeepCollectionEquality()
-                    .equals(other.isCommunityFetched, isCommunityFetched)) &&
-            (identical(other.isTransfersFetchingStarted,
-                    isTransfersFetchingStarted) ||
-                const DeepCollectionEquality().equals(
-                    other.isTransfersFetchingStarted,
-                    isTransfersFetchingStarted)) &&
-            (identical(other.isCommunityBusinessesFetched,
-                    isCommunityBusinessesFetched) ||
-                const DeepCollectionEquality().equals(
-                    other.isCommunityBusinessesFetched,
-                    isCommunityBusinessesFetched)) &&
-            (identical(other.isFetchingBalances, isFetchingBalances) ||
-                const DeepCollectionEquality()
-                    .equals(other.isFetchingBalances, isFetchingBalances)));
+        (other.runtimeType == runtimeType &&
+            other is _CashWalletState &&
+            const DeepCollectionEquality()
+                .equals(other.communityAddress, communityAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.isDepositBanner, isDepositBanner) &&
+            const DeepCollectionEquality().equals(other.tokens, tokens) &&
+            const DeepCollectionEquality()
+                .equals(other.communities, communities) &&
+            const DeepCollectionEquality()
+                .equals(other.walletActions, walletActions) &&
+            const DeepCollectionEquality()
+                .equals(other.isCommunityLoading, isCommunityLoading) &&
+            const DeepCollectionEquality()
+                .equals(other.isCommunityFetched, isCommunityFetched) &&
+            const DeepCollectionEquality().equals(
+                other.isTransfersFetchingStarted, isTransfersFetchingStarted) &&
+            const DeepCollectionEquality().equals(
+                other.isCommunityBusinessesFetched,
+                isCommunityBusinessesFetched) &&
+            const DeepCollectionEquality()
+                .equals(other.isFetchingBalances, isFetchingBalances));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(communityAddress) ^
-      const DeepCollectionEquality().hash(isDepositBanner) ^
-      const DeepCollectionEquality().hash(tokens) ^
-      const DeepCollectionEquality().hash(communities) ^
-      const DeepCollectionEquality().hash(walletActions) ^
-      const DeepCollectionEquality().hash(isCommunityLoading) ^
-      const DeepCollectionEquality().hash(isCommunityFetched) ^
-      const DeepCollectionEquality().hash(isTransfersFetchingStarted) ^
-      const DeepCollectionEquality().hash(isCommunityBusinessesFetched) ^
-      const DeepCollectionEquality().hash(isFetchingBalances);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(communityAddress),
+      const DeepCollectionEquality().hash(isDepositBanner),
+      const DeepCollectionEquality().hash(tokens),
+      const DeepCollectionEquality().hash(communities),
+      const DeepCollectionEquality().hash(walletActions),
+      const DeepCollectionEquality().hash(isCommunityLoading),
+      const DeepCollectionEquality().hash(isCommunityFetched),
+      const DeepCollectionEquality().hash(isTransfersFetchingStarted),
+      const DeepCollectionEquality().hash(isCommunityBusinessesFetched),
+      const DeepCollectionEquality().hash(isFetchingBalances));
 
   @JsonKey(ignore: true)
   @override
@@ -460,33 +449,33 @@ abstract class _CashWalletState extends CashWalletState {
       _$_CashWalletState.fromJson;
 
   @override
-  String get communityAddress => throw _privateConstructorUsedError;
+  String get communityAddress;
   @override
-  bool get isDepositBanner => throw _privateConstructorUsedError;
+  bool get isDepositBanner;
   @override
   @JsonKey(fromJson: tokensFromJson)
-  Map<String, Token> get tokens => throw _privateConstructorUsedError;
+  Map<String, Token> get tokens;
   @override
   @JsonKey(fromJson: communitiesFromJson)
-  Map<String, Community> get communities => throw _privateConstructorUsedError;
+  Map<String, Community> get communities;
   @override
   @JsonKey(fromJson: walletActionsFromJson)
-  WalletActions? get walletActions => throw _privateConstructorUsedError;
+  WalletActions? get walletActions;
   @override
   @JsonKey(ignore: true)
-  bool get isCommunityLoading => throw _privateConstructorUsedError;
+  bool get isCommunityLoading;
   @override
   @JsonKey(ignore: true)
-  bool get isCommunityFetched => throw _privateConstructorUsedError;
+  bool get isCommunityFetched;
   @override
   @JsonKey(ignore: true)
-  bool get isTransfersFetchingStarted => throw _privateConstructorUsedError;
+  bool get isTransfersFetchingStarted;
   @override
   @JsonKey(ignore: true)
-  bool get isCommunityBusinessesFetched => throw _privateConstructorUsedError;
+  bool get isCommunityBusinessesFetched;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchingBalances => throw _privateConstructorUsedError;
+  bool get isFetchingBalances;
   @override
   @JsonKey(ignore: true)
   _$CashWalletStateCopyWith<_CashWalletState> get copyWith =>

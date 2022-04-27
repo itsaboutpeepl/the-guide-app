@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'business.dart';
@@ -34,7 +35,7 @@ class _$BusinessTearOff {
     );
   }
 
-  Business fromJson(Map<String, Object> json) {
+  Business fromJson(Map<String, Object?> json) {
     return Business.fromJson(json);
   }
 }
@@ -172,13 +173,13 @@ class _$_Business with DiagnosticableTreeMixin implements _Business {
 
   @override
   final BusinessMetadata metadata;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String account;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String id;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String name;
 
@@ -201,26 +202,21 @@ class _$_Business with DiagnosticableTreeMixin implements _Business {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Business &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)) &&
-            (identical(other.account, account) ||
-                const DeepCollectionEquality()
-                    .equals(other.account, account)) &&
-            (identical(other.id, id) ||
-                const DeepCollectionEquality().equals(other.id, id)) &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+        (other.runtimeType == runtimeType &&
+            other is _Business &&
+            const DeepCollectionEquality().equals(other.metadata, metadata) &&
+            const DeepCollectionEquality().equals(other.account, account) &&
+            const DeepCollectionEquality().equals(other.id, id) &&
+            const DeepCollectionEquality().equals(other.name, name));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(metadata) ^
-      const DeepCollectionEquality().hash(account) ^
-      const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(metadata),
+      const DeepCollectionEquality().hash(account),
+      const DeepCollectionEquality().hash(id),
+      const DeepCollectionEquality().hash(name));
 
   @JsonKey(ignore: true)
   @override
@@ -243,13 +239,13 @@ abstract class _Business implements Business {
   factory _Business.fromJson(Map<String, dynamic> json) = _$_Business.fromJson;
 
   @override
-  BusinessMetadata get metadata => throw _privateConstructorUsedError;
+  BusinessMetadata get metadata;
   @override
-  String get account => throw _privateConstructorUsedError;
+  String get account;
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$BusinessCopyWith<_Business> get copyWith =>

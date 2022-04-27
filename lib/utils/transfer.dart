@@ -17,12 +17,10 @@ Contact? getContact(
     if (contacts == null) return null;
     for (Contact? contact in contacts) {
       for (Item contactPhoneNumber in (contact!.phones!.toList())) {
-        if (clearNotNumbersAndPlusSymbol(contactPhoneNumber.value ?? '') ==
-            phoneNumber) {
+        if (clearNotNumbersAndPlusSymbol(contactPhoneNumber.value ?? '') == phoneNumber) {
           return contact;
         }
-        if (formatPhoneNumber(contactPhoneNumber.value ?? '', countryCode) ==
-            phoneNumber) {
+        if (formatPhoneNumber(contactPhoneNumber.value ?? '', countryCode) == phoneNumber) {
           return contact;
         }
       }
@@ -50,6 +48,6 @@ String? deducePhoneNumber(
   if (reverseContacts.containsKey(accountAddress.toLowerCase())) {
     return reverseContacts[accountAddress.toLowerCase()];
   } else {
-    return formatAddress(accountAddress);
+    return Formatter.formatEthAddress(accountAddress);
   }
 }

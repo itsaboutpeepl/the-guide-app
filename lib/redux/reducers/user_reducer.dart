@@ -4,8 +4,7 @@ import 'package:guide_liverpool/models/user_state.dart';
 import 'package:redux/redux.dart';
 
 final userReducers = combineReducers<UserState>([
-  TypedReducer<UserState, GetWalletAddressesSuccess>(
-      _getWalletAddressesSuccess),
+  TypedReducer<UserState, GetWalletDataSuccess>(_getWalletDataSuccess),
   TypedReducer<UserState, CreateLocalAccountSuccess>(_createNewWalletSuccess),
   TypedReducer<UserState, LoginRequestSuccess>(_loginSuccess),
   TypedReducer<UserState, LoginVerifySuccess>(_loginVerifySuccess),
@@ -21,12 +20,9 @@ final userReducers = combineReducers<UserState>([
   TypedReducer<UserState, SetCredentials>(_setCredentials),
   TypedReducer<UserState, SetVerificationId>(_setVerificationId),
   TypedReducer<UserState, JustInstalled>(_justInstalled),
-  TypedReducer<UserState, SetIsLoginRequest>(_setIsLoginRequest),
-  TypedReducer<UserState, SetIsVerifyRequest>(_setIsVerifyRequest),
   TypedReducer<UserState, DeviceIdSuccess>(_deviceIdSuccess),
   TypedReducer<UserState, SetSecurityType>(_setSecurityType),
-  TypedReducer<UserState, ReceiveBackupDialogShowed>(
-      _receiveBackupDialogShowed),
+  TypedReducer<UserState, ReceiveBackupDialogShowed>(_receiveBackupDialogShowed),
   TypedReducer<UserState, DepositBannerShowed>(_depositBannerShowed),
   TypedReducer<UserState, HomeBackupDialogShowed>(_homeBackupDialogShowed),
   TypedReducer<UserState, WarnSendDialogShowed>(_warnSendDialogShowed),
@@ -42,8 +38,7 @@ UserState _updateCurrency(UserState state, UpdateCurrency action) {
   return state.copyWith(currency: action.currency);
 }
 
-UserState _receiveBackupDialogShowed(
-    UserState state, ReceiveBackupDialogShowed action) {
+UserState _receiveBackupDialogShowed(UserState state, ReceiveBackupDialogShowed action) {
   return state.copyWith(receiveBackupDialogShowed: true);
 }
 
@@ -51,8 +46,7 @@ UserState _depositBannerShowed(UserState state, DepositBannerShowed action) {
   return state.copyWith(depositBannerShowed: true);
 }
 
-UserState _homeBackupDialogShowed(
-    UserState state, HomeBackupDialogShowed action) {
+UserState _homeBackupDialogShowed(UserState state, HomeBackupDialogShowed action) {
   return state.copyWith(homeBackupDialogShowed: true);
 }
 
@@ -68,12 +62,12 @@ UserState _setSecurityType(UserState state, SetSecurityType action) {
   );
 }
 
-UserState _getWalletAddressesSuccess(
-    UserState state, GetWalletAddressesSuccess action) {
+UserState _getWalletDataSuccess(UserState state, GetWalletDataSuccess action) {
   return state.copyWith(
     backup: action.backup,
     networks: action.networks,
     walletAddress: action.walletAddress,
+    walletModules: action.walletModules,
   );
 }
 
@@ -143,7 +137,7 @@ UserState _syncContactsProgress(UserState state, SyncContactsProgress action) {
     state.reverseContacts,
   );
   Iterable<MapEntry<String, String>> entries = action.newContacts.map(
-    (entry) => new MapEntry(
+    (entry) => MapEntry(
       entry['walletAddress'].toString().toLowerCase(),
       entry['phoneNumber'],
     ),
@@ -171,20 +165,6 @@ UserState _setCredentials(UserState state, SetCredentials action) {
 
 UserState _justInstalled(UserState state, JustInstalled action) {
   return state.copyWith(installedAt: action.installedAt);
-}
-
-UserState _setIsLoginRequest(UserState state, SetIsLoginRequest action) {
-  return state.copyWith(
-    isLoginRequest: action.isLoading,
-    signupErrorMessage: action.message,
-  );
-}
-
-UserState _setIsVerifyRequest(UserState state, SetIsVerifyRequest action) {
-  return state.copyWith(
-    isVerifyRequest: action.isLoading,
-    verifyErrorMessage: action.message,
-  );
 }
 
 UserState _deviceIdSuccess(UserState state, DeviceIdSuccess action) {

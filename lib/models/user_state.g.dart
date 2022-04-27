@@ -19,11 +19,11 @@ _$_UserState _$$_UserStateFromJson(Map<String, dynamic> json) => _$_UserState(
       networks: (json['networks'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
-          [],
+          const [],
       mnemonic: (json['mnemonic'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
-          [],
+          const [],
       privateKey: json['privateKey'] as String? ?? '',
       pincode: json['pincode'] as String? ?? '',
       accountAddress: json['accountAddress'] as String? ?? '',
@@ -42,11 +42,11 @@ _$_UserState _$$_UserStateFromJson(Map<String, dynamic> json) => _$_UserState(
       syncedContacts: (json['syncedContacts'] as List<dynamic>?)
               ?.map((e) => e as String)
               .toList() ??
-          [],
+          const [],
       reverseContacts: (json['reverseContacts'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
           ) ??
-          {},
+          const {},
       currency: json['currency'] == null
           ? 'usd'
           : currencyJson(json['currency'] as String?),
@@ -56,6 +56,10 @@ _$_UserState _$$_UserStateFromJson(Map<String, dynamic> json) => _$_UserState(
       locale: json['locale'] == null
           ? null
           : localeFromJson(json['locale'] as Map<String, dynamic>?),
+      walletModules: json['walletModules'] == null
+          ? null
+          : WalletModules.fromJson(
+              json['walletModules'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_UserStateToJson(_$_UserState instance) =>
@@ -88,4 +92,5 @@ Map<String, dynamic> _$$_UserStateToJson(_$_UserState instance) =>
       'currency': instance.currency,
       'authType': EnumToString.convertToString(instance.authType),
       'locale': localeToJson(instance.locale),
+      'walletModules': instance.walletModules?.toJson(),
     };

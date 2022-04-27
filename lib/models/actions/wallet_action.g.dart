@@ -11,9 +11,10 @@ _$CreateWallet _$$CreateWalletFromJson(Map<String, dynamic> json) =>
       timestamp: json['timestamp'] as int? ?? 0,
       id: json['_id'] as String,
       name: json['name'] as String? ?? 'createWallet',
-      txHash: json['txHash'] as String? ?? null,
+      txHash: json['txHash'] as String?,
       status: json['status'] as String,
       blockNumber: json['blockNumber'] as int? ?? 0,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$CreateWalletToJson(_$CreateWallet instance) =>
@@ -24,6 +25,7 @@ Map<String, dynamic> _$$CreateWalletToJson(_$CreateWallet instance) =>
       'txHash': instance.txHash,
       'status': instance.status,
       'blockNumber': instance.blockNumber,
+      'runtimeType': instance.$type,
     };
 
 _$FiatDeposit _$$FiatDepositFromJson(Map<String, dynamic> json) =>
@@ -31,16 +33,17 @@ _$FiatDeposit _$$FiatDepositFromJson(Map<String, dynamic> json) =>
       timestamp: json['timestamp'] as int? ?? 0,
       id: json['_id'] as String,
       name: json['name'] as String? ?? 'fiat-deposit',
-      txHash: json['txHash'] as String? ?? null,
+      txHash: json['txHash'] as String?,
       status: json['status'] as String,
       blockNumber: json['blockNumber'] as int? ?? 0,
       tokenAddress: json['tokenAddress'] as String,
-      from: json['from'] as String? ?? null,
+      from: json['from'] as String?,
       to: json['to'] as String,
       value: BigInt.parse(json['value'] as String),
-      tokenName: json['tokenName'] as String?,
-      tokenSymbol: json['tokenSymbol'] as String?,
-      tokenDecimal: json['tokenDecimal'] as int? ?? 18,
+      tokenName: json['tokenName'] as String,
+      tokenSymbol: json['tokenSymbol'] as String,
+      tokenDecimal: json['tokenDecimal'] as int,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$FiatDepositToJson(_$FiatDeposit instance) =>
@@ -58,6 +61,7 @@ Map<String, dynamic> _$$FiatDepositToJson(_$FiatDeposit instance) =>
       'tokenName': instance.tokenName,
       'tokenSymbol': instance.tokenSymbol,
       'tokenDecimal': instance.tokenDecimal,
+      'runtimeType': instance.$type,
     };
 
 _$JoinCommunity _$$JoinCommunityFromJson(Map<String, dynamic> json) =>
@@ -65,12 +69,13 @@ _$JoinCommunity _$$JoinCommunityFromJson(Map<String, dynamic> json) =>
       timestamp: json['timestamp'] as int? ?? 0,
       id: json['_id'] as String,
       name: json['name'] as String? ?? 'joinCommunity',
-      txHash: json['txHash'] as String? ?? null,
+      txHash: json['txHash'] as String?,
       status: json['status'] as String,
       blockNumber: json['blockNumber'] as int? ?? 0,
       communityAddress: json['communityAddress'] as String?,
-      tokenAddress: json['tokenAddress'] as String?,
-      communityName: json['communityName'] as String? ?? null,
+      tokenAddress: json['tokenAddress'] as String,
+      communityName: json['communityName'] as String?,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$JoinCommunityToJson(_$JoinCommunity instance) =>
@@ -84,23 +89,25 @@ Map<String, dynamic> _$$JoinCommunityToJson(_$JoinCommunity instance) =>
       'communityAddress': instance.communityAddress,
       'tokenAddress': instance.tokenAddress,
       'communityName': instance.communityName,
+      'runtimeType': instance.$type,
     };
 
 _$Bonus _$$BonusFromJson(Map<String, dynamic> json) => _$Bonus(
       timestamp: json['timestamp'] as int? ?? 0,
       id: json['_id'] as String,
       name: json['name'] as String? ?? 'tokenBonus',
-      txHash: json['txHash'] as String? ?? null,
+      txHash: json['txHash'] as String?,
       status: json['status'] as String,
       blockNumber: json['blockNumber'] as int? ?? 0,
       tokenAddress: json['tokenAddress'] as String,
-      from: json['from'] as String? ?? null,
+      from: json['from'] as String?,
       to: json['to'] as String,
       value: BigInt.parse(json['value'] as String),
-      tokenName: json['tokenName'] as String?,
-      tokenSymbol: json['tokenSymbol'] as String?,
-      tokenDecimal: json['tokenDecimal'] as int? ?? 18,
+      tokenName: json['tokenName'] as String,
+      tokenSymbol: json['tokenSymbol'] as String,
+      tokenDecimal: json['tokenDecimal'] as int,
       bonusType: json['bonusType'] as String?,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$BonusToJson(_$Bonus instance) => <String, dynamic>{
@@ -118,22 +125,24 @@ Map<String, dynamic> _$$BonusToJson(_$Bonus instance) => <String, dynamic>{
       'tokenSymbol': instance.tokenSymbol,
       'tokenDecimal': instance.tokenDecimal,
       'bonusType': instance.bonusType,
+      'runtimeType': instance.$type,
     };
 
 _$Send _$$SendFromJson(Map<String, dynamic> json) => _$Send(
       timestamp: json['timestamp'] as int? ?? 0,
       id: json['_id'] as String,
       name: json['name'] as String? ?? 'sendTokens',
-      txHash: json['txHash'] as String? ?? null,
+      txHash: json['txHash'] as String?,
       status: json['status'] as String,
       blockNumber: json['blockNumber'] as int? ?? 0,
       tokenAddress: json['tokenAddress'] as String,
-      from: json['from'] as String? ?? null,
+      from: json['from'] as String,
       to: json['to'] as String,
       value: BigInt.parse(json['value'] as String),
-      tokenName: json['tokenName'] as String?,
-      tokenSymbol: json['tokenSymbol'] as String?,
-      tokenDecimal: json['tokenDecimal'] as int? ?? 18,
+      tokenName: json['tokenName'] as String,
+      tokenSymbol: json['tokenSymbol'] as String,
+      tokenDecimal: json['tokenDecimal'] as int,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$SendToJson(_$Send instance) => <String, dynamic>{
@@ -150,22 +159,24 @@ Map<String, dynamic> _$$SendToJson(_$Send instance) => <String, dynamic>{
       'tokenName': instance.tokenName,
       'tokenSymbol': instance.tokenSymbol,
       'tokenDecimal': instance.tokenDecimal,
+      'runtimeType': instance.$type,
     };
 
 _$Receive _$$ReceiveFromJson(Map<String, dynamic> json) => _$Receive(
       timestamp: json['timestamp'] as int? ?? 0,
       id: json['_id'] as String,
       name: json['name'] as String? ?? 'receiveTokens',
-      txHash: json['txHash'] as String? ?? null,
+      txHash: json['txHash'] as String?,
       status: json['status'] as String,
       blockNumber: json['blockNumber'] as int? ?? 0,
       tokenAddress: json['tokenAddress'] as String,
-      from: json['from'] as String? ?? null,
+      from: json['from'] as String,
       to: json['to'] as String,
       value: BigInt.parse(json['value'] as String),
-      tokenName: json['tokenName'] as String?,
-      tokenSymbol: json['tokenSymbol'] as String?,
-      tokenDecimal: json['tokenDecimal'] as int? ?? 18,
+      tokenName: json['tokenName'] as String,
+      tokenSymbol: json['tokenSymbol'] as String,
+      tokenDecimal: json['tokenDecimal'] as int,
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$ReceiveToJson(_$Receive instance) => <String, dynamic>{
@@ -182,18 +193,20 @@ Map<String, dynamic> _$$ReceiveToJson(_$Receive instance) => <String, dynamic>{
       'tokenName': instance.tokenName,
       'tokenSymbol': instance.tokenSymbol,
       'tokenDecimal': instance.tokenDecimal,
+      'runtimeType': instance.$type,
     };
 
 _$Swap _$$SwapFromJson(Map<String, dynamic> json) => _$Swap(
       timestamp: json['timestamp'] as int? ?? 0,
       id: json['_id'] as String,
       name: json['name'] as String? ?? 'swapTokens',
-      txHash: json['txHash'] as String? ?? null,
+      txHash: json['txHash'] as String?,
       status: json['status'] as String,
       blockNumber: json['blockNumber'] as int? ?? 0,
       tradeInfo: json['metadata'] == null
           ? null
           : TradeInfo.fromJson(json['metadata'] as Map<String, dynamic>),
+      $type: json['runtimeType'] as String?,
     );
 
 Map<String, dynamic> _$$SwapToJson(_$Swap instance) => <String, dynamic>{
@@ -204,4 +217,5 @@ Map<String, dynamic> _$$SwapToJson(_$Swap instance) => <String, dynamic>{
       'status': instance.status,
       'blockNumber': instance.blockNumber,
       'metadata': instance.tradeInfo?.toJson(),
+      'runtimeType': instance.$type,
     };

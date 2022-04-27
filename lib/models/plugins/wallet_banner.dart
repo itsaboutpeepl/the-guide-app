@@ -8,7 +8,7 @@ part 'wallet_banner.g.dart';
 @immutable
 @freezed
 class WalletBannerPlugin with _$WalletBannerPlugin {
-  @Implements(Plugin)
+  @Implements<Plugin>()
   @JsonSerializable()
   factory WalletBannerPlugin({
     @Default('walletBanner') String type,
@@ -18,12 +18,10 @@ class WalletBannerPlugin with _$WalletBannerPlugin {
     @Default(false) bool isActive,
   }) = _WalletBannerPlugin;
 
-  factory WalletBannerPlugin.fromJson(dynamic json) =>
-      _$WalletBannerPluginFromJson(json);
+  factory WalletBannerPlugin.fromJson(dynamic json) => _$WalletBannerPluginFromJson(json);
 }
 
-class WalletBannerPluginConverter
-    implements JsonConverter<WalletBannerPlugin?, Map<String, dynamic>?> {
+class WalletBannerPluginConverter implements JsonConverter<WalletBannerPlugin?, Map<String, dynamic>?> {
   const WalletBannerPluginConverter();
 
   @override
@@ -41,6 +39,5 @@ class WalletBannerPluginConverter
   }
 
   @override
-  Map<String, dynamic>? toJson(WalletBannerPlugin? instance) =>
-      instance?.toJson();
+  Map<String, dynamic>? toJson(WalletBannerPlugin? instance) => instance?.toJson();
 }

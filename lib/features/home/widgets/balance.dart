@@ -33,47 +33,19 @@ class Balance extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Row(
+            Row(
+              children: [
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Flexible(
-                      child: Text(
-                        I10n.of(context).balance,
-                        style: TextStyle(
-                          color: Theme.of(context).canvasColor,
-                          fontSize: 13.0,
-                        ),
+                    Text(
+                      I10n.of(context).balance,
+                      style: TextStyle(
+                        color: Theme.of(context).canvasColor,
+                        fontSize: 13.0,
                       ),
                     ),
-                    SizedBox(
-                      width: 35,
-                    ),
-                    Flexible(
-                      child: Text(
-                        'Rewards',
-                        style: TextStyle(
-                          color: Theme.of(context).canvasColor,
-                          fontSize: 13.0,
-                        ),
-                      ),
-                    ),
-                    // SizedBox(
-                    //   width: 10,
-                    // ),
-                    // Flexible(
-                    //   child: Icon(
-                    //     Icons.help,
-                    //     color: Colors.white,
-                    //     size: 15,
-                    //   ),
-                    // ),
-                  ],
-                ),
-                Row(
-                  children: [
                     AutoSizeText.rich(
                       TextSpan(
                         children: <TextSpan>[
@@ -81,7 +53,7 @@ class Balance extends StatelessWidget {
                             text: viewModel.gbpxbalance,
                           ),
                           TextSpan(
-                            text: ' GBPX',
+                            text: ' GBPx',
                             style: TextStyle(
                               fontWeight: FontWeight.w100,
                               fontSize: 14,
@@ -93,11 +65,24 @@ class Balance extends StatelessWidget {
                       style: TextStyle(
                         color: Theme.of(context).canvasColor,
                         fontWeight: FontWeight.bold,
-                        fontSize: 40,
+                        fontSize: 23,
                       ),
                     ),
-                    SizedBox(
-                      width: 30,
+                  ],
+                ),
+                SizedBox(
+                  width: 30,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Rewards',
+                      style: TextStyle(
+                        color: Theme.of(context).canvasColor,
+                        fontSize: 13.0,
+                      ),
                     ),
                     AutoSizeText.rich(
                       TextSpan(
@@ -118,24 +103,11 @@ class Balance extends StatelessWidget {
                       style: TextStyle(
                         color: Theme.of(context).canvasColor,
                         fontWeight: FontWeight.bold,
-                        fontSize: 40,
+                        fontSize: 23,
                       ),
                     ),
                   ],
-                ),
-                // Flexible(
-                //   child: AutoSizeText(
-                //     '\$${viewModel.usdValue}',
-                //     style: TextStyle(
-                //       fontWeight: FontWeight.bold,
-                //     ),
-                //     presetFontSizes: [
-                //       30,
-                //       25,
-                //       22,
-                //     ],
-                //   ),
-                // ),
+                )
               ],
             ),
           ],

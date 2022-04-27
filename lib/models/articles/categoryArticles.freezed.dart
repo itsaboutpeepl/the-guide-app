@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'categoryArticles.dart';
@@ -29,7 +30,7 @@ class _$CategoryArticlesTearOff {
     );
   }
 
-  CategoryArticles fromJson(Map<String, Object> json) {
+  CategoryArticles fromJson(Map<String, Object?> json) {
     return CategoryArticles.fromJson(json);
   }
 }
@@ -157,20 +158,18 @@ class _$_CategoryArticles extends _CategoryArticles {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _CategoryArticles &&
-            (identical(other.category, category) ||
-                const DeepCollectionEquality()
-                    .equals(other.category, category)) &&
-            (identical(other.articleList, articleList) ||
-                const DeepCollectionEquality()
-                    .equals(other.articleList, articleList)));
+        (other.runtimeType == runtimeType &&
+            other is _CategoryArticles &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality()
+                .equals(other.articleList, articleList));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(category) ^
-      const DeepCollectionEquality().hash(articleList);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(articleList));
 
   @JsonKey(ignore: true)
   @override
@@ -193,9 +192,9 @@ abstract class _CategoryArticles extends CategoryArticles {
       _$_CategoryArticles.fromJson;
 
   @override
-  Category get category => throw _privateConstructorUsedError;
+  Category get category;
   @override
-  List<BlogArticle> get articleList => throw _privateConstructorUsedError;
+  List<BlogArticle> get articleList;
   @override
   @JsonKey(ignore: true)
   _$CategoryArticlesCopyWith<_CategoryArticles> get copyWith =>

@@ -1,12 +1,11 @@
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:guide_liverpool/common/router/routes.gr.dart';
 import 'package:guide_liverpool/constants/enums.dart';
-import 'package:guide_liverpool/redux/actions/user_actions.dart';
+
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
-import 'package:guide_liverpool/constants/strings.dart';
 
 class SmsStrategy implements IOnBoardStrategy {
+  @override
   final OnboardStrategy strategy;
   SmsStrategy({this.strategy = OnboardStrategy.sms});
 
@@ -14,31 +13,23 @@ class SmsStrategy implements IOnBoardStrategy {
   Future login(
     store,
     phoneNumber,
+    Function onSuccess,
+    Function(dynamic error) onError,
   ) async {
-    await walletApi.loginWithSMS(
-      phoneNumber,
-    );
-    store.dispatch(SetIsLoginRequest(isLoading: false));
+    await walletApi.loginWithSMS(phoneNumber);
     rootRouter.push(VerifyPhoneNumber());
+    onSuccess();
   }
 
   @override
   Future verify(store, verificationCode, onSuccess) async {
     final String phoneNumber = store.state.userState.phoneNumber;
     final String accountAddress = store.state.userState.accountAddress;
-    String jwtToken = "";
-
-    if (phoneNumber == dotenv.env["DEMO_PHONE_NUMBER"]) {
-      jwtToken = dotenv.env["DEMO_JWT_TOKEN"]!;
-    } else {
-      jwtToken = await walletApi.verifySMS(
-        verificationCode,
-        phoneNumber,
-        accountAddress,
-        appName: Strings.appName,
-      );
-    }
-
+    final String jwtToken = await walletApi.verifySMS(
+      verificationCode,
+      phoneNumber,
+      accountAddress,
+    );
     onSuccess(jwtToken);
   }
 }

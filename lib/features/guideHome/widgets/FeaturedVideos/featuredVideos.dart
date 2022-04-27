@@ -25,7 +25,7 @@ class _FeaturedVideosState extends State<FeaturedVideos> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Watch & Earn",
+                  "Watch",
                   style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
                 ),
                 SizedBox(

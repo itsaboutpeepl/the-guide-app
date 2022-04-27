@@ -8,6 +8,7 @@ import 'package:guide_liverpool/features/guideHome/widgets/EventsCalendar/events
 import 'package:guide_liverpool/features/guideHome/widgets/FeaturedDirectory/featuredDirectory.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/FeaturedVideos/featuredVideos.dart';
 import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/homePageViewModel.dart';
 
@@ -34,6 +35,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen> {
       distinct: true,
       converter: HomePageViewModel.fromStore,
       onInit: (store) {
+        store.dispatch(startFetchTokensBalances());
         store.dispatch(UpdatePlayConfetti(playConfetti: false));
       },
       builder: (_, viewModel) {
@@ -62,12 +64,12 @@ class _GuideHomeScreenState extends State<GuideHomeScreen> {
                   : [
                       MySliverAppBar(),
                       FeaturedPostStack(),
+                      FeaturedVideos(),
                       EventCalendar(),
                       FeaturedDirectory(),
                       const SliverToBoxAdapter(
                         child: SizedBox(height: 50),
-                      )
-                      //FeaturedVideos(),
+                      ),
                     ],
             ),
           ),

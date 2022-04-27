@@ -8,7 +8,7 @@ part 'moonpay.g.dart';
 @immutable
 @freezed
 class MoonpayPlugin with _$MoonpayPlugin {
-  @Implements(Plugin)
+  @Implements<Plugin>()
   @JsonSerializable()
   factory MoonpayPlugin({
     @Default('moonpay') String name,
@@ -17,12 +17,10 @@ class MoonpayPlugin with _$MoonpayPlugin {
     @Default(false) bool isActive,
   }) = _MoonpayPlugin;
 
-  factory MoonpayPlugin.fromJson(Map<String, dynamic> json) =>
-      _$MoonpayPluginFromJson(json);
+  factory MoonpayPlugin.fromJson(Map<String, dynamic> json) => _$MoonpayPluginFromJson(json);
 }
 
-class MoonpayPluginConverter
-    implements JsonConverter<MoonpayPlugin?, Map<String, dynamic>?> {
+class MoonpayPluginConverter implements JsonConverter<MoonpayPlugin?, Map<String, dynamic>?> {
   const MoonpayPluginConverter();
 
   @override

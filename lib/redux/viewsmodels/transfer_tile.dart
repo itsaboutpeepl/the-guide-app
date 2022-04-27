@@ -9,7 +9,6 @@ class TransferTileViewModel extends Equatable {
   final Map<String, String> reverseContacts;
   final List<Contact> contacts;
   final String countryCode;
-  final Map<String, Token> erc20Tokens;
   final Map<String, Token> tokens;
   final Map<String, Community> communitiesMap;
   final Map<String, Community> communities;
@@ -18,7 +17,6 @@ class TransferTileViewModel extends Equatable {
   TransferTileViewModel({
     required this.reverseContacts,
     required this.countryCode,
-    required this.erc20Tokens,
     required this.tokens,
     required this.contacts,
     required this.tokensImages,
@@ -27,29 +25,20 @@ class TransferTileViewModel extends Equatable {
   });
 
   static TransferTileViewModel fromStore(Store<AppState> store) {
-    List<Community> communities =
-        store.state.cashWalletState.communities.values.toList();
-    List<Token> foreignTokens = List<Token>.from(
-            store.state.proWalletState.erc20Tokens?.values ?? Iterable.empty())
-        .toList();
+    List<Community> communities = store.state.cashWalletState.communities.values.toList();
     List<Token> homeTokens = store.state.cashWalletState.tokens.values
         .map((Token token) => token.copyWith(
-            imageUrl: store.state.cashWalletState.communities
-                    .containsKey(token.communityAddress)
-                ? store.state.cashWalletState
-                    .communities[token.communityAddress]?.metadata
-                    ?.getImageUri()
+            imageUrl: store.state.cashWalletState.communities.containsKey(token.communityAddress)
+                ? store.state.cashWalletState.communities[token.communityAddress]?.metadata?.getImageUri()
                 : null))
         .toList();
-    Map<String, Token> tokens =
-        [...foreignTokens, ...homeTokens].fold(Map(), (previousValue, element) {
+    Map<String, Token> tokens = [...homeTokens].fold({}, (previousValue, element) {
       previousValue.putIfAbsent(element.address.toLowerCase(), () => element);
       return previousValue;
     });
 
-    Map<String, Community> communitiesMap =
-        communities.fold(Map(), (previousValue, element) {
-      if (element.homeTokenAddress != null) {
+    Map<String, Community> communitiesMap = communities.fold({}, (previousValue, element) {
+      if (element.homeTokenAddress!.isNotEmpty) {
         previousValue.putIfAbsent(element.homeTokenAddress!, () => element);
       }
       return previousValue;
@@ -59,7 +48,6 @@ class TransferTileViewModel extends Equatable {
       reverseContacts: store.state.userState.reverseContacts,
       contacts: store.state.userState.contacts,
       countryCode: store.state.userState.countryCode,
-      erc20Tokens: store.state.proWalletState.erc20Tokens!,
       communitiesMap: communitiesMap,
       communities: store.state.cashWalletState.communities,
       tokensImages: store.state.swapState.tokensImages,
@@ -67,14 +55,5 @@ class TransferTileViewModel extends Equatable {
   }
 
   @override
-  List<Object> get props => [
-        communities,
-        reverseContacts,
-        countryCode,
-        contacts,
-        erc20Tokens,
-        tokens,
-        communitiesMap,
-        tokensImages
-      ];
+  List<Object> get props => [communities, reverseContacts, countryCode, contacts, tokens, communitiesMap, tokensImages];
 }

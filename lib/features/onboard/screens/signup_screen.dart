@@ -3,12 +3,20 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 import 'package:guide_liverpool/features/onboard/dialogs/signup.dart';
-import 'package:guide_liverpool/redux/viewsmodels/onboard.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
+import 'package:phone_number/phone_number.dart';
+
+typedef SignUp = void Function(
+  CountryCode,
+  PhoneNumber,
+  Function onSuccess,
+  Function(dynamic error) onError,
+);
 
 class SignUpScreen extends StatefulWidget {
   @override
@@ -20,6 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final phoneController = TextEditingController(text: "");
   final _formKey = GlobalKey<FormState>();
   CountryCode countryCode = CountryCode.fromCountryCode("GB");
+  bool isPreloading = false;
 
   @override
   void initState() {
@@ -93,8 +102,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               decoration: BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
+                                    color: Theme.of(context).colorScheme.onSurface,
                                     width: 2.0,
                                   ),
                                 ),
@@ -111,53 +119,37 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       searchDecoration: InputDecoration(
                                         border: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onSurface,
+                                            color: Theme.of(context).colorScheme.onSurface,
                                           ),
                                         ),
-                                        fillColor:
-                                            Theme.of(context).canvasColor,
+                                        fillColor: Theme.of(context).canvasColor,
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onSurface,
+                                            color: Theme.of(context).colorScheme.onSurface,
                                           ),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .onSurface,
+                                            color: Theme.of(context).colorScheme.onSurface,
                                           ),
                                         ),
                                       ),
-                                      dialogSize: Size(
-                                          MediaQuery.of(context).size.width *
-                                              .9,
-                                          MediaQuery.of(context).size.height *
-                                              0.85),
+                                      dialogSize: Size(MediaQuery.of(context).size.width * .9,
+                                          MediaQuery.of(context).size.height * 0.85),
                                       searchStyle: TextStyle(
                                         fontSize: 18,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onSurface,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                       ),
                                       showFlag: true,
                                       initialSelection: countryCode.code,
                                       showCountryOnly: false,
                                       dialogTextStyle: TextStyle(
                                         fontSize: 18,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onSurface,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                       ),
                                       textStyle: TextStyle(
                                         fontSize: 18,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .onSurface,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                       ),
                                       alignLeft: false,
                                     ),
@@ -166,10 +158,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Container(
                                     height: 35,
                                     width: 1,
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
-                                    margin:
-                                        EdgeInsets.only(left: 5.0, right: 5.0),
+                                    color: Theme.of(context).colorScheme.onSurface,
+                                    margin: EdgeInsets.only(left: 5.0, right: 5.0),
                                   ),
                                   Expanded(
                                     child: TextFormField(
@@ -177,14 +167,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       keyboardType: TextInputType.number,
                                       autofocus: true,
                                       validator: (String? value) =>
-                                          value!.isEmpty
-                                              ? "Please enter mobile number"
-                                              : null,
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          color: Theme.of(context)
-                                              .colorScheme
-                                              .onSurface),
+                                          value!.isEmpty ? "Please enter mobile number" : null,
+                                      style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurface),
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.symmetric(
                                           vertical: 20,
@@ -192,10 +176,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         ),
                                         hintText: I10n.of(context).phoneNumber,
                                         border: InputBorder.none,
-                                        fillColor:
-                                            Theme.of(context).backgroundColor,
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide.none),
+                                        fillColor: Theme.of(context).backgroundColor,
+                                        focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide.none,
                                         ),
@@ -207,27 +189,51 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                           SizedBox(height: 40.0),
-                          StoreConnector<AppState, OnboardViewModel>(
+                          StoreConnector<AppState, SignUp>(
                             distinct: true,
-                            converter: OnboardViewModel.fromStore,
-                            builder: (_, viewModel) => Center(
+                            converter: (store) => (
+                              CountryCode countryCode,
+                              PhoneNumber phoneNumber,
+                              Function onSuccess,
+                              dynamic Function(dynamic) onError,
+                            ) =>
+                                store.dispatch(
+                                  loginHandler(
+                                    countryCode,
+                                    phoneNumber,
+                                    onSuccess,
+                                    onError,
+                                  ),
+                                ),
+                            builder: (_, signUp) => Center(
                               child: PrimaryButton(
                                 label: I10n.of(context).next_button,
-                                preload: viewModel.isLoginRequest,
-                                onPressed: () {
-                                  final String phoneNumber =
-                                      '${countryCode.dialCode}${phoneController.text}';
-                                  phoneNumberUtil.parse(phoneNumber).then(
-                                      (value) {
-                                    viewModel.signUp(
+                                preload: isPreloading,
+                                disabled: isPreloading,
+                                onPressed: () async {
+                                  final String phoneNumber = '${countryCode.dialCode}${phoneController.text}';
+                                  setState(() {
+                                    isPreloading = true;
+                                  });
+                                  try {
+                                    PhoneNumber value = await phoneNumberUtil.parse(
+                                      phoneNumber,
+                                    );
+                                    signUp(
                                       countryCode,
                                       value,
                                       () {
+                                        setState(() {
+                                          isPreloading = false;
+                                        });
+                                      },
+                                      (error) {
+                                        setState(() {
+                                          isPreloading = false;
+                                        });
                                         showErrorSnack(
-                                          message:
-                                              I10n.of(context).invalid_number,
-                                          title: I10n.of(context)
-                                              .something_went_wrong,
+                                          message: I10n.of(context).invalid_number,
+                                          title: I10n.of(context).something_went_wrong,
                                           context: context,
                                           margin: EdgeInsets.only(
                                             top: 8,
@@ -238,11 +244,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         );
                                       },
                                     );
-                                  }, onError: (e) {
+                                  } catch (e) {
+                                    setState(() {
+                                      isPreloading = false;
+                                    });
                                     showErrorSnack(
                                       message: I10n.of(context).invalid_number,
-                                      title:
-                                          I10n.of(context).something_went_wrong,
+                                      title: I10n.of(context).something_went_wrong,
                                       context: context,
                                       margin: EdgeInsets.only(
                                         top: 8,
@@ -251,7 +259,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         bottom: 120,
                                       ),
                                     );
-                                  });
+                                  }
                                 },
                               ),
                             ),

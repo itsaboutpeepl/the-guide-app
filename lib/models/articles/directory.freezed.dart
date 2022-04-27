@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'directory.dart';
@@ -48,7 +49,7 @@ class _$DirectoryTearOff {
     );
   }
 
-  Directory fromJson(Map<String, Object> json) {
+  Directory fromJson(Map<String, Object?> json) {
     return Directory.fromJson(json);
   }
 }
@@ -309,55 +310,39 @@ class _$_Directory extends _Directory {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Directory &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.latitude, latitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.latitude, latitude)) &&
-            (identical(other.longitude, longitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.longitude, longitude)) &&
-            (identical(other.website, website) ||
-                const DeepCollectionEquality()
-                    .equals(other.website, website)) &&
-            (identical(other.twitterLink, twitterLink) ||
-                const DeepCollectionEquality()
-                    .equals(other.twitterLink, twitterLink)) &&
-            (identical(other.instaLink, instaLink) ||
-                const DeepCollectionEquality()
-                    .equals(other.instaLink, instaLink)) &&
-            (identical(other.facebookLink, facebookLink) ||
-                const DeepCollectionEquality()
-                    .equals(other.facebookLink, facebookLink)) &&
-            (identical(other.imageURL, imageURL) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageURL, imageURL)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.guideWebLink, guideWebLink) ||
-                const DeepCollectionEquality()
-                    .equals(other.guideWebLink, guideWebLink)));
+        (other.runtimeType == runtimeType &&
+            other is _Directory &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.latitude, latitude) &&
+            const DeepCollectionEquality().equals(other.longitude, longitude) &&
+            const DeepCollectionEquality().equals(other.website, website) &&
+            const DeepCollectionEquality()
+                .equals(other.twitterLink, twitterLink) &&
+            const DeepCollectionEquality().equals(other.instaLink, instaLink) &&
+            const DeepCollectionEquality()
+                .equals(other.facebookLink, facebookLink) &&
+            const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality()
+                .equals(other.guideWebLink, guideWebLink));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(latitude) ^
-      const DeepCollectionEquality().hash(longitude) ^
-      const DeepCollectionEquality().hash(website) ^
-      const DeepCollectionEquality().hash(twitterLink) ^
-      const DeepCollectionEquality().hash(instaLink) ^
-      const DeepCollectionEquality().hash(facebookLink) ^
-      const DeepCollectionEquality().hash(imageURL) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(guideWebLink);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(latitude),
+      const DeepCollectionEquality().hash(longitude),
+      const DeepCollectionEquality().hash(website),
+      const DeepCollectionEquality().hash(twitterLink),
+      const DeepCollectionEquality().hash(instaLink),
+      const DeepCollectionEquality().hash(facebookLink),
+      const DeepCollectionEquality().hash(imageURL),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(guideWebLink));
 
   @JsonKey(ignore: true)
   @override
@@ -389,27 +374,27 @@ abstract class _Directory extends Directory {
       _$_Directory.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get latitude => throw _privateConstructorUsedError;
+  String get latitude;
   @override
-  String get longitude => throw _privateConstructorUsedError;
+  String get longitude;
   @override
-  String get website => throw _privateConstructorUsedError;
+  String get website;
   @override
-  String get twitterLink => throw _privateConstructorUsedError;
+  String get twitterLink;
   @override
-  String get instaLink => throw _privateConstructorUsedError;
+  String get instaLink;
   @override
-  String get facebookLink => throw _privateConstructorUsedError;
+  String get facebookLink;
   @override
-  String get imageURL => throw _privateConstructorUsedError;
+  String get imageURL;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get address => throw _privateConstructorUsedError;
+  String get address;
   @override
-  String get guideWebLink => throw _privateConstructorUsedError;
+  String get guideWebLink;
   @override
   @JsonKey(ignore: true)
   _$DirectoryCopyWith<_Directory> get copyWith =>

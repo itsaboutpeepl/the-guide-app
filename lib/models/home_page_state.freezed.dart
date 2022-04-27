@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'home_page_state.dart';
@@ -40,7 +41,7 @@ class _$HomePageStateTearOff {
     );
   }
 
-  HomePageState fromJson(Map<String, Object> json) {
+  HomePageState fromJson(Map<String, Object?> json) {
     return HomePageState.fromJson(json);
   }
 }
@@ -242,39 +243,31 @@ class _$_HomePageState extends _HomePageState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _HomePageState &&
-            (identical(other.featuredPosts, featuredPosts) ||
-                const DeepCollectionEquality()
-                    .equals(other.featuredPosts, featuredPosts)) &&
-            (identical(other.featuredVideos, featuredVideos) ||
-                const DeepCollectionEquality()
-                    .equals(other.featuredVideos, featuredVideos)) &&
-            (identical(other.eventList, eventList) ||
-                const DeepCollectionEquality()
-                    .equals(other.eventList, eventList)) &&
-            (identical(other.directoryList, directoryList) ||
-                const DeepCollectionEquality()
-                    .equals(other.directoryList, directoryList)) &&
-            (identical(other.playConfetti, playConfetti) ||
-                const DeepCollectionEquality()
-                    .equals(other.playConfetti, playConfetti)) &&
-            (identical(other.isLoading, isLoading) ||
-                const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)) &&
-            (identical(other.isError, isError) ||
-                const DeepCollectionEquality().equals(other.isError, isError)));
+        (other.runtimeType == runtimeType &&
+            other is _HomePageState &&
+            const DeepCollectionEquality()
+                .equals(other.featuredPosts, featuredPosts) &&
+            const DeepCollectionEquality()
+                .equals(other.featuredVideos, featuredVideos) &&
+            const DeepCollectionEquality().equals(other.eventList, eventList) &&
+            const DeepCollectionEquality()
+                .equals(other.directoryList, directoryList) &&
+            const DeepCollectionEquality()
+                .equals(other.playConfetti, playConfetti) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.isError, isError));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(featuredPosts) ^
-      const DeepCollectionEquality().hash(featuredVideos) ^
-      const DeepCollectionEquality().hash(eventList) ^
-      const DeepCollectionEquality().hash(directoryList) ^
-      const DeepCollectionEquality().hash(playConfetti) ^
-      const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(isError);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(featuredPosts),
+      const DeepCollectionEquality().hash(featuredVideos),
+      const DeepCollectionEquality().hash(eventList),
+      const DeepCollectionEquality().hash(directoryList),
+      const DeepCollectionEquality().hash(playConfetti),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
   @override
@@ -302,19 +295,19 @@ abstract class _HomePageState extends HomePageState {
       _$_HomePageState.fromJson;
 
   @override
-  List<BlogArticle> get featuredPosts => throw _privateConstructorUsedError;
+  List<BlogArticle> get featuredPosts;
   @override
-  List<VideoArticle> get featuredVideos => throw _privateConstructorUsedError;
+  List<VideoArticle> get featuredVideos;
   @override
-  List<Events> get eventList => throw _privateConstructorUsedError;
+  List<Events> get eventList;
   @override
-  List<Directory> get directoryList => throw _privateConstructorUsedError;
+  List<Directory> get directoryList;
   @override
-  bool get playConfetti => throw _privateConstructorUsedError;
+  bool get playConfetti;
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isError => throw _privateConstructorUsedError;
+  bool get isError;
   @override
   @JsonKey(ignore: true)
   _$HomePageStateCopyWith<_HomePageState> get copyWith =>

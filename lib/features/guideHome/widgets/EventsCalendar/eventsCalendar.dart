@@ -36,40 +36,56 @@ class _EventCalendarState extends State<EventCalendar> {
         return SliverPadding(
           padding: EdgeInsets.symmetric(horizontal: 10.0),
           sliver: SliverToBoxAdapter(
-            child: Card(
-              color: Theme.of(context).primaryColor,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10),
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "Upcoming Events",
+                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+              ),
+              SizedBox(
+                height: 5,
+              ),
+              Divider(
+                thickness: 3,
+                endIndent: MediaQuery.of(context).size.width * 0.8,
+                color: Theme.of(context).colorScheme.primaryVariant,
+              ),
+              Card(
+                color: Theme.of(context).primaryColor,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      top: 65,
+                      left: 8,
+                      child: Column(
+                        children: _buildPageIndicator(),
+                      ),
+                    ),
+                    Container(
+                      height: MediaQuery.of(context).size.height * 0.24,
+                      child: PageView.builder(
+                          onPageChanged: (page) => setState(() {
+                                _currentIndex = page;
+                              }),
+                          controller: _pageController,
+                          scrollDirection: Axis.vertical,
+                          physics: PageScrollPhysics(),
+                          itemBuilder: (context, index) => SingleEventItem(
+                                eventItem: viewmodel.eventsList[index],
+                              ),
+                          itemCount: viewmodel.eventsList.length),
+                    ),
+                  ],
                 ),
               ),
-              child: Stack(
-                children: [
-                  Positioned(
-                    top: 65,
-                    left: 8,
-                    child: Column(
-                      children: _buildPageIndicator(),
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.height * 0.24,
-                    child: PageView.builder(
-                        onPageChanged: (page) => setState(() {
-                              _currentIndex = page;
-                            }),
-                        controller: _pageController,
-                        scrollDirection: Axis.vertical,
-                        physics: PageScrollPhysics(),
-                        itemBuilder: (context, index) => SingleEventItem(
-                              eventItem: viewmodel.eventsList[index],
-                            ),
-                        itemCount: viewmodel.eventsList.length),
-                  ),
-                ],
-              ),
-            ),
-          ),
+            ],
+          )),
         );
       },
     );

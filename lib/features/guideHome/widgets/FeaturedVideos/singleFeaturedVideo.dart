@@ -5,10 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/customControls.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/youtubeToStream.dart';
-import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
-import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:video_player/video_player.dart';
 import 'package:redux/redux.dart';
 
@@ -82,15 +80,15 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
         if (_videoPlayerController.value.position ==
                 _videoPlayerController.value.duration &&
             !_isPlayBackCompletedOnce) {
-          store.dispatch(UpdatePlayConfetti(playConfetti: true));
+          //store.dispatch(UpdatePlayConfetti(playConfetti: true));
           _chewieController!.exitFullScreen();
           _isPlayBackCompletedOnce = true;
 
           Future.delayed(
             Duration(seconds: 1),
             () => {
-              showPlayBackCompletedFlushBar(context),
-              //store.dispatch(UpdatePlayConfetti(playConfetti: false))
+              //showPlayBackCompletedFlushBar(context),
+              //store.dispatch(UpdatePlayConfetti(playConfetti: false)) --remove
             },
           );
 
@@ -162,53 +160,54 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                     child: Text(
                       widget.videoArticleItem.title,
                       style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 25),
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                top: 20,
-                right: 20,
-                child: Container(
-                  height: 55,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                    color: Colors.white,
-                    gradient: LinearGradient(
-                      begin: FractionalOffset.topCenter,
-                      end: FractionalOffset.bottomCenter,
-                      colors: [
-                        Color.fromRGBO(235, 138, 64, 1),
-                        Color.fromRGBO(215, 55, 48, 1),
-                      ],
-                      stops: [0.4, 0.9],
-                    ),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "50",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w800,
-                            fontSize: 25),
-                      ),
-                      Text(
-                        "PPL",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.w300,
-                            fontSize: 14),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Positioned(
+              //   top: 20,
+              //   right: 20,
+              //   child: Container(
+              //     height: 55,
+              //     width: 50,
+              //     decoration: BoxDecoration(
+              //       borderRadius: BorderRadius.all(Radius.circular(10)),
+              //       color: Colors.white,
+              //       gradient: LinearGradient(
+              //         begin: FractionalOffset.topCenter,
+              //         end: FractionalOffset.bottomCenter,
+              //         colors: [
+              //           Color.fromRGBO(235, 138, 64, 1),
+              //           Color.fromRGBO(215, 55, 48, 1),
+              //         ],
+              //         stops: [0.4, 0.9],
+              //       ),
+              //     ),
+              //     child: Column(
+              //       mainAxisAlignment: MainAxisAlignment.center,
+              //       children: [
+              //         Text(
+              //           "50",
+              //           style: TextStyle(
+              //               color: Colors.white,
+              //               fontWeight: FontWeight.w800,
+              //               fontSize: 25),
+              //         ),
+              //         Text(
+              //           "PPL",
+              //           style: TextStyle(
+              //               color: Colors.white,
+              //               fontWeight: FontWeight.w300,
+              //               fontSize: 14),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),

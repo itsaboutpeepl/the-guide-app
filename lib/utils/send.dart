@@ -122,7 +122,7 @@ void sendToPastedAddress(
   final args = SendFlowArguments(
     accountAddress: accountAddress,
     avatar: AssetImage('assets/images/anom.png'),
-    name: formatAddress(accountAddress),
+    name: Formatter.formatEthAddress(accountAddress),
     tokenToSend: token,
   );
   context.navigateTo(
@@ -149,12 +149,9 @@ void barcodeScannerHandler(
       final bool hasColon = scanResult.contains(':');
       if (hasColon) {
         List<String> parts = scanResult.split(':');
-        bool expression =
-            parts.length == 2 && (parts[0] == 'fuse' || parts[0] == 'ethereum');
+        bool expression = parts.length == 2 && (parts[0] == 'fuse' || parts[0] == 'ethereum');
         if (expression) {
-          String accountAddress = parts[0] == 'fuse' && parts[1] == 'f'
-              ? parts[1].replaceFirst('f', 'x')
-              : parts[1];
+          String accountAddress = parts[0] == 'fuse' && parts[1] == 'f' ? parts[1].replaceFirst('f', 'x') : parts[1];
           if (isValidEthereumAddress(accountAddress)) {
             sendToPastedAddress(context, accountAddress);
           } else {

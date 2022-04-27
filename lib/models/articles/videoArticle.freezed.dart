@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'videoArticle.dart';
@@ -40,7 +41,7 @@ class _$VideoArticleTearOff {
     );
   }
 
-  VideoArticle fromJson(Map<String, Object> json) {
+  VideoArticle fromJson(Map<String, Object?> json) {
     return VideoArticle.fromJson(json);
   }
 }
@@ -240,37 +241,29 @@ class _$_VideoArticle extends _VideoArticle {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _VideoArticle &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.placeholderImageURL, placeholderImageURL) ||
-                const DeepCollectionEquality()
-                    .equals(other.placeholderImageURL, placeholderImageURL)) &&
-            (identical(other.videoURL, videoURL) ||
-                const DeepCollectionEquality()
-                    .equals(other.videoURL, videoURL)) &&
-            (identical(other.category, category) ||
-                const DeepCollectionEquality()
-                    .equals(other.category, category)) &&
-            (identical(other.rewardAmount, rewardAmount) ||
-                const DeepCollectionEquality()
-                    .equals(other.rewardAmount, rewardAmount)) &&
-            (identical(other.postID, postID) ||
-                const DeepCollectionEquality().equals(other.postID, postID)) &&
-            (identical(other.postURL, postURL) ||
-                const DeepCollectionEquality().equals(other.postURL, postURL)));
+        (other.runtimeType == runtimeType &&
+            other is _VideoArticle &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality()
+                .equals(other.placeholderImageURL, placeholderImageURL) &&
+            const DeepCollectionEquality().equals(other.videoURL, videoURL) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality()
+                .equals(other.rewardAmount, rewardAmount) &&
+            const DeepCollectionEquality().equals(other.postID, postID) &&
+            const DeepCollectionEquality().equals(other.postURL, postURL));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(placeholderImageURL) ^
-      const DeepCollectionEquality().hash(videoURL) ^
-      const DeepCollectionEquality().hash(category) ^
-      const DeepCollectionEquality().hash(rewardAmount) ^
-      const DeepCollectionEquality().hash(postID) ^
-      const DeepCollectionEquality().hash(postURL);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(placeholderImageURL),
+      const DeepCollectionEquality().hash(videoURL),
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(rewardAmount),
+      const DeepCollectionEquality().hash(postID),
+      const DeepCollectionEquality().hash(postURL));
 
   @JsonKey(ignore: true)
   @override
@@ -298,19 +291,19 @@ abstract class _VideoArticle extends VideoArticle {
       _$_VideoArticle.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get placeholderImageURL => throw _privateConstructorUsedError;
+  String get placeholderImageURL;
   @override
-  String get videoURL => throw _privateConstructorUsedError;
+  String get videoURL;
   @override
-  List<String> get category => throw _privateConstructorUsedError;
+  List<String> get category;
   @override
-  int get rewardAmount => throw _privateConstructorUsedError;
+  int get rewardAmount;
   @override
-  int get postID => throw _privateConstructorUsedError;
+  int get postID;
   @override
-  String get postURL => throw _privateConstructorUsedError;
+  String get postURL;
   @override
   @JsonKey(ignore: true)
   _$VideoArticleCopyWith<_VideoArticle> get copyWith =>

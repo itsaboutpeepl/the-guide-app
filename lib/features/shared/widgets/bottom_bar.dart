@@ -49,9 +49,9 @@ class BottomBar extends StatelessWidget {
         store.dispatch(updateTokensPrices());
       },
       builder: (_, vm) => MotionTabBar(
-        tabIconColor: flexColorSchemeLight.primary,
+        tabIconColor: flexColorSchemeLight.primary!,
         textStyle: TextStyle(color: flexColorSchemeLight.primary),
-        tabSelectedColor: flexColorSchemeLight.primary,
+        tabSelectedColor: flexColorSchemeLight.primary!,
         initialSelectedTab: I10n.of(context).home,
         onTabItemSelected: (int activeIndex) {
           if (activeIndex == tabsRouter.activeIndex) {

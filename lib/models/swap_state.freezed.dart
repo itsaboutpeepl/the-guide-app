@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'swap_state.dart';
@@ -30,7 +31,7 @@ class _$SwapStateTearOff {
     );
   }
 
-  SwapState fromJson(Map<String, Object> json) {
+  SwapState fromJson(Map<String, Object?> json) {
     return SwapState.fromJson(json);
   }
 }
@@ -138,7 +139,7 @@ class _$_SwapState extends _SwapState with DiagnosticableTreeMixin {
   @override
   @JsonKey(ignore: true)
   final Map<String, Token> tokens;
-  @JsonKey(defaultValue: const {})
+  @JsonKey()
   @override
   final Map<String, String> tokensImages;
 
@@ -159,19 +160,18 @@ class _$_SwapState extends _SwapState with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _SwapState &&
-            (identical(other.tokens, tokens) ||
-                const DeepCollectionEquality().equals(other.tokens, tokens)) &&
-            (identical(other.tokensImages, tokensImages) ||
-                const DeepCollectionEquality()
-                    .equals(other.tokensImages, tokensImages)));
+        (other.runtimeType == runtimeType &&
+            other is _SwapState &&
+            const DeepCollectionEquality().equals(other.tokens, tokens) &&
+            const DeepCollectionEquality()
+                .equals(other.tokensImages, tokensImages));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(tokens) ^
-      const DeepCollectionEquality().hash(tokensImages);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(tokens),
+      const DeepCollectionEquality().hash(tokensImages));
 
   @JsonKey(ignore: true)
   @override
@@ -195,9 +195,9 @@ abstract class _SwapState extends SwapState {
 
   @override
   @JsonKey(ignore: true)
-  Map<String, Token> get tokens => throw _privateConstructorUsedError;
+  Map<String, Token> get tokens;
   @override
-  Map<String, String> get tokensImages => throw _privateConstructorUsedError;
+  Map<String, String> get tokensImages;
   @override
   @JsonKey(ignore: true)
   _$SwapStateCopyWith<_SwapState> get copyWith =>

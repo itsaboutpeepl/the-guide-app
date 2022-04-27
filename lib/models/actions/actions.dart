@@ -1,11 +1,11 @@
 import 'package:guide_liverpool/models/actions/wallet_action.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
+import 'package:guide_liverpool/utils/log/log.dart';
 
 part 'actions.freezed.dart';
 part 'actions.g.dart';
 
-@immutable
 @freezed
 class WalletActions with _$WalletActions {
   const WalletActions._();
@@ -14,6 +14,7 @@ class WalletActions with _$WalletActions {
   factory WalletActions({
     @Default(<WalletAction>[]) List<WalletAction> list,
     @Default(0) num updatedAt,
+    @Default(1) int currentPage,
   }) = _WalletActions;
 
   factory WalletActions.initial() {
@@ -23,20 +24,14 @@ class WalletActions with _$WalletActions {
     );
   }
 
-  factory WalletActions.fromJson(Map<String, dynamic> json) =>
-      _$WalletActionsFromJson(json);
+  factory WalletActions.fromJson(Map<String, dynamic> json) => _$WalletActionsFromJson(json);
 }
 
 class WalletActionFactory {
   static WalletAction create(Map<String, dynamic> json) {
-    json =
-        json.containsKey('data') ? Map.from({...json, ...json['data']}) : json;
-    json['timestamp'] =
-        DateTime.parse(json['updatedAt']).millisecondsSinceEpoch;
-    json['value'] =
-        json.containsKey('value') && [null, '', 'NaN'].contains(json['value'])
-            ? '0'
-            : json['value'];
+    json = json.containsKey('data') ? Map.from({...json, ...json['data']}) : json;
+    json['timestamp'] = DateTime.parse(json['updatedAt']).millisecondsSinceEpoch;
+    json['value'] = json.containsKey('value') && [null, '', 'NaN'].contains(json['value']) ? '0' : json['value'];
     json['status'] = json['status']?.toUpperCase();
     if (json['name'] == 'createWallet') {
       return CreateWallet.fromJson(json);
@@ -58,7 +53,16 @@ class WalletActionFactory {
   }
 
   static List<WalletAction> actionsFromJson(Iterable<dynamic> docs) =>
-      List<WalletAction>.from(docs.map(
-        (json) => WalletActionFactory.create(json),
-      ));
+      List.from(docs).fold<List<WalletAction>>([], (previousValue, action) {
+        try {
+          return [...previousValue, WalletActionFactory.create(action)];
+        } catch (e, s) {
+          log.info(
+            'Error while trying to add WalletAction',
+            error: e,
+            stackTrace: s,
+          );
+          return previousValue;
+        }
+      });
 }

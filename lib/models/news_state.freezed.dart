@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'news_state.dart';
@@ -36,7 +37,7 @@ class _$NewsStateTearOff {
     );
   }
 
-  NewsState fromJson(Map<String, Object> json) {
+  NewsState fromJson(Map<String, Object?> json) {
     return NewsState.fromJson(json);
   }
 }
@@ -201,31 +202,25 @@ class _$_NewsState extends _NewsState {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _NewsState &&
-            (identical(other.categories, categories) ||
-                const DeepCollectionEquality()
-                    .equals(other.categories, categories)) &&
-            (identical(other.articles, articles) ||
-                const DeepCollectionEquality()
-                    .equals(other.articles, articles)) &&
-            (identical(other.currentTabIndex, currentTabIndex) ||
-                const DeepCollectionEquality()
-                    .equals(other.currentTabIndex, currentTabIndex)) &&
-            (identical(other.isLoading, isLoading) ||
-                const DeepCollectionEquality()
-                    .equals(other.isLoading, isLoading)) &&
-            (identical(other.isError, isError) ||
-                const DeepCollectionEquality().equals(other.isError, isError)));
+        (other.runtimeType == runtimeType &&
+            other is _NewsState &&
+            const DeepCollectionEquality()
+                .equals(other.categories, categories) &&
+            const DeepCollectionEquality().equals(other.articles, articles) &&
+            const DeepCollectionEquality()
+                .equals(other.currentTabIndex, currentTabIndex) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
+            const DeepCollectionEquality().equals(other.isError, isError));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(categories) ^
-      const DeepCollectionEquality().hash(articles) ^
-      const DeepCollectionEquality().hash(currentTabIndex) ^
-      const DeepCollectionEquality().hash(isLoading) ^
-      const DeepCollectionEquality().hash(isError);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(categories),
+      const DeepCollectionEquality().hash(articles),
+      const DeepCollectionEquality().hash(currentTabIndex),
+      const DeepCollectionEquality().hash(isLoading),
+      const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
   @override
@@ -251,15 +246,15 @@ abstract class _NewsState extends NewsState {
       _$_NewsState.fromJson;
 
   @override
-  List<Category> get categories => throw _privateConstructorUsedError;
+  List<Category> get categories;
   @override
-  List<CategoryArticles> get articles => throw _privateConstructorUsedError;
+  List<CategoryArticles> get articles;
   @override
-  int get currentTabIndex => throw _privateConstructorUsedError;
+  int get currentTabIndex;
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isError => throw _privateConstructorUsedError;
+  bool get isError;
   @override
   @JsonKey(ignore: true)
   _$NewsStateCopyWith<_NewsState> get copyWith =>

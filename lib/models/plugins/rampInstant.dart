@@ -8,7 +8,7 @@ part 'rampInstant.g.dart';
 @immutable
 @freezed
 class RampInstantPlugin with _$RampInstantPlugin {
-  @Implements(Plugin)
+  @Implements<Plugin>()
   @JsonSerializable()
   factory RampInstantPlugin({
     @Default('rampInstant') String name,
@@ -17,12 +17,10 @@ class RampInstantPlugin with _$RampInstantPlugin {
     @Default(false) bool isActive,
   }) = _RampInstantPlugin;
 
-  factory RampInstantPlugin.fromJson(Map<String, dynamic> json) =>
-      _$RampInstantPluginFromJson(json);
+  factory RampInstantPlugin.fromJson(Map<String, dynamic> json) => _$RampInstantPluginFromJson(json);
 }
 
-class RampInstantPluginConverter
-    implements JsonConverter<RampInstantPlugin?, Map<String, dynamic>?> {
+class RampInstantPluginConverter implements JsonConverter<RampInstantPlugin?, Map<String, dynamic>?> {
   const RampInstantPluginConverter();
 
   @override
@@ -35,6 +33,5 @@ class RampInstantPluginConverter
   }
 
   @override
-  Map<String, dynamic>? toJson(RampInstantPlugin? instance) =>
-      instance?.toJson();
+  Map<String, dynamic>? toJson(RampInstantPlugin? instance) => instance?.toJson();
 }

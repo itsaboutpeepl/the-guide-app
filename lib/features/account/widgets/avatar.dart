@@ -40,8 +40,7 @@ class Avatar extends StatelessWidget {
                       width: 60,
                       height: 60,
                       imageUrl: viewModel.avatarUrl,
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(),
+                      placeholder: (context, url) => CircularProgressIndicator(),
                       errorWidget: (context, url, error) => CircleAvatar(
                         backgroundImage: AssetImage('assets/images/anom.png'),
                         radius: 30,
@@ -89,8 +88,7 @@ class Avatar extends StatelessWidget {
                           },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.all(15.0),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.secondary,
+                            backgroundColor: Theme.of(context).colorScheme.secondary,
                             shape: const RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(
@@ -112,11 +110,10 @@ class Avatar extends StatelessWidget {
                               ),
                               Flexible(
                                 child: AutoSizeText(
-                                  formatAddress(viewModel.walletAddress, 4),
+                                  Formatter.formatEthAddress(viewModel.walletAddress, 4),
                                   style: TextStyle(
                                     letterSpacing: 0.3,
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
+                                    color: Theme.of(context).colorScheme.onSurface,
                                   ),
                                   maxLines: 1,
                                   presetFontSizes: [
@@ -144,8 +141,7 @@ class Avatar extends StatelessWidget {
                           },
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.all(15.0),
-                            backgroundColor:
-                                Theme.of(context).colorScheme.secondary,
+                            backgroundColor: Theme.of(context).colorScheme.secondary,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.all(
                                 Radius.circular(
@@ -169,8 +165,7 @@ class Avatar extends StatelessWidget {
                                   I10n.of(context).receive,
                                   style: TextStyle(
                                     letterSpacing: 0.3,
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
+                                    color: Theme.of(context).colorScheme.onSurface,
                                   ),
                                   maxLines: 1,
                                   presetFontSizes: [

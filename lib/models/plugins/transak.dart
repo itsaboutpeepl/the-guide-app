@@ -8,7 +8,7 @@ part 'transak.g.dart';
 @immutable
 @freezed
 class TransakPlugin with _$TransakPlugin {
-  @Implements(Plugin)
+  @With<Plugin>()
   @JsonSerializable()
   factory TransakPlugin({
     @Default('transak') String name,
@@ -17,12 +17,10 @@ class TransakPlugin with _$TransakPlugin {
     @Default(false) bool isActive,
   }) = _TransakPlugin;
 
-  factory TransakPlugin.fromJson(Map<String, dynamic> json) =>
-      _$TransakPluginFromJson(json);
+  factory TransakPlugin.fromJson(Map<String, dynamic> json) => _$TransakPluginFromJson(json);
 }
 
-class TransakPluginConverter
-    implements JsonConverter<TransakPlugin?, Map<String, dynamic>?> {
+class TransakPluginConverter implements JsonConverter<TransakPlugin?, Map<String, dynamic>?> {
   const TransakPluginConverter();
 
   @override

@@ -11,28 +11,17 @@ part 'cash_wallet_state.freezed.dart';
 part 'cash_wallet_state.g.dart';
 
 WalletActions walletActionsFromJson(Map<String, dynamic>? walletActions) =>
-    walletActions == null
-        ? WalletActions.initial()
-        : WalletActions.fromJson(walletActions);
+    walletActions == null ? WalletActions.initial() : WalletActions.fromJson(walletActions);
 
-Map<String, Token> tokensFromJson(Map<String, dynamic>? tokens) =>
-    tokens == null
-        ? Map<String, Token>()
-        : tokens.map(
-            (k, e) => MapEntry(
-              k,
-              Token.fromJson(
-                e as Map<String, dynamic>,
-              ),
-            ),
-          )
-      ..putIfAbsent(
-        Addresses.PPL_TOKEN_ADDRESS,
-        () => PeeplToken.copyWith(),
-      )
-      ..putIfAbsent(
-        Addresses.GBPX_TOKEN_ADDRESS,
-        () => GBPxToken.copyWith(),
+Map<String, Token> tokensFromJson(Map<String, dynamic>? tokens) => tokens == null
+    ? Map<String, Token>()
+    : tokens.map(
+        (k, e) => MapEntry(
+          k,
+          Token.fromJson(
+            e as Map<String, dynamic>,
+          ),
+        ),
       );
 
 Map<String, Community> communitiesFromJson(Map<String, dynamic>? list) {
@@ -40,10 +29,8 @@ Map<String, Community> communitiesFromJson(Map<String, dynamic>? list) {
     return Map<String, Community>();
   } else if (list.containsKey('communities')) {
     Map<String, Community> communities = Map<String, Community>();
-    Iterable<MapEntry<String, Community>> entries =
-        List.from(list['communities']).map((community) => MapEntry(
-            (community['address'] as String).toLowerCase(),
-            Community.fromJson(community)));
+    Iterable<MapEntry<String, Community>> entries = List.from(list['communities'])
+        .map((community) => MapEntry((community['address'] as String).toLowerCase(), Community.fromJson(community)));
     communities.addEntries(entries);
     return communities;
   } else {
@@ -63,9 +50,7 @@ class CashWalletState with _$CashWalletState {
     @Default('') String communityAddress,
     @Default(true) bool isDepositBanner,
     @JsonKey(fromJson: tokensFromJson) @Default({}) Map<String, Token> tokens,
-    @JsonKey(fromJson: communitiesFromJson)
-    @Default({})
-        Map<String, Community> communities,
+    @JsonKey(fromJson: communitiesFromJson) @Default({}) Map<String, Community> communities,
     @JsonKey(fromJson: walletActionsFromJson) WalletActions? walletActions,
     @JsonKey(ignore: true) @Default(false) bool isCommunityLoading,
     @JsonKey(ignore: true) @Default(false) bool isCommunityFetched,
@@ -93,12 +78,10 @@ class CashWalletState with _$CashWalletState {
     );
   }
 
-  factory CashWalletState.fromJson(dynamic json) =>
-      _$CashWalletStateFromJson(json);
+  factory CashWalletState.fromJson(dynamic json) => _$CashWalletStateFromJson(json);
 }
 
-class CashWalletStateConverter
-    implements JsonConverter<CashWalletState, Map<String, dynamic>?> {
+class CashWalletStateConverter implements JsonConverter<CashWalletState, Map<String, dynamic>?> {
   const CashWalletStateConverter();
 
   @override

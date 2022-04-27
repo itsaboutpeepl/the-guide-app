@@ -27,6 +27,20 @@ class UrlLaunch {
       );
     }
   }
+
+  static void launchPhone(String phone) async {
+    // canLaunch("tel:+2343").then(
+    //   (value) => print("Can Launch Phone $value"),
+    // );
+    await launch("tel:$phone");
+  }
+
+  static void launchEmail(String email) async {
+    // canLaunch("mailto:info@theguideliverpool.com").then(
+    //   (value) => print("Can Launch Email $value"),
+    // );
+    await launch("mailto:$email");
+  }
 }
 
 String parseHtmlString(String htmlString) {

@@ -13,14 +13,12 @@ import 'package:intl/intl.dart';
 import 'package:webview_flutter/webview_flutter.dart' as WebView;
 
 class DetailArticleBottomModel extends StatefulWidget {
-  const DetailArticleBottomModel({Key? key, required this.articleData})
-      : super(key: key);
+  const DetailArticleBottomModel({Key? key, required this.articleData}) : super(key: key);
 
   final BlogArticle articleData;
 
   @override
-  _DetailArticleBottomModelState createState() =>
-      _DetailArticleBottomModelState();
+  _DetailArticleBottomModelState createState() => _DetailArticleBottomModelState();
 }
 
 class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
@@ -48,47 +46,46 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
 
     htmlWidget = Html(
       data: widget.articleData.content,
-      onLinkTap: (url, context, attributes, element) =>
-          {UrlLaunch.launchURL(url!)},
-      customRender: {
-        "iframe": (RenderContext context, Widget child) {
-          final attrs = context.tree.element?.attributes;
-          if (attrs != null) {
-            double? width = double.tryParse(attrs['width'] ?? "");
-            double? height = double.tryParse(attrs['height'] ?? "");
-            return Container(
-              width: width ?? (height ?? 150) * 2,
-              height: height ?? (width ?? 300) / 2,
-              child: WebView.WebView(
-                initialUrl: attrs['src'] ?? "about:blank",
-                javascriptMode: WebView.JavascriptMode.unrestricted,
-                //no need for scrolling gesture recognizers on embedded youtube, so set gestureRecognizers null
-                //on other iframe content scrolling might be necessary, so use VerticalDragGestureRecognizer
-                gestureRecognizers: attrs['src'] != null &&
-                        attrs['src']!.contains("youtube.com/embed")
-                    ? null
-                    : [Factory(() => VerticalDragGestureRecognizer())].toSet(),
-                navigationDelegate: (WebView.NavigationRequest request) async {
-                  //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
-                  //on other iframe content allow all url loading
-                  if (attrs['src'] != null &&
-                      attrs['src']!.contains("youtube.com/embed")) {
-                    if (!request.url.contains("youtube.com/embed")) {
-                      return WebView.NavigationDecision.prevent;
-                    } else {
-                      return WebView.NavigationDecision.navigate;
-                    }
-                  } else {
-                    return WebView.NavigationDecision.navigate;
-                  }
-                },
-              ),
-            );
-          } else {
-            return Container(height: 0);
-          }
-        },
-      },
+      onLinkTap: (url, context, attributes, element) => {UrlLaunch.launchURL(url!)},
+      // customRender: {
+      //   "iframe": (RenderContext context, Widget child) {
+      //     final attrs = context.tree.element?.attributes;
+      //     if (attrs != null) {
+      //       double? width = double.tryParse(attrs['width'] ?? "");
+      //       double? height = double.tryParse(attrs['height'] ?? "");
+      //       return Container(
+      //         width: width ?? (height ?? 150) * 2,
+      //         height: height ?? (width ?? 300) / 2,
+      //         child: WebView.WebView(
+      //           initialUrl: attrs['src'] ?? "about:blank",
+      //           javascriptMode: WebView.JavascriptMode.unrestricted,
+      //           //no need for scrolling gesture recognizers on embedded youtube, so set gestureRecognizers null
+      //           //on other iframe content scrolling might be necessary, so use VerticalDragGestureRecognizer
+      //           gestureRecognizers: attrs['src'] != null &&
+      //                   attrs['src']!.contains("youtube.com/embed")
+      //               ? null
+      //               : [Factory(() => VerticalDragGestureRecognizer())].toSet(),
+      //           navigationDelegate: (WebView.NavigationRequest request) async {
+      //             //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
+      //             //on other iframe content allow all url loading
+      //             if (attrs['src'] != null &&
+      //                 attrs['src']!.contains("youtube.com/embed")) {
+      //               if (!request.url.contains("youtube.com/embed")) {
+      //                 return WebView.NavigationDecision.prevent;
+      //               } else {
+      //                 return WebView.NavigationDecision.navigate;
+      //               }
+      //             } else {
+      //               return WebView.NavigationDecision.navigate;
+      //             }
+      //           },
+      //         ),
+      //       );
+      //     } else {
+      //       return Container(height: 0);
+      //     }
+      //   },
+      // },
     );
   }
 
@@ -136,8 +133,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                   children: [
                     Text(
                       widget.articleData.title,
-                      style: TextStyle(
-                          fontSize: 28.0, fontWeight: FontWeight.w900),
+                      style: TextStyle(fontSize: 28.0, fontWeight: FontWeight.w900),
                     ),
                     SizedBox(
                       height: 5,
@@ -157,8 +153,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                           width: 5,
                         ),
                         Text(
-                          DateFormat("EEE, MMM d, ''yy")
-                              .format(widget.articleData.publishedAt),
+                          DateFormat("EEE, MMM d, ''yy").format(widget.articleData.publishedAt),
                         )
                       ],
                     ),

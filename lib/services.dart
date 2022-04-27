@@ -11,8 +11,6 @@ import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:wallet_core/wallet_core.dart';
 
-Web3? fuseWeb3;
-Web3? ethereumWeb3;
 final RootRouter rootRouter = getIt<RootRouter>();
 
 final Explorer fuseExplorerApi = getIt<Explorer>(
@@ -24,7 +22,7 @@ final Explorer ethereumExplorerApi = getIt<Explorer>(
   param2: dotenv.env['ETHERSCAN_API_KEY'],
 );
 
-final API api = getIt<API>();
+final StudioApi api = getIt<StudioApi>();
 
 final WalletApi walletApi = getIt<WalletApi>();
 

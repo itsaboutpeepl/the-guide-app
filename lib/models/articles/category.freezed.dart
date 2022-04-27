@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'category.dart';
@@ -28,7 +29,7 @@ class _$CategoryTearOff {
     );
   }
 
-  Category fromJson(Map<String, Object> json) {
+  Category fromJson(Map<String, Object?> json) {
     return Category.fromJson(json);
   }
 }
@@ -138,20 +139,19 @@ class _$_Category extends _Category {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Category &&
-            (identical(other.categoryID, categoryID) ||
-                const DeepCollectionEquality()
-                    .equals(other.categoryID, categoryID)) &&
-            (identical(other.categoryName, categoryName) ||
-                const DeepCollectionEquality()
-                    .equals(other.categoryName, categoryName)));
+        (other.runtimeType == runtimeType &&
+            other is _Category &&
+            const DeepCollectionEquality()
+                .equals(other.categoryID, categoryID) &&
+            const DeepCollectionEquality()
+                .equals(other.categoryName, categoryName));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(categoryID) ^
-      const DeepCollectionEquality().hash(categoryName);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(categoryID),
+      const DeepCollectionEquality().hash(categoryName));
 
   @JsonKey(ignore: true)
   @override
@@ -172,9 +172,9 @@ abstract class _Category extends Category {
   factory _Category.fromJson(Map<String, dynamic> json) = _$_Category.fromJson;
 
   @override
-  int get categoryID => throw _privateConstructorUsedError;
+  int get categoryID;
   @override
-  String get categoryName => throw _privateConstructorUsedError;
+  String get categoryName;
   @override
   @JsonKey(ignore: true)
   _$CategoryCopyWith<_Category> get copyWith =>

@@ -55,8 +55,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         child: Column(
                           children: [
                             GestureDetector(
-                              onTap: () => _showSourceImagePicker(context,
-                                  (source) => viewModel.editAvatar(source)),
+                              onTap: () => _showSourceImagePicker(context, (source) => viewModel.editAvatar(source)),
                               child: SizedBox(
                                 height: 70,
                                 width: 70,
@@ -71,18 +70,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             width: 60,
                                             height: 60,
                                             imageUrl: viewModel.avatarUrl,
-                                            placeholder: (context, url) =>
-                                                CircularProgressIndicator(),
-                                            errorWidget:
-                                                (context, url, error) =>
-                                                    CircleAvatar(
-                                              backgroundImage: AssetImage(
-                                                  'assets/images/anom.png'),
+                                            placeholder: (context, url) => CircularProgressIndicator(),
+                                            errorWidget: (context, url, error) => CircleAvatar(
+                                              backgroundImage: AssetImage('assets/images/anom.png'),
                                               radius: 30,
                                             ),
-                                            imageBuilder:
-                                                (context, imageProvider) =>
-                                                    Image(
+                                            imageBuilder: (context, imageProvider) => Image(
                                               image: imageProvider,
                                               fit: BoxFit.fill,
                                             ),
@@ -94,18 +87,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                             start: 0,
                                             end: 0,
                                             child: Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  vertical: 3),
+                                              padding: EdgeInsets.symmetric(vertical: 3),
                                               alignment: Alignment.center,
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .onSurface,
+                                              color: Theme.of(context).colorScheme.onSurface,
                                               child: Text(
                                                 I10n.of(context).edit,
-                                                style: TextStyle(
-                                                    color: Theme.of(context)
-                                                        .canvasColor,
-                                                    fontSize: 9),
+                                                style: TextStyle(color: Theme.of(context).canvasColor, fontSize: 9),
                                               ),
                                             ))
                                       ],
@@ -116,37 +103,28 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                             SizedBox(height: 5),
                             Text(viewModel.displayName,
-                                style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.onSurface,
-                                    fontSize: 18))
+                                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 18))
                           ],
                         ),
                       ),
                       Divider(),
                       Padding(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                         child: Align(
                             alignment: Alignment.centerLeft,
-                            child: Text(I10n.of(context).name,
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.grey))),
+                            child: Text(I10n.of(context).name, style: TextStyle(fontSize: 12, color: Colors.grey))),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 0),
                         child: TextFormField(
                           autofocus: false,
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Theme.of(context).colorScheme.onSurface),
+                          style: TextStyle(fontSize: 20, color: Theme.of(context).colorScheme.onSurface),
                           initialValue: viewModel.displayName,
                           keyboardType: TextInputType.text,
                           cursorColor: Color(0xFFC6C6C6),
                           onChanged: (value) => displayName = value,
                           decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
+                            contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             border: UnderlineInputBorder(
                               borderSide: BorderSide(
                                 color: Colors.transparent,
@@ -181,7 +159,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
-                              formatAddress(viewModel.walletAddress),
+                              Formatter.formatEthAddress(viewModel.walletAddress),
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.grey,

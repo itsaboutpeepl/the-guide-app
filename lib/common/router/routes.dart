@@ -5,9 +5,9 @@ import 'package:guide_liverpool/features/buy/router/router.dart';
 import 'package:guide_liverpool/features/contacts/router/router.dart';
 import 'package:guide_liverpool/features/guideHome/router/router.dart';
 import 'package:guide_liverpool/features/guideNews/router/router.dart';
-import 'package:guide_liverpool/features/help/router/router.dart';
-// import 'package:guide_liverpool/features/earn/router/router.dart';
 import 'package:guide_liverpool/features/home/router/router.dart';
+import 'package:guide_liverpool/features/onboard/screens/show_user_mnemonic.dart';
+import 'package:guide_liverpool/features/onboard/screens/verify_user_mnemonic.dart';
 import 'package:guide_liverpool/features/screens/main_screen.dart';
 import 'package:guide_liverpool/features/onboard/screens/security_screen.dart';
 import 'package:guide_liverpool/features/onboard/screens/restore_wallet_screen.dart';
@@ -18,9 +18,7 @@ import 'package:guide_liverpool/features/screens/on_board_screen.dart';
 import 'package:guide_liverpool/features/screens/pincode_screen.dart';
 import 'package:guide_liverpool/features/screens/splash_screen.dart';
 import 'package:guide_liverpool/features/screens/webview_screen.dart';
-import 'package:guide_liverpool/features/swap/router/swap_router.dart';
 import 'package:guide_liverpool/features/topup/router/topup_router.dart';
-import 'package:guide_liverpool/features/webview/router/router.dart';
 
 export 'routes.gr.dart';
 
@@ -30,6 +28,8 @@ export 'routes.gr.dart';
     AutoRoute(page: SplashScreen, initial: true),
     AutoRoute(page: ChooseSecurityOption),
     AutoRoute(page: PinCodeScreen),
+    AutoRoute(page: ShowUserMnemonicScreen),
+    AutoRoute(page: VerifyUserMnemonic),
     AutoRoute(page: RestoreFromBackupScreen),
     AutoRoute(page: OnBoardScreen),
     AutoRoute(page: SignUpScreen),
@@ -44,11 +44,8 @@ export 'routes.gr.dart';
         newsTab,
         homeTab,
         topupTab,
-        helpTab,
         contactsTab,
-        webviewTab,
         buyTab,
-        swapTab,
         accountTab,
       ],
     ),

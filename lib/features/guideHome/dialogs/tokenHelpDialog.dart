@@ -83,7 +83,7 @@ class TokenHelpDialogState extends State<TokenHelpDialog>
                               recognizer: new TapGestureRecognizer()
                                 ..onTap = () {
                                   UrlLaunch.launchURL(
-                                      "https://itsaboutpeepl.com/privacy/");
+                                      "https://theguideliverpool.com/the-guide-liverpool-app-privacy-policy/");
                                 },
                             ),
                             TextSpan(

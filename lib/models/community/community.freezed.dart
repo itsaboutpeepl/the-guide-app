@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'community.dart';
@@ -74,7 +75,7 @@ class _$CommunityTearOff {
     );
   }
 
-  Community fromJson(Map<String, Object> json) {
+  Community fromJson(Map<String, Object?> json) {
     return Community.fromJson(json);
   }
 }
@@ -473,19 +474,19 @@ class _$_Community with DiagnosticableTreeMixin implements _Community {
   factory _$_Community.fromJson(Map<String, dynamic> json) =>
       _$$_CommunityFromJson(json);
 
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String name;
-  @JsonKey(defaultValue: '')
+  @JsonKey()
   @override
   final String address;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isMultiBridge;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isClosed;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isMember;
   @override
@@ -559,78 +560,57 @@ class _$_Community with DiagnosticableTreeMixin implements _Community {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Community &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.address, address) ||
-                const DeepCollectionEquality()
-                    .equals(other.address, address)) &&
-            (identical(other.isMultiBridge, isMultiBridge) ||
-                const DeepCollectionEquality()
-                    .equals(other.isMultiBridge, isMultiBridge)) &&
-            (identical(other.isClosed, isClosed) ||
-                const DeepCollectionEquality()
-                    .equals(other.isClosed, isClosed)) &&
-            (identical(other.isMember, isMember) ||
-                const DeepCollectionEquality()
-                    .equals(other.isMember, isMember)) &&
-            (identical(other.homeTokenAddress, homeTokenAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeTokenAddress, homeTokenAddress)) &&
-            (identical(other.secondaryTokenAddress, secondaryTokenAddress) ||
-                const DeepCollectionEquality().equals(
-                    other.secondaryTokenAddress, secondaryTokenAddress)) &&
-            (identical(other.metadata, metadata) ||
-                const DeepCollectionEquality()
-                    .equals(other.metadata, metadata)) &&
-            (identical(other.webUrl, webUrl) ||
-                const DeepCollectionEquality().equals(other.webUrl, webUrl)) &&
-            (identical(other.bridgeType, bridgeType) ||
-                const DeepCollectionEquality()
-                    .equals(other.bridgeType, bridgeType)) &&
-            (identical(other.bridgeDirection, bridgeDirection) ||
-                const DeepCollectionEquality()
-                    .equals(other.bridgeDirection, bridgeDirection)) &&
-            (identical(other.homeBridgeAddress, homeBridgeAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.homeBridgeAddress, homeBridgeAddress)) &&
-            (identical(other.foreignBridgeAddress, foreignBridgeAddress) ||
-                const DeepCollectionEquality().equals(
-                    other.foreignBridgeAddress, foreignBridgeAddress)) &&
-            (identical(other.foreignTokenAddress, foreignTokenAddress) ||
-                const DeepCollectionEquality()
-                    .equals(other.foreignTokenAddress, foreignTokenAddress)) &&
-            (identical(other.plugins, plugins) ||
-                const DeepCollectionEquality()
-                    .equals(other.plugins, plugins)) &&
-            (identical(other.businesses, businesses) ||
-                const DeepCollectionEquality()
-                    .equals(other.businesses, businesses)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
+        (other.runtimeType == runtimeType &&
+            other is _Community &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.address, address) &&
+            const DeepCollectionEquality()
+                .equals(other.isMultiBridge, isMultiBridge) &&
+            const DeepCollectionEquality().equals(other.isClosed, isClosed) &&
+            const DeepCollectionEquality().equals(other.isMember, isMember) &&
+            const DeepCollectionEquality()
+                .equals(other.homeTokenAddress, homeTokenAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.secondaryTokenAddress, secondaryTokenAddress) &&
+            const DeepCollectionEquality().equals(other.metadata, metadata) &&
+            const DeepCollectionEquality().equals(other.webUrl, webUrl) &&
+            const DeepCollectionEquality()
+                .equals(other.bridgeType, bridgeType) &&
+            const DeepCollectionEquality()
+                .equals(other.bridgeDirection, bridgeDirection) &&
+            const DeepCollectionEquality()
+                .equals(other.homeBridgeAddress, homeBridgeAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.foreignBridgeAddress, foreignBridgeAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.foreignTokenAddress, foreignTokenAddress) &&
+            const DeepCollectionEquality().equals(other.plugins, plugins) &&
+            const DeepCollectionEquality()
+                .equals(other.businesses, businesses) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(address) ^
-      const DeepCollectionEquality().hash(isMultiBridge) ^
-      const DeepCollectionEquality().hash(isClosed) ^
-      const DeepCollectionEquality().hash(isMember) ^
-      const DeepCollectionEquality().hash(homeTokenAddress) ^
-      const DeepCollectionEquality().hash(secondaryTokenAddress) ^
-      const DeepCollectionEquality().hash(metadata) ^
-      const DeepCollectionEquality().hash(webUrl) ^
-      const DeepCollectionEquality().hash(bridgeType) ^
-      const DeepCollectionEquality().hash(bridgeDirection) ^
-      const DeepCollectionEquality().hash(homeBridgeAddress) ^
-      const DeepCollectionEquality().hash(foreignBridgeAddress) ^
-      const DeepCollectionEquality().hash(foreignTokenAddress) ^
-      const DeepCollectionEquality().hash(plugins) ^
-      const DeepCollectionEquality().hash(businesses) ^
-      const DeepCollectionEquality().hash(description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(address),
+      const DeepCollectionEquality().hash(isMultiBridge),
+      const DeepCollectionEquality().hash(isClosed),
+      const DeepCollectionEquality().hash(isMember),
+      const DeepCollectionEquality().hash(homeTokenAddress),
+      const DeepCollectionEquality().hash(secondaryTokenAddress),
+      const DeepCollectionEquality().hash(metadata),
+      const DeepCollectionEquality().hash(webUrl),
+      const DeepCollectionEquality().hash(bridgeType),
+      const DeepCollectionEquality().hash(bridgeDirection),
+      const DeepCollectionEquality().hash(homeBridgeAddress),
+      const DeepCollectionEquality().hash(foreignBridgeAddress),
+      const DeepCollectionEquality().hash(foreignTokenAddress),
+      const DeepCollectionEquality().hash(plugins),
+      const DeepCollectionEquality().hash(businesses),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -681,53 +661,53 @@ abstract class _Community implements Community {
       _$_Community.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get address => throw _privateConstructorUsedError;
+  String get address;
   @override
-  bool get isMultiBridge => throw _privateConstructorUsedError;
+  bool get isMultiBridge;
   @override
-  bool get isClosed => throw _privateConstructorUsedError;
+  bool get isClosed;
   @override
-  bool get isMember => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(includeIfNull: false)
-  String? get homeTokenAddress => throw _privateConstructorUsedError;
+  bool get isMember;
   @override
   @JsonKey(includeIfNull: false)
-  String? get secondaryTokenAddress => throw _privateConstructorUsedError;
+  String? get homeTokenAddress;
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get secondaryTokenAddress;
   @override
   @JsonKey(includeIfNull: false)
   @CommunityMetadataConverter()
-  CommunityMetadata? get metadata => throw _privateConstructorUsedError;
+  CommunityMetadata? get metadata;
   @override
   @JsonKey(includeIfNull: false)
-  String? get webUrl => throw _privateConstructorUsedError;
+  String? get webUrl;
   @override
   @JsonKey(includeIfNull: false)
-  String? get bridgeType => throw _privateConstructorUsedError;
+  String? get bridgeType;
   @override
   @JsonKey(includeIfNull: false)
-  String? get bridgeDirection => throw _privateConstructorUsedError;
+  String? get bridgeDirection;
   @override
   @JsonKey(includeIfNull: false)
-  String? get homeBridgeAddress => throw _privateConstructorUsedError;
+  String? get homeBridgeAddress;
   @override
   @JsonKey(includeIfNull: false)
-  String? get foreignBridgeAddress => throw _privateConstructorUsedError;
+  String? get foreignBridgeAddress;
   @override
   @JsonKey(includeIfNull: false)
-  String? get foreignTokenAddress => throw _privateConstructorUsedError;
+  String? get foreignTokenAddress;
   @override
   @JsonKey(includeIfNull: false)
   @PluginsConverter()
-  Plugins? get plugins => throw _privateConstructorUsedError;
+  Plugins? get plugins;
   @override
   @JsonKey(includeIfNull: false)
-  List<Business>? get businesses => throw _privateConstructorUsedError;
+  List<Business>? get businesses;
   @override
   @JsonKey(includeIfNull: false)
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$CommunityCopyWith<_Community> get copyWith =>

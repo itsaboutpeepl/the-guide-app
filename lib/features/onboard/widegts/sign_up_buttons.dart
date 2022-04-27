@@ -24,149 +24,157 @@ class _SignUpButtonsState extends State<SignUpButtons> {
       distinct: true,
       converter: SplashViewModel.fromStore,
       builder: (_, viewModel) {
-        return Container(
-          padding: EdgeInsets.only(bottom: 80),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Expanded(
-                flex: 6,
-                child: Transform.rotate(
-                  angle: 50,
-                  child: Image.asset(
-                    'assets/images/guide-logo-horizontal.png',
-                    width: 350,
-                    height: 350,
-                  ),
-                ),
-              ),
-              Flexible(
-                flex: 2,
-                child: Column(
-                  mainAxisSize: MainAxisSize.max,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    OutlinedButton(
-                      style: OutlinedButton.styleFrom(
-                        primary: Colors.white,
-                        side: BorderSide(
-                          color: Colors.white,
-                          width: 2,
-                          style: BorderStyle.solid,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 20,
-                          vertical: 15,
-                        ),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: Text(
-                        viewModel.isLoggedOut
-                            ? I10n.of(context).login
-                            : I10n.of(context).create_new_wallet,
-                        style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w800,
-                          color: Colors.white,
-                        ),
-                      ),
-                      onPressed: () {
-                        if (viewModel.isLoggedOut) {
-                          viewModel.loginAgain();
-                          if (context.router.canPopSelfOrChildren) {
-                            context.router.popUntilRoot();
-                          }
-                          context.router.replace(MainScreen());
-                        } else {
-                          setState(() {
-                            isPrimaryPreloading = true;
-                          });
-                          viewModel.createLocalAccount(() {
-                            setState(() {
-                              isPrimaryPreloading = false;
-                            });
-                            context.router.replace(SignUpScreen());
-                          }, () {
-                            setState(() {
-                              isPrimaryPreloading = false;
-                            });
-                          });
-                        }
-                      },
+        return Stack(
+          children: [
+            Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    flex: 6,
+                    child: Image.asset(
+                      'assets/images/guide-logo-horizontal.png',
+                      width: 350,
+                      height: 350,
                     ),
-                    Padding(
-                      padding: EdgeInsets.only(top: 20),
-                      child: viewModel.isLoggedOut
-                          ? Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                TransparentButton(
-                                  fontSize: 14,
-                                  label: I10n.of(context).restore_backup,
+                  ),
+                  Flexible(
+                    flex: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                            primary: Colors.white,
+                            side: BorderSide(
+                              color: Colors.grey[100]!,
+                              width: 2,
+                              style: BorderStyle.solid,
+                            ),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: 20,
+                              vertical: 15,
+                            ),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
+                          child: Text(
+                            viewModel.isLoggedOut ? I10n.of(context).login : I10n.of(context).create_new_wallet,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w800,
+                              color: Colors.grey[100],
+                            ),
+                          ),
+                          onPressed: () {
+                            if (viewModel.isLoggedOut) {
+                              viewModel.loginAgain();
+                              if (context.router.canPopSelfOrChildren) {
+                                context.router.popUntilRoot();
+                              }
+                              context.router.replace(MainScreen());
+                            } else {
+                              setState(() {
+                                isPrimaryPreloading = true;
+                              });
+                              viewModel.createLocalAccount(() {
+                                setState(() {
+                                  isPrimaryPreloading = false;
+                                });
+                                context.router.push(ShowUserMnemonicScreen());
+                              }, () {
+                                setState(() {
+                                  isPrimaryPreloading = false;
+                                });
+                              });
+                            }
+                          },
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(top: 20),
+                          child: viewModel.isLoggedOut
+                              ? Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: <Widget>[
+                                    TransparentButton(
+                                      fontSize: 14,
+                                      label: I10n.of(context).restore_backup,
+                                      onPressed: () {
+                                        Segment.track(
+                                          eventName: 'Existing User: Restore wallet from backup',
+                                        );
+                                        context.router.push(RestoreFromBackupScreen());
+                                      },
+                                      textColor: Colors.grey[100]!,
+                                    ),
+                                    Text(
+                                      I10n.of(context).or,
+                                      style: TextStyle(
+                                        color: Colors.grey[100],
+                                      ),
+                                    ),
+                                    TransparentButton(
+                                      fontSize: 14,
+                                      textColor: Colors.grey[100]!,
+                                      label: I10n.of(context).create__wallet,
+                                      preload: isTransparentPreloading,
+                                      onPressed: () async {
+                                        bool result = await showDialog(
+                                          context: context,
+                                          builder: (context) => WarnBeforeReCreation(),
+                                        );
+                                        if (result) {
+                                          setState(() {
+                                            isTransparentPreloading = true;
+                                          });
+                                          viewModel.createLocalAccount(() {
+                                            context.router.push(ShowUserMnemonicScreen());
+                                          }, () {
+                                            setState(() {
+                                              isTransparentPreloading = false;
+                                            });
+                                          });
+                                        }
+                                      },
+                                    )
+                                  ],
+                                )
+                              : TransparentButton(
+                                  fontSize: 20,
+                                  label: I10n.of(context).restore_from_backup,
+                                  textColor: Colors.grey[100]!,
                                   onPressed: () {
                                     Segment.track(
-                                      eventName:
-                                          'Existing User: Restore wallet from backup',
+                                      eventName: 'Existing User: Restore wallet from backup',
                                     );
-                                    context.router
-                                        .replace(RestoreFromBackupScreen());
+                                    context.router.push(RestoreFromBackupScreen());
                                   },
                                 ),
-                                Text(
-                                  I10n.of(context).or,
-                                  style: TextStyle(
-                                    color: Color(0xFFB2B2B2),
-                                  ),
-                                ),
-                                TransparentButton(
-                                  fontSize: 14,
-                                  label: I10n.of(context).create__wallet,
-                                  preload: isTransparentPreloading,
-                                  onPressed: () async {
-                                    bool result = await showDialog(
-                                      context: context,
-                                      builder: (context) =>
-                                          WarnBeforeReCreation(),
-                                    );
-                                    if (result) {
-                                      setState(() {
-                                        isTransparentPreloading = true;
-                                      });
-                                      viewModel.createLocalAccount(() {
-                                        context.router.push(SignUpScreen());
-                                      }, () {
-                                        setState(() {
-                                          isTransparentPreloading = false;
-                                        });
-                                      });
-                                    }
-                                  },
-                                )
-                              ],
-                            )
-                          : TransparentButton(
-                              fontSize: 20,
-                              label: I10n.of(context).restore_from_backup,
-                              onPressed: () {
-                                Segment.track(
-                                  eventName:
-                                      'Existing User: Restore wallet from backup',
-                                );
-                                context.router.push(RestoreFromBackupScreen());
-                              },
-                            ),
-                    )
-                  ],
-                ),
+                        )
+                      ],
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         );
+        // return Container(
+        //   decoration: BoxDecoration(
+        //     gradient: LinearGradient(
+        //       colors: screenGradient,
+        //       begin: Alignment.topRight,
+        //       end: Alignment.bottomLeft,
+        //       stops: [0, 0.1, 0.3, 0.5, 0.7, 0.9, 1],
+        //     ),
+        //   ),
+        //   padding: EdgeInsets.only(bottom: 80),
+        //   child: column,
+        // );
       },
     );
   }

@@ -77,20 +77,15 @@ class _TokenTileState extends State<TokenTile> {
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(50),
-                        child: (widget.token.imageUrl != null &&
-                                    widget.token.imageUrl!.isNotEmpty ||
-                                viewModel.tokensImages.containsKey(
-                                    widget.token.address.toLowerCase())
+                        child: (widget.token.imageUrl != null && widget.token.imageUrl!.isNotEmpty ||
+                                viewModel.tokensImages.containsKey(widget.token.address.toLowerCase())
                             ? CachedNetworkImage(
                                 width: widget.symbolWidth,
                                 height: widget.symbolHeight,
-                                imageUrl: (viewModel.tokensImages[
-                                        widget.token.address.toLowerCase()] ??
+                                imageUrl: (viewModel.tokensImages[widget.token.address.toLowerCase()] ??
                                     widget.token.imageUrl)!,
-                                placeholder: (context, url) =>
-                                    CircularProgressIndicator(),
-                                errorWidget: (context, url, error) =>
-                                    DefaultLogo(
+                                placeholder: (context, url) => CircularProgressIndicator(),
+                                errorWidget: (context, url, error) => DefaultLogo(
                                   symbol: widget.token.symbol,
                                   width: widget.symbolWidth,
                                   height: widget.symbolHeight,
@@ -126,9 +121,7 @@ class _TokenTileState extends State<TokenTile> {
                   padding: EdgeInsets.only(left: 20, right: 20),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: hasPriceInfo
-                        ? MainAxisAlignment.spaceBetween
-                        : MainAxisAlignment.start,
+                    mainAxisAlignment: hasPriceInfo ? MainAxisAlignment.spaceBetween : MainAxisAlignment.start,
                     children: [
                       !hasPriceInfo
                           ? SizedBox.shrink()
@@ -145,7 +138,7 @@ class _TokenTileState extends State<TokenTile> {
                                     softWrap: true,
                                   ),
                                   Text(
-                                    '\$${display(num.parse(widget.token.priceInfo?.quote ?? '0'))}',
+                                    '\$${display2(num.parse(widget.token.priceInfo?.quote ?? '0'))}',
                                     style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontFamily: 'Europa',
@@ -319,8 +312,7 @@ class _TokenTileState extends State<TokenTile> {
       distinct: true,
       converter: TokenTileViewModel.fromStore,
       builder: (_, viewModel) {
-        final bool hasPriceInfo =
-            ![null, '', '0', 0, 'NaN'].contains(widget.token.priceInfo?.quote);
+        final bool hasPriceInfo = ![null, '', '0', 0, 'NaN'].contains(widget.token.priceInfo?.quote);
         final bool isCommunityToken = viewModel.communities.any(
           (element) =>
               ![null, ''].contains(element.homeTokenAddress) &&
@@ -332,18 +324,13 @@ class _TokenTileState extends State<TokenTile> {
           children: <Widget>[
             ClipRRect(
               borderRadius: BorderRadius.circular(50),
-              child: (widget.token.imageUrl != null &&
-                          widget.token.imageUrl!.isNotEmpty ||
-                      viewModel.tokensImages
-                          .containsKey(widget.token.address.toLowerCase())
+              child: (widget.token.imageUrl != null && widget.token.imageUrl!.isNotEmpty ||
+                      viewModel.tokensImages.containsKey(widget.token.address.toLowerCase())
                   ? CachedNetworkImage(
                       width: widget.symbolWidth,
                       height: widget.symbolHeight,
-                      imageUrl: (viewModel.tokensImages[
-                              widget.token.address.toLowerCase()] ??
-                          widget.token.imageUrl)!,
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(),
+                      imageUrl: (viewModel.tokensImages[widget.token.address.toLowerCase()] ?? widget.token.imageUrl)!,
+                      placeholder: (context, url) => CircularProgressIndicator(),
                       errorWidget: (context, url, error) => DefaultLogo(
                         symbol: widget.token.symbol,
                         width: widget.symbolWidth,
@@ -422,13 +409,10 @@ class _TokenTileState extends State<TokenTile> {
                                     children: <TextSpan>[
                                       hasPriceInfo
                                           ? TextSpan(
-                                              text: '\$' +
-                                                  widget.token.getFiatBalance(),
+                                              text: '\$' + widget.token.getFiatBalance(),
                                             )
                                           : TextSpan(
-                                              text: widget.token.getBalance() +
-                                                  ' ' +
-                                                  widget.token.symbol,
+                                              text: widget.token.getBalance() + ' ' + widget.token.symbol,
                                             ),
                                     ],
                                   ),
@@ -439,9 +423,7 @@ class _TokenTileState extends State<TokenTile> {
                                   ? Padding(
                                       padding: EdgeInsets.only(top: 5),
                                       child: AutoSizeText(
-                                        widget.token.getBalance() +
-                                            ' ' +
-                                            widget.token.symbol,
+                                        widget.token.getBalance() + ' ' + widget.token.symbol,
                                         style: TextStyle(
                                           color: Color(0xFF292929),
                                         ),

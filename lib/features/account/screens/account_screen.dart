@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,6 +9,7 @@ import 'package:guide_liverpool/common/router/routes.gr.dart';
 import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/account/widgets/avatar.dart';
 import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
@@ -133,6 +135,33 @@ class _AccountScreenState extends State<AccountScreen> {
                                     builder: (context) => aboutModal(context));
                               },
                             ),
+                            SizedBox(),
+                            Text.rich(
+                              TextSpan(
+                                text: "See something wrong? Contact Us \n",
+                                children: [
+                                  TextSpan(
+                                      text: "info@theguideliverpool.com \n",
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () => UrlLaunch.launchEmail(
+                                            "mailto:info@theguideliverpool.com")),
+                                  WidgetSpan(
+                                      child: SizedBox(
+                                    height: 23,
+                                  )),
+                                  TextSpan(
+                                      text: "+44 1517020143",
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () => UrlLaunch.launchPhone(
+                                            "tel:+441517020143"))
+                                ],
+                              ),
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.grey[800],
+                                fontSize: 16,
+                              ),
+                            )
                           ],
                         ),
                       ),

@@ -40,7 +40,7 @@ class PriceLineChart extends StatelessWidget {
                 .values
                 .toList(),
             isCurved: true,
-            colors: [Colors.black, Colors.black],
+            color: Colors.black,
             barWidth: 3,
             isStrokeCapRound: true,
             dotData: FlDotData(
@@ -75,27 +75,24 @@ class PriceLineChart extends StatelessWidget {
                     ),
                     lineTouchData: LineTouchData(
                       enabled: true,
-                      getTouchedSpotIndicator: (barData, spotIndexes) =>
-                          spotIndexes
-                              .map(
-                                (index) => TouchedSpotIndicatorData(
-                                  FlLine(
-                                    color: Colors.transparent,
-                                  ),
-                                  FlDotData(
-                                    show: true,
-                                    getDotPainter:
-                                        (spot, percent, barData, index) =>
-                                            FlDotCirclePainter(
-                                      radius: 0,
-                                      color: Colors.transparent,
-                                      strokeWidth: 0,
-                                      strokeColor: Colors.transparent,
-                                    ),
-                                  ),
+                      getTouchedSpotIndicator: (barData, spotIndexes) => spotIndexes
+                          .map(
+                            (index) => TouchedSpotIndicatorData(
+                              FlLine(
+                                color: Colors.transparent,
+                              ),
+                              FlDotData(
+                                show: true,
+                                getDotPainter: (spot, percent, barData, index) => FlDotCirclePainter(
+                                  radius: 0,
+                                  color: Colors.transparent,
+                                  strokeWidth: 0,
+                                  strokeColor: Colors.transparent,
                                 ),
-                              )
-                              .toList(),
+                              ),
+                            ),
+                          )
+                          .toList(),
                       touchTooltipData: LineTouchTooltipData(
                         tooltipBgColor: Theme.of(context).primaryColor,
                         tooltipRoundedRadius: 8,

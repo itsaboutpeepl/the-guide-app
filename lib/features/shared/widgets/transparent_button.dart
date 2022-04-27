@@ -8,6 +8,7 @@ class TransparentButton extends StatelessWidget {
     this.width = 21.0,
     this.height = 21.0,
     this.preload = false,
+    this.textColor = Colors.black87,
   });
 
   final void Function() onPressed;
@@ -16,6 +17,7 @@ class TransparentButton extends StatelessWidget {
   final double height;
   final bool preload;
   final double fontSize;
+  final Color textColor;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class TransparentButton extends StatelessWidget {
                     style: TextStyle(
                       fontSize: this.fontSize,
                       fontWeight: FontWeight.normal,
-                      color: Colors.white60,
+                      color: textColor,
                     )),
               )
             : Container(

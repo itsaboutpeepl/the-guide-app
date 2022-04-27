@@ -18,7 +18,7 @@ _$_BusinessMetadata _$$_BusinessMetadataFromJson(Map<String, dynamic> json) =>
       latLng: (json['latLng'] as List<dynamic>?)
               ?.map((e) => (e as num).toDouble())
               .toList() ??
-          [],
+          const [],
     );
 
 Map<String, dynamic> _$$_BusinessMetadataToJson(_$_BusinessMetadata instance) =>

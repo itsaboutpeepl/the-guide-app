@@ -14,12 +14,12 @@ _$_Token _$$_TokenFromJson(Map<String, dynamic> json) => _$_Token(
       decimals: json['decimals'] as int,
       isNative: json['isNative'] as bool? ?? false,
       imageUrl: json['imageUrl'] as String?,
-      timestamp: json['timestamp'] as int? ?? null,
+      timestamp: json['timestamp'] as int?,
       priceInfo: json['priceInfo'] == null
           ? null
           : Price.fromJson(json['priceInfo'] as Map<String, dynamic>),
-      communityAddress: json['communityAddress'] as String? ?? null,
-      originNetwork: json['originNetwork'] as String? ?? null,
+      communityAddress: json['communityAddress'] as String?,
+      originNetwork: json['originNetwork'] as String?,
       priceChange: json['priceChange'] as num? ?? 0,
       walletActions:
           walletActionsFromJson(json['walletActions'] as Map<String, dynamic>?),

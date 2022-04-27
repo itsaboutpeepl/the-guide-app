@@ -10,7 +10,7 @@ _$_SwapState _$$_SwapStateFromJson(Map<String, dynamic> json) => _$_SwapState(
       tokensImages: (json['tokensImages'] as Map<String, dynamic>?)?.map(
             (k, e) => MapEntry(k, e as String),
           ) ??
-          {},
+          const {},
     );
 
 Map<String, dynamic> _$$_SwapStateToJson(_$_SwapState instance) =>

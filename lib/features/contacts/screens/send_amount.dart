@@ -29,8 +29,7 @@ class RegExInputFormatter implements TextInputFormatter {
   }
 
   @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     final oldValueValid = isValid(oldValue.text);
     final newValueValid = isValid(newValue.text);
     if (oldValueValid && !newValueValid) {
@@ -63,14 +62,12 @@ class SendAmountScreen extends StatefulWidget {
   _SendAmountScreenState createState() => _SendAmountScreenState();
 }
 
-class _SendAmountScreenState extends State<SendAmountScreen>
-    with SingleTickerProviderStateMixin {
+class _SendAmountScreenState extends State<SendAmountScreen> with SingleTickerProviderStateMixin {
   TextEditingController textEditingController = TextEditingController();
   late AnimationController controller;
   late Animation<Offset> offset;
   Token? selectedToken;
-  final _amountValidator = RegExInputFormatter.withRegex(
-      '^\$|^(0|([1-9][0-9]{0,}))(\\.[0-9]{0,})?\$');
+  final _amountValidator = RegExInputFormatter.withRegex('^\$|^(0|([1-9][0-9]{0,}))(\\.[0-9]{0,})?\$');
 
   @override
   void dispose() {
@@ -176,8 +173,7 @@ class _SendAmountScreenState extends State<SendAmountScreen>
   _onKeyPress(String value, {bool back = false}) {
     if (back) {
       if (textEditingController.text.length == 0) return;
-      textEditingController.text = textEditingController.text
-          .substring(0, textEditingController.text.length - 1);
+      textEditingController.text = textEditingController.text.substring(0, textEditingController.text.length - 1);
     } else {
       if (textEditingController.text == '0' && value == '0') {
         textEditingController.text = textEditingController.text;
@@ -187,14 +183,13 @@ class _SendAmountScreenState extends State<SendAmountScreen>
     }
     setState(() {});
     try {
-      final bool hasFund =
-          ![null, '', '0'].contains(textEditingController.text) &&
-              (num.parse(textEditingController.text)).compareTo(
-                    num.parse(
-                      selectedToken?.getBalance(true) ?? '0',
-                    ),
-                  ) <=
-                  0;
+      final bool hasFund = ![null, '', '0'].contains(textEditingController.text) &&
+          (num.parse(textEditingController.text)).compareTo(
+                num.parse(
+                  selectedToken?.getBalance(true) ?? '0',
+                ),
+              ) <=
+              0;
       if (hasFund) {
         controller.forward();
       } else {
@@ -242,7 +237,7 @@ class _SendAmountScreenState extends State<SendAmountScreen>
   Widget build(BuildContext context) {
     final SendFlowArguments args = this.widget.pageArgs;
     String title =
-        "${I10n.of(context).send_to} ${args.name != null ? args.name : formatAddress(args.accountAddress)}";
+        "${I10n.of(context).send_to} ${args.name != null ? args.name : Formatter.formatEthAddress(args.accountAddress)}";
     return new StoreConnector<AppState, SendAmountViewModel>(
       converter: SendAmountViewModel.fromStore,
       onInitialBuild: (viewModel) {
@@ -261,14 +256,13 @@ class _SendAmountScreenState extends State<SendAmountScreen>
         }
       },
       builder: (_, viewModel) {
-        final bool hasFund =
-            (num.tryParse(textEditingController.text) ?? 0).compareTo(
-                      num.parse(
-                        (selectedToken?.getBalance(true) ?? '0'),
-                      ),
-                    ) <=
-                    0 &&
-                viewModel.tokens.isNotEmpty;
+        final bool hasFund = (num.tryParse(textEditingController.text) ?? 0).compareTo(
+                  num.parse(
+                    (selectedToken?.getBalance(true) ?? '0'),
+                  ),
+                ) <=
+                0 &&
+            viewModel.tokens.isNotEmpty;
 
         if (!hasFund) {
           controller.forward();
@@ -297,8 +291,7 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 40),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Text(
                                       I10n.of(context).how_much,
@@ -318,8 +311,7 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                               Container(
                                 padding: EdgeInsets.symmetric(horizontal: 40),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
                                     Expanded(
                                       child: AutoSizeTextField(
@@ -339,8 +331,7 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                                         ),
                                         decoration: InputDecoration(
                                           border: InputBorder.none,
-                                          fillColor:
-                                              Theme.of(context).canvasColor,
+                                          fillColor: Theme.of(context).canvasColor,
                                           hintText: '0',
                                           focusedBorder: InputBorder.none,
                                           enabledBorder: InputBorder.none,
@@ -349,39 +340,28 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                                         ),
                                       ),
                                     ),
-                                    !args.useBridge &&
-                                            viewModel.tokens.isNotEmpty
+                                    !args.useBridge && viewModel.tokens.isNotEmpty
                                         ? InkWell(
-                                            focusColor:
-                                                Theme.of(context).canvasColor,
-                                            highlightColor:
-                                                Theme.of(context).canvasColor,
+                                            focusColor: Theme.of(context).canvasColor,
+                                            highlightColor: Theme.of(context).canvasColor,
                                             onTap: () {
                                               showBottomMenu(viewModel);
                                             },
                                             child: Container(
-                                                padding: EdgeInsets.symmetric(
-                                                    horizontal: 15,
-                                                    vertical: 5),
+                                                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 5),
                                                 decoration: BoxDecoration(
                                                   shape: BoxShape.rectangle,
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .secondary,
-                                                  borderRadius:
-                                                      BorderRadius.circular(6),
+                                                  color: Theme.of(context).colorScheme.secondary,
+                                                  borderRadius: BorderRadius.circular(6),
                                                 ),
                                                 child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
+                                                  mainAxisSize: MainAxisSize.min,
                                                   children: <Widget>[
                                                     Text(
-                                                      selectedToken?.symbol ??
-                                                          '',
+                                                      selectedToken?.symbol ?? '',
                                                       style: TextStyle(
                                                         fontSize: 20,
-                                                        fontWeight:
-                                                            FontWeight.bold,
+                                                        fontWeight: FontWeight.bold,
                                                       ),
                                                     ),
                                                     SizedBox(
@@ -427,8 +407,7 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                                 return;
                               } else {
                                 setState(() {
-                                  textEditingController.text =
-                                      textEditingController.text + '.';
+                                  textEditingController.text = textEditingController.text + '.';
                                 });
                               }
                             },
@@ -453,15 +432,11 @@ class _SendAmountScreenState extends State<SendAmountScreen>
                             PrimaryButton(
                               opacity: 1,
                               disabled: !hasFund,
-                              label: hasFund
-                                  ? I10n.of(context).next_button
-                                  : I10n.of(context).insufficient_fund,
+                              label: hasFund ? I10n.of(context).next_button : I10n.of(context).insufficient_fund,
                               onPressed: () {
                                 args.tokenToSend = selectedToken;
-                                args.amount =
-                                    double.parse(textEditingController.text);
-                                context.router
-                                    .push(SendReviewScreen(pageArgs: args));
+                                args.amount = double.parse(textEditingController.text);
+                                context.router.push(SendReviewScreen(pageArgs: args));
                               },
                             ),
                           ],

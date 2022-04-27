@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'moonpay.dart';
@@ -34,7 +35,7 @@ class _$MoonpayPluginTearOff {
     );
   }
 
-  MoonpayPlugin fromJson(Map<String, Object> json) {
+  MoonpayPlugin fromJson(Map<String, Object?> json) {
     return MoonpayPlugin.fromJson(json);
   }
 }
@@ -151,7 +152,7 @@ class __$MoonpayPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Implements(Plugin)
+@Implements<Plugin>()
 @JsonSerializable()
 class _$_MoonpayPlugin with DiagnosticableTreeMixin implements _MoonpayPlugin {
   _$_MoonpayPlugin(
@@ -163,15 +164,15 @@ class _$_MoonpayPlugin with DiagnosticableTreeMixin implements _MoonpayPlugin {
   factory _$_MoonpayPlugin.fromJson(Map<String, dynamic> json) =>
       _$$_MoonpayPluginFromJson(json);
 
-  @JsonKey(defaultValue: 'moonpay')
+  @JsonKey()
   @override
   final String name;
   @override
   final String? widgetUrl;
-  @JsonKey(defaultValue: 'deposit')
+  @JsonKey()
   @override
   final String type;
-  @JsonKey(defaultValue: false)
+  @JsonKey()
   @override
   final bool isActive;
 
@@ -194,26 +195,21 @@ class _$_MoonpayPlugin with DiagnosticableTreeMixin implements _MoonpayPlugin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _MoonpayPlugin &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.widgetUrl, widgetUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.widgetUrl, widgetUrl)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
-            (identical(other.isActive, isActive) ||
-                const DeepCollectionEquality()
-                    .equals(other.isActive, isActive)));
+        (other.runtimeType == runtimeType &&
+            other is _MoonpayPlugin &&
+            const DeepCollectionEquality().equals(other.name, name) &&
+            const DeepCollectionEquality().equals(other.widgetUrl, widgetUrl) &&
+            const DeepCollectionEquality().equals(other.type, type) &&
+            const DeepCollectionEquality().equals(other.isActive, isActive));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(widgetUrl) ^
-      const DeepCollectionEquality().hash(type) ^
-      const DeepCollectionEquality().hash(isActive);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(name),
+      const DeepCollectionEquality().hash(widgetUrl),
+      const DeepCollectionEquality().hash(type),
+      const DeepCollectionEquality().hash(isActive));
 
   @JsonKey(ignore: true)
   @override
@@ -237,13 +233,13 @@ abstract class _MoonpayPlugin implements MoonpayPlugin, Plugin {
       _$_MoonpayPlugin.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get widgetUrl => throw _privateConstructorUsedError;
+  String? get widgetUrl;
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$MoonpayPluginCopyWith<_MoonpayPlugin> get copyWith =>

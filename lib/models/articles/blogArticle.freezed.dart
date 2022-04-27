@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'blogArticle.dart';
@@ -44,7 +45,7 @@ class _$BlogArticleTearOff {
     );
   }
 
-  BlogArticle fromJson(Map<String, Object> json) {
+  BlogArticle fromJson(Map<String, Object?> json) {
     return BlogArticle.fromJson(json);
   }
 }
@@ -276,46 +277,33 @@ class _$_BlogArticle extends _BlogArticle {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _BlogArticle &&
-            (identical(other.title, title) ||
-                const DeepCollectionEquality().equals(other.title, title)) &&
-            (identical(other.imageURL, imageURL) ||
-                const DeepCollectionEquality()
-                    .equals(other.imageURL, imageURL)) &&
-            (identical(other.category, category) ||
-                const DeepCollectionEquality()
-                    .equals(other.category, category)) &&
-            (identical(other.postID, postID) ||
-                const DeepCollectionEquality().equals(other.postID, postID)) &&
-            (identical(other.postURL, postURL) ||
-                const DeepCollectionEquality()
-                    .equals(other.postURL, postURL)) &&
-            (identical(other.content, content) ||
-                const DeepCollectionEquality()
-                    .equals(other.content, content)) &&
-            (identical(other.publishedAt, publishedAt) ||
-                const DeepCollectionEquality()
-                    .equals(other.publishedAt, publishedAt)) &&
-            (identical(other.gallery, gallery) ||
-                const DeepCollectionEquality()
-                    .equals(other.gallery, gallery)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)));
+        (other.runtimeType == runtimeType &&
+            other is _BlogArticle &&
+            const DeepCollectionEquality().equals(other.title, title) &&
+            const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other.postID, postID) &&
+            const DeepCollectionEquality().equals(other.postURL, postURL) &&
+            const DeepCollectionEquality().equals(other.content, content) &&
+            const DeepCollectionEquality()
+                .equals(other.publishedAt, publishedAt) &&
+            const DeepCollectionEquality().equals(other.gallery, gallery) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(title) ^
-      const DeepCollectionEquality().hash(imageURL) ^
-      const DeepCollectionEquality().hash(category) ^
-      const DeepCollectionEquality().hash(postID) ^
-      const DeepCollectionEquality().hash(postURL) ^
-      const DeepCollectionEquality().hash(content) ^
-      const DeepCollectionEquality().hash(publishedAt) ^
-      const DeepCollectionEquality().hash(gallery) ^
-      const DeepCollectionEquality().hash(description);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(title),
+      const DeepCollectionEquality().hash(imageURL),
+      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(postID),
+      const DeepCollectionEquality().hash(postURL),
+      const DeepCollectionEquality().hash(content),
+      const DeepCollectionEquality().hash(publishedAt),
+      const DeepCollectionEquality().hash(gallery),
+      const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
@@ -345,23 +333,23 @@ abstract class _BlogArticle extends BlogArticle {
       _$_BlogArticle.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get imageURL => throw _privateConstructorUsedError;
+  String get imageURL;
   @override
-  List<String> get category => throw _privateConstructorUsedError;
+  List<String> get category;
   @override
-  int get postID => throw _privateConstructorUsedError;
+  int get postID;
   @override
-  String get postURL => throw _privateConstructorUsedError;
+  String get postURL;
   @override
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
-  DateTime get publishedAt => throw _privateConstructorUsedError;
+  DateTime get publishedAt;
   @override
-  List<String> get gallery => throw _privateConstructorUsedError;
+  List<String> get gallery;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$BlogArticleCopyWith<_BlogArticle> get copyWith =>

@@ -20,7 +20,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'zh_CN';
 
-  static String m0(name) => "向 ${name} 发送资金会自动邀请他们加入 Fuse 并让他们赎兑您发送的资金";
+  static String m2(name) => "向 ${name} 发送资金会自动邀请他们加入 Fuse 并让他们赎兑您发送的资金";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -54,6 +54,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cancel": MessageLookupByLibrary.simpleMessage("取消"),
         "choose_lock_method":
             MessageLookupByLibrary.simpleMessage("请选择以下方法来保护您的钱包"),
+        "claim": MessageLookupByLibrary.simpleMessage("Claim"),
         "close": MessageLookupByLibrary.simpleMessage("关闭"),
         "coming_soon": MessageLookupByLibrary.simpleMessage("即将推出"),
         "community": MessageLookupByLibrary.simpleMessage("社区"),
@@ -89,6 +90,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("从以太坊存入资金"),
         "deposit_from_ethereum_or_BSC":
             MessageLookupByLibrary.simpleMessage("从以太坊或 BSC 存入资金"),
+        "deposit_fuse_dollar":
+            MessageLookupByLibrary.simpleMessage("Deposit Fuse Dollar"),
         "deposit_your": MessageLookupByLibrary.simpleMessage("存入您的"),
         "deposit_your_first_dollars":
             MessageLookupByLibrary.simpleMessage("存入您的第一笔资金"),
@@ -152,19 +155,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "initializing_wallet":
             MessageLookupByLibrary.simpleMessage("在 Fuse 上初始化您的钱包"),
         "insufficient_fund": MessageLookupByLibrary.simpleMessage("资金不足"),
-        "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "在一个平台上支持您当地的餐馆，让他们从您支付的费用中获得更大的份额"),
-        "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "使用 Stripe 直接从您的银行账户为您的 Peepl 钱包充值，无论您喜欢多少。快速且安全"),
+        "intro_text_one":
+            MessageLookupByLibrary.simpleMessage("支付和收取报酬或汇款给朋友，没有费用或不便之处"),
+        "intro_text_three":
+            MessageLookupByLibrary.simpleMessage("创建一个安全智能的代币账户，以访问去中心化金融"),
         "intro_text_two":
-            MessageLookupByLibrary.simpleMessage("10% 退回您的钱包，以备将来再次使用"),
+            MessageLookupByLibrary.simpleMessage("存入 \$ 并兑换成其他货币，几乎不收取任何费用"),
         "invalid_number": MessageLookupByLibrary.simpleMessage("无效的号码"),
         "invalid_pincode": MessageLookupByLibrary.simpleMessage("PIN 码无效"),
         "invalid_qa_code": MessageLookupByLibrary.simpleMessage("无效的 QA 代码"),
         "invite_friend": MessageLookupByLibrary.simpleMessage("邀请朋友"),
         "invite_friend_text":
             MessageLookupByLibrary.simpleMessage("嘿，您的朋友给您分享了 fuse.cash 钱包："),
-        "invite_text": m0,
+        "invite_text": m2,
         "join_bonus": MessageLookupByLibrary.simpleMessage("您获得了加入奖励！"),
         "joined": MessageLookupByLibrary.simpleMessage("已加入"),
         "joined_community": MessageLookupByLibrary.simpleMessage(""),
@@ -182,12 +185,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "login": MessageLookupByLibrary.simpleMessage("登录"),
         "logout": MessageLookupByLibrary.simpleMessage("登出"),
         "map": MessageLookupByLibrary.simpleMessage("地图"),
+        "min_to_claim": MessageLookupByLibrary.simpleMessage(
+            "Minminal amount to claim - \$0.01"),
         "move_to": MessageLookupByLibrary.simpleMessage("移至"),
         "my_communities": MessageLookupByLibrary.simpleMessage("我的社区"),
         "name": MessageLookupByLibrary.simpleMessage("名称"),
         "network": MessageLookupByLibrary.simpleMessage("网络"),
         "network_fee": MessageLookupByLibrary.simpleMessage("网络费用"),
         "next_button": MessageLookupByLibrary.simpleMessage("下一步"),
+        "next_claim": MessageLookupByLibrary.simpleMessage("Next claim in"),
         "no": MessageLookupByLibrary.simpleMessage("否"),
         "no_activity": MessageLookupByLibrary.simpleMessage("没有活动"),
         "no_businesses": MessageLookupByLibrary.simpleMessage("未找到商家"),
@@ -258,7 +264,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("简单"),
         "skip_button": MessageLookupByLibrary.simpleMessage("跳过"),
         "slippage": MessageLookupByLibrary.simpleMessage("下跌"),
-        "smart": MessageLookupByLibrary.simpleMessage("我们通过向餐厅收取公平的费用来为他们提供更多"),
+        "smart": MessageLookupByLibrary.simpleMessage("智能"),
         "social": MessageLookupByLibrary.simpleMessage("社交媒体"),
         "something_went_wrong": MessageLookupByLibrary.simpleMessage("发生了一些错误"),
         "sqan_qr_code": MessageLookupByLibrary.simpleMessage("通过扫码来切换"),
@@ -291,7 +297,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollar 可以在 FuseCash 上的账户之间以及 Fuse Cash 之外的 Fuse 账户之间自由流动。用户也可以使用 FuseSwap DEX 从 Fuse Cash 直接将 FuseDollar 换成其他加密货币，并且很快将可用于赚取被动收入。"),
         "use_max": MessageLookupByLibrary.simpleMessage("使用最大值"),
-        "useful": MessageLookupByLibrary.simpleMessage("每次消费获得奖励"),
+        "useful": MessageLookupByLibrary.simpleMessage("有用"),
         "version": MessageLookupByLibrary.simpleMessage("应用版本"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "访问 fuse.io 以了解有关 Fuse 及其后台工作原理的更多信息。"),
@@ -325,6 +331,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "you_got_a": MessageLookupByLibrary.simpleMessage("您获得了"),
         "your_balance": MessageLookupByLibrary.simpleMessage("您的余额"),
         "your_balance_is_empty": MessageLookupByLibrary.simpleMessage("您没有余额"),
+        "your_projected_balance":
+            MessageLookupByLibrary.simpleMessage("Your projected balance"),
         "your_wallet_is_empty": MessageLookupByLibrary.simpleMessage("您的钱包是空的！")
       };
 }

@@ -12,6 +12,7 @@ import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/actions/news_actions.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux/redux.dart';
@@ -46,6 +47,7 @@ class _MyAppState extends State<MyApp> {
       isAuthenticated = true;
       log.info('JWT: $jwtToken');
       walletApi.setJwtToken(jwtToken);
+      store.dispatch(setUpFuseWeb3());
     }
   }
 
@@ -128,8 +130,7 @@ class _MyAppState extends State<MyApp> {
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
-                      flexColorSchemeLight.primaryVariant,
-                      flexColorSchemeLight.primary,
+                      flexColorSchemeLight.primary!,
                     ],
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,

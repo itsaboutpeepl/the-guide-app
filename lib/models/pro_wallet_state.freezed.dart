@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'pro_wallet_state.dart';
@@ -53,7 +54,7 @@ class _$ProWalletStateTearOff {
     );
   }
 
-  ProWalletState fromJson(Map<String, Object> json) {
+  ProWalletState fromJson(Map<String, Object?> json) {
     return ProWalletState.fromJson(json);
   }
 }
@@ -325,53 +326,40 @@ class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _ProWalletState &&
-            (identical(other.etherBalance, etherBalance) ||
-                const DeepCollectionEquality()
-                    .equals(other.etherBalance, etherBalance)) &&
-            (identical(other.erc20Tokens, erc20Tokens) ||
-                const DeepCollectionEquality()
-                    .equals(other.erc20Tokens, erc20Tokens)) &&
-            (identical(other.isFetchTransferEvents, isFetchTransferEvents) ||
-                const DeepCollectionEquality().equals(
-                    other.isFetchTransferEvents, isFetchTransferEvents)) &&
-            (identical(
-                    other.isListenToTransferEvents, isListenToTransferEvents) ||
-                const DeepCollectionEquality().equals(
-                    other.isListenToTransferEvents,
-                    isListenToTransferEvents)) &&
-            (identical(other.isProcessingTokensJobs, isProcessingTokensJobs) ||
-                const DeepCollectionEquality().equals(
-                    other.isProcessingTokensJobs, isProcessingTokensJobs)) &&
-            (identical(other.isFetchTokensBalances, isFetchTokensBalances) ||
-                const DeepCollectionEquality().equals(
-                    other.isFetchTokensBalances, isFetchTokensBalances)) &&
-            (identical(
-                    other.isProcessingSwapActions, isProcessingSwapActions) ||
-                const DeepCollectionEquality().equals(
-                    other.isProcessingSwapActions, isProcessingSwapActions)) &&
-            (identical(
-                    other.isFetchTokensLatestPrice, isFetchTokensLatestPrice) ||
-                const DeepCollectionEquality().equals(
-                    other.isFetchTokensLatestPrice,
-                    isFetchTokensLatestPrice)) &&
-            (identical(other.isFetchNewTokens, isFetchNewTokens) ||
-                const DeepCollectionEquality()
-                    .equals(other.isFetchNewTokens, isFetchNewTokens)));
+        (other.runtimeType == runtimeType &&
+            other is _ProWalletState &&
+            const DeepCollectionEquality()
+                .equals(other.etherBalance, etherBalance) &&
+            const DeepCollectionEquality()
+                .equals(other.erc20Tokens, erc20Tokens) &&
+            const DeepCollectionEquality()
+                .equals(other.isFetchTransferEvents, isFetchTransferEvents) &&
+            const DeepCollectionEquality().equals(
+                other.isListenToTransferEvents, isListenToTransferEvents) &&
+            const DeepCollectionEquality()
+                .equals(other.isProcessingTokensJobs, isProcessingTokensJobs) &&
+            const DeepCollectionEquality()
+                .equals(other.isFetchTokensBalances, isFetchTokensBalances) &&
+            const DeepCollectionEquality().equals(
+                other.isProcessingSwapActions, isProcessingSwapActions) &&
+            const DeepCollectionEquality().equals(
+                other.isFetchTokensLatestPrice, isFetchTokensLatestPrice) &&
+            const DeepCollectionEquality()
+                .equals(other.isFetchNewTokens, isFetchNewTokens));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(etherBalance) ^
-      const DeepCollectionEquality().hash(erc20Tokens) ^
-      const DeepCollectionEquality().hash(isFetchTransferEvents) ^
-      const DeepCollectionEquality().hash(isListenToTransferEvents) ^
-      const DeepCollectionEquality().hash(isProcessingTokensJobs) ^
-      const DeepCollectionEquality().hash(isFetchTokensBalances) ^
-      const DeepCollectionEquality().hash(isProcessingSwapActions) ^
-      const DeepCollectionEquality().hash(isFetchTokensLatestPrice) ^
-      const DeepCollectionEquality().hash(isFetchNewTokens);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(etherBalance),
+      const DeepCollectionEquality().hash(erc20Tokens),
+      const DeepCollectionEquality().hash(isFetchTransferEvents),
+      const DeepCollectionEquality().hash(isListenToTransferEvents),
+      const DeepCollectionEquality().hash(isProcessingTokensJobs),
+      const DeepCollectionEquality().hash(isFetchTokensBalances),
+      const DeepCollectionEquality().hash(isProcessingSwapActions),
+      const DeepCollectionEquality().hash(isFetchTokensLatestPrice),
+      const DeepCollectionEquality().hash(isFetchNewTokens));
 
   @JsonKey(ignore: true)
   @override
@@ -402,31 +390,31 @@ abstract class _ProWalletState extends ProWalletState {
 
   @override
   @JsonKey(fromJson: balanceFromJson)
-  BigInt? get etherBalance => throw _privateConstructorUsedError;
+  BigInt? get etherBalance;
   @override
   @JsonKey(fromJson: erc20TokensFromJson)
-  Map<String, Token>? get erc20Tokens => throw _privateConstructorUsedError;
+  Map<String, Token>? get erc20Tokens;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTransferEvents => throw _privateConstructorUsedError;
+  bool get isFetchTransferEvents;
   @override
   @JsonKey(ignore: true)
-  bool get isListenToTransferEvents => throw _privateConstructorUsedError;
+  bool get isListenToTransferEvents;
   @override
   @JsonKey(ignore: true)
-  bool get isProcessingTokensJobs => throw _privateConstructorUsedError;
+  bool get isProcessingTokensJobs;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTokensBalances => throw _privateConstructorUsedError;
+  bool get isFetchTokensBalances;
   @override
   @JsonKey(ignore: true)
-  bool get isProcessingSwapActions => throw _privateConstructorUsedError;
+  bool get isProcessingSwapActions;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTokensLatestPrice => throw _privateConstructorUsedError;
+  bool get isFetchTokensLatestPrice;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchNewTokens => throw _privateConstructorUsedError;
+  bool get isFetchNewTokens;
   @override
   @JsonKey(ignore: true)
   _$ProWalletStateCopyWith<_ProWalletState> get copyWith =>

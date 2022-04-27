@@ -20,7 +20,7 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en_PH';
 
-  static String m0(name) =>
+  static String m2(name) =>
       "Sending money to ${name} will automatically invite them to Fuse and let them redeem the funds you sent";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
@@ -163,11 +163,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "insufficient_fund":
             MessageLookupByLibrary.simpleMessage("Insufficient funds"),
         "intro_text_one": MessageLookupByLibrary.simpleMessage(
-            "Suportahan ang iyong mga lokal na restawran, sa isang platform na nagbibigay sa kanila ng mas malaking bahagi ng binabayaran mo"),
+            "Gamitin ang wallet para magpadala ng pera \n sa iyong mga kaibigan ng libre at walang charges"),
         "intro_text_three": MessageLookupByLibrary.simpleMessage(
-            "I-top up ang iyong Peepl wallet, mas marami o kakaunti ang gusto mo, direkta mula sa iyong bank account gamit ang Stripe. Mabilis at ligtas ito"),
+            "Hold DCA at Ethereum assets at i-access \n ang desentralisadong pananalapi sa ilang pindot"),
         "intro_text_two": MessageLookupByLibrary.simpleMessage(
-            "10% pabalik sa iyong pitaka, upang gumastos muli sa hinaharap"),
+            "Gamiting pambayad at mabayaran gamit ang crypto \n at tingnan kung saan maaari kang makabili malapit sa iyo"),
         "invalid_number":
             MessageLookupByLibrary.simpleMessage("Invalid number"),
         "invalid_pincode":
@@ -178,7 +178,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Invite a friend"),
         "invite_friend_text": MessageLookupByLibrary.simpleMessage(
             "Hey, your friend shared with you the fuse.cash wallet: "),
-        "invite_text": m0,
+        "invite_text": m2,
         "join_bonus": MessageLookupByLibrary.simpleMessage(
             "Nakakuha ka ng bonus sa pagsali!"),
         "joined": MessageLookupByLibrary.simpleMessage("Joined"),
@@ -286,8 +286,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "simple": MessageLookupByLibrary.simpleMessage("Simple"),
         "skip_button": MessageLookupByLibrary.simpleMessage("Lagpasan"),
         "slippage": MessageLookupByLibrary.simpleMessage("Slippage"),
-        "smart": MessageLookupByLibrary.simpleMessage(
-            "Mas binibigyan namin ang mga restawran sa pamamagitan ng pagsingil sa kanila ng patas na bayarin"),
+        "smart": MessageLookupByLibrary.simpleMessage("Smart"),
         "social": MessageLookupByLibrary.simpleMessage("Social"),
         "something_went_wrong":
             MessageLookupByLibrary.simpleMessage("Something went wrong"),
@@ -330,8 +329,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "use_fusd_explain": MessageLookupByLibrary.simpleMessage(
             "FuseDollars can be freely moved between accounts on FuseCash, as well as to Fuse accounts outside Fuse Cash. They can also be swapped for other cryptocurrencies straight from Fuse Cash using the FuseSwap DEX, and they will soon be usable for earning passive income."),
         "use_max": MessageLookupByLibrary.simpleMessage("Use max"),
-        "useful": MessageLookupByLibrary.simpleMessage(
-            "Gantimpalaan Para sa bawat Gastos"),
+        "useful": MessageLookupByLibrary.simpleMessage("Kapakipakinabang"),
         "version": MessageLookupByLibrary.simpleMessage("Bersyon"),
         "visit_fuseio": MessageLookupByLibrary.simpleMessage(
             "Visit fuse.io to learn more about Fuse and how things work behind the scene."),

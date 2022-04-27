@@ -19,7 +19,6 @@ class AppState with _$AppState {
   factory AppState({
     @UserStateConverter() required UserState userState,
     @CashWalletStateConverter() required CashWalletState cashWalletState,
-    @ProWalletStateConverter() required ProWalletState proWalletState,
     @SwapStateConverter() required SwapState swapState,
     @HomePageStateConverter() required HomePageState homePageState,
     @NewsStateConverter() required NewsState newsState,
@@ -29,7 +28,6 @@ class AppState with _$AppState {
     return AppState(
       userState: UserState.initial(),
       cashWalletState: CashWalletState.initial(),
-      proWalletState: ProWalletState.initial(),
       swapState: SwapState.initial(),
       homePageState: HomePageState.initial(),
       newsState: NewsState.initial(),

@@ -1,4 +1,5 @@
 import 'package:contacts_service/contacts_service.dart';
+import 'package:decimal/decimal.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -33,8 +34,7 @@ class ActionDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DateTime dateTime =
-        DateTime.fromMillisecondsSinceEpoch(action.timestamp);
+    final DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(action.timestamp);
     final String name = action.map(
       createWallet: (_) => '',
       joinCommunity: (_) => '',
@@ -62,22 +62,19 @@ class ActionDetailsScreen extends StatelessWidget {
         final Token? token = action.map(
           createWallet: (value) => null,
           joinCommunity: (value) => null,
-          fiatDeposit: (value) =>
-              viewModel.tokens[fuseDollarToken.address.toLowerCase()],
+          fiatDeposit: (value) => viewModel.tokens[fuseDollarToken.address.toLowerCase()],
           bonus: (value) => viewModel.tokens[value.tokenAddress.toLowerCase()],
           send: (value) => viewModel.tokens[value.tokenAddress.toLowerCase()],
-          receive: (value) =>
-              viewModel.tokens[value.tokenAddress.toLowerCase()],
+          receive: (value) => viewModel.tokens[value.tokenAddress.toLowerCase()],
           swap: (value) => viewModel.tokens.values.firstWhere(
             (element) => element.symbol == value.tradeInfo?.outputToken,
           ),
         );
-        final bool hasPriceInfo =
-            ![null, '', '0', 0, 'NaN'].contains(token!.priceInfo!.quote);
+        final bool hasPriceInfo = ![null, '', '0', 0, 'NaN'].contains(token!.priceInfo!.quote);
         final String amount = hasPriceInfo
             ? '\$' +
                 action.getAmount(
-                  priceInfo: token.priceInfo,
+                  token.priceInfo,
                 ) +
                 ' (' +
                 action.getAmount() +
@@ -103,9 +100,7 @@ class ActionDetailsScreen extends StatelessWidget {
                         children: <Widget>[
                           action.getStatusIcon(),
                           Text(
-                            (action.isConfirmed()
-                                ? I10n.of(context).approved
-                                : action.status),
+                            (action.isConfirmed() ? I10n.of(context).approved : action.status),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
@@ -180,39 +175,24 @@ class ActionDetailsScreen extends StatelessWidget {
                                             send: (value) => '',
                                             receive: (value) => '',
                                             swap: (value) {
-                                              final Token _token = viewModel
-                                                  .tokens.values
-                                                  .firstWhere(
-                                                (element) =>
-                                                    element.symbol ==
-                                                    value.tradeInfo!.inputToken,
+                                              final Token _token = viewModel.tokens.values.firstWhere(
+                                                (element) => element.symbol == value.tradeInfo!.inputToken,
                                               );
                                               final String amount =
-                                                  smallNumberTest(num.parse(
-                                                          value.tradeInfo!
-                                                              .inputAmount))
-                                                      ? value.tradeInfo!
-                                                          .inputAmount
-                                                      : smallValuesConvertor(
-                                                          num.parse(value
-                                                              .tradeInfo!
-                                                              .inputAmount));
+                                                  Formatter.isSmallThan(Decimal.parse(value.tradeInfo!.inputAmount))
+                                                      ? value.tradeInfo!.inputAmount
+                                                      : Formatter.smallNumbersConvertor(
+                                                          Decimal.parse(value.tradeInfo!.inputAmount));
 
-                                              double a = double.parse(value
-                                                          .tradeInfo
-                                                          ?.inputAmount ??
-                                                      '0') *
-                                                  double.parse(
-                                                      _token.priceInfo!.quote);
-                                              return '${amount + ' ' + value.tradeInfo!.inputToken} (\$${display(num.tryParse(a.toString()))})';
+                                              double a = double.parse(value.tradeInfo?.inputAmount ?? '0') *
+                                                  double.parse(_token.priceInfo!.quote);
+                                              return '${amount + ' ' + value.tradeInfo!.inputToken} (\$${display2(num.tryParse(a.toString()))})';
                                             },
                                           )
                                         : displayName,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondaryVariant,
+                                      color: Theme.of(context).colorScheme.secondary,
                                     ),
                                   ),
                                 )
@@ -243,17 +223,15 @@ class ActionDetailsScreen extends StatelessWidget {
                                 send: (value) => '',
                                 receive: (value) => '',
                                 swap: (value) {
-                                  final String amount = smallNumberTest(
-                                          num.parse(
-                                              value.tradeInfo!.outputAmount))
-                                      ? value.tradeInfo!.outputAmount
-                                      : smallValuesConvertor(num.parse(
-                                          value.tradeInfo!.outputAmount));
+                                  final String amount =
+                                      Formatter.isSmallThan(Decimal.parse(value.tradeInfo?.outputAmount ?? '0'))
+                                          ? value.tradeInfo?.outputAmount ?? '0'
+                                          : Formatter.smallNumbersConvertor(
+                                              Decimal.parse(value.tradeInfo?.outputAmount ?? '0'));
 
-                                  double val = double.parse(
-                                          value.tradeInfo!.outputAmount) *
-                                      double.parse(token.priceInfo!.quote);
-                                  return '${amount + ' ' + value.tradeInfo!.outputToken} (\$${display(num.tryParse(val.toString()))})';
+                                  double val = double.parse(value.tradeInfo?.outputAmount ?? '0') *
+                                      double.parse(token.priceInfo?.quote ?? '0');
+                                  return '${amount + ' ' + (value.tradeInfo?.outputToken ?? '0')} (\$${display2(num.tryParse(val.toString()))})';
                                 },
                               ),
                             ),
@@ -271,7 +249,7 @@ class ActionDetailsScreen extends StatelessWidget {
                           : rowItem(
                               context,
                               I10n.of(context).address,
-                              formatAddress(accountAddress),
+                              Formatter.formatEthAddress(accountAddress),
                               withCopy: true,
                               onTap: () {
                                 Clipboard.setData(
@@ -320,11 +298,10 @@ class ActionDetailsScreen extends StatelessWidget {
                           : rowItem(
                               context,
                               I10n.of(context).txn,
-                              formatAddress(action.txHash),
+                              Formatter.formatEthAddress(action.txHash),
                               withCopy: true,
                               onTap: () {
-                                Clipboard.setData(
-                                    ClipboardData(text: action.txHash));
+                                Clipboard.setData(ClipboardData(text: action.txHash));
                                 showCopiedFlushbar(context);
                               },
                             ),
@@ -342,8 +319,7 @@ class ActionDetailsScreen extends StatelessWidget {
                           : rowItem(
                               context,
                               I10n.of(context).date_and_time,
-                              DateFormat('dd.MM.yy - hh:mm aaa')
-                                  .format(dateTime),
+                              DateFormat('dd.MM.yy - hh:mm aaa').format(dateTime),
                             )
                     ],
                   ),
@@ -390,7 +366,7 @@ class ActionDetailsScreen extends StatelessWidget {
                   Text(
                     value,
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.secondaryVariant,
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
                   )
                 ],
@@ -411,7 +387,7 @@ class ActionDetailsScreen extends StatelessWidget {
             Text(
               value,
               style: TextStyle(
-                color: Theme.of(context).colorScheme.secondaryVariant,
+                color: Theme.of(context).colorScheme.secondary,
               ),
             )
           ],

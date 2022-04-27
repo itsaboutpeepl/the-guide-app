@@ -17,8 +17,6 @@ class ContactTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Slidable(
-      actionPane: SlidableDrawerActionPane(),
-      actionExtentRatio: 0.25,
       child: Container(
         decoration: BoxDecoration(
           border: Border(

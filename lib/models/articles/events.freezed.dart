@@ -1,5 +1,6 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
 part of 'events.dart';
@@ -42,7 +43,7 @@ class _$EventsTearOff {
     );
   }
 
-  Events fromJson(Map<String, Object> json) {
+  Events fromJson(Map<String, Object?> json) {
     return Events.fromJson(json);
   }
 }
@@ -253,44 +254,32 @@ class _$_Events extends _Events {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _Events &&
-            (identical(other.startDate, startDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.startDate, startDate)) &&
-            (identical(other.endDate, endDate) ||
-                const DeepCollectionEquality()
-                    .equals(other.endDate, endDate)) &&
-            (identical(other.eventTitle, eventTitle) ||
-                const DeepCollectionEquality()
-                    .equals(other.eventTitle, eventTitle)) &&
-            (identical(other.location, location) ||
-                const DeepCollectionEquality()
-                    .equals(other.location, location)) &&
-            (identical(other.latitude, latitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.latitude, latitude)) &&
-            (identical(other.longitude, longitude) ||
-                const DeepCollectionEquality()
-                    .equals(other.longitude, longitude)) &&
-            (identical(other.description, description) ||
-                const DeepCollectionEquality()
-                    .equals(other.description, description)) &&
-            (identical(other.bookingLink, bookingLink) ||
-                const DeepCollectionEquality()
-                    .equals(other.bookingLink, bookingLink)));
+        (other.runtimeType == runtimeType &&
+            other is _Events &&
+            const DeepCollectionEquality().equals(other.startDate, startDate) &&
+            const DeepCollectionEquality().equals(other.endDate, endDate) &&
+            const DeepCollectionEquality()
+                .equals(other.eventTitle, eventTitle) &&
+            const DeepCollectionEquality().equals(other.location, location) &&
+            const DeepCollectionEquality().equals(other.latitude, latitude) &&
+            const DeepCollectionEquality().equals(other.longitude, longitude) &&
+            const DeepCollectionEquality()
+                .equals(other.description, description) &&
+            const DeepCollectionEquality()
+                .equals(other.bookingLink, bookingLink));
   }
 
   @override
-  int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(startDate) ^
-      const DeepCollectionEquality().hash(endDate) ^
-      const DeepCollectionEquality().hash(eventTitle) ^
-      const DeepCollectionEquality().hash(location) ^
-      const DeepCollectionEquality().hash(latitude) ^
-      const DeepCollectionEquality().hash(longitude) ^
-      const DeepCollectionEquality().hash(description) ^
-      const DeepCollectionEquality().hash(bookingLink);
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(startDate),
+      const DeepCollectionEquality().hash(endDate),
+      const DeepCollectionEquality().hash(eventTitle),
+      const DeepCollectionEquality().hash(location),
+      const DeepCollectionEquality().hash(latitude),
+      const DeepCollectionEquality().hash(longitude),
+      const DeepCollectionEquality().hash(description),
+      const DeepCollectionEquality().hash(bookingLink));
 
   @JsonKey(ignore: true)
   @override
@@ -318,21 +307,21 @@ abstract class _Events extends Events {
   factory _Events.fromJson(Map<String, dynamic> json) = _$_Events.fromJson;
 
   @override
-  DateTime get startDate => throw _privateConstructorUsedError;
+  DateTime get startDate;
   @override
-  DateTime get endDate => throw _privateConstructorUsedError;
+  DateTime get endDate;
   @override
-  String get eventTitle => throw _privateConstructorUsedError;
+  String get eventTitle;
   @override
-  String get location => throw _privateConstructorUsedError;
+  String get location;
   @override
-  String get latitude => throw _privateConstructorUsedError;
+  String get latitude;
   @override
-  String get longitude => throw _privateConstructorUsedError;
+  String get longitude;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get bookingLink => throw _privateConstructorUsedError;
+  String get bookingLink;
   @override
   @JsonKey(ignore: true)
   _$EventsCopyWith<_Events> get copyWith => throw _privateConstructorUsedError;

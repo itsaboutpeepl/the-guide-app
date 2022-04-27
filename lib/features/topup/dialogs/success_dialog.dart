@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 import 'package:guide_liverpool/features/topup/screens/topup.dart';
 import 'package:guide_liverpool/models/app_state.dart';
-import 'package:guide_liverpool/utils/constants.dart';
 
 class TopUpSuccess extends StatefulWidget {
   final String amountText;
@@ -15,8 +13,7 @@ class TopUpSuccess extends StatefulWidget {
   _TopUpSuccessState createState() => _TopUpSuccessState();
 }
 
-class _TopUpSuccessState extends State<TopUpSuccess>
-    with SingleTickerProviderStateMixin {
+class _TopUpSuccessState extends State<TopUpSuccess> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> scaleAnimation;
   bool isPreloading = false;
@@ -31,10 +28,8 @@ class _TopUpSuccessState extends State<TopUpSuccess>
   void initState() {
     super.initState();
 
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+    controller = AnimationController(vsync: this, duration: Duration(milliseconds: 400));
+    scaleAnimation = CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
     controller.addListener(() {
       setState(() {});
@@ -88,9 +83,7 @@ class _TopUpSuccessState extends State<TopUpSuccess>
                     fontSize: 20,
                   ),
                 ),
-                widget.showOrderNow
-                    ? SizedBox(height: 20.0)
-                    : SizedBox.shrink(),
+                widget.showOrderNow ? SizedBox(height: 20.0) : SizedBox.shrink(),
                 widget.showOrderNow
                     ? Center(
                         child: StoreConnector<AppState, TopUpViewModel>(
@@ -101,17 +94,6 @@ class _TopUpSuccessState extends State<TopUpSuccess>
                             fontSize: 20,
                             onPressed: () {
                               context.router.popUntilRoot();
-                              context.navigateTo(
-                                WebviewTab(
-                                  children: [
-                                    WebViewWidget(
-                                      url:
-                                          '$peeplUrl/vendors?wallet=${viewModel.walletAddress}',
-                                      walletAddress: viewModel.walletAddress,
-                                    )
-                                  ],
-                                ),
-                              );
                             },
                           ),
                         ),
