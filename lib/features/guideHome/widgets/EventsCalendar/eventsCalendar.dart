@@ -49,7 +49,7 @@ class _EventCalendarState extends State<EventCalendar> {
               Divider(
                 thickness: 3,
                 endIndent: MediaQuery.of(context).size.width * 0.8,
-                color: Theme.of(context).colorScheme.primaryVariant,
+                color: Theme.of(context).colorScheme.primary,
               ),
               Card(
                 color: Theme.of(context).primaryColor,
@@ -61,10 +61,12 @@ class _EventCalendarState extends State<EventCalendar> {
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 65,
-                      left: 8,
-                      child: Column(
-                        children: _buildPageIndicator(),
+                      top: 15,
+                      left: 6,
+                      child: Align(
+                        child: Column(
+                          children: _buildPageIndicator(viewmodel.eventsList.length),
+                        ),
                       ),
                     ),
                     Container(
@@ -123,9 +125,9 @@ class _EventCalendarState extends State<EventCalendar> {
     );
   }
 
-  List<Widget> _buildPageIndicator() {
+  List<Widget> _buildPageIndicator(int listLength) {
     List<Widget> list = [];
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < listLength; i++) {
       list.add(i == _currentIndex ? _indicator(true) : _indicator(false));
     }
     return list;
