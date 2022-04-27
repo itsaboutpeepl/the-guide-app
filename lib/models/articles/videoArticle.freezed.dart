@@ -28,7 +28,7 @@ class _$VideoArticleTearOff {
       required String videoURL,
       required List<String> category,
       required int rewardAmount,
-      required int postID,
+      required String postID,
       required String postURL}) {
     return _VideoArticle(
       title: title,
@@ -56,7 +56,7 @@ mixin _$VideoArticle {
   String get videoURL => throw _privateConstructorUsedError;
   List<String> get category => throw _privateConstructorUsedError;
   int get rewardAmount => throw _privateConstructorUsedError;
-  int get postID => throw _privateConstructorUsedError;
+  String get postID => throw _privateConstructorUsedError;
   String get postURL => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -76,7 +76,7 @@ abstract class $VideoArticleCopyWith<$Res> {
       String videoURL,
       List<String> category,
       int rewardAmount,
-      int postID,
+      String postID,
       String postURL});
 }
 
@@ -122,7 +122,7 @@ class _$VideoArticleCopyWithImpl<$Res> implements $VideoArticleCopyWith<$Res> {
       postID: postID == freezed
           ? _value.postID
           : postID // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       postURL: postURL == freezed
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
@@ -144,7 +144,7 @@ abstract class _$VideoArticleCopyWith<$Res>
       String videoURL,
       List<String> category,
       int rewardAmount,
-      int postID,
+      String postID,
       String postURL});
 }
 
@@ -192,7 +192,7 @@ class __$VideoArticleCopyWithImpl<$Res> extends _$VideoArticleCopyWithImpl<$Res>
       postID: postID == freezed
           ? _value.postID
           : postID // ignore: cast_nullable_to_non_nullable
-              as int,
+              as String,
       postURL: postURL == freezed
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
@@ -229,7 +229,7 @@ class _$_VideoArticle extends _VideoArticle {
   @override
   final int rewardAmount;
   @override
-  final int postID;
+  final String postID;
   @override
   final String postURL;
 
@@ -283,7 +283,7 @@ abstract class _VideoArticle extends VideoArticle {
       required String videoURL,
       required List<String> category,
       required int rewardAmount,
-      required int postID,
+      required String postID,
       required String postURL}) = _$_VideoArticle;
   _VideoArticle._() : super._();
 
@@ -301,7 +301,7 @@ abstract class _VideoArticle extends VideoArticle {
   @override
   int get rewardAmount;
   @override
-  int get postID;
+  String get postID;
   @override
   String get postURL;
   @override

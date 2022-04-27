@@ -36,13 +36,11 @@ class HomePageState with _$HomePageState {
   factory HomePageState.fromJson(dynamic json) => _$HomePageStateFromJson(json);
 }
 
-class HomePageStateConverter
-    implements JsonConverter<HomePageState, Map<String, dynamic>?> {
+class HomePageStateConverter implements JsonConverter<HomePageState, Map<String, dynamic>?> {
   const HomePageStateConverter();
 
   @override
-  HomePageState fromJson(Map<String, dynamic>? json) =>
-      json != null ? HomePageState.fromJson(json) : HomePageState.initial();
+  HomePageState fromJson(Map<String, dynamic>? json) => HomePageState.initial();
 
   @override
   Map<String, dynamic> toJson(HomePageState instance) => instance.toJson();

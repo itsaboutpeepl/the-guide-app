@@ -14,7 +14,7 @@ _$_VideoArticle _$$_VideoArticleFromJson(Map<String, dynamic> json) =>
       category:
           (json['category'] as List<dynamic>).map((e) => e as String).toList(),
       rewardAmount: json['rewardAmount'] as int,
-      postID: json['postID'] as int,
+      postID: json['postID'] as String,
       postURL: json['postURL'] as String,
     );
 

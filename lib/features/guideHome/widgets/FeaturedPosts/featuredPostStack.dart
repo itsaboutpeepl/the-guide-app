@@ -9,8 +9,7 @@ class FeaturedPostStack extends StatefulWidget {
   _FeaturedPostStackState createState() => _FeaturedPostStackState();
 }
 
-class _FeaturedPostStackState extends State<FeaturedPostStack>
-    with TickerProviderStateMixin {
+class _FeaturedPostStackState extends State<FeaturedPostStack> with TickerProviderStateMixin {
   int currentIndex = 0;
   late AnimationController _animationController;
   late CurvedAnimation _curvedAnimation;
@@ -31,25 +30,21 @@ class _FeaturedPostStackState extends State<FeaturedPostStack>
       vsync: this,
       duration: Duration(milliseconds: 150),
     );
-    _curvedAnimation =
-        CurvedAnimation(parent: _animationController, curve: Curves.easeOut);
+    _curvedAnimation = CurvedAnimation(parent: _animationController, curve: Curves.easeOut);
 
-    _translationAnim = Tween(begin: Offset(0.0, 0.0), end: Offset(-1000.0, 0.0))
-        .animate(_animationController)
+    _translationAnim = Tween(begin: Offset(0.0, 0.0), end: Offset(-1000.0, 0.0)).animate(_animationController)
       ..addListener(() {
         setState(() {});
       });
 
     _scaleAnim = Tween(begin: 0.965, end: 1.0).animate(_curvedAnimation);
-    _moveAnim = Tween(begin: Offset(0.0, 0.05), end: Offset(0.0, 0.0))
-        .animate(_curvedAnimation);
+    _moveAnim = Tween(begin: Offset(0.0, 0.05), end: Offset(0.0, 0.0)).animate(_curvedAnimation);
   }
 
   @override
   void dispose() {
     _tabController.dispose();
     _animationController.dispose();
-
     super.dispose();
   }
 
@@ -57,65 +52,58 @@ class _FeaturedPostStackState extends State<FeaturedPostStack>
   Widget build(BuildContext context) {
     return StoreConnector<AppState, FeaturedPostStackViewModel>(
       distinct: true,
-      onInit: (store) => {
-        store.state.homePageState.featuredPosts.forEach((element) {
-          _listOfPosts.add(
-            FeaturedPost(
-              index: store.state.homePageState.featuredPosts.indexOf(element),
-              listOfArticles: store.state.homePageState.featuredPosts,
-            ),
-          );
-        })
-      },
       converter: FeaturedPostStackViewModel.fromStore,
-      builder: (_, viewmodel) => SliverToBoxAdapter(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 15, left: 15),
-              child: Text(
-                "The Latest News",
-                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+      builder: (_, viewmodel) {
+        _listOfPosts.addAll(viewmodel.listOfFeaturedPosts);
+        return SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 15, left: 15),
+                child: Text(
+                  "The Latest News",
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
+                ),
               ),
-            ),
-            SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Divider(
-                thickness: 3,
-                endIndent: MediaQuery.of(context).size.width * 0.8,
-                color: Theme.of(context).colorScheme.primary,
+              SizedBox(
+                height: 5,
               ),
-            ),
-            Stack(
-              clipBehavior: Clip.antiAlias,
-              children: _listOfPosts.reversed.map(
-                (featuredPost) {
-                  if (_listOfPosts.indexOf(featuredPost) <= 3) {
-                    return GestureDetector(
-                      onHorizontalDragEnd: _horizontalDragEnd,
-                      child: Transform.translate(
-                        offset: _getFlickTransformOffset(featuredPost),
-                        child: FractionalTranslation(
-                          translation: _getStackedCardOffset(featuredPost),
-                          child: Transform.scale(
-                              scale: _getStackedCardScale(featuredPost),
-                              child: featuredPost),
-                        ),
-                      ),
-                    );
-                  } else {
-                    return Container();
-                  }
-                },
-              ).toList(),
-            ),
-          ],
-        ),
-      ),
+              Padding(
+                padding: const EdgeInsets.only(left: 15),
+                child: Divider(
+                  thickness: 3,
+                  endIndent: MediaQuery.of(context).size.width * 0.8,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              _listOfPosts.isNotEmpty
+                  ? Stack(
+                      children: _listOfPosts.reversed.map(
+                        (featuredPost) {
+                          if (_listOfPosts.indexOf(featuredPost) <= 3) {
+                            return GestureDetector(
+                              onHorizontalDragEnd: _horizontalDragEnd,
+                              child: Transform.translate(
+                                offset: _getFlickTransformOffset(featuredPost),
+                                child: FractionalTranslation(
+                                  translation: _getStackedCardOffset(featuredPost),
+                                  child:
+                                      Transform.scale(scale: _getStackedCardScale(featuredPost), child: featuredPost),
+                                ),
+                              ),
+                            );
+                          } else {
+                            return Container();
+                          }
+                        },
+                      ).toList(),
+                    )
+                  : SizedBox.shrink(),
+            ],
+          ),
+        );
+      },
     );
   }
 

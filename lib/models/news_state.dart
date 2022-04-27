@@ -29,13 +29,11 @@ class NewsState with _$NewsState {
   factory NewsState.fromJson(dynamic json) => _$NewsStateFromJson(json);
 }
 
-class NewsStateConverter
-    implements JsonConverter<NewsState, Map<String, dynamic>?> {
+class NewsStateConverter implements JsonConverter<NewsState, Map<String, dynamic>?> {
   const NewsStateConverter();
 
   @override
-  NewsState fromJson(Map<String, dynamic>? json) =>
-      json != null ? NewsState.fromJson(json) : NewsState.initial();
+  NewsState fromJson(Map<String, dynamic>? json) => NewsState.initial();
 
   @override
   Map<String, dynamic> toJson(NewsState instance) => instance.toJson();

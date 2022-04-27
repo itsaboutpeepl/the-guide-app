@@ -27,8 +27,10 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
     return StoreConnector<AppState, CategoryArticleListViewModel>(
       distinct: false,
       converter: (store) => CategoryArticleListViewModel.fromStore(store),
-      onInit: (store) => {
-        store = StoreProvider.of<AppState>(context),
+      onInit: (store) {
+        store.dispatch(updateCurrentTabList(
+          query: store.state.newsState.categories[0].categoryID.toString(),
+        ));
         _scrollController.addListener(
           () {
             if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
@@ -39,7 +41,7 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
               _page++;
             }
           },
-        ),
+        );
       },
       builder: (_, vm) {
         return ListView.separated(

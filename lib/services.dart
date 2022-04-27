@@ -7,6 +7,7 @@ import 'package:guide_liverpool/constants/urls.dart';
 import 'package:guide_liverpool/services/apis/explorer.dart';
 import 'package:guide_liverpool/services/apis/fuseswap.dart';
 import 'package:guide_liverpool/services/apis/news.dart';
+import 'package:guide_liverpool/services/apis/peeplMedia.dart';
 import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:wallet_core/wallet_core.dart';
@@ -29,6 +30,8 @@ final WalletApi walletApi = getIt<WalletApi>();
 final FuseSwapService fuseSwapService = getIt<FuseSwapService>();
 
 final NewsService newsService = getIt<NewsService>();
+
+final PeeplMediaService peeplMediaService = getIt<PeeplMediaService>();
 
 final Graph graph = getIt<Graph>();
 

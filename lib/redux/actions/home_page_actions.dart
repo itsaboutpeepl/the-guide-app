@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:guide_liverpool/models/articles/categoryArticles.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
@@ -69,7 +70,8 @@ ThunkAction fetchFeaturedPosts() {
 ThunkAction fetchFeaturedVideos() {
   return (Store store) async {
     try {
-      List<VideoArticle> videoArticles = await newsService.featuredVideos();
+      await peeplMediaService.loginToDashboard();
+      List<VideoArticle> videoArticles = await peeplMediaService.featuredVideos();
       store.dispatch(UpdateFeaturedVideos(featuredVideos: videoArticles));
     } catch (e, s) {
       log.error('ERROR - fetchFeaturedVideos $e');
@@ -103,7 +105,7 @@ ThunkAction fetchDirectoryList() {
     try {
       List<Directory> directoryList = await newsService.directoryList();
       store.dispatch(UpdateDirectoryList(directoryList: directoryList));
-      store.dispatch(UpdateIsLoading(isLoading: false));
+      Future.delayed(Duration(seconds: 2), () => store.dispatch(UpdateIsLoading(isLoading: false)));
     } catch (e, s) {
       log.error('ERROR - fetchDirectoryList $e');
       await Sentry.captureException(
@@ -128,6 +130,26 @@ ThunkAction fetchHomePageData() {
         e,
         stackTrace: s,
         hint: 'ERROR - fetchHomePageData $e',
+      );
+    }
+  };
+}
+
+ThunkAction createVideoView(
+    String videoID, void Function(int rewardAmount) successCallback, VoidCallback errorCallback) {
+  return (Store store) async {
+    try {
+      int rewardsIssued = await peeplMediaService.createVideoView(videoID, store.state.userState.walletAddress);
+      if (rewardsIssued > 0) {
+        successCallback(rewardsIssued);
+      }
+    } catch (e, s) {
+      errorCallback();
+      log.error('ERROR - createVideoView $e');
+      await Sentry.captureException(
+        e,
+        stackTrace: s,
+        hint: 'ERROR - createVideoView $e',
       );
     }
   };

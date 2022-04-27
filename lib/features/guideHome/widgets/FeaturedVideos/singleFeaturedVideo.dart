@@ -3,17 +3,19 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/customControls.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/youtubeToStream.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
+import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:video_player/video_player.dart';
 import 'package:redux/redux.dart';
 
 class SingleFeaturedVideo extends StatefulWidget {
   final VideoArticle videoArticleItem;
-  const SingleFeaturedVideo({Key? key, required this.videoArticleItem})
-      : super(key: key);
+  const SingleFeaturedVideo({Key? key, required this.videoArticleItem}) : super(key: key);
 
   @override
   State<SingleFeaturedVideo> createState() => _SingleFeaturedVideoState();
@@ -24,6 +26,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
   ChewieController? _chewieController;
   bool _isPlayBackCompletedOnce = false;
   late Store store;
+  bool _isLoading = true;
 
   @override
   void initState() {
@@ -52,7 +55,9 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
       _videoPlayerController.initialize(),
     ]);
     _createChewieController();
-    setState(() {});
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   void _createChewieController() {
@@ -62,25 +67,20 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
       looping: false,
       autoInitialize: false,
       customControls: CustomControls(),
-      deviceOrientationsOnEnterFullScreen: [
-        DeviceOrientation.landscapeRight,
-        DeviceOrientation.landscapeLeft
-      ],
+      deviceOrientationsOnEnterFullScreen: [DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft],
       showOptions: false,
       showControlsOnInitialize: false,
       deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
       allowPlaybackSpeedChanging: false,
       allowedScreenSleep: false,
-      aspectRatio: 1.46,
     );
 
     //Listener that checks for playback completion.
     _videoPlayerController.addListener(
       () {
-        if (_videoPlayerController.value.position ==
-                _videoPlayerController.value.duration &&
+        if (_videoPlayerController.value.position == _videoPlayerController.value.duration &&
             !_isPlayBackCompletedOnce) {
-          //store.dispatch(UpdatePlayConfetti(playConfetti: true));
+          store.dispatch(UpdatePlayConfetti(playConfetti: true));
           _chewieController!.exitFullScreen();
           _isPlayBackCompletedOnce = true;
 
@@ -89,6 +89,13 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
             () => {
               //showPlayBackCompletedFlushBar(context),
               //store.dispatch(UpdatePlayConfetti(playConfetti: false)) --remove
+              store.dispatch(
+                createVideoView(
+                  widget.videoArticleItem.postID,
+                  (rewardAmount) => showPlayBackCompletedFlushBar(context, rewardAmount),
+                  () => showErrorSnack(context: context),
+                ),
+              )
             },
           );
 
@@ -101,9 +108,8 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
   }
 
   void _playAndToggle() {
-    _chewieController!.isPlaying
-        ? _chewieController!.pause()
-        : _chewieController!.play();
+    if (_isLoading) return;
+    _chewieController!.isPlaying ? _chewieController!.pause() : _chewieController!.play();
     _chewieController!.toggleFullScreen();
   }
 
@@ -119,9 +125,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
             fit: StackFit.expand,
             alignment: Alignment.center,
             children: [
-              _chewieController != null &&
-                      _chewieController!
-                          .videoPlayerController.value.isInitialized
+              _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
                   ? Positioned(
                       width: MediaQuery.of(context).size.width * 0.55,
                       child: Chewie(
@@ -155,8 +159,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                     ),
                   ),
                   child: Padding(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
                     child: Text(
                       widget.videoArticleItem.title,
                       style: TextStyle(
@@ -168,46 +171,16 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                   ),
                 ),
               ),
-              // Positioned(
-              //   top: 20,
-              //   right: 20,
-              //   child: Container(
-              //     height: 55,
-              //     width: 50,
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.all(Radius.circular(10)),
-              //       color: Colors.white,
-              //       gradient: LinearGradient(
-              //         begin: FractionalOffset.topCenter,
-              //         end: FractionalOffset.bottomCenter,
-              //         colors: [
-              //           Color.fromRGBO(235, 138, 64, 1),
-              //           Color.fromRGBO(215, 55, 48, 1),
-              //         ],
-              //         stops: [0.4, 0.9],
-              //       ),
-              //     ),
-              //     child: Column(
-              //       mainAxisAlignment: MainAxisAlignment.center,
-              //       children: [
-              //         Text(
-              //           "50",
-              //           style: TextStyle(
-              //               color: Colors.white,
-              //               fontWeight: FontWeight.w800,
-              //               fontSize: 25),
-              //         ),
-              //         Text(
-              //           "PPL",
-              //           style: TextStyle(
-              //               color: Colors.white,
-              //               fontWeight: FontWeight.w300,
-              //               fontSize: 14),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
+              _isLoading
+                  ? Positioned.fill(
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.white,
+                          color: flexColorSchemeLight.primary,
+                        ),
+                      ),
+                    )
+                  : SizedBox.shrink()
             ],
           ),
         ),

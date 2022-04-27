@@ -67,7 +67,7 @@ void showCopiedFlushbar(context) {
   )..show(context);
 }
 
-void showPlayBackCompletedFlushBar(context) {
+void showPlayBackCompletedFlushBar(context, int rewardAmount) {
   Flushbar(
     duration: Duration(seconds: 4),
     boxShadows: [
@@ -77,7 +77,7 @@ void showPlayBackCompletedFlushBar(context) {
       ),
     ],
     messageText: Text(
-      "Thanks for watching. Your Reward will be added to your wallet.",
+      "Thanks for watching! $rewardAmount PPL tokens will be added to your wallet.",
       textAlign: TextAlign.center,
     ),
     backgroundColor: Theme.of(context).bottomAppBarColor,

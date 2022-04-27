@@ -14,7 +14,7 @@ class VideoArticle with _$VideoArticle {
     required String videoURL,
     required List<String> category,
     required int rewardAmount,
-    required int postID,
+    required String postID,
     required String postURL,
   }) = _VideoArticle;
 

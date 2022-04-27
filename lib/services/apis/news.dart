@@ -105,29 +105,6 @@ class NewsService {
     return articles;
   }
 
-  Future<List<VideoArticle>> featuredVideos() async {
-    Response response = await dio.get('/videos');
-
-    List<dynamic> results = response.data as List;
-    List<VideoArticle> videos = [];
-    results.forEach(
-      (element) {
-        videos.add(
-          VideoArticle(
-            title: parseHtmlString(element['description']),
-            placeholderImageURL: element['picture'],
-            category: [""],
-            videoURL: element['url'],
-            postID: 000,
-            postURL: element['read_more_url'] ?? "",
-            rewardAmount: 0,
-          ),
-        );
-      },
-    );
-    return videos;
-  }
-
   Future<List<Events>> eventsList() async {
     Response response = await dio.get('/events');
     Response responsePage2 = await dio.get('/events?page=2');

@@ -12,8 +12,7 @@ class NewsScreen extends StatefulWidget {
   State<NewsScreen> createState() => _NewsScreenState();
 }
 
-class _NewsScreenState extends State<NewsScreen>
-    with SingleTickerProviderStateMixin {
+class _NewsScreenState extends State<NewsScreen> with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
   @override
@@ -21,20 +20,16 @@ class _NewsScreenState extends State<NewsScreen>
     return StoreConnector<AppState, NewsScreenViewModel>(
       distinct: true,
       onInit: (store) => {
-        _tabController = TabController(
-            length: store.state.newsState.categories.length, vsync: this),
+        _tabController = TabController(length: store.state.newsState.categories.length, vsync: this),
         _tabController.addListener(
           () {
             if (_tabController.indexIsChanging) {
-              store.dispatch(UpdateIsLoading(isLoading: true));
-              store.dispatch(
-                  UpdateCurrentTabIndex(currentTabIndex: _tabController.index));
+              store.dispatch(UpdateNewsIsLoading(isLoading: true));
+              store.dispatch(UpdateCurrentTabIndex(currentTabIndex: _tabController.index));
 
               store.dispatch(
                 updateCurrentTabList(
-                  query: store.state.newsState.categories[_tabController.index]
-                      .categoryID
-                      .toString(),
+                  query: store.state.newsState.categories[_tabController.index].categoryID.toString(),
                 ),
               );
             }
@@ -64,15 +59,12 @@ class _NewsScreenState extends State<NewsScreen>
         ),
         body: viewmodel.isLoading
             ? Center(
-                child: CircularProgressIndicator(
-                    color: flexColorSchemeLight.primary),
+                child: CircularProgressIndicator(color: flexColorSchemeLight.primary),
               )
             : TabBarView(
                 physics: NeverScrollableScrollPhysics(),
                 controller: _tabController,
-                children: viewmodel.articles
-                    .map((e) => CategoryArticlesList())
-                    .toList(),
+                children: viewmodel.articles.map((e) => CategoryArticlesList()).toList(),
               ),
       ),
     );

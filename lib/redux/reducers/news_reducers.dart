@@ -9,7 +9,7 @@ final NewsStateReducers = combineReducers<NewsState>(
     TypedReducer<NewsState, UpdateCurrentTabList>(_getCurrentTabList),
     TypedReducer<NewsState, UpdateCurrentTabIndex>(_updateCurrentTabIndex),
     TypedReducer<NewsState, RefreshCurrentTabList>(_refreshCurrentTabList),
-    TypedReducer<NewsState, UpdateIsLoading>(_updateIsLoading),
+    TypedReducer<NewsState, UpdateNewsIsLoading>(_updateIsLoading),
   ],
 );
 
@@ -30,23 +30,19 @@ NewsState _getCategoryList(
 NewsState _getCurrentTabList(NewsState state, UpdateCurrentTabList action) {
   state.articles[action.currentTabIndex].articleList.addAll(action.articleList);
 
-  return state.copyWith(
-      currentTabIndex: action.currentTabIndex, articles: state.articles);
+  return state.copyWith(currentTabIndex: action.currentTabIndex, articles: state.articles);
 }
 
-NewsState _refreshCurrentTabList(
-    NewsState state, RefreshCurrentTabList action) {
+NewsState _refreshCurrentTabList(NewsState state, RefreshCurrentTabList action) {
   state.articles[action.currentTabIndex].articleList.clear();
   state.articles[action.currentTabIndex].articleList.addAll(action.articleList);
-  return state.copyWith(
-      currentTabIndex: action.currentTabIndex, articles: state.articles);
+  return state.copyWith(currentTabIndex: action.currentTabIndex, articles: state.articles);
 }
 
-NewsState _updateCurrentTabIndex(
-    NewsState state, UpdateCurrentTabIndex action) {
+NewsState _updateCurrentTabIndex(NewsState state, UpdateCurrentTabIndex action) {
   return state.copyWith(currentTabIndex: action.currentTabIndex);
 }
 
-NewsState _updateIsLoading(NewsState state, UpdateIsLoading action) {
+NewsState _updateIsLoading(NewsState state, UpdateNewsIsLoading action) {
   return state.copyWith(isLoading: action.isLoading);
 }

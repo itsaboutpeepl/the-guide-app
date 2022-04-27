@@ -55,6 +55,7 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     super.initState();
     setJwtToken(widget.store);
+    widget.store.dispatch(UpdateIsLoading(isLoading: true));
     widget.store.dispatch(fetchHomePageData());
     widget.store.dispatch(fetchNewsScreenData());
     _locale = widget.store.state.userState.locale;

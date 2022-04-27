@@ -28,21 +28,19 @@ class UpdateCurrentTabList {
   final List<BlogArticle> articleList;
   final int currentTabIndex;
 
-  UpdateCurrentTabList(
-      {required this.articleList, required this.currentTabIndex});
+  UpdateCurrentTabList({required this.articleList, required this.currentTabIndex});
 }
 
 class RefreshCurrentTabList {
   final List<BlogArticle> articleList;
   final int currentTabIndex;
 
-  RefreshCurrentTabList(
-      {required this.articleList, required this.currentTabIndex});
+  RefreshCurrentTabList({required this.articleList, required this.currentTabIndex});
 }
 
-class UpdateIsLoading {
+class UpdateNewsIsLoading {
   final bool isLoading;
-  UpdateIsLoading({required this.isLoading});
+  UpdateNewsIsLoading({required this.isLoading});
 }
 
 ThunkAction fetchCategoryNames() {
@@ -78,12 +76,10 @@ ThunkAction fetchCategoryNames() {
 ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
   return (Store store) async {
     try {
-      List<BlogArticle> newListOfArticles =
-          await newsService.pagedArticlesByCategoryID(query);
+      List<BlogArticle> newListOfArticles = await newsService.pagedArticlesByCategoryID(query);
 
       store.dispatch(RefreshCurrentTabList(
-          articleList: newListOfArticles,
-          currentTabIndex: store.state.newsState.currentTabIndex));
+          articleList: newListOfArticles, currentTabIndex: store.state.newsState.currentTabIndex));
     } catch (e, s) {
       log.error('ERROR - updateCurrentTabList $e');
       await Sentry.captureException(
@@ -98,13 +94,11 @@ ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
 ThunkAction updateCurrentTabList({int page = 1, String query = ""}) {
   return (Store store) async {
     try {
-      List<BlogArticle> newListOfArticles =
-          await newsService.pagedArticlesByCategoryID(query, page: page);
+      List<BlogArticle> newListOfArticles = await newsService.pagedArticlesByCategoryID(query, page: page);
 
-      store.dispatch(UpdateCurrentTabList(
-          articleList: newListOfArticles,
-          currentTabIndex: store.state.newsState.currentTabIndex));
-      store.dispatch(UpdateIsLoading(isLoading: false));
+      store.dispatch(
+          UpdateCurrentTabList(articleList: newListOfArticles, currentTabIndex: store.state.newsState.currentTabIndex));
+      store.dispatch(UpdateNewsIsLoading(isLoading: false));
     } catch (e, s) {
       log.error('ERROR - updateCurrentTabList $e');
       await Sentry.captureException(
@@ -121,18 +115,18 @@ ThunkAction fetchNewsScreenData() {
     try {
       store.dispatch(UpdateCurrentTabIndex(currentTabIndex: 0));
       store.dispatch(fetchCategoryNames());
-      store.dispatch(
-        updateCurrentTabList(
-          query: store.state.newsState.categories[0].categoryID.toString(),
-        ),
-      );
-      store.dispatch(UpdateIsLoading(isLoading: false));
+      // store.dispatch(
+      //   updateCurrentTabList(
+      //     query: store.state.newsState.categories[0].categoryID.toString(),
+      //   ),
+      // );
+      store.dispatch(UpdateNewsIsLoading(isLoading: false));
     } catch (e, s) {
-      log.error('ERROR - fetchHomePageData $e');
+      log.error('ERROR - fetchNewsScreenData $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchHomePageData $e',
+        hint: 'ERROR - fetchNewsScreenData $e',
       );
     }
   };
