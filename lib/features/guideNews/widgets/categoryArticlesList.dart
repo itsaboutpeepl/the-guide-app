@@ -31,16 +31,11 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
         store = StoreProvider.of<AppState>(context),
         _scrollController.addListener(
           () {
-            if (_scrollController.position.pixels ==
-                _scrollController.position.maxScrollExtent - 200) {
+            if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
               store.dispatch(updateCurrentTabList(
                   page: _page,
-                  query: store
-                      .state
-                      .newsState
-                      .categories[store.state.newsState.currentTabIndex]
-                      .categoryID
-                      .toString()));
+                  query:
+                      store.state.newsState.categories[store.state.newsState.currentTabIndex].categoryID.toString()));
               _page++;
             }
           },
