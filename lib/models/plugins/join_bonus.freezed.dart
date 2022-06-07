@@ -152,10 +152,10 @@ class __$JoinBonusPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Implements<Plugin>()
+@With<Plugin>()
 @JsonSerializable()
 class _$_JoinBonusPlugin
-    with DiagnosticableTreeMixin
+    with DiagnosticableTreeMixin, Plugin
     implements _JoinBonusPlugin {
   _$_JoinBonusPlugin(
       {this.type = 'joinBonus',

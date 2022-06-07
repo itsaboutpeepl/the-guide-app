@@ -19,6 +19,7 @@ import 'package:guide_liverpool/features/screens/pincode_screen.dart';
 import 'package:guide_liverpool/features/screens/splash_screen.dart';
 import 'package:guide_liverpool/features/screens/webview_screen.dart';
 import 'package:guide_liverpool/features/topup/router/topup_router.dart';
+import 'package:guide_liverpool/features/webview/router.dart';
 
 export 'routes.gr.dart';
 
@@ -47,6 +48,7 @@ export 'routes.gr.dart';
         contactsTab,
         buyTab,
         accountTab,
+        webviewTab,
       ],
     ),
     RedirectRoute(path: '*', redirectTo: '/'),

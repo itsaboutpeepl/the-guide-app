@@ -11,8 +11,8 @@
 // ignore_for_file: type=lint
 
 import 'package:auto_route/auto_route.dart' as _i13;
-import 'package:contacts_service/contacts_service.dart' as _i37;
-import 'package:flutter/material.dart' as _i34;
+import 'package:contacts_service/contacts_service.dart' as _i38;
+import 'package:flutter/material.dart' as _i35;
 
 import '../../features/account/screens/account_screen.dart' as _i26;
 import '../../features/account/screens/done_backup_screen.dart' as _i29;
@@ -28,7 +28,7 @@ import '../../features/contacts/screens/contacts_list.dart' as _i20;
 import '../../features/contacts/screens/send_amount.dart' as _i21;
 import '../../features/contacts/screens/send_review.dart' as _i22;
 import '../../features/contacts/screens/send_success.dart' as _i23;
-import '../../features/contacts/send_amount_arguments.dart' as _i38;
+import '../../features/contacts/send_amount_arguments.dart' as _i39;
 import '../../features/guideHome/screens/guideHome.dart' as _i14;
 import '../../features/guideNews/screens/newsScreen.dart' as _i15;
 import '../../features/home/screens/action_details.dart' as _i17;
@@ -47,18 +47,19 @@ import '../../features/screens/splash_screen.dart' as _i1;
 import '../../features/screens/webview_screen.dart' as _i11;
 import '../../features/topup/screens/topup.dart' as _i18;
 import '../../features/topup/screens/topup_explained.dart' as _i19;
-import '../../models/actions/wallet_action.dart' as _i36;
-import '../../models/community/business.dart' as _i39;
-import '../../models/tokens/token.dart' as _i40;
-import 'route_guards.dart' as _i35;
+import '../../features/webview/webviewScreen.dart' as _i34;
+import '../../models/actions/wallet_action.dart' as _i37;
+import '../../models/community/business.dart' as _i40;
+import '../../models/tokens/token.dart' as _i41;
+import 'route_guards.dart' as _i36;
 
 class RootRouter extends _i13.RootStackRouter {
   RootRouter(
-      {_i34.GlobalKey<_i34.NavigatorState>? navigatorKey,
+      {_i35.GlobalKey<_i35.NavigatorState>? navigatorKey,
       required this.authGuard})
       : super(navigatorKey);
 
-  final _i35.AuthGuard authGuard;
+  final _i36.AuthGuard authGuard;
 
   @override
   final Map<String, _i13.PageFactory> pagesMap = {
@@ -148,6 +149,10 @@ class RootRouter extends _i13.RootStackRouter {
           routeData: routeData, child: const _i13.EmptyRouterPage());
     },
     AccountTab.name: (routeData) {
+      return _i13.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i13.EmptyRouterPage());
+    },
+    WebviewTab.name: (routeData) {
       return _i13.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i13.EmptyRouterPage());
     },
@@ -254,6 +259,10 @@ class RootRouter extends _i13.RootStackRouter {
     SocialScreen.name: (routeData) {
       return _i13.MaterialPageX<dynamic>(
           routeData: routeData, child: _i33.SocialScreen());
+    },
+    WebViewScreen.name: (routeData) {
+      return _i13.MaterialPageX<dynamic>(
+          routeData: routeData, child: const _i34.WebviewScreen());
     }
   };
 
@@ -388,6 +397,13 @@ class RootRouter extends _i13.RootStackRouter {
                     guards: [authGuard]),
                 _i13.RouteConfig(TopupScreen.name,
                     path: 'topUp', parent: AccountTab.name, guards: [authGuard])
+              ]),
+          _i13.RouteConfig(WebviewTab.name,
+              path: 'webview',
+              parent: MainScreen.name,
+              children: [
+                _i13.RouteConfig(WebViewScreen.name,
+                    path: '', parent: WebviewTab.name, guards: [authGuard])
               ])
         ]),
         _i13.RouteConfig('*#redirect',
@@ -398,7 +414,7 @@ class RootRouter extends _i13.RootStackRouter {
 /// generated route for
 /// [_i1.SplashScreen]
 class SplashScreen extends _i13.PageRouteInfo<SplashScreenArgs> {
-  SplashScreen({_i34.Key? key, void Function(bool)? onLoginResult})
+  SplashScreen({_i35.Key? key, void Function(bool)? onLoginResult})
       : super(SplashScreen.name,
             path: '/',
             args: SplashScreenArgs(key: key, onLoginResult: onLoginResult));
@@ -409,7 +425,7 @@ class SplashScreen extends _i13.PageRouteInfo<SplashScreenArgs> {
 class SplashScreenArgs {
   const SplashScreenArgs({this.key, this.onLoginResult});
 
-  final _i34.Key? key;
+  final _i35.Key? key;
 
   final void Function(bool)? onLoginResult;
 
@@ -545,7 +561,7 @@ class WebviewArgs {
 /// generated route for
 /// [_i12.MainScreen]
 class MainScreen extends _i13.PageRouteInfo<MainScreenArgs> {
-  MainScreen({_i34.Key? key, List<_i13.PageRouteInfo>? children})
+  MainScreen({_i35.Key? key, List<_i13.PageRouteInfo>? children})
       : super(MainScreen.name,
             path: '/main-screen',
             args: MainScreenArgs(key: key),
@@ -557,7 +573,7 @@ class MainScreen extends _i13.PageRouteInfo<MainScreenArgs> {
 class MainScreenArgs {
   const MainScreenArgs({this.key});
 
-  final _i34.Key? key;
+  final _i35.Key? key;
 
   @override
   String toString() {
@@ -629,6 +645,15 @@ class AccountTab extends _i13.PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [_i13.EmptyRouterPage]
+class WebviewTab extends _i13.PageRouteInfo<void> {
+  const WebviewTab({List<_i13.PageRouteInfo>? children})
+      : super(WebviewTab.name, path: 'webview', initialChildren: children);
+
+  static const String name = 'WebviewTab';
+}
+
+/// generated route for
 /// [_i14.GuideHomeScreen]
 class GuideHomeScreen extends _i13.PageRouteInfo<void> {
   const GuideHomeScreen() : super(GuideHomeScreen.name, path: '');
@@ -656,12 +681,12 @@ class HomeScreen extends _i13.PageRouteInfo<void> {
 /// [_i17.ActionDetailsScreen]
 class ActionDetailsScreen extends _i13.PageRouteInfo<ActionDetailsScreenArgs> {
   ActionDetailsScreen(
-      {required _i36.WalletAction action,
-      _i34.ImageProvider<Object>? image,
+      {required _i37.WalletAction action,
+      _i35.ImageProvider<Object>? image,
       required String displayName,
       String? accountAddress,
       required String symbol,
-      _i37.Contact? contact})
+      _i38.Contact? contact})
       : super(ActionDetailsScreen.name,
             path: 'action-details-screen',
             args: ActionDetailsScreenArgs(
@@ -684,9 +709,9 @@ class ActionDetailsScreenArgs {
       required this.symbol,
       this.contact});
 
-  final _i36.WalletAction action;
+  final _i37.WalletAction action;
 
-  final _i34.ImageProvider<Object>? image;
+  final _i35.ImageProvider<Object>? image;
 
   final String displayName;
 
@@ -694,7 +719,7 @@ class ActionDetailsScreenArgs {
 
   final String symbol;
 
-  final _i37.Contact? contact;
+  final _i38.Contact? contact;
 
   @override
   String toString() {
@@ -713,7 +738,7 @@ class TopupScreen extends _i13.PageRouteInfo<void> {
 /// generated route for
 /// [_i19.TopupExplained]
 class TopupExplained extends _i13.PageRouteInfo<TopupExplainedArgs> {
-  TopupExplained({_i34.Key? key})
+  TopupExplained({_i35.Key? key})
       : super(TopupExplained.name,
             path: 'topup-explained', args: TopupExplainedArgs(key: key));
 
@@ -723,7 +748,7 @@ class TopupExplained extends _i13.PageRouteInfo<TopupExplainedArgs> {
 class TopupExplainedArgs {
   const TopupExplainedArgs({this.key});
 
-  final _i34.Key? key;
+  final _i35.Key? key;
 
   @override
   String toString() {
@@ -734,7 +759,7 @@ class TopupExplainedArgs {
 /// generated route for
 /// [_i20.ContactsList]
 class ContactsList extends _i13.PageRouteInfo<ContactsListArgs> {
-  ContactsList({_i38.SendFlowArguments? pageArgs})
+  ContactsList({_i39.SendFlowArguments? pageArgs})
       : super(ContactsList.name,
             path: '', args: ContactsListArgs(pageArgs: pageArgs));
 
@@ -744,7 +769,7 @@ class ContactsList extends _i13.PageRouteInfo<ContactsListArgs> {
 class ContactsListArgs {
   const ContactsListArgs({this.pageArgs});
 
-  final _i38.SendFlowArguments? pageArgs;
+  final _i39.SendFlowArguments? pageArgs;
 
   @override
   String toString() {
@@ -755,7 +780,7 @@ class ContactsListArgs {
 /// generated route for
 /// [_i21.SendAmountScreen]
 class SendAmountScreen extends _i13.PageRouteInfo<SendAmountScreenArgs> {
-  SendAmountScreen({required _i38.SendFlowArguments pageArgs})
+  SendAmountScreen({required _i39.SendFlowArguments pageArgs})
       : super(SendAmountScreen.name,
             path: 'send-amount',
             args: SendAmountScreenArgs(pageArgs: pageArgs));
@@ -766,7 +791,7 @@ class SendAmountScreen extends _i13.PageRouteInfo<SendAmountScreenArgs> {
 class SendAmountScreenArgs {
   const SendAmountScreenArgs({required this.pageArgs});
 
-  final _i38.SendFlowArguments pageArgs;
+  final _i39.SendFlowArguments pageArgs;
 
   @override
   String toString() {
@@ -777,7 +802,7 @@ class SendAmountScreenArgs {
 /// generated route for
 /// [_i22.SendReviewScreen]
 class SendReviewScreen extends _i13.PageRouteInfo<SendReviewScreenArgs> {
-  SendReviewScreen({required _i38.SendFlowArguments pageArgs})
+  SendReviewScreen({required _i39.SendFlowArguments pageArgs})
       : super(SendReviewScreen.name,
             path: 'send-review',
             args: SendReviewScreenArgs(pageArgs: pageArgs));
@@ -788,7 +813,7 @@ class SendReviewScreen extends _i13.PageRouteInfo<SendReviewScreenArgs> {
 class SendReviewScreenArgs {
   const SendReviewScreenArgs({required this.pageArgs});
 
-  final _i38.SendFlowArguments pageArgs;
+  final _i39.SendFlowArguments pageArgs;
 
   @override
   String toString() {
@@ -799,7 +824,7 @@ class SendReviewScreenArgs {
 /// generated route for
 /// [_i23.SendSuccessScreen]
 class SendSuccessScreen extends _i13.PageRouteInfo<SendSuccessScreenArgs> {
-  SendSuccessScreen({required _i38.SendFlowArguments pageArgs})
+  SendSuccessScreen({required _i39.SendFlowArguments pageArgs})
       : super(SendSuccessScreen.name,
             path: 'send-success',
             args: SendSuccessScreenArgs(pageArgs: pageArgs));
@@ -810,7 +835,7 @@ class SendSuccessScreen extends _i13.PageRouteInfo<SendSuccessScreenArgs> {
 class SendSuccessScreenArgs {
   const SendSuccessScreenArgs({required this.pageArgs});
 
-  final _i38.SendFlowArguments pageArgs;
+  final _i39.SendFlowArguments pageArgs;
 
   @override
   String toString() {
@@ -829,7 +854,7 @@ class BuyScreen extends _i13.PageRouteInfo<void> {
 /// generated route for
 /// [_i25.BusinessScreen]
 class BusinessScreen extends _i13.PageRouteInfo<BusinessScreenArgs> {
-  BusinessScreen({required _i39.Business business, required _i40.Token token})
+  BusinessScreen({required _i40.Business business, required _i41.Token token})
       : super(BusinessScreen.name,
             path: 'business-screen',
             args: BusinessScreenArgs(business: business, token: token));
@@ -840,9 +865,9 @@ class BusinessScreen extends _i13.PageRouteInfo<BusinessScreenArgs> {
 class BusinessScreenArgs {
   const BusinessScreenArgs({required this.business, required this.token});
 
-  final _i39.Business business;
+  final _i40.Business business;
 
-  final _i40.Token token;
+  final _i41.Token token;
 
   @override
   String toString() {
@@ -902,7 +927,7 @@ class ProtectYourWallet extends _i13.PageRouteInfo<void> {
 /// generated route for
 /// [_i32.ProfileScreen]
 class ProfileScreen extends _i13.PageRouteInfo<ProfileScreenArgs> {
-  ProfileScreen({_i34.Key? key})
+  ProfileScreen({_i35.Key? key})
       : super(ProfileScreen.name,
             path: 'profile-screen', args: ProfileScreenArgs(key: key));
 
@@ -912,7 +937,7 @@ class ProfileScreen extends _i13.PageRouteInfo<ProfileScreenArgs> {
 class ProfileScreenArgs {
   const ProfileScreenArgs({this.key});
 
-  final _i34.Key? key;
+  final _i35.Key? key;
 
   @override
   String toString() {
@@ -926,4 +951,12 @@ class SocialScreen extends _i13.PageRouteInfo<void> {
   const SocialScreen() : super(SocialScreen.name, path: 'social-screen');
 
   static const String name = 'SocialScreen';
+}
+
+/// generated route for
+/// [_i34.WebviewScreen]
+class WebViewScreen extends _i13.PageRouteInfo<void> {
+  const WebViewScreen() : super(WebViewScreen.name, path: '');
+
+  static const String name = 'WebViewScreen';
 }

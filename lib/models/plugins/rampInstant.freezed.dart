@@ -152,10 +152,10 @@ class __$RampInstantPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Implements<Plugin>()
+@With<Plugin>()
 @JsonSerializable()
 class _$_RampInstantPlugin
-    with DiagnosticableTreeMixin
+    with DiagnosticableTreeMixin, Plugin
     implements _RampInstantPlugin {
   _$_RampInstantPlugin(
       {this.name = 'rampInstant',

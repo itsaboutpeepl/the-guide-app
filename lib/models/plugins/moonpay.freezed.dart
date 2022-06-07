@@ -152,9 +152,11 @@ class __$MoonpayPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Implements<Plugin>()
+@With<Plugin>()
 @JsonSerializable()
-class _$_MoonpayPlugin with DiagnosticableTreeMixin implements _MoonpayPlugin {
+class _$_MoonpayPlugin
+    with DiagnosticableTreeMixin, Plugin
+    implements _MoonpayPlugin {
   _$_MoonpayPlugin(
       {this.name = 'moonpay',
       this.widgetUrl,

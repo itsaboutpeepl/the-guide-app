@@ -28,23 +28,17 @@ class _MainScreenState extends State<MainScreen> {
 
   void handleFirebaseConfig() {
     firebaseMessaging.requestPermission();
-    firebaseMessaging.setForegroundNotificationPresentationOptions(
-        alert: true, badge: true, sound: true);
+    firebaseMessaging.setForegroundNotificationPresentationOptions(alert: true, badge: true, sound: true);
 
-    firebaseMessaging.setForegroundNotificationPresentationOptions(
-        alert: true, sound: true);
+    firebaseMessaging.setForegroundNotificationPresentationOptions(alert: true, sound: true);
   }
 
   @override
   void initState() {
     handleFirebaseConfig();
-    firebaseMessaging
-        .getToken()
-        .then((value) => print("FCM TOKEN HEREEE $value"));
+    firebaseMessaging.getToken().then((value) => print("FCM TOKEN HEREEE $value"));
 
-    firebaseMessaging
-        .getAPNSToken()
-        .then((value) => print("APNS TOKEN $value"));
+    firebaseMessaging.getAPNSToken().then((value) => print("APNS TOKEN $value"));
 
     // Function handleFCM = (RemoteMessage? remoteMessage) {
     //   if (remoteMessage != null) {
@@ -95,6 +89,8 @@ class _MainScreenState extends State<MainScreen> {
             // HelpTab(),
             // BuyTab(),
             AccountTab(),
+            WebviewTab(),
+
             // ContactsTab(),
             // BuyTab(
             //   children: [
@@ -117,19 +113,15 @@ class _MainScreenState extends State<MainScreen> {
   void startFirebaseNotifs() {
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
-    FirebaseMessaging.onMessageOpenedApp
-        .listen((RemoteMessage? remoteMessage) => handleFCM(remoteMessage));
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage? remoteMessage) => handleFCM(remoteMessage));
 
-    FirebaseMessaging.onMessage
-        .listen((RemoteMessage? remoteMessage) => handleFCM(remoteMessage));
+    FirebaseMessaging.onMessage.listen((RemoteMessage? remoteMessage) => handleFCM(remoteMessage));
   }
 
-  Future<void> _firebaseMessagingBackgroundHandler(
-      RemoteMessage remoteMessage) async {
+  Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage remoteMessage) async {
     // If you're going to use other Firebase services in the background, such as Firestore,
     // make sure you call `initializeApp` before using other Firebase services.
-    await Firebase.initializeApp(
-        options: DefaultFirebaseConfig.platformOptions);
+    await Firebase.initializeApp(options: DefaultFirebaseConfig.platformOptions);
 
     handleFCM(remoteMessage);
   }
@@ -143,8 +135,7 @@ class _MainScreenState extends State<MainScreen> {
               useRootNavigator: true,
               backgroundColor: Colors.cyan,
               context: context,
-              builder: (context) =>
-                  DetailArticleBottomModel(articleData: article),
+              builder: (context) => DetailArticleBottomModel(articleData: article),
             ),
           );
     }

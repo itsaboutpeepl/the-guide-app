@@ -175,10 +175,10 @@ class __$WalletBannerPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Implements<Plugin>()
+@With<Plugin>()
 @JsonSerializable()
 class _$_WalletBannerPlugin
-    with DiagnosticableTreeMixin
+    with DiagnosticableTreeMixin, Plugin
     implements _WalletBannerPlugin {
   _$_WalletBannerPlugin(
       {this.type = 'walletBanner',

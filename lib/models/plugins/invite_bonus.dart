@@ -8,7 +8,7 @@ part 'invite_bonus.g.dart';
 @immutable
 @freezed
 class InviteBonusPlugin with _$InviteBonusPlugin {
-  @Implements<Plugin>()
+  @With<Plugin>()
   @JsonSerializable()
   factory InviteBonusPlugin({
     @Default('inviteBonus') String type,

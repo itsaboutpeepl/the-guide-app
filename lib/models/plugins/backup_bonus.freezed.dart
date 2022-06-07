@@ -152,10 +152,10 @@ class __$BackupBonusPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@Implements<Plugin>()
+@With<Plugin>()
 @JsonSerializable()
 class _$_BackupBonusPlugin
-    with DiagnosticableTreeMixin
+    with DiagnosticableTreeMixin, Plugin
     implements _BackupBonusPlugin {
   _$_BackupBonusPlugin(
       {this.type = 'backupBonus',
