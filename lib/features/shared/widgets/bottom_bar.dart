@@ -65,7 +65,7 @@ class BottomBar extends StatelessWidget {
           "News",
           "Wallet",
           I10n.of(context).account,
-          "Shocal",
+          "Shop",
         ],
         icons: [
           Icons.home,
