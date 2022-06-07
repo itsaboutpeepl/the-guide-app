@@ -27,13 +27,15 @@ class _$AppStateTearOff {
       @CashWalletStateConverter() required CashWalletState cashWalletState,
       @SwapStateConverter() required SwapState swapState,
       @HomePageStateConverter() required HomePageState homePageState,
-      @NewsStateConverter() required NewsState newsState}) {
+      @NewsStateConverter() required NewsState newsState,
+      @UserCartStateConverter() required UserCartState cartState}) {
     return _AppState(
       userState: userState,
       cashWalletState: cashWalletState,
       swapState: swapState,
       homePageState: homePageState,
       newsState: newsState,
+      cartState: cartState,
     );
   }
 
@@ -57,6 +59,8 @@ mixin _$AppState {
   HomePageState get homePageState => throw _privateConstructorUsedError;
   @NewsStateConverter()
   NewsState get newsState => throw _privateConstructorUsedError;
+  @UserCartStateConverter()
+  UserCartState get cartState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -73,13 +77,15 @@ abstract class $AppStateCopyWith<$Res> {
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @SwapStateConverter() SwapState swapState,
       @HomePageStateConverter() HomePageState homePageState,
-      @NewsStateConverter() NewsState newsState});
+      @NewsStateConverter() NewsState newsState,
+      @UserCartStateConverter() UserCartState cartState});
 
   $UserStateCopyWith<$Res> get userState;
   $CashWalletStateCopyWith<$Res> get cashWalletState;
   $SwapStateCopyWith<$Res> get swapState;
   $HomePageStateCopyWith<$Res> get homePageState;
   $NewsStateCopyWith<$Res> get newsState;
+  $UserCartStateCopyWith<$Res> get cartState;
 }
 
 /// @nodoc
@@ -97,6 +103,7 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
     Object? swapState = freezed,
     Object? homePageState = freezed,
     Object? newsState = freezed,
+    Object? cartState = freezed,
   }) {
     return _then(_value.copyWith(
       userState: userState == freezed
@@ -119,6 +126,10 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
               as NewsState,
+      cartState: cartState == freezed
+          ? _value.cartState
+          : cartState // ignore: cast_nullable_to_non_nullable
+              as UserCartState,
     ));
   }
 
@@ -156,6 +167,13 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
       return _then(_value.copyWith(newsState: value));
     });
   }
+
+  @override
+  $UserCartStateCopyWith<$Res> get cartState {
+    return $UserCartStateCopyWith<$Res>(_value.cartState, (value) {
+      return _then(_value.copyWith(cartState: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -168,7 +186,8 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @SwapStateConverter() SwapState swapState,
       @HomePageStateConverter() HomePageState homePageState,
-      @NewsStateConverter() NewsState newsState});
+      @NewsStateConverter() NewsState newsState,
+      @UserCartStateConverter() UserCartState cartState});
 
   @override
   $UserStateCopyWith<$Res> get userState;
@@ -180,6 +199,8 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   $HomePageStateCopyWith<$Res> get homePageState;
   @override
   $NewsStateCopyWith<$Res> get newsState;
+  @override
+  $UserCartStateCopyWith<$Res> get cartState;
 }
 
 /// @nodoc
@@ -198,6 +219,7 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     Object? swapState = freezed,
     Object? homePageState = freezed,
     Object? newsState = freezed,
+    Object? cartState = freezed,
   }) {
     return _then(_AppState(
       userState: userState == freezed
@@ -220,6 +242,10 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
               as NewsState,
+      cartState: cartState == freezed
+          ? _value.cartState
+          : cartState // ignore: cast_nullable_to_non_nullable
+              as UserCartState,
     ));
   }
 }
@@ -233,7 +259,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       @CashWalletStateConverter() required this.cashWalletState,
       @SwapStateConverter() required this.swapState,
       @HomePageStateConverter() required this.homePageState,
-      @NewsStateConverter() required this.newsState})
+      @NewsStateConverter() required this.newsState,
+      @UserCartStateConverter() required this.cartState})
       : super._();
 
   factory _$_AppState.fromJson(Map<String, dynamic> json) =>
@@ -254,10 +281,13 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
   @override
   @NewsStateConverter()
   final NewsState newsState;
+  @override
+  @UserCartStateConverter()
+  final UserCartState cartState;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, swapState: $swapState, homePageState: $homePageState, newsState: $newsState)';
+    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, swapState: $swapState, homePageState: $homePageState, newsState: $newsState, cartState: $cartState)';
   }
 
   @override
@@ -269,7 +299,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('cashWalletState', cashWalletState))
       ..add(DiagnosticsProperty('swapState', swapState))
       ..add(DiagnosticsProperty('homePageState', homePageState))
-      ..add(DiagnosticsProperty('newsState', newsState));
+      ..add(DiagnosticsProperty('newsState', newsState))
+      ..add(DiagnosticsProperty('cartState', cartState));
   }
 
   @override
@@ -283,7 +314,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.swapState, swapState) &&
             const DeepCollectionEquality()
                 .equals(other.homePageState, homePageState) &&
-            const DeepCollectionEquality().equals(other.newsState, newsState));
+            const DeepCollectionEquality().equals(other.newsState, newsState) &&
+            const DeepCollectionEquality().equals(other.cartState, cartState));
   }
 
   @override
@@ -293,7 +325,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(cashWalletState),
       const DeepCollectionEquality().hash(swapState),
       const DeepCollectionEquality().hash(homePageState),
-      const DeepCollectionEquality().hash(newsState));
+      const DeepCollectionEquality().hash(newsState),
+      const DeepCollectionEquality().hash(cartState));
 
   @JsonKey(ignore: true)
   @override
@@ -308,11 +341,13 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
 
 abstract class _AppState extends AppState {
   factory _AppState(
-      {@UserStateConverter() required UserState userState,
-      @CashWalletStateConverter() required CashWalletState cashWalletState,
-      @SwapStateConverter() required SwapState swapState,
-      @HomePageStateConverter() required HomePageState homePageState,
-      @NewsStateConverter() required NewsState newsState}) = _$_AppState;
+          {@UserStateConverter() required UserState userState,
+          @CashWalletStateConverter() required CashWalletState cashWalletState,
+          @SwapStateConverter() required SwapState swapState,
+          @HomePageStateConverter() required HomePageState homePageState,
+          @NewsStateConverter() required NewsState newsState,
+          @UserCartStateConverter() required UserCartState cartState}) =
+      _$_AppState;
   _AppState._() : super._();
 
   factory _AppState.fromJson(Map<String, dynamic> json) = _$_AppState.fromJson;
@@ -332,6 +367,9 @@ abstract class _AppState extends AppState {
   @override
   @NewsStateConverter()
   NewsState get newsState;
+  @override
+  @UserCartStateConverter()
+  UserCartState get cartState;
   @override
   @JsonKey(ignore: true)
   _$AppStateCopyWith<_AppState> get copyWith =>

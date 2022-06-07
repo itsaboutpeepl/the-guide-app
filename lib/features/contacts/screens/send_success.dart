@@ -17,8 +17,7 @@ class SendSuccessScreen extends StatefulWidget {
   _SendSuccessScreenState createState() => _SendSuccessScreenState();
 }
 
-class _SendSuccessScreenState extends State<SendSuccessScreen>
-    with TickerProviderStateMixin {
+class _SendSuccessScreenState extends State<SendSuccessScreen> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -31,7 +30,7 @@ class _SendSuccessScreenState extends State<SendSuccessScreen>
           ],
         ),
       );
-      WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus();
+      WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
     });
   }
 
@@ -46,8 +45,7 @@ class _SendSuccessScreenState extends State<SendSuccessScreen>
             child: CircleAvatar(
               backgroundColor: Color(0xFFE0E0E0),
               radius: 100,
-              backgroundImage: this.widget.pageArgs.avatar ??
-                  AssetImage('assets/images/anom.png'),
+              backgroundImage: this.widget.pageArgs.avatar ?? AssetImage('assets/images/anom.png'),
               child: Transform.scale(
                 scale: 6,
                 origin: Offset(-9, 7),

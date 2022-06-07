@@ -8,6 +8,8 @@ import 'package:guide_liverpool/services/apis/explorer.dart';
 import 'package:guide_liverpool/services/apis/fuseswap.dart';
 import 'package:guide_liverpool/services/apis/news.dart';
 import 'package:guide_liverpool/services/apis/peeplMedia.dart';
+import 'package:guide_liverpool/services/apis/peeplPay.dart';
+import 'package:guide_liverpool/services/apis/stripePay.dart';
 import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:wallet_core/wallet_core.dart';
@@ -32,6 +34,10 @@ final FuseSwapService fuseSwapService = getIt<FuseSwapService>();
 final NewsService newsService = getIt<NewsService>();
 
 final PeeplMediaService peeplMediaService = getIt<PeeplMediaService>();
+
+final StripePayService stripePayService = getIt<StripePayService>();
+
+final PeeplPayService peeplPaySerivce = getIt<PeeplPayService>();
 
 final Graph graph = getIt<Graph>();
 

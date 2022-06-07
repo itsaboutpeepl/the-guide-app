@@ -1,7 +1,9 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_segment/flutter_segment.dart';
+import 'package:guide_liverpool/common/router/routes.gr.dart';
 import 'package:guide_liverpool/features/topup/dialogs/success_dialog.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/tokens/token.dart';
@@ -29,20 +31,20 @@ class _MintingDialogViewModel extends Equatable {
 
 class MintingDialog extends StatefulWidget {
   final String amountText;
-  final bool showOrderNow;
-  MintingDialog(
-    this.amountText,
-    this.showOrderNow,
-  );
+  final bool shouldPushToHome;
+  MintingDialog({
+    required this.amountText,
+    required this.shouldPushToHome,
+  });
   @override
   _MintingDialogState createState() => _MintingDialogState();
 }
 
-class _MintingDialogState extends State<MintingDialog>
-    with SingleTickerProviderStateMixin {
+class _MintingDialogState extends State<MintingDialog> with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> scaleAnimation;
   bool isPreloading = false;
+  bool _isMinting = true;
 
   @override
   void dispose() {
@@ -54,10 +56,8 @@ class _MintingDialogState extends State<MintingDialog>
   void initState() {
     super.initState();
 
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
-    scaleAnimation =
-        CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+    controller = AnimationController(vsync: this, duration: Duration(milliseconds: 400));
+    scaleAnimation = CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
     controller.addListener(() {
       setState(() {});
@@ -74,32 +74,53 @@ class _MintingDialogState extends State<MintingDialog>
       onWillChange: (prevVM, nextVM) {
         if (prevVM?.secondaryToken.amount != nextVM.secondaryToken.amount) {
           Segment.track(eventName: 'Token Mint Success, showed success dialog');
-          // close the dialog and show success dialog
-          Navigator.of(context).pop();
-          showDialog(
-            context: context,
-            builder: (context) => TopUpSuccess(
-              widget.amountText,
-              widget.showOrderNow,
-            ),
-            barrierDismissible: !widget.showOrderNow,
+          setState(() {
+            _isMinting = false;
+          });
+
+          Future.delayed(
+            Duration(seconds: 2),
+            () {
+              context.router.pop();
+
+              if (widget.shouldPushToHome) {
+                context.router.navigate(GuideHomeTab());
+              }
+            },
           );
         }
       },
       builder: (_, viewModel) => ScaleTransition(
         scale: scaleAnimation,
         child: AlertDialog(
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(20.0))),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
           title: Center(
             child: Container(
-              child: CircularProgressIndicator(
-                  strokeWidth: 5,
-                  valueColor: AlwaysStoppedAnimation<Color>(
-                    Theme.of(context).primaryColorDark,
-                  )),
-              width: 60.0,
-              height: 60.0,
+              child: Center(
+                child: AnimatedCrossFade(
+                  crossFadeState: _isMinting ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                  duration: Duration(milliseconds: 500),
+                  firstChild: SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        strokeWidth: 5,
+                        color: Theme.of(context).primaryColorDark,
+                      ),
+                    ),
+                  ),
+                  secondChild: SizedBox(
+                    width: 60,
+                    height: 60,
+                    child: Icon(
+                      Icons.done,
+                      size: 50,
+                      color: Theme.of(context).primaryColorDark,
+                    ),
+                  ),
+                ),
+              ),
               margin: EdgeInsets.only(left: 28, right: 28),
             ),
           ),
@@ -110,29 +131,30 @@ class _MintingDialogState extends State<MintingDialog>
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
-                Text(
-                  'One Sec!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
+                AnimatedSwitcher(
+                  duration: Duration(milliseconds: 500),
+                  child: Text(
+                    _isMinting ? "Minting your tokens!" : "Token minting complete!",
+                    key: ValueKey(_isMinting),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w800,
+                    ),
                   ),
                 ),
                 SizedBox(height: 20.0),
-                Text(
-                  'Whilst lots of new tech stuff is happening in the background.',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-                SizedBox(height: 20.0),
-                Text(
-                  'Turns out, forking up the system takes a little while!',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.normal,
+                AnimatedSwitcher(
+                  duration: Duration(milliseconds: 500),
+                  child: Text(
+                    _isMinting
+                        ? "We're hooking up some extra lemons to make this go faster!"
+                        : "Thanks for topping up your Peepl Wallet!",
+                    key: ValueKey(_isMinting),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                 ),
               ],

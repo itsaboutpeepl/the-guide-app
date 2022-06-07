@@ -96,11 +96,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                                 animationType: AnimationType.fade,
                                 controller: pincodeController,
                                 // errorAnimationController: errorController,
-                                validator: (String? value) =>
-                                    value!.length != 6 &&
-                                            value == viewModel.pincode
-                                        ? I10n.of(context).invalid_pincode
-                                        : null,
+                                validator: (String? value) => value!.length != 6 && value == viewModel.pincode
+                                    ? I10n.of(context).invalid_pincode
+                                    : null,
                                 textStyle: TextStyle(
                                   fontSize: 30,
                                   color: Colors.white,
@@ -122,21 +120,17 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                                 onCompleted: (value) {
                                   if (viewModel.pincode == value) {
                                     Segment.track(
-                                      eventName:
-                                          'Session Start: Authentication success',
+                                      eventName: 'Session Start: Authentication success',
                                     );
                                     context.router.replaceAll([MainScreen()]);
                                     pincodeController.clear();
                                   } else {
                                     flush = Flushbar<bool>(
                                       title: I10n.of(context).invalid_pincode,
-                                      message:
-                                          I10n.of(context).auth_failed_message,
+                                      message: I10n.of(context).auth_failed_message,
                                       icon: Icon(
                                         Icons.info_outline,
-                                        color: Theme.of(context)
-                                            .colorScheme
-                                            .primary,
+                                        color: Theme.of(context).colorScheme.primary,
                                       ),
                                       mainButton: TextButton(
                                         onPressed: () async {
@@ -144,19 +138,14 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                                         },
                                         child: Text(
                                           I10n.of(context).try_again,
-                                          style: TextStyle(
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .primary),
+                                          style: TextStyle(color: Theme.of(context).colorScheme.primary),
                                         ),
                                       ),
                                     )..show(context).then(
                                         (result) async {
                                           if (result == true) {
                                             pincodeController.clear();
-                                            WidgetsBinding.instance!
-                                                .focusManager.primaryFocus
-                                                ?.previousFocus();
+                                            WidgetsBinding.instance.focusManager.primaryFocus?.previousFocus();
                                           }
                                         },
                                       );

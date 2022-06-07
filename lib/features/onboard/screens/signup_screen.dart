@@ -42,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       title: I10n.of(context).sign_up,
       body: InkWell(
         onTap: () {
-          WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus();
+          WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
         },
         child: Container(
           child: Column(

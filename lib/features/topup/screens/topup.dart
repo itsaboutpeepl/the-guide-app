@@ -40,8 +40,7 @@ class TopupScreen extends StatefulWidget {
   _TopupScreenState createState() => _TopupScreenState();
 }
 
-class _TopupScreenState extends State<TopupScreen>
-    with SingleTickerProviderStateMixin {
+class _TopupScreenState extends State<TopupScreen> with SingleTickerProviderStateMixin {
   String amountText = "25";
   bool isPreloading = false;
 
@@ -179,7 +178,7 @@ class _TopupScreenState extends State<TopupScreen>
       showDialog(
         context: context,
         builder: (context) {
-          return MintingDialog(amountText, true);
+          return MintingDialog(amountText: amountText, shouldPushToHome: true);
         },
         barrierDismissible: false,
       );
@@ -204,16 +203,11 @@ class _TopupScreenState extends State<TopupScreen>
     required String currency,
     required String walletAddress,
   }) async {
-    final int amountNew =
-        (double.parse(amount) * 100).toInt(); // Pounds to pence
+    final int amountNew = (double.parse(amount) * 100).toInt(); // Pounds to pence
     try {
       final Response response = await getIt<Dio>().post(
         _paymentApiUrl,
-        data: {
-          'amount': amountNew,
-          'currency': currency,
-          'walletAddress': walletAddress
-        },
+        data: {'amount': amountNew, 'currency': currency, 'walletAddress': walletAddress},
         options: Options(
           headers: {"Content-Type": 'application/json'},
         ),

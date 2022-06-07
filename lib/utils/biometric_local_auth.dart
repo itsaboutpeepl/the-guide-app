@@ -16,6 +16,13 @@ class BiometricUtils {
     return BiometricAuth.none;
   }
 
+  static Future<bool> authenticateIsAvailable() async {
+    final localAuth = LocalAuthentication();
+    final isAvailable = await localAuth.canCheckBiometrics;
+    final isDeviceSupported = await localAuth.isDeviceSupported();
+    return isAvailable && isDeviceSupported;
+  }
+
   static Future<void> showDefaultPopupCheckBiometricAuth({
     String message = '',
     required Function(bool) callback,
@@ -24,14 +31,13 @@ class BiometricUtils {
     final localAuth = LocalAuthentication();
     final bool result = await localAuth.authenticate(
       localizedReason: message,
-      options: AuthenticationOptions(stickyAuth: stickyAuth),
     );
     callback.call(result);
   }
 
   static String getBiometricString(
     BuildContext context,
-    BiometricAuth type,
+    BiometricAuth? type,
   ) {
     switch (type) {
       case BiometricAuth.faceID:

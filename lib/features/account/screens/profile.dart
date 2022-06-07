@@ -42,7 +42,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             focusColor: Theme.of(context).canvasColor,
             highlightColor: Theme.of(context).canvasColor,
             onTap: () {
-              WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus();
+              WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
             },
             child: Material(
               color: Theme.of(context).canvasColor,

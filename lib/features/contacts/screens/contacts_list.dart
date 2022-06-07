@@ -52,8 +52,7 @@ class _ContactsListState extends State<ContactsList> {
                   focusColor: Theme.of(context).canvasColor,
                   highlightColor: Theme.of(context).canvasColor,
                   onTap: () {
-                    WidgetsBinding.instance!.focusManager.primaryFocus
-                        ?.unfocus();
+                    WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
                   },
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -101,9 +100,7 @@ class _ContactsListState extends State<ContactsList> {
     List<Contact> users = [];
     users.addAll(_contacts ?? []);
     if (searchController.text.isNotEmpty) {
-      users.retainWhere((user) => user.displayName!
-          .toLowerCase()
-          .contains(searchController.text.toLowerCase()));
+      users.retainWhere((user) => user.displayName!.toLowerCase().contains(searchController.text.toLowerCase()));
     }
 
     if (this.mounted) {
@@ -118,23 +115,19 @@ class _ContactsListState extends State<ContactsList> {
       setState(() {
         searchController.text = '';
       });
-      WidgetsBinding.instance!.focusManager.primaryFocus?.unfocus();
+      WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
     }
   }
 
   SliverList listBody(ContactsViewModel viewModel, List<Contact> group) {
     List<Widget> listItems = <Widget>[];
     for (Contact user in group) {
-      Iterable<Item> phones = user.phones!
-          .map((e) => Item(value: clearNotNumbersAndPlusSymbol(e.value!)))
-          .toSet()
-          .toList();
+      Iterable<Item> phones =
+          user.phones!.map((e) => Item(value: clearNotNumbersAndPlusSymbol(e.value!))).toSet().toList();
       for (Item phone in phones) {
         listItems.add(
           ContactTile(
-            image: user.avatar != null && (user.avatar?.isNotEmpty ?? false)
-                ? MemoryImage(user.avatar!)
-                : null,
+            image: user.avatar != null && (user.avatar?.isNotEmpty ?? false) ? MemoryImage(user.avatar!) : null,
             displayName: user.displayName!,
             onTap: () {
               resetSearch();

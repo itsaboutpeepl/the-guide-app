@@ -3,14 +3,13 @@ import 'package:flutter/foundation.dart';
 import 'package:guide_liverpool/models/home_page_state.dart';
 import 'package:guide_liverpool/models/news_state.dart';
 import 'package:guide_liverpool/models/swap_state.dart';
+import 'package:guide_liverpool/models/user_cart_state.dart';
 import 'package:guide_liverpool/models/user_state.dart';
 import 'package:guide_liverpool/models/cash_wallet_state.dart';
-import 'package:guide_liverpool/models/pro_wallet_state.dart';
 
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';
 
-@immutable
 @freezed
 class AppState with _$AppState {
   const AppState._();
@@ -22,6 +21,7 @@ class AppState with _$AppState {
     @SwapStateConverter() required SwapState swapState,
     @HomePageStateConverter() required HomePageState homePageState,
     @NewsStateConverter() required NewsState newsState,
+    @UserCartStateConverter() required UserCartState cartState,
   }) = _AppState;
 
   factory AppState.initial() {
@@ -31,6 +31,7 @@ class AppState with _$AppState {
       swapState: SwapState.initial(),
       homePageState: HomePageState.initial(),
       newsState: NewsState.initial(),
+      cartState: UserCartState.initial(),
     );
   }
 
