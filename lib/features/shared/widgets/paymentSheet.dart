@@ -189,7 +189,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                                           )
                                         : viewmodel.sendToken(
                                             () {
-                                              // context.router.push(OrderConfirmedScreen());
+                                              context.router.pop();
                                             },
                                             () {
                                               print("error took place");
@@ -214,7 +214,7 @@ class _PaymentSheetState extends State<PaymentSheet> {
                                   )
                                 : viewmodel.sendToken(
                                     () {
-                                      // context.router.push(OrderConfirmedScreen());
+                                      context.router.pop();
                                     },
                                     () {
                                       print("error took place");
