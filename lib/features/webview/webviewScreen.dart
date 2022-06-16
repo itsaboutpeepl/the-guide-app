@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/shared/widgets/paymentSheet.dart';
@@ -18,6 +17,11 @@ class _WebviewScreenState extends State<WebviewScreen> {
   late InAppWebViewController webView;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, PaymentSheetViewModel>(
       converter: PaymentSheetViewModel.fromStore,
@@ -30,29 +34,29 @@ class _WebviewScreenState extends State<WebviewScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color.fromRGBO(92, 32, 142, 1),
-                    Color.fromRGBO(102, 40, 153, 1),
+                    Color(0xFFA8D39B),
+                    Color(0xFFA8D39B),
                   ],
                 ),
               ),
             ),
           ),
           body: InAppWebView(
-            initialUrlRequest:
-                URLRequest(url: Uri.parse(dotenv.env["SHOCAL_URL"]! + "?walletAddress=${viewmodel.walletAddress}")),
+            initialUrlRequest: URLRequest(url: Uri.parse("http://localhost:60825/#")),
             onWebViewCreated: (InAppWebViewController controller) {
               webView = controller;
               webView.addJavaScriptHandler(
                 handlerName: "isWebView",
                 callback: (list) {
-                  return true;
+                  return {"walletAddress": viewmodel.walletAddress, "displayName": "Hussain"};
                 },
               );
               webView.addJavaScriptHandler(
-                handlerName: "initPayment",
+                handlerName: "makePayment",
                 callback: (values) {
+                  if (values.isEmpty) return;
                   viewmodel.getOrderDetails(
-                    "paymentIntentID", //TODO: replace with actual payment intent ID
+                    values[0]["paymentIntent"], //TODO: replace with actual payment intent ID
                     () {
                       //success Callback - show payment sheet
                       showModalBottomSheet(
