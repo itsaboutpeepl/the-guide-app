@@ -15,28 +15,6 @@ class BottomBar extends StatelessWidget {
     this.tabsRouter,
   );
 
-  // BottomNavigationBarItem bottomBarItem(
-  //   String title,
-  //   String imgSvg,
-  // ) =>
-  //     BottomNavigationBarItem(
-  //       icon: Padding(
-  //         padding: EdgeInsets.only(top: 5, bottom: 3),
-  //         child: SvgPicture.asset(
-  //           'assets/images/$imgSvg\.svg',
-  //         ),
-  //       ),
-  //       activeIcon: Padding(
-  //         padding: EdgeInsets.only(top: 5, bottom: 3),
-  //         child: SvgPicture.asset(
-  //           'assets/images/$imgSvg\_selected.svg',
-  //           width: 26,
-  //           height: 26,
-  //         ),
-  //       ),
-  //       label: title,
-  //     );
-
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, HomeScreenViewModel>(
@@ -63,14 +41,12 @@ class BottomBar extends StatelessWidget {
         labels: [
           I10n.of(context).home,
           "News",
-          "Wallet",
           I10n.of(context).account,
-          "Shocal",
+          "Shop",
         ],
         icons: [
           Icons.home,
           Icons.article,
-          Icons.account_balance_wallet,
           Icons.person_outline,
           Icons.shopping_bag,
         ],

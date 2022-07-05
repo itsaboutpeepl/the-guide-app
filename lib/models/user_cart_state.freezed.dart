@@ -30,7 +30,8 @@ class _$UserCartStateTearOff {
       required bool errorCompletingPayment,
       required bool confirmedPayment,
       required String restaurantName,
-      required int cartTotal}) {
+      required int cartTotal,
+      required String restaurantWalletAddress}) {
     return _UserCartState(
       paymentIntentID: paymentIntentID,
       selectedGBPxAmount: selectedGBPxAmount,
@@ -40,6 +41,7 @@ class _$UserCartStateTearOff {
       confirmedPayment: confirmedPayment,
       restaurantName: restaurantName,
       cartTotal: cartTotal,
+      restaurantWalletAddress: restaurantWalletAddress,
     );
   }
 
@@ -61,6 +63,7 @@ mixin _$UserCartState {
   bool get confirmedPayment => throw _privateConstructorUsedError;
   String get restaurantName => throw _privateConstructorUsedError;
   int get cartTotal => throw _privateConstructorUsedError;
+  String get restaurantWalletAddress => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -81,7 +84,8 @@ abstract class $UserCartStateCopyWith<$Res> {
       bool errorCompletingPayment,
       bool confirmedPayment,
       String restaurantName,
-      int cartTotal});
+      int cartTotal,
+      String restaurantWalletAddress});
 }
 
 /// @nodoc
@@ -103,6 +107,7 @@ class _$UserCartStateCopyWithImpl<$Res>
     Object? confirmedPayment = freezed,
     Object? restaurantName = freezed,
     Object? cartTotal = freezed,
+    Object? restaurantWalletAddress = freezed,
   }) {
     return _then(_value.copyWith(
       paymentIntentID: paymentIntentID == freezed
@@ -137,6 +142,10 @@ class _$UserCartStateCopyWithImpl<$Res>
           ? _value.cartTotal
           : cartTotal // ignore: cast_nullable_to_non_nullable
               as int,
+      restaurantWalletAddress: restaurantWalletAddress == freezed
+          ? _value.restaurantWalletAddress
+          : restaurantWalletAddress // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -156,7 +165,8 @@ abstract class _$UserCartStateCopyWith<$Res>
       bool errorCompletingPayment,
       bool confirmedPayment,
       String restaurantName,
-      int cartTotal});
+      int cartTotal,
+      String restaurantWalletAddress});
 }
 
 /// @nodoc
@@ -180,6 +190,7 @@ class __$UserCartStateCopyWithImpl<$Res>
     Object? confirmedPayment = freezed,
     Object? restaurantName = freezed,
     Object? cartTotal = freezed,
+    Object? restaurantWalletAddress = freezed,
   }) {
     return _then(_UserCartState(
       paymentIntentID: paymentIntentID == freezed
@@ -214,6 +225,10 @@ class __$UserCartStateCopyWithImpl<$Res>
           ? _value.cartTotal
           : cartTotal // ignore: cast_nullable_to_non_nullable
               as int,
+      restaurantWalletAddress: restaurantWalletAddress == freezed
+          ? _value.restaurantWalletAddress
+          : restaurantWalletAddress // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -230,7 +245,8 @@ class _$_UserCartState extends _UserCartState {
       required this.errorCompletingPayment,
       required this.confirmedPayment,
       required this.restaurantName,
-      required this.cartTotal})
+      required this.cartTotal,
+      required this.restaurantWalletAddress})
       : super._();
 
   factory _$_UserCartState.fromJson(Map<String, dynamic> json) =>
@@ -252,10 +268,12 @@ class _$_UserCartState extends _UserCartState {
   final String restaurantName;
   @override
   final int cartTotal;
+  @override
+  final String restaurantWalletAddress;
 
   @override
   String toString() {
-    return 'UserCartState(paymentIntentID: $paymentIntentID, selectedGBPxAmount: $selectedGBPxAmount, selectedPPLAmount: $selectedPPLAmount, transferringTokens: $transferringTokens, errorCompletingPayment: $errorCompletingPayment, confirmedPayment: $confirmedPayment, restaurantName: $restaurantName, cartTotal: $cartTotal)';
+    return 'UserCartState(paymentIntentID: $paymentIntentID, selectedGBPxAmount: $selectedGBPxAmount, selectedPPLAmount: $selectedPPLAmount, transferringTokens: $transferringTokens, errorCompletingPayment: $errorCompletingPayment, confirmedPayment: $confirmedPayment, restaurantName: $restaurantName, cartTotal: $cartTotal, restaurantWalletAddress: $restaurantWalletAddress)';
   }
 
   @override
@@ -277,7 +295,9 @@ class _$_UserCartState extends _UserCartState {
                 .equals(other.confirmedPayment, confirmedPayment) &&
             const DeepCollectionEquality()
                 .equals(other.restaurantName, restaurantName) &&
-            const DeepCollectionEquality().equals(other.cartTotal, cartTotal));
+            const DeepCollectionEquality().equals(other.cartTotal, cartTotal) &&
+            const DeepCollectionEquality().equals(
+                other.restaurantWalletAddress, restaurantWalletAddress));
   }
 
   @override
@@ -290,7 +310,8 @@ class _$_UserCartState extends _UserCartState {
       const DeepCollectionEquality().hash(errorCompletingPayment),
       const DeepCollectionEquality().hash(confirmedPayment),
       const DeepCollectionEquality().hash(restaurantName),
-      const DeepCollectionEquality().hash(cartTotal));
+      const DeepCollectionEquality().hash(cartTotal),
+      const DeepCollectionEquality().hash(restaurantWalletAddress));
 
   @JsonKey(ignore: true)
   @override
@@ -312,7 +333,8 @@ abstract class _UserCartState extends UserCartState {
       required bool errorCompletingPayment,
       required bool confirmedPayment,
       required String restaurantName,
-      required int cartTotal}) = _$_UserCartState;
+      required int cartTotal,
+      required String restaurantWalletAddress}) = _$_UserCartState;
   _UserCartState._() : super._();
 
   factory _UserCartState.fromJson(Map<String, dynamic> json) =
@@ -334,6 +356,8 @@ abstract class _UserCartState extends UserCartState {
   String get restaurantName;
   @override
   int get cartTotal;
+  @override
+  String get restaurantWalletAddress;
   @override
   @JsonKey(ignore: true)
   _$UserCartStateCopyWith<_UserCartState> get copyWith =>

@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
-import 'package:guide_liverpool/features/guideNews/screens/newsScreen.dart';
-import 'package:guide_liverpool/features/webview/webviewScreen.dart';
+import 'package:guide_liverpool/features/webview/shocalWebView.dart';
+import 'package:guide_liverpool/features/webview/shopScreen.dart';
+import 'package:guide_liverpool/features/webview/vegiWebView.dart';
 
 const webviewTab = AutoRoute(
   path: 'webview',
@@ -10,9 +11,21 @@ const webviewTab = AutoRoute(
   children: [
     AutoRoute(
       initial: true,
-      page: WebviewScreen,
-      name: 'webViewScreen',
+      page: ShopScreen,
+      name: 'shopScreen',
       guards: [AuthGuard],
+    ),
+    AutoRoute(
+      page: VegiWebView,
+      name: 'vegiWebView',
+      guards: [AuthGuard],
+      meta: {"hideBottomNav": true},
+    ),
+    AutoRoute(
+      page: ShocalWebView,
+      name: 'shocalWebView',
+      guards: [AuthGuard],
+      meta: {"hideBottomNav": true},
     ),
   ],
 );

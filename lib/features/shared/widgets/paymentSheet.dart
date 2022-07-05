@@ -226,7 +226,9 @@ class _PaymentSheetState extends State<PaymentSheet> {
                         baseColor: Colors.grey[800]!,
                         highlightColor: Colors.grey[850]!),
                   ),
-            Spacer()
+            SizedBox(
+              height: 15,
+            )
           ],
         );
       },

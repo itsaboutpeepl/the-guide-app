@@ -17,6 +17,7 @@ class UserCartState with _$UserCartState {
     required bool confirmedPayment,
     required String restaurantName,
     required int cartTotal,
+    required String restaurantWalletAddress,
   }) = _UserCartState;
 
   factory UserCartState.initial() => UserCartState(
@@ -28,6 +29,7 @@ class UserCartState with _$UserCartState {
         confirmedPayment: false,
         restaurantName: "",
         cartTotal: 0,
+        restaurantWalletAddress: "",
       );
 
   factory UserCartState.fromJson(dynamic json) => _$UserCartStateFromJson(json);

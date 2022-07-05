@@ -22,6 +22,11 @@ class UpdateRestaurantName {
   UpdateRestaurantName(this.restaurantName);
 }
 
+class UpdateRestaurantWalletAddress {
+  String restaurantWalletAddress;
+  UpdateRestaurantWalletAddress(this.restaurantWalletAddress);
+}
+
 class SetTransferringPayment {
   bool flag;
   SetTransferringPayment(this.flag);
@@ -35,6 +40,11 @@ class SetError {
 class SetConfirmed {
   bool flag;
   SetConfirmed(this.flag);
+}
+
+class UpdatePaymentIntentID {
+  String paymentIntentID;
+  UpdatePaymentIntentID(this.paymentIntentID);
 }
 
 class UpdateSelectedAmounts {
@@ -55,6 +65,10 @@ ThunkAction queryOrderDetailsFromPaymentIntentID(
 
       details.containsKey("amount") ? store.dispatch(UpdateCartTotal(details["amount"])) : errorCallback();
 
+      details.containsKey("recipientWalletAddress")
+          ? store.dispatch(UpdateRestaurantWalletAddress(details["recipientWalletAddress"]))
+          : errorCallback();
+
       successCallback();
     } catch (e, s) {
       errorCallback();
@@ -72,6 +86,7 @@ ThunkAction queryOrderDetailsFromPaymentIntentID(
 ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCallback) {
   return (Store store) async {
     try {
+      print("PAYMENT INTENT ID" + store.state.cartState.paymentIntentID);
       //Set loading to true
       store.dispatch(SetTransferringPayment(true));
 
@@ -91,7 +106,7 @@ ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCal
                   getIt<Web3>(instanceName: 'fuseWeb3'),
                   store.state.userState.walletAddress,
                   GBPxToken.address,
-                  store.state.cartState.restaurantWalletAddress,
+                  store.state.cartState.restaurantWalletAddress, //TODO: change
                   store.state.cartState.selectedGBPxAmount.toString(),
                   externalId: store.state.cartState.paymentIntentID,
                 )
@@ -107,7 +122,7 @@ ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCal
                   getIt<Web3>(instanceName: 'fuseWeb3'),
                   store.state.userState.walletAddress,
                   PPLToken.address,
-                  store.state.cartState.restaurantWalletAddress,
+                  store.state.cartState.restaurantWalletAddress, //TODO: change
                   store.state.cartState.selectedPPLAmount.toString(),
                   externalId: store.state.cartState.paymentIntentID,
                 )
@@ -115,6 +130,14 @@ ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCal
           : {};
 
       print(PPLResponse);
+
+      if (GBPxResponse.isNotEmpty || PPLResponse.isNotEmpty) {
+        Future.delayed(Duration(seconds: 2), () {
+          store.dispatch(SetTransferringPayment(false));
+          store.dispatch(SetConfirmed(true));
+          successCallback();
+        });
+      }
 
       //Make periodic API calls to check the order status
       //If status is paid, then set loading = false, and confirmed = true

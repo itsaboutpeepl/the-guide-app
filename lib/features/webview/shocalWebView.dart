@@ -6,14 +6,14 @@ import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/paymentSheet.dart';
 
-class WebviewScreen extends StatefulWidget {
-  const WebviewScreen({Key? key}) : super(key: key);
+class ShocalWebView extends StatefulWidget {
+  const ShocalWebView({Key? key}) : super(key: key);
 
   @override
-  State<WebviewScreen> createState() => _WebviewScreenState();
+  State<ShocalWebView> createState() => _ShocalWebViewState();
 }
 
-class _WebviewScreenState extends State<WebviewScreen> {
+class _ShocalWebViewState extends State<ShocalWebView> {
   late InAppWebViewController webView;
 
   @override
@@ -34,32 +34,49 @@ class _WebviewScreenState extends State<WebviewScreen> {
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color(0xFFA8D39B),
-                    Color(0xFFA8D39B),
+                    Color(0xFF552489),
+                    Color(0xFF3E2285),
                   ],
                 ),
               ),
             ),
           ),
           body: InAppWebView(
-            initialUrlRequest: URLRequest(url: Uri.parse("http://localhost:60825/#")),
+            onJsAlert: (controller, jsAlertRequest) {
+              return Future<JsAlertResponse>(
+                () {
+                  return JsAlertResponse(message: jsAlertRequest.message ?? "message");
+                },
+              );
+            },
+            initialUrlRequest: URLRequest(
+              url: Uri.parse("https://shocal.org"),
+            ),
             onWebViewCreated: (InAppWebViewController controller) {
               webView = controller;
               webView.addJavaScriptHandler(
-                handlerName: "isWebView",
+                handlerName: "getWalletAddress",
                 callback: (list) {
-                  return {"walletAddress": viewmodel.walletAddress, "displayName": "Hussain"};
+                  return {"walletAddress": viewmodel.walletAddress};
+                },
+              );
+              webView.addJavaScriptHandler(
+                handlerName: "getDisplayName",
+                callback: (list) {
+                  return {"displayName": viewmodel.displayName};
                 },
               );
               webView.addJavaScriptHandler(
                 handlerName: "makePayment",
                 callback: (values) {
                   if (values.isEmpty) return;
+                  viewmodel.updatePaymentIntentID(values[0]["paymentIntent"]);
                   viewmodel.getOrderDetails(
-                    values[0]["paymentIntent"], //TODO: replace with actual payment intent ID
+                    values[0]["paymentIntent"],
                     () {
                       //success Callback - show payment sheet
                       showModalBottomSheet(
+                        useRootNavigator: true,
                         backgroundColor: Colors.grey[900],
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.vertical(

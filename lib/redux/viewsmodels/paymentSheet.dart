@@ -17,6 +17,7 @@ class PaymentSheetViewModel extends Equatable {
   final String walletAddress;
   final String restaurantName;
   final int cartTotal;
+  final String displayName;
 
   final Function(double GBPxAmount, double PPLAmount) updateSelectedValues;
   final Function(VoidCallback successCallBack, VoidCallback errorCallback) sendToken;
@@ -24,6 +25,7 @@ class PaymentSheetViewModel extends Equatable {
   final Function(bool) setError;
   final Function(bool) setConfirmed;
   final Function(String, VoidCallback successCallback, VoidCallback errorCallback) getOrderDetails;
+  final Function(String paymentIntentID) updatePaymentIntentID;
 
   PaymentSheetViewModel({
     required this.pplBalance,
@@ -43,6 +45,8 @@ class PaymentSheetViewModel extends Equatable {
     required this.restaurantName,
     required this.cartTotal,
     required this.getOrderDetails,
+    required this.displayName,
+    required this.updatePaymentIntentID,
   });
 
   static PaymentSheetViewModel fromStore(Store<AppState> store) {
@@ -58,6 +62,7 @@ class PaymentSheetViewModel extends Equatable {
       walletAddress: store.state.userState.walletAddress,
       cartTotal: store.state.cartState.cartTotal,
       restaurantName: store.state.cartState.restaurantName,
+      displayName: store.state.userState.displayName,
       updateSelectedValues: (GBPxAmount, PPLAmount) {
         store.dispatch(UpdateSelectedAmounts(GBPxAmount, PPLAmount));
       },
@@ -75,6 +80,9 @@ class PaymentSheetViewModel extends Equatable {
       },
       getOrderDetails: (String paymentIntentID, successCallback, errorCallback) {
         store.dispatch(queryOrderDetailsFromPaymentIntentID(paymentIntentID, successCallback, errorCallback));
+      },
+      updatePaymentIntentID: (String paymentIntentID) {
+        store.dispatch(UpdatePaymentIntentID(paymentIntentID));
       },
     );
   }

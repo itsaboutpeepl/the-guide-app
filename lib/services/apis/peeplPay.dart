@@ -18,6 +18,6 @@ class PeeplPayService {
 
     print("Payment Intent Result $result");
 
-    return result;
+    return result['paymentIntent'];
   }
 }

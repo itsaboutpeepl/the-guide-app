@@ -75,31 +75,8 @@ class _MainScreenState extends State<MainScreen> {
           routes: [
             GuideHomeTab(),
             NewsHomeTab(),
-            HomeTab(),
-
-            // WebviewTab(
-            //   children: [
-            //     WebViewWidget(
-            //       url: 'https://www.shocal.org',
-            //       walletAddress: vm.walletAddress,
-            //     )
-            //   ],
-            // ),
-            //TopupTab(),
-            // HelpTab(),
-            // BuyTab(),
             AccountTab(),
             WebviewTab(),
-
-            // ContactsTab(),
-            // BuyTab(
-            //   children: [
-            //     vm.isDefaultCommunity
-            //         ? FusePointsExplainedScreen()
-            //         : BuyScreen(),
-            //   ],
-            // ),
-            // AccountTab(),
           ],
           bottomNavigationBuilder: (_, TabsRouter tabs) {
             _tabsRouter = tabs;

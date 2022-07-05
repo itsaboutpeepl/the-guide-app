@@ -192,7 +192,7 @@ PODS:
   - plaid_flutter (0.0.1):
     - Flutter
     - Plaid (= 2.4.0)
-  - PromisesObjC (2.1.0)
+  - PromisesObjC (2.1.1)
   - rate_my_app (1.1.3):
     - Flutter
   - SAMKeychain (1.5.3)
@@ -426,7 +426,7 @@ SPEC CHECKSUMS:
   PhoneNumberKit: 441e8b26ec88d598e3591de9061eff18f5dd12e8
   Plaid: 4623a3804bddb9581b7a17287d8ae79b5a85c086
   plaid_flutter: 2fda1fc73441d72d91ccc1b871fada601385b444
-  PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   rate_my_app: 96f658ddb7f0a8d2f46d54452583f084760aef57
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   scan: aea35bb4aa59ccc8839c576a18cd57c7d492cc86
