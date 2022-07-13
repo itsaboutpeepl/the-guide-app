@@ -12,36 +12,11 @@ part of 'transak.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 TransakPlugin _$TransakPluginFromJson(Map<String, dynamic> json) {
   return _TransakPlugin.fromJson(json);
 }
-
-/// @nodoc
-class _$TransakPluginTearOff {
-  const _$TransakPluginTearOff();
-
-  _TransakPlugin call(
-      {String name = 'transak',
-      String? widgetUrl,
-      String type = 'deposit',
-      bool isActive = false}) {
-    return _TransakPlugin(
-      name: name,
-      widgetUrl: widgetUrl,
-      type: type,
-      isActive: isActive,
-    );
-  }
-
-  TransakPlugin fromJson(Map<String, Object?> json) {
-    return TransakPlugin.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $TransakPlugin = _$TransakPluginTearOff();
 
 /// @nodoc
 mixin _$TransakPlugin {
@@ -102,25 +77,25 @@ class _$TransakPluginCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$TransakPluginCopyWith<$Res>
+abstract class _$$_TransakPluginCopyWith<$Res>
     implements $TransakPluginCopyWith<$Res> {
-  factory _$TransakPluginCopyWith(
-          _TransakPlugin value, $Res Function(_TransakPlugin) then) =
-      __$TransakPluginCopyWithImpl<$Res>;
+  factory _$$_TransakPluginCopyWith(
+          _$_TransakPlugin value, $Res Function(_$_TransakPlugin) then) =
+      __$$_TransakPluginCopyWithImpl<$Res>;
   @override
   $Res call({String name, String? widgetUrl, String type, bool isActive});
 }
 
 /// @nodoc
-class __$TransakPluginCopyWithImpl<$Res>
+class __$$_TransakPluginCopyWithImpl<$Res>
     extends _$TransakPluginCopyWithImpl<$Res>
-    implements _$TransakPluginCopyWith<$Res> {
-  __$TransakPluginCopyWithImpl(
-      _TransakPlugin _value, $Res Function(_TransakPlugin) _then)
-      : super(_value, (v) => _then(v as _TransakPlugin));
+    implements _$$_TransakPluginCopyWith<$Res> {
+  __$$_TransakPluginCopyWithImpl(
+      _$_TransakPlugin _value, $Res Function(_$_TransakPlugin) _then)
+      : super(_value, (v) => _then(v as _$_TransakPlugin));
 
   @override
-  _TransakPlugin get _value => super._value as _TransakPlugin;
+  _$_TransakPlugin get _value => super._value as _$_TransakPlugin;
 
   @override
   $Res call({
@@ -129,7 +104,7 @@ class __$TransakPluginCopyWithImpl<$Res>
     Object? type = freezed,
     Object? isActive = freezed,
   }) {
-    return _then(_TransakPlugin(
+    return _then(_$_TransakPlugin(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -152,7 +127,6 @@ class __$TransakPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@With<Plugin>()
 @JsonSerializable()
 class _$_TransakPlugin
     with DiagnosticableTreeMixin, Plugin
@@ -166,16 +140,16 @@ class _$_TransakPlugin
   factory _$_TransakPlugin.fromJson(Map<String, dynamic> json) =>
       _$$_TransakPluginFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String name;
   @override
   final String? widgetUrl;
-  @JsonKey()
   @override
+  @JsonKey()
   final String type;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
 
   @override
@@ -198,13 +172,14 @@ class _$_TransakPlugin
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _TransakPlugin &&
+            other is _$_TransakPlugin &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.widgetUrl, widgetUrl) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.isActive, isActive));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -215,8 +190,8 @@ class _$_TransakPlugin
 
   @JsonKey(ignore: true)
   @override
-  _$TransakPluginCopyWith<_TransakPlugin> get copyWith =>
-      __$TransakPluginCopyWithImpl<_TransakPlugin>(this, _$identity);
+  _$$_TransakPluginCopyWith<_$_TransakPlugin> get copyWith =>
+      __$$_TransakPluginCopyWithImpl<_$_TransakPlugin>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -226,24 +201,24 @@ class _$_TransakPlugin
 
 abstract class _TransakPlugin implements TransakPlugin, Plugin {
   factory _TransakPlugin(
-      {String name,
-      String? widgetUrl,
-      String type,
-      bool isActive}) = _$_TransakPlugin;
+      {final String name,
+      final String? widgetUrl,
+      final String type,
+      final bool isActive}) = _$_TransakPlugin;
 
   factory _TransakPlugin.fromJson(Map<String, dynamic> json) =
       _$_TransakPlugin.fromJson;
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String? get widgetUrl;
+  String? get widgetUrl => throw _privateConstructorUsedError;
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TransakPluginCopyWith<_TransakPlugin> get copyWith =>
+  _$$_TransakPluginCopyWith<_$_TransakPlugin> get copyWith =>
       throw _privateConstructorUsedError;
 }

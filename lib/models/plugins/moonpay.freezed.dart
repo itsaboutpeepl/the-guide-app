@@ -12,36 +12,11 @@ part of 'moonpay.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 MoonpayPlugin _$MoonpayPluginFromJson(Map<String, dynamic> json) {
   return _MoonpayPlugin.fromJson(json);
 }
-
-/// @nodoc
-class _$MoonpayPluginTearOff {
-  const _$MoonpayPluginTearOff();
-
-  _MoonpayPlugin call(
-      {String name = 'moonpay',
-      String? widgetUrl,
-      String type = 'deposit',
-      bool isActive = false}) {
-    return _MoonpayPlugin(
-      name: name,
-      widgetUrl: widgetUrl,
-      type: type,
-      isActive: isActive,
-    );
-  }
-
-  MoonpayPlugin fromJson(Map<String, Object?> json) {
-    return MoonpayPlugin.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $MoonpayPlugin = _$MoonpayPluginTearOff();
 
 /// @nodoc
 mixin _$MoonpayPlugin {
@@ -102,25 +77,25 @@ class _$MoonpayPluginCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$MoonpayPluginCopyWith<$Res>
+abstract class _$$_MoonpayPluginCopyWith<$Res>
     implements $MoonpayPluginCopyWith<$Res> {
-  factory _$MoonpayPluginCopyWith(
-          _MoonpayPlugin value, $Res Function(_MoonpayPlugin) then) =
-      __$MoonpayPluginCopyWithImpl<$Res>;
+  factory _$$_MoonpayPluginCopyWith(
+          _$_MoonpayPlugin value, $Res Function(_$_MoonpayPlugin) then) =
+      __$$_MoonpayPluginCopyWithImpl<$Res>;
   @override
   $Res call({String name, String? widgetUrl, String type, bool isActive});
 }
 
 /// @nodoc
-class __$MoonpayPluginCopyWithImpl<$Res>
+class __$$_MoonpayPluginCopyWithImpl<$Res>
     extends _$MoonpayPluginCopyWithImpl<$Res>
-    implements _$MoonpayPluginCopyWith<$Res> {
-  __$MoonpayPluginCopyWithImpl(
-      _MoonpayPlugin _value, $Res Function(_MoonpayPlugin) _then)
-      : super(_value, (v) => _then(v as _MoonpayPlugin));
+    implements _$$_MoonpayPluginCopyWith<$Res> {
+  __$$_MoonpayPluginCopyWithImpl(
+      _$_MoonpayPlugin _value, $Res Function(_$_MoonpayPlugin) _then)
+      : super(_value, (v) => _then(v as _$_MoonpayPlugin));
 
   @override
-  _MoonpayPlugin get _value => super._value as _MoonpayPlugin;
+  _$_MoonpayPlugin get _value => super._value as _$_MoonpayPlugin;
 
   @override
   $Res call({
@@ -129,7 +104,7 @@ class __$MoonpayPluginCopyWithImpl<$Res>
     Object? type = freezed,
     Object? isActive = freezed,
   }) {
-    return _then(_MoonpayPlugin(
+    return _then(_$_MoonpayPlugin(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -152,7 +127,6 @@ class __$MoonpayPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@With<Plugin>()
 @JsonSerializable()
 class _$_MoonpayPlugin
     with DiagnosticableTreeMixin, Plugin
@@ -166,16 +140,16 @@ class _$_MoonpayPlugin
   factory _$_MoonpayPlugin.fromJson(Map<String, dynamic> json) =>
       _$$_MoonpayPluginFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String name;
   @override
   final String? widgetUrl;
-  @JsonKey()
   @override
+  @JsonKey()
   final String type;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
 
   @override
@@ -198,13 +172,14 @@ class _$_MoonpayPlugin
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _MoonpayPlugin &&
+            other is _$_MoonpayPlugin &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.widgetUrl, widgetUrl) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.isActive, isActive));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -215,8 +190,8 @@ class _$_MoonpayPlugin
 
   @JsonKey(ignore: true)
   @override
-  _$MoonpayPluginCopyWith<_MoonpayPlugin> get copyWith =>
-      __$MoonpayPluginCopyWithImpl<_MoonpayPlugin>(this, _$identity);
+  _$$_MoonpayPluginCopyWith<_$_MoonpayPlugin> get copyWith =>
+      __$$_MoonpayPluginCopyWithImpl<_$_MoonpayPlugin>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -226,24 +201,24 @@ class _$_MoonpayPlugin
 
 abstract class _MoonpayPlugin implements MoonpayPlugin, Plugin {
   factory _MoonpayPlugin(
-      {String name,
-      String? widgetUrl,
-      String type,
-      bool isActive}) = _$_MoonpayPlugin;
+      {final String name,
+      final String? widgetUrl,
+      final String type,
+      final bool isActive}) = _$_MoonpayPlugin;
 
   factory _MoonpayPlugin.fromJson(Map<String, dynamic> json) =
       _$_MoonpayPlugin.fromJson;
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String? get widgetUrl;
+  String? get widgetUrl => throw _privateConstructorUsedError;
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$MoonpayPluginCopyWith<_MoonpayPlugin> get copyWith =>
+  _$$_MoonpayPluginCopyWith<_$_MoonpayPlugin> get copyWith =>
       throw _privateConstructorUsedError;
 }

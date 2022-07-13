@@ -43,6 +43,73 @@ class _ShopScreenState extends State<ShopScreen> {
             children: [
               Card(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                color: Color(0xFF333333),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      vertical: 30,
+                      horizontal: 20,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Image.asset(
+                            "assets/images/avatar-ppl-red.png",
+                            width: MediaQuery.of(context).size.width * 0.3,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                          "Check your vesting schedule",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text(
+                          "Get rewarded for being a part of Peepl 100",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        ShimmerButton(
+                          buttonContent: Center(
+                            child: Text(
+                              "Check now",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          buttonAction: () => context.router.push(DAppScreen()),
+                          baseColor: Color(0xFFE6352D),
+                          highlightColor: Color(0xFFE6352D).withOpacity(0.8),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Card(
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 color: Color(0xFF0D2A21),
                 child: SizedBox(
                   width: double.infinity,

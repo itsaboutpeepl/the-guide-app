@@ -12,42 +12,11 @@ part of 'home_page_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 HomePageState _$HomePageStateFromJson(Map<String, dynamic> json) {
   return _HomePageState.fromJson(json);
 }
-
-/// @nodoc
-class _$HomePageStateTearOff {
-  const _$HomePageStateTearOff();
-
-  _HomePageState call(
-      {required List<BlogArticle> featuredPosts,
-      required List<VideoArticle> featuredVideos,
-      required List<Events> eventList,
-      required List<Directory> directoryList,
-      required bool playConfetti,
-      required bool isLoading,
-      required bool isError}) {
-    return _HomePageState(
-      featuredPosts: featuredPosts,
-      featuredVideos: featuredVideos,
-      eventList: eventList,
-      directoryList: directoryList,
-      playConfetti: playConfetti,
-      isLoading: isLoading,
-      isError: isError,
-    );
-  }
-
-  HomePageState fromJson(Map<String, Object?> json) {
-    return HomePageState.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $HomePageState = _$HomePageStateTearOff();
 
 /// @nodoc
 mixin _$HomePageState {
@@ -133,11 +102,11 @@ class _$HomePageStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$HomePageStateCopyWith<$Res>
+abstract class _$$_HomePageStateCopyWith<$Res>
     implements $HomePageStateCopyWith<$Res> {
-  factory _$HomePageStateCopyWith(
-          _HomePageState value, $Res Function(_HomePageState) then) =
-      __$HomePageStateCopyWithImpl<$Res>;
+  factory _$$_HomePageStateCopyWith(
+          _$_HomePageState value, $Res Function(_$_HomePageState) then) =
+      __$$_HomePageStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {List<BlogArticle> featuredPosts,
@@ -150,15 +119,15 @@ abstract class _$HomePageStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$HomePageStateCopyWithImpl<$Res>
+class __$$_HomePageStateCopyWithImpl<$Res>
     extends _$HomePageStateCopyWithImpl<$Res>
-    implements _$HomePageStateCopyWith<$Res> {
-  __$HomePageStateCopyWithImpl(
-      _HomePageState _value, $Res Function(_HomePageState) _then)
-      : super(_value, (v) => _then(v as _HomePageState));
+    implements _$$_HomePageStateCopyWith<$Res> {
+  __$$_HomePageStateCopyWithImpl(
+      _$_HomePageState _value, $Res Function(_$_HomePageState) _then)
+      : super(_value, (v) => _then(v as _$_HomePageState));
 
   @override
-  _HomePageState get _value => super._value as _HomePageState;
+  _$_HomePageState get _value => super._value as _$_HomePageState;
 
   @override
   $Res call({
@@ -170,21 +139,21 @@ class __$HomePageStateCopyWithImpl<$Res>
     Object? isLoading = freezed,
     Object? isError = freezed,
   }) {
-    return _then(_HomePageState(
+    return _then(_$_HomePageState(
       featuredPosts: featuredPosts == freezed
-          ? _value.featuredPosts
+          ? _value._featuredPosts
           : featuredPosts // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
       featuredVideos: featuredVideos == freezed
-          ? _value.featuredVideos
+          ? _value._featuredVideos
           : featuredVideos // ignore: cast_nullable_to_non_nullable
               as List<VideoArticle>,
       eventList: eventList == freezed
-          ? _value.eventList
+          ? _value._eventList
           : eventList // ignore: cast_nullable_to_non_nullable
               as List<Events>,
       directoryList: directoryList == freezed
-          ? _value.directoryList
+          ? _value._directoryList
           : directoryList // ignore: cast_nullable_to_non_nullable
               as List<Directory>,
       playConfetti: playConfetti == freezed
@@ -208,26 +177,50 @@ class __$HomePageStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_HomePageState extends _HomePageState {
   _$_HomePageState(
-      {required this.featuredPosts,
-      required this.featuredVideos,
-      required this.eventList,
-      required this.directoryList,
+      {required final List<BlogArticle> featuredPosts,
+      required final List<VideoArticle> featuredVideos,
+      required final List<Events> eventList,
+      required final List<Directory> directoryList,
       required this.playConfetti,
       required this.isLoading,
       required this.isError})
-      : super._();
+      : _featuredPosts = featuredPosts,
+        _featuredVideos = featuredVideos,
+        _eventList = eventList,
+        _directoryList = directoryList,
+        super._();
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
       _$$_HomePageStateFromJson(json);
 
+  final List<BlogArticle> _featuredPosts;
   @override
-  final List<BlogArticle> featuredPosts;
+  List<BlogArticle> get featuredPosts {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_featuredPosts);
+  }
+
+  final List<VideoArticle> _featuredVideos;
   @override
-  final List<VideoArticle> featuredVideos;
+  List<VideoArticle> get featuredVideos {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_featuredVideos);
+  }
+
+  final List<Events> _eventList;
   @override
-  final List<Events> eventList;
+  List<Events> get eventList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_eventList);
+  }
+
+  final List<Directory> _directoryList;
   @override
-  final List<Directory> directoryList;
+  List<Directory> get directoryList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_directoryList);
+  }
+
   @override
   final bool playConfetti;
   @override
@@ -244,35 +237,37 @@ class _$_HomePageState extends _HomePageState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HomePageState &&
+            other is _$_HomePageState &&
             const DeepCollectionEquality()
-                .equals(other.featuredPosts, featuredPosts) &&
+                .equals(other._featuredPosts, _featuredPosts) &&
             const DeepCollectionEquality()
-                .equals(other.featuredVideos, featuredVideos) &&
-            const DeepCollectionEquality().equals(other.eventList, eventList) &&
+                .equals(other._featuredVideos, _featuredVideos) &&
             const DeepCollectionEquality()
-                .equals(other.directoryList, directoryList) &&
+                .equals(other._eventList, _eventList) &&
+            const DeepCollectionEquality()
+                .equals(other._directoryList, _directoryList) &&
             const DeepCollectionEquality()
                 .equals(other.playConfetti, playConfetti) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
             const DeepCollectionEquality().equals(other.isError, isError));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(featuredPosts),
-      const DeepCollectionEquality().hash(featuredVideos),
-      const DeepCollectionEquality().hash(eventList),
-      const DeepCollectionEquality().hash(directoryList),
+      const DeepCollectionEquality().hash(_featuredPosts),
+      const DeepCollectionEquality().hash(_featuredVideos),
+      const DeepCollectionEquality().hash(_eventList),
+      const DeepCollectionEquality().hash(_directoryList),
       const DeepCollectionEquality().hash(playConfetti),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isError));
 
   @JsonKey(ignore: true)
   @override
-  _$HomePageStateCopyWith<_HomePageState> get copyWith =>
-      __$HomePageStateCopyWithImpl<_HomePageState>(this, _$identity);
+  _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>
+      __$$_HomePageStateCopyWithImpl<_$_HomePageState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -282,34 +277,34 @@ class _$_HomePageState extends _HomePageState {
 
 abstract class _HomePageState extends HomePageState {
   factory _HomePageState(
-      {required List<BlogArticle> featuredPosts,
-      required List<VideoArticle> featuredVideos,
-      required List<Events> eventList,
-      required List<Directory> directoryList,
-      required bool playConfetti,
-      required bool isLoading,
-      required bool isError}) = _$_HomePageState;
+      {required final List<BlogArticle> featuredPosts,
+      required final List<VideoArticle> featuredVideos,
+      required final List<Events> eventList,
+      required final List<Directory> directoryList,
+      required final bool playConfetti,
+      required final bool isLoading,
+      required final bool isError}) = _$_HomePageState;
   _HomePageState._() : super._();
 
   factory _HomePageState.fromJson(Map<String, dynamic> json) =
       _$_HomePageState.fromJson;
 
   @override
-  List<BlogArticle> get featuredPosts;
+  List<BlogArticle> get featuredPosts => throw _privateConstructorUsedError;
   @override
-  List<VideoArticle> get featuredVideos;
+  List<VideoArticle> get featuredVideos => throw _privateConstructorUsedError;
   @override
-  List<Events> get eventList;
+  List<Events> get eventList => throw _privateConstructorUsedError;
   @override
-  List<Directory> get directoryList;
+  List<Directory> get directoryList => throw _privateConstructorUsedError;
   @override
-  bool get playConfetti;
+  bool get playConfetti => throw _privateConstructorUsedError;
   @override
-  bool get isLoading;
+  bool get isLoading => throw _privateConstructorUsedError;
   @override
-  bool get isError;
+  bool get isError => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$HomePageStateCopyWith<_HomePageState> get copyWith =>
+  _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>
       throw _privateConstructorUsedError;
 }

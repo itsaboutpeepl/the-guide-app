@@ -12,62 +12,11 @@ part of 'token.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Token _$TokenFromJson(Map<String, dynamic> json) {
   return _Token.fromJson(json);
 }
-
-/// @nodoc
-class _$TokenTearOff {
-  const _$TokenTearOff();
-
-  _Token call(
-      {required String address,
-      required String name,
-      required String symbol,
-      required BigInt amount,
-      required int decimals,
-      bool isNative = false,
-      String? imageUrl,
-      @JsonKey(ignore: true) String? subtitle,
-      int? timestamp,
-      Price? priceInfo,
-      String? communityAddress,
-      String? originNetwork,
-      num priceChange = 0,
-      @JsonKey(ignore: true) num priceDiff = 0,
-      @JsonKey(ignore: true) int priceDiffLimitInDays = 0,
-      @JsonKey(ignore: true) List<Stats> stats = const [],
-      @JsonKey(fromJson: walletActionsFromJson) WalletActions? walletActions}) {
-    return _Token(
-      address: address,
-      name: name,
-      symbol: symbol,
-      amount: amount,
-      decimals: decimals,
-      isNative: isNative,
-      imageUrl: imageUrl,
-      subtitle: subtitle,
-      timestamp: timestamp,
-      priceInfo: priceInfo,
-      communityAddress: communityAddress,
-      originNetwork: originNetwork,
-      priceChange: priceChange,
-      priceDiff: priceDiff,
-      priceDiffLimitInDays: priceDiffLimitInDays,
-      stats: stats,
-      walletActions: walletActions,
-    );
-  }
-
-  Token fromJson(Map<String, Object?> json) {
-    return Token.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Token = _$TokenTearOff();
 
 /// @nodoc
 mixin _$Token {
@@ -250,9 +199,9 @@ class _$TokenCopyWithImpl<$Res> implements $TokenCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
-  factory _$TokenCopyWith(_Token value, $Res Function(_Token) then) =
-      __$TokenCopyWithImpl<$Res>;
+abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
+  factory _$$_TokenCopyWith(_$_Token value, $Res Function(_$_Token) then) =
+      __$$_TokenCopyWithImpl<$Res>;
   @override
   $Res call(
       {String address,
@@ -280,13 +229,13 @@ abstract class _$TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
-    implements _$TokenCopyWith<$Res> {
-  __$TokenCopyWithImpl(_Token _value, $Res Function(_Token) _then)
-      : super(_value, (v) => _then(v as _Token));
+class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
+    implements _$$_TokenCopyWith<$Res> {
+  __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then)
+      : super(_value, (v) => _then(v as _$_Token));
 
   @override
-  _Token get _value => super._value as _Token;
+  _$_Token get _value => super._value as _$_Token;
 
   @override
   $Res call({
@@ -308,7 +257,7 @@ class __$TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
     Object? stats = freezed,
     Object? walletActions = freezed,
   }) {
-    return _then(_Token(
+    return _then(_$_Token(
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -370,7 +319,7 @@ class __$TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
           : priceDiffLimitInDays // ignore: cast_nullable_to_non_nullable
               as int,
       stats: stats == freezed
-          ? _value.stats
+          ? _value._stats
           : stats // ignore: cast_nullable_to_non_nullable
               as List<Stats>,
       walletActions: walletActions == freezed
@@ -401,9 +350,10 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
       this.priceChange = 0,
       @JsonKey(ignore: true) this.priceDiff = 0,
       @JsonKey(ignore: true) this.priceDiffLimitInDays = 0,
-      @JsonKey(ignore: true) this.stats = const [],
+      @JsonKey(ignore: true) final List<Stats> stats = const [],
       @JsonKey(fromJson: walletActionsFromJson) this.walletActions})
-      : super._();
+      : _stats = stats,
+        super._();
 
   factory _$_Token.fromJson(Map<String, dynamic> json) =>
       _$$_TokenFromJson(json);
@@ -418,8 +368,8 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
   final BigInt amount;
   @override
   final int decimals;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isNative;
   @override
   final String? imageUrl;
@@ -434,8 +384,8 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
   final String? communityAddress;
   @override
   final String? originNetwork;
-  @JsonKey()
   @override
+  @JsonKey()
   final num priceChange;
   @override
   @JsonKey(ignore: true)
@@ -443,9 +393,14 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
   @override
   @JsonKey(ignore: true)
   final int priceDiffLimitInDays;
+  final List<Stats> _stats;
   @override
   @JsonKey(ignore: true)
-  final List<Stats> stats;
+  List<Stats> get stats {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_stats);
+  }
+
   @override
   @JsonKey(fromJson: walletActionsFromJson)
   final WalletActions? walletActions;
@@ -483,7 +438,7 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Token &&
+            other is _$_Token &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.symbol, symbol) &&
@@ -503,11 +458,12 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.priceDiff, priceDiff) &&
             const DeepCollectionEquality()
                 .equals(other.priceDiffLimitInDays, priceDiffLimitInDays) &&
-            const DeepCollectionEquality().equals(other.stats, stats) &&
+            const DeepCollectionEquality().equals(other._stats, _stats) &&
             const DeepCollectionEquality()
                 .equals(other.walletActions, walletActions));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -526,13 +482,13 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(priceChange),
       const DeepCollectionEquality().hash(priceDiff),
       const DeepCollectionEquality().hash(priceDiffLimitInDays),
-      const DeepCollectionEquality().hash(stats),
+      const DeepCollectionEquality().hash(_stats),
       const DeepCollectionEquality().hash(walletActions));
 
   @JsonKey(ignore: true)
   @override
-  _$TokenCopyWith<_Token> get copyWith =>
-      __$TokenCopyWithImpl<_Token>(this, _$identity);
+  _$$_TokenCopyWith<_$_Token> get copyWith =>
+      __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -542,72 +498,73 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
 
 abstract class _Token extends Token {
   factory _Token(
-      {required String address,
-      required String name,
-      required String symbol,
-      required BigInt amount,
-      required int decimals,
-      bool isNative,
-      String? imageUrl,
+      {required final String address,
+      required final String name,
+      required final String symbol,
+      required final BigInt amount,
+      required final int decimals,
+      final bool isNative,
+      final String? imageUrl,
       @JsonKey(ignore: true)
-          String? subtitle,
-      int? timestamp,
-      Price? priceInfo,
-      String? communityAddress,
-      String? originNetwork,
-      num priceChange,
+          final String? subtitle,
+      final int? timestamp,
+      final Price? priceInfo,
+      final String? communityAddress,
+      final String? originNetwork,
+      final num priceChange,
       @JsonKey(ignore: true)
-          num priceDiff,
+          final num priceDiff,
       @JsonKey(ignore: true)
-          int priceDiffLimitInDays,
+          final int priceDiffLimitInDays,
       @JsonKey(ignore: true)
-          List<Stats> stats,
+          final List<Stats> stats,
       @JsonKey(fromJson: walletActionsFromJson)
-          WalletActions? walletActions}) = _$_Token;
+          final WalletActions? walletActions}) = _$_Token;
   _Token._() : super._();
 
   factory _Token.fromJson(Map<String, dynamic> json) = _$_Token.fromJson;
 
   @override
-  String get address;
+  String get address => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String get symbol;
+  String get symbol => throw _privateConstructorUsedError;
   @override
-  BigInt get amount;
+  BigInt get amount => throw _privateConstructorUsedError;
   @override
-  int get decimals;
+  int get decimals => throw _privateConstructorUsedError;
   @override
-  bool get isNative;
+  bool get isNative => throw _privateConstructorUsedError;
   @override
-  String? get imageUrl;
-  @override
-  @JsonKey(ignore: true)
-  String? get subtitle;
-  @override
-  int? get timestamp;
-  @override
-  Price? get priceInfo;
-  @override
-  String? get communityAddress;
-  @override
-  String? get originNetwork;
-  @override
-  num get priceChange;
+  String? get imageUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  num get priceDiff;
+  String? get subtitle => throw _privateConstructorUsedError;
+  @override
+  int? get timestamp => throw _privateConstructorUsedError;
+  @override
+  Price? get priceInfo => throw _privateConstructorUsedError;
+  @override
+  String? get communityAddress => throw _privateConstructorUsedError;
+  @override
+  String? get originNetwork => throw _privateConstructorUsedError;
+  @override
+  num get priceChange => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  int get priceDiffLimitInDays;
+  num get priceDiff => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  List<Stats> get stats;
+  int get priceDiffLimitInDays => throw _privateConstructorUsedError;
+  @override
+  @JsonKey(ignore: true)
+  List<Stats> get stats => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: walletActionsFromJson)
-  WalletActions? get walletActions;
+  WalletActions? get walletActions => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$TokenCopyWith<_Token> get copyWith => throw _privateConstructorUsedError;
+  _$$_TokenCopyWith<_$_Token> get copyWith =>
+      throw _privateConstructorUsedError;
 }

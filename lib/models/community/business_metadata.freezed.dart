@@ -12,44 +12,11 @@ part of 'business_metadata.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BusinessMetadata _$BusinessMetadataFromJson(Map<String, dynamic> json) {
   return _BusinessMetadata.fromJson(json);
 }
-
-/// @nodoc
-class _$BusinessMetadataTearOff {
-  const _$BusinessMetadataTearOff();
-
-  _BusinessMetadata call(
-      {String address = '',
-      String description = '',
-      String image = '',
-      String coverPhoto = '',
-      String type = '',
-      String phoneNumber = '',
-      String website = '',
-      List<double> latLng = const []}) {
-    return _BusinessMetadata(
-      address: address,
-      description: description,
-      image: image,
-      coverPhoto: coverPhoto,
-      type: type,
-      phoneNumber: phoneNumber,
-      website: website,
-      latLng: latLng,
-    );
-  }
-
-  BusinessMetadata fromJson(Map<String, Object?> json) {
-    return BusinessMetadata.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BusinessMetadata = _$BusinessMetadataTearOff();
 
 /// @nodoc
 mixin _$BusinessMetadata {
@@ -142,11 +109,11 @@ class _$BusinessMetadataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BusinessMetadataCopyWith<$Res>
+abstract class _$$_BusinessMetadataCopyWith<$Res>
     implements $BusinessMetadataCopyWith<$Res> {
-  factory _$BusinessMetadataCopyWith(
-          _BusinessMetadata value, $Res Function(_BusinessMetadata) then) =
-      __$BusinessMetadataCopyWithImpl<$Res>;
+  factory _$$_BusinessMetadataCopyWith(
+          _$_BusinessMetadata value, $Res Function(_$_BusinessMetadata) then) =
+      __$$_BusinessMetadataCopyWithImpl<$Res>;
   @override
   $Res call(
       {String address,
@@ -160,15 +127,15 @@ abstract class _$BusinessMetadataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BusinessMetadataCopyWithImpl<$Res>
+class __$$_BusinessMetadataCopyWithImpl<$Res>
     extends _$BusinessMetadataCopyWithImpl<$Res>
-    implements _$BusinessMetadataCopyWith<$Res> {
-  __$BusinessMetadataCopyWithImpl(
-      _BusinessMetadata _value, $Res Function(_BusinessMetadata) _then)
-      : super(_value, (v) => _then(v as _BusinessMetadata));
+    implements _$$_BusinessMetadataCopyWith<$Res> {
+  __$$_BusinessMetadataCopyWithImpl(
+      _$_BusinessMetadata _value, $Res Function(_$_BusinessMetadata) _then)
+      : super(_value, (v) => _then(v as _$_BusinessMetadata));
 
   @override
-  _BusinessMetadata get _value => super._value as _BusinessMetadata;
+  _$_BusinessMetadata get _value => super._value as _$_BusinessMetadata;
 
   @override
   $Res call({
@@ -181,7 +148,7 @@ class __$BusinessMetadataCopyWithImpl<$Res>
     Object? website = freezed,
     Object? latLng = freezed,
   }) {
-    return _then(_BusinessMetadata(
+    return _then(_$_BusinessMetadata(
       address: address == freezed
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
@@ -211,7 +178,7 @@ class __$BusinessMetadataCopyWithImpl<$Res>
           : website // ignore: cast_nullable_to_non_nullable
               as String,
       latLng: latLng == freezed
-          ? _value.latLng
+          ? _value._latLng
           : latLng // ignore: cast_nullable_to_non_nullable
               as List<double>,
     ));
@@ -232,35 +199,40 @@ class _$_BusinessMetadata
       this.type = '',
       this.phoneNumber = '',
       this.website = '',
-      this.latLng = const []});
+      final List<double> latLng = const []})
+      : _latLng = latLng;
 
   factory _$_BusinessMetadata.fromJson(Map<String, dynamic> json) =>
       _$$_BusinessMetadataFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String address;
-  @JsonKey()
   @override
+  @JsonKey()
   final String description;
-  @JsonKey()
   @override
+  @JsonKey()
   final String image;
-  @JsonKey()
   @override
+  @JsonKey()
   final String coverPhoto;
-  @JsonKey()
   @override
+  @JsonKey()
   final String type;
-  @JsonKey()
   @override
+  @JsonKey()
   final String phoneNumber;
-  @JsonKey()
   @override
+  @JsonKey()
   final String website;
-  @JsonKey()
+  final List<double> _latLng;
   @override
-  final List<double> latLng;
+  @JsonKey()
+  List<double> get latLng {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_latLng);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -286,7 +258,7 @@ class _$_BusinessMetadata
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BusinessMetadata &&
+            other is _$_BusinessMetadata &&
             const DeepCollectionEquality().equals(other.address, address) &&
             const DeepCollectionEquality()
                 .equals(other.description, description) &&
@@ -297,9 +269,10 @@ class _$_BusinessMetadata
             const DeepCollectionEquality()
                 .equals(other.phoneNumber, phoneNumber) &&
             const DeepCollectionEquality().equals(other.website, website) &&
-            const DeepCollectionEquality().equals(other.latLng, latLng));
+            const DeepCollectionEquality().equals(other._latLng, _latLng));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -310,12 +283,12 @@ class _$_BusinessMetadata
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(phoneNumber),
       const DeepCollectionEquality().hash(website),
-      const DeepCollectionEquality().hash(latLng));
+      const DeepCollectionEquality().hash(_latLng));
 
   @JsonKey(ignore: true)
   @override
-  _$BusinessMetadataCopyWith<_BusinessMetadata> get copyWith =>
-      __$BusinessMetadataCopyWithImpl<_BusinessMetadata>(this, _$identity);
+  _$$_BusinessMetadataCopyWith<_$_BusinessMetadata> get copyWith =>
+      __$$_BusinessMetadataCopyWithImpl<_$_BusinessMetadata>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -325,36 +298,36 @@ class _$_BusinessMetadata
 
 abstract class _BusinessMetadata implements BusinessMetadata {
   factory _BusinessMetadata(
-      {String address,
-      String description,
-      String image,
-      String coverPhoto,
-      String type,
-      String phoneNumber,
-      String website,
-      List<double> latLng}) = _$_BusinessMetadata;
+      {final String address,
+      final String description,
+      final String image,
+      final String coverPhoto,
+      final String type,
+      final String phoneNumber,
+      final String website,
+      final List<double> latLng}) = _$_BusinessMetadata;
 
   factory _BusinessMetadata.fromJson(Map<String, dynamic> json) =
       _$_BusinessMetadata.fromJson;
 
   @override
-  String get address;
+  String get address => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String get image;
+  String get image => throw _privateConstructorUsedError;
   @override
-  String get coverPhoto;
+  String get coverPhoto => throw _privateConstructorUsedError;
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  String get phoneNumber;
+  String get phoneNumber => throw _privateConstructorUsedError;
   @override
-  String get website;
+  String get website => throw _privateConstructorUsedError;
   @override
-  List<double> get latLng;
+  List<double> get latLng => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BusinessMetadataCopyWith<_BusinessMetadata> get copyWith =>
+  _$$_BusinessMetadataCopyWith<_$_BusinessMetadata> get copyWith =>
       throw _privateConstructorUsedError;
 }

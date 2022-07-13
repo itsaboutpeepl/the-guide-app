@@ -12,46 +12,11 @@ part of 'blogArticle.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BlogArticle _$BlogArticleFromJson(Map<String, dynamic> json) {
   return _BlogArticle.fromJson(json);
 }
-
-/// @nodoc
-class _$BlogArticleTearOff {
-  const _$BlogArticleTearOff();
-
-  _BlogArticle call(
-      {required String title,
-      required String imageURL,
-      required List<String> category,
-      required int postID,
-      required String postURL,
-      required String content,
-      required DateTime publishedAt,
-      required List<String> gallery,
-      required String description}) {
-    return _BlogArticle(
-      title: title,
-      imageURL: imageURL,
-      category: category,
-      postID: postID,
-      postURL: postURL,
-      content: content,
-      publishedAt: publishedAt,
-      gallery: gallery,
-      description: description,
-    );
-  }
-
-  BlogArticle fromJson(Map<String, Object?> json) {
-    return BlogArticle.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BlogArticle = _$BlogArticleTearOff();
 
 /// @nodoc
 mixin _$BlogArticle {
@@ -150,11 +115,11 @@ class _$BlogArticleCopyWithImpl<$Res> implements $BlogArticleCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BlogArticleCopyWith<$Res>
+abstract class _$$_BlogArticleCopyWith<$Res>
     implements $BlogArticleCopyWith<$Res> {
-  factory _$BlogArticleCopyWith(
-          _BlogArticle value, $Res Function(_BlogArticle) then) =
-      __$BlogArticleCopyWithImpl<$Res>;
+  factory _$$_BlogArticleCopyWith(
+          _$_BlogArticle value, $Res Function(_$_BlogArticle) then) =
+      __$$_BlogArticleCopyWithImpl<$Res>;
   @override
   $Res call(
       {String title,
@@ -169,14 +134,14 @@ abstract class _$BlogArticleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
-    implements _$BlogArticleCopyWith<$Res> {
-  __$BlogArticleCopyWithImpl(
-      _BlogArticle _value, $Res Function(_BlogArticle) _then)
-      : super(_value, (v) => _then(v as _BlogArticle));
+class __$$_BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
+    implements _$$_BlogArticleCopyWith<$Res> {
+  __$$_BlogArticleCopyWithImpl(
+      _$_BlogArticle _value, $Res Function(_$_BlogArticle) _then)
+      : super(_value, (v) => _then(v as _$_BlogArticle));
 
   @override
-  _BlogArticle get _value => super._value as _BlogArticle;
+  _$_BlogArticle get _value => super._value as _$_BlogArticle;
 
   @override
   $Res call({
@@ -190,7 +155,7 @@ class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
     Object? gallery = freezed,
     Object? description = freezed,
   }) {
-    return _then(_BlogArticle(
+    return _then(_$_BlogArticle(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -200,7 +165,7 @@ class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
       category: category == freezed
-          ? _value.category
+          ? _value._category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
       postID: postID == freezed
@@ -220,7 +185,7 @@ class __$BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
           : publishedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       gallery: gallery == freezed
-          ? _value.gallery
+          ? _value._gallery
           : gallery // ignore: cast_nullable_to_non_nullable
               as List<String>,
       description: description == freezed
@@ -238,14 +203,16 @@ class _$_BlogArticle extends _BlogArticle {
   _$_BlogArticle(
       {required this.title,
       required this.imageURL,
-      required this.category,
+      required final List<String> category,
       required this.postID,
       required this.postURL,
       required this.content,
       required this.publishedAt,
-      required this.gallery,
+      required final List<String> gallery,
       required this.description})
-      : super._();
+      : _category = category,
+        _gallery = gallery,
+        super._();
 
   factory _$_BlogArticle.fromJson(Map<String, dynamic> json) =>
       _$$_BlogArticleFromJson(json);
@@ -254,8 +221,13 @@ class _$_BlogArticle extends _BlogArticle {
   final String title;
   @override
   final String imageURL;
+  final List<String> _category;
   @override
-  final List<String> category;
+  List<String> get category {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_category);
+  }
+
   @override
   final int postID;
   @override
@@ -264,8 +236,13 @@ class _$_BlogArticle extends _BlogArticle {
   final String content;
   @override
   final DateTime publishedAt;
+  final List<String> _gallery;
   @override
-  final List<String> gallery;
+  List<String> get gallery {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_gallery);
+  }
+
   @override
   final String description;
 
@@ -278,37 +255,38 @@ class _$_BlogArticle extends _BlogArticle {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BlogArticle &&
+            other is _$_BlogArticle &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other._category, _category) &&
             const DeepCollectionEquality().equals(other.postID, postID) &&
             const DeepCollectionEquality().equals(other.postURL, postURL) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality()
                 .equals(other.publishedAt, publishedAt) &&
-            const DeepCollectionEquality().equals(other.gallery, gallery) &&
+            const DeepCollectionEquality().equals(other._gallery, _gallery) &&
             const DeepCollectionEquality()
                 .equals(other.description, description));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(imageURL),
-      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(_category),
       const DeepCollectionEquality().hash(postID),
       const DeepCollectionEquality().hash(postURL),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(publishedAt),
-      const DeepCollectionEquality().hash(gallery),
+      const DeepCollectionEquality().hash(_gallery),
       const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)
   @override
-  _$BlogArticleCopyWith<_BlogArticle> get copyWith =>
-      __$BlogArticleCopyWithImpl<_BlogArticle>(this, _$identity);
+  _$$_BlogArticleCopyWith<_$_BlogArticle> get copyWith =>
+      __$$_BlogArticleCopyWithImpl<_$_BlogArticle>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -318,40 +296,40 @@ class _$_BlogArticle extends _BlogArticle {
 
 abstract class _BlogArticle extends BlogArticle {
   factory _BlogArticle(
-      {required String title,
-      required String imageURL,
-      required List<String> category,
-      required int postID,
-      required String postURL,
-      required String content,
-      required DateTime publishedAt,
-      required List<String> gallery,
-      required String description}) = _$_BlogArticle;
+      {required final String title,
+      required final String imageURL,
+      required final List<String> category,
+      required final int postID,
+      required final String postURL,
+      required final String content,
+      required final DateTime publishedAt,
+      required final List<String> gallery,
+      required final String description}) = _$_BlogArticle;
   _BlogArticle._() : super._();
 
   factory _BlogArticle.fromJson(Map<String, dynamic> json) =
       _$_BlogArticle.fromJson;
 
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get imageURL;
+  String get imageURL => throw _privateConstructorUsedError;
   @override
-  List<String> get category;
+  List<String> get category => throw _privateConstructorUsedError;
   @override
-  int get postID;
+  int get postID => throw _privateConstructorUsedError;
   @override
-  String get postURL;
+  String get postURL => throw _privateConstructorUsedError;
   @override
-  String get content;
+  String get content => throw _privateConstructorUsedError;
   @override
-  DateTime get publishedAt;
+  DateTime get publishedAt => throw _privateConstructorUsedError;
   @override
-  List<String> get gallery;
+  List<String> get gallery => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BlogArticleCopyWith<_BlogArticle> get copyWith =>
+  _$$_BlogArticleCopyWith<_$_BlogArticle> get copyWith =>
       throw _privateConstructorUsedError;
 }

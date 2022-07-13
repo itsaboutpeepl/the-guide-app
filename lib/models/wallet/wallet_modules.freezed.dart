@@ -12,55 +12,11 @@ part of 'wallet_modules.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 WalletModules _$WalletModulesFromJson(Map<String, dynamic> json) {
   return _WalletModules.fromJson(json);
 }
-
-/// @nodoc
-class _$WalletModulesTearOff {
-  const _$WalletModulesTearOff();
-
-  _WalletModules call(
-      {@JsonKey(name: 'GuardianManager')
-          required String guardianManager,
-      @JsonKey(name: 'LockManager')
-          required String lockManager,
-      @JsonKey(name: 'RecoveryManager')
-          required String recoveryManager,
-      @JsonKey(name: 'ApprovedTransfer')
-          required String approvedTransfer,
-      @JsonKey(name: 'TokenExchanger')
-          required String tokenExchanger,
-      @JsonKey(name: 'CommunityManager')
-          required String communityManager,
-      @JsonKey(name: 'WalletOwnershipManager')
-          required String walletOwnershipManager,
-      @JsonKey(name: 'DAIPointsManager')
-          required String daiPointsManager,
-      @JsonKey(name: 'TransferManager')
-          required String transferManager}) {
-    return _WalletModules(
-      guardianManager: guardianManager,
-      lockManager: lockManager,
-      recoveryManager: recoveryManager,
-      approvedTransfer: approvedTransfer,
-      tokenExchanger: tokenExchanger,
-      communityManager: communityManager,
-      walletOwnershipManager: walletOwnershipManager,
-      daiPointsManager: daiPointsManager,
-      transferManager: transferManager,
-    );
-  }
-
-  WalletModules fromJson(Map<String, Object?> json) {
-    return WalletModules.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $WalletModules = _$WalletModulesTearOff();
 
 /// @nodoc
 mixin _$WalletModules {
@@ -169,11 +125,11 @@ class _$WalletModulesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$WalletModulesCopyWith<$Res>
+abstract class _$$_WalletModulesCopyWith<$Res>
     implements $WalletModulesCopyWith<$Res> {
-  factory _$WalletModulesCopyWith(
-          _WalletModules value, $Res Function(_WalletModules) then) =
-      __$WalletModulesCopyWithImpl<$Res>;
+  factory _$$_WalletModulesCopyWith(
+          _$_WalletModules value, $Res Function(_$_WalletModules) then) =
+      __$$_WalletModulesCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(name: 'GuardianManager') String guardianManager,
@@ -188,15 +144,15 @@ abstract class _$WalletModulesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$WalletModulesCopyWithImpl<$Res>
+class __$$_WalletModulesCopyWithImpl<$Res>
     extends _$WalletModulesCopyWithImpl<$Res>
-    implements _$WalletModulesCopyWith<$Res> {
-  __$WalletModulesCopyWithImpl(
-      _WalletModules _value, $Res Function(_WalletModules) _then)
-      : super(_value, (v) => _then(v as _WalletModules));
+    implements _$$_WalletModulesCopyWith<$Res> {
+  __$$_WalletModulesCopyWithImpl(
+      _$_WalletModules _value, $Res Function(_$_WalletModules) _then)
+      : super(_value, (v) => _then(v as _$_WalletModules));
 
   @override
-  _WalletModules get _value => super._value as _WalletModules;
+  _$_WalletModules get _value => super._value as _$_WalletModules;
 
   @override
   $Res call({
@@ -210,7 +166,7 @@ class __$WalletModulesCopyWithImpl<$Res>
     Object? daiPointsManager = freezed,
     Object? transferManager = freezed,
   }) {
-    return _then(_WalletModules(
+    return _then(_$_WalletModules(
       guardianManager: guardianManager == freezed
           ? _value.guardianManager
           : guardianManager // ignore: cast_nullable_to_non_nullable
@@ -315,7 +271,7 @@ class _$_WalletModules implements _WalletModules {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _WalletModules &&
+            other is _$_WalletModules &&
             const DeepCollectionEquality()
                 .equals(other.guardianManager, guardianManager) &&
             const DeepCollectionEquality()
@@ -336,6 +292,7 @@ class _$_WalletModules implements _WalletModules {
                 .equals(other.transferManager, transferManager));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -351,8 +308,8 @@ class _$_WalletModules implements _WalletModules {
 
   @JsonKey(ignore: true)
   @override
-  _$WalletModulesCopyWith<_WalletModules> get copyWith =>
-      __$WalletModulesCopyWithImpl<_WalletModules>(this, _$identity);
+  _$$_WalletModulesCopyWith<_$_WalletModules> get copyWith =>
+      __$$_WalletModulesCopyWithImpl<_$_WalletModules>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -363,56 +320,56 @@ class _$_WalletModules implements _WalletModules {
 abstract class _WalletModules implements WalletModules {
   factory _WalletModules(
       {@JsonKey(name: 'GuardianManager')
-          required String guardianManager,
+          required final String guardianManager,
       @JsonKey(name: 'LockManager')
-          required String lockManager,
+          required final String lockManager,
       @JsonKey(name: 'RecoveryManager')
-          required String recoveryManager,
+          required final String recoveryManager,
       @JsonKey(name: 'ApprovedTransfer')
-          required String approvedTransfer,
+          required final String approvedTransfer,
       @JsonKey(name: 'TokenExchanger')
-          required String tokenExchanger,
+          required final String tokenExchanger,
       @JsonKey(name: 'CommunityManager')
-          required String communityManager,
+          required final String communityManager,
       @JsonKey(name: 'WalletOwnershipManager')
-          required String walletOwnershipManager,
+          required final String walletOwnershipManager,
       @JsonKey(name: 'DAIPointsManager')
-          required String daiPointsManager,
+          required final String daiPointsManager,
       @JsonKey(name: 'TransferManager')
-          required String transferManager}) = _$_WalletModules;
+          required final String transferManager}) = _$_WalletModules;
 
   factory _WalletModules.fromJson(Map<String, dynamic> json) =
       _$_WalletModules.fromJson;
 
   @override
   @JsonKey(name: 'GuardianManager')
-  String get guardianManager;
+  String get guardianManager => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'LockManager')
-  String get lockManager;
+  String get lockManager => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'RecoveryManager')
-  String get recoveryManager;
+  String get recoveryManager => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'ApprovedTransfer')
-  String get approvedTransfer;
+  String get approvedTransfer => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'TokenExchanger')
-  String get tokenExchanger;
+  String get tokenExchanger => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'CommunityManager')
-  String get communityManager;
+  String get communityManager => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'WalletOwnershipManager')
-  String get walletOwnershipManager;
+  String get walletOwnershipManager => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'DAIPointsManager')
-  String get daiPointsManager;
+  String get daiPointsManager => throw _privateConstructorUsedError;
   @override
   @JsonKey(name: 'TransferManager')
-  String get transferManager;
+  String get transferManager => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$WalletModulesCopyWith<_WalletModules> get copyWith =>
+  _$$_WalletModulesCopyWith<_$_WalletModules> get copyWith =>
       throw _privateConstructorUsedError;
 }

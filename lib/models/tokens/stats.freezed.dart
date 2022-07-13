@@ -12,32 +12,11 @@ part of 'stats.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Stats _$StatsFromJson(Map<String, dynamic> json) {
   return _Stats.fromJson(json);
 }
-
-/// @nodoc
-class _$StatsTearOff {
-  const _$StatsTearOff();
-
-  _Stats call({String? volume, String? price, int? timestamp, DateTime? date}) {
-    return _Stats(
-      volume: volume,
-      price: price,
-      timestamp: timestamp,
-      date: date,
-    );
-  }
-
-  Stats fromJson(Map<String, Object?> json) {
-    return Stats.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Stats = _$StatsTearOff();
 
 /// @nodoc
 mixin _$Stats {
@@ -95,21 +74,21 @@ class _$StatsCopyWithImpl<$Res> implements $StatsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$StatsCopyWith<$Res> implements $StatsCopyWith<$Res> {
-  factory _$StatsCopyWith(_Stats value, $Res Function(_Stats) then) =
-      __$StatsCopyWithImpl<$Res>;
+abstract class _$$_StatsCopyWith<$Res> implements $StatsCopyWith<$Res> {
+  factory _$$_StatsCopyWith(_$_Stats value, $Res Function(_$_Stats) then) =
+      __$$_StatsCopyWithImpl<$Res>;
   @override
   $Res call({String? volume, String? price, int? timestamp, DateTime? date});
 }
 
 /// @nodoc
-class __$StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res>
-    implements _$StatsCopyWith<$Res> {
-  __$StatsCopyWithImpl(_Stats _value, $Res Function(_Stats) _then)
-      : super(_value, (v) => _then(v as _Stats));
+class __$$_StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res>
+    implements _$$_StatsCopyWith<$Res> {
+  __$$_StatsCopyWithImpl(_$_Stats _value, $Res Function(_$_Stats) _then)
+      : super(_value, (v) => _then(v as _$_Stats));
 
   @override
-  _Stats get _value => super._value as _Stats;
+  _$_Stats get _value => super._value as _$_Stats;
 
   @override
   $Res call({
@@ -118,7 +97,7 @@ class __$StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res>
     Object? timestamp = freezed,
     Object? date = freezed,
   }) {
-    return _then(_Stats(
+    return _then(_$_Stats(
       volume: volume == freezed
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
@@ -177,13 +156,14 @@ class _$_Stats with DiagnosticableTreeMixin implements _Stats {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Stats &&
+            other is _$_Stats &&
             const DeepCollectionEquality().equals(other.volume, volume) &&
             const DeepCollectionEquality().equals(other.price, price) &&
             const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
             const DeepCollectionEquality().equals(other.date, date));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -194,8 +174,8 @@ class _$_Stats with DiagnosticableTreeMixin implements _Stats {
 
   @JsonKey(ignore: true)
   @override
-  _$StatsCopyWith<_Stats> get copyWith =>
-      __$StatsCopyWithImpl<_Stats>(this, _$identity);
+  _$$_StatsCopyWith<_$_Stats> get copyWith =>
+      __$$_StatsCopyWithImpl<_$_Stats>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -205,22 +185,23 @@ class _$_Stats with DiagnosticableTreeMixin implements _Stats {
 
 abstract class _Stats implements Stats {
   factory _Stats(
-      {String? volume,
-      String? price,
-      int? timestamp,
-      DateTime? date}) = _$_Stats;
+      {final String? volume,
+      final String? price,
+      final int? timestamp,
+      final DateTime? date}) = _$_Stats;
 
   factory _Stats.fromJson(Map<String, dynamic> json) = _$_Stats.fromJson;
 
   @override
-  String? get volume;
+  String? get volume => throw _privateConstructorUsedError;
   @override
-  String? get price;
+  String? get price => throw _privateConstructorUsedError;
   @override
-  int? get timestamp;
+  int? get timestamp => throw _privateConstructorUsedError;
   @override
-  DateTime? get date;
+  DateTime? get date => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$StatsCopyWith<_Stats> get copyWith => throw _privateConstructorUsedError;
+  _$$_StatsCopyWith<_$_Stats> get copyWith =>
+      throw _privateConstructorUsedError;
 }

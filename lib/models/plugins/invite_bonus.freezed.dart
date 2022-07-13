@@ -12,36 +12,11 @@ part of 'invite_bonus.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 InviteBonusPlugin _$InviteBonusPluginFromJson(Map<String, dynamic> json) {
   return _InviteBonusPlugin.fromJson(json);
 }
-
-/// @nodoc
-class _$InviteBonusPluginTearOff {
-  const _$InviteBonusPluginTearOff();
-
-  _InviteBonusPlugin call(
-      {String type = 'inviteBonus',
-      String? amount = null,
-      String? name = null,
-      bool isActive = false}) {
-    return _InviteBonusPlugin(
-      type: type,
-      amount: amount,
-      name: name,
-      isActive: isActive,
-    );
-  }
-
-  InviteBonusPlugin fromJson(Map<String, Object?> json) {
-    return InviteBonusPlugin.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $InviteBonusPlugin = _$InviteBonusPluginTearOff();
 
 /// @nodoc
 mixin _$InviteBonusPlugin {
@@ -102,25 +77,25 @@ class _$InviteBonusPluginCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$InviteBonusPluginCopyWith<$Res>
+abstract class _$$_InviteBonusPluginCopyWith<$Res>
     implements $InviteBonusPluginCopyWith<$Res> {
-  factory _$InviteBonusPluginCopyWith(
-          _InviteBonusPlugin value, $Res Function(_InviteBonusPlugin) then) =
-      __$InviteBonusPluginCopyWithImpl<$Res>;
+  factory _$$_InviteBonusPluginCopyWith(_$_InviteBonusPlugin value,
+          $Res Function(_$_InviteBonusPlugin) then) =
+      __$$_InviteBonusPluginCopyWithImpl<$Res>;
   @override
   $Res call({String type, String? amount, String? name, bool isActive});
 }
 
 /// @nodoc
-class __$InviteBonusPluginCopyWithImpl<$Res>
+class __$$_InviteBonusPluginCopyWithImpl<$Res>
     extends _$InviteBonusPluginCopyWithImpl<$Res>
-    implements _$InviteBonusPluginCopyWith<$Res> {
-  __$InviteBonusPluginCopyWithImpl(
-      _InviteBonusPlugin _value, $Res Function(_InviteBonusPlugin) _then)
-      : super(_value, (v) => _then(v as _InviteBonusPlugin));
+    implements _$$_InviteBonusPluginCopyWith<$Res> {
+  __$$_InviteBonusPluginCopyWithImpl(
+      _$_InviteBonusPlugin _value, $Res Function(_$_InviteBonusPlugin) _then)
+      : super(_value, (v) => _then(v as _$_InviteBonusPlugin));
 
   @override
-  _InviteBonusPlugin get _value => super._value as _InviteBonusPlugin;
+  _$_InviteBonusPlugin get _value => super._value as _$_InviteBonusPlugin;
 
   @override
   $Res call({
@@ -129,7 +104,7 @@ class __$InviteBonusPluginCopyWithImpl<$Res>
     Object? name = freezed,
     Object? isActive = freezed,
   }) {
-    return _then(_InviteBonusPlugin(
+    return _then(_$_InviteBonusPlugin(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -152,7 +127,6 @@ class __$InviteBonusPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@With<Plugin>()
 @JsonSerializable()
 class _$_InviteBonusPlugin
     with DiagnosticableTreeMixin, Plugin
@@ -166,17 +140,17 @@ class _$_InviteBonusPlugin
   factory _$_InviteBonusPlugin.fromJson(Map<String, dynamic> json) =>
       _$$_InviteBonusPluginFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String type;
-  @JsonKey()
   @override
+  @JsonKey()
   final String? amount;
-  @JsonKey()
   @override
+  @JsonKey()
   final String? name;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
 
   @override
@@ -199,13 +173,14 @@ class _$_InviteBonusPlugin
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _InviteBonusPlugin &&
+            other is _$_InviteBonusPlugin &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.isActive, isActive));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -216,8 +191,9 @@ class _$_InviteBonusPlugin
 
   @JsonKey(ignore: true)
   @override
-  _$InviteBonusPluginCopyWith<_InviteBonusPlugin> get copyWith =>
-      __$InviteBonusPluginCopyWithImpl<_InviteBonusPlugin>(this, _$identity);
+  _$$_InviteBonusPluginCopyWith<_$_InviteBonusPlugin> get copyWith =>
+      __$$_InviteBonusPluginCopyWithImpl<_$_InviteBonusPlugin>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -227,24 +203,24 @@ class _$_InviteBonusPlugin
 
 abstract class _InviteBonusPlugin implements InviteBonusPlugin, Plugin {
   factory _InviteBonusPlugin(
-      {String type,
-      String? amount,
-      String? name,
-      bool isActive}) = _$_InviteBonusPlugin;
+      {final String type,
+      final String? amount,
+      final String? name,
+      final bool isActive}) = _$_InviteBonusPlugin;
 
   factory _InviteBonusPlugin.fromJson(Map<String, dynamic> json) =
       _$_InviteBonusPlugin.fromJson;
 
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  String? get amount;
+  String? get amount => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$InviteBonusPluginCopyWith<_InviteBonusPlugin> get copyWith =>
+  _$$_InviteBonusPluginCopyWith<_$_InviteBonusPlugin> get copyWith =>
       throw _privateConstructorUsedError;
 }

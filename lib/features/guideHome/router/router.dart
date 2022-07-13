@@ -8,9 +8,10 @@ const guideHomeTab = AutoRoute(
   page: EmptyRouterPage,
   children: [
     AutoRoute(
-        initial: true,
-        page: GuideHomeScreen,
-        name: 'guideHomeScreen',
-        guards: [AuthGuard]),
+      initial: true,
+      page: GuideHomeScreen,
+      name: 'guideHomeScreen',
+      guards: [AuthGuard],
+    ),
   ],
 );

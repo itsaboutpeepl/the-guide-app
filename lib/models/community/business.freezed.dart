@@ -12,36 +12,11 @@ part of 'business.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Business _$BusinessFromJson(Map<String, dynamic> json) {
   return _Business.fromJson(json);
 }
-
-/// @nodoc
-class _$BusinessTearOff {
-  const _$BusinessTearOff();
-
-  _Business call(
-      {required BusinessMetadata metadata,
-      String account = '',
-      String id = '',
-      String name = ''}) {
-    return _Business(
-      metadata: metadata,
-      account: account,
-      id: id,
-      name: name,
-    );
-  }
-
-  Business fromJson(Map<String, Object?> json) {
-    return Business.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Business = _$BusinessTearOff();
 
 /// @nodoc
 mixin _$Business {
@@ -110,9 +85,10 @@ class _$BusinessCopyWithImpl<$Res> implements $BusinessCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$BusinessCopyWith<$Res> implements $BusinessCopyWith<$Res> {
-  factory _$BusinessCopyWith(_Business value, $Res Function(_Business) then) =
-      __$BusinessCopyWithImpl<$Res>;
+abstract class _$$_BusinessCopyWith<$Res> implements $BusinessCopyWith<$Res> {
+  factory _$$_BusinessCopyWith(
+          _$_Business value, $Res Function(_$_Business) then) =
+      __$$_BusinessCopyWithImpl<$Res>;
   @override
   $Res call(
       {BusinessMetadata metadata, String account, String id, String name});
@@ -122,13 +98,14 @@ abstract class _$BusinessCopyWith<$Res> implements $BusinessCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$BusinessCopyWithImpl<$Res> extends _$BusinessCopyWithImpl<$Res>
-    implements _$BusinessCopyWith<$Res> {
-  __$BusinessCopyWithImpl(_Business _value, $Res Function(_Business) _then)
-      : super(_value, (v) => _then(v as _Business));
+class __$$_BusinessCopyWithImpl<$Res> extends _$BusinessCopyWithImpl<$Res>
+    implements _$$_BusinessCopyWith<$Res> {
+  __$$_BusinessCopyWithImpl(
+      _$_Business _value, $Res Function(_$_Business) _then)
+      : super(_value, (v) => _then(v as _$_Business));
 
   @override
-  _Business get _value => super._value as _Business;
+  _$_Business get _value => super._value as _$_Business;
 
   @override
   $Res call({
@@ -137,7 +114,7 @@ class __$BusinessCopyWithImpl<$Res> extends _$BusinessCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
   }) {
-    return _then(_Business(
+    return _then(_$_Business(
       metadata: metadata == freezed
           ? _value.metadata
           : metadata // ignore: cast_nullable_to_non_nullable
@@ -173,14 +150,14 @@ class _$_Business with DiagnosticableTreeMixin implements _Business {
 
   @override
   final BusinessMetadata metadata;
-  @JsonKey()
   @override
+  @JsonKey()
   final String account;
-  @JsonKey()
   @override
+  @JsonKey()
   final String id;
-  @JsonKey()
   @override
+  @JsonKey()
   final String name;
 
   @override
@@ -203,13 +180,14 @@ class _$_Business with DiagnosticableTreeMixin implements _Business {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Business &&
+            other is _$_Business &&
             const DeepCollectionEquality().equals(other.metadata, metadata) &&
             const DeepCollectionEquality().equals(other.account, account) &&
             const DeepCollectionEquality().equals(other.id, id) &&
             const DeepCollectionEquality().equals(other.name, name));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -220,8 +198,8 @@ class _$_Business with DiagnosticableTreeMixin implements _Business {
 
   @JsonKey(ignore: true)
   @override
-  _$BusinessCopyWith<_Business> get copyWith =>
-      __$BusinessCopyWithImpl<_Business>(this, _$identity);
+  _$$_BusinessCopyWith<_$_Business> get copyWith =>
+      __$$_BusinessCopyWithImpl<_$_Business>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -231,23 +209,23 @@ class _$_Business with DiagnosticableTreeMixin implements _Business {
 
 abstract class _Business implements Business {
   factory _Business(
-      {required BusinessMetadata metadata,
-      String account,
-      String id,
-      String name}) = _$_Business;
+      {required final BusinessMetadata metadata,
+      final String account,
+      final String id,
+      final String name}) = _$_Business;
 
   factory _Business.fromJson(Map<String, dynamic> json) = _$_Business.fromJson;
 
   @override
-  BusinessMetadata get metadata;
+  BusinessMetadata get metadata => throw _privateConstructorUsedError;
   @override
-  String get account;
+  String get account => throw _privateConstructorUsedError;
   @override
-  String get id;
+  String get id => throw _privateConstructorUsedError;
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BusinessCopyWith<_Business> get copyWith =>
+  _$$_BusinessCopyWith<_$_Business> get copyWith =>
       throw _privateConstructorUsedError;
 }

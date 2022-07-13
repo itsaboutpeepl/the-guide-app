@@ -12,50 +12,11 @@ part of 'directory.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Directory _$DirectoryFromJson(Map<String, dynamic> json) {
   return _Directory.fromJson(json);
 }
-
-/// @nodoc
-class _$DirectoryTearOff {
-  const _$DirectoryTearOff();
-
-  _Directory call(
-      {required String title,
-      required String latitude,
-      required String longitude,
-      required String website,
-      required String twitterLink,
-      required String instaLink,
-      required String facebookLink,
-      required String imageURL,
-      required String description,
-      required String address,
-      required String guideWebLink}) {
-    return _Directory(
-      title: title,
-      latitude: latitude,
-      longitude: longitude,
-      website: website,
-      twitterLink: twitterLink,
-      instaLink: instaLink,
-      facebookLink: facebookLink,
-      imageURL: imageURL,
-      description: description,
-      address: address,
-      guideWebLink: guideWebLink,
-    );
-  }
-
-  Directory fromJson(Map<String, Object?> json) {
-    return Directory.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Directory = _$DirectoryTearOff();
 
 /// @nodoc
 mixin _$Directory {
@@ -167,10 +128,10 @@ class _$DirectoryCopyWithImpl<$Res> implements $DirectoryCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$DirectoryCopyWith<$Res> implements $DirectoryCopyWith<$Res> {
-  factory _$DirectoryCopyWith(
-          _Directory value, $Res Function(_Directory) then) =
-      __$DirectoryCopyWithImpl<$Res>;
+abstract class _$$_DirectoryCopyWith<$Res> implements $DirectoryCopyWith<$Res> {
+  factory _$$_DirectoryCopyWith(
+          _$_Directory value, $Res Function(_$_Directory) then) =
+      __$$_DirectoryCopyWithImpl<$Res>;
   @override
   $Res call(
       {String title,
@@ -187,13 +148,14 @@ abstract class _$DirectoryCopyWith<$Res> implements $DirectoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
-    implements _$DirectoryCopyWith<$Res> {
-  __$DirectoryCopyWithImpl(_Directory _value, $Res Function(_Directory) _then)
-      : super(_value, (v) => _then(v as _Directory));
+class __$$_DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
+    implements _$$_DirectoryCopyWith<$Res> {
+  __$$_DirectoryCopyWithImpl(
+      _$_Directory _value, $Res Function(_$_Directory) _then)
+      : super(_value, (v) => _then(v as _$_Directory));
 
   @override
-  _Directory get _value => super._value as _Directory;
+  _$_Directory get _value => super._value as _$_Directory;
 
   @override
   $Res call({
@@ -209,7 +171,7 @@ class __$DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
     Object? address = freezed,
     Object? guideWebLink = freezed,
   }) {
-    return _then(_Directory(
+    return _then(_$_Directory(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -311,7 +273,7 @@ class _$_Directory extends _Directory {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Directory &&
+            other is _$_Directory &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.latitude, latitude) &&
             const DeepCollectionEquality().equals(other.longitude, longitude) &&
@@ -329,6 +291,7 @@ class _$_Directory extends _Directory {
                 .equals(other.guideWebLink, guideWebLink));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -346,8 +309,8 @@ class _$_Directory extends _Directory {
 
   @JsonKey(ignore: true)
   @override
-  _$DirectoryCopyWith<_Directory> get copyWith =>
-      __$DirectoryCopyWithImpl<_Directory>(this, _$identity);
+  _$$_DirectoryCopyWith<_$_Directory> get copyWith =>
+      __$$_DirectoryCopyWithImpl<_$_Directory>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -357,46 +320,46 @@ class _$_Directory extends _Directory {
 
 abstract class _Directory extends Directory {
   factory _Directory(
-      {required String title,
-      required String latitude,
-      required String longitude,
-      required String website,
-      required String twitterLink,
-      required String instaLink,
-      required String facebookLink,
-      required String imageURL,
-      required String description,
-      required String address,
-      required String guideWebLink}) = _$_Directory;
+      {required final String title,
+      required final String latitude,
+      required final String longitude,
+      required final String website,
+      required final String twitterLink,
+      required final String instaLink,
+      required final String facebookLink,
+      required final String imageURL,
+      required final String description,
+      required final String address,
+      required final String guideWebLink}) = _$_Directory;
   _Directory._() : super._();
 
   factory _Directory.fromJson(Map<String, dynamic> json) =
       _$_Directory.fromJson;
 
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get latitude;
+  String get latitude => throw _privateConstructorUsedError;
   @override
-  String get longitude;
+  String get longitude => throw _privateConstructorUsedError;
   @override
-  String get website;
+  String get website => throw _privateConstructorUsedError;
   @override
-  String get twitterLink;
+  String get twitterLink => throw _privateConstructorUsedError;
   @override
-  String get instaLink;
+  String get instaLink => throw _privateConstructorUsedError;
   @override
-  String get facebookLink;
+  String get facebookLink => throw _privateConstructorUsedError;
   @override
-  String get imageURL;
+  String get imageURL => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String get address;
+  String get address => throw _privateConstructorUsedError;
   @override
-  String get guideWebLink;
+  String get guideWebLink => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$DirectoryCopyWith<_Directory> get copyWith =>
+  _$$_DirectoryCopyWith<_$_Directory> get copyWith =>
       throw _privateConstructorUsedError;
 }

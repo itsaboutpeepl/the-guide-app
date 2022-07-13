@@ -12,36 +12,11 @@ part of 'backup_bonus.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 BackupBonusPlugin _$BackupBonusPluginFromJson(Map<String, dynamic> json) {
   return _BackupBonusPlugin.fromJson(json);
 }
-
-/// @nodoc
-class _$BackupBonusPluginTearOff {
-  const _$BackupBonusPluginTearOff();
-
-  _BackupBonusPlugin call(
-      {String type = 'backupBonus',
-      String? amount = null,
-      String? name = null,
-      bool isActive = false}) {
-    return _BackupBonusPlugin(
-      type: type,
-      amount: amount,
-      name: name,
-      isActive: isActive,
-    );
-  }
-
-  BackupBonusPlugin fromJson(Map<String, Object?> json) {
-    return BackupBonusPlugin.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $BackupBonusPlugin = _$BackupBonusPluginTearOff();
 
 /// @nodoc
 mixin _$BackupBonusPlugin {
@@ -102,25 +77,25 @@ class _$BackupBonusPluginCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$BackupBonusPluginCopyWith<$Res>
+abstract class _$$_BackupBonusPluginCopyWith<$Res>
     implements $BackupBonusPluginCopyWith<$Res> {
-  factory _$BackupBonusPluginCopyWith(
-          _BackupBonusPlugin value, $Res Function(_BackupBonusPlugin) then) =
-      __$BackupBonusPluginCopyWithImpl<$Res>;
+  factory _$$_BackupBonusPluginCopyWith(_$_BackupBonusPlugin value,
+          $Res Function(_$_BackupBonusPlugin) then) =
+      __$$_BackupBonusPluginCopyWithImpl<$Res>;
   @override
   $Res call({String type, String? amount, String? name, bool isActive});
 }
 
 /// @nodoc
-class __$BackupBonusPluginCopyWithImpl<$Res>
+class __$$_BackupBonusPluginCopyWithImpl<$Res>
     extends _$BackupBonusPluginCopyWithImpl<$Res>
-    implements _$BackupBonusPluginCopyWith<$Res> {
-  __$BackupBonusPluginCopyWithImpl(
-      _BackupBonusPlugin _value, $Res Function(_BackupBonusPlugin) _then)
-      : super(_value, (v) => _then(v as _BackupBonusPlugin));
+    implements _$$_BackupBonusPluginCopyWith<$Res> {
+  __$$_BackupBonusPluginCopyWithImpl(
+      _$_BackupBonusPlugin _value, $Res Function(_$_BackupBonusPlugin) _then)
+      : super(_value, (v) => _then(v as _$_BackupBonusPlugin));
 
   @override
-  _BackupBonusPlugin get _value => super._value as _BackupBonusPlugin;
+  _$_BackupBonusPlugin get _value => super._value as _$_BackupBonusPlugin;
 
   @override
   $Res call({
@@ -129,7 +104,7 @@ class __$BackupBonusPluginCopyWithImpl<$Res>
     Object? name = freezed,
     Object? isActive = freezed,
   }) {
-    return _then(_BackupBonusPlugin(
+    return _then(_$_BackupBonusPlugin(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -152,7 +127,6 @@ class __$BackupBonusPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@With<Plugin>()
 @JsonSerializable()
 class _$_BackupBonusPlugin
     with DiagnosticableTreeMixin, Plugin
@@ -166,17 +140,17 @@ class _$_BackupBonusPlugin
   factory _$_BackupBonusPlugin.fromJson(Map<String, dynamic> json) =>
       _$$_BackupBonusPluginFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String type;
-  @JsonKey()
   @override
+  @JsonKey()
   final String? amount;
-  @JsonKey()
   @override
+  @JsonKey()
   final String? name;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
 
   @override
@@ -199,13 +173,14 @@ class _$_BackupBonusPlugin
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _BackupBonusPlugin &&
+            other is _$_BackupBonusPlugin &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.isActive, isActive));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -216,8 +191,9 @@ class _$_BackupBonusPlugin
 
   @JsonKey(ignore: true)
   @override
-  _$BackupBonusPluginCopyWith<_BackupBonusPlugin> get copyWith =>
-      __$BackupBonusPluginCopyWithImpl<_BackupBonusPlugin>(this, _$identity);
+  _$$_BackupBonusPluginCopyWith<_$_BackupBonusPlugin> get copyWith =>
+      __$$_BackupBonusPluginCopyWithImpl<_$_BackupBonusPlugin>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -227,24 +203,24 @@ class _$_BackupBonusPlugin
 
 abstract class _BackupBonusPlugin implements BackupBonusPlugin, Plugin {
   factory _BackupBonusPlugin(
-      {String type,
-      String? amount,
-      String? name,
-      bool isActive}) = _$_BackupBonusPlugin;
+      {final String type,
+      final String? amount,
+      final String? name,
+      final bool isActive}) = _$_BackupBonusPlugin;
 
   factory _BackupBonusPlugin.fromJson(Map<String, dynamic> json) =
       _$_BackupBonusPlugin.fromJson;
 
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  String? get amount;
+  String? get amount => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$BackupBonusPluginCopyWith<_BackupBonusPlugin> get copyWith =>
+  _$$_BackupBonusPluginCopyWith<_$_BackupBonusPlugin> get copyWith =>
       throw _privateConstructorUsedError;
 }

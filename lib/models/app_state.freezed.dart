@@ -12,40 +12,11 @@ part of 'app_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 AppState _$AppStateFromJson(Map<String, dynamic> json) {
   return _AppState.fromJson(json);
 }
-
-/// @nodoc
-class _$AppStateTearOff {
-  const _$AppStateTearOff();
-
-  _AppState call(
-      {@UserStateConverter() required UserState userState,
-      @CashWalletStateConverter() required CashWalletState cashWalletState,
-      @SwapStateConverter() required SwapState swapState,
-      @HomePageStateConverter() required HomePageState homePageState,
-      @NewsStateConverter() required NewsState newsState,
-      @UserCartStateConverter() required UserCartState cartState}) {
-    return _AppState(
-      userState: userState,
-      cashWalletState: cashWalletState,
-      swapState: swapState,
-      homePageState: homePageState,
-      newsState: newsState,
-      cartState: cartState,
-    );
-  }
-
-  AppState fromJson(Map<String, Object?> json) {
-    return AppState.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $AppState = _$AppStateTearOff();
 
 /// @nodoc
 mixin _$AppState {
@@ -177,9 +148,10 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
-  factory _$AppStateCopyWith(_AppState value, $Res Function(_AppState) then) =
-      __$AppStateCopyWithImpl<$Res>;
+abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
+  factory _$$_AppStateCopyWith(
+          _$_AppState value, $Res Function(_$_AppState) then) =
+      __$$_AppStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {@UserStateConverter() UserState userState,
@@ -204,13 +176,14 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
-    implements _$AppStateCopyWith<$Res> {
-  __$AppStateCopyWithImpl(_AppState _value, $Res Function(_AppState) _then)
-      : super(_value, (v) => _then(v as _AppState));
+class __$$_AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
+    implements _$$_AppStateCopyWith<$Res> {
+  __$$_AppStateCopyWithImpl(
+      _$_AppState _value, $Res Function(_$_AppState) _then)
+      : super(_value, (v) => _then(v as _$_AppState));
 
   @override
-  _AppState get _value => super._value as _AppState;
+  _$_AppState get _value => super._value as _$_AppState;
 
   @override
   $Res call({
@@ -221,7 +194,7 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     Object? newsState = freezed,
     Object? cartState = freezed,
   }) {
-    return _then(_AppState(
+    return _then(_$_AppState(
       userState: userState == freezed
           ? _value.userState
           : userState // ignore: cast_nullable_to_non_nullable
@@ -307,7 +280,7 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _AppState &&
+            other is _$_AppState &&
             const DeepCollectionEquality().equals(other.userState, userState) &&
             const DeepCollectionEquality()
                 .equals(other.cashWalletState, cashWalletState) &&
@@ -318,6 +291,7 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.cartState, cartState));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -330,8 +304,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$AppStateCopyWith<_AppState> get copyWith =>
-      __$AppStateCopyWithImpl<_AppState>(this, _$identity);
+  _$$_AppStateCopyWith<_$_AppState> get copyWith =>
+      __$$_AppStateCopyWithImpl<_$_AppState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -341,37 +315,42 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
 
 abstract class _AppState extends AppState {
   factory _AppState(
-          {@UserStateConverter() required UserState userState,
-          @CashWalletStateConverter() required CashWalletState cashWalletState,
-          @SwapStateConverter() required SwapState swapState,
-          @HomePageStateConverter() required HomePageState homePageState,
-          @NewsStateConverter() required NewsState newsState,
-          @UserCartStateConverter() required UserCartState cartState}) =
-      _$_AppState;
+      {@UserStateConverter()
+          required final UserState userState,
+      @CashWalletStateConverter()
+          required final CashWalletState cashWalletState,
+      @SwapStateConverter()
+          required final SwapState swapState,
+      @HomePageStateConverter()
+          required final HomePageState homePageState,
+      @NewsStateConverter()
+          required final NewsState newsState,
+      @UserCartStateConverter()
+          required final UserCartState cartState}) = _$_AppState;
   _AppState._() : super._();
 
   factory _AppState.fromJson(Map<String, dynamic> json) = _$_AppState.fromJson;
 
   @override
   @UserStateConverter()
-  UserState get userState;
+  UserState get userState => throw _privateConstructorUsedError;
   @override
   @CashWalletStateConverter()
-  CashWalletState get cashWalletState;
+  CashWalletState get cashWalletState => throw _privateConstructorUsedError;
   @override
   @SwapStateConverter()
-  SwapState get swapState;
+  SwapState get swapState => throw _privateConstructorUsedError;
   @override
   @HomePageStateConverter()
-  HomePageState get homePageState;
+  HomePageState get homePageState => throw _privateConstructorUsedError;
   @override
   @NewsStateConverter()
-  NewsState get newsState;
+  NewsState get newsState => throw _privateConstructorUsedError;
   @override
   @UserCartStateConverter()
-  UserCartState get cartState;
+  UserCartState get cartState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$AppStateCopyWith<_AppState> get copyWith =>
+  _$$_AppStateCopyWith<_$_AppState> get copyWith =>
       throw _privateConstructorUsedError;
 }

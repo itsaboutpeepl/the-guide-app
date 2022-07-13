@@ -12,46 +12,11 @@ part of 'user_cart_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 UserCartState _$UserCartStateFromJson(Map<String, dynamic> json) {
   return _UserCartState.fromJson(json);
 }
-
-/// @nodoc
-class _$UserCartStateTearOff {
-  const _$UserCartStateTearOff();
-
-  _UserCartState call(
-      {required String paymentIntentID,
-      required double selectedGBPxAmount,
-      required double selectedPPLAmount,
-      required bool transferringTokens,
-      required bool errorCompletingPayment,
-      required bool confirmedPayment,
-      required String restaurantName,
-      required int cartTotal,
-      required String restaurantWalletAddress}) {
-    return _UserCartState(
-      paymentIntentID: paymentIntentID,
-      selectedGBPxAmount: selectedGBPxAmount,
-      selectedPPLAmount: selectedPPLAmount,
-      transferringTokens: transferringTokens,
-      errorCompletingPayment: errorCompletingPayment,
-      confirmedPayment: confirmedPayment,
-      restaurantName: restaurantName,
-      cartTotal: cartTotal,
-      restaurantWalletAddress: restaurantWalletAddress,
-    );
-  }
-
-  UserCartState fromJson(Map<String, Object?> json) {
-    return UserCartState.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $UserCartState = _$UserCartStateTearOff();
 
 /// @nodoc
 mixin _$UserCartState {
@@ -151,11 +116,11 @@ class _$UserCartStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$UserCartStateCopyWith<$Res>
+abstract class _$$_UserCartStateCopyWith<$Res>
     implements $UserCartStateCopyWith<$Res> {
-  factory _$UserCartStateCopyWith(
-          _UserCartState value, $Res Function(_UserCartState) then) =
-      __$UserCartStateCopyWithImpl<$Res>;
+  factory _$$_UserCartStateCopyWith(
+          _$_UserCartState value, $Res Function(_$_UserCartState) then) =
+      __$$_UserCartStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {String paymentIntentID,
@@ -170,15 +135,15 @@ abstract class _$UserCartStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$UserCartStateCopyWithImpl<$Res>
+class __$$_UserCartStateCopyWithImpl<$Res>
     extends _$UserCartStateCopyWithImpl<$Res>
-    implements _$UserCartStateCopyWith<$Res> {
-  __$UserCartStateCopyWithImpl(
-      _UserCartState _value, $Res Function(_UserCartState) _then)
-      : super(_value, (v) => _then(v as _UserCartState));
+    implements _$$_UserCartStateCopyWith<$Res> {
+  __$$_UserCartStateCopyWithImpl(
+      _$_UserCartState _value, $Res Function(_$_UserCartState) _then)
+      : super(_value, (v) => _then(v as _$_UserCartState));
 
   @override
-  _UserCartState get _value => super._value as _UserCartState;
+  _$_UserCartState get _value => super._value as _$_UserCartState;
 
   @override
   $Res call({
@@ -192,7 +157,7 @@ class __$UserCartStateCopyWithImpl<$Res>
     Object? cartTotal = freezed,
     Object? restaurantWalletAddress = freezed,
   }) {
-    return _then(_UserCartState(
+    return _then(_$_UserCartState(
       paymentIntentID: paymentIntentID == freezed
           ? _value.paymentIntentID
           : paymentIntentID // ignore: cast_nullable_to_non_nullable
@@ -280,7 +245,7 @@ class _$_UserCartState extends _UserCartState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _UserCartState &&
+            other is _$_UserCartState &&
             const DeepCollectionEquality()
                 .equals(other.paymentIntentID, paymentIntentID) &&
             const DeepCollectionEquality()
@@ -300,6 +265,7 @@ class _$_UserCartState extends _UserCartState {
                 other.restaurantWalletAddress, restaurantWalletAddress));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -315,8 +281,8 @@ class _$_UserCartState extends _UserCartState {
 
   @JsonKey(ignore: true)
   @override
-  _$UserCartStateCopyWith<_UserCartState> get copyWith =>
-      __$UserCartStateCopyWithImpl<_UserCartState>(this, _$identity);
+  _$$_UserCartStateCopyWith<_$_UserCartState> get copyWith =>
+      __$$_UserCartStateCopyWithImpl<_$_UserCartState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -326,40 +292,40 @@ class _$_UserCartState extends _UserCartState {
 
 abstract class _UserCartState extends UserCartState {
   factory _UserCartState(
-      {required String paymentIntentID,
-      required double selectedGBPxAmount,
-      required double selectedPPLAmount,
-      required bool transferringTokens,
-      required bool errorCompletingPayment,
-      required bool confirmedPayment,
-      required String restaurantName,
-      required int cartTotal,
-      required String restaurantWalletAddress}) = _$_UserCartState;
+      {required final String paymentIntentID,
+      required final double selectedGBPxAmount,
+      required final double selectedPPLAmount,
+      required final bool transferringTokens,
+      required final bool errorCompletingPayment,
+      required final bool confirmedPayment,
+      required final String restaurantName,
+      required final int cartTotal,
+      required final String restaurantWalletAddress}) = _$_UserCartState;
   _UserCartState._() : super._();
 
   factory _UserCartState.fromJson(Map<String, dynamic> json) =
       _$_UserCartState.fromJson;
 
   @override
-  String get paymentIntentID;
+  String get paymentIntentID => throw _privateConstructorUsedError;
   @override
-  double get selectedGBPxAmount;
+  double get selectedGBPxAmount => throw _privateConstructorUsedError;
   @override
-  double get selectedPPLAmount;
+  double get selectedPPLAmount => throw _privateConstructorUsedError;
   @override
-  bool get transferringTokens;
+  bool get transferringTokens => throw _privateConstructorUsedError;
   @override
-  bool get errorCompletingPayment;
+  bool get errorCompletingPayment => throw _privateConstructorUsedError;
   @override
-  bool get confirmedPayment;
+  bool get confirmedPayment => throw _privateConstructorUsedError;
   @override
-  String get restaurantName;
+  String get restaurantName => throw _privateConstructorUsedError;
   @override
-  int get cartTotal;
+  int get cartTotal => throw _privateConstructorUsedError;
   @override
-  String get restaurantWalletAddress;
+  String get restaurantWalletAddress => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UserCartStateCopyWith<_UserCartState> get copyWith =>
+  _$$_UserCartStateCopyWith<_$_UserCartState> get copyWith =>
       throw _privateConstructorUsedError;
 }

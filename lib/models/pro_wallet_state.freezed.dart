@@ -12,55 +12,11 @@ part of 'pro_wallet_state.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 ProWalletState _$ProWalletStateFromJson(Map<String, dynamic> json) {
   return _ProWalletState.fromJson(json);
 }
-
-/// @nodoc
-class _$ProWalletStateTearOff {
-  const _$ProWalletStateTearOff();
-
-  _ProWalletState call(
-      {@JsonKey(fromJson: balanceFromJson)
-          BigInt? etherBalance = null,
-      @JsonKey(fromJson: erc20TokensFromJson)
-          Map<String, Token>? erc20Tokens = const {},
-      @JsonKey(ignore: true)
-          bool isFetchTransferEvents = false,
-      @JsonKey(ignore: true)
-          bool isListenToTransferEvents = false,
-      @JsonKey(ignore: true)
-          bool isProcessingTokensJobs = false,
-      @JsonKey(ignore: true)
-          bool isFetchTokensBalances = false,
-      @JsonKey(ignore: true)
-          bool isProcessingSwapActions = false,
-      @JsonKey(ignore: true)
-          bool isFetchTokensLatestPrice = false,
-      @JsonKey(ignore: true)
-          bool isFetchNewTokens = false}) {
-    return _ProWalletState(
-      etherBalance: etherBalance,
-      erc20Tokens: erc20Tokens,
-      isFetchTransferEvents: isFetchTransferEvents,
-      isListenToTransferEvents: isListenToTransferEvents,
-      isProcessingTokensJobs: isProcessingTokensJobs,
-      isFetchTokensBalances: isFetchTokensBalances,
-      isProcessingSwapActions: isProcessingSwapActions,
-      isFetchTokensLatestPrice: isFetchTokensLatestPrice,
-      isFetchNewTokens: isFetchNewTokens,
-    );
-  }
-
-  ProWalletState fromJson(Map<String, Object?> json) {
-    return ProWalletState.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $ProWalletState = _$ProWalletStateTearOff();
 
 /// @nodoc
 mixin _$ProWalletState {
@@ -169,11 +125,11 @@ class _$ProWalletStateCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$ProWalletStateCopyWith<$Res>
+abstract class _$$_ProWalletStateCopyWith<$Res>
     implements $ProWalletStateCopyWith<$Res> {
-  factory _$ProWalletStateCopyWith(
-          _ProWalletState value, $Res Function(_ProWalletState) then) =
-      __$ProWalletStateCopyWithImpl<$Res>;
+  factory _$$_ProWalletStateCopyWith(
+          _$_ProWalletState value, $Res Function(_$_ProWalletState) then) =
+      __$$_ProWalletStateCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(fromJson: balanceFromJson) BigInt? etherBalance,
@@ -188,15 +144,15 @@ abstract class _$ProWalletStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$ProWalletStateCopyWithImpl<$Res>
+class __$$_ProWalletStateCopyWithImpl<$Res>
     extends _$ProWalletStateCopyWithImpl<$Res>
-    implements _$ProWalletStateCopyWith<$Res> {
-  __$ProWalletStateCopyWithImpl(
-      _ProWalletState _value, $Res Function(_ProWalletState) _then)
-      : super(_value, (v) => _then(v as _ProWalletState));
+    implements _$$_ProWalletStateCopyWith<$Res> {
+  __$$_ProWalletStateCopyWithImpl(
+      _$_ProWalletState _value, $Res Function(_$_ProWalletState) _then)
+      : super(_value, (v) => _then(v as _$_ProWalletState));
 
   @override
-  _ProWalletState get _value => super._value as _ProWalletState;
+  _$_ProWalletState get _value => super._value as _$_ProWalletState;
 
   @override
   $Res call({
@@ -210,13 +166,13 @@ class __$ProWalletStateCopyWithImpl<$Res>
     Object? isFetchTokensLatestPrice = freezed,
     Object? isFetchNewTokens = freezed,
   }) {
-    return _then(_ProWalletState(
+    return _then(_$_ProWalletState(
       etherBalance: etherBalance == freezed
           ? _value.etherBalance
           : etherBalance // ignore: cast_nullable_to_non_nullable
               as BigInt?,
       erc20Tokens: erc20Tokens == freezed
-          ? _value.erc20Tokens
+          ? _value._erc20Tokens
           : erc20Tokens // ignore: cast_nullable_to_non_nullable
               as Map<String, Token>?,
       isFetchTransferEvents: isFetchTransferEvents == freezed
@@ -256,16 +212,26 @@ class __$ProWalletStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
   _$_ProWalletState(
-      {@JsonKey(fromJson: balanceFromJson) this.etherBalance = null,
-      @JsonKey(fromJson: erc20TokensFromJson) this.erc20Tokens = const {},
-      @JsonKey(ignore: true) this.isFetchTransferEvents = false,
-      @JsonKey(ignore: true) this.isListenToTransferEvents = false,
-      @JsonKey(ignore: true) this.isProcessingTokensJobs = false,
-      @JsonKey(ignore: true) this.isFetchTokensBalances = false,
-      @JsonKey(ignore: true) this.isProcessingSwapActions = false,
-      @JsonKey(ignore: true) this.isFetchTokensLatestPrice = false,
-      @JsonKey(ignore: true) this.isFetchNewTokens = false})
-      : super._();
+      {@JsonKey(fromJson: balanceFromJson)
+          this.etherBalance = null,
+      @JsonKey(fromJson: erc20TokensFromJson)
+          final Map<String, Token>? erc20Tokens = const {},
+      @JsonKey(ignore: true)
+          this.isFetchTransferEvents = false,
+      @JsonKey(ignore: true)
+          this.isListenToTransferEvents = false,
+      @JsonKey(ignore: true)
+          this.isProcessingTokensJobs = false,
+      @JsonKey(ignore: true)
+          this.isFetchTokensBalances = false,
+      @JsonKey(ignore: true)
+          this.isProcessingSwapActions = false,
+      @JsonKey(ignore: true)
+          this.isFetchTokensLatestPrice = false,
+      @JsonKey(ignore: true)
+          this.isFetchNewTokens = false})
+      : _erc20Tokens = erc20Tokens,
+        super._();
 
   factory _$_ProWalletState.fromJson(Map<String, dynamic> json) =>
       _$$_ProWalletStateFromJson(json);
@@ -273,9 +239,16 @@ class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
   @override
   @JsonKey(fromJson: balanceFromJson)
   final BigInt? etherBalance;
+  final Map<String, Token>? _erc20Tokens;
   @override
   @JsonKey(fromJson: erc20TokensFromJson)
-  final Map<String, Token>? erc20Tokens;
+  Map<String, Token>? get erc20Tokens {
+    final value = _erc20Tokens;
+    if (value == null) return null;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
+
   @override
   @JsonKey(ignore: true)
   final bool isFetchTransferEvents;
@@ -327,11 +300,11 @@ class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _ProWalletState &&
+            other is _$_ProWalletState &&
             const DeepCollectionEquality()
                 .equals(other.etherBalance, etherBalance) &&
             const DeepCollectionEquality()
-                .equals(other.erc20Tokens, erc20Tokens) &&
+                .equals(other._erc20Tokens, _erc20Tokens) &&
             const DeepCollectionEquality()
                 .equals(other.isFetchTransferEvents, isFetchTransferEvents) &&
             const DeepCollectionEquality().equals(
@@ -348,11 +321,12 @@ class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
                 .equals(other.isFetchNewTokens, isFetchNewTokens));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(etherBalance),
-      const DeepCollectionEquality().hash(erc20Tokens),
+      const DeepCollectionEquality().hash(_erc20Tokens),
       const DeepCollectionEquality().hash(isFetchTransferEvents),
       const DeepCollectionEquality().hash(isListenToTransferEvents),
       const DeepCollectionEquality().hash(isProcessingTokensJobs),
@@ -363,8 +337,8 @@ class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$ProWalletStateCopyWith<_ProWalletState> get copyWith =>
-      __$ProWalletStateCopyWithImpl<_ProWalletState>(this, _$identity);
+  _$$_ProWalletStateCopyWith<_$_ProWalletState> get copyWith =>
+      __$$_ProWalletStateCopyWithImpl<_$_ProWalletState>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -374,15 +348,24 @@ class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
 
 abstract class _ProWalletState extends ProWalletState {
   factory _ProWalletState(
-      {@JsonKey(fromJson: balanceFromJson) BigInt? etherBalance,
-      @JsonKey(fromJson: erc20TokensFromJson) Map<String, Token>? erc20Tokens,
-      @JsonKey(ignore: true) bool isFetchTransferEvents,
-      @JsonKey(ignore: true) bool isListenToTransferEvents,
-      @JsonKey(ignore: true) bool isProcessingTokensJobs,
-      @JsonKey(ignore: true) bool isFetchTokensBalances,
-      @JsonKey(ignore: true) bool isProcessingSwapActions,
-      @JsonKey(ignore: true) bool isFetchTokensLatestPrice,
-      @JsonKey(ignore: true) bool isFetchNewTokens}) = _$_ProWalletState;
+      {@JsonKey(fromJson: balanceFromJson)
+          final BigInt? etherBalance,
+      @JsonKey(fromJson: erc20TokensFromJson)
+          final Map<String, Token>? erc20Tokens,
+      @JsonKey(ignore: true)
+          final bool isFetchTransferEvents,
+      @JsonKey(ignore: true)
+          final bool isListenToTransferEvents,
+      @JsonKey(ignore: true)
+          final bool isProcessingTokensJobs,
+      @JsonKey(ignore: true)
+          final bool isFetchTokensBalances,
+      @JsonKey(ignore: true)
+          final bool isProcessingSwapActions,
+      @JsonKey(ignore: true)
+          final bool isFetchTokensLatestPrice,
+      @JsonKey(ignore: true)
+          final bool isFetchNewTokens}) = _$_ProWalletState;
   _ProWalletState._() : super._();
 
   factory _ProWalletState.fromJson(Map<String, dynamic> json) =
@@ -390,33 +373,33 @@ abstract class _ProWalletState extends ProWalletState {
 
   @override
   @JsonKey(fromJson: balanceFromJson)
-  BigInt? get etherBalance;
+  BigInt? get etherBalance => throw _privateConstructorUsedError;
   @override
   @JsonKey(fromJson: erc20TokensFromJson)
-  Map<String, Token>? get erc20Tokens;
+  Map<String, Token>? get erc20Tokens => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTransferEvents;
+  bool get isFetchTransferEvents => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isListenToTransferEvents;
+  bool get isListenToTransferEvents => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isProcessingTokensJobs;
+  bool get isProcessingTokensJobs => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTokensBalances;
+  bool get isFetchTokensBalances => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isProcessingSwapActions;
+  bool get isProcessingSwapActions => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTokensLatestPrice;
+  bool get isFetchTokensLatestPrice => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchNewTokens;
+  bool get isFetchNewTokens => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$ProWalletStateCopyWith<_ProWalletState> get copyWith =>
+  _$$_ProWalletStateCopyWith<_$_ProWalletState> get copyWith =>
       throw _privateConstructorUsedError;
 }

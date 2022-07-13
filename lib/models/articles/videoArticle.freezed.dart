@@ -12,42 +12,11 @@ part of 'videoArticle.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 VideoArticle _$VideoArticleFromJson(Map<String, dynamic> json) {
   return _VideoArticle.fromJson(json);
 }
-
-/// @nodoc
-class _$VideoArticleTearOff {
-  const _$VideoArticleTearOff();
-
-  _VideoArticle call(
-      {required String title,
-      required String placeholderImageURL,
-      required String videoURL,
-      required List<String> category,
-      required int rewardAmount,
-      required String postID,
-      required String postURL}) {
-    return _VideoArticle(
-      title: title,
-      placeholderImageURL: placeholderImageURL,
-      videoURL: videoURL,
-      category: category,
-      rewardAmount: rewardAmount,
-      postID: postID,
-      postURL: postURL,
-    );
-  }
-
-  VideoArticle fromJson(Map<String, Object?> json) {
-    return VideoArticle.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $VideoArticle = _$VideoArticleTearOff();
 
 /// @nodoc
 mixin _$VideoArticle {
@@ -132,11 +101,11 @@ class _$VideoArticleCopyWithImpl<$Res> implements $VideoArticleCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$VideoArticleCopyWith<$Res>
+abstract class _$$_VideoArticleCopyWith<$Res>
     implements $VideoArticleCopyWith<$Res> {
-  factory _$VideoArticleCopyWith(
-          _VideoArticle value, $Res Function(_VideoArticle) then) =
-      __$VideoArticleCopyWithImpl<$Res>;
+  factory _$$_VideoArticleCopyWith(
+          _$_VideoArticle value, $Res Function(_$_VideoArticle) then) =
+      __$$_VideoArticleCopyWithImpl<$Res>;
   @override
   $Res call(
       {String title,
@@ -149,14 +118,15 @@ abstract class _$VideoArticleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$VideoArticleCopyWithImpl<$Res> extends _$VideoArticleCopyWithImpl<$Res>
-    implements _$VideoArticleCopyWith<$Res> {
-  __$VideoArticleCopyWithImpl(
-      _VideoArticle _value, $Res Function(_VideoArticle) _then)
-      : super(_value, (v) => _then(v as _VideoArticle));
+class __$$_VideoArticleCopyWithImpl<$Res>
+    extends _$VideoArticleCopyWithImpl<$Res>
+    implements _$$_VideoArticleCopyWith<$Res> {
+  __$$_VideoArticleCopyWithImpl(
+      _$_VideoArticle _value, $Res Function(_$_VideoArticle) _then)
+      : super(_value, (v) => _then(v as _$_VideoArticle));
 
   @override
-  _VideoArticle get _value => super._value as _VideoArticle;
+  _$_VideoArticle get _value => super._value as _$_VideoArticle;
 
   @override
   $Res call({
@@ -168,7 +138,7 @@ class __$VideoArticleCopyWithImpl<$Res> extends _$VideoArticleCopyWithImpl<$Res>
     Object? postID = freezed,
     Object? postURL = freezed,
   }) {
-    return _then(_VideoArticle(
+    return _then(_$_VideoArticle(
       title: title == freezed
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -182,7 +152,7 @@ class __$VideoArticleCopyWithImpl<$Res> extends _$VideoArticleCopyWithImpl<$Res>
           : videoURL // ignore: cast_nullable_to_non_nullable
               as String,
       category: category == freezed
-          ? _value.category
+          ? _value._category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
       rewardAmount: rewardAmount == freezed
@@ -209,11 +179,12 @@ class _$_VideoArticle extends _VideoArticle {
       {required this.title,
       required this.placeholderImageURL,
       required this.videoURL,
-      required this.category,
+      required final List<String> category,
       required this.rewardAmount,
       required this.postID,
       required this.postURL})
-      : super._();
+      : _category = category,
+        super._();
 
   factory _$_VideoArticle.fromJson(Map<String, dynamic> json) =>
       _$$_VideoArticleFromJson(json);
@@ -224,8 +195,13 @@ class _$_VideoArticle extends _VideoArticle {
   final String placeholderImageURL;
   @override
   final String videoURL;
+  final List<String> _category;
   @override
-  final List<String> category;
+  List<String> get category {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_category);
+  }
+
   @override
   final int rewardAmount;
   @override
@@ -242,33 +218,34 @@ class _$_VideoArticle extends _VideoArticle {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _VideoArticle &&
+            other is _$_VideoArticle &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality()
                 .equals(other.placeholderImageURL, placeholderImageURL) &&
             const DeepCollectionEquality().equals(other.videoURL, videoURL) &&
-            const DeepCollectionEquality().equals(other.category, category) &&
+            const DeepCollectionEquality().equals(other._category, _category) &&
             const DeepCollectionEquality()
                 .equals(other.rewardAmount, rewardAmount) &&
             const DeepCollectionEquality().equals(other.postID, postID) &&
             const DeepCollectionEquality().equals(other.postURL, postURL));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(placeholderImageURL),
       const DeepCollectionEquality().hash(videoURL),
-      const DeepCollectionEquality().hash(category),
+      const DeepCollectionEquality().hash(_category),
       const DeepCollectionEquality().hash(rewardAmount),
       const DeepCollectionEquality().hash(postID),
       const DeepCollectionEquality().hash(postURL));
 
   @JsonKey(ignore: true)
   @override
-  _$VideoArticleCopyWith<_VideoArticle> get copyWith =>
-      __$VideoArticleCopyWithImpl<_VideoArticle>(this, _$identity);
+  _$$_VideoArticleCopyWith<_$_VideoArticle> get copyWith =>
+      __$$_VideoArticleCopyWithImpl<_$_VideoArticle>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -278,34 +255,34 @@ class _$_VideoArticle extends _VideoArticle {
 
 abstract class _VideoArticle extends VideoArticle {
   factory _VideoArticle(
-      {required String title,
-      required String placeholderImageURL,
-      required String videoURL,
-      required List<String> category,
-      required int rewardAmount,
-      required String postID,
-      required String postURL}) = _$_VideoArticle;
+      {required final String title,
+      required final String placeholderImageURL,
+      required final String videoURL,
+      required final List<String> category,
+      required final int rewardAmount,
+      required final String postID,
+      required final String postURL}) = _$_VideoArticle;
   _VideoArticle._() : super._();
 
   factory _VideoArticle.fromJson(Map<String, dynamic> json) =
       _$_VideoArticle.fromJson;
 
   @override
-  String get title;
+  String get title => throw _privateConstructorUsedError;
   @override
-  String get placeholderImageURL;
+  String get placeholderImageURL => throw _privateConstructorUsedError;
   @override
-  String get videoURL;
+  String get videoURL => throw _privateConstructorUsedError;
   @override
-  List<String> get category;
+  List<String> get category => throw _privateConstructorUsedError;
   @override
-  int get rewardAmount;
+  int get rewardAmount => throw _privateConstructorUsedError;
   @override
-  String get postID;
+  String get postID => throw _privateConstructorUsedError;
   @override
-  String get postURL;
+  String get postURL => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$VideoArticleCopyWith<_VideoArticle> get copyWith =>
+  _$$_VideoArticleCopyWith<_$_VideoArticle> get copyWith =>
       throw _privateConstructorUsedError;
 }

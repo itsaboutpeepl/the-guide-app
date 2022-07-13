@@ -12,55 +12,11 @@ part of 'plugins.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Plugins _$PluginsFromJson(Map<String, dynamic> json) {
   return _Plugins.fromJson(json);
 }
-
-/// @nodoc
-class _$PluginsTearOff {
-  const _$PluginsTearOff();
-
-  _Plugins call(
-      {@JsonKey(includeIfNull: false)
-      @RampInstantPluginConverter()
-          RampInstantPlugin? rampInstant = null,
-      @JsonKey(includeIfNull: false)
-      @MoonpayPluginConverter()
-          MoonpayPlugin? moonpay = null,
-      @JsonKey(includeIfNull: false)
-      @TransakPluginConverter()
-          TransakPlugin? transak = null,
-      @JsonKey(includeIfNull: false)
-          WalletBannerPlugin? walletBanner = null,
-      @JsonKey(includeIfNull: false)
-      @JoinBonusPluginConverter()
-          JoinBonusPlugin? joinBonus = null,
-      @JsonKey(includeIfNull: false)
-      @BackupBonusPluginConverter()
-          BackupBonusPlugin? backupBonus = null,
-      @JsonKey(includeIfNull: false)
-      @InviteBonusPluginConverter()
-          InviteBonusPlugin? inviteBonus = null}) {
-    return _Plugins(
-      rampInstant: rampInstant,
-      moonpay: moonpay,
-      transak: transak,
-      walletBanner: walletBanner,
-      joinBonus: joinBonus,
-      backupBonus: backupBonus,
-      inviteBonus: inviteBonus,
-    );
-  }
-
-  Plugins fromJson(Map<String, Object?> json) {
-    return Plugins.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Plugins = _$PluginsTearOff();
 
 /// @nodoc
 mixin _$Plugins {
@@ -254,9 +210,10 @@ class _$PluginsCopyWithImpl<$Res> implements $PluginsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$PluginsCopyWith<$Res> implements $PluginsCopyWith<$Res> {
-  factory _$PluginsCopyWith(_Plugins value, $Res Function(_Plugins) then) =
-      __$PluginsCopyWithImpl<$Res>;
+abstract class _$$_PluginsCopyWith<$Res> implements $PluginsCopyWith<$Res> {
+  factory _$$_PluginsCopyWith(
+          _$_Plugins value, $Res Function(_$_Plugins) then) =
+      __$$_PluginsCopyWithImpl<$Res>;
   @override
   $Res call(
       {@JsonKey(includeIfNull: false)
@@ -297,13 +254,13 @@ abstract class _$PluginsCopyWith<$Res> implements $PluginsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$PluginsCopyWithImpl<$Res> extends _$PluginsCopyWithImpl<$Res>
-    implements _$PluginsCopyWith<$Res> {
-  __$PluginsCopyWithImpl(_Plugins _value, $Res Function(_Plugins) _then)
-      : super(_value, (v) => _then(v as _Plugins));
+class __$$_PluginsCopyWithImpl<$Res> extends _$PluginsCopyWithImpl<$Res>
+    implements _$$_PluginsCopyWith<$Res> {
+  __$$_PluginsCopyWithImpl(_$_Plugins _value, $Res Function(_$_Plugins) _then)
+      : super(_value, (v) => _then(v as _$_Plugins));
 
   @override
-  _Plugins get _value => super._value as _Plugins;
+  _$_Plugins get _value => super._value as _$_Plugins;
 
   @override
   $Res call({
@@ -315,7 +272,7 @@ class __$PluginsCopyWithImpl<$Res> extends _$PluginsCopyWithImpl<$Res>
     Object? backupBonus = freezed,
     Object? inviteBonus = freezed,
   }) {
-    return _then(_Plugins(
+    return _then(_$_Plugins(
       rampInstant: rampInstant == freezed
           ? _value.rampInstant
           : rampInstant // ignore: cast_nullable_to_non_nullable
@@ -429,7 +386,7 @@ class _$_Plugins extends _Plugins with DiagnosticableTreeMixin {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Plugins &&
+            other is _$_Plugins &&
             const DeepCollectionEquality()
                 .equals(other.rampInstant, rampInstant) &&
             const DeepCollectionEquality().equals(other.moonpay, moonpay) &&
@@ -443,6 +400,7 @@ class _$_Plugins extends _Plugins with DiagnosticableTreeMixin {
                 .equals(other.inviteBonus, inviteBonus));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -456,8 +414,8 @@ class _$_Plugins extends _Plugins with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  _$PluginsCopyWith<_Plugins> get copyWith =>
-      __$PluginsCopyWithImpl<_Plugins>(this, _$identity);
+  _$$_PluginsCopyWith<_$_Plugins> get copyWith =>
+      __$$_PluginsCopyWithImpl<_$_Plugins>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -469,24 +427,24 @@ abstract class _Plugins extends Plugins {
   factory _Plugins(
       {@JsonKey(includeIfNull: false)
       @RampInstantPluginConverter()
-          RampInstantPlugin? rampInstant,
+          final RampInstantPlugin? rampInstant,
       @JsonKey(includeIfNull: false)
       @MoonpayPluginConverter()
-          MoonpayPlugin? moonpay,
+          final MoonpayPlugin? moonpay,
       @JsonKey(includeIfNull: false)
       @TransakPluginConverter()
-          TransakPlugin? transak,
+          final TransakPlugin? transak,
       @JsonKey(includeIfNull: false)
-          WalletBannerPlugin? walletBanner,
+          final WalletBannerPlugin? walletBanner,
       @JsonKey(includeIfNull: false)
       @JoinBonusPluginConverter()
-          JoinBonusPlugin? joinBonus,
+          final JoinBonusPlugin? joinBonus,
       @JsonKey(includeIfNull: false)
       @BackupBonusPluginConverter()
-          BackupBonusPlugin? backupBonus,
+          final BackupBonusPlugin? backupBonus,
       @JsonKey(includeIfNull: false)
       @InviteBonusPluginConverter()
-          InviteBonusPlugin? inviteBonus}) = _$_Plugins;
+          final InviteBonusPlugin? inviteBonus}) = _$_Plugins;
   _Plugins._() : super._();
 
   factory _Plugins.fromJson(Map<String, dynamic> json) = _$_Plugins.fromJson;
@@ -494,32 +452,32 @@ abstract class _Plugins extends Plugins {
   @override
   @JsonKey(includeIfNull: false)
   @RampInstantPluginConverter()
-  RampInstantPlugin? get rampInstant;
+  RampInstantPlugin? get rampInstant => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
   @MoonpayPluginConverter()
-  MoonpayPlugin? get moonpay;
+  MoonpayPlugin? get moonpay => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
   @TransakPluginConverter()
-  TransakPlugin? get transak;
+  TransakPlugin? get transak => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
-  WalletBannerPlugin? get walletBanner;
+  WalletBannerPlugin? get walletBanner => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
   @JoinBonusPluginConverter()
-  JoinBonusPlugin? get joinBonus;
+  JoinBonusPlugin? get joinBonus => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
   @BackupBonusPluginConverter()
-  BackupBonusPlugin? get backupBonus;
+  BackupBonusPlugin? get backupBonus => throw _privateConstructorUsedError;
   @override
   @JsonKey(includeIfNull: false)
   @InviteBonusPluginConverter()
-  InviteBonusPlugin? get inviteBonus;
+  InviteBonusPlugin? get inviteBonus => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$PluginsCopyWith<_Plugins> get copyWith =>
+  _$$_PluginsCopyWith<_$_Plugins> get copyWith =>
       throw _privateConstructorUsedError;
 }

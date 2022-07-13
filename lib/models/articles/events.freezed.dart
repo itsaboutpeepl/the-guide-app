@@ -12,44 +12,11 @@ part of 'events.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 Events _$EventsFromJson(Map<String, dynamic> json) {
   return _Events.fromJson(json);
 }
-
-/// @nodoc
-class _$EventsTearOff {
-  const _$EventsTearOff();
-
-  _Events call(
-      {required DateTime startDate,
-      required DateTime endDate,
-      required String eventTitle,
-      required String location,
-      required String latitude,
-      required String longitude,
-      required String description,
-      required String bookingLink}) {
-    return _Events(
-      startDate: startDate,
-      endDate: endDate,
-      eventTitle: eventTitle,
-      location: location,
-      latitude: latitude,
-      longitude: longitude,
-      description: description,
-      bookingLink: bookingLink,
-    );
-  }
-
-  Events fromJson(Map<String, Object?> json) {
-    return Events.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $Events = _$EventsTearOff();
 
 /// @nodoc
 mixin _$Events {
@@ -139,9 +106,9 @@ class _$EventsCopyWithImpl<$Res> implements $EventsCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$EventsCopyWith<$Res> implements $EventsCopyWith<$Res> {
-  factory _$EventsCopyWith(_Events value, $Res Function(_Events) then) =
-      __$EventsCopyWithImpl<$Res>;
+abstract class _$$_EventsCopyWith<$Res> implements $EventsCopyWith<$Res> {
+  factory _$$_EventsCopyWith(_$_Events value, $Res Function(_$_Events) then) =
+      __$$_EventsCopyWithImpl<$Res>;
   @override
   $Res call(
       {DateTime startDate,
@@ -155,13 +122,13 @@ abstract class _$EventsCopyWith<$Res> implements $EventsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$EventsCopyWithImpl<$Res> extends _$EventsCopyWithImpl<$Res>
-    implements _$EventsCopyWith<$Res> {
-  __$EventsCopyWithImpl(_Events _value, $Res Function(_Events) _then)
-      : super(_value, (v) => _then(v as _Events));
+class __$$_EventsCopyWithImpl<$Res> extends _$EventsCopyWithImpl<$Res>
+    implements _$$_EventsCopyWith<$Res> {
+  __$$_EventsCopyWithImpl(_$_Events _value, $Res Function(_$_Events) _then)
+      : super(_value, (v) => _then(v as _$_Events));
 
   @override
-  _Events get _value => super._value as _Events;
+  _$_Events get _value => super._value as _$_Events;
 
   @override
   $Res call({
@@ -174,7 +141,7 @@ class __$EventsCopyWithImpl<$Res> extends _$EventsCopyWithImpl<$Res>
     Object? description = freezed,
     Object? bookingLink = freezed,
   }) {
-    return _then(_Events(
+    return _then(_$_Events(
       startDate: startDate == freezed
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
@@ -255,7 +222,7 @@ class _$_Events extends _Events {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _Events &&
+            other is _$_Events &&
             const DeepCollectionEquality().equals(other.startDate, startDate) &&
             const DeepCollectionEquality().equals(other.endDate, endDate) &&
             const DeepCollectionEquality()
@@ -269,6 +236,7 @@ class _$_Events extends _Events {
                 .equals(other.bookingLink, bookingLink));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -283,8 +251,8 @@ class _$_Events extends _Events {
 
   @JsonKey(ignore: true)
   @override
-  _$EventsCopyWith<_Events> get copyWith =>
-      __$EventsCopyWithImpl<_Events>(this, _$identity);
+  _$$_EventsCopyWith<_$_Events> get copyWith =>
+      __$$_EventsCopyWithImpl<_$_Events>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -294,35 +262,36 @@ class _$_Events extends _Events {
 
 abstract class _Events extends Events {
   factory _Events(
-      {required DateTime startDate,
-      required DateTime endDate,
-      required String eventTitle,
-      required String location,
-      required String latitude,
-      required String longitude,
-      required String description,
-      required String bookingLink}) = _$_Events;
+      {required final DateTime startDate,
+      required final DateTime endDate,
+      required final String eventTitle,
+      required final String location,
+      required final String latitude,
+      required final String longitude,
+      required final String description,
+      required final String bookingLink}) = _$_Events;
   _Events._() : super._();
 
   factory _Events.fromJson(Map<String, dynamic> json) = _$_Events.fromJson;
 
   @override
-  DateTime get startDate;
+  DateTime get startDate => throw _privateConstructorUsedError;
   @override
-  DateTime get endDate;
+  DateTime get endDate => throw _privateConstructorUsedError;
   @override
-  String get eventTitle;
+  String get eventTitle => throw _privateConstructorUsedError;
   @override
-  String get location;
+  String get location => throw _privateConstructorUsedError;
   @override
-  String get latitude;
+  String get latitude => throw _privateConstructorUsedError;
   @override
-  String get longitude;
+  String get longitude => throw _privateConstructorUsedError;
   @override
-  String get description;
+  String get description => throw _privateConstructorUsedError;
   @override
-  String get bookingLink;
+  String get bookingLink => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$EventsCopyWith<_Events> get copyWith => throw _privateConstructorUsedError;
+  _$$_EventsCopyWith<_$_Events> get copyWith =>
+      throw _privateConstructorUsedError;
 }

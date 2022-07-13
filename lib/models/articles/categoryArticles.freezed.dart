@@ -12,31 +12,11 @@ part of 'categoryArticles.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CategoryArticles _$CategoryArticlesFromJson(Map<String, dynamic> json) {
   return _CategoryArticles.fromJson(json);
 }
-
-/// @nodoc
-class _$CategoryArticlesTearOff {
-  const _$CategoryArticlesTearOff();
-
-  _CategoryArticles call(
-      {required Category category, required List<BlogArticle> articleList}) {
-    return _CategoryArticles(
-      category: category,
-      articleList: articleList,
-    );
-  }
-
-  CategoryArticles fromJson(Map<String, Object?> json) {
-    return CategoryArticles.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CategoryArticles = _$CategoryArticlesTearOff();
 
 /// @nodoc
 mixin _$CategoryArticles {
@@ -94,11 +74,11 @@ class _$CategoryArticlesCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CategoryArticlesCopyWith<$Res>
+abstract class _$$_CategoryArticlesCopyWith<$Res>
     implements $CategoryArticlesCopyWith<$Res> {
-  factory _$CategoryArticlesCopyWith(
-          _CategoryArticles value, $Res Function(_CategoryArticles) then) =
-      __$CategoryArticlesCopyWithImpl<$Res>;
+  factory _$$_CategoryArticlesCopyWith(
+          _$_CategoryArticles value, $Res Function(_$_CategoryArticles) then) =
+      __$$_CategoryArticlesCopyWithImpl<$Res>;
   @override
   $Res call({Category category, List<BlogArticle> articleList});
 
@@ -107,28 +87,28 @@ abstract class _$CategoryArticlesCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CategoryArticlesCopyWithImpl<$Res>
+class __$$_CategoryArticlesCopyWithImpl<$Res>
     extends _$CategoryArticlesCopyWithImpl<$Res>
-    implements _$CategoryArticlesCopyWith<$Res> {
-  __$CategoryArticlesCopyWithImpl(
-      _CategoryArticles _value, $Res Function(_CategoryArticles) _then)
-      : super(_value, (v) => _then(v as _CategoryArticles));
+    implements _$$_CategoryArticlesCopyWith<$Res> {
+  __$$_CategoryArticlesCopyWithImpl(
+      _$_CategoryArticles _value, $Res Function(_$_CategoryArticles) _then)
+      : super(_value, (v) => _then(v as _$_CategoryArticles));
 
   @override
-  _CategoryArticles get _value => super._value as _CategoryArticles;
+  _$_CategoryArticles get _value => super._value as _$_CategoryArticles;
 
   @override
   $Res call({
     Object? category = freezed,
     Object? articleList = freezed,
   }) {
-    return _then(_CategoryArticles(
+    return _then(_$_CategoryArticles(
       category: category == freezed
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category,
       articleList: articleList == freezed
-          ? _value.articleList
+          ? _value._articleList
           : articleList // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
     ));
@@ -139,16 +119,22 @@ class __$CategoryArticlesCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_CategoryArticles extends _CategoryArticles {
-  _$_CategoryArticles({required this.category, required this.articleList})
-      : super._();
+  _$_CategoryArticles(
+      {required this.category, required final List<BlogArticle> articleList})
+      : _articleList = articleList,
+        super._();
 
   factory _$_CategoryArticles.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryArticlesFromJson(json);
 
   @override
   final Category category;
+  final List<BlogArticle> _articleList;
   @override
-  final List<BlogArticle> articleList;
+  List<BlogArticle> get articleList {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_articleList);
+  }
 
   @override
   String toString() {
@@ -159,22 +145,23 @@ class _$_CategoryArticles extends _CategoryArticles {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CategoryArticles &&
+            other is _$_CategoryArticles &&
             const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality()
-                .equals(other.articleList, articleList));
+                .equals(other._articleList, _articleList));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(articleList));
+      const DeepCollectionEquality().hash(_articleList));
 
   @JsonKey(ignore: true)
   @override
-  _$CategoryArticlesCopyWith<_CategoryArticles> get copyWith =>
-      __$CategoryArticlesCopyWithImpl<_CategoryArticles>(this, _$identity);
+  _$$_CategoryArticlesCopyWith<_$_CategoryArticles> get copyWith =>
+      __$$_CategoryArticlesCopyWithImpl<_$_CategoryArticles>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -184,19 +171,19 @@ class _$_CategoryArticles extends _CategoryArticles {
 
 abstract class _CategoryArticles extends CategoryArticles {
   factory _CategoryArticles(
-      {required Category category,
-      required List<BlogArticle> articleList}) = _$_CategoryArticles;
+      {required final Category category,
+      required final List<BlogArticle> articleList}) = _$_CategoryArticles;
   _CategoryArticles._() : super._();
 
   factory _CategoryArticles.fromJson(Map<String, dynamic> json) =
       _$_CategoryArticles.fromJson;
 
   @override
-  Category get category;
+  Category get category => throw _privateConstructorUsedError;
   @override
-  List<BlogArticle> get articleList;
+  List<BlogArticle> get articleList => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CategoryArticlesCopyWith<_CategoryArticles> get copyWith =>
+  _$$_CategoryArticlesCopyWith<_$_CategoryArticles> get copyWith =>
       throw _privateConstructorUsedError;
 }

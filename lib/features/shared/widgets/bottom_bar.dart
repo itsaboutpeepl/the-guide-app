@@ -42,13 +42,13 @@ class BottomBar extends StatelessWidget {
           I10n.of(context).home,
           "News",
           I10n.of(context).account,
-          "Shop",
+          "Network",
         ],
         icons: [
           Icons.home,
           Icons.article,
           Icons.person_outline,
-          Icons.shopping_bag,
+          Icons.hub_outlined,
         ],
       ),
     );

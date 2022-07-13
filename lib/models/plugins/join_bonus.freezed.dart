@@ -12,36 +12,11 @@ part of 'join_bonus.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 JoinBonusPlugin _$JoinBonusPluginFromJson(Map<String, dynamic> json) {
   return _JoinBonusPlugin.fromJson(json);
 }
-
-/// @nodoc
-class _$JoinBonusPluginTearOff {
-  const _$JoinBonusPluginTearOff();
-
-  _JoinBonusPlugin call(
-      {String type = 'joinBonus',
-      String? amount = null,
-      String? name = null,
-      bool isActive = false}) {
-    return _JoinBonusPlugin(
-      type: type,
-      amount: amount,
-      name: name,
-      isActive: isActive,
-    );
-  }
-
-  JoinBonusPlugin fromJson(Map<String, Object?> json) {
-    return JoinBonusPlugin.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $JoinBonusPlugin = _$JoinBonusPluginTearOff();
 
 /// @nodoc
 mixin _$JoinBonusPlugin {
@@ -102,25 +77,25 @@ class _$JoinBonusPluginCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$JoinBonusPluginCopyWith<$Res>
+abstract class _$$_JoinBonusPluginCopyWith<$Res>
     implements $JoinBonusPluginCopyWith<$Res> {
-  factory _$JoinBonusPluginCopyWith(
-          _JoinBonusPlugin value, $Res Function(_JoinBonusPlugin) then) =
-      __$JoinBonusPluginCopyWithImpl<$Res>;
+  factory _$$_JoinBonusPluginCopyWith(
+          _$_JoinBonusPlugin value, $Res Function(_$_JoinBonusPlugin) then) =
+      __$$_JoinBonusPluginCopyWithImpl<$Res>;
   @override
   $Res call({String type, String? amount, String? name, bool isActive});
 }
 
 /// @nodoc
-class __$JoinBonusPluginCopyWithImpl<$Res>
+class __$$_JoinBonusPluginCopyWithImpl<$Res>
     extends _$JoinBonusPluginCopyWithImpl<$Res>
-    implements _$JoinBonusPluginCopyWith<$Res> {
-  __$JoinBonusPluginCopyWithImpl(
-      _JoinBonusPlugin _value, $Res Function(_JoinBonusPlugin) _then)
-      : super(_value, (v) => _then(v as _JoinBonusPlugin));
+    implements _$$_JoinBonusPluginCopyWith<$Res> {
+  __$$_JoinBonusPluginCopyWithImpl(
+      _$_JoinBonusPlugin _value, $Res Function(_$_JoinBonusPlugin) _then)
+      : super(_value, (v) => _then(v as _$_JoinBonusPlugin));
 
   @override
-  _JoinBonusPlugin get _value => super._value as _JoinBonusPlugin;
+  _$_JoinBonusPlugin get _value => super._value as _$_JoinBonusPlugin;
 
   @override
   $Res call({
@@ -129,7 +104,7 @@ class __$JoinBonusPluginCopyWithImpl<$Res>
     Object? name = freezed,
     Object? isActive = freezed,
   }) {
-    return _then(_JoinBonusPlugin(
+    return _then(_$_JoinBonusPlugin(
       type: type == freezed
           ? _value.type
           : type // ignore: cast_nullable_to_non_nullable
@@ -152,7 +127,6 @@ class __$JoinBonusPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@With<Plugin>()
 @JsonSerializable()
 class _$_JoinBonusPlugin
     with DiagnosticableTreeMixin, Plugin
@@ -166,17 +140,17 @@ class _$_JoinBonusPlugin
   factory _$_JoinBonusPlugin.fromJson(Map<String, dynamic> json) =>
       _$$_JoinBonusPluginFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String type;
-  @JsonKey()
   @override
+  @JsonKey()
   final String? amount;
-  @JsonKey()
   @override
+  @JsonKey()
   final String? name;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
 
   @override
@@ -199,13 +173,14 @@ class _$_JoinBonusPlugin
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _JoinBonusPlugin &&
+            other is _$_JoinBonusPlugin &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.amount, amount) &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.isActive, isActive));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -216,8 +191,8 @@ class _$_JoinBonusPlugin
 
   @JsonKey(ignore: true)
   @override
-  _$JoinBonusPluginCopyWith<_JoinBonusPlugin> get copyWith =>
-      __$JoinBonusPluginCopyWithImpl<_JoinBonusPlugin>(this, _$identity);
+  _$$_JoinBonusPluginCopyWith<_$_JoinBonusPlugin> get copyWith =>
+      __$$_JoinBonusPluginCopyWithImpl<_$_JoinBonusPlugin>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -227,24 +202,24 @@ class _$_JoinBonusPlugin
 
 abstract class _JoinBonusPlugin implements JoinBonusPlugin, Plugin {
   factory _JoinBonusPlugin(
-      {String type,
-      String? amount,
-      String? name,
-      bool isActive}) = _$_JoinBonusPlugin;
+      {final String type,
+      final String? amount,
+      final String? name,
+      final bool isActive}) = _$_JoinBonusPlugin;
 
   factory _JoinBonusPlugin.fromJson(Map<String, dynamic> json) =
       _$_JoinBonusPlugin.fromJson;
 
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  String? get amount;
+  String? get amount => throw _privateConstructorUsedError;
   @override
-  String? get name;
+  String? get name => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$JoinBonusPluginCopyWith<_JoinBonusPlugin> get copyWith =>
+  _$$_JoinBonusPluginCopyWith<_$_JoinBonusPlugin> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -12,38 +12,11 @@ part of 'community_metadata.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 CommunityMetadata _$CommunityMetadataFromJson(Map<String, dynamic> json) {
   return _CommunityMetadata.fromJson(json);
 }
-
-/// @nodoc
-class _$CommunityMetadataTearOff {
-  const _$CommunityMetadataTearOff();
-
-  _CommunityMetadata call(
-      {bool isDefaultImage = false,
-      String image = '',
-      String coverPhoto = '',
-      String coverPhotoUri = '',
-      String imageUri = ''}) {
-    return _CommunityMetadata(
-      isDefaultImage: isDefaultImage,
-      image: image,
-      coverPhoto: coverPhoto,
-      coverPhotoUri: coverPhotoUri,
-      imageUri: imageUri,
-    );
-  }
-
-  CommunityMetadata fromJson(Map<String, Object?> json) {
-    return CommunityMetadata.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $CommunityMetadata = _$CommunityMetadataTearOff();
 
 /// @nodoc
 mixin _$CommunityMetadata {
@@ -115,11 +88,11 @@ class _$CommunityMetadataCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$CommunityMetadataCopyWith<$Res>
+abstract class _$$_CommunityMetadataCopyWith<$Res>
     implements $CommunityMetadataCopyWith<$Res> {
-  factory _$CommunityMetadataCopyWith(
-          _CommunityMetadata value, $Res Function(_CommunityMetadata) then) =
-      __$CommunityMetadataCopyWithImpl<$Res>;
+  factory _$$_CommunityMetadataCopyWith(_$_CommunityMetadata value,
+          $Res Function(_$_CommunityMetadata) then) =
+      __$$_CommunityMetadataCopyWithImpl<$Res>;
   @override
   $Res call(
       {bool isDefaultImage,
@@ -130,15 +103,15 @@ abstract class _$CommunityMetadataCopyWith<$Res>
 }
 
 /// @nodoc
-class __$CommunityMetadataCopyWithImpl<$Res>
+class __$$_CommunityMetadataCopyWithImpl<$Res>
     extends _$CommunityMetadataCopyWithImpl<$Res>
-    implements _$CommunityMetadataCopyWith<$Res> {
-  __$CommunityMetadataCopyWithImpl(
-      _CommunityMetadata _value, $Res Function(_CommunityMetadata) _then)
-      : super(_value, (v) => _then(v as _CommunityMetadata));
+    implements _$$_CommunityMetadataCopyWith<$Res> {
+  __$$_CommunityMetadataCopyWithImpl(
+      _$_CommunityMetadata _value, $Res Function(_$_CommunityMetadata) _then)
+      : super(_value, (v) => _then(v as _$_CommunityMetadata));
 
   @override
-  _CommunityMetadata get _value => super._value as _CommunityMetadata;
+  _$_CommunityMetadata get _value => super._value as _$_CommunityMetadata;
 
   @override
   $Res call({
@@ -148,7 +121,7 @@ class __$CommunityMetadataCopyWithImpl<$Res>
     Object? coverPhotoUri = freezed,
     Object? imageUri = freezed,
   }) {
-    return _then(_CommunityMetadata(
+    return _then(_$_CommunityMetadata(
       isDefaultImage: isDefaultImage == freezed
           ? _value.isDefaultImage
           : isDefaultImage // ignore: cast_nullable_to_non_nullable
@@ -189,20 +162,20 @@ class _$_CommunityMetadata extends _CommunityMetadata
   factory _$_CommunityMetadata.fromJson(Map<String, dynamic> json) =>
       _$$_CommunityMetadataFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isDefaultImage;
-  @JsonKey()
   @override
+  @JsonKey()
   final String image;
-  @JsonKey()
   @override
+  @JsonKey()
   final String coverPhoto;
-  @JsonKey()
   @override
+  @JsonKey()
   final String coverPhotoUri;
-  @JsonKey()
   @override
+  @JsonKey()
   final String imageUri;
 
   @override
@@ -226,7 +199,7 @@ class _$_CommunityMetadata extends _CommunityMetadata
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _CommunityMetadata &&
+            other is _$_CommunityMetadata &&
             const DeepCollectionEquality()
                 .equals(other.isDefaultImage, isDefaultImage) &&
             const DeepCollectionEquality().equals(other.image, image) &&
@@ -237,6 +210,7 @@ class _$_CommunityMetadata extends _CommunityMetadata
             const DeepCollectionEquality().equals(other.imageUri, imageUri));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -248,8 +222,9 @@ class _$_CommunityMetadata extends _CommunityMetadata
 
   @JsonKey(ignore: true)
   @override
-  _$CommunityMetadataCopyWith<_CommunityMetadata> get copyWith =>
-      __$CommunityMetadataCopyWithImpl<_CommunityMetadata>(this, _$identity);
+  _$$_CommunityMetadataCopyWith<_$_CommunityMetadata> get copyWith =>
+      __$$_CommunityMetadataCopyWithImpl<_$_CommunityMetadata>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -259,28 +234,28 @@ class _$_CommunityMetadata extends _CommunityMetadata
 
 abstract class _CommunityMetadata extends CommunityMetadata {
   factory _CommunityMetadata(
-      {bool isDefaultImage,
-      String image,
-      String coverPhoto,
-      String coverPhotoUri,
-      String imageUri}) = _$_CommunityMetadata;
+      {final bool isDefaultImage,
+      final String image,
+      final String coverPhoto,
+      final String coverPhotoUri,
+      final String imageUri}) = _$_CommunityMetadata;
   _CommunityMetadata._() : super._();
 
   factory _CommunityMetadata.fromJson(Map<String, dynamic> json) =
       _$_CommunityMetadata.fromJson;
 
   @override
-  bool get isDefaultImage;
+  bool get isDefaultImage => throw _privateConstructorUsedError;
   @override
-  String get image;
+  String get image => throw _privateConstructorUsedError;
   @override
-  String get coverPhoto;
+  String get coverPhoto => throw _privateConstructorUsedError;
   @override
-  String get coverPhotoUri;
+  String get coverPhotoUri => throw _privateConstructorUsedError;
   @override
-  String get imageUri;
+  String get imageUri => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$CommunityMetadataCopyWith<_CommunityMetadata> get copyWith =>
+  _$$_CommunityMetadataCopyWith<_$_CommunityMetadata> get copyWith =>
       throw _privateConstructorUsedError;
 }

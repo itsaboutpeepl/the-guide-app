@@ -12,36 +12,11 @@ part of 'rampInstant.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 RampInstantPlugin _$RampInstantPluginFromJson(Map<String, dynamic> json) {
   return _RampInstantPlugin.fromJson(json);
 }
-
-/// @nodoc
-class _$RampInstantPluginTearOff {
-  const _$RampInstantPluginTearOff();
-
-  _RampInstantPlugin call(
-      {String name = 'rampInstant',
-      String? widgetUrl,
-      String type = 'deposit',
-      bool isActive = false}) {
-    return _RampInstantPlugin(
-      name: name,
-      widgetUrl: widgetUrl,
-      type: type,
-      isActive: isActive,
-    );
-  }
-
-  RampInstantPlugin fromJson(Map<String, Object?> json) {
-    return RampInstantPlugin.fromJson(json);
-  }
-}
-
-/// @nodoc
-const $RampInstantPlugin = _$RampInstantPluginTearOff();
 
 /// @nodoc
 mixin _$RampInstantPlugin {
@@ -102,25 +77,25 @@ class _$RampInstantPluginCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$RampInstantPluginCopyWith<$Res>
+abstract class _$$_RampInstantPluginCopyWith<$Res>
     implements $RampInstantPluginCopyWith<$Res> {
-  factory _$RampInstantPluginCopyWith(
-          _RampInstantPlugin value, $Res Function(_RampInstantPlugin) then) =
-      __$RampInstantPluginCopyWithImpl<$Res>;
+  factory _$$_RampInstantPluginCopyWith(_$_RampInstantPlugin value,
+          $Res Function(_$_RampInstantPlugin) then) =
+      __$$_RampInstantPluginCopyWithImpl<$Res>;
   @override
   $Res call({String name, String? widgetUrl, String type, bool isActive});
 }
 
 /// @nodoc
-class __$RampInstantPluginCopyWithImpl<$Res>
+class __$$_RampInstantPluginCopyWithImpl<$Res>
     extends _$RampInstantPluginCopyWithImpl<$Res>
-    implements _$RampInstantPluginCopyWith<$Res> {
-  __$RampInstantPluginCopyWithImpl(
-      _RampInstantPlugin _value, $Res Function(_RampInstantPlugin) _then)
-      : super(_value, (v) => _then(v as _RampInstantPlugin));
+    implements _$$_RampInstantPluginCopyWith<$Res> {
+  __$$_RampInstantPluginCopyWithImpl(
+      _$_RampInstantPlugin _value, $Res Function(_$_RampInstantPlugin) _then)
+      : super(_value, (v) => _then(v as _$_RampInstantPlugin));
 
   @override
-  _RampInstantPlugin get _value => super._value as _RampInstantPlugin;
+  _$_RampInstantPlugin get _value => super._value as _$_RampInstantPlugin;
 
   @override
   $Res call({
@@ -129,7 +104,7 @@ class __$RampInstantPluginCopyWithImpl<$Res>
     Object? type = freezed,
     Object? isActive = freezed,
   }) {
-    return _then(_RampInstantPlugin(
+    return _then(_$_RampInstantPlugin(
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -152,7 +127,6 @@ class __$RampInstantPluginCopyWithImpl<$Res>
 
 /// @nodoc
 
-@With<Plugin>()
 @JsonSerializable()
 class _$_RampInstantPlugin
     with DiagnosticableTreeMixin, Plugin
@@ -166,16 +140,16 @@ class _$_RampInstantPlugin
   factory _$_RampInstantPlugin.fromJson(Map<String, dynamic> json) =>
       _$$_RampInstantPluginFromJson(json);
 
-  @JsonKey()
   @override
+  @JsonKey()
   final String name;
   @override
   final String? widgetUrl;
-  @JsonKey()
   @override
+  @JsonKey()
   final String type;
-  @JsonKey()
   @override
+  @JsonKey()
   final bool isActive;
 
   @override
@@ -198,13 +172,14 @@ class _$_RampInstantPlugin
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _RampInstantPlugin &&
+            other is _$_RampInstantPlugin &&
             const DeepCollectionEquality().equals(other.name, name) &&
             const DeepCollectionEquality().equals(other.widgetUrl, widgetUrl) &&
             const DeepCollectionEquality().equals(other.type, type) &&
             const DeepCollectionEquality().equals(other.isActive, isActive));
   }
 
+  @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
@@ -215,8 +190,9 @@ class _$_RampInstantPlugin
 
   @JsonKey(ignore: true)
   @override
-  _$RampInstantPluginCopyWith<_RampInstantPlugin> get copyWith =>
-      __$RampInstantPluginCopyWithImpl<_RampInstantPlugin>(this, _$identity);
+  _$$_RampInstantPluginCopyWith<_$_RampInstantPlugin> get copyWith =>
+      __$$_RampInstantPluginCopyWithImpl<_$_RampInstantPlugin>(
+          this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -226,24 +202,24 @@ class _$_RampInstantPlugin
 
 abstract class _RampInstantPlugin implements RampInstantPlugin, Plugin {
   factory _RampInstantPlugin(
-      {String name,
-      String? widgetUrl,
-      String type,
-      bool isActive}) = _$_RampInstantPlugin;
+      {final String name,
+      final String? widgetUrl,
+      final String type,
+      final bool isActive}) = _$_RampInstantPlugin;
 
   factory _RampInstantPlugin.fromJson(Map<String, dynamic> json) =
       _$_RampInstantPlugin.fromJson;
 
   @override
-  String get name;
+  String get name => throw _privateConstructorUsedError;
   @override
-  String? get widgetUrl;
+  String? get widgetUrl => throw _privateConstructorUsedError;
   @override
-  String get type;
+  String get type => throw _privateConstructorUsedError;
   @override
-  bool get isActive;
+  bool get isActive => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$RampInstantPluginCopyWith<_RampInstantPlugin> get copyWith =>
+  _$$_RampInstantPluginCopyWith<_$_RampInstantPlugin> get copyWith =>
       throw _privateConstructorUsedError;
 }
