@@ -215,27 +215,27 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - Stripe (22.0.0):
-    - Stripe/Stripe3DS2 (= 22.0.0)
-    - StripeApplePay (= 22.0.0)
-    - StripeCore (= 22.0.0)
-    - StripeUICore (= 22.0.0)
-  - Stripe/Stripe3DS2 (22.0.0):
-    - StripeApplePay (= 22.0.0)
-    - StripeCore (= 22.0.0)
-    - StripeUICore (= 22.0.0)
+  - Stripe (22.5.1):
+    - Stripe/Stripe3DS2 (= 22.5.1)
+    - StripeApplePay (= 22.5.1)
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
+  - Stripe/Stripe3DS2 (22.5.1):
+    - StripeApplePay (= 22.5.1)
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
   - stripe_ios (0.0.1):
     - Flutter
-    - Stripe (~> 22.0.0)
-    - StripeConnections (~> 22.0.0)
-  - StripeApplePay (22.0.0):
-    - StripeCore (= 22.0.0)
-  - StripeConnections (22.0.0):
-    - StripeCore (= 22.0.0)
-    - StripeUICore (= 22.0.0)
-  - StripeCore (22.0.0)
-  - StripeUICore (22.0.0):
-    - StripeCore (= 22.0.0)
+    - Stripe (~> 22.5.1)
+    - StripeFinancialConnections (~> 22.5.1)
+  - StripeApplePay (22.5.1):
+    - StripeCore (= 22.5.1)
+  - StripeCore (22.5.1)
+  - StripeFinancialConnections (22.5.1):
+    - StripeCore (= 22.5.1)
+    - StripeUICore (= 22.5.1)
+  - StripeUICore (22.5.1):
+    - StripeCore (= 22.5.1)
   - url_launcher_ios (0.0.1):
     - Flutter
   - video_player_avfoundation (0.0.1):
@@ -310,8 +310,8 @@ SPEC REPOS:
     - Sentry
     - Stripe
     - StripeApplePay
-    - StripeConnections
     - StripeCore
+    - StripeFinancialConnections
     - StripeUICore
 
 EXTERNAL SOURCES:
@@ -436,12 +436,12 @@ SPEC CHECKSUMS:
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  Stripe: ee32e594fa4dee4bdf2a8a3039f7fb07a21075dc
-  stripe_ios: 4ae5942d4f2f383c2be5c187e6e4e4f31e29c0a5
-  StripeApplePay: e09964f3e2c6b318e53a05c12f3cb7efc592484d
-  StripeConnections: d3068bf688679a51932abb94d956d8a73c213bd7
-  StripeCore: 689b9605ccb78e507f59ddc5e677615e0af16583
-  StripeUICore: f5fe5ad283e132b40077b5eb85b625ebf7de034a
+  Stripe: 2b2decd03146e08a350960966d41f3028c2eac29
+  stripe_ios: e94186250816de030881ced3399154eab186e439
+  StripeApplePay: b14f06ac6fc24b56704c1e598149ed0cc45e166f
+  StripeCore: 4833738f2ca4336712f279f3c2867a0a7eb67c93
+  StripeFinancialConnections: 982115b82af429968d8aa78d329a42ed7ba3feab
+  StripeUICore: 08c1efbd7e3c54ee7fa74334a37a1d4c08ba944d
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
   video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f
