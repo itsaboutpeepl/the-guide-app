@@ -138,30 +138,6 @@ ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCal
           successCallback();
         });
       }
-
-      //Make periodic API calls to check the order status
-      //If status is paid, then set loading = false, and confirmed = true
-
-      // if (GBPxResponse.isNotEmpty || PPLResponse.isNotEmpty) {
-      //   Timer.periodic(
-      //     const Duration(seconds: 4),
-      //     (timer) async {
-      //       final Future<Map<dynamic, dynamic>> checkOrderResponse =
-      //           peeplEatsService.checkOrderStatus(store.state.cartState.orderID);
-
-      //       checkOrderResponse.then(
-      //         (completedValue) {
-      //           if (completedValue['paymentStatus'] == "paid") {
-      //             store.dispatch(SetTransferringPayment(false));
-      //             store.dispatch(SetConfirmed(true));
-      //             successCallback();
-      //             timer.cancel();
-      //           }
-      //         },
-      //       );
-      //     },
-      //   );
-      // }
     } catch (e, s) {
       store.dispatch(SetError(true));
       log.error('ERROR - sendTokenPayment $e');

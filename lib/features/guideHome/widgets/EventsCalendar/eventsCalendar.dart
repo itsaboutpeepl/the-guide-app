@@ -61,12 +61,11 @@ class _EventCalendarState extends State<EventCalendar> {
                 child: Stack(
                   children: [
                     Positioned(
-                      top: 15,
+                      height: MediaQuery.of(context).size.height * 0.24,
                       left: 6,
-                      child: Align(
-                        child: Column(
-                          children: _buildPageIndicator(viewmodel.eventsList.length),
-                        ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: _buildPageIndicator(viewmodel.eventsList.length),
                       ),
                     ),
                     Container(

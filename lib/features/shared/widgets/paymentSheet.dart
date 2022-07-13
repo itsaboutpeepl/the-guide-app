@@ -256,6 +256,7 @@ class PPLSlider extends StatefulWidget {
 
 class _PPLSliderState extends State<PPLSlider> {
   double _pplSliderValue = 0.0;
+  double _GBPXSliderValue = 0.0;
   double _amountToBePaid = 0.0;
   double _pplBalance = 0.0;
 
@@ -265,7 +266,8 @@ class _PPLSliderState extends State<PPLSlider> {
       converter: PaymentSheetViewModel.fromStore,
       distinct: true,
       onInit: (store) {
-        _amountToBePaid = store.state.cartState.cartTotal.toDouble();
+        _amountToBePaid = store.state.cartState.cartTotal.toDouble(); //in pence
+        _GBPXSliderValue = store.state.cartState.cartTotal.toDouble(); //in pence
         _pplBalance = double.parse(store.state.cashWalletState.tokens[PeeplToken.address]!.getBalance(true));
       },
       builder: (_, viewmodel) {
@@ -291,22 +293,24 @@ class _PPLSliderState extends State<PPLSlider> {
                           ),
                           child: Slider(
                             min: 0.0,
-                            max: _amountToBePaid * 10 <
-                                    _pplBalance *
-                                        10 //if amount to be paid is less than ppl balance then the max is amount to be paid * 10 otherwise max is wallet balance
-                                ? _amountToBePaid * 10
-                                : _pplBalance * 10,
+                            max: getPPLValueFromPence(_amountToBePaid) <
+                                    _pplBalance // compare values in PPL terms //665 < 171.66 ? || 35 < 171.66
+                                ? getPPLValueFromPence(_amountToBePaid)
+                                : _pplBalance,
                             value: _pplSliderValue,
                             divisions: 100,
                             onChangeEnd: (value) {
-                              viewmodel.updateSelectedValues(
-                                (_amountToBePaid / 100) - (_pplSliderValue / 1000),
-                                (_pplSliderValue / 10),
-                              );
+                              _GBPXSliderValue =
+                                  _amountToBePaid - value * 10; //converting the PPL slider value into pence again
+                              _pplSliderValue = value;
+                              setState(() {});
+                              viewmodel.updateSelectedValues((_GBPXSliderValue / 100), _pplSliderValue);
                             },
                             onChanged: (value) {
                               setState(
                                 () {
+                                  _GBPXSliderValue =
+                                      _amountToBePaid - value * 10; //converting the PPL slider value into pence again
                                   _pplSliderValue = value;
                                 },
                               );
@@ -343,8 +347,8 @@ class _PPLSliderState extends State<PPLSlider> {
                   ),
                   Text.rich(
                     TextSpan(
-                      text: "GBPx ${((_amountToBePaid / 100) - (_pplSliderValue / 1000)).toStringAsFixed(2)},",
-                      children: [TextSpan(text: " PPL ${(_pplSliderValue / 10).toStringAsFixed(2)}")],
+                      text: "GBPx ${(_GBPXSliderValue / 100).toStringAsFixed(2)},",
+                      children: [TextSpan(text: " PPL ${_pplSliderValue.toStringAsFixed(2)}")],
                     ),
                     style: TextStyle(
                       color: Colors.grey[300],
@@ -359,9 +363,7 @@ class _PPLSliderState extends State<PPLSlider> {
                     TextSpan(
                       text: "Total ${cFPrice(viewmodel.cartTotal)} | ",
                       children: [
-                        TextSpan(
-                            text:
-                                "Earn ${(((_amountToBePaid / 100) - (_pplSliderValue / 1000)) * 5).toStringAsFixed(2)} "),
+                        TextSpan(text: "Earn ${getPPLRewardsFromPence(_GBPXSliderValue).toStringAsFixed(2)} "),
                         WidgetSpan(
                           child: Image.asset(
                             "assets/images/avatar-ppl-red.png",
@@ -390,4 +392,12 @@ class _PPLSliderState extends State<PPLSlider> {
 String cFPrice(int price) {
   //isPence ? price = price ~/ 100 : price;
   return "£" + (price / 100).toStringAsFixed(2);
+}
+
+double getPPLValueFromPence(num penceAmount) {
+  return penceAmount / 10;
+}
+
+double getPPLRewardsFromPence(num penceAmount) {
+  return getPPLValueFromPence((penceAmount * 5) / 100);
 }

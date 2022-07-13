@@ -7,7 +7,6 @@ import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:injectable/injectable.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
 import 'package:guide_liverpool/models/articles/events.dart';
-import 'package:guide_liverpool/models/articles/videoArticle.dart';
 
 @lazySingleton
 class NewsService {
@@ -114,8 +113,8 @@ class NewsService {
     List<Events> events = [];
 
     results.forEach((element) {
-      events.add(
-        Events(
+      try {
+        Events event = Events(
             startDate: DateTime.parse(element['start_date']),
             endDate: DateTime.parse(element['end_date']),
             eventTitle: parseHtmlString(element['title']),
@@ -123,13 +122,17 @@ class NewsService {
             description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
-            bookingLink: element['link']),
-      );
+            bookingLink: element['link']);
+
+        events.add(event);
+      } catch (e) {
+        print(e);
+      }
     });
 
     resultsPage2.forEach((element) {
-      events.add(
-        Events(
+      try {
+        Events event = Events(
             startDate: DateTime.parse(element['start_date']),
             endDate: DateTime.parse(element['end_date']),
             eventTitle: parseHtmlString(element['title']),
@@ -137,8 +140,12 @@ class NewsService {
             description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
-            bookingLink: element['link']),
-      );
+            bookingLink: element['link']);
+
+        events.add(event);
+      } catch (e) {
+        print(e);
+      }
     });
 
     return events;

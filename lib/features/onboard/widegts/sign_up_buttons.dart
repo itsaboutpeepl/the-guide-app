@@ -84,7 +84,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                 setState(() {
                                   isPrimaryPreloading = false;
                                 });
-                                context.router.push(ShowUserMnemonicScreen());
+                                context.router.push(SignUpScreen());
                               }, () {
                                 setState(() {
                                   isPrimaryPreloading = false;
@@ -132,7 +132,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                             isTransparentPreloading = true;
                                           });
                                           viewModel.createLocalAccount(() {
-                                            context.router.push(ShowUserMnemonicScreen());
+                                            context.router.push(SignUpScreen());
                                           }, () {
                                             setState(() {
                                               isTransparentPreloading = false;

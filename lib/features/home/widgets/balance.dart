@@ -2,6 +2,8 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/guideHome/dialogs/tokenHelpDialog.dart';
+import 'package:guide_liverpool/features/shared/widgets/paymentSheet.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/redux/viewsmodels/balance.dart';
 import 'package:guide_liverpool/models/app_state.dart';
@@ -97,7 +99,15 @@ class Balance extends StatelessWidget {
                               fontSize: 14,
                               color: Theme.of(context).canvasColor,
                             ),
-                          )
+                          ),
+                          TextSpan(
+                            text: ' (£${getPPLValueFromPence(double.parse(viewModel.pplBalance)).toStringAsFixed(2)})',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w100,
+                              fontSize: 14,
+                              color: Theme.of(context).canvasColor,
+                            ),
+                          ),
                         ],
                       ),
                       style: TextStyle(

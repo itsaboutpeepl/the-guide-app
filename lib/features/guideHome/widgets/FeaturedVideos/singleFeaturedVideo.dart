@@ -9,7 +9,9 @@ import 'package:guide_liverpool/features/guideHome/helpers/youtubeToStream.dart'
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 import 'package:video_player/video_player.dart';
 import 'package:redux/redux.dart';
 
@@ -80,15 +82,13 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
       () {
         if (_videoPlayerController.value.position == _videoPlayerController.value.duration &&
             !_isPlayBackCompletedOnce) {
-          store.dispatch(UpdatePlayConfetti(playConfetti: true));
           _chewieController!.exitFullScreen();
+          store.dispatch(UpdatePlayConfetti(playConfetti: true));
           _isPlayBackCompletedOnce = true;
 
           Future.delayed(
             Duration(seconds: 1),
             () => {
-              //showPlayBackCompletedFlushBar(context),
-              //store.dispatch(UpdatePlayConfetti(playConfetti: false)) --remove
               store.dispatch(
                 createVideoView(
                   widget.videoArticleItem.postID,
@@ -180,7 +180,17 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                         ),
                       ),
                     )
-                  : SizedBox.shrink()
+                  : SizedBox.shrink(),
+              Positioned(
+                right: 20,
+                top: 20,
+                child: Center(
+                  child: Image.asset(
+                    "assets/images/avatar-ppl-red.png",
+                    width: 55,
+                  ),
+                ),
+              )
             ],
           ),
         ),

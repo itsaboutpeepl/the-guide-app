@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:guide_liverpool/common/di/di.dart';
-import 'package:guide_liverpool/utils/constants.dart';
 
 class StripeCustomResponse {
   final bool ok;
@@ -23,7 +22,6 @@ class StripeService {
 
   factory StripeService() => _instance;
 
-  String _paymentApiUrl = '$topUpService/stripe/createPaymentIntent';
   String _apiKey = dotenv.env['STRIPE_API_KEY']!;
 
   void init() {
@@ -58,12 +56,6 @@ class StripeService {
       );
 
       // 3. display the payment sheet.
-      // await Stripe.instance.presentPaymentSheet(
-      //     parameters: PresentPaymentSheetParameters(
-      //   clientSecret: _paymentSheetData!['clientSecret'],
-      //   confirmPayment: true,
-      // ));
-
       await Stripe.instance.presentPaymentSheet();
 
       return StripeCustomResponse(ok: true);
@@ -81,15 +73,10 @@ class StripeService {
     required String walletAddress,
   }) async {
     try {
-      final int amountNew =
-          (double.parse(amount) * 100).toInt(); // Pounds to pence
+      final int amountNew = (double.parse(amount) * 100).toInt(); // Pounds to pence
       final Response response = await getIt<Dio>().post(
-        _paymentApiUrl,
-        data: {
-          'amount': amountNew,
-          'currency': currency,
-          'walletAddress': walletAddress
-        },
+        dotenv.env["https://stripetest.itsaboutpeepl.com/api"]!,
+        data: {'amount': amountNew, 'currency': currency, 'walletAddress': walletAddress},
         options: Options(
           headers: {"Content-Type": 'application/json'},
         ),

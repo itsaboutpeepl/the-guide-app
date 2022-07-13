@@ -60,7 +60,7 @@ final Token fuseDollarToken = Token(
 
 final String peeplUrl = dotenv.env['PEEPL_URL']!;
 
-final String topUpService = dotenv.env['TOP_UP_SERVICE_URL']!;
+final String topUpService = dotenv.env['STRIPE_PAY_URL']!;
 
 String toShortName(networkType) => networkType == 'mainnet' ? 'main' : networkType;
 

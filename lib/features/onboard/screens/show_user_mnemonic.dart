@@ -142,11 +142,11 @@ class _ShowUserMnemonicScreenState extends State<ShowUserMnemonicScreen> {
                   height: 20,
                 ),
                 Center(
-                  child: PrimaryButton(
-                    onPressed: () => context.router.push(VerifyUserMnemonic()),
-                    label: "Next",
-                  ),
-                ),
+                    // child: PrimaryButton(
+                    //   onPressed: () => context.router.push(VerifyUserMnemonic()),
+                    //   label: "Next",
+                    // ),
+                    ),
               ],
             ),
           );

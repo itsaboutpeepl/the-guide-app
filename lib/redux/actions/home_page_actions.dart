@@ -4,7 +4,9 @@ import 'package:guide_liverpool/models/articles/categoryArticles.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
 import 'package:guide_liverpool/models/articles/events.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/services.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -142,6 +144,7 @@ ThunkAction createVideoView(
       int rewardsIssued = await peeplMediaService.createVideoView(videoID, store.state.userState.walletAddress);
       if (rewardsIssued > 0) {
         successCallback(rewardsIssued);
+        store.dispatch(getTokenBalanceCall(PeeplToken));
       }
     } catch (e, s) {
       errorCallback();

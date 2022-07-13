@@ -95,6 +95,15 @@ class _VegiWebViewState extends State<VegiWebView> {
                   );
                 },
               );
+              webView.addJavaScriptHandler(
+                handlerName: "getOrderAmounts",
+                callback: (values) {
+                  return {
+                    "gbpAmount": (viewmodel.selectedGBPxAmount).toStringAsFixed(2),
+                    "pplAmount": viewmodel.selectedPPLAmount.toStringAsFixed(2)
+                  };
+                },
+              );
             },
           ),
         );

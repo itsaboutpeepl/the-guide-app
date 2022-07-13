@@ -29,8 +29,6 @@ export 'routes.gr.dart';
     AutoRoute(page: SplashScreen, initial: true),
     AutoRoute(page: ChooseSecurityOption),
     AutoRoute(page: PinCodeScreen),
-    AutoRoute(page: ShowUserMnemonicScreen),
-    AutoRoute(page: VerifyUserMnemonic),
     AutoRoute(page: RestoreFromBackupScreen),
     AutoRoute(page: OnBoardScreen),
     AutoRoute(page: SignUpScreen),

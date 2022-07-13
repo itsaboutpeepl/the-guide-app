@@ -69,23 +69,40 @@ void showCopiedFlushbar(context) {
 
 void showPlayBackCompletedFlushBar(context, int rewardAmount) {
   Flushbar(
-    duration: Duration(seconds: 4),
+    duration: Duration(seconds: 3),
     boxShadows: [
       BoxShadow(
         offset: Offset(0.5, 0.5),
         blurRadius: 5,
       ),
     ],
-    messageText: Text(
-      "Thanks for watching! $rewardAmount PPL tokens will be added to your wallet.",
+    titleText: Text.rich(
+      TextSpan(
+        style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900),
+        children: [
+          WidgetSpan(
+            child: Image.asset(
+              "assets/images/avatar-ppl-red.png",
+              width: 30,
+            ),
+          ),
+          TextSpan(text: "\nThanks for watching")
+        ],
+      ),
       textAlign: TextAlign.center,
     ),
-    backgroundColor: Theme.of(context).bottomAppBarColor,
+    messageText: Text.rich(
+      TextSpan(
+        text: "Your reward will be added to your wallet soon!",
+      ),
+      style: TextStyle(color: Colors.white),
+      textAlign: TextAlign.center,
+    ),
+    backgroundColor: Color(0xFF333333),
     margin: EdgeInsets.only(
-      top: 8,
-      right: 8,
-      left: 8,
-      bottom: 10,
+      right: 20,
+      left: 20,
+      bottom: 50,
     ),
     borderRadius: BorderRadius.all(
       Radius.circular(8.0),
