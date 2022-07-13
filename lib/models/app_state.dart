@@ -23,7 +23,7 @@ class AppState with _$AppState {
     @HomePageStateConverter() required HomePageState homePageState,
     @NewsStateConverter() required NewsState newsState,
     @UserCartStateConverter() required UserCartState cartState,
-    @DappStateConverter() required DappState dappState,
+    // @DappStateConverter() required DappState dappState,
   }) = _AppState;
 
   factory AppState.initial() {
@@ -34,7 +34,7 @@ class AppState with _$AppState {
       homePageState: HomePageState.initial(),
       newsState: NewsState.initial(),
       cartState: UserCartState.initial(),
-      dappState: DappState.initial(),
+      // dappState: DappState.initial(),
     );
   }
 
