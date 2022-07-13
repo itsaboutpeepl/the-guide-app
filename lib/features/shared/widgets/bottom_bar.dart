@@ -7,6 +7,7 @@ import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/main_page.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 
 class BottomBar extends StatelessWidget {
   late final TabsRouter tabsRouter;
@@ -42,13 +43,13 @@ class BottomBar extends StatelessWidget {
           I10n.of(context).home,
           "News",
           I10n.of(context).account,
-          "Network",
+          "Shop",
         ],
         icons: [
-          Icons.home,
-          Icons.article,
+          Icons.home_outlined,
+          Icons.article_outlined,
           Icons.person_outline,
-          Icons.hub_outlined,
+          PeeplIcons.ppl_circles_02,
         ],
       ),
     );

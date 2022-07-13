@@ -9,6 +9,7 @@ import 'package:guide_liverpool/features/account/screens/show_mnemonic.dart';
 import 'package:guide_liverpool/features/account/screens/social_screen.dart';
 import 'package:guide_liverpool/features/account/screens/verify_mnemonic.dart';
 import 'package:guide_liverpool/features/topup/screens/topup.dart';
+import 'package:guide_liverpool/features/account/screens/dAppScreen.dart';
 
 const accountTab = AutoRoute(
   path: 'account',
@@ -57,6 +58,11 @@ const accountTab = AutoRoute(
     AutoRoute(
       path: 'topUp',
       page: TopupScreen,
+      guards: [AuthGuard],
+    ),
+    AutoRoute(
+      page: DAppScreen,
+      name: 'dAppScreen',
       guards: [AuthGuard],
     ),
   ],

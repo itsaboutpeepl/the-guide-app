@@ -12,6 +12,7 @@ import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/utils/format.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
+import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 
 class Avatar extends StatelessWidget {
   const Avatar({Key? key}) : super(key: key);
@@ -131,14 +132,13 @@ class Avatar extends StatelessWidget {
                       child: Container(
                         width: MediaQuery.of(context).size.width * .475,
                         child: TextButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) => ReceiveDialog(
-                                'fuse:${viewModel.walletAddress}',
-                              ),
-                            );
-                          },
+                          onPressed: () => context.router.push(DAppScreen()),
+                          // showDialog(
+                          //   context: context,
+                          //   builder: (BuildContext context) => ReceiveDialog(
+                          //     'fuse:${viewModel.walletAddress}',
+                          //   ),
+                          // );
                           style: TextButton.styleFrom(
                             padding: EdgeInsets.all(15.0),
                             backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -154,15 +154,16 @@ class Avatar extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: <Widget>[
-                              SvgPicture.asset(
-                                'assets/images/receiveIcon.svg',
+                              Icon(
+                                PeeplIcons.ppl_circles_02,
+                                color: Color(0xFFFF344D),
                               ),
                               SizedBox(
                                 width: 10,
                               ),
                               Flexible(
                                 child: AutoSizeText(
-                                  I10n.of(context).receive,
+                                  "Token Vesting",
                                   style: TextStyle(
                                     letterSpacing: 0.3,
                                     color: Theme.of(context).colorScheme.onSurface,

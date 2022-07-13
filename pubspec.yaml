@@ -140,6 +140,9 @@ flutter:
           weight: 700
         - asset: assets/fonts/Lato/Lato-Black.ttf
           weight: 900
+    - family: PeeplIcons
+      fonts:
+        - asset: assets/fonts/PeeplIcons.ttf
 
   uses-material-design: true
 flutter_intl:
