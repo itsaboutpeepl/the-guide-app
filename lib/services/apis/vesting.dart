@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:web_socket_channel/io.dart';
 import '../../constants/urls.dart';
@@ -29,8 +32,14 @@ class VestingService {
     );
   }
 
-  Future<void> getABI async {
-    
+  late ContractAbi _abiCode;
+  late EthereumAddress _contractAddress;
+  Future<void> getABI() async {
+    String abiFile = await rootBundle.loadString('assets/vestingAbi.json');
+    var jsonABI = jsonDecode(abiFile);
+    _abiCode =
+        ContractAbi.fromJson(jsonEncode(jsonABI['abi']), 'VestingContract');
+    _contractAddress =
+        EthereumAddress.fromHex('0xfC75C482058d7f521Db493D103247953d5C9d2AF');
   }
-
 }
