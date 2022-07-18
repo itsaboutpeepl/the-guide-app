@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:flutter/foundation.dart';
-import 'package:guide_liverpool/models/Dapp_state.dart';
 import 'package:guide_liverpool/models/home_page_state.dart';
 import 'package:guide_liverpool/models/news_state.dart';
 import 'package:guide_liverpool/models/swap_state.dart';

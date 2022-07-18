@@ -51,9 +51,19 @@ class VestingService {
   // }
 
   late DeployedContract _deployedContract;
-  late ContractFunction _vestingSchedule;
+  late ContractFunction _release;
+  late ContractFunction _computeReleasableAmount;
+  late ContractFunction _getVestingScheduleByAddressAndIndex;
+  late ContractFunction _getVestingSchedulesCountByBeneficiary;
 
   Future<void> getDeployedContract() async {
     _deployedContract = DeployedContract(_abiCode, _contractAddress);
+    _getVestingScheduleByAddressAndIndex =
+        _deployedContract.function('getVestingScheduleByAddressAndIndex');
+    _getVestingSchedulesCountByBeneficiary =
+        _deployedContract.function('getVestingSchedulesCountByBeneficiary');
+    _computeReleasableAmount =
+        _deployedContract.function('computeReleasableAmount');
+    _release = _deployedContract.function('release');
   }
 }
