@@ -31,6 +31,9 @@ class VestingService {
         return IOWebSocketChannel.connect(_wsUrl).cast<String>();
       },
     );
+    await getABI();
+    // await getCredentials();
+    await getDeployedContract();
   }
 
   late ContractAbi _abiCode;
