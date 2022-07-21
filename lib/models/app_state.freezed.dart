@@ -32,6 +32,8 @@ mixin _$AppState {
   NewsState get newsState => throw _privateConstructorUsedError;
   @UserCartStateConverter()
   UserCartState get cartState => throw _privateConstructorUsedError;
+  @VestingStateConverter()
+  VestingState get vestingState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -49,7 +51,8 @@ abstract class $AppStateCopyWith<$Res> {
       @SwapStateConverter() SwapState swapState,
       @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState,
-      @UserCartStateConverter() UserCartState cartState});
+      @UserCartStateConverter() UserCartState cartState,
+      @VestingStateConverter() VestingState vestingState});
 
   $UserStateCopyWith<$Res> get userState;
   $CashWalletStateCopyWith<$Res> get cashWalletState;
@@ -57,6 +60,7 @@ abstract class $AppStateCopyWith<$Res> {
   $HomePageStateCopyWith<$Res> get homePageState;
   $NewsStateCopyWith<$Res> get newsState;
   $UserCartStateCopyWith<$Res> get cartState;
+  $VestingStateCopyWith<$Res> get vestingState;
 }
 
 /// @nodoc
@@ -75,6 +79,7 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
     Object? homePageState = freezed,
     Object? newsState = freezed,
     Object? cartState = freezed,
+    Object? vestingState = freezed,
   }) {
     return _then(_value.copyWith(
       userState: userState == freezed
@@ -101,6 +106,10 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.cartState
           : cartState // ignore: cast_nullable_to_non_nullable
               as UserCartState,
+      vestingState: vestingState == freezed
+          ? _value.vestingState
+          : vestingState // ignore: cast_nullable_to_non_nullable
+              as VestingState,
     ));
   }
 
@@ -145,6 +154,13 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
       return _then(_value.copyWith(cartState: value));
     });
   }
+
+  @override
+  $VestingStateCopyWith<$Res> get vestingState {
+    return $VestingStateCopyWith<$Res>(_value.vestingState, (value) {
+      return _then(_value.copyWith(vestingState: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -159,7 +175,8 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       @SwapStateConverter() SwapState swapState,
       @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState,
-      @UserCartStateConverter() UserCartState cartState});
+      @UserCartStateConverter() UserCartState cartState,
+      @VestingStateConverter() VestingState vestingState});
 
   @override
   $UserStateCopyWith<$Res> get userState;
@@ -173,6 +190,8 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   $NewsStateCopyWith<$Res> get newsState;
   @override
   $UserCartStateCopyWith<$Res> get cartState;
+  @override
+  $VestingStateCopyWith<$Res> get vestingState;
 }
 
 /// @nodoc
@@ -193,6 +212,7 @@ class __$$_AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     Object? homePageState = freezed,
     Object? newsState = freezed,
     Object? cartState = freezed,
+    Object? vestingState = freezed,
   }) {
     return _then(_$_AppState(
       userState: userState == freezed
@@ -219,6 +239,10 @@ class __$$_AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.cartState
           : cartState // ignore: cast_nullable_to_non_nullable
               as UserCartState,
+      vestingState: vestingState == freezed
+          ? _value.vestingState
+          : vestingState // ignore: cast_nullable_to_non_nullable
+              as VestingState,
     ));
   }
 }
@@ -233,7 +257,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       @SwapStateConverter() required this.swapState,
       @HomePageStateConverter() required this.homePageState,
       @NewsStateConverter() required this.newsState,
-      @UserCartStateConverter() required this.cartState})
+      @UserCartStateConverter() required this.cartState,
+      @VestingStateConverter() required this.vestingState})
       : super._();
 
   factory _$_AppState.fromJson(Map<String, dynamic> json) =>
@@ -257,10 +282,13 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
   @override
   @UserCartStateConverter()
   final UserCartState cartState;
+  @override
+  @VestingStateConverter()
+  final VestingState vestingState;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, swapState: $swapState, homePageState: $homePageState, newsState: $newsState, cartState: $cartState)';
+    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, swapState: $swapState, homePageState: $homePageState, newsState: $newsState, cartState: $cartState, vestingState: $vestingState)';
   }
 
   @override
@@ -273,7 +301,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       ..add(DiagnosticsProperty('swapState', swapState))
       ..add(DiagnosticsProperty('homePageState', homePageState))
       ..add(DiagnosticsProperty('newsState', newsState))
-      ..add(DiagnosticsProperty('cartState', cartState));
+      ..add(DiagnosticsProperty('cartState', cartState))
+      ..add(DiagnosticsProperty('vestingState', vestingState));
   }
 
   @override
@@ -288,7 +317,9 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
             const DeepCollectionEquality()
                 .equals(other.homePageState, homePageState) &&
             const DeepCollectionEquality().equals(other.newsState, newsState) &&
-            const DeepCollectionEquality().equals(other.cartState, cartState));
+            const DeepCollectionEquality().equals(other.cartState, cartState) &&
+            const DeepCollectionEquality()
+                .equals(other.vestingState, vestingState));
   }
 
   @JsonKey(ignore: true)
@@ -300,7 +331,8 @@ class _$_AppState extends _AppState with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(swapState),
       const DeepCollectionEquality().hash(homePageState),
       const DeepCollectionEquality().hash(newsState),
-      const DeepCollectionEquality().hash(cartState));
+      const DeepCollectionEquality().hash(cartState),
+      const DeepCollectionEquality().hash(vestingState));
 
   @JsonKey(ignore: true)
   @override
@@ -326,7 +358,9 @@ abstract class _AppState extends AppState {
       @NewsStateConverter()
           required final NewsState newsState,
       @UserCartStateConverter()
-          required final UserCartState cartState}) = _$_AppState;
+          required final UserCartState cartState,
+      @VestingStateConverter()
+          required final VestingState vestingState}) = _$_AppState;
   _AppState._() : super._();
 
   factory _AppState.fromJson(Map<String, dynamic> json) = _$_AppState.fromJson;
@@ -349,6 +383,9 @@ abstract class _AppState extends AppState {
   @override
   @UserCartStateConverter()
   UserCartState get cartState => throw _privateConstructorUsedError;
+  @override
+  @VestingStateConverter()
+  VestingState get vestingState => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>

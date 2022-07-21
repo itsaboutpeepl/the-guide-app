@@ -6,6 +6,7 @@ import 'package:guide_liverpool/models/swap_state.dart';
 import 'package:guide_liverpool/models/user_cart_state.dart';
 import 'package:guide_liverpool/models/user_state.dart';
 import 'package:guide_liverpool/models/cash_wallet_state.dart';
+import 'package:guide_liverpool/models/vesting_state.dart';
 
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';
@@ -22,7 +23,7 @@ class AppState with _$AppState {
     @HomePageStateConverter() required HomePageState homePageState,
     @NewsStateConverter() required NewsState newsState,
     @UserCartStateConverter() required UserCartState cartState,
-    // @DappStateConverter() required DappState dappState,
+    @VestingStateConverter() required VestingState vestingState,
   }) = _AppState;
 
   factory AppState.initial() {
@@ -33,6 +34,7 @@ class AppState with _$AppState {
       homePageState: HomePageState.initial(),
       newsState: NewsState.initial(),
       cartState: UserCartState.initial(),
+      vestingState: VestingState.initial(),
       // dappState: DappState.initial(),
     );
   }
