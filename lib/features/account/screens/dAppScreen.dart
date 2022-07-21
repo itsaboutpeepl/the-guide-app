@@ -27,9 +27,8 @@ class _DAppScreenState extends State<DAppScreen> {
             children: [
               Center(
                 child: Image.asset(
-                  "assets/images/peepl-logo-red.png",
+                  "assets/Peepl-Logos/uncommon.png",
                   width: 150,
-                  color: Color(0xFFFF344D),
                 ),
               ),
               SizedBox(

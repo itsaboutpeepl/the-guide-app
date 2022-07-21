@@ -359,7 +359,7 @@ class __$$_CommunityCopyWithImpl<$Res> extends _$CommunityCopyWithImpl<$Res>
           : plugins // ignore: cast_nullable_to_non_nullable
               as Plugins?,
       businesses: businesses == freezed
-          ? _value._businesses
+          ? _value.businesses
           : businesses // ignore: cast_nullable_to_non_nullable
               as List<Business>?,
       description: description == freezed
@@ -403,10 +403,9 @@ class _$_Community with DiagnosticableTreeMixin implements _Community {
       @PluginsConverter()
           this.plugins,
       @JsonKey(includeIfNull: false)
-          final List<Business>? businesses,
+          this.businesses,
       @JsonKey(includeIfNull: false)
-          this.description})
-      : _businesses = businesses;
+          this.description});
 
   factory _$_Community.fromJson(Map<String, dynamic> json) =>
       _$$_CommunityFromJson(json);
@@ -458,16 +457,9 @@ class _$_Community with DiagnosticableTreeMixin implements _Community {
   @JsonKey(includeIfNull: false)
   @PluginsConverter()
   final Plugins? plugins;
-  final List<Business>? _businesses;
   @override
   @JsonKey(includeIfNull: false)
-  List<Business>? get businesses {
-    final value = _businesses;
-    if (value == null) return null;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  final List<Business>? businesses;
   @override
   @JsonKey(includeIfNull: false)
   final String? description;
@@ -530,7 +522,7 @@ class _$_Community with DiagnosticableTreeMixin implements _Community {
                 .equals(other.foreignTokenAddress, foreignTokenAddress) &&
             const DeepCollectionEquality().equals(other.plugins, plugins) &&
             const DeepCollectionEquality()
-                .equals(other._businesses, _businesses) &&
+                .equals(other.businesses, businesses) &&
             const DeepCollectionEquality()
                 .equals(other.description, description));
   }
@@ -554,7 +546,7 @@ class _$_Community with DiagnosticableTreeMixin implements _Community {
       const DeepCollectionEquality().hash(foreignBridgeAddress),
       const DeepCollectionEquality().hash(foreignTokenAddress),
       const DeepCollectionEquality().hash(plugins),
-      const DeepCollectionEquality().hash(_businesses),
+      const DeepCollectionEquality().hash(businesses),
       const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)

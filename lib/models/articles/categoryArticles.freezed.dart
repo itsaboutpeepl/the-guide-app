@@ -108,7 +108,7 @@ class __$$_CategoryArticlesCopyWithImpl<$Res>
           : category // ignore: cast_nullable_to_non_nullable
               as Category,
       articleList: articleList == freezed
-          ? _value._articleList
+          ? _value.articleList
           : articleList // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
     ));
@@ -119,22 +119,16 @@ class __$$_CategoryArticlesCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_CategoryArticles extends _CategoryArticles {
-  _$_CategoryArticles(
-      {required this.category, required final List<BlogArticle> articleList})
-      : _articleList = articleList,
-        super._();
+  _$_CategoryArticles({required this.category, required this.articleList})
+      : super._();
 
   factory _$_CategoryArticles.fromJson(Map<String, dynamic> json) =>
       _$$_CategoryArticlesFromJson(json);
 
   @override
   final Category category;
-  final List<BlogArticle> _articleList;
   @override
-  List<BlogArticle> get articleList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_articleList);
-  }
+  final List<BlogArticle> articleList;
 
   @override
   String toString() {
@@ -148,7 +142,7 @@ class _$_CategoryArticles extends _CategoryArticles {
             other is _$_CategoryArticles &&
             const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality()
-                .equals(other._articleList, _articleList));
+                .equals(other.articleList, articleList));
   }
 
   @JsonKey(ignore: true)
@@ -156,7 +150,7 @@ class _$_CategoryArticles extends _CategoryArticles {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(_articleList));
+      const DeepCollectionEquality().hash(articleList));
 
   @JsonKey(ignore: true)
   @override

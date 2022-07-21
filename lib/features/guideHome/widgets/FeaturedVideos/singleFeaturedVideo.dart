@@ -12,6 +12,7 @@ import 'package:guide_liverpool/models/articles/videoArticle.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/utils/constants.dart';
+import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 import 'package:video_player/video_player.dart';
 import 'package:redux/redux.dart';
 
@@ -185,9 +186,10 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                 right: 20,
                 top: 20,
                 child: Center(
-                  child: Image.asset(
-                    "assets/images/avatar-ppl-red.png",
-                    width: 55,
+                  child: Icon(
+                    PeeplIcons.ppl_circles_02,
+                    size: 50.0,
+                    color: Color(0xFFEB4953),
                   ),
                 ),
               )

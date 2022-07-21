@@ -93,11 +93,11 @@ class __$$_SwapStateCopyWithImpl<$Res> extends _$SwapStateCopyWithImpl<$Res>
   }) {
     return _then(_$_SwapState(
       tokens: tokens == freezed
-          ? _value._tokens
+          ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
               as Map<String, Token>,
       tokensImages: tokensImages == freezed
-          ? _value._tokensImages
+          ? _value.tokensImages
           : tokensImages // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
     ));
@@ -109,30 +109,19 @@ class __$$_SwapStateCopyWithImpl<$Res> extends _$SwapStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_SwapState extends _SwapState with DiagnosticableTreeMixin {
   _$_SwapState(
-      {@JsonKey(ignore: true) final Map<String, Token> tokens = const {},
-      final Map<String, String> tokensImages = const {}})
-      : _tokens = tokens,
-        _tokensImages = tokensImages,
-        super._();
+      {@JsonKey(ignore: true) this.tokens = const {},
+      this.tokensImages = const {}})
+      : super._();
 
   factory _$_SwapState.fromJson(Map<String, dynamic> json) =>
       _$$_SwapStateFromJson(json);
 
-  final Map<String, Token> _tokens;
   @override
   @JsonKey(ignore: true)
-  Map<String, Token> get tokens {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_tokens);
-  }
-
-  final Map<String, String> _tokensImages;
+  final Map<String, Token> tokens;
   @override
   @JsonKey()
-  Map<String, String> get tokensImages {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_tokensImages);
-  }
+  final Map<String, String> tokensImages;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -153,17 +142,17 @@ class _$_SwapState extends _SwapState with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SwapState &&
-            const DeepCollectionEquality().equals(other._tokens, _tokens) &&
+            const DeepCollectionEquality().equals(other.tokens, tokens) &&
             const DeepCollectionEquality()
-                .equals(other._tokensImages, _tokensImages));
+                .equals(other.tokensImages, tokensImages));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_tokens),
-      const DeepCollectionEquality().hash(_tokensImages));
+      const DeepCollectionEquality().hash(tokens),
+      const DeepCollectionEquality().hash(tokensImages));
 
   @JsonKey(ignore: true)
   @override

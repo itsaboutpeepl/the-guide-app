@@ -165,7 +165,7 @@ class __$$_BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
       category: category == freezed
-          ? _value._category
+          ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
       postID: postID == freezed
@@ -185,7 +185,7 @@ class __$$_BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
           : publishedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
       gallery: gallery == freezed
-          ? _value._gallery
+          ? _value.gallery
           : gallery // ignore: cast_nullable_to_non_nullable
               as List<String>,
       description: description == freezed
@@ -203,16 +203,14 @@ class _$_BlogArticle extends _BlogArticle {
   _$_BlogArticle(
       {required this.title,
       required this.imageURL,
-      required final List<String> category,
+      required this.category,
       required this.postID,
       required this.postURL,
       required this.content,
       required this.publishedAt,
-      required final List<String> gallery,
+      required this.gallery,
       required this.description})
-      : _category = category,
-        _gallery = gallery,
-        super._();
+      : super._();
 
   factory _$_BlogArticle.fromJson(Map<String, dynamic> json) =>
       _$$_BlogArticleFromJson(json);
@@ -221,13 +219,8 @@ class _$_BlogArticle extends _BlogArticle {
   final String title;
   @override
   final String imageURL;
-  final List<String> _category;
   @override
-  List<String> get category {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_category);
-  }
-
+  final List<String> category;
   @override
   final int postID;
   @override
@@ -236,13 +229,8 @@ class _$_BlogArticle extends _BlogArticle {
   final String content;
   @override
   final DateTime publishedAt;
-  final List<String> _gallery;
   @override
-  List<String> get gallery {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_gallery);
-  }
-
+  final List<String> gallery;
   @override
   final String description;
 
@@ -258,13 +246,13 @@ class _$_BlogArticle extends _BlogArticle {
             other is _$_BlogArticle &&
             const DeepCollectionEquality().equals(other.title, title) &&
             const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
-            const DeepCollectionEquality().equals(other._category, _category) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality().equals(other.postID, postID) &&
             const DeepCollectionEquality().equals(other.postURL, postURL) &&
             const DeepCollectionEquality().equals(other.content, content) &&
             const DeepCollectionEquality()
                 .equals(other.publishedAt, publishedAt) &&
-            const DeepCollectionEquality().equals(other._gallery, _gallery) &&
+            const DeepCollectionEquality().equals(other.gallery, gallery) &&
             const DeepCollectionEquality()
                 .equals(other.description, description));
   }
@@ -275,12 +263,12 @@ class _$_BlogArticle extends _BlogArticle {
       runtimeType,
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(imageURL),
-      const DeepCollectionEquality().hash(_category),
+      const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(postID),
       const DeepCollectionEquality().hash(postURL),
       const DeepCollectionEquality().hash(content),
       const DeepCollectionEquality().hash(publishedAt),
-      const DeepCollectionEquality().hash(_gallery),
+      const DeepCollectionEquality().hash(gallery),
       const DeepCollectionEquality().hash(description));
 
   @JsonKey(ignore: true)

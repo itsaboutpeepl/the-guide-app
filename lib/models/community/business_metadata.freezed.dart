@@ -178,7 +178,7 @@ class __$$_BusinessMetadataCopyWithImpl<$Res>
           : website // ignore: cast_nullable_to_non_nullable
               as String,
       latLng: latLng == freezed
-          ? _value._latLng
+          ? _value.latLng
           : latLng // ignore: cast_nullable_to_non_nullable
               as List<double>,
     ));
@@ -199,8 +199,7 @@ class _$_BusinessMetadata
       this.type = '',
       this.phoneNumber = '',
       this.website = '',
-      final List<double> latLng = const []})
-      : _latLng = latLng;
+      this.latLng = const []});
 
   factory _$_BusinessMetadata.fromJson(Map<String, dynamic> json) =>
       _$$_BusinessMetadataFromJson(json);
@@ -226,13 +225,9 @@ class _$_BusinessMetadata
   @override
   @JsonKey()
   final String website;
-  final List<double> _latLng;
   @override
   @JsonKey()
-  List<double> get latLng {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_latLng);
-  }
+  final List<double> latLng;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
@@ -269,7 +264,7 @@ class _$_BusinessMetadata
             const DeepCollectionEquality()
                 .equals(other.phoneNumber, phoneNumber) &&
             const DeepCollectionEquality().equals(other.website, website) &&
-            const DeepCollectionEquality().equals(other._latLng, _latLng));
+            const DeepCollectionEquality().equals(other.latLng, latLng));
   }
 
   @JsonKey(ignore: true)
@@ -283,7 +278,7 @@ class _$_BusinessMetadata
       const DeepCollectionEquality().hash(type),
       const DeepCollectionEquality().hash(phoneNumber),
       const DeepCollectionEquality().hash(website),
-      const DeepCollectionEquality().hash(_latLng));
+      const DeepCollectionEquality().hash(latLng));
 
   @JsonKey(ignore: true)
   @override

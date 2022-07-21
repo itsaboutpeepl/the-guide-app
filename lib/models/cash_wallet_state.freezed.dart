@@ -216,11 +216,11 @@ class __$$_CashWalletStateCopyWithImpl<$Res>
           : isDepositBanner // ignore: cast_nullable_to_non_nullable
               as bool,
       tokens: tokens == freezed
-          ? _value._tokens
+          ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
               as Map<String, Token>,
       communities: communities == freezed
-          ? _value._communities
+          ? _value.communities
           : communities // ignore: cast_nullable_to_non_nullable
               as Map<String, Community>,
       walletActions: walletActions == freezed
@@ -258,25 +258,15 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
   _$_CashWalletState(
       {this.communityAddress = '',
       this.isDepositBanner = true,
-      @JsonKey(fromJson: tokensFromJson)
-          final Map<String, Token> tokens = const {},
-      @JsonKey(fromJson: communitiesFromJson)
-          final Map<String, Community> communities = const {},
-      @JsonKey(fromJson: walletActionsFromJson)
-          this.walletActions,
-      @JsonKey(ignore: true)
-          this.isCommunityLoading = false,
-      @JsonKey(ignore: true)
-          this.isCommunityFetched = false,
-      @JsonKey(ignore: true)
-          this.isTransfersFetchingStarted = false,
-      @JsonKey(ignore: true)
-          this.isCommunityBusinessesFetched = false,
-      @JsonKey(ignore: true)
-          this.isFetchingBalances = false})
-      : _tokens = tokens,
-        _communities = communities,
-        super._();
+      @JsonKey(fromJson: tokensFromJson) this.tokens = const {},
+      @JsonKey(fromJson: communitiesFromJson) this.communities = const {},
+      @JsonKey(fromJson: walletActionsFromJson) this.walletActions,
+      @JsonKey(ignore: true) this.isCommunityLoading = false,
+      @JsonKey(ignore: true) this.isCommunityFetched = false,
+      @JsonKey(ignore: true) this.isTransfersFetchingStarted = false,
+      @JsonKey(ignore: true) this.isCommunityBusinessesFetched = false,
+      @JsonKey(ignore: true) this.isFetchingBalances = false})
+      : super._();
 
   factory _$_CashWalletState.fromJson(Map<String, dynamic> json) =>
       _$$_CashWalletStateFromJson(json);
@@ -287,22 +277,12 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final bool isDepositBanner;
-  final Map<String, Token> _tokens;
   @override
   @JsonKey(fromJson: tokensFromJson)
-  Map<String, Token> get tokens {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_tokens);
-  }
-
-  final Map<String, Community> _communities;
+  final Map<String, Token> tokens;
   @override
   @JsonKey(fromJson: communitiesFromJson)
-  Map<String, Community> get communities {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_communities);
-  }
-
+  final Map<String, Community> communities;
   @override
   @JsonKey(fromJson: walletActionsFromJson)
   final WalletActions? walletActions;
@@ -355,9 +335,9 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
                 .equals(other.communityAddress, communityAddress) &&
             const DeepCollectionEquality()
                 .equals(other.isDepositBanner, isDepositBanner) &&
-            const DeepCollectionEquality().equals(other._tokens, _tokens) &&
+            const DeepCollectionEquality().equals(other.tokens, tokens) &&
             const DeepCollectionEquality()
-                .equals(other._communities, _communities) &&
+                .equals(other.communities, communities) &&
             const DeepCollectionEquality()
                 .equals(other.walletActions, walletActions) &&
             const DeepCollectionEquality()
@@ -379,8 +359,8 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
       runtimeType,
       const DeepCollectionEquality().hash(communityAddress),
       const DeepCollectionEquality().hash(isDepositBanner),
-      const DeepCollectionEquality().hash(_tokens),
-      const DeepCollectionEquality().hash(_communities),
+      const DeepCollectionEquality().hash(tokens),
+      const DeepCollectionEquality().hash(communities),
       const DeepCollectionEquality().hash(walletActions),
       const DeepCollectionEquality().hash(isCommunityLoading),
       const DeepCollectionEquality().hash(isCommunityFetched),

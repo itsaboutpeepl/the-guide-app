@@ -1,8 +1,11 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/features/shared/widgets/ShimmerButton.dart';
-import 'package:guide_liverpool/features/shared/widgets/my_app_bar.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({Key? key}) : super(key: key);
@@ -12,27 +15,81 @@ class ShopScreen extends StatefulWidget {
 }
 
 class _ShopScreenState extends State<ShopScreen> {
+  String _imageName = "0";
+  List<String> peeplLogos = [
+    "0",
+    "1",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "15",
+    "16",
+    "18",
+    "19",
+    "20",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "30",
+    "31",
+    "32",
+    "34",
+  ];
+
+  late Timer imageTimer;
+
+  @override
+  void initState() {
+    imageTimer = Timer.periodic(Duration(seconds: 4), (timer) {
+      setState(() {
+        _imageName = peeplLogos[Random().nextInt(peeplLogos.length)];
+      });
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    imageTimer.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MyAppBar(
-        height: kToolbarHeight,
-        child: AppBar(
-          iconTheme: IconThemeData(
-            color: Theme.of(context).colorScheme.onSurface, //change your color here
-          ),
-          automaticallyImplyLeading: true,
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-          centerTitle: true,
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                "assets/images/avatar-ppl-red.png",
-                height: kToolbarHeight - 10,
+      appBar: AppBar(
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        iconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.onSurface, //change your color here
+        ),
+        automaticallyImplyLeading: true,
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        centerTitle: true,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 300),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+              child: Image.asset(
+                "assets/Peepl-Logos/$_imageName.png",
+                height: kToolbarHeight + 5,
+                key: ValueKey<String>(_imageName),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       body: SingleChildScrollView(
@@ -41,73 +98,6 @@ class _ShopScreenState extends State<ShopScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              // Card(
-              //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-              //   color: Color(0xFF333333),
-              //   child: SizedBox(
-              //     width: double.infinity,
-              //     child: Padding(
-              //       padding: const EdgeInsets.symmetric(
-              //         vertical: 30,
-              //         horizontal: 20,
-              //       ),
-              //       child: Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           Align(
-              //             alignment: Alignment.centerRight,
-              //             child: Image.asset(
-              //               "assets/images/avatar-ppl-red.png",
-              //               width: MediaQuery.of(context).size.width * 0.3,
-              //             ),
-              //           ),
-              //           SizedBox(
-              //             height: 10,
-              //           ),
-              //           Text(
-              //             "Check your vesting schedule",
-              //             style: TextStyle(
-              //               color: Colors.white,
-              //               fontSize: 22,
-              //               fontWeight: FontWeight.w700,
-              //             ),
-              //           ),
-              //           SizedBox(
-              //             height: 5,
-              //           ),
-              //           Text(
-              //             "Get rewarded for being a part of Peepl 100",
-              //             style: TextStyle(
-              //               color: Colors.white,
-              //               fontSize: 18,
-              //             ),
-              //           ),
-              //           SizedBox(
-              //             height: 20,
-              //           ),
-              //           ShimmerButton(
-              //             buttonContent: Center(
-              //               child: Text(
-              //                 "Check now",
-              //                 style: TextStyle(
-              //                   fontSize: 22,
-              //                   fontWeight: FontWeight.w900,
-              //                   color: Colors.white,
-              //                 ),
-              //               ),
-              //             ),
-              //             buttonAction: () => context.router.push(DAppScreen()),
-              //             baseColor: Color(0xFFE6352D),
-              //             highlightColor: Color(0xFFE6352D).withOpacity(0.8),
-              //           )
-              //         ],
-              //       ),
-              //     ),
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 20,
-              // ),
               Card(
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                 color: Color(0xFF0D2A21),

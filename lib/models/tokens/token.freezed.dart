@@ -319,7 +319,7 @@ class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
           : priceDiffLimitInDays // ignore: cast_nullable_to_non_nullable
               as int,
       stats: stats == freezed
-          ? _value._stats
+          ? _value.stats
           : stats // ignore: cast_nullable_to_non_nullable
               as List<Stats>,
       walletActions: walletActions == freezed
@@ -350,10 +350,9 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
       this.priceChange = 0,
       @JsonKey(ignore: true) this.priceDiff = 0,
       @JsonKey(ignore: true) this.priceDiffLimitInDays = 0,
-      @JsonKey(ignore: true) final List<Stats> stats = const [],
+      @JsonKey(ignore: true) this.stats = const [],
       @JsonKey(fromJson: walletActionsFromJson) this.walletActions})
-      : _stats = stats,
-        super._();
+      : super._();
 
   factory _$_Token.fromJson(Map<String, dynamic> json) =>
       _$$_TokenFromJson(json);
@@ -393,14 +392,9 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
   @override
   @JsonKey(ignore: true)
   final int priceDiffLimitInDays;
-  final List<Stats> _stats;
   @override
   @JsonKey(ignore: true)
-  List<Stats> get stats {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stats);
-  }
-
+  final List<Stats> stats;
   @override
   @JsonKey(fromJson: walletActionsFromJson)
   final WalletActions? walletActions;
@@ -458,7 +452,7 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
             const DeepCollectionEquality().equals(other.priceDiff, priceDiff) &&
             const DeepCollectionEquality()
                 .equals(other.priceDiffLimitInDays, priceDiffLimitInDays) &&
-            const DeepCollectionEquality().equals(other._stats, _stats) &&
+            const DeepCollectionEquality().equals(other.stats, stats) &&
             const DeepCollectionEquality()
                 .equals(other.walletActions, walletActions));
   }
@@ -482,7 +476,7 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
       const DeepCollectionEquality().hash(priceChange),
       const DeepCollectionEquality().hash(priceDiff),
       const DeepCollectionEquality().hash(priceDiffLimitInDays),
-      const DeepCollectionEquality().hash(_stats),
+      const DeepCollectionEquality().hash(stats),
       const DeepCollectionEquality().hash(walletActions));
 
   @JsonKey(ignore: true)

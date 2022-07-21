@@ -154,7 +154,7 @@ class __$$_TradeInfoCopyWithImpl<$Res> extends _$TradeInfoCopyWithImpl<$Res>
           : outputAmount // ignore: cast_nullable_to_non_nullable
               as String,
       route: route == freezed
-          ? _value._route
+          ? _value.route
           : route // ignore: cast_nullable_to_non_nullable
               as List<String>,
       inputToken: inputToken == freezed
@@ -188,13 +188,12 @@ class _$_TradeInfo implements _TradeInfo {
   _$_TradeInfo(
       {required this.inputAmount,
       required this.outputAmount,
-      required final List<String> route,
+      required this.route,
       required this.inputToken,
       required this.outputToken,
       required this.executionPrice,
       required this.nextMidPrice,
-      required this.priceImpact})
-      : _route = route;
+      required this.priceImpact});
 
   factory _$_TradeInfo.fromJson(Map<String, dynamic> json) =>
       _$$_TradeInfoFromJson(json);
@@ -203,13 +202,8 @@ class _$_TradeInfo implements _TradeInfo {
   final String inputAmount;
   @override
   final String outputAmount;
-  final List<String> _route;
   @override
-  List<String> get route {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_route);
-  }
-
+  final List<String> route;
   @override
   final String inputToken;
   @override
@@ -235,7 +229,7 @@ class _$_TradeInfo implements _TradeInfo {
                 .equals(other.inputAmount, inputAmount) &&
             const DeepCollectionEquality()
                 .equals(other.outputAmount, outputAmount) &&
-            const DeepCollectionEquality().equals(other._route, _route) &&
+            const DeepCollectionEquality().equals(other.route, route) &&
             const DeepCollectionEquality()
                 .equals(other.inputToken, inputToken) &&
             const DeepCollectionEquality()
@@ -254,7 +248,7 @@ class _$_TradeInfo implements _TradeInfo {
       runtimeType,
       const DeepCollectionEquality().hash(inputAmount),
       const DeepCollectionEquality().hash(outputAmount),
-      const DeepCollectionEquality().hash(_route),
+      const DeepCollectionEquality().hash(route),
       const DeepCollectionEquality().hash(inputToken),
       const DeepCollectionEquality().hash(outputToken),
       const DeepCollectionEquality().hash(executionPrice),
@@ -412,7 +406,7 @@ class __$$_SwapCallParametersCopyWithImpl<$Res>
           : methodName // ignore: cast_nullable_to_non_nullable
               as String,
       args: args == freezed
-          ? _value._args
+          ? _value.args
           : args // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
       value: value == freezed
@@ -420,7 +414,7 @@ class __$$_SwapCallParametersCopyWithImpl<$Res>
           : value // ignore: cast_nullable_to_non_nullable
               as String,
       rawTxn: rawTxn == freezed
-          ? _value._rawTxn
+          ? _value.rawTxn
           : rawTxn // ignore: cast_nullable_to_non_nullable
               as Map<String, dynamic>,
     ));
@@ -433,32 +427,21 @@ class __$$_SwapCallParametersCopyWithImpl<$Res>
 class _$_SwapCallParameters implements _SwapCallParameters {
   _$_SwapCallParameters(
       {required this.methodName,
-      required final List<dynamic> args,
+      required this.args,
       required this.value,
-      required final Map<String, dynamic> rawTxn})
-      : _args = args,
-        _rawTxn = rawTxn;
+      required this.rawTxn});
 
   factory _$_SwapCallParameters.fromJson(Map<String, dynamic> json) =>
       _$$_SwapCallParametersFromJson(json);
 
   @override
   final String methodName;
-  final List<dynamic> _args;
   @override
-  List<dynamic> get args {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_args);
-  }
-
+  final List<dynamic> args;
   @override
   final String value;
-  final Map<String, dynamic> _rawTxn;
   @override
-  Map<String, dynamic> get rawTxn {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_rawTxn);
-  }
+  final Map<String, dynamic> rawTxn;
 
   @override
   String toString() {
@@ -472,9 +455,9 @@ class _$_SwapCallParameters implements _SwapCallParameters {
             other is _$_SwapCallParameters &&
             const DeepCollectionEquality()
                 .equals(other.methodName, methodName) &&
-            const DeepCollectionEquality().equals(other._args, _args) &&
+            const DeepCollectionEquality().equals(other.args, args) &&
             const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other._rawTxn, _rawTxn));
+            const DeepCollectionEquality().equals(other.rawTxn, rawTxn));
   }
 
   @JsonKey(ignore: true)
@@ -482,9 +465,9 @@ class _$_SwapCallParameters implements _SwapCallParameters {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(methodName),
-      const DeepCollectionEquality().hash(_args),
+      const DeepCollectionEquality().hash(args),
       const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(_rawTxn));
+      const DeepCollectionEquality().hash(rawTxn));
 
   @JsonKey(ignore: true)
   @override

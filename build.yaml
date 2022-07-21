@@ -1,6 +1,9 @@
 targets:
   $default:
     builders:
+      freezed:
+        options:
+          make_collections_unmodifiable: false
       json_serializable:
         options:
           # Options configure how source code is generated for every

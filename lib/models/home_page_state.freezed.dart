@@ -141,19 +141,19 @@ class __$$_HomePageStateCopyWithImpl<$Res>
   }) {
     return _then(_$_HomePageState(
       featuredPosts: featuredPosts == freezed
-          ? _value._featuredPosts
+          ? _value.featuredPosts
           : featuredPosts // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
       featuredVideos: featuredVideos == freezed
-          ? _value._featuredVideos
+          ? _value.featuredVideos
           : featuredVideos // ignore: cast_nullable_to_non_nullable
               as List<VideoArticle>,
       eventList: eventList == freezed
-          ? _value._eventList
+          ? _value.eventList
           : eventList // ignore: cast_nullable_to_non_nullable
               as List<Events>,
       directoryList: directoryList == freezed
-          ? _value._directoryList
+          ? _value.directoryList
           : directoryList // ignore: cast_nullable_to_non_nullable
               as List<Directory>,
       playConfetti: playConfetti == freezed
@@ -177,50 +177,26 @@ class __$$_HomePageStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_HomePageState extends _HomePageState {
   _$_HomePageState(
-      {required final List<BlogArticle> featuredPosts,
-      required final List<VideoArticle> featuredVideos,
-      required final List<Events> eventList,
-      required final List<Directory> directoryList,
+      {required this.featuredPosts,
+      required this.featuredVideos,
+      required this.eventList,
+      required this.directoryList,
       required this.playConfetti,
       required this.isLoading,
       required this.isError})
-      : _featuredPosts = featuredPosts,
-        _featuredVideos = featuredVideos,
-        _eventList = eventList,
-        _directoryList = directoryList,
-        super._();
+      : super._();
 
   factory _$_HomePageState.fromJson(Map<String, dynamic> json) =>
       _$$_HomePageStateFromJson(json);
 
-  final List<BlogArticle> _featuredPosts;
   @override
-  List<BlogArticle> get featuredPosts {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_featuredPosts);
-  }
-
-  final List<VideoArticle> _featuredVideos;
+  final List<BlogArticle> featuredPosts;
   @override
-  List<VideoArticle> get featuredVideos {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_featuredVideos);
-  }
-
-  final List<Events> _eventList;
+  final List<VideoArticle> featuredVideos;
   @override
-  List<Events> get eventList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_eventList);
-  }
-
-  final List<Directory> _directoryList;
+  final List<Events> eventList;
   @override
-  List<Directory> get directoryList {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_directoryList);
-  }
-
+  final List<Directory> directoryList;
   @override
   final bool playConfetti;
   @override
@@ -239,13 +215,12 @@ class _$_HomePageState extends _HomePageState {
         (other.runtimeType == runtimeType &&
             other is _$_HomePageState &&
             const DeepCollectionEquality()
-                .equals(other._featuredPosts, _featuredPosts) &&
+                .equals(other.featuredPosts, featuredPosts) &&
             const DeepCollectionEquality()
-                .equals(other._featuredVideos, _featuredVideos) &&
+                .equals(other.featuredVideos, featuredVideos) &&
+            const DeepCollectionEquality().equals(other.eventList, eventList) &&
             const DeepCollectionEquality()
-                .equals(other._eventList, _eventList) &&
-            const DeepCollectionEquality()
-                .equals(other._directoryList, _directoryList) &&
+                .equals(other.directoryList, directoryList) &&
             const DeepCollectionEquality()
                 .equals(other.playConfetti, playConfetti) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
@@ -256,10 +231,10 @@ class _$_HomePageState extends _HomePageState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_featuredPosts),
-      const DeepCollectionEquality().hash(_featuredVideos),
-      const DeepCollectionEquality().hash(_eventList),
-      const DeepCollectionEquality().hash(_directoryList),
+      const DeepCollectionEquality().hash(featuredPosts),
+      const DeepCollectionEquality().hash(featuredVideos),
+      const DeepCollectionEquality().hash(eventList),
+      const DeepCollectionEquality().hash(directoryList),
       const DeepCollectionEquality().hash(playConfetti),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isError));

@@ -99,7 +99,7 @@ class __$$_WalletActionsCopyWithImpl<$Res>
   }) {
     return _then(_$_WalletActions(
       list: list == freezed
-          ? _value._list
+          ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<WalletAction>,
       updatedAt: updatedAt == freezed
@@ -119,23 +119,17 @@ class __$$_WalletActionsCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_WalletActions extends _WalletActions with DiagnosticableTreeMixin {
   _$_WalletActions(
-      {final List<WalletAction> list = const <WalletAction>[],
+      {this.list = const <WalletAction>[],
       this.updatedAt = 0,
       this.currentPage = 1})
-      : _list = list,
-        super._();
+      : super._();
 
   factory _$_WalletActions.fromJson(Map<String, dynamic> json) =>
       _$$_WalletActionsFromJson(json);
 
-  final List<WalletAction> _list;
   @override
   @JsonKey()
-  List<WalletAction> get list {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_list);
-  }
-
+  final List<WalletAction> list;
   @override
   @JsonKey()
   final num updatedAt;
@@ -163,7 +157,7 @@ class _$_WalletActions extends _WalletActions with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_WalletActions &&
-            const DeepCollectionEquality().equals(other._list, _list) &&
+            const DeepCollectionEquality().equals(other.list, list) &&
             const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
             const DeepCollectionEquality()
                 .equals(other.currentPage, currentPage));
@@ -173,7 +167,7 @@ class _$_WalletActions extends _WalletActions with DiagnosticableTreeMixin {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_list),
+      const DeepCollectionEquality().hash(list),
       const DeepCollectionEquality().hash(updatedAt),
       const DeepCollectionEquality().hash(currentPage));
 

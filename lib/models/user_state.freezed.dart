@@ -460,11 +460,11 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
           : walletAddress // ignore: cast_nullable_to_non_nullable
               as String,
       networks: networks == freezed
-          ? _value._networks
+          ? _value.networks
           : networks // ignore: cast_nullable_to_non_nullable
               as List<String>,
       mnemonic: mnemonic == freezed
-          ? _value._mnemonic
+          ? _value.mnemonic
           : mnemonic // ignore: cast_nullable_to_non_nullable
               as List<String>,
       privateKey: privateKey == freezed
@@ -524,11 +524,11 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
           : identifier // ignore: cast_nullable_to_non_nullable
               as String,
       syncedContacts: syncedContacts == freezed
-          ? _value._syncedContacts
+          ? _value.syncedContacts
           : syncedContacts // ignore: cast_nullable_to_non_nullable
               as List<String>,
       reverseContacts: reverseContacts == freezed
-          ? _value._reverseContacts
+          ? _value.reverseContacts
           : reverseContacts // ignore: cast_nullable_to_non_nullable
               as Map<String, String>,
       signupErrorMessage: signupErrorMessage == freezed
@@ -560,7 +560,7 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
           : locale // ignore: cast_nullable_to_non_nullable
               as Locale?,
       contacts: contacts == freezed
-          ? _value._contacts
+          ? _value.contacts
           : contacts // ignore: cast_nullable_to_non_nullable
               as List<Contact>,
       credentials: credentials == freezed
@@ -587,8 +587,8 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
       this.depositBannerShowed = false,
       this.homeBackupDialogShowed = false,
       this.walletAddress = '',
-      final List<String> networks = const [],
-      final List<String> mnemonic = const [],
+      this.networks = const [],
+      this.mnemonic = const [],
       this.privateKey = '',
       this.pincode = '',
       this.accountAddress = '',
@@ -603,8 +603,8 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
       this.email = '',
       this.verificationId = null,
       this.identifier = '',
-      final List<String> syncedContacts = const [],
-      final Map<String, String> reverseContacts = const {},
+      this.syncedContacts = const [],
+      this.reverseContacts = const {},
       @JsonKey(ignore: true)
           this.signupErrorMessage = null,
       @JsonKey(ignore: true)
@@ -620,16 +620,11 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
       @JsonKey(fromJson: localeFromJson, toJson: localeToJson)
           this.locale = null,
       @JsonKey(ignore: true)
-          final List<Contact> contacts = const [],
+          this.contacts = const [],
       @JsonKey(ignore: true)
           this.credentials = null,
       this.walletModules})
-      : _networks = networks,
-        _mnemonic = mnemonic,
-        _syncedContacts = syncedContacts,
-        _reverseContacts = reverseContacts,
-        _contacts = contacts,
-        super._();
+      : super._();
 
   factory _$_UserState.fromJson(Map<String, dynamic> json) =>
       _$$_UserStateFromJson(json);
@@ -654,22 +649,12 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final String walletAddress;
-  final List<String> _networks;
   @override
   @JsonKey()
-  List<String> get networks {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_networks);
-  }
-
-  final List<String> _mnemonic;
+  final List<String> networks;
   @override
   @JsonKey()
-  List<String> get mnemonic {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_mnemonic);
-  }
-
+  final List<String> mnemonic;
   @override
   @JsonKey()
   final String privateKey;
@@ -712,22 +697,12 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
   @override
   @JsonKey()
   final String identifier;
-  final List<String> _syncedContacts;
   @override
   @JsonKey()
-  List<String> get syncedContacts {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_syncedContacts);
-  }
-
-  final Map<String, String> _reverseContacts;
+  final List<String> syncedContacts;
   @override
   @JsonKey()
-  Map<String, String> get reverseContacts {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_reverseContacts);
-  }
-
+  final Map<String, String> reverseContacts;
   @override
   @JsonKey(ignore: true)
   final dynamic signupErrorMessage;
@@ -749,14 +724,9 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
   @override
   @JsonKey(fromJson: localeFromJson, toJson: localeToJson)
   final Locale? locale;
-  final List<Contact> _contacts;
   @override
   @JsonKey(ignore: true)
-  List<Contact> get contacts {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_contacts);
-  }
-
+  final List<Contact> contacts;
   @override
   @JsonKey(ignore: true)
   final PhoneAuthCredential? credentials;
@@ -830,8 +800,8 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
                 .equals(other.homeBackupDialogShowed, homeBackupDialogShowed) &&
             const DeepCollectionEquality()
                 .equals(other.walletAddress, walletAddress) &&
-            const DeepCollectionEquality().equals(other._networks, _networks) &&
-            const DeepCollectionEquality().equals(other._mnemonic, _mnemonic) &&
+            const DeepCollectionEquality().equals(other.networks, networks) &&
+            const DeepCollectionEquality().equals(other.mnemonic, mnemonic) &&
             const DeepCollectionEquality()
                 .equals(other.privateKey, privateKey) &&
             const DeepCollectionEquality().equals(other.pincode, pincode) &&
@@ -856,9 +826,9 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
             const DeepCollectionEquality()
                 .equals(other.identifier, identifier) &&
             const DeepCollectionEquality()
-                .equals(other._syncedContacts, _syncedContacts) &&
+                .equals(other.syncedContacts, syncedContacts) &&
             const DeepCollectionEquality()
-                .equals(other._reverseContacts, _reverseContacts) &&
+                .equals(other.reverseContacts, reverseContacts) &&
             const DeepCollectionEquality()
                 .equals(other.signupErrorMessage, signupErrorMessage) &&
             const DeepCollectionEquality()
@@ -870,7 +840,7 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
                 .equals(other.isVerifyRequest, isVerifyRequest) &&
             const DeepCollectionEquality().equals(other.authType, authType) &&
             const DeepCollectionEquality().equals(other.locale, locale) &&
-            const DeepCollectionEquality().equals(other._contacts, _contacts) &&
+            const DeepCollectionEquality().equals(other.contacts, contacts) &&
             const DeepCollectionEquality()
                 .equals(other.credentials, credentials) &&
             const DeepCollectionEquality()
@@ -888,8 +858,8 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
         const DeepCollectionEquality().hash(depositBannerShowed),
         const DeepCollectionEquality().hash(homeBackupDialogShowed),
         const DeepCollectionEquality().hash(walletAddress),
-        const DeepCollectionEquality().hash(_networks),
-        const DeepCollectionEquality().hash(_mnemonic),
+        const DeepCollectionEquality().hash(networks),
+        const DeepCollectionEquality().hash(mnemonic),
         const DeepCollectionEquality().hash(privateKey),
         const DeepCollectionEquality().hash(pincode),
         const DeepCollectionEquality().hash(accountAddress),
@@ -904,8 +874,8 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
         const DeepCollectionEquality().hash(email),
         const DeepCollectionEquality().hash(verificationId),
         const DeepCollectionEquality().hash(identifier),
-        const DeepCollectionEquality().hash(_syncedContacts),
-        const DeepCollectionEquality().hash(_reverseContacts),
+        const DeepCollectionEquality().hash(syncedContacts),
+        const DeepCollectionEquality().hash(reverseContacts),
         const DeepCollectionEquality().hash(signupErrorMessage),
         const DeepCollectionEquality().hash(verifyErrorMessage),
         const DeepCollectionEquality().hash(currency),
@@ -913,7 +883,7 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
         const DeepCollectionEquality().hash(isVerifyRequest),
         const DeepCollectionEquality().hash(authType),
         const DeepCollectionEquality().hash(locale),
-        const DeepCollectionEquality().hash(_contacts),
+        const DeepCollectionEquality().hash(contacts),
         const DeepCollectionEquality().hash(credentials),
         const DeepCollectionEquality().hash(walletModules)
       ]);

@@ -68,8 +68,7 @@ class _TabItemState extends State<TabItem> {
               duration: Duration(milliseconds: ANIM_DURATION),
               alignment: Alignment(0, textYAlign),
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 20, horizontal: 8),
+                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                 child: Text(
                   widget.title,
                   style: widget.textStyle,

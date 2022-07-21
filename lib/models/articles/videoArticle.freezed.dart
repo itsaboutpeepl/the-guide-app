@@ -152,7 +152,7 @@ class __$$_VideoArticleCopyWithImpl<$Res>
           : videoURL // ignore: cast_nullable_to_non_nullable
               as String,
       category: category == freezed
-          ? _value._category
+          ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
       rewardAmount: rewardAmount == freezed
@@ -179,12 +179,11 @@ class _$_VideoArticle extends _VideoArticle {
       {required this.title,
       required this.placeholderImageURL,
       required this.videoURL,
-      required final List<String> category,
+      required this.category,
       required this.rewardAmount,
       required this.postID,
       required this.postURL})
-      : _category = category,
-        super._();
+      : super._();
 
   factory _$_VideoArticle.fromJson(Map<String, dynamic> json) =>
       _$$_VideoArticleFromJson(json);
@@ -195,13 +194,8 @@ class _$_VideoArticle extends _VideoArticle {
   final String placeholderImageURL;
   @override
   final String videoURL;
-  final List<String> _category;
   @override
-  List<String> get category {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_category);
-  }
-
+  final List<String> category;
   @override
   final int rewardAmount;
   @override
@@ -223,7 +217,7 @@ class _$_VideoArticle extends _VideoArticle {
             const DeepCollectionEquality()
                 .equals(other.placeholderImageURL, placeholderImageURL) &&
             const DeepCollectionEquality().equals(other.videoURL, videoURL) &&
-            const DeepCollectionEquality().equals(other._category, _category) &&
+            const DeepCollectionEquality().equals(other.category, category) &&
             const DeepCollectionEquality()
                 .equals(other.rewardAmount, rewardAmount) &&
             const DeepCollectionEquality().equals(other.postID, postID) &&
@@ -237,7 +231,7 @@ class _$_VideoArticle extends _VideoArticle {
       const DeepCollectionEquality().hash(title),
       const DeepCollectionEquality().hash(placeholderImageURL),
       const DeepCollectionEquality().hash(videoURL),
-      const DeepCollectionEquality().hash(_category),
+      const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(rewardAmount),
       const DeepCollectionEquality().hash(postID),
       const DeepCollectionEquality().hash(postURL));

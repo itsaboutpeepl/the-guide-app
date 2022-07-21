@@ -4,6 +4,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/guideHome/dialogs/tokenHelpDialog.dart';
 import 'package:guide_liverpool/features/shared/widgets/paymentSheet.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
+import 'package:guide_liverpool/features/topup/dialogs/minting_dialog.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/redux/viewsmodels/balance.dart';
 import 'package:guide_liverpool/models/app_state.dart';
@@ -26,7 +27,10 @@ class Balance extends StatelessWidget {
                 onTap: () {
                   showDialog(
                     context: context,
-                    builder: (BuildContext context) => TokenHelpDialog(),
+                    builder: (BuildContext context) => MintingDialog(
+                      shouldPushToHome: true,
+                      amountText: "43",
+                    ),
                   );
                 },
                 child: Icon(

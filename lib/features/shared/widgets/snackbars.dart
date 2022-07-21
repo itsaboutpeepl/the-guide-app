@@ -1,7 +1,9 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:guide_liverpool/features/shared/widgets/paymentSheet.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
+import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 
 void showErrorSnack({
   required BuildContext context,
@@ -81,9 +83,10 @@ void showPlayBackCompletedFlushBar(context, int rewardAmount) {
         style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900),
         children: [
           WidgetSpan(
-            child: Image.asset(
-              "assets/images/avatar-ppl-red.png",
-              width: 30,
+            child: Icon(
+              PeeplIcons.ppl_circles_02,
+              size: 35.0,
+              color: Color(0xFFEB4953),
             ),
           ),
           TextSpan(text: "\nThanks for watching")
@@ -93,7 +96,8 @@ void showPlayBackCompletedFlushBar(context, int rewardAmount) {
     ),
     messageText: Text.rich(
       TextSpan(
-        text: "Your reward will be added to your wallet soon!",
+        text:
+            "$rewardAmount PPL tokens (£${getPPLValueFromPence(rewardAmount)}) will be in your wallet in seconds, happy ordering 🥳",
       ),
       style: TextStyle(color: Colors.white),
       textAlign: TextAlign.center,

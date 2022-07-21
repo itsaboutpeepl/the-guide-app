@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_app_bar.dart';
 
 class MyScaffold extends StatelessWidget {
@@ -21,10 +22,9 @@ class MyScaffold extends StatelessWidget {
       appBar: MyAppBar(
         height: kToolbarHeight,
         child: AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
           iconTheme: IconThemeData(
-            color: Theme.of(context)
-                .colorScheme
-                .onSurface, //change your color here
+            color: Theme.of(context).colorScheme.onSurface, //change your color here
           ),
           automaticallyImplyLeading: automaticallyImplyLeading,
           backgroundColor: Theme.of(context).colorScheme.secondary,

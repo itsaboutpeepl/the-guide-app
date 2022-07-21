@@ -119,11 +119,11 @@ class __$$_NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
   }) {
     return _then(_$_NewsState(
       categories: categories == freezed
-          ? _value._categories
+          ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
       articles: articles == freezed
-          ? _value._articles
+          ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<CategoryArticles>,
       currentTabIndex: currentTabIndex == freezed
@@ -147,32 +147,20 @@ class __$$_NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_NewsState extends _NewsState {
   _$_NewsState(
-      {required final List<Category> categories,
-      required final List<CategoryArticles> articles,
+      {required this.categories,
+      required this.articles,
       required this.currentTabIndex,
       required this.isLoading,
       required this.isError})
-      : _categories = categories,
-        _articles = articles,
-        super._();
+      : super._();
 
   factory _$_NewsState.fromJson(Map<String, dynamic> json) =>
       _$$_NewsStateFromJson(json);
 
-  final List<Category> _categories;
   @override
-  List<Category> get categories {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categories);
-  }
-
-  final List<CategoryArticles> _articles;
+  final List<Category> categories;
   @override
-  List<CategoryArticles> get articles {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_articles);
-  }
-
+  final List<CategoryArticles> articles;
   @override
   final int currentTabIndex;
   @override
@@ -191,8 +179,8 @@ class _$_NewsState extends _NewsState {
         (other.runtimeType == runtimeType &&
             other is _$_NewsState &&
             const DeepCollectionEquality()
-                .equals(other._categories, _categories) &&
-            const DeepCollectionEquality().equals(other._articles, _articles) &&
+                .equals(other.categories, categories) &&
+            const DeepCollectionEquality().equals(other.articles, articles) &&
             const DeepCollectionEquality()
                 .equals(other.currentTabIndex, currentTabIndex) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
@@ -203,8 +191,8 @@ class _$_NewsState extends _NewsState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_categories),
-      const DeepCollectionEquality().hash(_articles),
+      const DeepCollectionEquality().hash(categories),
+      const DeepCollectionEquality().hash(articles),
       const DeepCollectionEquality().hash(currentTabIndex),
       const DeepCollectionEquality().hash(isLoading),
       const DeepCollectionEquality().hash(isError));

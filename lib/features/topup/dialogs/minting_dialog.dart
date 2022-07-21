@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'dart:math';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
@@ -46,15 +49,54 @@ class _MintingDialogState extends State<MintingDialog> with SingleTickerProvider
   bool isPreloading = false;
   bool _isMinting = true;
 
+  String _imageName = "0";
+  List<String> peeplLogos = [
+    "0",
+    "1",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+    "13",
+    "15",
+    "16",
+    "18",
+    "19",
+    "20",
+    "22",
+    "23",
+    "24",
+    "25",
+    "26",
+    "27",
+    "30",
+    "31",
+    "32",
+    "34",
+  ];
+
+  late Timer imageTimer;
+
   @override
   void dispose() {
     controller.dispose();
+    imageTimer.cancel();
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
+    imageTimer = Timer.periodic(Duration(seconds: 2), (timer) {
+      setState(() {
+        _imageName = peeplLogos[Random().nextInt(peeplLogos.length)];
+      });
+    });
 
     controller = AnimationController(vsync: this, duration: Duration(milliseconds: 400));
     scaleAnimation = CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
@@ -97,29 +139,40 @@ class _MintingDialogState extends State<MintingDialog> with SingleTickerProvider
           title: Center(
             child: Container(
               child: Center(
-                child: AnimatedCrossFade(
-                  crossFadeState: _isMinting ? CrossFadeState.showFirst : CrossFadeState.showSecond,
-                  duration: Duration(milliseconds: 500),
-                  firstChild: SizedBox(
-                    width: 60,
-                    height: 60,
-                    child: Center(
-                      child: CircularProgressIndicator(
-                        strokeWidth: 5,
-                        color: Theme.of(context).primaryColorDark,
-                      ),
-                    ),
-                  ),
-                  secondChild: SizedBox(
-                    width: 60,
-                    height: 60,
-                    child: Icon(
-                      Icons.done,
-                      size: 50,
-                      color: Theme.of(context).primaryColorDark,
-                    ),
+                child: AnimatedSwitcher(
+                  duration: const Duration(milliseconds: 300),
+                  transitionBuilder: (Widget child, Animation<double> animation) {
+                    return FadeTransition(opacity: animation, child: child);
+                  },
+                  child: Image.asset(
+                    "assets/Peepl-Logos/$_imageName.png",
+                    height: 85,
+                    key: ValueKey<String>(_imageName),
                   ),
                 ),
+                // child: AnimatedCrossFade(
+                //   crossFadeState: _isMinting ? CrossFadeState.showFirst : CrossFadeState.showSecond,
+                //   duration: Duration(milliseconds: 500),
+                //   firstChild: SizedBox(
+                //     width: 60,
+                //     height: 60,
+                //     child: Center(
+                //       child: CircularProgressIndicator(
+                //         strokeWidth: 5,
+                //         color: Theme.of(context).primaryColorDark,
+                //       ),
+                //     ),
+                //   ),
+                //   secondChild: SizedBox(
+                //     width: 60,
+                //     height: 60,
+                //     child: Icon(
+                //       Icons.done,
+                //       size: 50,
+                //       color: Theme.of(context).primaryColorDark,
+                //     ),
+                //   ),
+                // ),
               ),
               margin: EdgeInsets.only(left: 28, right: 28),
             ),
@@ -134,7 +187,7 @@ class _MintingDialogState extends State<MintingDialog> with SingleTickerProvider
                 AnimatedSwitcher(
                   duration: Duration(milliseconds: 500),
                   child: Text(
-                    _isMinting ? "Minting your tokens!" : "Token minting complete!",
+                    _isMinting ? "Processing your next-gen payment" : "Token minting completed!",
                     key: ValueKey(_isMinting),
                     textAlign: TextAlign.center,
                     style: TextStyle(
