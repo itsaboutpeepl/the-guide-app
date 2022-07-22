@@ -22,16 +22,17 @@ import '../../services/apis/news.dart' as _i13;
 import '../../services/apis/peeplMedia.dart' as _i15;
 import '../../services/apis/peeplPay.dart' as _i16;
 import '../../services/apis/stripePay.dart' as _i19;
-import '../../utils/log/log_it.dart' as _i20;
+import '../../services/apis/vesting.dart' as _i20;
+import '../../utils/log/log_it.dart' as _i21;
 import '../../utils/onboard/Istrategy.dart' as _i10;
-import '../network/services.dart' as _i23;
+import '../network/services.dart' as _i24;
 import '../router/routes.dart' as _i18;
-import 'dio.dart' as _i21;
-import 'firebase.dart' as _i22;
-import 'logger_di.dart' as _i25;
-import 'onboard.dart' as _i24;
-import 'package_info.dart' as _i26;
-import 'phone.dart' as _i27; // ignore_for_file: unnecessary_lambdas
+import 'dio.dart' as _i22;
+import 'firebase.dart' as _i23;
+import 'logger_di.dart' as _i26;
+import 'onboard.dart' as _i25;
+import 'package_info.dart' as _i27;
+import 'phone.dart' as _i28; // ignore_for_file: unnecessary_lambdas
 
 // ignore_for_file: lines_longer_than_80_chars
 /// initializes the registration of provided dependencies inside of [GetIt]
@@ -73,21 +74,23 @@ Future<_i1.GetIt> $initGetIt(_i1.GetIt get,
   gh.singleton<_i18.RootRouter>(servicesModule.rootRouter);
   gh.lazySingleton<_i19.StripePayService>(
       () => _i19.StripePayService(get<_i3.Dio>()));
+  gh.lazySingleton<_i20.VestingService>(
+      () => _i20.VestingService(get<_i3.Dio>()));
   gh.lazySingleton<_i9.WalletApi>(() => servicesModule.walletApi);
-  gh.lazySingleton<_i20.LogIt>(() => _i20.LogIt(get<_i11.Logger>()));
+  gh.lazySingleton<_i21.LogIt>(() => _i21.LogIt(get<_i11.Logger>()));
   return get;
 }
 
-class _$DioDi extends _i21.DioDi {}
+class _$DioDi extends _i22.DioDi {}
 
-class _$FirebaseInjectableModule extends _i22.FirebaseInjectableModule {}
+class _$FirebaseInjectableModule extends _i23.FirebaseInjectableModule {}
 
-class _$ServicesModule extends _i23.ServicesModule {}
+class _$ServicesModule extends _i24.ServicesModule {}
 
-class _$OnBoardStrategy extends _i24.OnBoardStrategy {}
+class _$OnBoardStrategy extends _i25.OnBoardStrategy {}
 
-class _$LoggerDi extends _i25.LoggerDi {}
+class _$LoggerDi extends _i26.LoggerDi {}
 
-class _$PackageInfoDi extends _i26.PackageInfoDi {}
+class _$PackageInfoDi extends _i27.PackageInfoDi {}
 
-class _$Phone extends _i27.Phone {}
+class _$Phone extends _i28.Phone {}

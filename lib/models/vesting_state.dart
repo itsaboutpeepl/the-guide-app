@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:guide_liverpool/models/schedules/schedules.dart';
 
 part 'vesting_state.freezed.dart';
 part 'vesting_state.g.dart';
@@ -9,25 +10,11 @@ class VestingState with _$VestingState {
 
   @JsonSerializable()
   factory VestingState({
-    final String? scheduleID,
-    final String? vestedAmount,
-    final String? fullyVestedDays,
-    final String? fullyVestedDateTime,
-    final String? withdrawableAmount,
-    final String? cliffEndDays,
-    final String? cliffDateTime,
-    final bool? isRevoked,
+    required BigInt amount,
   }) = _VestingState;
 
   factory VestingState.initial() => VestingState(
-        scheduleID: 'No Vesting Schedule Found',
-        vestedAmount: '##### PPL (£####)',
-        fullyVestedDays: '##### Days',
-        fullyVestedDateTime: 'YYYY-MM-DD',
-        withdrawableAmount: '##### PPL (£####)',
-        cliffEndDays: '##### Days',
-        cliffDateTime: 'YYYY-MM-DD',
-        isRevoked: false,
+        amount: BigInt.zero,
       );
 
   factory VestingState.fromJson(dynamic json) => _$VestingStateFromJson(json);

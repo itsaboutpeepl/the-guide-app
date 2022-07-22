@@ -20,14 +20,7 @@ VestingState _$VestingStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VestingState {
-  String? get scheduleID => throw _privateConstructorUsedError;
-  String? get vestedAmount => throw _privateConstructorUsedError;
-  String? get fullyVestedDays => throw _privateConstructorUsedError;
-  String? get fullyVestedDateTime => throw _privateConstructorUsedError;
-  String? get withdrawableAmount => throw _privateConstructorUsedError;
-  String? get cliffEndDays => throw _privateConstructorUsedError;
-  String? get cliffDateTime => throw _privateConstructorUsedError;
-  bool? get isRevoked => throw _privateConstructorUsedError;
+  BigInt get amount => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -40,15 +33,7 @@ abstract class $VestingStateCopyWith<$Res> {
   factory $VestingStateCopyWith(
           VestingState value, $Res Function(VestingState) then) =
       _$VestingStateCopyWithImpl<$Res>;
-  $Res call(
-      {String? scheduleID,
-      String? vestedAmount,
-      String? fullyVestedDays,
-      String? fullyVestedDateTime,
-      String? withdrawableAmount,
-      String? cliffEndDays,
-      String? cliffDateTime,
-      bool? isRevoked});
+  $Res call({BigInt amount});
 }
 
 /// @nodoc
@@ -61,48 +46,13 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? scheduleID = freezed,
-    Object? vestedAmount = freezed,
-    Object? fullyVestedDays = freezed,
-    Object? fullyVestedDateTime = freezed,
-    Object? withdrawableAmount = freezed,
-    Object? cliffEndDays = freezed,
-    Object? cliffDateTime = freezed,
-    Object? isRevoked = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_value.copyWith(
-      scheduleID: scheduleID == freezed
-          ? _value.scheduleID
-          : scheduleID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vestedAmount: vestedAmount == freezed
-          ? _value.vestedAmount
-          : vestedAmount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fullyVestedDays: fullyVestedDays == freezed
-          ? _value.fullyVestedDays
-          : fullyVestedDays // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fullyVestedDateTime: fullyVestedDateTime == freezed
-          ? _value.fullyVestedDateTime
-          : fullyVestedDateTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      withdrawableAmount: withdrawableAmount == freezed
-          ? _value.withdrawableAmount
-          : withdrawableAmount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cliffEndDays: cliffEndDays == freezed
-          ? _value.cliffEndDays
-          : cliffEndDays // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cliffDateTime: cliffDateTime == freezed
-          ? _value.cliffDateTime
-          : cliffDateTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRevoked: isRevoked == freezed
-          ? _value.isRevoked
-          : isRevoked // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as BigInt,
     ));
   }
 }
@@ -114,15 +64,7 @@ abstract class _$$_VestingStateCopyWith<$Res>
           _$_VestingState value, $Res Function(_$_VestingState) then) =
       __$$_VestingStateCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String? scheduleID,
-      String? vestedAmount,
-      String? fullyVestedDays,
-      String? fullyVestedDateTime,
-      String? withdrawableAmount,
-      String? cliffEndDays,
-      String? cliffDateTime,
-      bool? isRevoked});
+  $Res call({BigInt amount});
 }
 
 /// @nodoc
@@ -138,48 +80,13 @@ class __$$_VestingStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? scheduleID = freezed,
-    Object? vestedAmount = freezed,
-    Object? fullyVestedDays = freezed,
-    Object? fullyVestedDateTime = freezed,
-    Object? withdrawableAmount = freezed,
-    Object? cliffEndDays = freezed,
-    Object? cliffDateTime = freezed,
-    Object? isRevoked = freezed,
+    Object? amount = freezed,
   }) {
     return _then(_$_VestingState(
-      scheduleID: scheduleID == freezed
-          ? _value.scheduleID
-          : scheduleID // ignore: cast_nullable_to_non_nullable
-              as String?,
-      vestedAmount: vestedAmount == freezed
-          ? _value.vestedAmount
-          : vestedAmount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fullyVestedDays: fullyVestedDays == freezed
-          ? _value.fullyVestedDays
-          : fullyVestedDays // ignore: cast_nullable_to_non_nullable
-              as String?,
-      fullyVestedDateTime: fullyVestedDateTime == freezed
-          ? _value.fullyVestedDateTime
-          : fullyVestedDateTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      withdrawableAmount: withdrawableAmount == freezed
-          ? _value.withdrawableAmount
-          : withdrawableAmount // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cliffEndDays: cliffEndDays == freezed
-          ? _value.cliffEndDays
-          : cliffEndDays // ignore: cast_nullable_to_non_nullable
-              as String?,
-      cliffDateTime: cliffDateTime == freezed
-          ? _value.cliffDateTime
-          : cliffDateTime // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isRevoked: isRevoked == freezed
-          ? _value.isRevoked
-          : isRevoked // ignore: cast_nullable_to_non_nullable
-              as bool?,
+      amount: amount == freezed
+          ? _value.amount
+          : amount // ignore: cast_nullable_to_non_nullable
+              as BigInt,
     ));
   }
 }
@@ -188,40 +95,17 @@ class __$$_VestingStateCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_VestingState extends _VestingState {
-  _$_VestingState(
-      {this.scheduleID,
-      this.vestedAmount,
-      this.fullyVestedDays,
-      this.fullyVestedDateTime,
-      this.withdrawableAmount,
-      this.cliffEndDays,
-      this.cliffDateTime,
-      this.isRevoked})
-      : super._();
+  _$_VestingState({required this.amount}) : super._();
 
   factory _$_VestingState.fromJson(Map<String, dynamic> json) =>
       _$$_VestingStateFromJson(json);
 
   @override
-  final String? scheduleID;
-  @override
-  final String? vestedAmount;
-  @override
-  final String? fullyVestedDays;
-  @override
-  final String? fullyVestedDateTime;
-  @override
-  final String? withdrawableAmount;
-  @override
-  final String? cliffEndDays;
-  @override
-  final String? cliffDateTime;
-  @override
-  final bool? isRevoked;
+  final BigInt amount;
 
   @override
   String toString() {
-    return 'VestingState(scheduleID: $scheduleID, vestedAmount: $vestedAmount, fullyVestedDays: $fullyVestedDays, fullyVestedDateTime: $fullyVestedDateTime, withdrawableAmount: $withdrawableAmount, cliffEndDays: $cliffEndDays, cliffDateTime: $cliffDateTime, isRevoked: $isRevoked)';
+    return 'VestingState(amount: $amount)';
   }
 
   @override
@@ -229,35 +113,13 @@ class _$_VestingState extends _VestingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VestingState &&
-            const DeepCollectionEquality()
-                .equals(other.scheduleID, scheduleID) &&
-            const DeepCollectionEquality()
-                .equals(other.vestedAmount, vestedAmount) &&
-            const DeepCollectionEquality()
-                .equals(other.fullyVestedDays, fullyVestedDays) &&
-            const DeepCollectionEquality()
-                .equals(other.fullyVestedDateTime, fullyVestedDateTime) &&
-            const DeepCollectionEquality()
-                .equals(other.withdrawableAmount, withdrawableAmount) &&
-            const DeepCollectionEquality()
-                .equals(other.cliffEndDays, cliffEndDays) &&
-            const DeepCollectionEquality()
-                .equals(other.cliffDateTime, cliffDateTime) &&
-            const DeepCollectionEquality().equals(other.isRevoked, isRevoked));
+            const DeepCollectionEquality().equals(other.amount, amount));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(scheduleID),
-      const DeepCollectionEquality().hash(vestedAmount),
-      const DeepCollectionEquality().hash(fullyVestedDays),
-      const DeepCollectionEquality().hash(fullyVestedDateTime),
-      const DeepCollectionEquality().hash(withdrawableAmount),
-      const DeepCollectionEquality().hash(cliffEndDays),
-      const DeepCollectionEquality().hash(cliffDateTime),
-      const DeepCollectionEquality().hash(isRevoked));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(amount));
 
   @JsonKey(ignore: true)
   @override
@@ -271,36 +133,14 @@ class _$_VestingState extends _VestingState {
 }
 
 abstract class _VestingState extends VestingState {
-  factory _VestingState(
-      {final String? scheduleID,
-      final String? vestedAmount,
-      final String? fullyVestedDays,
-      final String? fullyVestedDateTime,
-      final String? withdrawableAmount,
-      final String? cliffEndDays,
-      final String? cliffDateTime,
-      final bool? isRevoked}) = _$_VestingState;
+  factory _VestingState({required final BigInt amount}) = _$_VestingState;
   _VestingState._() : super._();
 
   factory _VestingState.fromJson(Map<String, dynamic> json) =
       _$_VestingState.fromJson;
 
   @override
-  String? get scheduleID => throw _privateConstructorUsedError;
-  @override
-  String? get vestedAmount => throw _privateConstructorUsedError;
-  @override
-  String? get fullyVestedDays => throw _privateConstructorUsedError;
-  @override
-  String? get fullyVestedDateTime => throw _privateConstructorUsedError;
-  @override
-  String? get withdrawableAmount => throw _privateConstructorUsedError;
-  @override
-  String? get cliffEndDays => throw _privateConstructorUsedError;
-  @override
-  String? get cliffDateTime => throw _privateConstructorUsedError;
-  @override
-  bool? get isRevoked => throw _privateConstructorUsedError;
+  BigInt get amount => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_VestingStateCopyWith<_$_VestingState> get copyWith =>

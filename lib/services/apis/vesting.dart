@@ -1,17 +1,18 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:guide_liverpool/models/vesting_state.dart';
+import 'package:injectable/injectable.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:http/http.dart' as http;
 import 'package:web_socket_channel/io.dart';
 import '../../constants/urls.dart';
-import '../../models/vestingInfo/schedule.dart';
 
+@lazySingleton
 class VestingService {
-  List<Schedules> schedules = [];
-  late Web3Client _web3client;
+  List<VestingState> schedules = [];
+  late Web3Client web3client;
   final String _rpcUrl = UrlConstants.FUSE_RPC_URL;
   final String _wsUrl = UrlConstants.FUSE_WS_URL;
   final Dio dio;
@@ -24,7 +25,7 @@ class VestingService {
   }
 
   Future<void> init() async {
-    _web3client = Web3Client(
+    web3client = Web3Client(
       _rpcUrl,
       http.Client(),
       socketConnector: () {
@@ -44,7 +45,8 @@ class VestingService {
     _abiCode =
         ContractAbi.fromJson(jsonEncode(jsonABI['abi']), 'VestingContract');
     _contractAddress =
-        EthereumAddress.fromHex('0xfC75C482058d7f521Db493D103247953d5C9d2AF');
+        // EthereumAddress.fromHex('0xfC75C482058d7f521Db493D103247953d5C9d2AF');
+        EthereumAddress.fromHex('0x5bb44ae7226d777D77BCe67Ea4935F159D6B6d52');
   }
 
   late EthPrivateKey _creds;
@@ -53,20 +55,22 @@ class VestingService {
   //   // _creds = EthPrivateKey.fromHex();
   // }
 
-  late DeployedContract _deployedContract;
-  late ContractFunction _release;
-  late ContractFunction _computeReleasableAmount;
-  late ContractFunction _getVestingScheduleByAddressAndIndex;
-  late ContractFunction _getVestingSchedulesCountByBeneficiary;
+  late DeployedContract deployedContract;
+  late ContractFunction release;
+  late ContractFunction computeReleasableAmount;
+  late ContractFunction getVestingScheduleByAddressAndIndex;
+  late ContractFunction getVestingSchedulesCountByBeneficiary;
+  late ContractFunction getWithdrawableAmount;
 
   Future<void> getDeployedContract() async {
-    _deployedContract = DeployedContract(_abiCode, _contractAddress);
-    _getVestingScheduleByAddressAndIndex =
-        _deployedContract.function('getVestingScheduleByAddressAndIndex');
-    _getVestingSchedulesCountByBeneficiary =
-        _deployedContract.function('getVestingSchedulesCountByBeneficiary');
-    _computeReleasableAmount =
-        _deployedContract.function('computeReleasableAmount');
-    _release = _deployedContract.function('release');
+    deployedContract = DeployedContract(_abiCode, _contractAddress);
+    getVestingScheduleByAddressAndIndex =
+        deployedContract.function('getVestingScheduleByAddressAndIndex');
+    getVestingSchedulesCountByBeneficiary =
+        deployedContract.function('getVestingSchedulesCountByBeneficiary');
+    computeReleasableAmount =
+        deployedContract.function('computeReleasableAmount');
+    release = deployedContract.function('release');
+    getWithdrawableAmount = deployedContract.function('getWithdrawableAmount');
   }
 }

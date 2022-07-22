@@ -35,7 +35,6 @@ class AppState with _$AppState {
       newsState: NewsState.initial(),
       cartState: UserCartState.initial(),
       vestingState: VestingState.initial(),
-      // dappState: DappState.initial(),
     );
   }
 
