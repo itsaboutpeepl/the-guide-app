@@ -172,14 +172,16 @@ ThunkAction getScheduleByAddressAndIndex(
 
 ThunkAction computeAmountReleasable({required String id}) {
   return (Store store) async {
+    //TODO: Why do I have to convert from list<dynamic> here??
     try {
-      final amountreleasable = await vestingService.web3client.call(
+      final amountreleasable = (await vestingService.web3client.call(
         contract: vestingService.deployedContract,
         function: vestingService.computeReleasableAmount,
         params: [id],
-      );
+      ))[0];
 
-      // store.dispatch(UpdateReleasableAmount(currentAmountReleasable: toDecimal(currentAmount))
+      store.dispatch(UpdateReleasableAmount(
+          currentAmountReleasable: toDecimal(amountreleasable, 18)));
     } catch (e, s) {
       log.error('ERROR - computeAmountReleasable $e');
       await Sentry.captureException(e,
@@ -188,21 +190,23 @@ ThunkAction computeAmountReleasable({required String id}) {
   };
 }
 
-// ThunkAction getUserVestingSchedulesList()  {
-//   return (Store store) async {
-//   BigInt scheduleCount = store.state.vestingState.scheduleCount;
+ThunkAction getUserVestingSchedulesList() {
+  return (Store store) async {
+    BigInt scheduleCount = store.state.vestingState.scheduleCount;
 
-//   List<String> schedules = [];
+    List<String> schedules = [];
 
-//   // for (int i = 0; i < scheduleCount.toInt(); i++) {
-//   //   final vestingScheduleId = await vestingContract
-//   //       .call('computeVestingScheduleIdForAddressAndIndex', [homeController.currentAddress.value, BigInt.from(i)]);
-//   //   schedules.add(vestingScheduleId);
-//   }
+    for (int i = 0; i < scheduleCount.toInt(); i++) {
+      final vestingScheduleId = (await vestingService.web3client.call(
+          contract: vestingService.deployedContract,
+          function: vestingService.getSchedulesIDsList,
+          params: [store.state.userState.accountAddress, BigInt.from(i)]))[i];
+      schedules.add(vestingScheduleId);
+    }
 
-//   return schedules;
-//   };
-// }
+    store.dispatch(UpdateVestingScheduleID(scheduleIDs: schedules));
+  };
+}
 
 ThunkAction getUserVestingCount({required String beneficiary}) {
   return (Store store) async {
@@ -216,30 +220,29 @@ ThunkAction getUserVestingCount({required String beneficiary}) {
   };
 }
 
-// ThunkAction getSchedulesInfo() {
-//   return (Store store) async {
-//     try {
-//       List<String> scheduleIDs = await getUserVestingSchedulesList();
-//       Decimal currentAmountReleasable = toDecimal(await computeAmountReleasable(scheduleIDs[0]), 18)
+ThunkAction getSchedulesInfo() {
+  return (Store store) async {
+    try {
+      computeAmountReleasable(id: store.state.vestingState.scheduleIDs[0]);
 
-    
-//     store.dispatch(UpdateVestingIsLoading(isLoading: false));
-//     String currentScheduleID("${scheduleIDs[0].substring(0, 5)}...${scheduleIDs[0].substring(61, 66)}");
+      store.dispatch(UpdateVestingIsLoading(isLoading: false));
+      String currentScheduleID =
+          await "${store.state.vestingState.scheduleIDs[0].substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].substring(61, 66)}";
 
-//     bool isContractFullyVested = DateTime.now().compareTo(scheduleEnd.value) > 0 ? true : false;
+      // store.dispatch(currentScheduleID);
 
-      
-     
-//     } catch (e,s) {
-//      log.error('ERROR - getSchedulesInfo $e');
-//      await Sentry.captureException(e, stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
-   
-//   } finally {
-    
-//   }
-// };
+      bool isContractFullyVested =
+          DateTime.now().compareTo(store.state.vestingState.scheduleEnd.value) >
+                  0
+              ? true
+              : false;
 
-// }
-
-
-
+      store.dispatch(
+          UpdateIsFullyVested(isContractFullyVested: isContractFullyVested));
+    } catch (e, s) {
+      log.error('ERROR - getSchedulesInfo $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
+    } finally {}
+  };
+}

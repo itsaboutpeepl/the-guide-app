@@ -20,7 +20,10 @@ VestingState _$VestingStateFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$VestingState {
-  BigInt get amount => throw _privateConstructorUsedError;
+  String get scheduleID => throw _privateConstructorUsedError;
+  List<Schedules> get schedule => throw _privateConstructorUsedError;
+  String get withdrawableAmount => throw _privateConstructorUsedError;
+  bool get isRevoked => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +36,11 @@ abstract class $VestingStateCopyWith<$Res> {
   factory $VestingStateCopyWith(
           VestingState value, $Res Function(VestingState) then) =
       _$VestingStateCopyWithImpl<$Res>;
-  $Res call({BigInt amount});
+  $Res call(
+      {String scheduleID,
+      List<Schedules> schedule,
+      String withdrawableAmount,
+      bool isRevoked});
 }
 
 /// @nodoc
@@ -46,13 +53,28 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object? amount = freezed,
+    Object? scheduleID = freezed,
+    Object? schedule = freezed,
+    Object? withdrawableAmount = freezed,
+    Object? isRevoked = freezed,
   }) {
     return _then(_value.copyWith(
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as BigInt,
+      scheduleID: scheduleID == freezed
+          ? _value.scheduleID
+          : scheduleID // ignore: cast_nullable_to_non_nullable
+              as String,
+      schedule: schedule == freezed
+          ? _value.schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
+              as List<Schedules>,
+      withdrawableAmount: withdrawableAmount == freezed
+          ? _value.withdrawableAmount
+          : withdrawableAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      isRevoked: isRevoked == freezed
+          ? _value.isRevoked
+          : isRevoked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -64,7 +86,11 @@ abstract class _$$_VestingStateCopyWith<$Res>
           _$_VestingState value, $Res Function(_$_VestingState) then) =
       __$$_VestingStateCopyWithImpl<$Res>;
   @override
-  $Res call({BigInt amount});
+  $Res call(
+      {String scheduleID,
+      List<Schedules> schedule,
+      String withdrawableAmount,
+      bool isRevoked});
 }
 
 /// @nodoc
@@ -80,13 +106,28 @@ class __$$_VestingStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? amount = freezed,
+    Object? scheduleID = freezed,
+    Object? schedule = freezed,
+    Object? withdrawableAmount = freezed,
+    Object? isRevoked = freezed,
   }) {
     return _then(_$_VestingState(
-      amount: amount == freezed
-          ? _value.amount
-          : amount // ignore: cast_nullable_to_non_nullable
-              as BigInt,
+      scheduleID: scheduleID == freezed
+          ? _value.scheduleID
+          : scheduleID // ignore: cast_nullable_to_non_nullable
+              as String,
+      schedule: schedule == freezed
+          ? _value._schedule
+          : schedule // ignore: cast_nullable_to_non_nullable
+              as List<Schedules>,
+      withdrawableAmount: withdrawableAmount == freezed
+          ? _value.withdrawableAmount
+          : withdrawableAmount // ignore: cast_nullable_to_non_nullable
+              as String,
+      isRevoked: isRevoked == freezed
+          ? _value.isRevoked
+          : isRevoked // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -95,17 +136,34 @@ class __$$_VestingStateCopyWithImpl<$Res>
 
 @JsonSerializable()
 class _$_VestingState extends _VestingState {
-  _$_VestingState({required this.amount}) : super._();
+  _$_VestingState(
+      {required this.scheduleID,
+      required final List<Schedules> schedule,
+      required this.withdrawableAmount,
+      required this.isRevoked})
+      : _schedule = schedule,
+        super._();
 
   factory _$_VestingState.fromJson(Map<String, dynamic> json) =>
       _$$_VestingStateFromJson(json);
 
   @override
-  final BigInt amount;
+  final String scheduleID;
+  final List<Schedules> _schedule;
+  @override
+  List<Schedules> get schedule {
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_schedule);
+  }
+
+  @override
+  final String withdrawableAmount;
+  @override
+  final bool isRevoked;
 
   @override
   String toString() {
-    return 'VestingState(amount: $amount)';
+    return 'VestingState(scheduleID: $scheduleID, schedule: $schedule, withdrawableAmount: $withdrawableAmount, isRevoked: $isRevoked)';
   }
 
   @override
@@ -113,13 +171,22 @@ class _$_VestingState extends _VestingState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VestingState &&
-            const DeepCollectionEquality().equals(other.amount, amount));
+            const DeepCollectionEquality()
+                .equals(other.scheduleID, scheduleID) &&
+            const DeepCollectionEquality().equals(other._schedule, _schedule) &&
+            const DeepCollectionEquality()
+                .equals(other.withdrawableAmount, withdrawableAmount) &&
+            const DeepCollectionEquality().equals(other.isRevoked, isRevoked));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(amount));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(scheduleID),
+      const DeepCollectionEquality().hash(_schedule),
+      const DeepCollectionEquality().hash(withdrawableAmount),
+      const DeepCollectionEquality().hash(isRevoked));
 
   @JsonKey(ignore: true)
   @override
@@ -133,14 +200,24 @@ class _$_VestingState extends _VestingState {
 }
 
 abstract class _VestingState extends VestingState {
-  factory _VestingState({required final BigInt amount}) = _$_VestingState;
+  factory _VestingState(
+      {required final String scheduleID,
+      required final List<Schedules> schedule,
+      required final String withdrawableAmount,
+      required final bool isRevoked}) = _$_VestingState;
   _VestingState._() : super._();
 
   factory _VestingState.fromJson(Map<String, dynamic> json) =
       _$_VestingState.fromJson;
 
   @override
-  BigInt get amount => throw _privateConstructorUsedError;
+  String get scheduleID => throw _privateConstructorUsedError;
+  @override
+  List<Schedules> get schedule => throw _privateConstructorUsedError;
+  @override
+  String get withdrawableAmount => throw _privateConstructorUsedError;
+  @override
+  bool get isRevoked => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_VestingStateCopyWith<_$_VestingState> get copyWith =>

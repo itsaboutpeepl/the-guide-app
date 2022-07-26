@@ -61,6 +61,7 @@ class VestingService {
   late ContractFunction getVestingScheduleByAddressAndIndex;
   late ContractFunction getVestingSchedulesCountByBeneficiary;
   late ContractFunction getWithdrawableAmount;
+  late ContractFunction getSchedulesIDsList;
 
   Future<void> getDeployedContract() async {
     deployedContract = DeployedContract(_abiCode, _contractAddress);
@@ -72,5 +73,7 @@ class VestingService {
         deployedContract.function('computeReleasableAmount');
     release = deployedContract.function('release');
     getWithdrawableAmount = deployedContract.function('getWithdrawableAmount');
+    getSchedulesIDsList =
+        deployedContract.function('computeVestingScheduleIdForAddressAndIndex');
   }
 }
