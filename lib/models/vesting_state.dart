@@ -1,3 +1,4 @@
+import 'package:decimal/decimal.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:guide_liverpool/models/schedules/schedules.dart';
 
@@ -10,11 +11,37 @@ class VestingState with _$VestingState {
 
   @JsonSerializable()
   factory VestingState({
-    required BigInt amount,
+    required List<Schedules> vestingSchedule,
+    required List<String> scheduleIDs,
+    required bool hasVestingSchedule,
+    required Decimal currentAmountReleasable,
+    required DateTime? scheduleStart,
+    required String? displayScheduleID,
+    required int scheduleCount,
+    required bool isContractFullyVested,
+    required BigInt withdrawableAmount,
+    required int cliffEndDays,
+    required int endTimeDays,
+    required bool vestedChecker,
+    required bool isLoading,
+    required bool isRevoked,
   }) = _VestingState;
 
   factory VestingState.initial() => VestingState(
-        amount: BigInt.zero,
+        vestingSchedule: [],
+        scheduleIDs: [],
+        hasVestingSchedule: false,
+        currentAmountReleasable: Decimal.zero,
+        scheduleStart: null,
+        displayScheduleID: 'No Vesting Schedule Found',
+        scheduleCount: 0,
+        isContractFullyVested: false,
+        withdrawableAmount: BigInt.zero,
+        cliffEndDays: 0,
+        endTimeDays: 0,
+        vestedChecker: false,
+        isLoading: false,
+        isRevoked: false,
       );
 
   factory VestingState.fromJson(dynamic json) => _$VestingStateFromJson(json);

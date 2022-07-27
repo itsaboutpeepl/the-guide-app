@@ -80,9 +80,21 @@ class UpdateIsFullyVested {
 }
 
 class WithdrawableAmount {
-  final BigInt amount;
+  final BigInt withdrawableAmount;
 
-  WithdrawableAmount({required this.amount});
+  WithdrawableAmount({required this.withdrawableAmount});
+}
+
+class UpdateCliffEndTimeDays {
+  final int cliffEndDays;
+
+  UpdateCliffEndTimeDays({required this.cliffEndDays});
+}
+
+class UpdateEndTimeDays {
+  final int endTimeDays;
+
+  UpdateEndTimeDays({required this.endTimeDays});
 }
 
 ThunkAction getWithdrawableAmount() {
@@ -93,7 +105,7 @@ ThunkAction getWithdrawableAmount() {
           function: vestingService.getWithdrawableAmount,
           params: []))[0];
 
-      store.dispatch(WithdrawableAmount(amount: amount));
+      store.dispatch(WithdrawableAmount(withdrawableAmount: amount));
     } catch (e) {
       print(e);
     }
@@ -150,7 +162,12 @@ ThunkAction getScheduleByAddressAndIndex(
       final int cliffEndDays = daysBetweenInt(DateTime.now(), cliff);
 
       cliffEndDays >= 0 ? daysBetweenInt(DateTime.now(), cliff) : 0;
+
+      store.dispatch(UpdateCliffEndTimeDays(cliffEndDays: cliffEndDays));
+
       endTimeDays >= 0 ? daysBetweenInt(DateTime.now(), scheduleEnd) : 0;
+
+      store.dispatch(UpdateEndTimeDays(endTimeDays: endTimeDays));
 
       List<Schedules> vestingSchedules = [];
 
@@ -192,31 +209,43 @@ ThunkAction computeAmountReleasable({required String id}) {
 
 ThunkAction getUserVestingSchedulesList() {
   return (Store store) async {
-    BigInt scheduleCount = store.state.vestingState.scheduleCount;
+    try {
+      BigInt scheduleCount = store.state.vestingState.scheduleCount;
 
-    List<String> schedules = [];
+      List<String> schedules = [];
 
-    for (int i = 0; i < scheduleCount.toInt(); i++) {
-      final vestingScheduleId = (await vestingService.web3client.call(
-          contract: vestingService.deployedContract,
-          function: vestingService.getSchedulesIDsList,
-          params: [store.state.userState.accountAddress, BigInt.from(i)]))[i];
-      schedules.add(vestingScheduleId);
+      for (int i = 0; i < scheduleCount.toInt(); i++) {
+        final vestingScheduleId = (await vestingService.web3client.call(
+            contract: vestingService.deployedContract,
+            function: vestingService.getSchedulesIDsList,
+            params: [store.state.userState.accountAddress, BigInt.from(i)]))[i];
+        schedules.add(vestingScheduleId);
+      }
+
+      store.dispatch(UpdateVestingScheduleID(scheduleIDs: schedules));
+    } catch (e, s) {
+      log.error('ERROR - getUserVestingSchedulesList $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getUserVestingSchedulesList $e');
     }
-
-    store.dispatch(UpdateVestingScheduleID(scheduleIDs: schedules));
   };
 }
 
 ThunkAction getUserVestingCount({required String beneficiary}) {
   return (Store store) async {
-    final int scheduleCount = (await vestingService.web3client.call(
-      contract: vestingService.deployedContract,
-      function: vestingService.getVestingSchedulesCountByBeneficiary,
-      params: [beneficiary],
-    ))[0];
+    try {
+      final int scheduleCount = (await vestingService.web3client.call(
+        contract: vestingService.deployedContract,
+        function: vestingService.getVestingSchedulesCountByBeneficiary,
+        params: [beneficiary],
+      ))[0];
 
-    store.dispatch(UpdateScheduleCount(scheduleCount: scheduleCount));
+      store.dispatch(UpdateScheduleCount(scheduleCount: scheduleCount));
+    } catch (e, s) {
+      log.error('ERROR - getUserVestingCount $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getUserVestingCount $e');
+    }
   };
 }
 
@@ -229,7 +258,8 @@ ThunkAction getSchedulesInfo() {
       String currentScheduleID =
           await "${store.state.vestingState.scheduleIDs[0].substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].substring(61, 66)}";
 
-      // store.dispatch(currentScheduleID);
+      store.dispatch(
+          UpdateDisplayScheduleID(displayScheduleID: currentScheduleID));
 
       bool isContractFullyVested =
           DateTime.now().compareTo(store.state.vestingState.scheduleEnd.value) >
@@ -243,6 +273,6 @@ ThunkAction getSchedulesInfo() {
       log.error('ERROR - getSchedulesInfo $e');
       await Sentry.captureException(e,
           stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
-    } finally {}
+    }
   };
 }
