@@ -32,13 +32,34 @@ class _HeaderState extends State<Header> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               Flexible(
-                child: Text(
-                  '${I10n.of(context).hi} ${viewModel.firstName()}',
-                  style: TextStyle(
-                      color: Theme.of(context).canvasColor,
-                      fontSize: 32,
-                      fontWeight: FontWeight.w800),
-                ),
+                child: viewModel.firstName() == "Anom"
+                    ? Text.rich(
+                        TextSpan(
+                          text: "Welcome to \n",
+                          children: [
+                            TextSpan(
+                              text: "The Guide Liverpool",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ],
+                        ),
+                        style: TextStyle(
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w200,
+                        ),
+                      )
+                    : Text(
+                        '${I10n.of(context).hi} ${viewModel.firstName()}',
+                        style: TextStyle(
+                          color: Theme.of(context).canvasColor,
+                          fontSize: 32,
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
               ),
               Flexible(
                 child: Row(
@@ -46,15 +67,8 @@ class _HeaderState extends State<Header> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
-                      child: Balance(),
+                      child: viewModel.firstName() == "Anom" ? SizedBox.shrink() : Balance(),
                     )
-                    // BarcodeScanner(
-                    //   child: Image.asset(
-                    //     'assets/images/scan.png',
-                    //     width: 25.0,
-                    //     color: Theme.of(context).scaffoldBackgroundColor,
-                    //   ),
-                    // ),
                   ],
                 ),
               ),

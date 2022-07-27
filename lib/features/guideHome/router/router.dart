@@ -11,7 +11,6 @@ const guideHomeTab = AutoRoute(
       initial: true,
       page: GuideHomeScreen,
       name: 'guideHomeScreen',
-      guards: [AuthGuard],
     ),
   ],
 );

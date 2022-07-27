@@ -75,11 +75,11 @@ class Avatar extends StatelessWidget {
                 ),
                 SizedBox(height: 20),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Flexible(
                       child: Container(
-                        width: MediaQuery.of(context).size.width * .425,
+                        width: MediaQuery.of(context).size.width * .9,
                         child: TextButton(
                           onPressed: () {
                             Clipboard.setData(
@@ -111,7 +111,7 @@ class Avatar extends StatelessWidget {
                               ),
                               Flexible(
                                 child: AutoSizeText(
-                                  Formatter.formatEthAddress(viewModel.walletAddress, 4),
+                                  Formatter.formatEthAddress(viewModel.walletAddress, 20),
                                   style: TextStyle(
                                     letterSpacing: 0.3,
                                     color: Theme.of(context).colorScheme.onSurface,
@@ -128,58 +128,58 @@ class Avatar extends StatelessWidget {
                         ),
                       ),
                     ),
-                    Flexible(
-                      child: Container(
-                        width: MediaQuery.of(context).size.width * .475,
-                        child: TextButton(
-                          onPressed: () => context.router.push(DAppScreen()),
-                          // showDialog(
-                          //   context: context,
-                          //   builder: (BuildContext context) => ReceiveDialog(
-                          //     'fuse:${viewModel.walletAddress}',
-                          //   ),
-                          // );
-                          style: TextButton.styleFrom(
-                            padding: EdgeInsets.all(15.0),
-                            backgroundColor: Theme.of(context).colorScheme.secondary,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(
-                                  12.0,
-                                ),
-                              ),
-                            ),
-                          ),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Icon(
-                                PeeplIcons.ppl_circles_02,
-                                color: Color(0xFFFF344D),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Flexible(
-                                child: AutoSizeText(
-                                  "Token Vesting",
-                                  style: TextStyle(
-                                    letterSpacing: 0.3,
-                                    color: Theme.of(context).colorScheme.onSurface,
-                                  ),
-                                  maxLines: 1,
-                                  presetFontSizes: [
-                                    16,
-                                    15,
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
+                    // Flexible(
+                    //   child: Container(
+                    //     width: MediaQuery.of(context).size.width * .475,
+                    //     child: TextButton(
+                    //       onPressed: () => context.router.push(DAppScreen()),
+                    //       // showDialog(
+                    //       //   context: context,
+                    //       //   builder: (BuildContext context) => ReceiveDialog(
+                    //       //     'fuse:${viewModel.walletAddress}',
+                    //       //   ),
+                    //       // );
+                    //       style: TextButton.styleFrom(
+                    //         padding: EdgeInsets.all(15.0),
+                    //         backgroundColor: Theme.of(context).colorScheme.secondary,
+                    //         shape: RoundedRectangleBorder(
+                    //           borderRadius: BorderRadius.all(
+                    //             Radius.circular(
+                    //               12.0,
+                    //             ),
+                    //           ),
+                    //         ),
+                    //       ),
+                    //       child: Row(
+                    //         mainAxisAlignment: MainAxisAlignment.center,
+                    //         crossAxisAlignment: CrossAxisAlignment.center,
+                    //         children: <Widget>[
+                    //           Icon(
+                    //             PeeplIcons.ppl_circles_02,
+                    //             color: Color(0xFFFF344D),
+                    //           ),
+                    //           SizedBox(
+                    //             width: 10,
+                    //           ),
+                    //           Flexible(
+                    //             child: AutoSizeText(
+                    //               "Token Vesting",
+                    //               style: TextStyle(
+                    //                 letterSpacing: 0.3,
+                    //                 color: Theme.of(context).colorScheme.onSurface,
+                    //               ),
+                    //               maxLines: 1,
+                    //               presetFontSizes: [
+                    //                 16,
+                    //                 15,
+                    //               ],
+                    //             ),
+                    //           )
+                    //         ],
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ],

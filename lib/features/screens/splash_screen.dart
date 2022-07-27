@@ -45,10 +45,8 @@ class _SplashScreenState extends State<SplashScreen> {
         store.dispatch(getWalletAddressesCall());
         store.dispatch(identifyCall());
         store.dispatch(loadContacts());
-        await AppTrackingTransparency.requestTrackingAuthorization();
       }
-      if (BiometricAuth.faceID == userState.authType ||
-          BiometricAuth.touchID == userState.authType) {
+      if (BiometricAuth.faceID == userState.authType || BiometricAuth.touchID == userState.authType) {
         await _showLocalAuthPopup(
           BiometricUtils.getBiometricString(
             context,
@@ -68,8 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future<void> _showLocalAuthPopup(String biometric) async {
     await BiometricUtils.showDefaultPopupCheckBiometricAuth(
-      message:
-          '${I10n.of(context).please_use} $biometric ${I10n.of(context).to_unlock}',
+      message: '${I10n.of(context).please_use} $biometric ${I10n.of(context).to_unlock}',
       stickyAuth: true,
       callback: (bool result) {
         if (result) {
@@ -98,8 +95,7 @@ class _SplashScreenState extends State<SplashScreen> {
           )..show(context).then(
               (result) async {
                 if (result == true) {
-                  BiometricAuth _biometricType =
-                      await BiometricUtils.getAvailableBiometrics();
+                  BiometricAuth _biometricType = await BiometricUtils.getAvailableBiometrics();
                   await _showLocalAuthPopup(
                     BiometricUtils.getBiometricString(
                       context,
@@ -124,8 +120,7 @@ class _SplashScreenState extends State<SplashScreen> {
       builder: (_, viewModel) {
         return Scaffold(
           body: Container(
-            decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primaryVariant),
+            decoration: BoxDecoration(color: Theme.of(context).colorScheme.primaryVariant),
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             child: Column(

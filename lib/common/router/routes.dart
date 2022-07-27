@@ -14,6 +14,7 @@ import 'package:guide_liverpool/features/onboard/screens/restore_wallet_screen.d
 import 'package:guide_liverpool/features/onboard/screens/username_screen.dart';
 import 'package:guide_liverpool/features/onboard/screens/signup_screen.dart';
 import 'package:guide_liverpool/features/onboard/screens/verify_screen.dart';
+import 'package:guide_liverpool/features/screens/main_screen_no_acc.dart';
 import 'package:guide_liverpool/features/screens/on_board_screen.dart';
 import 'package:guide_liverpool/features/screens/pincode_screen.dart';
 import 'package:guide_liverpool/features/screens/splash_screen.dart';
@@ -35,6 +36,13 @@ export 'routes.gr.dart';
     AutoRoute(page: VerifyPhoneNumber),
     AutoRoute(page: UserNameScreen),
     AutoRoute(page: WebViewScreen, name: 'webview', fullscreenDialog: true),
+    AutoRoute(
+      page: MainScreenNoAcc,
+      children: [
+        guideHomeTab,
+        newsTab,
+      ],
+    ),
     AutoRoute(
       page: MainScreen,
       guards: [AuthGuard],

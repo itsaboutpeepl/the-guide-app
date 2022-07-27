@@ -113,3 +113,42 @@ void showPlayBackCompletedFlushBar(context, int rewardAmount) {
     ),
   )..show(context);
 }
+
+void showPlayBackCompletedFlushBarNoAcc(context) {
+  Flushbar(
+    duration: Duration(seconds: 7),
+    titleText: Text.rich(
+      TextSpan(
+        style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900),
+        children: [
+          WidgetSpan(
+            child: Icon(
+              PeeplIcons.ppl_circles_02,
+              size: 35.0,
+              color: Color(0xFFEB4953),
+            ),
+          ),
+          TextSpan(text: "\nThanks for watching")
+        ],
+      ),
+      textAlign: TextAlign.center,
+    ),
+    messageText: Text.rich(
+      TextSpan(
+        text:
+            "Please create an account to get rewarded for watching videos, and to order from your favorite local retailers!",
+      ),
+      style: TextStyle(color: Colors.white),
+      textAlign: TextAlign.center,
+    ),
+    backgroundColor: Color(0xFF333333),
+    margin: EdgeInsets.only(
+      right: 20,
+      left: 20,
+      bottom: 50,
+    ),
+    borderRadius: BorderRadius.all(
+      Radius.circular(8.0),
+    ),
+  )..show(context);
+}

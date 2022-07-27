@@ -11,7 +11,6 @@ const newsTab = AutoRoute(
       initial: true,
       page: NewsScreen,
       name: 'newsHomeScreen',
-      guards: [AuthGuard],
     ),
   ],
 );

@@ -1,3 +1,4 @@
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +53,8 @@ class _MainScreenState extends State<MainScreen> {
     // firebaseMessaging.getInitialMessage().then((RemoteMessage? remoteMessage) {
     //   handleFCM(remoteMessage);
     // });
+
+    Future.delayed(Duration(seconds: 5), () => AppTrackingTransparency.requestTrackingAuthorization());
 
     startFirebaseNotifs();
     super.initState();

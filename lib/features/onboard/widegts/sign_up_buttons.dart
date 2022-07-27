@@ -32,7 +32,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 6,
+                    flex: 8,
                     child: Image.asset(
                       'assets/images/guide-logo-horizontal.png',
                       width: 350,
@@ -40,7 +40,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                     ),
                   ),
                   Flexible(
-                    flex: 2,
+                    flex: 3,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -144,7 +144,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                   ],
                                 )
                               : TransparentButton(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   label: I10n.of(context).restore_from_backup,
                                   textColor: Colors.grey[100]!,
                                   onPressed: () {
@@ -154,7 +154,17 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                     context.router.push(RestoreFromBackupScreen());
                                   },
                                 ),
-                        )
+                        ),
+                        viewModel.isLoggedOut
+                            ? SizedBox.shrink()
+                            : TransparentButton(
+                                fontSize: 18,
+                                label: "Use without account",
+                                textColor: Colors.grey[100]!,
+                                onPressed: () {
+                                  context.router.push(MainScreenNoAcc());
+                                },
+                              ),
                       ],
                     ),
                   ),

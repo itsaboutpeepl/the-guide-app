@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/AppBar/SliverAppBar.dart';
+import 'package:guide_liverpool/features/guideHome/widgets/AppBar/createAccAppBar.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/FeaturedPosts/featuredPostStack.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/confettiWidget.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/EventsCalendar/eventsCalendar.dart';
@@ -35,6 +36,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen> {
       distinct: true,
       converter: HomePageViewModel.fromStore,
       onInit: (store) {
+        if (store.state.userState.walletAddress.isEmpty) return;
         store.dispatch(startFetchTokensBalances());
         store.dispatch(UpdatePlayConfetti(playConfetti: false));
       },
@@ -63,6 +65,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen> {
                     ]
                   : [
                       MySliverAppBar(),
+                      CreateAccountAppBar(),
                       FeaturedPostStack(),
                       FeaturedVideos(),
                       EventCalendar(),
