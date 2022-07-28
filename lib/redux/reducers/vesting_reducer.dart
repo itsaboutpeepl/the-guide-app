@@ -1,4 +1,3 @@
-import 'package:guide_liverpool/models/news_state.dart';
 import 'package:guide_liverpool/models/vesting_state.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
@@ -18,10 +17,10 @@ final VestingStateReducers = combineReducers<VestingState>(
     TypedReducer<VestingState, UpdateReleasableAmount>(_getReleasableAmount),
     TypedReducer<VestingState, UpdateScheduleStart>(_getScheduleStart),
     TypedReducer<VestingState, UpdateDisplayScheduleID>(_getDisplayScheduleID),
-    TypedReducer<VestingState, UpdateScheduleCount>(_getVestingCount),
-    TypedReducer<VestingState, UpdateScheduleCount>(_getVestingCount),
-    TypedReducer<VestingState, UpdateScheduleCount>(_getVestingCount),
-    TypedReducer<VestingState, UpdateScheduleCount>(_getVestingCount),
+    TypedReducer<VestingState, UpdateIsFullyVested>(_getFullyVestedStatus),
+    TypedReducer<VestingState, WithdrawableAmount>(_getWithdrawableAmount),
+    TypedReducer<VestingState, UpdateCliffEndTimeDays>(_updateCliffEnd),
+    TypedReducer<VestingState, UpdateEndTimeDays>(_updateEndDays),
   ],
 );
 
