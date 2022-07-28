@@ -97,6 +97,12 @@ class UpdateEndTimeDays {
   UpdateEndTimeDays({required this.endTimeDays});
 }
 
+class UpdateScheduleEnd {
+  final DateTime scheduleEnd;
+
+  UpdateScheduleEnd({required this.scheduleEnd});
+}
+
 ThunkAction getWithdrawableAmount() {
   return (Store store) async {
     try {
@@ -118,7 +124,7 @@ ThunkAction getScheduleByAddressAndIndex(
     try {
       store.dispatch(UpdateVestingIsLoading(isLoading: true));
 
-      // await getSchedulesInfo;
+      await getSchedulesInfo;
 
       final schedule = await vestingService.web3client.call(
         contract: vestingService.deployedContract,
@@ -134,6 +140,8 @@ ThunkAction getScheduleByAddressAndIndex(
         ),
       );
 
+      store.dispatch(UpdateScheduleStart(scheduleStart: scheduleStart));
+
       final DateTime scheduleDuration = readTimeStampToDate(
         int.parse(
           schedule[4].toString(),
@@ -143,6 +151,8 @@ ThunkAction getScheduleByAddressAndIndex(
       final DateTime scheduleEnd = DateTime.fromMillisecondsSinceEpoch(
           scheduleStart.millisecondsSinceEpoch +
               scheduleDuration.millisecondsSinceEpoch);
+
+      store.dispatch(UpdateScheduleEnd(scheduleEnd: scheduleEnd));
 
       final DateTime cliff = readTimeStampToDate(
         int.parse(
