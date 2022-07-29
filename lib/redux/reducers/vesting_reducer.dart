@@ -21,6 +21,8 @@ final VestingStateReducers = combineReducers<VestingState>(
     TypedReducer<VestingState, WithdrawableAmount>(_getWithdrawableAmount),
     TypedReducer<VestingState, UpdateCliffEndTimeDays>(_updateCliffEnd),
     TypedReducer<VestingState, UpdateEndTimeDays>(_updateEndDays),
+    TypedReducer<VestingState, UpdateScheduleEnd>(_updateScheduleEnd),
+    TypedReducer<VestingState, UpdateCliff>(_updateCliff),
   ],
 );
 
@@ -29,6 +31,13 @@ VestingState _getScheduleByAddressAndIndex(
   UpdateVestingSchedule action,
 ) {
   return state.copyWith(vestingSchedule: action.vestingSchedule);
+}
+
+VestingState _updateScheduleEnd(
+  VestingState state,
+  UpdateScheduleEnd action,
+) {
+  return state.copyWith(scheduleEnd: action.scheduleEnd);
 }
 
 VestingState _getVestingCount(
@@ -120,4 +129,11 @@ VestingState _updateEndDays(
   UpdateEndTimeDays action,
 ) {
   return state.copyWith(endTimeDays: state.endTimeDays);
+}
+
+VestingState _updateCliff(
+  VestingState state,
+  UpdateCliff action,
+) {
+  return state.copyWith(cliff: action.cliff);
 }

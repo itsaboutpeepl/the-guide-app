@@ -91,6 +91,12 @@ class UpdateCliffEndTimeDays {
   UpdateCliffEndTimeDays({required this.cliffEndDays});
 }
 
+class UpdateCliff {
+  final DateTime cliff;
+
+  UpdateCliff({required this.cliff});
+}
+
 class UpdateEndTimeDays {
   final int endTimeDays;
 
@@ -159,6 +165,8 @@ ThunkAction getScheduleByAddressAndIndex(
           schedule[2].toString(),
         ),
       );
+
+      store.dispatch(UpdateCliff(cliff: cliff));
 
       final Decimal vestedTotal =
           toDecimal(BigInt.parse(schedule[7].toString()), 18);

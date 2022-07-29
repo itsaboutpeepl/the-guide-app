@@ -15,6 +15,7 @@ class VestingState with _$VestingState {
     required List<String> scheduleIDs,
     required bool hasVestingSchedule,
     required Decimal currentAmountReleasable,
+    required DateTime? scheduleEnd,
     required DateTime? scheduleStart,
     required String? displayScheduleID,
     required int scheduleCount,
@@ -25,6 +26,7 @@ class VestingState with _$VestingState {
     required bool vestedChecker,
     required bool isLoading,
     required bool isRevoked,
+    required DateTime? cliff,
   }) = _VestingState;
 
   factory VestingState.initial() => VestingState(
@@ -32,6 +34,7 @@ class VestingState with _$VestingState {
         scheduleIDs: [],
         hasVestingSchedule: false,
         currentAmountReleasable: Decimal.zero,
+        scheduleEnd: null,
         scheduleStart: null,
         displayScheduleID: 'No Vesting Schedule Found',
         scheduleCount: 0,
@@ -42,6 +45,7 @@ class VestingState with _$VestingState {
         vestedChecker: false,
         isLoading: false,
         isRevoked: false,
+        cliff: null,
       );
 
   factory VestingState.fromJson(dynamic json) => _$VestingStateFromJson(json);

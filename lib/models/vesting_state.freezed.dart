@@ -24,6 +24,7 @@ mixin _$VestingState {
   List<String> get scheduleIDs => throw _privateConstructorUsedError;
   bool get hasVestingSchedule => throw _privateConstructorUsedError;
   Decimal get currentAmountReleasable => throw _privateConstructorUsedError;
+  DateTime? get scheduleEnd => throw _privateConstructorUsedError;
   DateTime? get scheduleStart => throw _privateConstructorUsedError;
   String? get displayScheduleID => throw _privateConstructorUsedError;
   int get scheduleCount => throw _privateConstructorUsedError;
@@ -34,6 +35,7 @@ mixin _$VestingState {
   bool get vestedChecker => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isRevoked => throw _privateConstructorUsedError;
+  DateTime? get cliff => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -51,6 +53,7 @@ abstract class $VestingStateCopyWith<$Res> {
       List<String> scheduleIDs,
       bool hasVestingSchedule,
       Decimal currentAmountReleasable,
+      DateTime? scheduleEnd,
       DateTime? scheduleStart,
       String? displayScheduleID,
       int scheduleCount,
@@ -60,7 +63,8 @@ abstract class $VestingStateCopyWith<$Res> {
       int endTimeDays,
       bool vestedChecker,
       bool isLoading,
-      bool isRevoked});
+      bool isRevoked,
+      DateTime? cliff});
 }
 
 /// @nodoc
@@ -77,6 +81,7 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
     Object? scheduleIDs = freezed,
     Object? hasVestingSchedule = freezed,
     Object? currentAmountReleasable = freezed,
+    Object? scheduleEnd = freezed,
     Object? scheduleStart = freezed,
     Object? displayScheduleID = freezed,
     Object? scheduleCount = freezed,
@@ -87,6 +92,7 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
     Object? vestedChecker = freezed,
     Object? isLoading = freezed,
     Object? isRevoked = freezed,
+    Object? cliff = freezed,
   }) {
     return _then(_value.copyWith(
       vestingSchedule: vestingSchedule == freezed
@@ -105,6 +111,10 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
           ? _value.currentAmountReleasable
           : currentAmountReleasable // ignore: cast_nullable_to_non_nullable
               as Decimal,
+      scheduleEnd: scheduleEnd == freezed
+          ? _value.scheduleEnd
+          : scheduleEnd // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       scheduleStart: scheduleStart == freezed
           ? _value.scheduleStart
           : scheduleStart // ignore: cast_nullable_to_non_nullable
@@ -145,6 +155,10 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
           ? _value.isRevoked
           : isRevoked // ignore: cast_nullable_to_non_nullable
               as bool,
+      cliff: cliff == freezed
+          ? _value.cliff
+          : cliff // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -161,6 +175,7 @@ abstract class _$$_VestingStateCopyWith<$Res>
       List<String> scheduleIDs,
       bool hasVestingSchedule,
       Decimal currentAmountReleasable,
+      DateTime? scheduleEnd,
       DateTime? scheduleStart,
       String? displayScheduleID,
       int scheduleCount,
@@ -170,7 +185,8 @@ abstract class _$$_VestingStateCopyWith<$Res>
       int endTimeDays,
       bool vestedChecker,
       bool isLoading,
-      bool isRevoked});
+      bool isRevoked,
+      DateTime? cliff});
 }
 
 /// @nodoc
@@ -190,6 +206,7 @@ class __$$_VestingStateCopyWithImpl<$Res>
     Object? scheduleIDs = freezed,
     Object? hasVestingSchedule = freezed,
     Object? currentAmountReleasable = freezed,
+    Object? scheduleEnd = freezed,
     Object? scheduleStart = freezed,
     Object? displayScheduleID = freezed,
     Object? scheduleCount = freezed,
@@ -200,6 +217,7 @@ class __$$_VestingStateCopyWithImpl<$Res>
     Object? vestedChecker = freezed,
     Object? isLoading = freezed,
     Object? isRevoked = freezed,
+    Object? cliff = freezed,
   }) {
     return _then(_$_VestingState(
       vestingSchedule: vestingSchedule == freezed
@@ -218,6 +236,10 @@ class __$$_VestingStateCopyWithImpl<$Res>
           ? _value.currentAmountReleasable
           : currentAmountReleasable // ignore: cast_nullable_to_non_nullable
               as Decimal,
+      scheduleEnd: scheduleEnd == freezed
+          ? _value.scheduleEnd
+          : scheduleEnd // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       scheduleStart: scheduleStart == freezed
           ? _value.scheduleStart
           : scheduleStart // ignore: cast_nullable_to_non_nullable
@@ -258,6 +280,10 @@ class __$$_VestingStateCopyWithImpl<$Res>
           ? _value.isRevoked
           : isRevoked // ignore: cast_nullable_to_non_nullable
               as bool,
+      cliff: cliff == freezed
+          ? _value.cliff
+          : cliff // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
     ));
   }
 }
@@ -271,6 +297,7 @@ class _$_VestingState extends _VestingState {
       required final List<String> scheduleIDs,
       required this.hasVestingSchedule,
       required this.currentAmountReleasable,
+      required this.scheduleEnd,
       required this.scheduleStart,
       required this.displayScheduleID,
       required this.scheduleCount,
@@ -280,7 +307,8 @@ class _$_VestingState extends _VestingState {
       required this.endTimeDays,
       required this.vestedChecker,
       required this.isLoading,
-      required this.isRevoked})
+      required this.isRevoked,
+      required this.cliff})
       : _vestingSchedule = vestingSchedule,
         _scheduleIDs = scheduleIDs,
         super._();
@@ -307,6 +335,8 @@ class _$_VestingState extends _VestingState {
   @override
   final Decimal currentAmountReleasable;
   @override
+  final DateTime? scheduleEnd;
+  @override
   final DateTime? scheduleStart;
   @override
   final String? displayScheduleID;
@@ -326,10 +356,12 @@ class _$_VestingState extends _VestingState {
   final bool isLoading;
   @override
   final bool isRevoked;
+  @override
+  final DateTime? cliff;
 
   @override
   String toString() {
-    return 'VestingState(vestingSchedule: $vestingSchedule, scheduleIDs: $scheduleIDs, hasVestingSchedule: $hasVestingSchedule, currentAmountReleasable: $currentAmountReleasable, scheduleStart: $scheduleStart, displayScheduleID: $displayScheduleID, scheduleCount: $scheduleCount, isContractFullyVested: $isContractFullyVested, withdrawableAmount: $withdrawableAmount, cliffEndDays: $cliffEndDays, endTimeDays: $endTimeDays, vestedChecker: $vestedChecker, isLoading: $isLoading, isRevoked: $isRevoked)';
+    return 'VestingState(vestingSchedule: $vestingSchedule, scheduleIDs: $scheduleIDs, hasVestingSchedule: $hasVestingSchedule, currentAmountReleasable: $currentAmountReleasable, scheduleEnd: $scheduleEnd, scheduleStart: $scheduleStart, displayScheduleID: $displayScheduleID, scheduleCount: $scheduleCount, isContractFullyVested: $isContractFullyVested, withdrawableAmount: $withdrawableAmount, cliffEndDays: $cliffEndDays, endTimeDays: $endTimeDays, vestedChecker: $vestedChecker, isLoading: $isLoading, isRevoked: $isRevoked, cliff: $cliff)';
   }
 
   @override
@@ -345,6 +377,8 @@ class _$_VestingState extends _VestingState {
                 .equals(other.hasVestingSchedule, hasVestingSchedule) &&
             const DeepCollectionEquality().equals(
                 other.currentAmountReleasable, currentAmountReleasable) &&
+            const DeepCollectionEquality()
+                .equals(other.scheduleEnd, scheduleEnd) &&
             const DeepCollectionEquality()
                 .equals(other.scheduleStart, scheduleStart) &&
             const DeepCollectionEquality()
@@ -362,7 +396,8 @@ class _$_VestingState extends _VestingState {
             const DeepCollectionEquality()
                 .equals(other.vestedChecker, vestedChecker) &&
             const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isRevoked, isRevoked));
+            const DeepCollectionEquality().equals(other.isRevoked, isRevoked) &&
+            const DeepCollectionEquality().equals(other.cliff, cliff));
   }
 
   @JsonKey(ignore: true)
@@ -373,6 +408,7 @@ class _$_VestingState extends _VestingState {
       const DeepCollectionEquality().hash(_scheduleIDs),
       const DeepCollectionEquality().hash(hasVestingSchedule),
       const DeepCollectionEquality().hash(currentAmountReleasable),
+      const DeepCollectionEquality().hash(scheduleEnd),
       const DeepCollectionEquality().hash(scheduleStart),
       const DeepCollectionEquality().hash(displayScheduleID),
       const DeepCollectionEquality().hash(scheduleCount),
@@ -382,7 +418,8 @@ class _$_VestingState extends _VestingState {
       const DeepCollectionEquality().hash(endTimeDays),
       const DeepCollectionEquality().hash(vestedChecker),
       const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isRevoked));
+      const DeepCollectionEquality().hash(isRevoked),
+      const DeepCollectionEquality().hash(cliff));
 
   @JsonKey(ignore: true)
   @override
@@ -401,6 +438,7 @@ abstract class _VestingState extends VestingState {
       required final List<String> scheduleIDs,
       required final bool hasVestingSchedule,
       required final Decimal currentAmountReleasable,
+      required final DateTime? scheduleEnd,
       required final DateTime? scheduleStart,
       required final String? displayScheduleID,
       required final int scheduleCount,
@@ -410,7 +448,8 @@ abstract class _VestingState extends VestingState {
       required final int endTimeDays,
       required final bool vestedChecker,
       required final bool isLoading,
-      required final bool isRevoked}) = _$_VestingState;
+      required final bool isRevoked,
+      required final DateTime? cliff}) = _$_VestingState;
   _VestingState._() : super._();
 
   factory _VestingState.fromJson(Map<String, dynamic> json) =
@@ -424,6 +463,8 @@ abstract class _VestingState extends VestingState {
   bool get hasVestingSchedule => throw _privateConstructorUsedError;
   @override
   Decimal get currentAmountReleasable => throw _privateConstructorUsedError;
+  @override
+  DateTime? get scheduleEnd => throw _privateConstructorUsedError;
   @override
   DateTime? get scheduleStart => throw _privateConstructorUsedError;
   @override
@@ -444,6 +485,8 @@ abstract class _VestingState extends VestingState {
   bool get isLoading => throw _privateConstructorUsedError;
   @override
   bool get isRevoked => throw _privateConstructorUsedError;
+  @override
+  DateTime? get cliff => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_VestingStateCopyWith<_$_VestingState> get copyWith =>

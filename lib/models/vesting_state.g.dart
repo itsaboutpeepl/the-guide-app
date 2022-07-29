@@ -17,6 +17,9 @@ _$_VestingState _$$_VestingStateFromJson(Map<String, dynamic> json) =>
       hasVestingSchedule: json['hasVestingSchedule'] as bool,
       currentAmountReleasable:
           Decimal.fromJson(json['currentAmountReleasable'] as String),
+      scheduleEnd: json['scheduleEnd'] == null
+          ? null
+          : DateTime.parse(json['scheduleEnd'] as String),
       scheduleStart: json['scheduleStart'] == null
           ? null
           : DateTime.parse(json['scheduleStart'] as String),
@@ -29,6 +32,9 @@ _$_VestingState _$$_VestingStateFromJson(Map<String, dynamic> json) =>
       vestedChecker: json['vestedChecker'] as bool,
       isLoading: json['isLoading'] as bool,
       isRevoked: json['isRevoked'] as bool,
+      cliff: json['cliff'] == null
+          ? null
+          : DateTime.parse(json['cliff'] as String),
     );
 
 Map<String, dynamic> _$$_VestingStateToJson(_$_VestingState instance) =>
@@ -38,6 +44,7 @@ Map<String, dynamic> _$$_VestingStateToJson(_$_VestingState instance) =>
       'scheduleIDs': instance.scheduleIDs,
       'hasVestingSchedule': instance.hasVestingSchedule,
       'currentAmountReleasable': instance.currentAmountReleasable.toJson(),
+      'scheduleEnd': instance.scheduleEnd?.toIso8601String(),
       'scheduleStart': instance.scheduleStart?.toIso8601String(),
       'displayScheduleID': instance.displayScheduleID,
       'scheduleCount': instance.scheduleCount,
@@ -48,4 +55,5 @@ Map<String, dynamic> _$$_VestingStateToJson(_$_VestingState instance) =>
       'vestedChecker': instance.vestedChecker,
       'isLoading': instance.isLoading,
       'isRevoked': instance.isRevoked,
+      'cliff': instance.cliff?.toIso8601String(),
     };
