@@ -32,8 +32,12 @@ class VestingService {
         return IOWebSocketChannel.connect(_wsUrl).cast<String>();
       },
     );
-    await getABI();
+
     // await getCredentials();
+  }
+
+  Future<void> initAbi() async {
+    await getABI(); // <- initial
     await getDeployedContract();
   }
 
@@ -49,7 +53,7 @@ class VestingService {
         EthereumAddress.fromHex('0x5bb44ae7226d777D77BCe67Ea4935F159D6B6d52');
   }
 
-  late EthPrivateKey _creds;
+  // late EthPrivateKey _creds;
   //TODO: need user priv key to sign transaction
   // Future<void> getCredentials() async {
   //   // _creds = EthPrivateKey.fromHex();
@@ -73,6 +77,7 @@ class VestingService {
         deployedContract.function('computeReleasableAmount');
     release = deployedContract.function('release');
     getWithdrawableAmount = deployedContract.function('getWithdrawableAmount');
+
     getSchedulesIDsList =
         deployedContract.function('computeVestingScheduleIdForAddressAndIndex');
   }

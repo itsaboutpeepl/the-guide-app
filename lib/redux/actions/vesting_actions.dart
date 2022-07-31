@@ -131,7 +131,6 @@ ThunkAction getScheduleByAddressAndIndex(
       store.dispatch(UpdateVestingIsLoading(isLoading: true));
 
       await getSchedulesInfo;
-
       final schedule = await vestingService.web3client.call(
         contract: vestingService.deployedContract,
         function: vestingService.getVestingScheduleByAddressAndIndex,
@@ -225,7 +224,7 @@ ThunkAction computeAmountReleasable({required String id}) {
   };
 }
 
-ThunkAction getUserVestingSchedulesList() {
+ThunkAction SchedulesList() {
   return (Store store) async {
     try {
       BigInt scheduleCount = store.state.vestingState.scheduleCount;
@@ -273,6 +272,7 @@ ThunkAction getSchedulesInfo() {
       computeAmountReleasable(id: store.state.vestingState.scheduleIDs[0]);
 
       store.dispatch(UpdateVestingIsLoading(isLoading: false));
+      print(store.state.vestingState.isLoading);
       String currentScheduleID =
           await "${store.state.vestingState.scheduleIDs[0].substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].substring(61, 66)}";
 

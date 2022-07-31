@@ -86,49 +86,50 @@ VestingState _getReleasableAmount(
   VestingState state,
   UpdateReleasableAmount action,
 ) {
-  return state.copyWith(currentAmountReleasable: state.currentAmountReleasable);
+  return state.copyWith(
+      currentAmountReleasable: action.currentAmountReleasable);
 }
 
 VestingState _getScheduleStart(
   VestingState state,
   UpdateScheduleStart action,
 ) {
-  return state.copyWith(scheduleStart: state.scheduleStart);
+  return state.copyWith(scheduleStart: action.scheduleStart);
 }
 
 VestingState _getDisplayScheduleID(
   VestingState state,
   UpdateDisplayScheduleID action,
 ) {
-  return state.copyWith(displayScheduleID: state.displayScheduleID);
+  return state.copyWith(displayScheduleID: action.displayScheduleID);
 }
 
 VestingState _getFullyVestedStatus(
   VestingState state,
   UpdateIsFullyVested action,
 ) {
-  return state.copyWith(isContractFullyVested: state.isContractFullyVested);
+  return state.copyWith(isContractFullyVested: action.isContractFullyVested);
 }
 
 VestingState _getWithdrawableAmount(
   VestingState state,
   WithdrawableAmount action,
 ) {
-  return state.copyWith(withdrawableAmount: state.withdrawableAmount);
+  return state.copyWith(withdrawableAmount: action.withdrawableAmount);
 }
 
 VestingState _updateCliffEnd(
   VestingState state,
   UpdateCliffEndTimeDays action,
 ) {
-  return state.copyWith(cliffEndDays: state.cliffEndDays);
+  return state.copyWith(cliffEndDays: action.cliffEndDays);
 }
 
 VestingState _updateEndDays(
   VestingState state,
   UpdateEndTimeDays action,
 ) {
-  return state.copyWith(endTimeDays: state.endTimeDays);
+  return state.copyWith(endTimeDays: action.endTimeDays);
 }
 
 VestingState _updateCliff(

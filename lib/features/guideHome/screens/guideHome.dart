@@ -11,6 +11,7 @@ import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/homePageViewModel.dart';
+import 'package:guide_liverpool/services.dart';
 
 class GuideHomeScreen extends StatefulWidget {
   const GuideHomeScreen({
@@ -27,6 +28,7 @@ class _GuideHomeScreenState extends State<GuideHomeScreen> {
   @override
   void initState() {
     super.initState();
+    vestingService.initAbi();
   }
 
   @override
