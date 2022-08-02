@@ -26,9 +26,9 @@ class _DAppScreenState extends State<DAppScreen> {
     return StoreConnector<AppState, DappPageViewModel>(
       distinct: true,
       converter: DappPageViewModel.fromStore,
-      onInitialBuild: (viewModel) {
-        viewModel.onStart();
-      },
+      // onInitialBuild: (viewModel) {
+      //   viewModel.onStart();
+      // },
       builder: (_, viewModel) => MyScaffold(
         title: "Token Vesting Schedule",
         body: SingleChildScrollView(
@@ -113,7 +113,9 @@ class _DAppScreenState extends State<DAppScreen> {
                       ),
                     ),
                   ),
-                  buttonAction: () {},
+                  buttonAction: () {
+                    viewModel.onStart();
+                  },
                   baseColor: Color(0xFFFF344D),
                   highlightColor: Color(0xFFFF344D).withOpacity(0.8),
                 )

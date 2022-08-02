@@ -8,6 +8,7 @@ class DappPageViewModel extends Equatable {
   final int scheduleCount;
   final String walletAddress;
   final DateTime? scheduleEnd;
+  final DateTime? scheduleStart;
   final int endTimeDays;
   // final Decimal? vestedTotal;
   final String? currentScheduleID;
@@ -22,7 +23,9 @@ class DappPageViewModel extends Equatable {
     required this.scheduleCount,
     required this.walletAddress,
     required this.scheduleEnd,
+    required this.scheduleStart,
     required this.endTimeDays,
+
     // required this.vestedTotal,
     required this.currentScheduleID,
     required this.withdrawableAmount,
@@ -39,6 +42,7 @@ class DappPageViewModel extends Equatable {
       walletAddress: store.state.userState.walletAddress,
       scheduleEnd: store.state.vestingState.scheduleEnd,
       endTimeDays: store.state.vestingState.endTimeDays,
+      scheduleStart: store.state.vestingState.scheduleStart,
       // vestedTotal:
       //     store.state.vestingState.vestingSchedule[0].vestedAmount as Decimal,
       currentScheduleID: store.state.vestingState.displayScheduleID,
@@ -52,7 +56,6 @@ class DappPageViewModel extends Equatable {
               index: 0,
               beneficiaryAddress: store.state.userState.walletAddress),
         );
-        print(store.state.userState.walletAddress);
       },
       withdrawableAmount: store.state.vestingState.withdrawableAmount,
     );
@@ -64,6 +67,7 @@ class DappPageViewModel extends Equatable {
         walletAddress,
         scheduleEnd,
         endTimeDays,
+        scheduleStart,
         // vestedTotal,
         currentScheduleID,
         currentAmountReleasable,

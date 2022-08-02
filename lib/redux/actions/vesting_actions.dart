@@ -9,6 +9,7 @@ import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:redux/redux.dart';
+import 'package:web3dart/web3dart.dart';
 
 class UpdateVestedTotal {
   final Decimal vestedTotal;
@@ -130,12 +131,12 @@ ThunkAction getScheduleByAddressAndIndex(
     try {
       store.dispatch(UpdateVestingIsLoading(isLoading: true));
 
-      await getSchedulesInfo;
-      final schedule = await vestingService.web3client.call(
+      // await getSchedulesInfo;
+      final schedule = (await vestingService.web3client.call(
         contract: vestingService.deployedContract,
         function: vestingService.getVestingScheduleByAddressAndIndex,
-        params: [beneficiaryAddress, index],
-      );
+        params: [EthereumAddress.fromHex(beneficiaryAddress), BigInt.zero],
+      ))[0];
 
       store.dispatch(UpdateIsRevoked(isRevoked: schedule[9]));
 
@@ -196,6 +197,7 @@ ThunkAction getScheduleByAddressAndIndex(
           cliffDateTime: dateFormatter(cliff)));
 
       store.dispatch(UpdateVestingSchedule(vestingSchedule: vestingSchedules));
+      print('object');
     } catch (e, s) {
       log.error('ERROR - getScheduleByAddressAndIndex $e');
       await Sentry.captureException(e,
@@ -235,7 +237,10 @@ ThunkAction SchedulesList() {
         final vestingScheduleId = (await vestingService.web3client.call(
             contract: vestingService.deployedContract,
             function: vestingService.getSchedulesIDsList,
-            params: [store.state.userState.accountAddress, BigInt.from(i)]))[i];
+            params: [
+              EthereumAddress.fromHex(store.state.userState.accountAddress),
+              BigInt.from(i)
+            ]))[i];
         schedules.add(vestingScheduleId);
       }
 
@@ -269,7 +274,8 @@ ThunkAction getUserVestingCount({required String beneficiary}) {
 ThunkAction getSchedulesInfo() {
   return (Store store) async {
     try {
-      computeAmountReleasable(id: store.state.vestingState.scheduleIDs[0]);
+      await computeAmountReleasable(
+          id: store.state.vestingState.scheduleIDs[0]);
 
       store.dispatch(UpdateVestingIsLoading(isLoading: false));
       print(store.state.vestingState.isLoading);
