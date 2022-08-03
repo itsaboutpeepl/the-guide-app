@@ -21,13 +21,13 @@ VestingState _$VestingStateFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$VestingState {
   List<Schedules> get vestingSchedule => throw _privateConstructorUsedError;
-  List<String> get scheduleIDs => throw _privateConstructorUsedError;
+  List<dynamic> get scheduleIDs => throw _privateConstructorUsedError;
   bool get hasVestingSchedule => throw _privateConstructorUsedError;
   Decimal get currentAmountReleasable => throw _privateConstructorUsedError;
   DateTime? get scheduleEnd => throw _privateConstructorUsedError;
   DateTime? get scheduleStart => throw _privateConstructorUsedError;
   String? get displayScheduleID => throw _privateConstructorUsedError;
-  int get scheduleCount => throw _privateConstructorUsedError;
+  BigInt get scheduleCount => throw _privateConstructorUsedError;
   bool get isContractFullyVested => throw _privateConstructorUsedError;
   BigInt get withdrawableAmount => throw _privateConstructorUsedError;
   int get cliffEndDays => throw _privateConstructorUsedError;
@@ -50,13 +50,13 @@ abstract class $VestingStateCopyWith<$Res> {
       _$VestingStateCopyWithImpl<$Res>;
   $Res call(
       {List<Schedules> vestingSchedule,
-      List<String> scheduleIDs,
+      List<dynamic> scheduleIDs,
       bool hasVestingSchedule,
       Decimal currentAmountReleasable,
       DateTime? scheduleEnd,
       DateTime? scheduleStart,
       String? displayScheduleID,
-      int scheduleCount,
+      BigInt scheduleCount,
       bool isContractFullyVested,
       BigInt withdrawableAmount,
       int cliffEndDays,
@@ -102,7 +102,7 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
       scheduleIDs: scheduleIDs == freezed
           ? _value.scheduleIDs
           : scheduleIDs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<dynamic>,
       hasVestingSchedule: hasVestingSchedule == freezed
           ? _value.hasVestingSchedule
           : hasVestingSchedule // ignore: cast_nullable_to_non_nullable
@@ -126,7 +126,7 @@ class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
       scheduleCount: scheduleCount == freezed
           ? _value.scheduleCount
           : scheduleCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as BigInt,
       isContractFullyVested: isContractFullyVested == freezed
           ? _value.isContractFullyVested
           : isContractFullyVested // ignore: cast_nullable_to_non_nullable
@@ -172,13 +172,13 @@ abstract class _$$_VestingStateCopyWith<$Res>
   @override
   $Res call(
       {List<Schedules> vestingSchedule,
-      List<String> scheduleIDs,
+      List<dynamic> scheduleIDs,
       bool hasVestingSchedule,
       Decimal currentAmountReleasable,
       DateTime? scheduleEnd,
       DateTime? scheduleStart,
       String? displayScheduleID,
-      int scheduleCount,
+      BigInt scheduleCount,
       bool isContractFullyVested,
       BigInt withdrawableAmount,
       int cliffEndDays,
@@ -227,7 +227,7 @@ class __$$_VestingStateCopyWithImpl<$Res>
       scheduleIDs: scheduleIDs == freezed
           ? _value._scheduleIDs
           : scheduleIDs // ignore: cast_nullable_to_non_nullable
-              as List<String>,
+              as List<dynamic>,
       hasVestingSchedule: hasVestingSchedule == freezed
           ? _value.hasVestingSchedule
           : hasVestingSchedule // ignore: cast_nullable_to_non_nullable
@@ -251,7 +251,7 @@ class __$$_VestingStateCopyWithImpl<$Res>
       scheduleCount: scheduleCount == freezed
           ? _value.scheduleCount
           : scheduleCount // ignore: cast_nullable_to_non_nullable
-              as int,
+              as BigInt,
       isContractFullyVested: isContractFullyVested == freezed
           ? _value.isContractFullyVested
           : isContractFullyVested // ignore: cast_nullable_to_non_nullable
@@ -294,7 +294,7 @@ class __$$_VestingStateCopyWithImpl<$Res>
 class _$_VestingState extends _VestingState {
   _$_VestingState(
       {required final List<Schedules> vestingSchedule,
-      required final List<String> scheduleIDs,
+      required final List<dynamic> scheduleIDs,
       required this.hasVestingSchedule,
       required this.currentAmountReleasable,
       required this.scheduleEnd,
@@ -323,9 +323,9 @@ class _$_VestingState extends _VestingState {
     return EqualUnmodifiableListView(_vestingSchedule);
   }
 
-  final List<String> _scheduleIDs;
+  final List<dynamic> _scheduleIDs;
   @override
-  List<String> get scheduleIDs {
+  List<dynamic> get scheduleIDs {
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_scheduleIDs);
   }
@@ -341,7 +341,7 @@ class _$_VestingState extends _VestingState {
   @override
   final String? displayScheduleID;
   @override
-  final int scheduleCount;
+  final BigInt scheduleCount;
   @override
   final bool isContractFullyVested;
   @override
@@ -435,13 +435,13 @@ class _$_VestingState extends _VestingState {
 abstract class _VestingState extends VestingState {
   factory _VestingState(
       {required final List<Schedules> vestingSchedule,
-      required final List<String> scheduleIDs,
+      required final List<dynamic> scheduleIDs,
       required final bool hasVestingSchedule,
       required final Decimal currentAmountReleasable,
       required final DateTime? scheduleEnd,
       required final DateTime? scheduleStart,
       required final String? displayScheduleID,
-      required final int scheduleCount,
+      required final BigInt scheduleCount,
       required final bool isContractFullyVested,
       required final BigInt withdrawableAmount,
       required final int cliffEndDays,
@@ -458,7 +458,7 @@ abstract class _VestingState extends VestingState {
   @override
   List<Schedules> get vestingSchedule => throw _privateConstructorUsedError;
   @override
-  List<String> get scheduleIDs => throw _privateConstructorUsedError;
+  List<dynamic> get scheduleIDs => throw _privateConstructorUsedError;
   @override
   bool get hasVestingSchedule => throw _privateConstructorUsedError;
   @override
@@ -470,7 +470,7 @@ abstract class _VestingState extends VestingState {
   @override
   String? get displayScheduleID => throw _privateConstructorUsedError;
   @override
-  int get scheduleCount => throw _privateConstructorUsedError;
+  BigInt get scheduleCount => throw _privateConstructorUsedError;
   @override
   bool get isContractFullyVested => throw _privateConstructorUsedError;
   @override

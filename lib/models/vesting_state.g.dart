@@ -11,9 +11,7 @@ _$_VestingState _$$_VestingStateFromJson(Map<String, dynamic> json) =>
       vestingSchedule: (json['vestingSchedule'] as List<dynamic>)
           .map((e) => Schedules.fromJson(e))
           .toList(),
-      scheduleIDs: (json['scheduleIDs'] as List<dynamic>)
-          .map((e) => e as String)
-          .toList(),
+      scheduleIDs: json['scheduleIDs'] as List<dynamic>,
       hasVestingSchedule: json['hasVestingSchedule'] as bool,
       currentAmountReleasable:
           Decimal.fromJson(json['currentAmountReleasable'] as String),
@@ -24,7 +22,7 @@ _$_VestingState _$$_VestingStateFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['scheduleStart'] as String),
       displayScheduleID: json['displayScheduleID'] as String?,
-      scheduleCount: json['scheduleCount'] as int,
+      scheduleCount: BigInt.parse(json['scheduleCount'] as String),
       isContractFullyVested: json['isContractFullyVested'] as bool,
       withdrawableAmount: BigInt.parse(json['withdrawableAmount'] as String),
       cliffEndDays: json['cliffEndDays'] as int,
@@ -47,7 +45,7 @@ Map<String, dynamic> _$$_VestingStateToJson(_$_VestingState instance) =>
       'scheduleEnd': instance.scheduleEnd?.toIso8601String(),
       'scheduleStart': instance.scheduleStart?.toIso8601String(),
       'displayScheduleID': instance.displayScheduleID,
-      'scheduleCount': instance.scheduleCount,
+      'scheduleCount': instance.scheduleCount.toString(),
       'isContractFullyVested': instance.isContractFullyVested,
       'withdrawableAmount': instance.withdrawableAmount.toString(),
       'cliffEndDays': instance.cliffEndDays,

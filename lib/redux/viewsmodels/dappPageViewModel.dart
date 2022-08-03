@@ -5,7 +5,7 @@ import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:redux/redux.dart';
 
 class DappPageViewModel extends Equatable {
-  final int scheduleCount;
+  final BigInt scheduleCount;
   final String walletAddress;
   final DateTime? scheduleEnd;
   final DateTime? scheduleStart;
@@ -50,8 +50,8 @@ class DappPageViewModel extends Equatable {
       cliffEndDays: store.state.vestingState.cliffEndDays,
       cliff: store.state.vestingState.cliff,
       isContractFullyVested: store.state.vestingState.isContractFullyVested,
-      onStart: () async {
-        await store.dispatch(
+      onStart: () {
+        store.dispatch(
           getScheduleByAddressAndIndex(
               index: 0,
               beneficiaryAddress: store.state.userState.walletAddress),

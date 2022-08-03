@@ -11,6 +11,8 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:redux/redux.dart';
 import 'package:web3dart/web3dart.dart';
 
+import 'dart:convert';
+
 class UpdateVestedTotal {
   final Decimal vestedTotal;
 
@@ -40,7 +42,7 @@ class UpdateVestingSchedule {
 }
 
 class UpdateVestingScheduleID {
-  final List<String> scheduleIDs;
+  final List<dynamic> scheduleIDs;
   UpdateVestingScheduleID({required this.scheduleIDs});
 }
 
@@ -69,7 +71,7 @@ class UpdateDisplayScheduleID {
 }
 
 class UpdateScheduleCount {
-  final int scheduleCount;
+  final BigInt scheduleCount;
 
   UpdateScheduleCount({required this.scheduleCount});
 }
@@ -119,8 +121,10 @@ ThunkAction getWithdrawableAmount() {
           params: []))[0];
 
       store.dispatch(WithdrawableAmount(withdrawableAmount: amount));
-    } catch (e) {
-      print(e);
+    } catch (e, s) {
+      log.error('ERROR - getWithdrawableAmount $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getWithdrawableAmount $e');
     }
   };
 }
@@ -131,7 +135,8 @@ ThunkAction getScheduleByAddressAndIndex(
     try {
       store.dispatch(UpdateVestingIsLoading(isLoading: true));
 
-      // await getSchedulesInfo;
+      store.dispatch(getSchedulesInfo());
+
       final schedule = (await vestingService.web3client.call(
         contract: vestingService.deployedContract,
         function: vestingService.getVestingScheduleByAddressAndIndex,
@@ -197,7 +202,6 @@ ThunkAction getScheduleByAddressAndIndex(
           cliffDateTime: dateFormatter(cliff)));
 
       store.dispatch(UpdateVestingSchedule(vestingSchedule: vestingSchedules));
-      print('object');
     } catch (e, s) {
       log.error('ERROR - getScheduleByAddressAndIndex $e');
       await Sentry.captureException(e,
@@ -229,18 +233,24 @@ ThunkAction computeAmountReleasable({required String id}) {
 ThunkAction SchedulesList() {
   return (Store store) async {
     try {
+      store.dispatch(getUserVestingCount(
+          beneficiary: store.state.userState.walletAddress));
       BigInt scheduleCount = store.state.vestingState.scheduleCount;
+      print(scheduleCount.toInt());
 
-      List<String> schedules = [];
+      List<dynamic> schedules = [];
 
       for (int i = 0; i < scheduleCount.toInt(); i++) {
         final vestingScheduleId = (await vestingService.web3client.call(
             contract: vestingService.deployedContract,
             function: vestingService.getSchedulesIDsList,
             params: [
-              EthereumAddress.fromHex(store.state.userState.accountAddress),
+              EthereumAddress.fromHex(store.state.userState.walletAddress),
               BigInt.from(i)
-            ]))[i];
+            ]))[0];
+
+        // for(var data in vestingScheduleId)
+
         schedules.add(vestingScheduleId);
       }
 
@@ -256,10 +266,10 @@ ThunkAction SchedulesList() {
 ThunkAction getUserVestingCount({required String beneficiary}) {
   return (Store store) async {
     try {
-      final int scheduleCount = (await vestingService.web3client.call(
+      final BigInt scheduleCount = (await vestingService.web3client.call(
         contract: vestingService.deployedContract,
         function: vestingService.getVestingSchedulesCountByBeneficiary,
-        params: [beneficiary],
+        params: [EthereumAddress.fromHex(beneficiary)],
       ))[0];
 
       store.dispatch(UpdateScheduleCount(scheduleCount: scheduleCount));
@@ -274,20 +284,20 @@ ThunkAction getUserVestingCount({required String beneficiary}) {
 ThunkAction getSchedulesInfo() {
   return (Store store) async {
     try {
-      await computeAmountReleasable(
-          id: store.state.vestingState.scheduleIDs[0]);
+      store.dispatch(SchedulesList());
+      // await computeAmountReleasable(
+      //     id: store.state.vestingState.scheduleIDs[0]);
 
       store.dispatch(UpdateVestingIsLoading(isLoading: false));
       print(store.state.vestingState.isLoading);
       String currentScheduleID =
-          await "${store.state.vestingState.scheduleIDs[0].substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].substring(61, 66)}";
+          await "${store.state.vestingState.scheduleIDs[0].toString().substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].toString().substring(61, 66)}";
 
       store.dispatch(
           UpdateDisplayScheduleID(displayScheduleID: currentScheduleID));
 
       bool isContractFullyVested =
-          DateTime.now().compareTo(store.state.vestingState.scheduleEnd.value) >
-                  0
+          DateTime.now().compareTo(store.state.vestingState.scheduleEnd) > 0
               ? true
               : false;
 
