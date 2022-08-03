@@ -11,22 +11,23 @@ class VestingState with _$VestingState {
 
   @JsonSerializable()
   factory VestingState({
-    required List<Schedules> vestingSchedule,
-    required List<dynamic> scheduleIDs,
-    required bool hasVestingSchedule,
-    required Decimal currentAmountReleasable,
-    required DateTime? scheduleEnd,
-    required DateTime? scheduleStart,
-    required String? displayScheduleID,
-    required BigInt scheduleCount,
-    required bool isContractFullyVested,
-    required BigInt withdrawableAmount,
-    required int cliffEndDays,
-    required int endTimeDays,
-    required bool vestedChecker,
-    required bool isLoading,
-    required bool isRevoked,
-    required DateTime? cliff,
+    @JsonKey(ignore: true) @Default([]) List<Schedules> vestingSchedule,
+    @JsonKey(ignore: true) @Default([]) List<dynamic> scheduleIDs,
+    @JsonKey(ignore: true) @Default(false) bool hasVestingSchedule,
+    @JsonKey(ignore: true) @Default(null) Decimal? currentAmountReleasable,
+    @JsonKey(ignore: true) @Default(null) DateTime? scheduleEnd,
+    @JsonKey(ignore: true) @Default(null) DateTime? scheduleStart,
+    @JsonKey(ignore: true) @Default("") String? displayScheduleID,
+    @JsonKey(ignore: true) @Default(null) BigInt? scheduleCount,
+    @JsonKey(ignore: true) @Default(false) bool isContractFullyVested,
+    @JsonKey(ignore: true) @Default(null) BigInt? withdrawableAmount,
+    @JsonKey(ignore: true) @Default(0) int cliffEndDays,
+    @JsonKey(ignore: true) @Default(0) int endTimeDays,
+    @JsonKey(ignore: true) @Default(false) bool vestedChecker,
+    @JsonKey(ignore: true) @Default(false) bool isLoading,
+    @JsonKey(ignore: true) @Default(false) bool isRevoked,
+    @JsonKey(ignore: true) @Default(null) DateTime? cliff,
+    @JsonKey(ignore: true) @Default(null) Decimal? vestedTotal,
   }) = _VestingState;
 
   factory VestingState.initial() => VestingState(
@@ -46,13 +47,13 @@ class VestingState with _$VestingState {
         isLoading: false,
         isRevoked: false,
         cliff: null,
+        vestedTotal: null,
       );
 
   factory VestingState.fromJson(dynamic json) => _$VestingStateFromJson(json);
 }
 
-class VestingStateConverter
-    implements JsonConverter<VestingState, Map<String, dynamic>?> {
+class VestingStateConverter implements JsonConverter<VestingState, Map<String, dynamic>?> {
   const VestingStateConverter();
 
   @override

@@ -5,15 +5,13 @@ import 'package:redux/redux.dart';
 
 final VestingStateReducers = combineReducers<VestingState>(
   [
-    TypedReducer<VestingState, UpdateVestingSchedule>(
-        _getScheduleByAddressAndIndex),
+    TypedReducer<VestingState, UpdateVestingSchedule>(_getScheduleByAddressAndIndex),
     TypedReducer<VestingState, UpdateScheduleCount>(_getVestingCount),
     TypedReducer<VestingState, UpdateIsRevoked>(_updateVestingIsRevoked),
     TypedReducer<VestingState, UpdateIsLoading>(_updateVestingIsLoading),
     TypedReducer<VestingState, UpdateVestedChecker>(_updateVestedChecker),
     TypedReducer<VestingState, UpdateVestingScheduleID>(_getScheduleIDs),
-    TypedReducer<VestingState, UpdateHasVestingSchedule>(
-        _updateHasVestingSchedule),
+    TypedReducer<VestingState, UpdateHasVestingSchedule>(_updateHasVestingSchedule),
     TypedReducer<VestingState, UpdateReleasableAmount>(_getReleasableAmount),
     TypedReducer<VestingState, UpdateScheduleStart>(_getScheduleStart),
     TypedReducer<VestingState, UpdateDisplayScheduleID>(_getDisplayScheduleID),
@@ -23,6 +21,7 @@ final VestingStateReducers = combineReducers<VestingState>(
     TypedReducer<VestingState, UpdateEndTimeDays>(_updateEndDays),
     TypedReducer<VestingState, UpdateScheduleEnd>(_updateScheduleEnd),
     TypedReducer<VestingState, UpdateCliff>(_updateCliff),
+    TypedReducer<VestingState, UpdateVestedTotal>(_updateVestedTotal),
   ],
 );
 
@@ -86,8 +85,7 @@ VestingState _getReleasableAmount(
   VestingState state,
   UpdateReleasableAmount action,
 ) {
-  return state.copyWith(
-      currentAmountReleasable: action.currentAmountReleasable);
+  return state.copyWith(currentAmountReleasable: action.currentAmountReleasable);
 }
 
 VestingState _getScheduleStart(
@@ -137,4 +135,11 @@ VestingState _updateCliff(
   UpdateCliff action,
 ) {
   return state.copyWith(cliff: action.cliff);
+}
+
+VestingState _updateVestedTotal(
+  VestingState state,
+  UpdateVestedTotal action,
+) {
+  return state.copyWith(vestedTotal: action.vestedTotal);
 }

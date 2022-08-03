@@ -10,7 +10,7 @@ class DappPageViewModel extends Equatable {
   final DateTime? scheduleEnd;
   final DateTime? scheduleStart;
   final int endTimeDays;
-  // final Decimal? vestedTotal;
+  final Decimal? vestedTotal;
   final String? currentScheduleID;
   final BigInt withdrawableAmount;
   final Decimal currentAmountReleasable;
@@ -25,8 +25,7 @@ class DappPageViewModel extends Equatable {
     required this.scheduleEnd,
     required this.scheduleStart,
     required this.endTimeDays,
-
-    // required this.vestedTotal,
+    required this.vestedTotal,
     required this.currentScheduleID,
     required this.withdrawableAmount,
     required this.currentAmountReleasable,
@@ -38,26 +37,23 @@ class DappPageViewModel extends Equatable {
 
   static DappPageViewModel fromStore(Store<AppState> store) {
     return DappPageViewModel(
-      scheduleCount: store.state.vestingState.scheduleCount,
+      scheduleCount: store.state.vestingState.scheduleCount ?? BigInt.zero,
       walletAddress: store.state.userState.walletAddress,
       scheduleEnd: store.state.vestingState.scheduleEnd,
       endTimeDays: store.state.vestingState.endTimeDays,
       scheduleStart: store.state.vestingState.scheduleStart,
-      // vestedTotal:
-      //     store.state.vestingState.vestingSchedule[0].vestedAmount as Decimal,
+      vestedTotal: store.state.vestingState.vestedTotal,
       currentScheduleID: store.state.vestingState.displayScheduleID,
-      currentAmountReleasable: store.state.vestingState.currentAmountReleasable,
+      currentAmountReleasable: store.state.vestingState.currentAmountReleasable ?? Decimal.fromInt(0),
       cliffEndDays: store.state.vestingState.cliffEndDays,
       cliff: store.state.vestingState.cliff,
       isContractFullyVested: store.state.vestingState.isContractFullyVested,
       onStart: () {
         store.dispatch(
-          getScheduleByAddressAndIndex(
-              index: 0,
-              beneficiaryAddress: store.state.userState.walletAddress),
+          getScheduleByAddressAndIndex(index: 0, beneficiaryAddress: store.state.userState.walletAddress),
         );
       },
-      withdrawableAmount: store.state.vestingState.withdrawableAmount,
+      withdrawableAmount: store.state.vestingState.withdrawableAmount ?? BigInt.zero,
     );
   }
 
@@ -68,7 +64,7 @@ class DappPageViewModel extends Equatable {
         scheduleEnd,
         endTimeDays,
         scheduleStart,
-        // vestedTotal,
+        vestedTotal,
         currentScheduleID,
         currentAmountReleasable,
         cliffEndDays,

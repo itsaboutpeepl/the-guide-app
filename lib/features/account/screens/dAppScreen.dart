@@ -8,6 +8,7 @@ import 'package:guide_liverpool/models/vesting_state.dart';
 import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/redux/viewsmodels/dappPageViewModel.dart';
+import 'package:guide_liverpool/utils/format.dart';
 import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 
 String _loremIpsum =
@@ -56,7 +57,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 2,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "${viewModel.currentScheduleID}",
+                        value: "${Formatter.formatEthAddress(viewModel.currentScheduleID)}",
                         extraText: "",
                         title: "Schedule ID",
                       ),
@@ -65,7 +66,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 2,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "#####",
+                        value: "${viewModel.vestedTotal ?? 0}",
                         extraText: "",
                         title: "Vested Amount",
                       ),
@@ -129,11 +130,7 @@ class _DAppScreenState extends State<DAppScreen> {
 }
 
 class VestingInfoCard extends StatelessWidget {
-  const VestingInfoCard(
-      {Key? key,
-      required this.title,
-      required this.extraText,
-      required this.value})
+  const VestingInfoCard({Key? key, required this.title, required this.extraText, required this.value})
       : super(key: key);
 
   final String value;
