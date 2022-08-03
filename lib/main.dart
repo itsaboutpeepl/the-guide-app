@@ -84,6 +84,7 @@ void main() async {
 
     //Pass the store to the Main App which injects it into the entire tree.
     runApp(MyApp(store));
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   }, (exception, stackTrace) async {
     if (kReleaseMode) {
       await Sentry.captureException(exception, stackTrace: stackTrace);
