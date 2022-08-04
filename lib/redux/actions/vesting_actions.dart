@@ -1,5 +1,3 @@
-import 'dart:typed_data';
-
 import 'package:decimal/decimal.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/dateTimeFormat.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/decimal_handler.dart';
@@ -119,17 +117,21 @@ ThunkAction getWithdrawableAmount() {
   return (Store store) async {
     try {
       final amount = (await vestingService.web3client.call(
-          contract: vestingService.deployedContract, function: vestingService.getWithdrawableAmount, params: []))[0];
+          contract: vestingService.deployedContract,
+          function: vestingService.getWithdrawableAmount,
+          params: []))[0];
 
       store.dispatch(WithdrawableAmount(withdrawableAmount: amount));
     } catch (e, s) {
       log.error('ERROR - getWithdrawableAmount $e');
-      await Sentry.captureException(e, stackTrace: s, hint: 'ERROR - getWithdrawableAmount $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getWithdrawableAmount $e');
     }
   };
 }
 
-ThunkAction getScheduleByAddressAndIndex({required int index, required String beneficiaryAddress}) {
+ThunkAction getScheduleByAddressAndIndex(
+    {required int index, required String beneficiaryAddress}) {
   return (Store store) async {
     try {
       store.dispatch(UpdateVestingIsLoading(isLoading: true));
@@ -159,7 +161,8 @@ ThunkAction getScheduleByAddressAndIndex({required int index, required String be
       );
 
       final DateTime scheduleEnd = DateTime.fromMillisecondsSinceEpoch(
-          scheduleStart.millisecondsSinceEpoch + scheduleDuration.millisecondsSinceEpoch);
+          scheduleStart.millisecondsSinceEpoch +
+              scheduleDuration.millisecondsSinceEpoch);
 
       store.dispatch(UpdateScheduleEnd(scheduleEnd: scheduleEnd));
 
@@ -171,11 +174,13 @@ ThunkAction getScheduleByAddressAndIndex({required int index, required String be
 
       store.dispatch(UpdateCliff(cliff: cliff));
 
-      final Decimal vestedTotal = toDecimal(BigInt.parse(schedule[7].toString()), 18);
+      final Decimal vestedTotal =
+          toDecimal(BigInt.parse(schedule[7].toString()), 18);
 
       store.dispatch(UpdateVestedTotal(vestedTotal: vestedTotal));
 
-      store.dispatch(UpdateVestedChecker(vestedChecker: vestedTotal == Decimal.zero ? false : true));
+      store.dispatch(UpdateVestedChecker(
+          vestedChecker: vestedTotal == Decimal.zero ? false : true));
 
       final int endTimeDays = daysBetweenInt(DateTime.now(), scheduleEnd);
       final int cliffEndDays = daysBetweenInt(DateTime.now(), cliff);
@@ -200,7 +205,8 @@ ThunkAction getScheduleByAddressAndIndex({required int index, required String be
       store.dispatch(UpdateVestingSchedule(vestingSchedule: vestingSchedules));
     } catch (e, s) {
       log.error('ERROR - getScheduleByAddressAndIndex $e');
-      await Sentry.captureException(e, stackTrace: s, hint: 'ERROR - getScheduleByAddressAndIndex $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getScheduleByAddressAndIndex $e');
     }
   };
 }
@@ -215,10 +221,12 @@ ThunkAction computeAmountReleasable({required String id}) {
         params: [id],
       ))[0];
 
-      store.dispatch(UpdateReleasableAmount(currentAmountReleasable: toDecimal(amountreleasable, 18)));
+      store.dispatch(UpdateReleasableAmount(
+          currentAmountReleasable: toDecimal(amountreleasable, 18)));
     } catch (e, s) {
       log.error('ERROR - computeAmountReleasable $e');
-      await Sentry.captureException(e, stackTrace: s, hint: 'ERROR - computeAmountReleasable $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - computeAmountReleasable $e');
     }
   };
 }
@@ -226,25 +234,30 @@ ThunkAction computeAmountReleasable({required String id}) {
 ThunkAction SchedulesList() {
   return (Store store) async {
     try {
-      store.dispatch(getUserVestingCount(beneficiary: store.state.userState.walletAddress));
+      store.dispatch(getUserVestingCount(
+          beneficiary: store.state.userState.walletAddress));
       BigInt scheduleCount = store.state.vestingState.scheduleCount;
       print(scheduleCount.toInt());
 
       List<dynamic> schedules = [];
 
       for (int i = 0; i < scheduleCount.toInt(); i++) {
-        final Uint8List vestingScheduleId = (await vestingService.web3client.call(
+        final vestingScheduleId = (await vestingService.web3client.call(
             contract: vestingService.deployedContract,
             function: vestingService.getSchedulesIDsList,
-            params: [EthereumAddress.fromHex(store.state.userState.walletAddress), BigInt.from(i)]))[0];
+            params: [
+              EthereumAddress.fromHex(store.state.userState.walletAddress),
+              BigInt.from(i)
+            ]))[0];
 
-        schedules.add(bytesToHex((vestingScheduleId), include0x: true));
+        schedules.add(bytesToHex(vestingScheduleId, include0x: true));
       }
 
       store.dispatch(UpdateVestingScheduleID(scheduleIDs: schedules));
     } catch (e, s) {
       log.error('ERROR - getUserVestingSchedulesList $e');
-      await Sentry.captureException(e, stackTrace: s, hint: 'ERROR - getUserVestingSchedulesList $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getUserVestingSchedulesList $e');
     }
   };
 }
@@ -261,7 +274,8 @@ ThunkAction getUserVestingCount({required String beneficiary}) {
       store.dispatch(UpdateScheduleCount(scheduleCount: scheduleCount));
     } catch (e, s) {
       log.error('ERROR - getUserVestingCount $e');
-      await Sentry.captureException(e, stackTrace: s, hint: 'ERROR - getUserVestingCount $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getUserVestingCount $e');
     }
   };
 }
@@ -270,25 +284,28 @@ ThunkAction getSchedulesInfo() {
   return (Store store) async {
     try {
       store.dispatch(SchedulesList());
-      //await computeAmountReleasable(id: store.state.vestingState.scheduleIDs[0]);
+      // await computeAmountReleasable(
+      //     id: store.state.vestingState.scheduleIDs[0]);
+
       store.dispatch(UpdateVestingIsLoading(isLoading: false));
 
-      store.dispatch(UpdateDisplayScheduleID(displayScheduleID: store.state.vestingState.scheduleIDs[0]));
+      String currentScheduleID =
+          "${store.state.vestingState.scheduleIDs[0].toString().substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].toString().substring(61, 66)}";
 
-      bool isContractFullyVested = DateTime.now().compareTo(store.state.vestingState.scheduleEnd) > 0 ? true : false;
+      store.dispatch(
+          UpdateDisplayScheduleID(displayScheduleID: currentScheduleID));
 
-      store.dispatch(UpdateIsFullyVested(isContractFullyVested: isContractFullyVested));
+      bool isContractFullyVested =
+          DateTime.now().compareTo(store.state.vestingState.scheduleEnd) > 0
+              ? true
+              : false;
+
+      store.dispatch(
+          UpdateIsFullyVested(isContractFullyVested: isContractFullyVested));
     } catch (e, s) {
       log.error('ERROR - getSchedulesInfo $e');
-      await Sentry.captureException(e, stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
+      await Sentry.captureException(e,
+          stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
     }
   };
-}
-
-Uint8List padUint8ListTo32(Uint8List data) {
-  assert(data.length <= 32);
-  if (data.length == 32) return data;
-
-  // todo there must be a faster way to do this?
-  return Uint8List(32)..setRange(32 - data.length, 32, data);
 }

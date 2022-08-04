@@ -57,7 +57,8 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 2,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "${Formatter.formatEthAddress(viewModel.currentScheduleID)}",
+                        value:
+                            "${Formatter.formatEthAddress(viewModel.currentScheduleID)}",
                         extraText: "",
                         title: "Schedule ID",
                       ),
@@ -66,7 +67,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 2,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "${viewModel.vestedTotal ?? 0}",
+                        value: "${viewModel.vestedTotal ?? 0} PPL",
                         extraText: "",
                         title: "Vested Amount",
                       ),
@@ -76,7 +77,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
                         value: "#####",
-                        extraText: "Vests on: 12th Nov '22",
+                        extraText: "${viewModel.scheduleEnd}",
                         title: "Fully Vested",
                       ),
                     ),
@@ -130,7 +131,11 @@ class _DAppScreenState extends State<DAppScreen> {
 }
 
 class VestingInfoCard extends StatelessWidget {
-  const VestingInfoCard({Key? key, required this.title, required this.extraText, required this.value})
+  const VestingInfoCard(
+      {Key? key,
+      required this.title,
+      required this.extraText,
+      required this.value})
       : super(key: key);
 
   final String value;
