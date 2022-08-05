@@ -6,6 +6,7 @@ import 'package:guide_liverpool/models/vesting_state.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/services/apis/vesting.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
+import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:redux/redux.dart';
@@ -211,14 +212,13 @@ ThunkAction getScheduleByAddressAndIndex(
   };
 }
 
-ThunkAction computeAmountReleasable({required String id}) {
+ThunkAction computeAmountReleasable({required dynamic id}) {
   return (Store store) async {
-    //TODO: Why do I have to convert from list<dynamic> here??
     try {
       final amountreleasable = (await vestingService.web3client.call(
         contract: vestingService.deployedContract,
         function: vestingService.computeReleasableAmount,
-        params: [id],
+        params: [hexToBytes(id)],
       ))[0];
 
       store.dispatch(UpdateReleasableAmount(
@@ -284,8 +284,8 @@ ThunkAction getSchedulesInfo() {
   return (Store store) async {
     try {
       store.dispatch(SchedulesList());
-      // await computeAmountReleasable(
-      //     id: store.state.vestingState.scheduleIDs[0]);
+      store.dispatch(
+          computeAmountReleasable(id: store.state.vestingState.scheduleIDs[0]));
 
       store.dispatch(UpdateVestingIsLoading(isLoading: false));
 

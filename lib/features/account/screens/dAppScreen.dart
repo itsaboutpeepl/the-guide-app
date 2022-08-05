@@ -76,7 +76,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 2,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "#####",
+                        value: "${viewModel.endTimeDays} Days",
                         extraText: "${viewModel.scheduleEnd}",
                         title: "Fully Vested",
                       ),
@@ -85,7 +85,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 2,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "#####",
+                        value: "${viewModel.currentAmountReleasable}",
                         extraText: "",
                         title: "Withdrawable Amount",
                       ),
@@ -94,8 +94,8 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 4,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "1 year, 5 months and 12 days",
-                        extraText: "Vests on: 12th Nov '22",
+                        value: "${viewModel.cliffEndDays}",
+                        extraText: "${viewModel.cliff}",
                         title: "Withdrawable Avaliable in",
                       ),
                     ),
@@ -188,21 +188,3 @@ class VestingInfoCard extends StatelessWidget {
     );
   }
 }
-
-// Text(
-//                 "What is the Peepl Token?",
-//                 style: TextStyle(
-//                   fontSize: 22,
-//                   fontWeight: FontWeight.w900,
-//                 ),
-//               ),
-//               SizedBox(
-//                 height: 5,
-//               ),
-//               Text(
-//                 _loremIpsum,
-//                 style: TextStyle(
-//                   color: Colors.grey[700],
-//                   fontSize: 13,
-//                 ),
-//               )
