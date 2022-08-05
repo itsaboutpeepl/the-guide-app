@@ -8,8 +8,8 @@ String readTimestamp(int timestamp) {
   return dateTime24;
 }
 
-String dateFormatter(DateTime timeToFormat) {
-  return DateFormat('dd/MM/yyyy, HH:mm').format(timeToFormat);
+String dateFormatter(DateTime? timeToFormat) {
+  return DateFormat('dd/MM/yyyy, HH:mm').format(timeToFormat!);
 }
 
 DateTime readTimeStampToDate(int timestamp) {

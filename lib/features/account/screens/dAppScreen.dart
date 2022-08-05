@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/dateTimeFormat.dart';
 import 'package:guide_liverpool/features/shared/widgets/ShimmerButton.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/models/app_state.dart';
@@ -10,9 +11,6 @@ import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/redux/viewsmodels/dappPageViewModel.dart';
 import 'package:guide_liverpool/utils/format.dart';
 import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
-
-String _loremIpsum =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
 
 class DAppScreen extends StatefulWidget {
   const DAppScreen({Key? key}) : super(key: key);
@@ -77,7 +75,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
                         value: "${viewModel.endTimeDays} Days",
-                        extraText: "${viewModel.scheduleEnd}",
+                        extraText: "${dateFormatter(viewModel.scheduleEnd)}",
                         title: "Fully Vested",
                       ),
                     ),
@@ -94,8 +92,8 @@ class _DAppScreenState extends State<DAppScreen> {
                       crossAxisCellCount: 4,
                       mainAxisCellCount: 1.75,
                       child: VestingInfoCard(
-                        value: "${viewModel.cliffEndDays}",
-                        extraText: "${viewModel.cliff}",
+                        value: "${viewModel.cliffEndDays} Days",
+                        extraText: "${dateFormatter(viewModel.cliff)}",
                         title: "Withdrawable Avaliable in",
                       ),
                     ),

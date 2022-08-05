@@ -183,14 +183,16 @@ ThunkAction getScheduleByAddressAndIndex(
       store.dispatch(UpdateVestedChecker(
           vestedChecker: vestedTotal == Decimal.zero ? false : true));
 
-      final int endTimeDays = daysBetweenInt(DateTime.now(), scheduleEnd);
-      final int cliffEndDays = daysBetweenInt(DateTime.now(), cliff);
+      int endTimeDays = daysBetweenInt(DateTime.now(), scheduleEnd);
+      int cliffEndDays = daysBetweenInt(DateTime.now(), cliff);
 
-      cliffEndDays >= 0 ? daysBetweenInt(DateTime.now(), cliff) : 0;
+      cliffEndDays =
+          cliffEndDays >= 0 ? daysBetweenInt(DateTime.now(), cliff) : 0;
 
       store.dispatch(UpdateCliffEndTimeDays(cliffEndDays: cliffEndDays));
 
-      endTimeDays >= 0 ? daysBetweenInt(DateTime.now(), scheduleEnd) : 0;
+      endTimeDays =
+          endTimeDays >= 0 ? daysBetweenInt(DateTime.now(), scheduleEnd) : 0;
 
       store.dispatch(UpdateEndTimeDays(endTimeDays: endTimeDays));
 
