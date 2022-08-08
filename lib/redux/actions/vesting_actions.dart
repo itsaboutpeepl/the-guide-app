@@ -136,8 +136,6 @@ ThunkAction getScheduleByAddressAndIndex(
     {required int index, required String beneficiaryAddress}) {
   return (Store store) async {
     try {
-      // store.dispatch(getSchedulesInfo());
-
       store.dispatch(SchedulesList());
 
       final schedule = (await vestingService.web3client.call(
@@ -275,9 +273,6 @@ ThunkAction SchedulesList() {
 
       store.dispatch(
           UpdateDisplayScheduleID(displayScheduleID: currentScheduleID));
-
-      //TODO: fix Null DateTime at this point
-
     } catch (e, s) {
       log.error('ERROR - getUserVestingSchedulesList $e');
       await Sentry.captureException(e,
@@ -306,16 +301,3 @@ ThunkAction getUserVestingCount() {
     }
   };
 }
-
-// ThunkAction getSchedulesInfo() {
-//   return (Store store) async {
-//     try {
-//       store.dispatch(SchedulesList());
-      
-//     } catch (e, s) {
-//       log.error('ERROR - getSchedulesInfo $e');
-//       await Sentry.captureException(e,
-//           stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
-//     }
-//   };
-// }
