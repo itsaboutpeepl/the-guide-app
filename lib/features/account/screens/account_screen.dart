@@ -12,6 +12,7 @@ import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
@@ -28,6 +29,9 @@ class _AccountScreenState extends State<AccountScreen> {
       title: I10n.of(context).account,
       body: StoreConnector<AppState, AccountViewModel>(
         distinct: true,
+        onInit: (store) {
+          store.dispatch(getUserVestingCount());
+        },
         converter: AccountViewModel.fromStore,
         builder: (_, viewModel) {
           return Container(
@@ -71,7 +75,8 @@ class _AccountScreenState extends State<AccountScreen> {
                               },
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   !viewModel.isBackup
                                       ? Flexible(
@@ -111,7 +116,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                 context.router.root.push(
                                   Webview(
                                     title: I10n.of(context).legal,
-                                    url: 'https://theguideliverpool.com/the-guide-liverpool-app-privacy-policy/',
+                                    url:
+                                        'https://theguideliverpool.com/the-guide-liverpool-app-privacy-policy/',
                                   ),
                                 );
                               },
@@ -123,7 +129,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                 context.router.root.push(
                                   Webview(
                                     title: "Contact",
-                                    url: 'https://theguideliverpool.com/contact-us/',
+                                    url:
+                                        'https://theguideliverpool.com/contact-us/',
                                   ),
                                 );
                               },
@@ -147,7 +154,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                   TextSpan(
                                       text: "info@theguideliverpool.com \n",
                                       recognizer: TapGestureRecognizer()
-                                        ..onTap = () => UrlLaunch.launchEmail("mailto:info@theguideliverpool.com")),
+                                        ..onTap = () => UrlLaunch.launchEmail(
+                                            "mailto:info@theguideliverpool.com")),
                                   WidgetSpan(
                                       child: SizedBox(
                                     height: 23,
@@ -155,7 +163,8 @@ class _AccountScreenState extends State<AccountScreen> {
                                   TextSpan(
                                       text: "+44 1517020143",
                                       recognizer: TapGestureRecognizer()
-                                        ..onTap = () => UrlLaunch.launchPhone("tel:+441517020143"))
+                                        ..onTap = () => UrlLaunch.launchPhone(
+                                            "tel:+441517020143"))
                                 ],
                               ),
                               textAlign: TextAlign.center,
@@ -196,15 +205,21 @@ Widget aboutModal(BuildContext context) {
             "Liverpool's premier what's on platform",
             textAlign: TextAlign.center,
             style: TextStyle(
-                color: flexColorSchemeLight.primary, fontSize: 30, fontFamily: "Europa", fontWeight: FontWeight.w900),
+                color: flexColorSchemeLight.primary,
+                fontSize: 30,
+                fontFamily: "Europa",
+                fontWeight: FontWeight.w900),
           ),
           SizedBox(
             height: 20,
           ),
           RichText(
             text: TextSpan(
-              style:
-                  TextStyle(color: Colors.grey[800], fontSize: 19, fontFamily: "Europa", fontWeight: FontWeight.w500),
+              style: TextStyle(
+                  color: Colors.grey[800],
+                  fontSize: 19,
+                  fontFamily: "Europa",
+                  fontWeight: FontWeight.w500),
               children: [
                 TextSpan(
                   text:

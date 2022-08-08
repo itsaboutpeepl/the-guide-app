@@ -1,6 +1,7 @@
 import 'package:decimal/decimal.dart';
 import 'package:equatable/equatable.dart';
 import 'package:guide_liverpool/models/app_state.dart';
+
 import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:redux/redux.dart';
 
@@ -12,28 +13,28 @@ class DappPageViewModel extends Equatable {
   final int endTimeDays;
   final Decimal? vestedTotal;
   final String? currentScheduleID;
-  final BigInt withdrawableAmount;
+
   final Decimal currentAmountReleasable;
   final int cliffEndDays;
   final DateTime? cliff;
   final bool isContractFullyVested;
   final Function() onStart;
+  final bool isLoading;
 
-  DappPageViewModel({
-    required this.scheduleCount,
-    required this.walletAddress,
-    required this.scheduleEnd,
-    required this.scheduleStart,
-    required this.endTimeDays,
-    required this.vestedTotal,
-    required this.currentScheduleID,
-    required this.withdrawableAmount,
-    required this.currentAmountReleasable,
-    required this.cliffEndDays,
-    required this.cliff,
-    required this.isContractFullyVested,
-    required this.onStart,
-  });
+  DappPageViewModel(
+      {required this.scheduleCount,
+      required this.walletAddress,
+      required this.scheduleEnd,
+      required this.scheduleStart,
+      required this.endTimeDays,
+      required this.vestedTotal,
+      required this.currentScheduleID,
+      required this.currentAmountReleasable,
+      required this.cliffEndDays,
+      required this.cliff,
+      required this.isContractFullyVested,
+      required this.onStart,
+      required this.isLoading});
 
   static DappPageViewModel fromStore(Store<AppState> store) {
     return DappPageViewModel(
@@ -44,16 +45,23 @@ class DappPageViewModel extends Equatable {
       scheduleStart: store.state.vestingState.scheduleStart,
       vestedTotal: store.state.vestingState.vestedTotal,
       currentScheduleID: store.state.vestingState.displayScheduleID,
-      currentAmountReleasable: store.state.vestingState.currentAmountReleasable ?? Decimal.fromInt(0),
+      currentAmountReleasable:
+          store.state.vestingState.currentAmountReleasable ??
+              Decimal.fromInt(0),
       cliffEndDays: store.state.vestingState.cliffEndDays,
       cliff: store.state.vestingState.cliff,
       isContractFullyVested: store.state.vestingState.isContractFullyVested,
       onStart: () {
-        store.dispatch(
-          getScheduleByAddressAndIndex(index: 0, beneficiaryAddress: store.state.userState.walletAddress),
-        );
+        store.dispatch(getUserVestingCount());
+        // store.dispatch(
+        //   getScheduleByAddressAndIndex(
+        //       index: 0,
+        //       beneficiaryAddress: store.state.userState.walletAddress),
+        // );
+
+        store.dispatch(UpdateVestingIsLoading(isLoading: true));
       },
-      withdrawableAmount: store.state.vestingState.withdrawableAmount ?? BigInt.zero,
+      isLoading: false,
     );
   }
 
@@ -70,6 +78,6 @@ class DappPageViewModel extends Equatable {
         cliffEndDays,
         cliff,
         isContractFullyVested,
-        withdrawableAmount,
+        isLoading,
       ];
 }

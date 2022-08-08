@@ -9,7 +9,11 @@ String readTimestamp(int timestamp) {
 }
 
 String dateFormatter(DateTime? timeToFormat) {
-  return DateFormat('dd/MM/yyyy, HH:mm').format(timeToFormat!);
+  if (timeToFormat != null) {
+    return DateFormat('dd/MM/yyyy, HH:mm').format(timeToFormat);
+  } else {
+    return '0';
+  }
 }
 
 DateTime readTimeStampToDate(int timestamp) {

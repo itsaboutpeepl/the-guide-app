@@ -24,7 +24,7 @@ class VestingState with _$VestingState {
     @JsonKey(ignore: true) @Default(0) int cliffEndDays,
     @JsonKey(ignore: true) @Default(0) int endTimeDays,
     @JsonKey(ignore: true) @Default(false) bool vestedChecker,
-    @JsonKey(ignore: true) @Default(false) bool isLoading,
+    @JsonKey(ignore: true) @Default(true) bool isLoading,
     @JsonKey(ignore: true) @Default(false) bool isRevoked,
     @JsonKey(ignore: true) @Default(null) DateTime? cliff,
     @JsonKey(ignore: true) @Default(null) Decimal? vestedTotal,
@@ -44,7 +44,6 @@ class VestingState with _$VestingState {
         cliffEndDays: 0,
         endTimeDays: 0,
         vestedChecker: false,
-        isLoading: false,
         isRevoked: false,
         cliff: null,
         vestedTotal: null,
@@ -53,7 +52,8 @@ class VestingState with _$VestingState {
   factory VestingState.fromJson(dynamic json) => _$VestingStateFromJson(json);
 }
 
-class VestingStateConverter implements JsonConverter<VestingState, Map<String, dynamic>?> {
+class VestingStateConverter
+    implements JsonConverter<VestingState, Map<String, dynamic>?> {
   const VestingStateConverter();
 
   @override

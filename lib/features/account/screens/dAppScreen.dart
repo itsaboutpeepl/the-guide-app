@@ -6,6 +6,7 @@ import 'package:guide_liverpool/features/shared/widgets/ShimmerButton.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/vesting_state.dart';
+import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/redux/viewsmodels/dappPageViewModel.dart';
@@ -25,9 +26,12 @@ class _DAppScreenState extends State<DAppScreen> {
     return StoreConnector<AppState, DappPageViewModel>(
       distinct: true,
       converter: DappPageViewModel.fromStore,
-      // onInitialBuild: (viewModel) {
-      //   viewModel.onStart();
-      // },
+      onInitialBuild: (viewModel) {
+        // viewModel.onStart();
+      },
+      onInit: (store) {
+        store.dispatch(UpdateIsLoading(isLoading: true));
+      },
       builder: (_, viewModel) => MyScaffold(
         title: "Token Vesting Schedule",
         body: SingleChildScrollView(
@@ -46,58 +50,67 @@ class _DAppScreenState extends State<DAppScreen> {
                 SizedBox(
                   height: 20,
                 ),
-                StaggeredGrid.count(
-                  crossAxisCount: 4,
-                  mainAxisSpacing: 10,
-                  crossAxisSpacing: 5,
-                  children: [
-                    StaggeredGridTile.count(
-                      crossAxisCellCount: 2,
-                      mainAxisCellCount: 1.75,
-                      child: VestingInfoCard(
-                        value:
-                            "${Formatter.formatEthAddress(viewModel.currentScheduleID)}",
-                        extraText: "",
-                        title: "Schedule ID",
-                      ),
-                    ),
-                    StaggeredGridTile.count(
-                      crossAxisCellCount: 2,
-                      mainAxisCellCount: 1.75,
-                      child: VestingInfoCard(
-                        value: "${viewModel.vestedTotal ?? 0} PPL",
-                        extraText: "",
-                        title: "Vested Amount",
-                      ),
-                    ),
-                    StaggeredGridTile.count(
-                      crossAxisCellCount: 2,
-                      mainAxisCellCount: 1.75,
-                      child: VestingInfoCard(
-                        value: "${viewModel.endTimeDays} Days",
-                        extraText: "${dateFormatter(viewModel.scheduleEnd)}",
-                        title: "Fully Vested",
-                      ),
-                    ),
-                    StaggeredGridTile.count(
-                      crossAxisCellCount: 2,
-                      mainAxisCellCount: 1.75,
-                      child: VestingInfoCard(
-                        value: "${viewModel.currentAmountReleasable}",
-                        extraText: "",
-                        title: "Withdrawable Amount",
-                      ),
-                    ),
-                    StaggeredGridTile.count(
-                      crossAxisCellCount: 4,
-                      mainAxisCellCount: 1.75,
-                      child: VestingInfoCard(
-                        value: "${viewModel.cliffEndDays} Days",
-                        extraText: "${dateFormatter(viewModel.cliff)}",
-                        title: "Withdrawable Avaliable in",
-                      ),
-                    ),
-                  ],
+                RefreshIndicator(
+                  onRefresh: () async {
+                    viewModel.onStart();
+                    return Future.delayed(Duration(seconds: 10));
+                  },
+                  child: viewModel.isLoading
+                      ? CircularProgressIndicator()
+                      : StaggeredGrid.count(
+                          crossAxisCount: 4,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 5,
+                          children: [
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 1.75,
+                              child: VestingInfoCard(
+                                value:
+                                    "${Formatter.formatEthAddress(viewModel.currentScheduleID)}",
+                                extraText: "",
+                                title: "Schedule ID",
+                              ),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 1.75,
+                              child: VestingInfoCard(
+                                value: "${viewModel.vestedTotal} PPL",
+                                extraText: "",
+                                title: "Vested Amount",
+                              ),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 1.75,
+                              child: VestingInfoCard(
+                                value: "${viewModel.endTimeDays} Days",
+                                extraText:
+                                    "${dateFormatter(viewModel.scheduleEnd)}",
+                                title: "Fully Vested",
+                              ),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 2,
+                              mainAxisCellCount: 1.75,
+                              child: VestingInfoCard(
+                                value: "${viewModel.currentAmountReleasable}",
+                                extraText: "",
+                                title: "Withdrawable Amount",
+                              ),
+                            ),
+                            StaggeredGridTile.count(
+                              crossAxisCellCount: 4,
+                              mainAxisCellCount: 1.75,
+                              child: VestingInfoCard(
+                                value: "${viewModel.cliffEndDays} Days",
+                                extraText: "${dateFormatter(viewModel.cliff)}",
+                                title: "Withdrawable Avaliable in",
+                              ),
+                            ),
+                          ],
+                        ),
                 ),
                 SizedBox(
                   height: 20,
@@ -113,9 +126,7 @@ class _DAppScreenState extends State<DAppScreen> {
                       ),
                     ),
                   ),
-                  buttonAction: () {
-                    viewModel.onStart();
-                  },
+                  buttonAction: () {},
                   baseColor: Color(0xFFFF344D),
                   highlightColor: Color(0xFFFF344D).withOpacity(0.8),
                 )

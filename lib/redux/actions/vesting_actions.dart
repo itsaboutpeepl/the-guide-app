@@ -3,6 +3,7 @@ import 'package:guide_liverpool/features/guideHome/helpers/dateTimeFormat.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/decimal_handler.dart';
 import 'package:guide_liverpool/models/schedules/schedules.dart';
 import 'package:guide_liverpool/models/vesting_state.dart';
+
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/services/apis/vesting.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
@@ -135,9 +136,9 @@ ThunkAction getScheduleByAddressAndIndex(
     {required int index, required String beneficiaryAddress}) {
   return (Store store) async {
     try {
-      store.dispatch(UpdateVestingIsLoading(isLoading: true));
+      // store.dispatch(getSchedulesInfo());
 
-      store.dispatch(getSchedulesInfo());
+      store.dispatch(SchedulesList());
 
       final schedule = (await vestingService.web3client.call(
         contract: vestingService.deployedContract,
@@ -206,6 +207,16 @@ ThunkAction getScheduleByAddressAndIndex(
           cliffDateTime: dateFormatter(cliff)));
 
       store.dispatch(UpdateVestingSchedule(vestingSchedule: vestingSchedules));
+
+      bool isContractFullyVested =
+          DateTime.now().compareTo(store.state.vestingState.scheduleEnd) > 0
+              ? true
+              : false;
+
+      store.dispatch(
+          UpdateIsFullyVested(isContractFullyVested: isContractFullyVested));
+
+      store.dispatch(UpdateVestingIsLoading(isLoading: false));
     } catch (e, s) {
       log.error('ERROR - getScheduleByAddressAndIndex $e');
       await Sentry.captureException(e,
@@ -236,14 +247,13 @@ ThunkAction computeAmountReleasable({required dynamic id}) {
 ThunkAction SchedulesList() {
   return (Store store) async {
     try {
-      store.dispatch(getUserVestingCount(
-          beneficiary: store.state.userState.walletAddress));
       BigInt scheduleCount = store.state.vestingState.scheduleCount;
-      print(scheduleCount.toInt());
+
+      int scheduleAmount = scheduleCount.toInt();
 
       List<dynamic> schedules = [];
 
-      for (int i = 0; i < scheduleCount.toInt(); i++) {
+      for (int i = 0; i < scheduleAmount; i++) {
         final vestingScheduleId = (await vestingService.web3client.call(
             contract: vestingService.deployedContract,
             function: vestingService.getSchedulesIDsList,
@@ -256,6 +266,18 @@ ThunkAction SchedulesList() {
       }
 
       store.dispatch(UpdateVestingScheduleID(scheduleIDs: schedules));
+
+      store.dispatch(
+          computeAmountReleasable(id: store.state.vestingState.scheduleIDs[0]));
+
+      String currentScheduleID =
+          "${store.state.vestingState.scheduleIDs[0].toString().substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].toString().substring(61, 66)}";
+
+      store.dispatch(
+          UpdateDisplayScheduleID(displayScheduleID: currentScheduleID));
+
+      //TODO: fix Null DateTime at this point
+
     } catch (e, s) {
       log.error('ERROR - getUserVestingSchedulesList $e');
       await Sentry.captureException(e,
@@ -264,16 +286,19 @@ ThunkAction SchedulesList() {
   };
 }
 
-ThunkAction getUserVestingCount({required String beneficiary}) {
+ThunkAction getUserVestingCount() {
   return (Store store) async {
     try {
       final BigInt scheduleCount = (await vestingService.web3client.call(
         contract: vestingService.deployedContract,
         function: vestingService.getVestingSchedulesCountByBeneficiary,
-        params: [EthereumAddress.fromHex(beneficiary)],
+        params: [EthereumAddress.fromHex(store.state.userState.walletAddress)],
       ))[0];
 
       store.dispatch(UpdateScheduleCount(scheduleCount: scheduleCount));
+
+      store.dispatch(getScheduleByAddressAndIndex(
+          index: 0, beneficiaryAddress: store.state.userState.walletAddress));
     } catch (e, s) {
       log.error('ERROR - getUserVestingCount $e');
       await Sentry.captureException(e,
@@ -282,32 +307,15 @@ ThunkAction getUserVestingCount({required String beneficiary}) {
   };
 }
 
-ThunkAction getSchedulesInfo() {
-  return (Store store) async {
-    try {
-      store.dispatch(SchedulesList());
-      store.dispatch(
-          computeAmountReleasable(id: store.state.vestingState.scheduleIDs[0]));
-
-      store.dispatch(UpdateVestingIsLoading(isLoading: false));
-
-      String currentScheduleID =
-          "${store.state.vestingState.scheduleIDs[0].toString().substring(0, 5)}...${store.state.vestingState.scheduleIDs[0].toString().substring(61, 66)}";
-
-      store.dispatch(
-          UpdateDisplayScheduleID(displayScheduleID: currentScheduleID));
-
-      bool isContractFullyVested =
-          DateTime.now().compareTo(store.state.vestingState.scheduleEnd) > 0
-              ? true
-              : false;
-
-      store.dispatch(
-          UpdateIsFullyVested(isContractFullyVested: isContractFullyVested));
-    } catch (e, s) {
-      log.error('ERROR - getSchedulesInfo $e');
-      await Sentry.captureException(e,
-          stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
-    }
-  };
-}
+// ThunkAction getSchedulesInfo() {
+//   return (Store store) async {
+//     try {
+//       store.dispatch(SchedulesList());
+      
+//     } catch (e, s) {
+//       log.error('ERROR - getSchedulesInfo $e');
+//       await Sentry.captureException(e,
+//           stackTrace: s, hint: 'ERROR - getSchedulesInfo $e');
+//     }
+//   };
+// }
