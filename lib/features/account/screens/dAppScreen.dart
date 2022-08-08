@@ -51,10 +51,7 @@ class _DAppScreenState extends State<DAppScreen> {
                   height: 20,
                 ),
                 RefreshIndicator(
-                  onRefresh: () async {
-                    viewModel.onStart();
-                    return Future.delayed(Duration(seconds: 10));
-                  },
+                  onRefresh: () async {},
                   child: viewModel.isLoading
                       ? CircularProgressIndicator()
                       : StaggeredGrid.count(
@@ -66,8 +63,10 @@ class _DAppScreenState extends State<DAppScreen> {
                               crossAxisCellCount: 2,
                               mainAxisCellCount: 1.75,
                               child: VestingInfoCard(
-                                value:
-                                    "${Formatter.formatEthAddress(viewModel.currentScheduleID)}",
+                                value: viewModel.currentScheduleID ==
+                                        'No Vesting Schedule Found'
+                                    ? '${viewModel.currentScheduleID}'
+                                    : '${Formatter.formatEthAddress(viewModel.currentScheduleID)}',
                                 extraText: "",
                                 title: "Schedule ID",
                               ),

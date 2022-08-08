@@ -18,7 +18,7 @@ class DappPageViewModel extends Equatable {
   final int cliffEndDays;
   final DateTime? cliff;
   final bool isContractFullyVested;
-  final Function() onStart;
+
   final bool isLoading;
 
   DappPageViewModel(
@@ -33,7 +33,6 @@ class DappPageViewModel extends Equatable {
       required this.cliffEndDays,
       required this.cliff,
       required this.isContractFullyVested,
-      required this.onStart,
       required this.isLoading});
 
   static DappPageViewModel fromStore(Store<AppState> store) {
@@ -51,16 +50,6 @@ class DappPageViewModel extends Equatable {
       cliffEndDays: store.state.vestingState.cliffEndDays,
       cliff: store.state.vestingState.cliff,
       isContractFullyVested: store.state.vestingState.isContractFullyVested,
-      onStart: () {
-        store.dispatch(getUserVestingCount());
-        // store.dispatch(
-        //   getScheduleByAddressAndIndex(
-        //       index: 0,
-        //       beneficiaryAddress: store.state.userState.walletAddress),
-        // );
-
-        store.dispatch(UpdateVestingIsLoading(isLoading: true));
-      },
       isLoading: false,
     );
   }
