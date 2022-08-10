@@ -18,6 +18,7 @@ class PeeplMediaService {
     Response response = await dio.post(
       '/users/login',
       data: {
+        //TODO: is this supposed to be here or in .env?
         "email": "lee@theguideliverpool.com",
         "password": "NUmK#7mXCp%vzho#ed8Ek2@z",
       },
@@ -29,7 +30,8 @@ class PeeplMediaService {
   }
 
   Future<List<VideoArticle>> featuredVideos() async {
-    Response response = await dio.get('/partners/${dotenv.env['GUIDE_PARTNER_PUBLIC_ID']}/videos');
+    Response response = await dio
+        .get('/partners/${dotenv.env['GUIDE_PARTNER_PUBLIC_ID']}/videos');
 
     List<dynamic> results = response.data['videos'] as List;
     List<VideoArticle> videos = [];

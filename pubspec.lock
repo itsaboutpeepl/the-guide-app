@@ -845,7 +845,7 @@ packages:
     source: hosted
     version: "0.15.0"
   http:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: http
       url: "https://pub.dartlang.org"
@@ -1874,14 +1874,14 @@ packages:
     source: hosted
     version: "1.0.1"
   web3dart:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: web3dart
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.3.5"
   web_socket_channel:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: web_socket_channel
       url: "https://pub.dartlang.org"

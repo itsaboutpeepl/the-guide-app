@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:guide_liverpool/app.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/common/di/di.dart';
+import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:guide_liverpool/utils/storage.dart';
 import 'package:guide_liverpool/utils/stripe.dart';

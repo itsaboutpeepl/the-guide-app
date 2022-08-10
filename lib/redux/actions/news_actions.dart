@@ -28,14 +28,16 @@ class UpdateCurrentTabList {
   final List<BlogArticle> articleList;
   final int currentTabIndex;
 
-  UpdateCurrentTabList({required this.articleList, required this.currentTabIndex});
+  UpdateCurrentTabList(
+      {required this.articleList, required this.currentTabIndex});
 }
 
 class RefreshCurrentTabList {
   final List<BlogArticle> articleList;
   final int currentTabIndex;
 
-  RefreshCurrentTabList({required this.articleList, required this.currentTabIndex});
+  RefreshCurrentTabList(
+      {required this.articleList, required this.currentTabIndex});
 }
 
 class UpdateNewsIsLoading {
@@ -76,10 +78,12 @@ ThunkAction fetchCategoryNames() {
 ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
   return (Store store) async {
     try {
-      List<BlogArticle> newListOfArticles = await newsService.pagedArticlesByCategoryID(query);
+      List<BlogArticle> newListOfArticles =
+          await newsService.pagedArticlesByCategoryID(query);
 
       store.dispatch(RefreshCurrentTabList(
-          articleList: newListOfArticles, currentTabIndex: store.state.newsState.currentTabIndex));
+          articleList: newListOfArticles,
+          currentTabIndex: store.state.newsState.currentTabIndex));
     } catch (e, s) {
       log.error('ERROR - updateCurrentTabList $e');
       await Sentry.captureException(
@@ -94,10 +98,12 @@ ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
 ThunkAction updateCurrentTabList({int page = 1, String query = ""}) {
   return (Store store) async {
     try {
-      List<BlogArticle> newListOfArticles = await newsService.pagedArticlesByCategoryID(query, page: page);
+      List<BlogArticle> newListOfArticles =
+          await newsService.pagedArticlesByCategoryID(query, page: page);
 
-      store.dispatch(
-          UpdateCurrentTabList(articleList: newListOfArticles, currentTabIndex: store.state.newsState.currentTabIndex));
+      store.dispatch(UpdateCurrentTabList(
+          articleList: newListOfArticles,
+          currentTabIndex: store.state.newsState.currentTabIndex));
       store.dispatch(UpdateNewsIsLoading(isLoading: false));
     } catch (e, s) {
       log.error('ERROR - updateCurrentTabList $e');

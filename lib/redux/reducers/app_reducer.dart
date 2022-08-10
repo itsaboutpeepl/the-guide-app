@@ -5,6 +5,7 @@ import 'package:guide_liverpool/redux/reducers/news_reducers.dart';
 import 'package:guide_liverpool/redux/reducers/swap_reducer.dart';
 import 'package:guide_liverpool/redux/reducers/user_reducer.dart';
 import 'package:guide_liverpool/redux/reducers/cash_wallet_reducer.dart';
+import 'package:guide_liverpool/redux/reducers/vesting_reducer.dart';
 
 AppState appReducer(AppState state, dynamic action) {
   return AppState(
@@ -14,5 +15,6 @@ AppState appReducer(AppState state, dynamic action) {
     homePageState: HomePageReducers(state.homePageState, action),
     newsState: NewsStateReducers(state.newsState, action),
     cartState: CartStateReducers(state.cartState, action),
+    vestingState: VestingStateReducers(state.vestingState, action),
   );
 }
