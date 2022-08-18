@@ -16,6 +16,7 @@ class VideoArticle with _$VideoArticle {
     required int rewardAmount,
     required String postID,
     required String postURL,
+    required bool isUserWatched,
   }) = _VideoArticle;
 
   factory VideoArticle.fromJson(dynamic json) => _$VideoArticleFromJson(json);

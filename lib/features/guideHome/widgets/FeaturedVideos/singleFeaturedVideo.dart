@@ -188,17 +188,25 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                       ),
                     )
                   : SizedBox.shrink(),
-              Positioned(
-                right: 20,
-                top: 20,
-                child: Center(
-                  child: Icon(
-                    PeeplIcons.ppl_circles_02,
-                    size: 50.0,
-                    color: Color(0xFFEB4953),
-                  ),
-                ),
-              )
+              widget.videoArticleItem.rewardAmount != 0 && !widget.videoArticleItem.isUserWatched
+                  ? Positioned(
+                      right: 15,
+                      top: 15,
+                      child: Container(
+                        width: 50.0,
+                        height: 50.0,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Icon(
+                          PeeplIcons.ppl_circles_02,
+                          size: 40.0,
+                          color: Color(0xFFEB4953),
+                        ),
+                      ),
+                    )
+                  : SizedBox.shrink()
             ],
           ),
         ),

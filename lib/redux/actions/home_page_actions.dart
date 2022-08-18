@@ -73,8 +73,7 @@ ThunkAction fetchFeaturedVideos() {
   return (Store store) async {
     try {
       await peeplMediaService.loginToDashboard();
-      List<VideoArticle> videoArticles =
-          await peeplMediaService.featuredVideos();
+      List<VideoArticle> videoArticles = await peeplMediaService.featuredVideos(store.state.userState.walletAddress);
       store.dispatch(UpdateFeaturedVideos(featuredVideos: videoArticles));
     } catch (e, s) {
       log.error('ERROR - fetchFeaturedVideos $e');
@@ -108,8 +107,7 @@ ThunkAction fetchDirectoryList() {
     try {
       List<Directory> directoryList = await newsService.directoryList();
       store.dispatch(UpdateDirectoryList(directoryList: directoryList));
-      Future.delayed(Duration(seconds: 2),
-          () => store.dispatch(UpdateIsLoading(isLoading: false)));
+      Future.delayed(Duration(seconds: 2), () => store.dispatch(UpdateIsLoading(isLoading: false)));
     } catch (e, s) {
       log.error('ERROR - fetchDirectoryList $e');
       await Sentry.captureException(
@@ -140,13 +138,10 @@ ThunkAction fetchHomePageData() {
 }
 
 ThunkAction createVideoView(
-    String videoID,
-    void Function(int rewardAmount) successCallback,
-    VoidCallback errorCallback) {
+    String videoID, void Function(int rewardAmount) successCallback, VoidCallback errorCallback) {
   return (Store store) async {
     try {
-      int rewardsIssued = await peeplMediaService.createVideoView(
-          videoID, store.state.userState.walletAddress);
+      int rewardsIssued = await peeplMediaService.createVideoView(videoID, store.state.userState.walletAddress);
       if (rewardsIssued > 0) {
         successCallback(rewardsIssued);
         store.dispatch(getTokenBalanceCall(PeeplToken));

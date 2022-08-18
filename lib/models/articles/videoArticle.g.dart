@@ -16,6 +16,7 @@ _$_VideoArticle _$$_VideoArticleFromJson(Map<String, dynamic> json) =>
       rewardAmount: json['rewardAmount'] as int,
       postID: json['postID'] as String,
       postURL: json['postURL'] as String,
+      isUserWatched: json['isUserWatched'] as bool,
     );
 
 Map<String, dynamic> _$$_VideoArticleToJson(_$_VideoArticle instance) =>
@@ -27,4 +28,5 @@ Map<String, dynamic> _$$_VideoArticleToJson(_$_VideoArticle instance) =>
       'rewardAmount': instance.rewardAmount,
       'postID': instance.postID,
       'postURL': instance.postURL,
+      'isUserWatched': instance.isUserWatched,
     };

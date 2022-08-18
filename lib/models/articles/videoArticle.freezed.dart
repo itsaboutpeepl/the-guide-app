@@ -27,6 +27,7 @@ mixin _$VideoArticle {
   int get rewardAmount => throw _privateConstructorUsedError;
   String get postID => throw _privateConstructorUsedError;
   String get postURL => throw _privateConstructorUsedError;
+  bool get isUserWatched => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +47,8 @@ abstract class $VideoArticleCopyWith<$Res> {
       List<String> category,
       int rewardAmount,
       String postID,
-      String postURL});
+      String postURL,
+      bool isUserWatched});
 }
 
 /// @nodoc
@@ -66,6 +68,7 @@ class _$VideoArticleCopyWithImpl<$Res> implements $VideoArticleCopyWith<$Res> {
     Object? rewardAmount = freezed,
     Object? postID = freezed,
     Object? postURL = freezed,
+    Object? isUserWatched = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -96,6 +99,10 @@ class _$VideoArticleCopyWithImpl<$Res> implements $VideoArticleCopyWith<$Res> {
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
+      isUserWatched: isUserWatched == freezed
+          ? _value.isUserWatched
+          : isUserWatched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -114,7 +121,8 @@ abstract class _$$_VideoArticleCopyWith<$Res>
       List<String> category,
       int rewardAmount,
       String postID,
-      String postURL});
+      String postURL,
+      bool isUserWatched});
 }
 
 /// @nodoc
@@ -137,6 +145,7 @@ class __$$_VideoArticleCopyWithImpl<$Res>
     Object? rewardAmount = freezed,
     Object? postID = freezed,
     Object? postURL = freezed,
+    Object? isUserWatched = freezed,
   }) {
     return _then(_$_VideoArticle(
       title: title == freezed
@@ -167,6 +176,10 @@ class __$$_VideoArticleCopyWithImpl<$Res>
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
+      isUserWatched: isUserWatched == freezed
+          ? _value.isUserWatched
+          : isUserWatched // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -182,7 +195,8 @@ class _$_VideoArticle extends _VideoArticle {
       required this.category,
       required this.rewardAmount,
       required this.postID,
-      required this.postURL})
+      required this.postURL,
+      required this.isUserWatched})
       : super._();
 
   factory _$_VideoArticle.fromJson(Map<String, dynamic> json) =>
@@ -202,10 +216,12 @@ class _$_VideoArticle extends _VideoArticle {
   final String postID;
   @override
   final String postURL;
+  @override
+  final bool isUserWatched;
 
   @override
   String toString() {
-    return 'VideoArticle(title: $title, placeholderImageURL: $placeholderImageURL, videoURL: $videoURL, category: $category, rewardAmount: $rewardAmount, postID: $postID, postURL: $postURL)';
+    return 'VideoArticle(title: $title, placeholderImageURL: $placeholderImageURL, videoURL: $videoURL, category: $category, rewardAmount: $rewardAmount, postID: $postID, postURL: $postURL, isUserWatched: $isUserWatched)';
   }
 
   @override
@@ -221,7 +237,9 @@ class _$_VideoArticle extends _VideoArticle {
             const DeepCollectionEquality()
                 .equals(other.rewardAmount, rewardAmount) &&
             const DeepCollectionEquality().equals(other.postID, postID) &&
-            const DeepCollectionEquality().equals(other.postURL, postURL));
+            const DeepCollectionEquality().equals(other.postURL, postURL) &&
+            const DeepCollectionEquality()
+                .equals(other.isUserWatched, isUserWatched));
   }
 
   @JsonKey(ignore: true)
@@ -234,7 +252,8 @@ class _$_VideoArticle extends _VideoArticle {
       const DeepCollectionEquality().hash(category),
       const DeepCollectionEquality().hash(rewardAmount),
       const DeepCollectionEquality().hash(postID),
-      const DeepCollectionEquality().hash(postURL));
+      const DeepCollectionEquality().hash(postURL),
+      const DeepCollectionEquality().hash(isUserWatched));
 
   @JsonKey(ignore: true)
   @override
@@ -255,7 +274,8 @@ abstract class _VideoArticle extends VideoArticle {
       required final List<String> category,
       required final int rewardAmount,
       required final String postID,
-      required final String postURL}) = _$_VideoArticle;
+      required final String postURL,
+      required final bool isUserWatched}) = _$_VideoArticle;
   _VideoArticle._() : super._();
 
   factory _VideoArticle.fromJson(Map<String, dynamic> json) =
@@ -275,6 +295,8 @@ abstract class _VideoArticle extends VideoArticle {
   String get postID => throw _privateConstructorUsedError;
   @override
   String get postURL => throw _privateConstructorUsedError;
+  @override
+  bool get isUserWatched => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$$_VideoArticleCopyWith<_$_VideoArticle> get copyWith =>

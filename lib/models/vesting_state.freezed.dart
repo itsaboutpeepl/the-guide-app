@@ -247,11 +247,11 @@ class __$$_VestingStateCopyWithImpl<$Res>
   }) {
     return _then(_$_VestingState(
       vestingSchedule: vestingSchedule == freezed
-          ? _value._vestingSchedule
+          ? _value.vestingSchedule
           : vestingSchedule // ignore: cast_nullable_to_non_nullable
               as List<Schedules>,
       scheduleIDs: scheduleIDs == freezed
-          ? _value._scheduleIDs
+          ? _value.scheduleIDs
           : scheduleIDs // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
       hasVestingSchedule: hasVestingSchedule == freezed
@@ -323,8 +323,8 @@ class __$$_VestingStateCopyWithImpl<$Res>
 @JsonSerializable()
 class _$_VestingState extends _VestingState {
   _$_VestingState(
-      {@JsonKey(ignore: true) final List<Schedules> vestingSchedule = const [],
-      @JsonKey(ignore: true) final List<dynamic> scheduleIDs = const [],
+      {@JsonKey(ignore: true) this.vestingSchedule = const [],
+      @JsonKey(ignore: true) this.scheduleIDs = const [],
       @JsonKey(ignore: true) this.hasVestingSchedule = false,
       @JsonKey(ignore: true) this.currentAmountReleasable = null,
       @JsonKey(ignore: true) this.scheduleEnd = null,
@@ -336,33 +336,21 @@ class _$_VestingState extends _VestingState {
       @JsonKey(ignore: true) this.cliffEndDays = 0,
       @JsonKey(ignore: true) this.endTimeDays = 0,
       @JsonKey(ignore: true) this.vestedChecker = false,
-      @JsonKey(ignore: true) this.isLoading = false,
+      @JsonKey(ignore: true) this.isLoading = true,
       @JsonKey(ignore: true) this.isRevoked = false,
       @JsonKey(ignore: true) this.cliff = null,
       @JsonKey(ignore: true) this.vestedTotal = null})
-      : _vestingSchedule = vestingSchedule,
-        _scheduleIDs = scheduleIDs,
-        super._();
+      : super._();
 
   factory _$_VestingState.fromJson(Map<String, dynamic> json) =>
       _$$_VestingStateFromJson(json);
 
-  final List<Schedules> _vestingSchedule;
   @override
   @JsonKey(ignore: true)
-  List<Schedules> get vestingSchedule {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_vestingSchedule);
-  }
-
-  final List<dynamic> _scheduleIDs;
+  final List<Schedules> vestingSchedule;
   @override
   @JsonKey(ignore: true)
-  List<dynamic> get scheduleIDs {
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_scheduleIDs);
-  }
-
+  final List<dynamic> scheduleIDs;
   @override
   @JsonKey(ignore: true)
   final bool hasVestingSchedule;
@@ -420,9 +408,9 @@ class _$_VestingState extends _VestingState {
         (other.runtimeType == runtimeType &&
             other is _$_VestingState &&
             const DeepCollectionEquality()
-                .equals(other._vestingSchedule, _vestingSchedule) &&
+                .equals(other.vestingSchedule, vestingSchedule) &&
             const DeepCollectionEquality()
-                .equals(other._scheduleIDs, _scheduleIDs) &&
+                .equals(other.scheduleIDs, scheduleIDs) &&
             const DeepCollectionEquality()
                 .equals(other.hasVestingSchedule, hasVestingSchedule) &&
             const DeepCollectionEquality().equals(
@@ -456,8 +444,8 @@ class _$_VestingState extends _VestingState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(_vestingSchedule),
-      const DeepCollectionEquality().hash(_scheduleIDs),
+      const DeepCollectionEquality().hash(vestingSchedule),
+      const DeepCollectionEquality().hash(scheduleIDs),
       const DeepCollectionEquality().hash(hasVestingSchedule),
       const DeepCollectionEquality().hash(currentAmountReleasable),
       const DeepCollectionEquality().hash(scheduleEnd),
