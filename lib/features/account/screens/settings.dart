@@ -11,6 +11,7 @@ import 'package:guide_liverpool/redux/viewsmodels/settings.dart';
 import 'package:guide_liverpool/features/shared/widgets/language_selector.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
+import 'package:guide_liverpool/services.dart';
 
 class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
@@ -32,6 +33,33 @@ class SettingsScreen extends StatelessWidget {
                   "${packageInfo.version} ${(packageInfo.buildNumber)}",
                   style: TextStyle(color: Color(0xFF7E7E7E)),
                 ),
+              ),
+              Divider(),
+              ListTile(
+                contentPadding: EdgeInsets.only(
+                  top: 5,
+                  bottom: 5,
+                ),
+                title: Row(
+                  children: <Widget>[
+                    SvgPicture.asset(
+                      'assets/images/social_icon.svg',
+                      width: 15,
+                    ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Text(
+                      "Enable Notifications",
+                      style: TextStyle(fontSize: 18),
+                    ),
+                  ],
+                ),
+                onTap: () {
+                  firebaseMessaging
+                      .requestPermission()
+                      .then((value) => print(value.authorizationStatus));
+                },
               ),
               Divider(),
               ListTile(
