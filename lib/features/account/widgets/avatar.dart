@@ -6,8 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
-import 'package:guide_liverpool/features/home/dialogs/receive.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/utils/format.dart';
@@ -80,6 +78,7 @@ class Avatar extends StatelessWidget {
                     Flexible(
                       child: Container(
                         width: MediaQuery.of(context).size.width * .9,
+                        height: MediaQuery.of(context).size.height * .06,
                         child: TextButton(
                           onPressed: () {
                             Clipboard.setData(
@@ -128,58 +127,60 @@ class Avatar extends StatelessWidget {
                         ),
                       ),
                     ),
-                    // Flexible(
-                    //   child: Container(
-                    //     width: MediaQuery.of(context).size.width * .475,
-                    //     child: TextButton(
-                    //       onPressed: () => context.router.push(DAppScreen()),
-                    //       // showDialog(
-                    //       //   context: context,
-                    //       //   builder: (BuildContext context) => ReceiveDialog(
-                    //       //     'fuse:${viewModel.walletAddress}',
-                    //       //   ),
-                    //       // );
-                    //       style: TextButton.styleFrom(
-                    //         padding: EdgeInsets.all(15.0),
-                    //         backgroundColor: Theme.of(context).colorScheme.secondary,
-                    //         shape: RoundedRectangleBorder(
-                    //           borderRadius: BorderRadius.all(
-                    //             Radius.circular(
-                    //               12.0,
-                    //             ),
-                    //           ),
-                    //         ),
-                    //       ),
-                    //       child: Row(
-                    //         mainAxisAlignment: MainAxisAlignment.center,
-                    //         crossAxisAlignment: CrossAxisAlignment.center,
-                    //         children: <Widget>[
-                    //           Icon(
-                    //             PeeplIcons.ppl_circles_02,
-                    //             color: Color(0xFFFF344D),
-                    //           ),
-                    //           SizedBox(
-                    //             width: 10,
-                    //           ),
-                    //           Flexible(
-                    //             child: AutoSizeText(
-                    //               "Token Vesting",
-                    //               style: TextStyle(
-                    //                 letterSpacing: 0.3,
-                    //                 color: Theme.of(context).colorScheme.onSurface,
-                    //               ),
-                    //               maxLines: 1,
-                    //               presetFontSizes: [
-                    //                 16,
-                    //                 15,
-                    //               ],
-                    //             ),
-                    //           )
-                    //         ],
-                    //       ),
-                    //     ),
-                    //   ),
-                    // ),
+                    SizedBox(width: 5.0),
+                    Flexible(
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 9,
+                        height: MediaQuery.of(context).size.height * .06,
+                        child: TextButton(
+                          onPressed: () => context.router.push(DAppScreen()),
+                          // showDialog(
+                          //   context: context,
+                          //   builder: (BuildContext context) => ReceiveDialog(
+                          //     'fuse:${viewModel.walletAddress}',
+                          //   ),
+                          // );
+                          style: TextButton.styleFrom(
+                            padding: EdgeInsets.all(15.0),
+                            backgroundColor: Theme.of(context).colorScheme.secondary,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(
+                                  12.0,
+                                ),
+                              ),
+                            ),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Icon(
+                                PeeplIcons.ppl_circles_02,
+                                color: Color(0xFFFF344D),
+                              ),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Flexible(
+                                child: AutoSizeText(
+                                  "Token Vesting",
+                                  style: TextStyle(
+                                    letterSpacing: 0.3,
+                                    color: Theme.of(context).colorScheme.onSurface,
+                                  ),
+                                  maxLines: 1,
+                                  presetFontSizes: [
+                                    16,
+                                    15,
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ],
