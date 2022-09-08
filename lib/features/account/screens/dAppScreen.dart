@@ -5,9 +5,19 @@ import 'package:guide_liverpool/features/guideHome/helpers/dateTimeFormat.dart';
 import 'package:guide_liverpool/features/shared/widgets/ShimmerButton.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/models/app_state.dart';
+<<<<<<< HEAD
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/dappPageViewModel.dart';
 import 'package:guide_liverpool/utils/format.dart';
+=======
+import 'package:guide_liverpool/models/vesting_state.dart';
+import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
+import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
+import 'package:guide_liverpool/redux/viewsmodels/account.dart';
+import 'package:guide_liverpool/redux/viewsmodels/dappPageViewModel.dart';
+import 'package:guide_liverpool/utils/format.dart';
+import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
+>>>>>>> Dapp-implementation
 
 class DAppScreen extends StatefulWidget {
   const DAppScreen({Key? key}) : super(key: key);

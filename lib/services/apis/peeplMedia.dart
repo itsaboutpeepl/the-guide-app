@@ -29,9 +29,8 @@ class PeeplMediaService {
     this.dio.options.headers['Authorization'] = "Bearer ${results['token']}";
   }
 
-  Future<List<VideoArticle>> featuredVideos(String walletAddress) async {
-    Response response =
-        await dio.get('/partners/${dotenv.env['GUIDE_PARTNER_PUBLIC_ID']}/videos?userWallet=$walletAddress');
+  Future<List<VideoArticle>> featuredVideos() async {
+    Response response = await dio.get('/partners/${dotenv.env['GUIDE_PARTNER_PUBLIC_ID']}/videos');
 
     List<dynamic> results = response.data['videos'] as List;
     List<VideoArticle> videos = [];
