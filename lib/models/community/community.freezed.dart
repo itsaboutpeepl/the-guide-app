@@ -556,7 +556,9 @@ class _$_Community with DiagnosticableTreeMixin implements _Community {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CommunityToJson(this);
+    return _$$_CommunityToJson(
+      this,
+    );
   }
 }
 
@@ -598,53 +600,53 @@ abstract class _Community implements Community {
       _$_Community.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get address => throw _privateConstructorUsedError;
+  String get address;
   @override
-  bool get isMultiBridge => throw _privateConstructorUsedError;
+  bool get isMultiBridge;
   @override
-  bool get isClosed => throw _privateConstructorUsedError;
+  bool get isClosed;
   @override
-  bool get isMember => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(includeIfNull: false)
-  String? get homeTokenAddress => throw _privateConstructorUsedError;
+  bool get isMember;
   @override
   @JsonKey(includeIfNull: false)
-  String? get secondaryTokenAddress => throw _privateConstructorUsedError;
+  String? get homeTokenAddress;
+  @override
+  @JsonKey(includeIfNull: false)
+  String? get secondaryTokenAddress;
   @override
   @JsonKey(includeIfNull: false)
   @CommunityMetadataConverter()
-  CommunityMetadata? get metadata => throw _privateConstructorUsedError;
+  CommunityMetadata? get metadata;
   @override
   @JsonKey(includeIfNull: false)
-  String? get webUrl => throw _privateConstructorUsedError;
+  String? get webUrl;
   @override
   @JsonKey(includeIfNull: false)
-  String? get bridgeType => throw _privateConstructorUsedError;
+  String? get bridgeType;
   @override
   @JsonKey(includeIfNull: false)
-  String? get bridgeDirection => throw _privateConstructorUsedError;
+  String? get bridgeDirection;
   @override
   @JsonKey(includeIfNull: false)
-  String? get homeBridgeAddress => throw _privateConstructorUsedError;
+  String? get homeBridgeAddress;
   @override
   @JsonKey(includeIfNull: false)
-  String? get foreignBridgeAddress => throw _privateConstructorUsedError;
+  String? get foreignBridgeAddress;
   @override
   @JsonKey(includeIfNull: false)
-  String? get foreignTokenAddress => throw _privateConstructorUsedError;
+  String? get foreignTokenAddress;
   @override
   @JsonKey(includeIfNull: false)
   @PluginsConverter()
-  Plugins? get plugins => throw _privateConstructorUsedError;
+  Plugins? get plugins;
   @override
   @JsonKey(includeIfNull: false)
-  List<Business>? get businesses => throw _privateConstructorUsedError;
+  List<Business>? get businesses;
   @override
   @JsonKey(includeIfNull: false)
-  String? get description => throw _privateConstructorUsedError;
+  String? get description;
   @override
   @JsonKey(ignore: true)
   _$$_CommunityCopyWith<_$_Community> get copyWith =>

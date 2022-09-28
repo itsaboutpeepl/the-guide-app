@@ -8,9 +8,9 @@ import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/cart_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/paymentSheet.dart';
+import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/biometric_local_auth.dart';
 import 'package:guide_liverpool/utils/constants.dart';
-import 'package:guide_liverpool/utils/handleStripe.dart';
 
 class PaymentSheet extends StatefulWidget {
   const PaymentSheet({Key? key}) : super(key: key);
@@ -27,7 +27,8 @@ class _PaymentSheetState extends State<PaymentSheet> {
       converter: PaymentSheetViewModel.fromStore,
       onInit: (store) {
         store.dispatch(SetTransferringPayment(false));
-        store.dispatch(UpdateSelectedAmounts((store.state.cartState.cartTotal) / 100, 0));
+        store.dispatch(
+            UpdateSelectedAmounts((store.state.cartState.cartTotal) / 100, 0));
       },
       builder: (_, viewmodel) {
         return Column(
@@ -35,13 +36,17 @@ class _PaymentSheetState extends State<PaymentSheet> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, top: 20, bottom: 10),
+              padding: const EdgeInsets.only(
+                  left: 20, right: 20, top: 20, bottom: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     "Peepl Pay",
-                    style: TextStyle(color: Colors.white, fontSize: 32, fontWeight: FontWeight.w800),
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w800),
                   ),
                   IconButton(
                     splashRadius: 25,
@@ -166,21 +171,30 @@ class _PaymentSheetState extends State<PaymentSheet> {
                         ),
                         buttonAction: () async {
                           if (await BiometricUtils.authenticateIsAvailable()) {
-                            final BiometricAuth biometricAuth = await BiometricUtils.getAvailableBiometrics();
-                            final String biometric = BiometricUtils.getBiometricString(
+                            final BiometricAuth biometricAuth =
+                                await BiometricUtils.getAvailableBiometrics();
+                            final String biometric =
+                                BiometricUtils.getBiometricString(
                               context,
                               biometricAuth,
                             );
-                            await BiometricUtils.showDefaultPopupCheckBiometricAuth(
-                              message: '${I10n.of(context).please_use} $biometric ${I10n.of(context).to_unlock}',
+                            await BiometricUtils
+                                .showDefaultPopupCheckBiometricAuth(
+                              message:
+                                  '${I10n.of(context).please_use} $biometric ${I10n.of(context).to_unlock}',
                               callback: (bool result) {
                                 result
-                                    ? (double.parse(viewmodel.gbpXBalance.replaceAll(",", "")) <=
+                                    ? (double.parse(viewmodel.gbpXBalance
+                                                .replaceAll(",", "")) <=
                                             viewmodel.selectedGBPxAmount)
-                                        ? handleStripe(
-                                            walletAddress: viewmodel.walletAddress,
-                                            amountText: (double.parse(viewmodel.gbpXBalance.replaceAll(",", "")) -
-                                                    viewmodel.selectedGBPxAmount)
+                                        ? stripeService.handleStripe(
+                                            walletAddress:
+                                                viewmodel.walletAddress,
+                                            amountText: (double.parse(viewmodel
+                                                        .gbpXBalance
+                                                        .replaceAll(",", "")) -
+                                                    viewmodel
+                                                        .selectedGBPxAmount)
                                                 .abs()
                                                 .ceil()
                                                 .toStringAsFixed(2),
@@ -193,7 +207,10 @@ class _PaymentSheetState extends State<PaymentSheet> {
                                             },
                                             () {
                                               print("error took place");
-                                              showErrorSnack(context: context, title: "Something went wrong");
+                                              showErrorSnack(
+                                                  context: context,
+                                                  title:
+                                                      "Something went wrong");
                                             },
                                           )
                                     : context.router.pop();
@@ -201,10 +218,14 @@ class _PaymentSheetState extends State<PaymentSheet> {
                             );
                           } else {
                             //TODO: add pincode screen verification.
-                            (double.parse(viewmodel.gbpXBalance.replaceAll(",", "")) <= viewmodel.selectedGBPxAmount)
-                                ? handleStripe(
+                            (double.parse(viewmodel.gbpXBalance
+                                        .replaceAll(",", "")) <=
+                                    viewmodel.selectedGBPxAmount)
+                                ? stripeService.handleStripe(
                                     walletAddress: viewmodel.walletAddress,
-                                    amountText: (double.parse(viewmodel.gbpXBalance.replaceAll(",", "")) -
+                                    amountText: (double.parse(viewmodel
+                                                .gbpXBalance
+                                                .replaceAll(",", "")) -
                                             viewmodel.selectedGBPxAmount)
                                         .abs()
                                         .ceil()
@@ -218,7 +239,9 @@ class _PaymentSheetState extends State<PaymentSheet> {
                                     },
                                     () {
                                       print("error took place");
-                                      showErrorSnack(context: context, title: "Something went wrong");
+                                      showErrorSnack(
+                                          context: context,
+                                          title: "Something went wrong");
                                     },
                                   );
                           }
@@ -267,8 +290,11 @@ class _PPLSliderState extends State<PPLSlider> {
       distinct: true,
       onInit: (store) {
         _amountToBePaid = store.state.cartState.cartTotal.toDouble(); //in pence
-        _GBPXSliderValue = store.state.cartState.cartTotal.toDouble(); //in pence
-        _pplBalance = double.parse(store.state.cashWalletState.tokens[PeeplToken.address]!.getBalance(true));
+        _GBPXSliderValue =
+            store.state.cartState.cartTotal.toDouble(); //in pence
+        _pplBalance = double.parse(store
+            .state.cashWalletState.tokens[PeeplToken.address]!
+            .getBalance(true));
       },
       builder: (_, viewmodel) {
         return Padding(
@@ -289,7 +315,8 @@ class _PPLSliderState extends State<PPLSlider> {
                             ),
                             thumbColor: Colors.white,
                             overlayColor: Colors.grey.withOpacity(0.2),
-                            overlayShape: RoundSliderOverlayShape(overlayRadius: 0.0),
+                            overlayShape:
+                                RoundSliderOverlayShape(overlayRadius: 0.0),
                           ),
                           child: Slider(
                             min: 0.0,
@@ -300,17 +327,20 @@ class _PPLSliderState extends State<PPLSlider> {
                             value: _pplSliderValue,
                             divisions: 100,
                             onChangeEnd: (value) {
-                              _GBPXSliderValue =
-                                  _amountToBePaid - value * 10; //converting the PPL slider value into pence again
+                              _GBPXSliderValue = _amountToBePaid -
+                                  value *
+                                      10; //converting the PPL slider value into pence again
                               _pplSliderValue = value;
                               setState(() {});
-                              viewmodel.updateSelectedValues((_GBPXSliderValue / 100), _pplSliderValue);
+                              viewmodel.updateSelectedValues(
+                                  (_GBPXSliderValue / 100), _pplSliderValue);
                             },
                             onChanged: (value) {
                               setState(
                                 () {
-                                  _GBPXSliderValue =
-                                      _amountToBePaid - value * 10; //converting the PPL slider value into pence again
+                                  _GBPXSliderValue = _amountToBePaid -
+                                      value *
+                                          10; //converting the PPL slider value into pence again
                                   _pplSliderValue = value;
                                 },
                               );
@@ -347,8 +377,12 @@ class _PPLSliderState extends State<PPLSlider> {
                   ),
                   Text.rich(
                     TextSpan(
-                      text: "GBPx ${(_GBPXSliderValue / 100).toStringAsFixed(2)},",
-                      children: [TextSpan(text: " PPL ${_pplSliderValue.toStringAsFixed(2)}")],
+                      text:
+                          "GBPx ${(_GBPXSliderValue / 100).toStringAsFixed(2)},",
+                      children: [
+                        TextSpan(
+                            text: " PPL ${_pplSliderValue.toStringAsFixed(2)}")
+                      ],
                     ),
                     style: TextStyle(
                       color: Colors.grey[300],
@@ -363,7 +397,9 @@ class _PPLSliderState extends State<PPLSlider> {
                     TextSpan(
                       text: "Total ${cFPrice(viewmodel.cartTotal)} | ",
                       children: [
-                        TextSpan(text: "Earn ${getPPLRewardsFromPence(_GBPXSliderValue).toStringAsFixed(2)} "),
+                        TextSpan(
+                            text:
+                                "Earn ${getPPLRewardsFromPence(_GBPXSliderValue).toStringAsFixed(2)} "),
                         WidgetSpan(
                           child: Image.asset(
                             "assets/images/avatar-ppl-red.png",

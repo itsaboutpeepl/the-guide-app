@@ -197,7 +197,9 @@ class _$_BackupBonusPlugin
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BackupBonusPluginToJson(this);
+    return _$$_BackupBonusPluginToJson(
+      this,
+    );
   }
 }
 
@@ -212,13 +214,13 @@ abstract class _BackupBonusPlugin implements BackupBonusPlugin, Plugin {
       _$_BackupBonusPlugin.fromJson;
 
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  String? get amount => throw _privateConstructorUsedError;
+  String? get amount;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_BackupBonusPluginCopyWith<_$_BackupBonusPlugin> get copyWith =>

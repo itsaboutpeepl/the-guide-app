@@ -203,7 +203,9 @@ class _$_Business with DiagnosticableTreeMixin implements _Business {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BusinessToJson(this);
+    return _$$_BusinessToJson(
+      this,
+    );
   }
 }
 
@@ -217,13 +219,13 @@ abstract class _Business implements Business {
   factory _Business.fromJson(Map<String, dynamic> json) = _$_Business.fromJson;
 
   @override
-  BusinessMetadata get metadata => throw _privateConstructorUsedError;
+  BusinessMetadata get metadata;
   @override
-  String get account => throw _privateConstructorUsedError;
+  String get account;
   @override
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
   @JsonKey(ignore: true)
   _$$_BusinessCopyWith<_$_Business> get copyWith =>

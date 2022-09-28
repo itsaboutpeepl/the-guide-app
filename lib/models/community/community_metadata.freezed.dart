@@ -228,7 +228,9 @@ class _$_CommunityMetadata extends _CommunityMetadata
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CommunityMetadataToJson(this);
+    return _$$_CommunityMetadataToJson(
+      this,
+    );
   }
 }
 
@@ -245,15 +247,15 @@ abstract class _CommunityMetadata extends CommunityMetadata {
       _$_CommunityMetadata.fromJson;
 
   @override
-  bool get isDefaultImage => throw _privateConstructorUsedError;
+  bool get isDefaultImage;
   @override
-  String get image => throw _privateConstructorUsedError;
+  String get image;
   @override
-  String get coverPhoto => throw _privateConstructorUsedError;
+  String get coverPhoto;
   @override
-  String get coverPhotoUri => throw _privateConstructorUsedError;
+  String get coverPhotoUri;
   @override
-  String get imageUri => throw _privateConstructorUsedError;
+  String get imageUri;
   @override
   @JsonKey(ignore: true)
   _$$_CommunityMetadataCopyWith<_$_CommunityMetadata> get copyWith =>

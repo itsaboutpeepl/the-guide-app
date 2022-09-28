@@ -256,7 +256,9 @@ class _$_Events extends _Events {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_EventsToJson(this);
+    return _$$_EventsToJson(
+      this,
+    );
   }
 }
 
@@ -275,21 +277,21 @@ abstract class _Events extends Events {
   factory _Events.fromJson(Map<String, dynamic> json) = _$_Events.fromJson;
 
   @override
-  DateTime get startDate => throw _privateConstructorUsedError;
+  DateTime get startDate;
   @override
-  DateTime get endDate => throw _privateConstructorUsedError;
+  DateTime get endDate;
   @override
-  String get eventTitle => throw _privateConstructorUsedError;
+  String get eventTitle;
   @override
-  String get location => throw _privateConstructorUsedError;
+  String get location;
   @override
-  String get latitude => throw _privateConstructorUsedError;
+  String get latitude;
   @override
-  String get longitude => throw _privateConstructorUsedError;
+  String get longitude;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get bookingLink => throw _privateConstructorUsedError;
+  String get bookingLink;
   @override
   @JsonKey(ignore: true)
   _$$_EventsCopyWith<_$_Events> get copyWith =>

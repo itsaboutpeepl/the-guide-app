@@ -887,7 +887,9 @@ class _$CreateWallet extends CreateWallet with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$CreateWalletToJson(this);
+    return _$$CreateWalletToJson(
+      this,
+    );
   }
 }
 
@@ -905,18 +907,18 @@ abstract class CreateWallet extends WalletAction {
       _$CreateWallet.fromJson;
 
   @override
-  int get timestamp => throw _privateConstructorUsedError;
+  int get timestamp;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get txHash => throw _privateConstructorUsedError;
+  String? get txHash;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  int? get blockNumber => throw _privateConstructorUsedError;
+  int? get blockNumber;
   @override
   @JsonKey(ignore: true)
   _$$CreateWalletCopyWith<_$CreateWallet> get copyWith =>
@@ -1488,7 +1490,9 @@ class _$FiatDeposit extends FiatDeposit with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FiatDepositToJson(this);
+    return _$$FiatDepositToJson(
+      this,
+    );
   }
 }
 
@@ -1513,25 +1517,25 @@ abstract class FiatDeposit extends WalletAction {
       _$FiatDeposit.fromJson;
 
   @override
-  int get timestamp => throw _privateConstructorUsedError;
+  int get timestamp;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get txHash => throw _privateConstructorUsedError;
+  String? get txHash;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  int? get blockNumber => throw _privateConstructorUsedError;
-  String get tokenAddress => throw _privateConstructorUsedError;
-  String? get from => throw _privateConstructorUsedError;
-  String get to => throw _privateConstructorUsedError;
-  BigInt get value => throw _privateConstructorUsedError;
-  String get tokenName => throw _privateConstructorUsedError;
-  String get tokenSymbol => throw _privateConstructorUsedError;
-  int get tokenDecimal => throw _privateConstructorUsedError;
+  int? get blockNumber;
+  String get tokenAddress;
+  String? get from;
+  String get to;
+  BigInt get value;
+  String get tokenName;
+  String get tokenSymbol;
+  int get tokenDecimal;
   @override
   @JsonKey(ignore: true)
   _$$FiatDepositCopyWith<_$FiatDeposit> get copyWith =>
@@ -2056,7 +2060,9 @@ class _$JoinCommunity extends JoinCommunity with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$JoinCommunityToJson(this);
+    return _$$JoinCommunityToJson(
+      this,
+    );
   }
 }
 
@@ -2077,21 +2083,21 @@ abstract class JoinCommunity extends WalletAction {
       _$JoinCommunity.fromJson;
 
   @override
-  int get timestamp => throw _privateConstructorUsedError;
+  int get timestamp;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get txHash => throw _privateConstructorUsedError;
+  String? get txHash;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  int? get blockNumber => throw _privateConstructorUsedError;
-  String? get communityAddress => throw _privateConstructorUsedError;
-  String get tokenAddress => throw _privateConstructorUsedError;
-  String? get communityName => throw _privateConstructorUsedError;
+  int? get blockNumber;
+  String? get communityAddress;
+  String get tokenAddress;
+  String? get communityName;
   @override
   @JsonKey(ignore: true)
   _$$JoinCommunityCopyWith<_$JoinCommunity> get copyWith =>
@@ -2697,7 +2703,9 @@ class _$Bonus extends Bonus with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$BonusToJson(this);
+    return _$$BonusToJson(
+      this,
+    );
   }
 }
 
@@ -2722,26 +2730,26 @@ abstract class Bonus extends WalletAction {
   factory Bonus.fromJson(Map<String, dynamic> json) = _$Bonus.fromJson;
 
   @override
-  int get timestamp => throw _privateConstructorUsedError;
+  int get timestamp;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get txHash => throw _privateConstructorUsedError;
+  String? get txHash;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  int? get blockNumber => throw _privateConstructorUsedError;
-  String get tokenAddress => throw _privateConstructorUsedError;
-  String? get from => throw _privateConstructorUsedError;
-  String get to => throw _privateConstructorUsedError;
-  BigInt get value => throw _privateConstructorUsedError;
-  String get tokenName => throw _privateConstructorUsedError;
-  String get tokenSymbol => throw _privateConstructorUsedError;
-  int get tokenDecimal => throw _privateConstructorUsedError;
-  String? get bonusType => throw _privateConstructorUsedError;
+  int? get blockNumber;
+  String get tokenAddress;
+  String? get from;
+  String get to;
+  BigInt get value;
+  String get tokenName;
+  String get tokenSymbol;
+  int get tokenDecimal;
+  String? get bonusType;
   @override
   @JsonKey(ignore: true)
   _$$BonusCopyWith<_$Bonus> get copyWith => throw _privateConstructorUsedError;
@@ -3308,7 +3316,9 @@ class _$Send extends Send with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SendToJson(this);
+    return _$$SendToJson(
+      this,
+    );
   }
 }
 
@@ -3332,25 +3342,25 @@ abstract class Send extends WalletAction {
   factory Send.fromJson(Map<String, dynamic> json) = _$Send.fromJson;
 
   @override
-  int get timestamp => throw _privateConstructorUsedError;
+  int get timestamp;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get txHash => throw _privateConstructorUsedError;
+  String? get txHash;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  int? get blockNumber => throw _privateConstructorUsedError;
-  String get tokenAddress => throw _privateConstructorUsedError;
-  String get from => throw _privateConstructorUsedError;
-  String get to => throw _privateConstructorUsedError;
-  BigInt get value => throw _privateConstructorUsedError;
-  String get tokenName => throw _privateConstructorUsedError;
-  String get tokenSymbol => throw _privateConstructorUsedError;
-  int get tokenDecimal => throw _privateConstructorUsedError;
+  int? get blockNumber;
+  String get tokenAddress;
+  String get from;
+  String get to;
+  BigInt get value;
+  String get tokenName;
+  String get tokenSymbol;
+  int get tokenDecimal;
   @override
   @JsonKey(ignore: true)
   _$$SendCopyWith<_$Send> get copyWith => throw _privateConstructorUsedError;
@@ -3918,7 +3928,9 @@ class _$Receive extends Receive with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$ReceiveToJson(this);
+    return _$$ReceiveToJson(
+      this,
+    );
   }
 }
 
@@ -3942,25 +3954,25 @@ abstract class Receive extends WalletAction {
   factory Receive.fromJson(Map<String, dynamic> json) = _$Receive.fromJson;
 
   @override
-  int get timestamp => throw _privateConstructorUsedError;
+  int get timestamp;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get txHash => throw _privateConstructorUsedError;
+  String? get txHash;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  int? get blockNumber => throw _privateConstructorUsedError;
-  String get tokenAddress => throw _privateConstructorUsedError;
-  String get from => throw _privateConstructorUsedError;
-  String get to => throw _privateConstructorUsedError;
-  BigInt get value => throw _privateConstructorUsedError;
-  String get tokenName => throw _privateConstructorUsedError;
-  String get tokenSymbol => throw _privateConstructorUsedError;
-  int get tokenDecimal => throw _privateConstructorUsedError;
+  int? get blockNumber;
+  String get tokenAddress;
+  String get from;
+  String get to;
+  BigInt get value;
+  String get tokenName;
+  String get tokenSymbol;
+  int get tokenDecimal;
   @override
   @JsonKey(ignore: true)
   _$$ReceiveCopyWith<_$Receive> get copyWith =>
@@ -4465,7 +4477,9 @@ class _$Swap extends Swap with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$SwapToJson(this);
+    return _$$SwapToJson(
+      this,
+    );
   }
 }
 
@@ -4483,20 +4497,20 @@ abstract class Swap extends WalletAction {
   factory Swap.fromJson(Map<String, dynamic> json) = _$Swap.fromJson;
 
   @override
-  int get timestamp => throw _privateConstructorUsedError;
+  int get timestamp;
   @override
   @JsonKey(name: '_id')
-  String get id => throw _privateConstructorUsedError;
+  String get id;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get txHash => throw _privateConstructorUsedError;
+  String? get txHash;
   @override
-  String get status => throw _privateConstructorUsedError;
+  String get status;
   @override
-  int? get blockNumber => throw _privateConstructorUsedError;
+  int? get blockNumber;
   @JsonKey(name: 'metadata')
-  TradeInfo? get tradeInfo => throw _privateConstructorUsedError;
+  TradeInfo? get tradeInfo;
   @override
   @JsonKey(ignore: true)
   _$$SwapCopyWith<_$Swap> get copyWith => throw _privateConstructorUsedError;

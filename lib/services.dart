@@ -12,6 +12,7 @@ import 'package:guide_liverpool/services/apis/peeplPay.dart';
 import 'package:guide_liverpool/services/apis/stripePay.dart';
 import 'package:guide_liverpool/services/apis/vesting.dart';
 import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
+import 'package:guide_liverpool/utils/stripe.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:wallet_core/wallet_core.dart';
 
@@ -51,3 +52,5 @@ final FirebaseMessaging firebaseMessaging = getIt<FirebaseMessaging>();
 final PhoneNumberUtil phoneNumberUtil = getIt<PhoneNumberUtil>();
 
 final IOnBoardStrategy onBoardStrategy = getIt<IOnBoardStrategy>();
+
+final StripeService stripeService = getIt<StripeService>();

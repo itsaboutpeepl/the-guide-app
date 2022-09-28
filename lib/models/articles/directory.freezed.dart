@@ -314,7 +314,9 @@ class _$_Directory extends _Directory {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_DirectoryToJson(this);
+    return _$$_DirectoryToJson(
+      this,
+    );
   }
 }
 
@@ -337,27 +339,27 @@ abstract class _Directory extends Directory {
       _$_Directory.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get latitude => throw _privateConstructorUsedError;
+  String get latitude;
   @override
-  String get longitude => throw _privateConstructorUsedError;
+  String get longitude;
   @override
-  String get website => throw _privateConstructorUsedError;
+  String get website;
   @override
-  String get twitterLink => throw _privateConstructorUsedError;
+  String get twitterLink;
   @override
-  String get instaLink => throw _privateConstructorUsedError;
+  String get instaLink;
   @override
-  String get facebookLink => throw _privateConstructorUsedError;
+  String get facebookLink;
   @override
-  String get imageURL => throw _privateConstructorUsedError;
+  String get imageURL;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get address => throw _privateConstructorUsedError;
+  String get address;
   @override
-  String get guideWebLink => throw _privateConstructorUsedError;
+  String get guideWebLink;
   @override
   @JsonKey(ignore: true)
   _$$_DirectoryCopyWith<_$_Directory> get copyWith =>

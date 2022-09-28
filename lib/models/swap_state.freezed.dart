@@ -161,7 +161,9 @@ class _$_SwapState extends _SwapState with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SwapStateToJson(this);
+    return _$$_SwapStateToJson(
+      this,
+    );
   }
 }
 
@@ -176,9 +178,9 @@ abstract class _SwapState extends SwapState {
 
   @override
   @JsonKey(ignore: true)
-  Map<String, Token> get tokens => throw _privateConstructorUsedError;
+  Map<String, Token> get tokens;
   @override
-  Map<String, String> get tokensImages => throw _privateConstructorUsedError;
+  Map<String, String> get tokensImages;
   @override
   @JsonKey(ignore: true)
   _$$_SwapStateCopyWith<_$_SwapState> get copyWith =>

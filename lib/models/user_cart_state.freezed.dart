@@ -286,7 +286,9 @@ class _$_UserCartState extends _UserCartState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserCartStateToJson(this);
+    return _$$_UserCartStateToJson(
+      this,
+    );
   }
 }
 
@@ -307,23 +309,23 @@ abstract class _UserCartState extends UserCartState {
       _$_UserCartState.fromJson;
 
   @override
-  String get paymentIntentID => throw _privateConstructorUsedError;
+  String get paymentIntentID;
   @override
-  double get selectedGBPxAmount => throw _privateConstructorUsedError;
+  double get selectedGBPxAmount;
   @override
-  double get selectedPPLAmount => throw _privateConstructorUsedError;
+  double get selectedPPLAmount;
   @override
-  bool get transferringTokens => throw _privateConstructorUsedError;
+  bool get transferringTokens;
   @override
-  bool get errorCompletingPayment => throw _privateConstructorUsedError;
+  bool get errorCompletingPayment;
   @override
-  bool get confirmedPayment => throw _privateConstructorUsedError;
+  bool get confirmedPayment;
   @override
-  String get restaurantName => throw _privateConstructorUsedError;
+  String get restaurantName;
   @override
-  int get cartTotal => throw _privateConstructorUsedError;
+  int get cartTotal;
   @override
-  String get restaurantWalletAddress => throw _privateConstructorUsedError;
+  String get restaurantWalletAddress;
   @override
   @JsonKey(ignore: true)
   _$$_UserCartStateCopyWith<_$_UserCartState> get copyWith =>

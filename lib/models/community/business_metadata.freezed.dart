@@ -287,7 +287,9 @@ class _$_BusinessMetadata
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BusinessMetadataToJson(this);
+    return _$$_BusinessMetadataToJson(
+      this,
+    );
   }
 }
 
@@ -306,21 +308,21 @@ abstract class _BusinessMetadata implements BusinessMetadata {
       _$_BusinessMetadata.fromJson;
 
   @override
-  String get address => throw _privateConstructorUsedError;
+  String get address;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
-  String get image => throw _privateConstructorUsedError;
+  String get image;
   @override
-  String get coverPhoto => throw _privateConstructorUsedError;
+  String get coverPhoto;
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  String get phoneNumber => throw _privateConstructorUsedError;
+  String get phoneNumber;
   @override
-  String get website => throw _privateConstructorUsedError;
+  String get website;
   @override
-  List<double> get latLng => throw _privateConstructorUsedError;
+  List<double> get latLng;
   @override
   @JsonKey(ignore: true)
   _$$_BusinessMetadataCopyWith<_$_BusinessMetadata> get copyWith =>

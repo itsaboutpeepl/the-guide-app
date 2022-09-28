@@ -206,7 +206,8 @@ ThunkAction loginHandler(
             properties: Map.from({"error": e.toString()}),
           );
           onError(e.toString());
-          await Sentry.captureMessage('Error in login with phone number: ${e.toString()}');
+          await Sentry.captureMessage(
+              'Error in login with phone number: ${e.toString()}');
         },
       );
     } catch (e, s) {
@@ -371,7 +372,8 @@ ThunkAction createLocalAccountCall(
           accountAddress.toString(),
         ),
       );
-      store.dispatch(SetDefaultCommunity(defaultCommunityAddress.toLowerCase()));
+      store
+          .dispatch(SetDefaultCommunity(defaultCommunityAddress.toLowerCase()));
       Segment.track(
         eventName: 'New User: Create Wallet',
       );
@@ -424,12 +426,16 @@ ThunkAction syncContactsCall() {
                 return phoneNumber.e164;
               } catch (e) {
                 String formatted = formatPhoneNumber(value, countryCode);
-                bool isValid = await phoneNumberUtil.validate(formatted, isoCode).catchError(
+                bool isValid = await phoneNumberUtil
+                    .validate(formatted, regionCode: isoCode)
+                    .catchError(
                       (erro) => false,
                     );
                 if (isValid) {
-                  String phoneNum = await phoneNumberUtil.format(formatted, isoCode);
-                  PhoneNumber phoneNumber = await phoneNumberUtil.parse(phoneNum);
+                  String phoneNum =
+                      await phoneNumberUtil.format(formatted, isoCode);
+                  PhoneNumber phoneNumber =
+                      await phoneNumberUtil.parse(phoneNum);
                   return phoneNumber.e164;
                 }
                 return '';
@@ -438,7 +444,8 @@ ThunkAction syncContactsCall() {
           ),
         );
         List<String> result = await phones;
-        result = result.toSet().toList()..removeWhere((element) => element == '');
+        result = result.toSet().toList()
+          ..removeWhere((element) => element == '');
         for (String phone in result) {
           if (!syncedContacts.contains(phone)) {
             newPhones.add(phone);
@@ -447,7 +454,8 @@ ThunkAction syncContactsCall() {
       }
       if (newPhones.length == 0) {
         dynamic response = await walletApi.syncContacts(newPhones);
-        store.dispatch(SyncContactsProgress(newPhones, List<Map<String, dynamic>>.from(response['newContacts'])));
+        store.dispatch(SyncContactsProgress(newPhones,
+            List<Map<String, dynamic>>.from(response['newContacts'])));
         await walletApi.ackSync(response['nonce']);
       } else {
         int limit = 100;
@@ -542,7 +550,8 @@ ThunkAction saveUserProfile(walletAddress) {
   return (Store store) async {
     String displayName = store.state.userState.displayName;
     try {
-      Map<String, dynamic> userProfile = await walletApi.getUserProfile(walletAddress);
+      Map<String, dynamic> userProfile =
+          await walletApi.getUserProfile(walletAddress);
       if (userProfile.isNotEmpty) {
         if (userProfile.containsKey('avatarHash')) {
           store.dispatch(SetUserAvatar(userProfile['imageUri']));
@@ -590,7 +599,8 @@ ThunkAction setupWalletCall(Map<String, dynamic> walletData) {
       final List<String> networks = List<String>.from(walletData['networks']);
       final String walletAddress = walletData['walletAddress'];
       final String privateKey = store.state.userState.privateKey;
-      final bool backup = walletData.containsKey('backup') ? walletData['backup'] : false;
+      final bool backup =
+          walletData.containsKey('backup') ? walletData['backup'] : false;
       final WalletModules walletModules = WalletModules.fromJson(
         walletData['walletModules'],
       );
@@ -707,9 +717,12 @@ ThunkAction setUpFuseWeb3() {
             url: UrlConstants.FUSE_RPC_URL,
             networkId: Variables.FUSE_CHAIN_ID,
             defaultCommunityAddress: defaultCommunityAddress,
-            communityManagerAddress: store.state.userState.walletModules.communityManager,
-            transferManagerAddress: store.state.userState.walletModules.transferManager,
-            daiPointsManagerAddress: store.state.userState.walletModules.daiPointsManager,
+            communityManagerAddress:
+                store.state.userState.walletModules.communityManager,
+            transferManagerAddress:
+                store.state.userState.walletModules.transferManager,
+            daiPointsManagerAddress:
+                store.state.userState.walletModules.daiPointsManager,
           ),
           instanceName: 'fuseWeb3',
         );

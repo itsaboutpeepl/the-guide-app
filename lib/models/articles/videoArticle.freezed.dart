@@ -262,7 +262,9 @@ class _$_VideoArticle extends _VideoArticle {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VideoArticleToJson(this);
+    return _$$_VideoArticleToJson(
+      this,
+    );
   }
 }
 
@@ -282,21 +284,21 @@ abstract class _VideoArticle extends VideoArticle {
       _$_VideoArticle.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get placeholderImageURL => throw _privateConstructorUsedError;
+  String get placeholderImageURL;
   @override
-  String get videoURL => throw _privateConstructorUsedError;
+  String get videoURL;
   @override
-  List<String> get category => throw _privateConstructorUsedError;
+  List<String> get category;
   @override
-  int get rewardAmount => throw _privateConstructorUsedError;
+  int get rewardAmount;
   @override
-  String get postID => throw _privateConstructorUsedError;
+  String get postID;
   @override
-  String get postURL => throw _privateConstructorUsedError;
+  String get postURL;
   @override
-  bool get isUserWatched => throw _privateConstructorUsedError;
+  bool get isUserWatched;
   @override
   @JsonKey(ignore: true)
   _$$_VideoArticleCopyWith<_$_VideoArticle> get copyWith =>

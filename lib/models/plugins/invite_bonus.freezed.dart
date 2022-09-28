@@ -197,7 +197,9 @@ class _$_InviteBonusPlugin
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_InviteBonusPluginToJson(this);
+    return _$$_InviteBonusPluginToJson(
+      this,
+    );
   }
 }
 
@@ -212,13 +214,13 @@ abstract class _InviteBonusPlugin implements InviteBonusPlugin, Plugin {
       _$_InviteBonusPlugin.fromJson;
 
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  String? get amount => throw _privateConstructorUsedError;
+  String? get amount;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_InviteBonusPluginCopyWith<_$_InviteBonusPlugin> get copyWith =>

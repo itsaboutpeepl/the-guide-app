@@ -178,7 +178,9 @@ class _$_WalletActions extends _WalletActions with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WalletActionsToJson(this);
+    return _$$_WalletActionsToJson(
+      this,
+    );
   }
 }
 
@@ -193,11 +195,11 @@ abstract class _WalletActions extends WalletActions {
       _$_WalletActions.fromJson;
 
   @override
-  List<WalletAction> get list => throw _privateConstructorUsedError;
+  List<WalletAction> get list;
   @override
-  num get updatedAt => throw _privateConstructorUsedError;
+  num get updatedAt;
   @override
-  int get currentPage => throw _privateConstructorUsedError;
+  int get currentPage;
   @override
   @JsonKey(ignore: true)
   _$$_WalletActionsCopyWith<_$_WalletActions> get copyWith =>

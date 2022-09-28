@@ -207,7 +207,9 @@ class _$_Schedules extends _Schedules {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SchedulesToJson(this);
+    return _$$_SchedulesToJson(
+      this,
+    );
   }
 }
 
@@ -224,15 +226,15 @@ abstract class _Schedules extends Schedules {
       _$_Schedules.fromJson;
 
   @override
-  String? get vestedAmount => throw _privateConstructorUsedError;
+  String? get vestedAmount;
   @override
-  String? get fullyVestedDays => throw _privateConstructorUsedError;
+  String? get fullyVestedDays;
   @override
-  String? get fullyVestedDateTime => throw _privateConstructorUsedError;
+  String? get fullyVestedDateTime;
   @override
-  String? get cliffEndDays => throw _privateConstructorUsedError;
+  String? get cliffEndDays;
   @override
-  String? get cliffDateTime => throw _privateConstructorUsedError;
+  String? get cliffDateTime;
   @override
   @JsonKey(ignore: true)
   _$$_SchedulesCopyWith<_$_Schedules> get copyWith =>

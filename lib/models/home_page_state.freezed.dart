@@ -246,7 +246,9 @@ class _$_HomePageState extends _HomePageState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_HomePageStateToJson(this);
+    return _$$_HomePageStateToJson(
+      this,
+    );
   }
 }
 
@@ -265,19 +267,19 @@ abstract class _HomePageState extends HomePageState {
       _$_HomePageState.fromJson;
 
   @override
-  List<BlogArticle> get featuredPosts => throw _privateConstructorUsedError;
+  List<BlogArticle> get featuredPosts;
   @override
-  List<VideoArticle> get featuredVideos => throw _privateConstructorUsedError;
+  List<VideoArticle> get featuredVideos;
   @override
-  List<Events> get eventList => throw _privateConstructorUsedError;
+  List<Events> get eventList;
   @override
-  List<Directory> get directoryList => throw _privateConstructorUsedError;
+  List<Directory> get directoryList;
   @override
-  bool get playConfetti => throw _privateConstructorUsedError;
+  bool get playConfetti;
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isError => throw _privateConstructorUsedError;
+  bool get isError;
   @override
   @JsonKey(ignore: true)
   _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>

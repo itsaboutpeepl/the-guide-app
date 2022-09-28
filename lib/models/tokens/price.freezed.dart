@@ -149,7 +149,9 @@ class _$_Price extends _Price with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PriceToJson(this);
+    return _$$_PriceToJson(
+      this,
+    );
   }
 }
 
@@ -160,9 +162,9 @@ abstract class _Price extends Price {
   factory _Price.fromJson(Map<String, dynamic> json) = _$_Price.fromJson;
 
   @override
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
-  String get quote => throw _privateConstructorUsedError;
+  String get quote;
   @override
   @JsonKey(ignore: true)
   _$$_PriceCopyWith<_$_Price> get copyWith =>

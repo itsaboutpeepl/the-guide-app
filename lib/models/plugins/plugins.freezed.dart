@@ -419,7 +419,9 @@ class _$_Plugins extends _Plugins with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_PluginsToJson(this);
+    return _$$_PluginsToJson(
+      this,
+    );
   }
 }
 
@@ -452,30 +454,30 @@ abstract class _Plugins extends Plugins {
   @override
   @JsonKey(includeIfNull: false)
   @RampInstantPluginConverter()
-  RampInstantPlugin? get rampInstant => throw _privateConstructorUsedError;
+  RampInstantPlugin? get rampInstant;
   @override
   @JsonKey(includeIfNull: false)
   @MoonpayPluginConverter()
-  MoonpayPlugin? get moonpay => throw _privateConstructorUsedError;
+  MoonpayPlugin? get moonpay;
   @override
   @JsonKey(includeIfNull: false)
   @TransakPluginConverter()
-  TransakPlugin? get transak => throw _privateConstructorUsedError;
+  TransakPlugin? get transak;
   @override
   @JsonKey(includeIfNull: false)
-  WalletBannerPlugin? get walletBanner => throw _privateConstructorUsedError;
+  WalletBannerPlugin? get walletBanner;
   @override
   @JsonKey(includeIfNull: false)
   @JoinBonusPluginConverter()
-  JoinBonusPlugin? get joinBonus => throw _privateConstructorUsedError;
+  JoinBonusPlugin? get joinBonus;
   @override
   @JsonKey(includeIfNull: false)
   @BackupBonusPluginConverter()
-  BackupBonusPlugin? get backupBonus => throw _privateConstructorUsedError;
+  BackupBonusPlugin? get backupBonus;
   @override
   @JsonKey(includeIfNull: false)
   @InviteBonusPluginConverter()
-  InviteBonusPlugin? get inviteBonus => throw _privateConstructorUsedError;
+  InviteBonusPlugin? get inviteBonus;
   @override
   @JsonKey(ignore: true)
   _$$_PluginsCopyWith<_$_Plugins> get copyWith =>

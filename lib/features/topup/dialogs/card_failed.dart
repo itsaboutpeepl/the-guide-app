@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TopUpFailed extends StatefulWidget {
+  final bool isFailed;
+
+  TopUpFailed({this.isFailed = false});
+
   @override
   _TopUpFailedState createState() => _TopUpFailedState();
 }
 
-class _TopUpFailedState extends State<TopUpFailed> with SingleTickerProviderStateMixin {
+class _TopUpFailedState extends State<TopUpFailed>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
   late Animation<double> scaleAnimation;
   bool isPreloading = false;
@@ -20,8 +25,10 @@ class _TopUpFailedState extends State<TopUpFailed> with SingleTickerProviderStat
   void initState() {
     super.initState();
 
-    controller = AnimationController(vsync: this, duration: Duration(milliseconds: 400));
-    scaleAnimation = CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
+    controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
+    scaleAnimation =
+        CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
     controller.addListener(() {
       setState(() {});
@@ -48,24 +55,18 @@ class _TopUpFailedState extends State<TopUpFailed> with SingleTickerProviderStat
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
-                'Aww Snap 😑',
+                widget.isFailed ? 'Topup Failed' : 'Topup Cancelled',
                 style: TextStyle(
                   fontSize: 20,
                 ),
               ),
               SizedBox(height: 20.0),
               Text(
-                'Transaction Failed.',
+                "Sorry, it seems top up is not currently working, please try again later.",
                 style: TextStyle(
                   fontSize: 20,
                 ),
-              ),
-              SizedBox(height: 20.0),
-              Text(
-                'Please check with your financial provider, or use a different card.',
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+                textAlign: TextAlign.center,
               ),
             ],
           ),

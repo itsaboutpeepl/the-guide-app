@@ -325,7 +325,9 @@ class _$_ProWalletState extends _ProWalletState with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ProWalletStateToJson(this);
+    return _$$_ProWalletStateToJson(
+      this,
+    );
   }
 }
 
@@ -356,31 +358,31 @@ abstract class _ProWalletState extends ProWalletState {
 
   @override
   @JsonKey(fromJson: balanceFromJson)
-  BigInt? get etherBalance => throw _privateConstructorUsedError;
+  BigInt? get etherBalance;
   @override
   @JsonKey(fromJson: erc20TokensFromJson)
-  Map<String, Token>? get erc20Tokens => throw _privateConstructorUsedError;
+  Map<String, Token>? get erc20Tokens;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTransferEvents => throw _privateConstructorUsedError;
+  bool get isFetchTransferEvents;
   @override
   @JsonKey(ignore: true)
-  bool get isListenToTransferEvents => throw _privateConstructorUsedError;
+  bool get isListenToTransferEvents;
   @override
   @JsonKey(ignore: true)
-  bool get isProcessingTokensJobs => throw _privateConstructorUsedError;
+  bool get isProcessingTokensJobs;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTokensBalances => throw _privateConstructorUsedError;
+  bool get isFetchTokensBalances;
   @override
   @JsonKey(ignore: true)
-  bool get isProcessingSwapActions => throw _privateConstructorUsedError;
+  bool get isProcessingSwapActions;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchTokensLatestPrice => throw _privateConstructorUsedError;
+  bool get isFetchTokensLatestPrice;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchNewTokens => throw _privateConstructorUsedError;
+  bool get isFetchNewTokens;
   @override
   @JsonKey(ignore: true)
   _$$_ProWalletStateCopyWith<_$_ProWalletState> get copyWith =>

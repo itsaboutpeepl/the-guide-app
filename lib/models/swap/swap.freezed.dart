@@ -262,7 +262,9 @@ class _$_TradeInfo implements _TradeInfo {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TradeInfoToJson(this);
+    return _$$_TradeInfoToJson(
+      this,
+    );
   }
 }
 
@@ -281,21 +283,21 @@ abstract class _TradeInfo implements TradeInfo {
       _$_TradeInfo.fromJson;
 
   @override
-  String get inputAmount => throw _privateConstructorUsedError;
+  String get inputAmount;
   @override
-  String get outputAmount => throw _privateConstructorUsedError;
+  String get outputAmount;
   @override
-  List<String> get route => throw _privateConstructorUsedError;
+  List<String> get route;
   @override
-  String get inputToken => throw _privateConstructorUsedError;
+  String get inputToken;
   @override
-  String get outputToken => throw _privateConstructorUsedError;
+  String get outputToken;
   @override
-  String get executionPrice => throw _privateConstructorUsedError;
+  String get executionPrice;
   @override
-  String get nextMidPrice => throw _privateConstructorUsedError;
+  String get nextMidPrice;
   @override
-  String get priceImpact => throw _privateConstructorUsedError;
+  String get priceImpact;
   @override
   @JsonKey(ignore: true)
   _$$_TradeInfoCopyWith<_$_TradeInfo> get copyWith =>
@@ -477,7 +479,9 @@ class _$_SwapCallParameters implements _SwapCallParameters {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SwapCallParametersToJson(this);
+    return _$$_SwapCallParametersToJson(
+      this,
+    );
   }
 }
 
@@ -492,13 +496,13 @@ abstract class _SwapCallParameters implements SwapCallParameters {
       _$_SwapCallParameters.fromJson;
 
   @override
-  String get methodName => throw _privateConstructorUsedError;
+  String get methodName;
   @override
-  List<dynamic> get args => throw _privateConstructorUsedError;
+  List<dynamic> get args;
   @override
-  String get value => throw _privateConstructorUsedError;
+  String get value;
   @override
-  Map<String, dynamic> get rawTxn => throw _privateConstructorUsedError;
+  Map<String, dynamic> get rawTxn;
   @override
   @JsonKey(ignore: true)
   _$$_SwapCallParametersCopyWith<_$_SwapCallParameters> get copyWith =>
@@ -684,7 +688,9 @@ class _$_SwapRequestBody implements _SwapRequestBody {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_SwapRequestBodyToJson(this);
+    return _$$_SwapRequestBodyToJson(
+      this,
+    );
   }
 }
 
@@ -699,13 +705,13 @@ abstract class _SwapRequestBody implements SwapRequestBody {
       _$_SwapRequestBody.fromJson;
 
   @override
-  String get currencyIn => throw _privateConstructorUsedError;
+  String get currencyIn;
   @override
-  String get currencyOut => throw _privateConstructorUsedError;
+  String get currencyOut;
   @override
-  String get amountIn => throw _privateConstructorUsedError;
+  String get amountIn;
   @override
-  String get recipient => throw _privateConstructorUsedError;
+  String get recipient;
   @override
   @JsonKey(ignore: true)
   _$$_SwapRequestBodyCopyWith<_$_SwapRequestBody> get copyWith =>

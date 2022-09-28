@@ -179,7 +179,9 @@ class _$_Stats with DiagnosticableTreeMixin implements _Stats {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_StatsToJson(this);
+    return _$$_StatsToJson(
+      this,
+    );
   }
 }
 
@@ -193,13 +195,13 @@ abstract class _Stats implements Stats {
   factory _Stats.fromJson(Map<String, dynamic> json) = _$_Stats.fromJson;
 
   @override
-  String? get volume => throw _privateConstructorUsedError;
+  String? get volume;
   @override
-  String? get price => throw _privateConstructorUsedError;
+  String? get price;
   @override
-  int? get timestamp => throw _privateConstructorUsedError;
+  int? get timestamp;
   @override
-  DateTime? get date => throw _privateConstructorUsedError;
+  DateTime? get date;
   @override
   @JsonKey(ignore: true)
   _$$_StatsCopyWith<_$_Stats> get copyWith =>

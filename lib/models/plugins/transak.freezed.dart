@@ -195,7 +195,9 @@ class _$_TransakPlugin
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TransakPluginToJson(this);
+    return _$$_TransakPluginToJson(
+      this,
+    );
   }
 }
 
@@ -210,13 +212,13 @@ abstract class _TransakPlugin implements TransakPlugin, Plugin {
       _$_TransakPlugin.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get widgetUrl => throw _privateConstructorUsedError;
+  String? get widgetUrl;
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_TransakPluginCopyWith<_$_TransakPlugin> get copyWith =>

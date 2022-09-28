@@ -486,7 +486,9 @@ class _$_Token extends _Token with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_TokenToJson(this);
+    return _$$_TokenToJson(
+      this,
+    );
   }
 }
 
@@ -519,44 +521,44 @@ abstract class _Token extends Token {
   factory _Token.fromJson(Map<String, dynamic> json) = _$_Token.fromJson;
 
   @override
-  String get address => throw _privateConstructorUsedError;
+  String get address;
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String get symbol => throw _privateConstructorUsedError;
+  String get symbol;
   @override
-  BigInt get amount => throw _privateConstructorUsedError;
+  BigInt get amount;
   @override
-  int get decimals => throw _privateConstructorUsedError;
+  int get decimals;
   @override
-  bool get isNative => throw _privateConstructorUsedError;
+  bool get isNative;
   @override
-  String? get imageUrl => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  String? get subtitle => throw _privateConstructorUsedError;
-  @override
-  int? get timestamp => throw _privateConstructorUsedError;
-  @override
-  Price? get priceInfo => throw _privateConstructorUsedError;
-  @override
-  String? get communityAddress => throw _privateConstructorUsedError;
-  @override
-  String? get originNetwork => throw _privateConstructorUsedError;
-  @override
-  num get priceChange => throw _privateConstructorUsedError;
+  String? get imageUrl;
   @override
   @JsonKey(ignore: true)
-  num get priceDiff => throw _privateConstructorUsedError;
+  String? get subtitle;
+  @override
+  int? get timestamp;
+  @override
+  Price? get priceInfo;
+  @override
+  String? get communityAddress;
+  @override
+  String? get originNetwork;
+  @override
+  num get priceChange;
   @override
   @JsonKey(ignore: true)
-  int get priceDiffLimitInDays => throw _privateConstructorUsedError;
+  num get priceDiff;
   @override
   @JsonKey(ignore: true)
-  List<Stats> get stats => throw _privateConstructorUsedError;
+  int get priceDiffLimitInDays;
+  @override
+  @JsonKey(ignore: true)
+  List<Stats> get stats;
   @override
   @JsonKey(fromJson: walletActionsFromJson)
-  WalletActions? get walletActions => throw _privateConstructorUsedError;
+  WalletActions? get walletActions;
   @override
   @JsonKey(ignore: true)
   _$$_TokenCopyWith<_$_Token> get copyWith =>

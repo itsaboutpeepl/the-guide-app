@@ -226,7 +226,9 @@ class _$_WalletBannerPlugin
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WalletBannerPluginToJson(this);
+    return _$$_WalletBannerPluginToJson(
+      this,
+    );
   }
 }
 
@@ -242,15 +244,15 @@ abstract class _WalletBannerPlugin implements WalletBannerPlugin, Plugin {
       _$_WalletBannerPlugin.fromJson;
 
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  String? get walletBannerHash => throw _privateConstructorUsedError;
+  String? get walletBannerHash;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  String? get link => throw _privateConstructorUsedError;
+  String? get link;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_WalletBannerPluginCopyWith<_$_WalletBannerPlugin> get copyWith =>

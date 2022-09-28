@@ -313,7 +313,9 @@ class _$_WalletModules implements _WalletModules {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_WalletModulesToJson(this);
+    return _$$_WalletModulesToJson(
+      this,
+    );
   }
 }
 
@@ -343,31 +345,31 @@ abstract class _WalletModules implements WalletModules {
 
   @override
   @JsonKey(name: 'GuardianManager')
-  String get guardianManager => throw _privateConstructorUsedError;
+  String get guardianManager;
   @override
   @JsonKey(name: 'LockManager')
-  String get lockManager => throw _privateConstructorUsedError;
+  String get lockManager;
   @override
   @JsonKey(name: 'RecoveryManager')
-  String get recoveryManager => throw _privateConstructorUsedError;
+  String get recoveryManager;
   @override
   @JsonKey(name: 'ApprovedTransfer')
-  String get approvedTransfer => throw _privateConstructorUsedError;
+  String get approvedTransfer;
   @override
   @JsonKey(name: 'TokenExchanger')
-  String get tokenExchanger => throw _privateConstructorUsedError;
+  String get tokenExchanger;
   @override
   @JsonKey(name: 'CommunityManager')
-  String get communityManager => throw _privateConstructorUsedError;
+  String get communityManager;
   @override
   @JsonKey(name: 'WalletOwnershipManager')
-  String get walletOwnershipManager => throw _privateConstructorUsedError;
+  String get walletOwnershipManager;
   @override
   @JsonKey(name: 'DAIPointsManager')
-  String get daiPointsManager => throw _privateConstructorUsedError;
+  String get daiPointsManager;
   @override
   @JsonKey(name: 'TransferManager')
-  String get transferManager => throw _privateConstructorUsedError;
+  String get transferManager;
   @override
   @JsonKey(ignore: true)
   _$$_WalletModulesCopyWith<_$_WalletModules> get copyWith =>

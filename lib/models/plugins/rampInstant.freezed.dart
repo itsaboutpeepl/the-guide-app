@@ -196,7 +196,9 @@ class _$_RampInstantPlugin
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_RampInstantPluginToJson(this);
+    return _$$_RampInstantPluginToJson(
+      this,
+    );
   }
 }
 
@@ -211,13 +213,13 @@ abstract class _RampInstantPlugin implements RampInstantPlugin, Plugin {
       _$_RampInstantPlugin.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get widgetUrl => throw _privateConstructorUsedError;
+  String? get widgetUrl;
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_RampInstantPluginCopyWith<_$_RampInstantPlugin> get copyWith =>

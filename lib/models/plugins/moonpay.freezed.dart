@@ -195,7 +195,9 @@ class _$_MoonpayPlugin
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_MoonpayPluginToJson(this);
+    return _$$_MoonpayPluginToJson(
+      this,
+    );
   }
 }
 
@@ -210,13 +212,13 @@ abstract class _MoonpayPlugin implements MoonpayPlugin, Plugin {
       _$_MoonpayPlugin.fromJson;
 
   @override
-  String get name => throw _privateConstructorUsedError;
+  String get name;
   @override
-  String? get widgetUrl => throw _privateConstructorUsedError;
+  String? get widgetUrl;
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_MoonpayPluginCopyWith<_$_MoonpayPlugin> get copyWith =>

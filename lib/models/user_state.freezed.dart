@@ -895,7 +895,9 @@ class _$_UserState extends _UserState with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_UserStateToJson(this);
+    return _$$_UserStateToJson(
+      this,
+    );
   }
 }
 
@@ -951,84 +953,84 @@ abstract class _UserState extends UserState {
       _$_UserState.fromJson;
 
   @override
-  DateTime? get installedAt => throw _privateConstructorUsedError;
+  DateTime? get installedAt;
   @override
-  bool? get isContactsSynced => throw _privateConstructorUsedError;
+  bool? get isContactsSynced;
   @override
-  bool get isLoggedOut => throw _privateConstructorUsedError;
+  bool get isLoggedOut;
   @override
-  bool get backup => throw _privateConstructorUsedError;
+  bool get backup;
   @override
-  bool? get depositBannerShowed => throw _privateConstructorUsedError;
+  bool? get depositBannerShowed;
   @override
-  bool? get homeBackupDialogShowed => throw _privateConstructorUsedError;
+  bool? get homeBackupDialogShowed;
   @override
-  String get walletAddress => throw _privateConstructorUsedError;
+  String get walletAddress;
   @override
-  List<String> get networks => throw _privateConstructorUsedError;
+  List<String> get networks;
   @override
-  List<String> get mnemonic => throw _privateConstructorUsedError;
+  List<String> get mnemonic;
   @override
-  String get privateKey => throw _privateConstructorUsedError;
+  String get privateKey;
   @override
-  String get pincode => throw _privateConstructorUsedError;
+  String get pincode;
   @override
-  String get accountAddress => throw _privateConstructorUsedError;
+  String get accountAddress;
   @override
-  String get countryCode => throw _privateConstructorUsedError;
+  String get countryCode;
   @override
-  String get phoneNumber => throw _privateConstructorUsedError;
+  String get phoneNumber;
   @override
-  bool get receiveBackupDialogShowed => throw _privateConstructorUsedError;
+  bool get receiveBackupDialogShowed;
   @override
-  bool get warnSendDialogShowed => throw _privateConstructorUsedError;
+  bool get warnSendDialogShowed;
   @override
-  String get isoCode => throw _privateConstructorUsedError;
+  String get isoCode;
   @override
-  String get jwtToken => throw _privateConstructorUsedError;
+  String get jwtToken;
   @override
-  String get displayName => throw _privateConstructorUsedError;
+  String get displayName;
   @override
-  String get avatarUrl => throw _privateConstructorUsedError;
+  String get avatarUrl;
   @override
-  String get email => throw _privateConstructorUsedError;
+  String get email;
   @override
-  String? get verificationId => throw _privateConstructorUsedError;
+  String? get verificationId;
   @override
-  String get identifier => throw _privateConstructorUsedError;
+  String get identifier;
   @override
-  List<String> get syncedContacts => throw _privateConstructorUsedError;
+  List<String> get syncedContacts;
   @override
-  Map<String, String> get reverseContacts => throw _privateConstructorUsedError;
-  @override
-  @JsonKey(ignore: true)
-  dynamic get signupErrorMessage => throw _privateConstructorUsedError;
+  Map<String, String> get reverseContacts;
   @override
   @JsonKey(ignore: true)
-  dynamic get verifyErrorMessage => throw _privateConstructorUsedError;
+  dynamic get signupErrorMessage;
+  @override
+  @JsonKey(ignore: true)
+  dynamic get verifyErrorMessage;
   @override
   @JsonKey(fromJson: currencyJson)
-  String get currency => throw _privateConstructorUsedError;
+  String get currency;
   @override
   @JsonKey(ignore: true)
-  bool get isLoginRequest => throw _privateConstructorUsedError;
+  bool get isLoginRequest;
   @override
   @JsonKey(ignore: true)
-  bool get isVerifyRequest => throw _privateConstructorUsedError;
+  bool get isVerifyRequest;
   @override
   @JsonKey(fromJson: authTypeFromJson, toJson: EnumToString.convertToString)
-  BiometricAuth get authType => throw _privateConstructorUsedError;
+  BiometricAuth get authType;
   @override
   @JsonKey(fromJson: localeFromJson, toJson: localeToJson)
-  Locale? get locale => throw _privateConstructorUsedError;
+  Locale? get locale;
   @override
   @JsonKey(ignore: true)
-  List<Contact> get contacts => throw _privateConstructorUsedError;
+  List<Contact> get contacts;
   @override
   @JsonKey(ignore: true)
-  PhoneAuthCredential? get credentials => throw _privateConstructorUsedError;
+  PhoneAuthCredential? get credentials;
   @override
-  WalletModules? get walletModules => throw _privateConstructorUsedError;
+  WalletModules? get walletModules;
   @override
   @JsonKey(ignore: true)
   _$$_UserStateCopyWith<_$_UserState> get copyWith =>

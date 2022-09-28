@@ -90,7 +90,10 @@ class _VegiWebViewState extends State<VegiWebView> {
                     },
                     () {
                       //error Callback - show error sheet
-                      showErrorSnack(context: context, title: "Something went wrong, try again later please!");
+                      showErrorSnack(
+                          context: context,
+                          title:
+                              "Something went wrong, try again later please!");
                     },
                   );
                 },
@@ -99,7 +102,8 @@ class _VegiWebViewState extends State<VegiWebView> {
                 handlerName: "getOrderAmounts",
                 callback: (values) {
                   return {
-                    "gbpAmount": (viewmodel.selectedGBPxAmount).toStringAsFixed(2),
+                    "gbpAmount":
+                        (viewmodel.selectedGBPxAmount).toStringAsFixed(2),
                     "pplAmount": viewmodel.selectedPPLAmount.toStringAsFixed(2)
                   };
                 },

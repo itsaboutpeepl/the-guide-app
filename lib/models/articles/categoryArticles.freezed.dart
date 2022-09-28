@@ -159,7 +159,9 @@ class _$_CategoryArticles extends _CategoryArticles {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CategoryArticlesToJson(this);
+    return _$$_CategoryArticlesToJson(
+      this,
+    );
   }
 }
 
@@ -173,9 +175,9 @@ abstract class _CategoryArticles extends CategoryArticles {
       _$_CategoryArticles.fromJson;
 
   @override
-  Category get category => throw _privateConstructorUsedError;
+  Category get category;
   @override
-  List<BlogArticle> get articleList => throw _privateConstructorUsedError;
+  List<BlogArticle> get articleList;
   @override
   @JsonKey(ignore: true)
   _$$_CategoryArticlesCopyWith<_$_CategoryArticles> get copyWith =>

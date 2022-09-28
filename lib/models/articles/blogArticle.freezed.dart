@@ -278,7 +278,9 @@ class _$_BlogArticle extends _BlogArticle {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_BlogArticleToJson(this);
+    return _$$_BlogArticleToJson(
+      this,
+    );
   }
 }
 
@@ -299,23 +301,23 @@ abstract class _BlogArticle extends BlogArticle {
       _$_BlogArticle.fromJson;
 
   @override
-  String get title => throw _privateConstructorUsedError;
+  String get title;
   @override
-  String get imageURL => throw _privateConstructorUsedError;
+  String get imageURL;
   @override
-  List<String> get category => throw _privateConstructorUsedError;
+  List<String> get category;
   @override
-  int get postID => throw _privateConstructorUsedError;
+  int get postID;
   @override
-  String get postURL => throw _privateConstructorUsedError;
+  String get postURL;
   @override
-  String get content => throw _privateConstructorUsedError;
+  String get content;
   @override
-  DateTime get publishedAt => throw _privateConstructorUsedError;
+  DateTime get publishedAt;
   @override
-  List<String> get gallery => throw _privateConstructorUsedError;
+  List<String> get gallery;
   @override
-  String get description => throw _privateConstructorUsedError;
+  String get description;
   @override
   @JsonKey(ignore: true)
   _$$_BlogArticleCopyWith<_$_BlogArticle> get copyWith =>

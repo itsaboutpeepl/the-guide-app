@@ -204,7 +204,9 @@ class _$_NewsState extends _NewsState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_NewsStateToJson(this);
+    return _$$_NewsStateToJson(
+      this,
+    );
   }
 }
 
@@ -221,15 +223,15 @@ abstract class _NewsState extends NewsState {
       _$_NewsState.fromJson;
 
   @override
-  List<Category> get categories => throw _privateConstructorUsedError;
+  List<Category> get categories;
   @override
-  List<CategoryArticles> get articles => throw _privateConstructorUsedError;
+  List<CategoryArticles> get articles;
   @override
-  int get currentTabIndex => throw _privateConstructorUsedError;
+  int get currentTabIndex;
   @override
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
-  bool get isError => throw _privateConstructorUsedError;
+  bool get isError;
   @override
   @JsonKey(ignore: true)
   _$$_NewsStateCopyWith<_$_NewsState> get copyWith =>

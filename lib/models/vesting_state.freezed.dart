@@ -469,7 +469,9 @@ class _$_VestingState extends _VestingState {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_VestingStateToJson(this);
+    return _$$_VestingStateToJson(
+      this,
+    );
   }
 }
 
@@ -499,55 +501,55 @@ abstract class _VestingState extends VestingState {
 
   @override
   @JsonKey(ignore: true)
-  List<Schedules> get vestingSchedule => throw _privateConstructorUsedError;
+  List<Schedules> get vestingSchedule;
   @override
   @JsonKey(ignore: true)
-  List<dynamic> get scheduleIDs => throw _privateConstructorUsedError;
+  List<dynamic> get scheduleIDs;
   @override
   @JsonKey(ignore: true)
-  bool get hasVestingSchedule => throw _privateConstructorUsedError;
+  bool get hasVestingSchedule;
   @override
   @JsonKey(ignore: true)
-  Decimal? get currentAmountReleasable => throw _privateConstructorUsedError;
+  Decimal? get currentAmountReleasable;
   @override
   @JsonKey(ignore: true)
-  DateTime? get scheduleEnd => throw _privateConstructorUsedError;
+  DateTime? get scheduleEnd;
   @override
   @JsonKey(ignore: true)
-  DateTime? get scheduleStart => throw _privateConstructorUsedError;
+  DateTime? get scheduleStart;
   @override
   @JsonKey(ignore: true)
-  String? get displayScheduleID => throw _privateConstructorUsedError;
+  String? get displayScheduleID;
   @override
   @JsonKey(ignore: true)
-  BigInt? get scheduleCount => throw _privateConstructorUsedError;
+  BigInt? get scheduleCount;
   @override
   @JsonKey(ignore: true)
-  bool get isContractFullyVested => throw _privateConstructorUsedError;
+  bool get isContractFullyVested;
   @override
   @JsonKey(ignore: true)
-  BigInt? get withdrawableAmount => throw _privateConstructorUsedError;
+  BigInt? get withdrawableAmount;
   @override
   @JsonKey(ignore: true)
-  int get cliffEndDays => throw _privateConstructorUsedError;
+  int get cliffEndDays;
   @override
   @JsonKey(ignore: true)
-  int get endTimeDays => throw _privateConstructorUsedError;
+  int get endTimeDays;
   @override
   @JsonKey(ignore: true)
-  bool get vestedChecker => throw _privateConstructorUsedError;
+  bool get vestedChecker;
   @override
   @JsonKey(ignore: true)
-  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isLoading;
   @override
   @JsonKey(ignore: true)
-  bool get isRevoked => throw _privateConstructorUsedError;
+  bool get isRevoked;
   @override
   @JsonKey(ignore: true)
-  DateTime? get cliff => throw _privateConstructorUsedError;
+  DateTime? get cliff;
   @override
   @JsonKey(ignore: true)
-  Decimal? get vestedTotal => throw _privateConstructorUsedError;
+  Decimal? get vestedTotal;
   @override
   @JsonKey(ignore: true)
   _$$_VestingStateCopyWith<_$_VestingState> get copyWith =>

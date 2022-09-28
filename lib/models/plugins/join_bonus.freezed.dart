@@ -196,7 +196,9 @@ class _$_JoinBonusPlugin
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_JoinBonusPluginToJson(this);
+    return _$$_JoinBonusPluginToJson(
+      this,
+    );
   }
 }
 
@@ -211,13 +213,13 @@ abstract class _JoinBonusPlugin implements JoinBonusPlugin, Plugin {
       _$_JoinBonusPlugin.fromJson;
 
   @override
-  String get type => throw _privateConstructorUsedError;
+  String get type;
   @override
-  String? get amount => throw _privateConstructorUsedError;
+  String? get amount;
   @override
-  String? get name => throw _privateConstructorUsedError;
+  String? get name;
   @override
-  bool get isActive => throw _privateConstructorUsedError;
+  bool get isActive;
   @override
   @JsonKey(ignore: true)
   _$$_JoinBonusPluginCopyWith<_$_JoinBonusPlugin> get copyWith =>

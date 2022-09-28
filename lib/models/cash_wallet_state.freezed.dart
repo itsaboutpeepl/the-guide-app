@@ -375,7 +375,9 @@ class _$_CashWalletState extends _CashWalletState with DiagnosticableTreeMixin {
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_CashWalletStateToJson(this);
+    return _$$_CashWalletStateToJson(
+      this,
+    );
   }
 }
 
@@ -405,33 +407,33 @@ abstract class _CashWalletState extends CashWalletState {
       _$_CashWalletState.fromJson;
 
   @override
-  String get communityAddress => throw _privateConstructorUsedError;
+  String get communityAddress;
   @override
-  bool get isDepositBanner => throw _privateConstructorUsedError;
+  bool get isDepositBanner;
   @override
   @JsonKey(fromJson: tokensFromJson)
-  Map<String, Token> get tokens => throw _privateConstructorUsedError;
+  Map<String, Token> get tokens;
   @override
   @JsonKey(fromJson: communitiesFromJson)
-  Map<String, Community> get communities => throw _privateConstructorUsedError;
+  Map<String, Community> get communities;
   @override
   @JsonKey(fromJson: walletActionsFromJson)
-  WalletActions? get walletActions => throw _privateConstructorUsedError;
+  WalletActions? get walletActions;
   @override
   @JsonKey(ignore: true)
-  bool get isCommunityLoading => throw _privateConstructorUsedError;
+  bool get isCommunityLoading;
   @override
   @JsonKey(ignore: true)
-  bool get isCommunityFetched => throw _privateConstructorUsedError;
+  bool get isCommunityFetched;
   @override
   @JsonKey(ignore: true)
-  bool get isTransfersFetchingStarted => throw _privateConstructorUsedError;
+  bool get isTransfersFetchingStarted;
   @override
   @JsonKey(ignore: true)
-  bool get isCommunityBusinessesFetched => throw _privateConstructorUsedError;
+  bool get isCommunityBusinessesFetched;
   @override
   @JsonKey(ignore: true)
-  bool get isFetchingBalances => throw _privateConstructorUsedError;
+  bool get isFetchingBalances;
   @override
   @JsonKey(ignore: true)
   _$$_CashWalletStateCopyWith<_$_CashWalletState> get copyWith =>
