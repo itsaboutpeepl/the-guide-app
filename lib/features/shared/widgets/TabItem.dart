@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 const double ICON_OFF = -3;
 const double ICON_ON = -1;
 const double TEXT_OFF = 1;
-const double TEXT_ON = 1;
+const double TEXT_ON = 0.5;
 const double ALPHA_OFF = 0;
 const double ALPHA_ON = 1;
 const int ANIM_DURATION = 500;
@@ -68,7 +68,8 @@ class _TabItemState extends State<TabItem> {
               duration: Duration(milliseconds: ANIM_DURATION),
               alignment: Alignment(0, textYAlign),
               child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
                 child: Text(
                   widget.title,
                   style: widget.textStyle,

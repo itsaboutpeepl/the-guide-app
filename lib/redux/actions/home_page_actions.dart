@@ -73,7 +73,8 @@ ThunkAction fetchFeaturedVideos() {
   return (Store store) async {
     try {
       await peeplMediaService.loginToDashboard();
-      List<VideoArticle> videoArticles = await peeplMediaService.featuredVideos();
+      List<VideoArticle> videoArticles =
+          await peeplMediaService.featuredVideos();
       store.dispatch(UpdateFeaturedVideos(featuredVideos: videoArticles));
     } catch (e, s) {
       log.error('ERROR - fetchFeaturedVideos $e');
@@ -148,7 +149,6 @@ ThunkAction createVideoView(
           videoID, store.state.userState.walletAddress);
       if (rewardsIssued > 0) {
         successCallback(rewardsIssued);
-        store.dispatch(getTokenBalanceCall(PeeplToken));
       }
     } catch (e, s) {
       errorCallback();

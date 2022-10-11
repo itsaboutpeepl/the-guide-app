@@ -22,12 +22,14 @@ final userReducers = combineReducers<UserState>([
   TypedReducer<UserState, JustInstalled>(_justInstalled),
   TypedReducer<UserState, DeviceIdSuccess>(_deviceIdSuccess),
   TypedReducer<UserState, SetSecurityType>(_setSecurityType),
-  TypedReducer<UserState, ReceiveBackupDialogShowed>(_receiveBackupDialogShowed),
+  TypedReducer<UserState, ReceiveBackupDialogShowed>(
+      _receiveBackupDialogShowed),
   TypedReducer<UserState, DepositBannerShowed>(_depositBannerShowed),
   TypedReducer<UserState, HomeBackupDialogShowed>(_homeBackupDialogShowed),
   TypedReducer<UserState, WarnSendDialogShowed>(_warnSendDialogShowed),
   TypedReducer<UserState, UpdateCurrency>(_updateCurrency),
   TypedReducer<UserState, UpdateLocale>(_updateLocale),
+  TypedReducer<UserState, UpdateUserPostcode>(_updateUserPostcode),
 ]);
 
 UserState _updateLocale(UserState state, UpdateLocale action) {
@@ -38,7 +40,8 @@ UserState _updateCurrency(UserState state, UpdateCurrency action) {
   return state.copyWith(currency: action.currency);
 }
 
-UserState _receiveBackupDialogShowed(UserState state, ReceiveBackupDialogShowed action) {
+UserState _receiveBackupDialogShowed(
+    UserState state, ReceiveBackupDialogShowed action) {
   return state.copyWith(receiveBackupDialogShowed: true);
 }
 
@@ -46,7 +49,8 @@ UserState _depositBannerShowed(UserState state, DepositBannerShowed action) {
   return state.copyWith(depositBannerShowed: true);
 }
 
-UserState _homeBackupDialogShowed(UserState state, HomeBackupDialogShowed action) {
+UserState _homeBackupDialogShowed(
+    UserState state, HomeBackupDialogShowed action) {
   return state.copyWith(homeBackupDialogShowed: true);
 }
 
@@ -169,4 +173,11 @@ UserState _justInstalled(UserState state, JustInstalled action) {
 
 UserState _deviceIdSuccess(UserState state, DeviceIdSuccess action) {
   return state.copyWith(identifier: action.identifier);
+}
+
+UserState _updateUserPostcode(
+  UserState state,
+  UpdateUserPostcode action,
+) {
+  return state.copyWith(postcode: action.postcode);
 }

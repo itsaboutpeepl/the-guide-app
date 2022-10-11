@@ -60,6 +60,7 @@ _$_UserState _$$_UserStateFromJson(Map<String, dynamic> json) => _$_UserState(
           ? null
           : WalletModules.fromJson(
               json['walletModules'] as Map<String, dynamic>),
+      postcode: json['postcode'] as String? ?? "",
     );
 
 Map<String, dynamic> _$$_UserStateToJson(_$_UserState instance) =>
@@ -93,4 +94,5 @@ Map<String, dynamic> _$$_UserStateToJson(_$_UserState instance) =>
       'authType': EnumToString.convertToString(instance.authType),
       'locale': localeToJson(instance.locale),
       'walletModules': instance.walletModules?.toJson(),
+      'postcode': instance.postcode,
     };

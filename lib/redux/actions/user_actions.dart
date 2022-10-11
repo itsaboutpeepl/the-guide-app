@@ -175,6 +175,11 @@ class GetWalletDataSuccess {
   });
 }
 
+class UpdateUserPostcode {
+  final String postcode;
+  UpdateUserPostcode(this.postcode);
+}
+
 ThunkAction loginHandler(
   CountryCode countryCode,
   PhoneNumber phoneNumber,

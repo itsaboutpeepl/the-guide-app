@@ -11,14 +11,13 @@ import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
-
-import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 import 'package:video_player/video_player.dart';
 import 'package:redux/redux.dart';
 
 class SingleFeaturedVideo extends StatefulWidget {
   final VideoArticle videoArticleItem;
-  const SingleFeaturedVideo({Key? key, required this.videoArticleItem}) : super(key: key);
+  const SingleFeaturedVideo({Key? key, required this.videoArticleItem})
+      : super(key: key);
 
   @override
   State<SingleFeaturedVideo> createState() => _SingleFeaturedVideoState();
@@ -72,7 +71,10 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
       looping: false,
       autoInitialize: false,
       customControls: CustomControls(),
-      deviceOrientationsOnEnterFullScreen: [DeviceOrientation.landscapeRight, DeviceOrientation.landscapeLeft],
+      deviceOrientationsOnEnterFullScreen: [
+        DeviceOrientation.landscapeRight,
+        DeviceOrientation.landscapeLeft
+      ],
       showOptions: false,
       showControlsOnInitialize: false,
       deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
@@ -83,17 +85,18 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
     //Listener that checks for playback completion.
     _videoPlayerController.addListener(
       () {
-        if (_videoPlayerController.value.position == _videoPlayerController.value.duration &&
+        if (_videoPlayerController.value.position ==
+                _videoPlayerController.value.duration &&
             !_isPlayBackCompletedOnce) {
           _chewieController!.exitFullScreen();
 
           if (_isNoAcc) {
             Future.delayed(
               Duration(seconds: 2),
-              () => showDialog(context: context, builder: (_) => PlayBackCompletedNoAcc()),
+              () => showDialog(
+                  context: context, builder: (_) => PlayBackCompletedNoAcc()),
             );
           } else {
-            store.dispatch(UpdatePlayConfetti(playConfetti: true));
             _isPlayBackCompletedOnce = true;
 
             Future.delayed(
@@ -102,7 +105,10 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                 store.dispatch(
                   createVideoView(
                     widget.videoArticleItem.postID,
-                    (rewardAmount) => showPlayBackCompletedFlushBar(context, rewardAmount),
+                    (rewardAmount) {
+                      showPlayBackCompletedFlushBar(context, rewardAmount);
+                      store.dispatch(UpdatePlayConfetti(playConfetti: true));
+                    },
                     () => showErrorSnack(context: context),
                   ),
                 )
@@ -116,7 +122,9 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
 
   void _playAndToggle() {
     if (_isLoading) return;
-    _chewieController!.isPlaying ? _chewieController!.pause() : _chewieController!.play();
+    _chewieController!.isPlaying
+        ? _chewieController!.pause()
+        : _chewieController!.play();
     _chewieController!.toggleFullScreen();
   }
 
@@ -132,7 +140,9 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
             fit: StackFit.expand,
             alignment: Alignment.center,
             children: [
-              _chewieController != null && _chewieController!.videoPlayerController.value.isInitialized
+              _chewieController != null &&
+                      _chewieController!
+                          .videoPlayerController.value.isInitialized
                   ? Positioned(
                       width: MediaQuery.of(context).size.width * 0.55,
                       child: Chewie(
@@ -166,7 +176,8 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                     ),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 15, right: 15, bottom: 15),
+                    padding:
+                        const EdgeInsets.only(left: 15, right: 15, bottom: 15),
                     child: Text(
                       widget.videoArticleItem.title,
                       style: TextStyle(
@@ -188,23 +199,38 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                       ),
                     )
                   : SizedBox.shrink(),
-              widget.videoArticleItem.rewardAmount != 0 && !widget.videoArticleItem.isUserWatched
+              widget.videoArticleItem.rewardAmount != 0 &&
+                      !widget.videoArticleItem.isUserWatched
                   ? Positioned(
-                      right: 15,
-                      top: 15,
+                      left: 0.0,
+                      top: 0.0,
+                      width: MediaQuery.of(context).size.width * 0.9,
                       child: Container(
-                        width: 50.0,
-                        height: 50.0,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Icon(
-                          PeeplIcons.ppl_circles_02,
-                          size: 40.0,
-                          color: Color(0xFFEB4953),
-                        ),
-                      ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10.0,
+                          ),
+                          height: 50.0,
+                          decoration: BoxDecoration(
+                            color: Color(0xFFFAE3E6),
+                            borderRadius:
+                                BorderRadius.vertical(top: Radius.circular(10)),
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(
+                                "Get rewarded for watching",
+                                style: TextStyle(color: Color(0xFFEB4852)),
+                              ),
+                              Text(
+                                "+${widget.videoArticleItem.rewardAmount.toString()} PPL",
+                                style: TextStyle(
+                                  color: Color(0xFFEB4852),
+                                  fontWeight: FontWeight.w900,
+                                ),
+                              )
+                            ],
+                          )),
                     )
                   : SizedBox.shrink()
             ],

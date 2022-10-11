@@ -53,20 +53,24 @@ class UpdateSelectedAmounts {
   UpdateSelectedAmounts(this.GBPxAmount, this.PPLAmount);
 }
 
-ThunkAction queryOrderDetailsFromPaymentIntentID(
-    String paymentIntentID, VoidCallback successCallback, VoidCallback errorCallback) {
+ThunkAction queryOrderDetailsFromPaymentIntentID(String paymentIntentID,
+    VoidCallback successCallback, VoidCallback errorCallback) {
   return (Store store) async {
     try {
-      Map<dynamic, dynamic> details = await peeplPaySerivce.requestPaymentIntentIdDetails(paymentIntentID);
+      Map<dynamic, dynamic> details =
+          await peeplPaySerivce.requestPaymentIntentIdDetails(paymentIntentID);
 
       details.containsKey("vendorDisplayName")
           ? store.dispatch(UpdateRestaurantName(details["vendorDisplayName"]))
           : errorCallback();
 
-      details.containsKey("amount") ? store.dispatch(UpdateCartTotal(details["amount"])) : errorCallback();
+      details.containsKey("amount")
+          ? store.dispatch(UpdateCartTotal(details["amount"]))
+          : errorCallback();
 
       details.containsKey("recipientWalletAddress")
-          ? store.dispatch(UpdateRestaurantWalletAddress(details["recipientWalletAddress"]))
+          ? store.dispatch(
+              UpdateRestaurantWalletAddress(details["recipientWalletAddress"]))
           : errorCallback();
 
       successCallback();
@@ -83,7 +87,8 @@ ThunkAction queryOrderDetailsFromPaymentIntentID(
   };
 }
 
-ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCallback) {
+ThunkAction sendTokenPayment(
+    VoidCallback successCallback, VoidCallback errorCallback) {
   return (Store store) async {
     try {
       print("PAYMENT INTENT ID" + store.state.cartState.paymentIntentID);
@@ -92,7 +97,8 @@ ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCal
 
       //Get tokens for GBPx and PPL
       Token GBPxToken = store.state.cashWalletState.tokens.values.firstWhere(
-        (token) => token.symbol.toLowerCase() == "GBPx".toString().toLowerCase(),
+        (token) =>
+            token.symbol.toLowerCase() == "GBPx".toString().toLowerCase(),
       );
 
       Token PPLToken = store.state.cashWalletState.tokens.values.firstWhere(
@@ -100,34 +106,40 @@ ThunkAction sendTokenPayment(VoidCallback successCallback, VoidCallback errorCal
       );
 
       //If Selected GBPx amount is not 0, transfer GBPx
-      Map<String, dynamic> GBPxResponse = store.state.cartState.selectedGBPxAmount != 0.0
-          ? double.parse(GBPxToken.getBalance().replaceAll(",", "")) > store.state.cartState.selectedGBPxAmount
-              ? await walletApi.tokenTransfer(
-                  getIt<Web3>(instanceName: 'fuseWeb3'),
-                  store.state.userState.walletAddress,
-                  GBPxToken.address,
-                  store.state.cartState.restaurantWalletAddress, //TODO: change
-                  store.state.cartState.selectedGBPxAmount.toString(),
-                  externalId: store.state.cartState.paymentIntentID,
-                )
-              : {}
-          : {};
+      Map<String, dynamic> GBPxResponse =
+          store.state.cartState.selectedGBPxAmount != 0.0
+              ? double.parse(GBPxToken.getBalance().replaceAll(",", "")) >
+                      store.state.cartState.selectedGBPxAmount
+                  ? await walletApi.tokenTransfer(
+                      getIt<Web3>(instanceName: 'fuseWeb3'),
+                      store.state.userState.walletAddress,
+                      GBPxToken.address,
+                      store.state.cartState
+                          .restaurantWalletAddress, //TODO: change
+                      store.state.cartState.selectedGBPxAmount.toString(),
+                      externalId: store.state.cartState.paymentIntentID,
+                    )
+                  : {}
+              : {};
 
       print(GBPxResponse);
 
       //If Selected PPL Amount is not 0, transfer PPL
-      Map<String, dynamic> PPLResponse = store.state.cartState.selectedPPLAmount != 0.0
-          ? double.parse(PPLToken.getBalance().replaceAll(",", "")) > store.state.cartState.selectedPPLAmount
-              ? await walletApi.tokenTransfer(
-                  getIt<Web3>(instanceName: 'fuseWeb3'),
-                  store.state.userState.walletAddress,
-                  PPLToken.address,
-                  store.state.cartState.restaurantWalletAddress, //TODO: change
-                  store.state.cartState.selectedPPLAmount.toString(),
-                  externalId: store.state.cartState.paymentIntentID,
-                )
-              : {}
-          : {};
+      Map<String, dynamic> PPLResponse =
+          store.state.cartState.selectedPPLAmount != 0.0
+              ? double.parse(PPLToken.getBalance().replaceAll(",", "")) >
+                      store.state.cartState.selectedPPLAmount
+                  ? await walletApi.tokenTransfer(
+                      getIt<Web3>(instanceName: 'fuseWeb3'),
+                      store.state.userState.walletAddress,
+                      PPLToken.address,
+                      store.state.cartState
+                          .restaurantWalletAddress, //TODO: change
+                      store.state.cartState.selectedPPLAmount.toString(),
+                      externalId: store.state.cartState.paymentIntentID,
+                    )
+                  : {}
+              : {};
 
       print(PPLResponse);
 

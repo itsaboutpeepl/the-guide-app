@@ -204,13 +204,13 @@ PODS:
   - Segment-Amplitude (3.0.1):
     - Amplitude-iOS (~> 4.8.0)
     - Analytics (~> 3.7.0)
-  - Sentry (7.26.0):
-    - Sentry/Core (= 7.26.0)
-  - Sentry/Core (7.26.0)
+  - Sentry (7.27.1):
+    - Sentry/Core (= 7.27.1)
+  - Sentry/Core (7.27.1)
   - sentry_flutter (0.0.1):
     - Flutter
     - FlutterMacOS
-    - Sentry (~> 7.26.0)
+    - Sentry (~> 7.27.1)
   - share_plus (0.0.1):
     - Flutter
   - shared_preferences_ios (0.0.1):
@@ -218,27 +218,27 @@ PODS:
   - sqflite (0.0.2):
     - Flutter
     - FMDB (>= 2.7.5)
-  - Stripe (22.8.2):
-    - Stripe/Stripe3DS2 (= 22.8.2)
-    - StripeApplePay (= 22.8.2)
-    - StripeCore (= 22.8.2)
-    - StripeUICore (= 22.8.2)
-  - Stripe/Stripe3DS2 (22.8.2):
-    - StripeApplePay (= 22.8.2)
-    - StripeCore (= 22.8.2)
-    - StripeUICore (= 22.8.2)
+  - Stripe (22.8.3):
+    - Stripe/Stripe3DS2 (= 22.8.3)
+    - StripeApplePay (= 22.8.3)
+    - StripeCore (= 22.8.3)
+    - StripeUICore (= 22.8.3)
+  - Stripe/Stripe3DS2 (22.8.3):
+    - StripeApplePay (= 22.8.3)
+    - StripeCore (= 22.8.3)
+    - StripeUICore (= 22.8.3)
   - stripe_ios (0.0.1):
     - Flutter
     - Stripe (~> 22.8.1)
     - StripeFinancialConnections (~> 22.8.1)
-  - StripeApplePay (22.8.2):
-    - StripeCore (= 22.8.2)
-  - StripeCore (22.8.2)
-  - StripeFinancialConnections (22.8.2):
-    - StripeCore (= 22.8.2)
-    - StripeUICore (= 22.8.2)
-  - StripeUICore (22.8.2):
-    - StripeCore (= 22.8.2)
+  - StripeApplePay (22.8.3):
+    - StripeCore (= 22.8.3)
+  - StripeCore (22.8.3)
+  - StripeFinancialConnections (22.8.3):
+    - StripeCore (= 22.8.3)
+    - StripeUICore (= 22.8.3)
+  - StripeUICore (22.8.3):
+    - StripeCore (= 22.8.3)
   - url_launcher_ios (0.0.1):
     - Flutter
   - video_player_avfoundation (0.0.1):
@@ -405,7 +405,7 @@ SPEC CHECKSUMS:
   FirebaseInstallations: 0a115432c4e223c5ab20b0dbbe4cbefa793a0e8e
   FirebaseMessaging: 4eaf1b8a7464b2c5e619ad66e9b20ee3e3206b24
   FirebaseRemoteConfig: 16e29297f0dd0c7d2415c4506d614fe0b54875d1
-  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
   flutter_inappwebview: bfd58618f49dc62f2676de690fc6dcda1d6c3721
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
   flutter_secure_storage: 7953c38a04c3fdbb00571bcd87d8e3b5ceb9daec
@@ -436,17 +436,17 @@ SPEC CHECKSUMS:
   SAMKeychain: 483e1c9f32984d50ca961e26818a534283b4cd5c
   scan: aea35bb4aa59ccc8839c576a18cd57c7d492cc86
   Segment-Amplitude: 1b3b02a2e92f4b08a413a72bf7aa44f78566ab3b
-  Sentry: 6b8f4a4f93c2471b0d73819c52da0c0ce4f0323c
-  sentry_flutter: 6604b70e74bfb15522c23788295e1debdbc86676
+  Sentry: bc644307e2eb6a4c9c55cf117a80b895bb2a25a7
+  sentry_flutter: 649559f0512e00d3f6fc92cf51f74bc2fe68d1d3
   share_plus: 056a1e8ac890df3e33cb503afffaf1e9b4fbae68
   shared_preferences_ios: 548a61f8053b9b8a49ac19c1ffbc8b92c50d68ad
   sqflite: 6d358c025f5b867b29ed92fc697fd34924e11904
-  Stripe: 9b02a044432c68a3b63694e4d09c6b30c2c8dfef
+  Stripe: 90c12b350ae9e8a262efa87d230c00110c741f88
   stripe_ios: 8ad17b19d7d2189d7c19fd15d9ecffeca696390f
-  StripeApplePay: 1b2dca823c710b7f09667e1b7d9290008dd54bec
-  StripeCore: c03842e8c9feed545ac5976efe2cc1429d5ba553
-  StripeFinancialConnections: 2aef6c41e26aeb6b93ee48e7d7933ad73b01f35d
-  StripeUICore: 3efbad959661e9f3e9ee1855c84a21747c10f285
+  StripeApplePay: ce1edb7b3cb8b1abe29734f0fb887ee839a08043
+  StripeCore: 7197196aa2344c5c5eaf4a1ba406950c06b1c01c
+  StripeFinancialConnections: ff08ef2f655b8f577f0bf70f10b588517dfa667e
+  StripeUICore: 5b635db49163d62f9aa831269031de382bcb2bbd
   url_launcher_ios: 839c58cdb4279282219f5e248c3321761ff3c4de
   video_player_avfoundation: e489aac24ef5cf7af82702979ed16f2a5ef84cff
   wakelock: d0fc7c864128eac40eba1617cb5264d9c940b46f

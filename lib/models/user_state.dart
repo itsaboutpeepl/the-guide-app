@@ -12,10 +12,12 @@ part 'user_state.g.dart';
 
 String currencyJson(String? currency) => currency == null ? 'usd' : currency;
 
-authTypeFromJson(String auth) => EnumToString.fromString(BiometricAuth.values, auth);
+authTypeFromJson(String auth) =>
+    EnumToString.fromString(BiometricAuth.values, auth);
 
-Locale localeFromJson(Map<String, dynamic>? map) =>
-    map == null ? Locale('en', 'US') : Locale(map['languageCode'], map['countryCode']);
+Locale localeFromJson(Map<String, dynamic>? map) => map == null
+    ? Locale('en', 'US')
+    : Locale(map['languageCode'], map['countryCode']);
 
 Map<String, dynamic> localeToJson(Locale? locale) => locale == null
     ? {'languageCode': 'en', 'countryCode': 'US'}
@@ -60,10 +62,13 @@ class UserState with _$UserState {
     @Default(BiometricAuth.none)
     @JsonKey(fromJson: authTypeFromJson, toJson: EnumToString.convertToString)
         BiometricAuth authType,
-    @JsonKey(fromJson: localeFromJson, toJson: localeToJson) @Default(null) Locale? locale,
+    @JsonKey(fromJson: localeFromJson, toJson: localeToJson)
+    @Default(null)
+        Locale? locale,
     @JsonKey(ignore: true) @Default([]) List<Contact> contacts,
     @Default(null) @JsonKey(ignore: true) PhoneAuthCredential? credentials,
     WalletModules? walletModules,
+    @Default("") String postcode,
   }) = _UserState;
 
   factory UserState.initial() => UserState(
@@ -83,11 +88,13 @@ class UserState with _$UserState {
   factory UserState.fromJson(dynamic json) => _$UserStateFromJson(json);
 }
 
-class UserStateConverter implements JsonConverter<UserState, Map<String, dynamic>?> {
+class UserStateConverter
+    implements JsonConverter<UserState, Map<String, dynamic>?> {
   const UserStateConverter();
 
   @override
-  UserState fromJson(Map<String, dynamic>? json) => json != null ? UserState.fromJson(json) : UserState.initial();
+  UserState fromJson(Map<String, dynamic>? json) =>
+      json != null ? UserState.fromJson(json) : UserState.initial();
 
   @override
   Map<String, dynamic> toJson(UserState instance) => instance.toJson();

@@ -53,7 +53,7 @@ class TokenHelpDialogState extends State<TokenHelpDialog>
           children: <Widget>[
             Container(
               padding: EdgeInsets.all(10),
-              width: 300,
+              width: MediaQuery.of(context).size.width * 0.9,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -73,9 +73,9 @@ class TokenHelpDialogState extends State<TokenHelpDialog>
                           children: [
                             TextSpan(
                                 text:
-                                    "The Guide app uses the Fuse blockchain to issue Peepl rewards and as a means to safeguard your privacy. This means we only require your phone number to verify and secure your account, and all information is stored locally on your device.\n\nFor more information on the steps we take to safeguard your privacy, our policy can be found "),
+                                    "The Guide has partnered with Peepl to give all of our app users their own wallet, rewarding you for shopping locally. \n\nWhen you watch some of the videos that appear within our app, you will get Peepl rewards. \n\nYou can use your rewards, and save money on purchases made through the Peepl Community button in the bottom right. \n\nWe’re excited to partner with Peepl on their mission to move away from extractive big tech and keep more money in our local community. \n\nAny feedback you have on the app please share with info@theguideliverpool.com and if you would like to learn more about Peepl you can visit "),
                             TextSpan(
-                              text: "here ",
+                              text: "www.itsaboutpeepl.com ",
                               style: TextStyle(
                                 color: flexColorSchemeLight.primary,
                                 fontWeight: FontWeight.bold,
@@ -83,12 +83,11 @@ class TokenHelpDialogState extends State<TokenHelpDialog>
                               recognizer: new TapGestureRecognizer()
                                 ..onTap = () {
                                   UrlLaunch.launchURL(
-                                      "https://theguideliverpool.com/the-guide-liverpool-app-privacy-policy/");
+                                      "https://www.itsaboutpeepl.com");
                                 },
                             ),
                             TextSpan(
-                                text:
-                                    "and can be viewed anytime within the Account section."),
+                                text: "and get in touch with them from there."),
                           ],
                         ),
                       ),

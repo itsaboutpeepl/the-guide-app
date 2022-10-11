@@ -29,7 +29,8 @@ class MotionTabBar extends StatefulWidget {
   _MotionTabBarState createState() => _MotionTabBarState();
 }
 
-class _MotionTabBarState extends State<MotionTabBar> with TickerProviderStateMixin {
+class _MotionTabBarState extends State<MotionTabBar>
+    with TickerProviderStateMixin {
   late AnimationController _animationController;
   late Tween<double> _positionTween;
   late Animation<double> _positionAnimation;
@@ -78,28 +79,31 @@ class _MotionTabBarState extends State<MotionTabBar> with TickerProviderStateMix
 
     _positionTween = Tween<double>(begin: position, end: 1);
 
-    _positionAnimation = _positionTween.animate(CurvedAnimation(parent: _animationController, curve: Curves.easeOut))
+    _positionAnimation = _positionTween.animate(
+        CurvedAnimation(parent: _animationController, curve: Curves.easeOut))
       ..addListener(() {
         setState(() {});
       });
 
-    _fadeFabOutAnimation =
-        Tween<double>(begin: 1, end: 0).animate(CurvedAnimation(parent: _fadeOutController, curve: Curves.easeOut))
-          ..addListener(() {
-            setState(() {
-              fabIconAlpha = _fadeFabOutAnimation.value;
-            });
-          })
-          ..addStatusListener((AnimationStatus status) {
-            if (status == AnimationStatus.completed) {
-              setState(() {
-                activeIcon = icons[selectedTab]!;
-              });
-            }
+    _fadeFabOutAnimation = Tween<double>(begin: 1, end: 0).animate(
+        CurvedAnimation(parent: _fadeOutController, curve: Curves.easeOut))
+      ..addListener(() {
+        setState(() {
+          fabIconAlpha = _fadeFabOutAnimation.value;
+        });
+      })
+      ..addStatusListener((AnimationStatus status) {
+        if (status == AnimationStatus.completed) {
+          setState(() {
+            activeIcon = icons[selectedTab]!;
           });
+        }
+      });
 
-    _fadeFabInAnimation = Tween<double>(begin: 0, end: 1)
-        .animate(CurvedAnimation(parent: _animationController, curve: Interval(0.8, 1, curve: Curves.easeOut)))
+    _fadeFabInAnimation = Tween<double>(begin: 0, end: 1).animate(
+        CurvedAnimation(
+            parent: _animationController,
+            curve: Interval(0.8, 1, curve: Curves.easeOut)))
       ..addListener(() {
         setState(() {
           fabIconAlpha = _fadeFabInAnimation.value;
@@ -162,11 +166,6 @@ class _MotionTabBarState extends State<MotionTabBar> with TickerProviderStateMix
                           ),
                         ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 60,
-                      width: 80,
-                      child: CustomPaint(painter: HalfPainter()),
                     ),
                     SizedBox(
                       height: 50,
@@ -248,7 +247,8 @@ class HalfPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final Rect beforeRect = Rect.fromLTWH(0, (size.height / 2) - 10, 10, 10);
     final Rect largeRect = Rect.fromLTWH(10, 0, size.width - 20, 70);
-    final Rect afterRect = Rect.fromLTWH(size.width - 10, (size.height / 2) - 10, 10, 10);
+    final Rect afterRect =
+        Rect.fromLTWH(size.width - 10, (size.height / 2) - 10, 10, 10);
 
     final path = Path();
     path.arcTo(beforeRect, vector.radians(0), vector.radians(90), false);

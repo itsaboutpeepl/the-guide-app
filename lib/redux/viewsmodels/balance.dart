@@ -22,17 +22,10 @@ class BalanceViewModel extends Equatable {
 
   static BalanceViewModel fromStore(Store<AppState> store) {
     CashWalletState cashWalletState = store.state.cashWalletState;
-    // List<Token> homeTokens = List<Token>.from(cashWalletState.tokens.values)
-    //     .where((Token token) =>
-    //         num.parse(token.getBalance(true)).compareTo(0) == 1)
-    //     .toList();
-
-    // final num value = homeTokens.fold<num>(0, combiner);
 
     return BalanceViewModel(
       pplBalance: cashWalletState.tokens[PeeplToken.address]!.getBalance(),
       gbpxbalance: cashWalletState.tokens[GBPxToken.address]!.getBalance(),
-      // usdValue: display(value),
     );
   }
 
