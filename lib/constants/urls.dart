@@ -9,7 +9,7 @@ class UrlConstants {
       'https://raw.githubusercontent.com/fuseio/fuseswap-default-token-list/master/build/fuseswap-default.tokenlist.json';
   static const String FUSESWAP_SERVICE_API = 'https://api.fuseswap.com/api/v1';
   static const String THEGUIDE_WORDPRESS_API =
-      "https://theguideliverpool.com/wp-json/peepl/v1";
+      "https://theguideliverpool.igoodev.com/wp-json/peepl/v1";
   static const String PEEPL_MEDIA_API =
       "https://media.itsaboutpeepl.com/api/v1";
 
