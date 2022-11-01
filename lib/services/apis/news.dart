@@ -76,7 +76,8 @@ class NewsService {
     return demoCategories;
   }
 
-  Future<List<BlogArticle>> pagedArticlesByCategoryID(String query, {int page = 1}) async {
+  Future<List<BlogArticle>> pagedArticlesByCategoryID(String query,
+      {int page = 1}) async {
     Response response = await dio.get('/posts?category=$query&page=$page');
 
     List<dynamic> results = response.data as List;
@@ -118,7 +119,10 @@ class NewsService {
             startDate: DateTime.parse(element['start_date']),
             endDate: DateTime.parse(element['end_date']),
             eventTitle: parseHtmlString(element['title']),
-            location: element['location']['name'] ?? "UK" + ", " + (element['location']['street_name_short'] ?? "UK"),
+            location: element['location']['name'] ??
+                "UK" +
+                    ", " +
+                    (element['location']['street_name_short'] ?? "UK"),
             description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
@@ -136,7 +140,10 @@ class NewsService {
             startDate: DateTime.parse(element['start_date']),
             endDate: DateTime.parse(element['end_date']),
             eventTitle: parseHtmlString(element['title']),
-            location: element['location']['name'] ?? "UK" + ", " + (element['location']['street_name_short'] ?? "UK"),
+            location: element['location']['name'] ??
+                "UK" +
+                    ", " +
+                    (element['location']['street_name_short'] ?? "UK"),
             description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
@@ -166,7 +173,9 @@ class NewsService {
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
             address: element['location']['address'] ??
-                (element['location']['name'] + ", " + element['location']['street_name_short']),
+                (element['location']['name'] +
+                    ", " +
+                    element['location']['street_name_short']),
             description: element['description'],
             website: element['website'] ?? "",
             twitterLink: element['twitter'] ?? "",

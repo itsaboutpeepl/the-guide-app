@@ -169,15 +169,17 @@ class _ShopScreenState extends State<ShopScreen> {
                 },
               );
               webView.addJavaScriptHandler(
-                  handlerName: "storePostcode",
-                  callback: (values) {
-                    viewmodel.storePostCode(values[0][0]);
-                  });
+                handlerName: "storePostcode",
+                callback: (values) {
+                  viewmodel.storePostCode(values[0][0]);
+                },
+              );
               webView.addJavaScriptHandler(
-                  handlerName: "getPostcode",
-                  callback: (values) {
-                    return viewmodel.postcode;
-                  });
+                handlerName: "getPostcode",
+                callback: (values) {
+                  return viewmodel.postcode;
+                },
+              );
             },
           ),
         );
