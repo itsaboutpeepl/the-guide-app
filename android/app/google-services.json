@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1044608870893-4lqmkl9u2vcrg36kra9stqna6sqva0sh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.theguideliverpool.theguideapp",
+            "certificate_hash": "d588ccd49afbd45f7d65b4eeb1603b802077ecf0"
+          }
+        },
+        {
           "client_id": "1044608870893-prmr1ce01dsh2cda5cb4hdv8rms2ebin.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,14 @@
             {
               "client_id": "1044608870893-prmr1ce01dsh2cda5cb4hdv8rms2ebin.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1044608870893-qdujufpfbe9fe1lheg8oiec7grg2fvbu.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.theguideliverpool.theguideapp",
+                "app_store_id": "1600049497"
+              }
             }
           ]
         }

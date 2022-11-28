@@ -2,19 +2,14 @@ import 'package:decimal/decimal.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/dateTimeFormat.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/decimal_handler.dart';
 import 'package:guide_liverpool/models/schedules/schedules.dart';
-import 'package:guide_liverpool/models/vesting_state.dart';
 
 import 'package:guide_liverpool/services.dart';
-import 'package:guide_liverpool/services/apis/vesting.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
-import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:redux/redux.dart';
 import 'package:web3dart/crypto.dart';
 import 'package:web3dart/web3dart.dart';
-
-import 'dart:convert';
 
 class UpdateVestedTotal {
   final Decimal vestedTotal;

@@ -9,7 +9,7 @@ part of 'actions.dart';
 _$_WalletActions _$$_WalletActionsFromJson(Map<String, dynamic> json) =>
     _$_WalletActions(
       list: (json['list'] as List<dynamic>?)
-              ?.map((e) => WalletAction.fromJson(e))
+              ?.map((e) => WalletAction.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const <WalletAction>[],
       updatedAt: json['updatedAt'] as num? ?? 0,

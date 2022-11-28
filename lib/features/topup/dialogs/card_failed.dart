@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
 class TopUpFailed extends StatefulWidget {
+  const TopUpFailed({Key? key, this.isFailed = false}) : super(key: key);
   final bool isFailed;
 
-  TopUpFailed({this.isFailed = false});
-
   @override
-  _TopUpFailedState createState() => _TopUpFailedState();
+  State<TopUpFailed> createState() => _TopUpFailedState();
 }
 
 class _TopUpFailedState extends State<TopUpFailed>
@@ -25,16 +24,18 @@ class _TopUpFailedState extends State<TopUpFailed>
   void initState() {
     super.initState();
 
-    controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 400),
+    );
     scaleAnimation =
         CurvedAnimation(parent: controller, curve: Curves.fastOutSlowIn);
 
-    controller.addListener(() {
-      setState(() {});
-    });
-
-    controller.forward();
+    controller
+      ..addListener(() {
+        setState(() {});
+      })
+      ..forward();
   }
 
   @override
@@ -42,32 +43,33 @@ class _TopUpFailedState extends State<TopUpFailed>
     return ScaleTransition(
       scale: scaleAnimation,
       child: AlertDialog(
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(
-            Radius.circular(20.0),
+            Radius.circular(20),
           ),
         ),
         content: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Text(
                 widget.isFailed ? 'Topup Failed' : 'Topup Cancelled',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                 ),
               ),
-              SizedBox(height: 20.0),
-              Text(
-                "Sorry, it seems top up is not currently working, please try again later.",
-                style: TextStyle(
-                  fontSize: 20,
+              const SizedBox(height: 20),
+              if (widget.isFailed)
+                const Text(
+                  'Sorry, it seems top up is not '
+                  'currently working, please try again later.',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                  textAlign: TextAlign.center,
                 ),
-                textAlign: TextAlign.center,
-              ),
             ],
           ),
         ),

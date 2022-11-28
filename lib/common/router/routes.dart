@@ -1,13 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
 import 'package:guide_liverpool/features/account/router/router.dart';
-import 'package:guide_liverpool/features/buy/router/router.dart';
-import 'package:guide_liverpool/features/contacts/router/router.dart';
 import 'package:guide_liverpool/features/guideHome/router/router.dart';
 import 'package:guide_liverpool/features/guideNews/router/router.dart';
-import 'package:guide_liverpool/features/home/router/router.dart';
-import 'package:guide_liverpool/features/onboard/screens/show_user_mnemonic.dart';
-import 'package:guide_liverpool/features/onboard/screens/verify_user_mnemonic.dart';
 import 'package:guide_liverpool/features/screens/main_screen.dart';
 import 'package:guide_liverpool/features/onboard/screens/security_screen.dart';
 import 'package:guide_liverpool/features/onboard/screens/restore_wallet_screen.dart';
@@ -49,10 +44,7 @@ export 'routes.gr.dart';
       children: [
         guideHomeTab,
         newsTab,
-        homeTab,
         topupTab,
-        contactsTab,
-        buyTab,
         accountTab,
         webviewTab,
       ],

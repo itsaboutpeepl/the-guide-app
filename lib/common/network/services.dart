@@ -1,25 +1,28 @@
+import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
+import 'package:guide_liverpool/common/di/di.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
-import 'package:wallet_core/wallet_core.dart';
 
 @module
 abstract class ServicesModule {
   @lazySingleton
-  Graph get graph => Graph(
-        dotenv.env['GRAPH_BASE_URL']!,
-        dotenv.env['NFT_SUB_GRAPH_URL'] ?? 'https://api.thegraph.com/subgraphs/name/mul53/nft-subgraph',
-      );
-
-  // @lazySingleton
-  // API get api => API(
-  //       dotenv.env['API_BASE_URL']!,
-  //     );
+  Graph get graph => Graph();
 
   @lazySingleton
-  WalletApi get walletApi => WalletApi();
+  ChargeApi get chargeApi => ChargeApi(
+        dotenv.env['CHARGE_API_KEY']!,
+      );
 
-  @singleton
-  RootRouter get rootRouter => RootRouter(authGuard: AuthGuard());
+  @lazySingleton
+  RootRouter get rootRouter => RootRouter(
+        authGuard: AuthGuard(),
+      );
+
+  @lazySingleton
+  FuseExplorer get fuseExplorerAPI => FuseExplorer(
+        getIt<Dio>(),
+      );
 }

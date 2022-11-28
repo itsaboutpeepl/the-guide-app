@@ -1,28 +1,19 @@
+import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
+import 'package:decimal/decimal.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 import 'package:guide_liverpool/common/di/di.dart';
 import 'package:guide_liverpool/models/actions/actions.dart';
 import 'package:guide_liverpool/models/cash_wallet_state.dart';
 import 'package:guide_liverpool/models/tokens/price.dart';
-import 'package:guide_liverpool/models/tokens/stats.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/format.dart';
-import 'package:wallet_core/wallet_core.dart' show EtherAmount, Web3;
+import 'package:guide_liverpool/utils/log/log.dart';
 
 part 'token.freezed.dart';
 part 'token.g.dart';
 
-@freezed
+@Freezed()
 class Token with _$Token implements Comparable<Token> {
-  const Token._();
-
-  @override
-  int compareTo(Token? other) {
-    if (other == null) return 1;
-    return num.parse(getFiatBalance(true)).compareTo(num.parse(other.getFiatBalance(true)));
-  }
-
-  @JsonSerializable()
   factory Token({
     required String address,
     required String name,
@@ -31,69 +22,73 @@ class Token with _$Token implements Comparable<Token> {
     required int decimals,
     @Default(false) bool isNative,
     String? imageUrl,
-    @JsonKey(ignore: true) String? subtitle,
     int? timestamp,
     Price? priceInfo,
     String? communityAddress,
-    String? originNetwork,
+    @Default(TimeFrame.day) TimeFrame timeFrame,
     @Default(0) num priceChange,
-    @JsonKey(ignore: true) @Default(0) num priceDiff,
-    @JsonKey(ignore: true) @Default(0) int priceDiffLimitInDays,
-    @JsonKey(ignore: true) @Default([]) List<Stats> stats,
+    @Default([]) List<IntervalStats> intervalStats,
     @JsonKey(fromJson: walletActionsFromJson) WalletActions? walletActions,
   }) = _Token;
 
-  String getBalance([withPrecision = false]) => Formatter.formatValue(
-        amount,
-        decimals,
-        withPrecision,
-      );
+  factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
 
-  String getFiatBalance([bool withPrecision = false]) {
-    if (num.parse(priceInfo?.quote ?? '0').compareTo(0) <= 1) {
-      return Formatter.formatValueToFiat(
-        amount,
-        decimals,
-        double.tryParse(quote) ?? 0.0,
-        withPrecision,
-      );
-    }
-    return '0';
+  const Token._();
+
+  @override
+  int compareTo(Token? other) {
+    if (other == null) return 1;
+    return num.parse(getFiatBalance(withPrecision: true))
+        .compareTo(num.parse(other.getFiatBalance(withPrecision: true)));
   }
 
-  bool get hasPriceInfo => ![null, '', '0', 0, 'NaN'].contains(priceInfo?.quote);
+  double getAmount() => Formatter.fromWei(amount, decimals).toDouble();
 
-  String get quote => priceInfo?.quoteHuman ?? '0';
+  String getBalance({bool withPrecision = false}) => Formatter.formatValue(
+        amount,
+        decimals,
+        withPrecision,
+      );
+
+  String getFiatBalance({bool withPrecision = false}) => hasPriceInfo
+      ? Formatter.formatValueToFiat(
+          amount,
+          decimals,
+          double.parse(priceInfo!.quote),
+          withPrecision,
+        )
+      : '0';
+
+  bool get hasPriceInfo => priceInfo != null && priceInfo?.hasPriceInfo == true;
 
   Future<dynamic> fetchBalance(
     String accountAddress, {
-    required Function(BigInt) onDone,
-    required Function onError,
+    required void Function(BigInt) onDone,
+    Function? onError,
   }) async {
-    if ([null, ''].contains(accountAddress) || [null, ''].contains(address)) return;
-    if (isNative) {
-      try {
-        EtherAmount balance = await getIt<Web3>(instanceName: 'fuseWeb3').getBalance(
-          address: accountAddress,
-        );
-        if (amount.compareTo(balance.getInWei) != 0) {
-          onDone(balance.getInWei);
-        }
-      } catch (e, s) {
-        onError(e, s);
-      }
-    } else {
-      try {
-        final BigInt balance = await getIt<Web3>(instanceName: 'fuseWeb3').getTokenBalance(
-          address,
-          address: accountAddress,
-        );
-        if (amount.compareTo(balance) != 0) {
-          onDone(balance);
-        }
-      } catch (e, s) {
-        onError(e, s);
-      }
+    if ([null, ''].contains(accountAddress) || [null, ''].contains(address)) {
+      return;
+    }
+    try {
+      final dynamic balance = isNative
+          ? await getIt<Web3>().getBalance(address: address)
+          : await getIt<Web3>().getTokenBalance(
+              address,
+              address: accountAddress,
+            );
+
+      final BigInt value =
+          balance is EtherAmount ? balance.getInWei : balance as BigInt;
+
+      onDone(value);
+    } catch (e, s) {
+      log.error(
+        'Error - fetch token balance $name',
+        error: e,
+        stackTrace: s,
+      );
+      onError?.call(e, s);
+      rethrow;
     }
   }
 
@@ -103,8 +98,8 @@ class Token with _$Token implements Comparable<Token> {
     required Function onError,
   }) async {
     try {
-      Price price = await fuseSwapService.price(address);
-      onDone(price);
+      final String price = await chargeApi.price(address);
+      onDone(Price(currency: currency, quote: Decimal.parse(price).toString()));
     } catch (e, s) {
       onError(e, s);
     }
@@ -115,28 +110,26 @@ class Token with _$Token implements Comparable<Token> {
     required Function onError,
   }) async {
     try {
-      final num priceChange = await fuseSwapService.priceChange(address);
-      onDone(priceChange);
+      final String priceChange = await chargeApi.priceChange(address);
+      onDone(num.parse(Decimal.parse(priceChange).toString()));
     } catch (e, s) {
       onError(e, s);
     }
   }
 
-  Future<dynamic> fetchStats({
-    required void Function(List<Stats>) onDone,
+  Future<dynamic> fetchIntervalStats({
+    required void Function(List<IntervalStats>) onDone,
     required Function onError,
-    String limit = '30',
+    required TimeFrame timeFrame,
   }) async {
     try {
-      final List<Stats> stats = await fuseSwapService.stats(
+      final List<IntervalStats> intervalStats = await chargeApi.interval(
         address,
-        limit: limit,
+        timeFrame,
       );
-      onDone(stats);
+      onDone(intervalStats);
     } catch (e, s) {
       onError(e, s);
     }
   }
-
-  factory Token.fromJson(Map<String, dynamic> json) => _$TokenFromJson(json);
 }

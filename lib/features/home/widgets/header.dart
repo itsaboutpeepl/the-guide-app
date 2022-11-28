@@ -21,7 +21,7 @@ class _HeaderState extends State<Header> {
         return Container(
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primaryVariant,
+            color: Theme.of(context).colorScheme.primary,
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30.0),
               bottomRight: Radius.circular(30.0),
@@ -67,7 +67,9 @@ class _HeaderState extends State<Header> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Flexible(
-                      child: viewModel.firstName() == "Anom" ? SizedBox.shrink() : Balance(),
+                      child: viewModel.firstName() == "Anom"
+                          ? SizedBox.shrink()
+                          : Balance(),
                     )
                   ],
                 ),

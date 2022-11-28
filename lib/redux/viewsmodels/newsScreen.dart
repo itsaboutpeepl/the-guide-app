@@ -24,5 +24,9 @@ class NewsScreenViewModel extends Equatable {
   }
 
   @override
-  List<Object> get props => [categories, articles, isLoading];
+  List<Object> get props => [
+        categories,
+        articles,
+        isLoading,
+      ];
 }

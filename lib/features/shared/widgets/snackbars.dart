@@ -1,7 +1,7 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:guide_liverpool/features/shared/widgets/paymentSheet.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/order_helpers.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 
@@ -80,7 +80,8 @@ void showPlayBackCompletedFlushBar(context, int rewardAmount) {
     ],
     titleText: Text.rich(
       TextSpan(
-        style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900),
+        style: TextStyle(
+            color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900),
         children: [
           WidgetSpan(
             child: Icon(
@@ -119,7 +120,8 @@ void showPlayBackCompletedFlushBarNoAcc(context) {
     duration: Duration(seconds: 7),
     titleText: Text.rich(
       TextSpan(
-        style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900),
+        style: TextStyle(
+            color: Colors.white, fontSize: 25, fontWeight: FontWeight.w900),
         children: [
           WidgetSpan(
             child: Icon(

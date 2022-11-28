@@ -1,95 +1,26 @@
-import 'dart:async';
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:guide_liverpool/common/di/di.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/numeric_keyboard.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
-import 'package:guide_liverpool/features/topup/dialogs/minting_dialog.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
-import 'package:guide_liverpool/utils/constants.dart';
-import 'package:guide_liverpool/utils/log/log.dart';
-import 'package:redux/redux.dart';
-
-//TODO: add save card functionality
-class TopUpViewModel {
-  final String walletAddress;
-
-  TopUpViewModel({
-    required this.walletAddress,
-  });
-
-  static TopUpViewModel fromStore(Store<AppState> store) {
-    return TopUpViewModel(
-      walletAddress: store.state.userState.walletAddress,
-    );
-  }
-}
-
-enum TopupType { STRIPE, PLAID }
+import 'package:guide_liverpool/redux/viewsmodels/topup.dart';
+import 'package:guide_liverpool/services.dart';
 
 class TopupScreen extends StatefulWidget {
-  final TopupType topupType = TopupType.STRIPE;
+  const TopupScreen({Key? key}) : super(key: key);
 
   @override
-  _TopupScreenState createState() => _TopupScreenState();
+  State<TopupScreen> createState() => _TopupScreenState();
 }
 
 class _TopupScreenState extends State<TopupScreen>
     with SingleTickerProviderStateMixin {
-  String amountText = "25";
-  bool isPreloading = false;
-
-/*   void _onSuccessCallback(
-    String publicToken,
-    LinkSuccessMetadata metadata,
-    String walletAddress,
-  ) async {
-    getIt<Dio>().post(
-      '$topUpService/plaid/set_access_token',
-      data: {
-        'walletAddress': walletAddress,
-        'publicToken': publicToken,
-      },
-      options: Options(
-        headers: {
-          "Content-Type": 'application/json',
-        },
-      ),
-    );
-    // Todo
-    // context.router.popUntilRoot();
-    // context.router.navigateTo(
-    //   HomeTab(
-    //     children: [
-    //       HomeScreen(),
-    //     ],
-    //   ),
-    // );
-    // final BottomNavigationBar navigationBar =
-    //     AppKeys.bottomBarKey.currentWidget;
-    // navigationBar.onTap(0);
-    // responseHandler(
-    //   await client.post(
-    //     '$topUpService/plaid/set_access_token',
-    //     body: body,
-    //     headers: {"Content-Type": 'application/json'},
-    //   ),
-    // );
-  } */
-
-  // void _onEventCallback(String event, LinkEventMetadata metadata) {
-  //   print("onEvent: $event, metadata: ${metadata.description()}");
-  // }
-
-  // void _onExitCallback(LinkError? error, LinkExitMetadata? metadata) {
-  //   print("onExit: $error, metadata: ${metadata?.description()}");
-  // }
+  String _amountText = '25';
+  final bool _isPreloading = false;
 
   @override
   void dispose() {
@@ -101,212 +32,48 @@ class _TopupScreenState extends State<TopupScreen>
     super.initState();
   }
 
-  /* void _handlePlaid(String walletAddress) async {
-    PlaidLink _plaidLinkToken;
-    Response response = await getIt<Dio>().post(
-      '$topUpService/plaid/create_link_token_for_payment',
-      options: Options(
-        headers: {
-          "Authorization": "Bearer keywI4WPG7mJVm2XU",
-        },
-      ),
-      data: {
-        'walletAddress': walletAddress,
-        'value': num.parse(amountText),
-        'reference': 'Top up',
-        'isAndroid': Platform.isAndroid
-      },
-    );
-    if (response.data['link_token'] != null) {
-      _plaidLinkToken = PlaidLink(
-        configuration: LinkTokenConfiguration(
-          token: response.data['link_token'],
-        ),
-        onSuccess: (
-          String publicToken,
-          LinkSuccessMetadata metadata,
-        ) =>
-            _onSuccessCallback(publicToken, metadata, walletAddress),
-        onEvent: _onEventCallback,
-        onExit: _onExitCallback,
-      );
-      _plaidLinkToken.open();
-    }
-  } */
-
-  String _paymentApiUrl = '$topUpService/stripe/createPaymentIntent';
-
-  // Main function to initiate a payment.
-  Future<void> _handleStripe({
-    required String walletAddress,
-    String? errorMessage,
-  }) async {
-    try {
-      Map<String, dynamic> _paymentSheetData = await _createPaymentIntent(
-        amount: amountText,
-        currency: 'gbp',
-        walletAddress: walletAddress,
-      );
-
-      final paymentIntentClientSecret = _paymentSheetData['clientSecret'];
-      log.info('clientSecret $paymentIntentClientSecret');
-      await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-          style: ThemeMode.light,
-          merchantDisplayName: 'Peepl',
-          paymentIntentClientSecret: paymentIntentClientSecret,
-        ),
-      );
-      await Stripe.instance.presentPaymentSheet();
-      //TODO: add timer for dialog
-
-    } on Exception catch (e) {
-      if (e is StripeException) {
-        errorMessage = e.error.localizedMessage;
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            content: Text("$errorMessage"),
-          ),
-        );
-      }
-    }
-
-    if (errorMessage == null) {
-      showDialog(
-        context: context,
-        builder: (context) {
-          return MintingDialog(amountText: amountText, shouldPushToHome: true);
-        },
-        barrierDismissible: false,
-      );
-    }
-
-    //   else {
-    //     showDialog(
-    //       context: context,
-    //       builder: (context) => TopUpFailed(),
-    //     );
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //       SnackBar(
-    //         content: Text('Unforeseen error: ${e}'),
-    //       ),
-    //     );
-    //   }
-    // }
-  }
-
-  Future<Map<String, dynamic>> _createPaymentIntent({
-    required String amount,
-    required String currency,
-    required String walletAddress,
-  }) async {
-    final int amountNew =
-        (double.parse(amount) * 100).toInt(); // Pounds to pence
-    try {
-      final Response response = await getIt<Dio>().post(
-        _paymentApiUrl,
-        data: {
-          'amount': amountNew,
-          'currency': currency,
-          'walletAddress': walletAddress
-        },
-        options: Options(
-          headers: {"Content-Type": 'application/json'},
-        ),
-      );
-      return response.data['data']['paymentIntent'];
-    } catch (e) {
-      log.info('Error _createPaymentIntent ${e.toString()}');
-      return {'error': e.toString()};
-    }
-  }
-
-/*   void _handleStripe(String walletAddress) async {
-    final StripeCustomResponse response = await StripeService().payWithNewCard(
-      amount: amountText,
-      walletAddress: walletAddress,
-      currency: 'GBP',
-    );
-    // Timer timer = Timer(Duration(seconds: 25), () {
-    //   Navigator.of(context, rootNavigator: true).pop();
-    //   showDialog(
-    //     context: context,
-    //     builder: (context) => TimedOut(),
-    //     barrierDismissible: true,
-    //   );
-    // });
-    if (response.ok) {
-      Segment.track(eventName: 'TopUp Success, Token Minting..');
-      showDialog(
-        context: context,
-        builder: (context) {
-          return MintingDialog(amountText, true);
-        },
-        barrierDismissible: false,
-      ).then((value) {
-        // timer.cancel();
-      });
-    } else {
-      if (!response.msg!.contains('Cancelled by user')) {
-        Segment.track(eventName: 'Cancelled top up');
-        showDialog(
-          context: context,
-          builder: (context) => TopUpFailed(),
-        );
-      }
-    }
-  } */
-
-  _onPress(String walletAddress) async {
-    /* if (widget.topupType == TopupType.PLAID) {
-      _handlePlaid(walletAddress);
-    } else if (widget.topupType == TopupType.STRIPE) { */
-    _handleStripe(walletAddress: walletAddress);
-    // }
-  }
-
   //decimal place checker
   String decimalChecker(double a, {int decimalPlaces = 2}) {
-    List<String> values = a.toString().split('.');
+    final List<String> values = a.toString().split('.');
     if (values.length == 2 && values[1].length > decimalPlaces) {
-      return "Too long";
+      return 'Too long';
     } else {
       return a.toString();
     }
   }
 
+  void _onKeyPress(String value, {bool back = false}) {
+    if (back) {
+      if (_amountText.isEmpty) return;
+      _amountText = _amountText.substring(0, _amountText.length - 1);
+    } else {
+      if (_amountText == '0' && value == '0') {
+        _amountText = _amountText;
+      } else if (!(num.parse(_amountText + value) > 250) &&
+          !(decimalChecker(double.parse(_amountText + value)) == 'Too long')) {
+        _amountText = _amountText + value;
+      }
+      // Prevent deposits greater than 250
+
+    }
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
-    _onKeyPress(String value, {bool back = false}) {
-      if (back) {
-        if (amountText.length == 0) return;
-        amountText = amountText.substring(0, amountText.length - 1);
-      } else {
-        if (amountText == '0' && value == '0') {
-          amountText = amountText;
-        } else if (!(num.parse(amountText + value) > 250) &&
-            !(decimalChecker(double.parse(amountText + value)) == 'Too long')) {
-          amountText = amountText + value;
-        }
-        // Prevent deposits greater than 250
-
-      }
-      setState(() {});
-    }
-
     return MyScaffold(
       title: 'Top up using your card',
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height * 0.9,
         child: Column(
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 40),
-              child: Text(
-                I10n.of(context).how_much + ' limit: 250',
+              padding: const EdgeInsets.symmetric(horizontal: 40),
+              child: const Text(
+                'Topups are limited to £250',
                 style: TextStyle(
                   color: Color(
                     0xFF898989,
@@ -314,61 +81,60 @@ class _TopupScreenState extends State<TopupScreen>
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Column(
                   children: <Widget>[
                     Container(
-                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      padding: const EdgeInsets.symmetric(horizontal: 40),
                       child: Row(
                         children: <Widget>[
                           Expanded(
                             child: AutoSizeText(
-                              amountText,
+                              _amountText,
                               maxLines: 1,
-                              style: TextStyle(
-                                fontSize: 40.0,
+                              style: const TextStyle(
+                                fontSize: 40,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                           Container(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: 10,
-                                vertical: 5,
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 10,
+                              vertical: 5,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).backgroundColor,
+                              borderRadius: BorderRadius.circular(
+                                20,
                               ),
-                              decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                color: Theme.of(context).backgroundColor,
-                                borderRadius: BorderRadius.circular(
-                                  20,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  Text(
-                                    'GBP',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold,
-                                      color: Color(
-                                        0xFF808080,
-                                      ),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const <Widget>[
+                                Text(
+                                  'GBP',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(
+                                      0xFF808080,
                                     ),
-                                  )
-                                ],
-                              ))
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
                         ],
                       ),
                     ),
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.symmetric(
                         horizontal: 40,
                         vertical: 20,
@@ -391,11 +157,11 @@ class _TopupScreenState extends State<TopupScreen>
                     // width: 28,
                   ),
                   leftButtonFn: () {
-                    if (amountText.contains('.')) {
+                    if (_amountText.contains('.')) {
                       return;
                     } else {
                       setState(() {
-                        amountText = amountText + '.';
+                        _amountText = '$_amountText.';
                       });
                     }
                   },
@@ -412,12 +178,16 @@ class _TopupScreenState extends State<TopupScreen>
               converter: TopUpViewModel.fromStore,
               builder: (_, viewModel) => Center(
                 child: PrimaryButton(
-                  opacity: 1,
                   // labelFontWeight: FontWeight.normal,
                   label: I10n.of(context).next_button,
-                  onPressed: () => _onPress(viewModel.walletAddress),
-                  preload: isPreloading,
-                  disabled: isPreloading,
+                  onPressed: () => stripeService.handleStripe(
+                    walletAddress: viewModel.walletAddress,
+                    amount: int.parse(_amountText) * 100,
+                    context: context,
+                    shouldPushToHome: true,
+                  ),
+                  preload: _isPreloading,
+                  disabled: _isPreloading,
                   width: 300,
                 ),
               ),

@@ -90,7 +90,6 @@ class ProtectYourWallet extends StatelessWidget {
                 ),
                 MenuTile(
                   label: BiometricUtils.getBiometricString(
-                    context,
                     viewModel.authType,
                   ),
                   menuIcon:
@@ -104,7 +103,6 @@ class ProtectYourWallet extends StatelessWidget {
                     final BiometricAuth biometricAuth =
                         await BiometricUtils.getAvailableBiometrics();
                     final String biometric = BiometricUtils.getBiometricString(
-                      context,
                       biometricAuth,
                     );
                     await BiometricUtils.showDefaultPopupCheckBiometricAuth(

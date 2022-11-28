@@ -121,7 +121,7 @@ class __$$_StatsCopyWithImpl<$Res> extends _$StatsCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable()
-class _$_Stats with DiagnosticableTreeMixin implements _Stats {
+class _$_Stats implements _Stats {
   _$_Stats({this.volume, this.price, this.timestamp, this.date});
 
   factory _$_Stats.fromJson(Map<String, dynamic> json) =>
@@ -137,19 +137,8 @@ class _$_Stats with DiagnosticableTreeMixin implements _Stats {
   final DateTime? date;
 
   @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
+  String toString() {
     return 'Stats(volume: $volume, price: $price, timestamp: $timestamp, date: $date)';
-  }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties
-      ..add(DiagnosticsProperty('type', 'Stats'))
-      ..add(DiagnosticsProperty('volume', volume))
-      ..add(DiagnosticsProperty('price', price))
-      ..add(DiagnosticsProperty('timestamp', timestamp))
-      ..add(DiagnosticsProperty('date', date));
   }
 
   @override

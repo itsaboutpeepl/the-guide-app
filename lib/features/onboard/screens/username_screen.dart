@@ -10,7 +10,7 @@ import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
-import 'package:guide_liverpool/utils/string.dart';
+import 'package:guide_liverpool/utils/extensions.dart';
 
 class UserNameScreen extends StatelessWidget {
   final displayNameController = TextEditingController(text: "");
@@ -110,7 +110,8 @@ class UserNameScreen extends StatelessWidget {
                         label: I10n.of(context).next_button,
                         onPressed: () {
                           if (displayNameController.text.isNotEmpty) {
-                            setDisplayName(displayNameController.text.capitalize());
+                            setDisplayName(
+                                displayNameController.text.capitalize());
                             context.router.push(ChooseSecurityOption());
                           }
                         },

@@ -22,7 +22,9 @@ class NewsService {
 
     return BlogArticle(
       title: parseHtmlString(response.data['title']),
-      imageURL: response.data['featured_image'],
+      imageURL: response.data['featured_image'] != false
+          ? response.data['featured_image']
+          : response.data['attachments'][0] as String? ?? '',
       category: response.data['categories'].cast<String>(),
       postID: int.parse(response.data['id']),
       postURL: response.data['link'],
@@ -45,7 +47,9 @@ class NewsService {
         articles.add(
           BlogArticle(
             title: parseHtmlString(element['title']),
-            imageURL: element['featured_image'],
+            imageURL: element['featured_image'] != false
+                ? element['featured_image']
+                : element['attachments'] as List<String>? ?? '',
             category: element['categories'].cast<String>(),
             postID: element['id'],
             postURL: element['link'],
@@ -89,7 +93,9 @@ class NewsService {
         articles.add(
           BlogArticle(
             title: parseHtmlString(element['title']),
-            imageURL: element['featured_image'],
+            imageURL: element['featured_image'] != false
+                ? element['featured_image']
+                : element['attachments'][0] as String? ?? '',
             category: element['categories'].cast<String>(),
             postID: element['id'],
             postURL: element['link'],

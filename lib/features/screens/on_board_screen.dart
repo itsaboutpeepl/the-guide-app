@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/features/onboard/widegts/flare_controller.dart';
-import 'package:guide_liverpool/features/onboard/widegts/on_boarding_page.dart';
-import 'package:guide_liverpool/features/onboard/widegts/sign_up_buttons.dart';
+//import 'package:guide_liverpool/features/onboard/widgets/flare_controller.dart';
+import 'package:guide_liverpool/features/onboard/widgets/on_boarding_page.dart';
+import 'package:guide_liverpool/features/onboard/widgets/sign_up_buttons.dart';
 import 'package:guide_liverpool/features/screens/OnBoardingScreens/firstScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -15,26 +15,26 @@ class _OnBoardScreenState extends State<OnBoardScreen>
   late PageController _pageController;
   static const _kDuration = Duration(milliseconds: 2000);
   static const _kCurve = Curves.ease;
-  late HouseController _slideController;
+  //late HouseController _slideController;
   late ValueNotifier<double> notifier;
   double page = 0;
   int cont = 0;
   bool animate = false;
 
-  void _onScroll() {
-    _slideController.rooms = _pageController.page!;
-  }
+  // void _onScroll() {
+  //   _slideController.rooms = _pageController.page!;
+  // }
 
   @override
   void initState() {
     super.initState();
-    _slideController = HouseController(onUpdated: _update);
     _pageController = PageController(
       initialPage: 0,
-    )..addListener(_onScroll);
+    );
+    //..addListener(_onScroll);
   }
 
-  _update() => setState(() {});
+  // _update() => setState(() {});
 
   @override
   void dispose() {
@@ -87,54 +87,43 @@ class _OnBoardScreenState extends State<OnBoardScreen>
       SignUpButtons()
     ];
     return Scaffold(
-      body: Container(
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              flex: 20,
-              child: Container(
-                color: Color(0xFF011C35),
-                child: Column(
-                  children: <Widget>[
-                    Expanded(
-                      child: Stack(
-                        children: <Widget>[
-                          PageView.builder(
-                            physics: AlwaysScrollableScrollPhysics(),
-                            itemCount: welcomeScreens.length,
-                            controller: _pageController,
-                            itemBuilder: (BuildContext context, int index) =>
-                                welcomeScreens[index % welcomeScreens.length],
-                          ),
-                          Positioned(
-                            bottom: 15.0,
-                            left: 0.0,
-                            right: 0.0,
-                            child: Container(
-                              padding: EdgeInsets.all(20.0),
-                              child: Center(
-                                child: SmoothPageIndicator(
-                                  controller: _pageController,
-                                  count: welcomeScreens.length,
-                                  effect: JumpingDotEffect(
-                                    dotWidth: 9.0,
-                                    dotHeight: 9.0,
-                                    activeDotColor: Color(0xFF696B6D),
-                                  ),
-                                  onDotClicked: gotoPage,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
+      backgroundColor: Color(0xFF011C35),
+      body: Column(
+        children: <Widget>[
+          Expanded(
+            child: Stack(
+              children: <Widget>[
+                PageView.builder(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  itemCount: welcomeScreens.length,
+                  controller: _pageController,
+                  itemBuilder: (BuildContext context, int index) =>
+                      welcomeScreens[index % welcomeScreens.length],
+                ),
+                Positioned(
+                  bottom: 15.0,
+                  left: 0.0,
+                  right: 0.0,
+                  child: Container(
+                    padding: EdgeInsets.all(20.0),
+                    child: Center(
+                      child: SmoothPageIndicator(
+                        controller: _pageController,
+                        count: welcomeScreens.length,
+                        effect: JumpingDotEffect(
+                          dotWidth: 9.0,
+                          dotHeight: 9.0,
+                          activeDotColor: Color(0xFF696B6D),
+                        ),
+                        onDotClicked: gotoPage,
                       ),
                     ),
-                  ],
+                  ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:guide_liverpool/constants/enums.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:local_auth/local_auth.dart';
+import 'package:guide_liverpool/constants/enums.dart';
 
 class BiometricUtils {
   static Future<BiometricAuth> getAvailableBiometrics({
     BiometricType type = BiometricType.fingerprint,
   }) async {
-    final List<BiometricType> availableBiometrics = await LocalAuthentication().getAvailableBiometrics();
+    final List<BiometricType> availableBiometrics =
+        await LocalAuthentication().getAvailableBiometrics();
     if (availableBiometrics.contains(BiometricType.face)) {
       return BiometricAuth.faceID;
     } else if (availableBiometrics.contains(BiometricType.fingerprint)) {
@@ -25,7 +24,7 @@ class BiometricUtils {
 
   static Future<void> showDefaultPopupCheckBiometricAuth({
     String message = '',
-    required Function(bool) callback,
+    required void Function(bool) callback,
     bool stickyAuth = false,
   }) async {
     final localAuth = LocalAuthentication();
@@ -36,16 +35,19 @@ class BiometricUtils {
   }
 
   static String getBiometricString(
-    BuildContext context,
     BiometricAuth? type,
   ) {
     switch (type) {
       case BiometricAuth.faceID:
-        return I10n.of(context).face_id;
+        return 'Face ID';
       case BiometricAuth.touchID:
-        return I10n.of(context).touch_id;
-      default:
-        return I10n.of(context).touch_id;
+        return 'Touch ID';
+      case BiometricAuth.pincode:
+        return '';
+      case BiometricAuth.none:
+        return '';
+      case null:
+        return '';
     }
   }
 }

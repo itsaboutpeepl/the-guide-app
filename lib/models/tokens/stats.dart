@@ -1,11 +1,10 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
 
 part 'stats.freezed.dart';
 part 'stats.g.dart';
 
 @immutable
-@freezed
+@Freezed()
 class Stats with _$Stats {
   @JsonSerializable()
   factory Stats({

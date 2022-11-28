@@ -1,6 +1,4 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/common/router/routes.gr.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'dart:core';
 
@@ -95,12 +93,12 @@ class SignUpDialogState extends State<SignUpDialog>
                     focusColor: Theme.of(context).canvasColor,
                     highlightColor: Theme.of(context).canvasColor,
                     onTap: () {
-                      AutoRouter.of(context).push(
-                        Webview(
-                          title: I10n.of(context).legal,
-                          url: 'https://fuse.cash/privacy',
-                        ),
-                      );
+                      // AutoRouter.of(context).push(
+                      //   Webview(
+                      //     title: I10n.of(context).legal,
+                      //     url: 'https://fuse.cash/privacy',
+                      //   ),
+                      // );
                     },
                     child: Text(
                       I10n.of(context).privacy,

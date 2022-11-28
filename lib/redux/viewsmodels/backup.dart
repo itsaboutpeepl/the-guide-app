@@ -17,7 +17,7 @@ class BackupViewModel extends Equatable {
     return BackupViewModel(
         user: store.state.userState,
         backupWallet: () {
-          store.dispatch(backupWalletCall());
+          store.dispatch(BackupSuccess());
         });
   }
 

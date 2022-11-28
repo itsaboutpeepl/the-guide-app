@@ -6,99 +6,74 @@ environment:
   sdk: ">=2.16.1 <3.0.0"
 dependencies:
   analyzer: ^4.7.0
-  another_flushbar: ^1.10.24
+  another_flushbar: ^1.12.29
   app_tracking_transparency: ^2.0.1
-  auto_route: ^5.0.1
+  auto_route: ^5.0.2
   auto_size_text: ^3.0.0-nullsafety.0
-  auto_size_text_field: ^2.0.0
-  cached_network_image: ^3.1.0
+  cached_network_image: ^3.2.1
   carousel_slider: ^4.0.0
+  charge_wallet_sdk: ^0.0.2
   chewie: ^1.3.2
   confetti: ^0.7.0
-  contacts_service: ^0.6.1
   country_code_picker: ^2.0.2
-  cupertino_icons: ^1.0.2
-  decimal: ^2.0.0
+  decimal: ^2.3.0
   dio: ^4.0.0
   enum_to_string: ^2.0.1
-  equatable: ^2.0.3
-  firebase_auth: ^3.0.1
-  firebase_core: ^1.4.0
-  firebase_messaging: ^13.0.3
-  firebase_remote_config: ^2.0.5
-  fl_chart: ^0.55.0
-  flare_flutter: ^3.0.1
-  flex_color_scheme: ^5.0.0
-  flutter_cupertino_localizations: ^1.0.1
+  equatable: ^2.0.5
+  firebase_analytics: ^9.3.8
+  firebase_auth: ^3.11.2
+  firebase_core: ^1.24.0
+  firebase_messaging: ^13.1.0
+  flex_color_scheme: ^5.1.0
   flutter_dotenv: ^5.0.0
   flutter_html: ^3.0.0-alpha.3
-  flutter_inappwebview:
-    git:
-      url: https://github.com/VictorUvarov/flutter_inappwebview.git
-      ref: ios-16-compile-issue
+  flutter_inappwebview: ^5.7.1
   flutter_localized_locales: ^2.0.2
-  flutter_platform_widgets: ^2.0.0
   flutter_redux: ^0.10.0
-  web3dart: ^2.3.5
   flutter_secure_storage: ^6.0.0
-  flutter_slidable: ^2.0.0
   flutter_staggered_grid_view: ^0.6.1
   flutter_stripe: ^5.1.0
-  flutter_svg: ^1.0.3
+  flutter_svg: ^1.1.5
   flutter_udid: ^2.0.0
-  flutter_web_browser: ^0.17.1
-  flutter_math_fork: ^0.6.2 #remove in newer flutter version, packaged for no reason with flutter 2.8
-  font_awesome_flutter: ^10.1.0
-  freezed_annotation: ^2.0.3
+  font_awesome_flutter: ^10.2.1
+  freezed_annotation: ^2.2.0
   get_it: ^7.2.0
-  google_fonts: ^3.0.1
   http: ^0.13.4
-  youtube_explode_dart: ^1.10.8
-  xml: ^6.1.0
-  google_maps_flutter: ^2.0.6
-  grouped_list: ^5.1.1
-  image_picker: ^0.8.2
-  injectable: ^1.4.1
+  image_picker: ^0.8.6
+  injectable: ^1.5.3
   json_annotation: ^4.3.0
-  local_auth: ^2.0.0
+  local_auth: ^2.1.2
   logger: ^1.0.0
-  modal_bottom_sheet: ^2.0.0
+  modal_bottom_sheet: ^2.1.2
   number_display: ^3.0.0
   package_info: ^2.0.2
-  permission_handler: ^10.0.0
   phone_number: ^1.0.0
   pin_code_fields: ^7.2.0
-  plaid_flutter: ^2.1.3
-  qr_flutter: ^4.0.0
-  rate_my_app: ^1.1.0+1
+  redux_dev_tools: ^0.7.0
   redux_logging: ^0.5.0
   redux_persist: ^0.9.0
   redux_thunk: ^0.4.0
   responsive_framework: ^0.2.0
-  scan: ^1.4.3
-  sentry_flutter: ^6.12.0
+  sentry_flutter: ^6.12.2
   share_plus: ^4.0.4
   shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
-  web_socket_channel: ^2.2.0
   url_launcher: ^6.0.9
+  web3dart: ^2.3.5
+  web_socket_channel: ^2.2.0
   webview_flutter: ^3.0.2
-  wallet_core:
-    git:
-      url: https://github.com/fuseio/wallet_core.git
-      ref: master
+  youtube_explode_dart: ^1.10.8
   ethereum_addresses:
     git:
       url: https://github.com/fuseio/dart-ethereum_address.git
-      ref: master
-  flutter_segment:
-    git:
-      url: https://github.com/fuseio/flutter-segment.git
       ref: master
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  internet_connection_checker: ^1.0.0+1
+  wallet_connect: ^1.0.4
+  collection: ^1.16.0
 dev_dependencies:
   auto_route_generator: ^5.0.2
   build_runner: ^2.0.6
@@ -135,22 +110,9 @@ flutter:
           weight: 800
         - asset: assets/fonts/europa-bold-webfont.ttf
           weight: 900
-    - family: Lato
-      fonts:
-        - asset: assets/fonts/Lato/Lato-Light.ttf
-          weight: 100
-        - asset: assets/fonts/Lato/Lato-Thin.ttf
-          weight: 300
-        - asset: assets/fonts/Lato/Lato-Regular.ttf
-          weight: 500
-        - asset: assets/fonts/Lato/Lato-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Lato/Lato-Black.ttf
-          weight: 900
     - family: PeeplIcons
       fonts:
         - asset: assets/fonts/PeeplIcons.ttf
-
   uses-material-design: true
 flutter_intl:
   enabled: true

@@ -1,21 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/redux/actions/user_actions.dart';
-import 'package:guide_liverpool/models/app_state.dart';
 import 'package:redux/redux.dart';
+import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/redux/actions/user_actions.dart';
 
 class SplashViewModel extends Equatable {
-  final String privateKey;
-  final String jwtToken;
-  final bool isLoggedOut;
-  final Function() loginAgain;
-
-  final Function(
-    VoidCallback successCallback,
-    VoidCallback errorCallback,
-  ) createLocalAccount;
-
-  SplashViewModel({
+  const SplashViewModel({
     required this.privateKey,
     required this.jwtToken,
     required this.isLoggedOut,
@@ -23,19 +13,17 @@ class SplashViewModel extends Equatable {
     required this.loginAgain,
   });
 
-  static SplashViewModel fromStore(Store<AppState> store) {
+  factory SplashViewModel.fromStore(Store<AppState> store) {
     return SplashViewModel(
       privateKey: store.state.userState.privateKey,
       jwtToken: store.state.userState.jwtToken,
       isLoggedOut: store.state.userState.isLoggedOut,
       createLocalAccount: (
         VoidCallback successCallback,
-        VoidCallback errorCallback,
       ) {
         store.dispatch(
           createLocalAccountCall(
             successCallback,
-            errorCallback,
           ),
         );
       },
@@ -44,6 +32,15 @@ class SplashViewModel extends Equatable {
       },
     );
   }
+
+  final String privateKey;
+  final String jwtToken;
+  final bool isLoggedOut;
+  final void Function() loginAgain;
+
+  final void Function(
+    void Function() successCallback,
+  ) createLocalAccount;
 
   @override
   List<Object> get props => [

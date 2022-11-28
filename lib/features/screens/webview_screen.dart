@@ -8,7 +8,7 @@ class WebViewScreen extends StatefulWidget {
   final String title;
   final void Function(String)? onPageStarted;
 
-  WebViewScreen(
+  const WebViewScreen(
     this.url,
     this.title, {
     this.onPageStarted,

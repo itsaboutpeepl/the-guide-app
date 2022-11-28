@@ -94,7 +94,7 @@ class _SingleDirectoryItemState extends State<SingleDirectoryItem> {
                                     padding: EdgeInsets.zero,
                                     alignment: Alignment.topLeft,
                                     icon: Icon(
-                                      FaIcon(FontAwesomeIcons.facebookSquare)
+                                      FaIcon(FontAwesomeIcons.squareFacebook)
                                           .icon,
                                       color: Colors.white,
                                     ),

@@ -28,16 +28,21 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
       distinct: false,
       converter: (store) => CategoryArticleListViewModel.fromStore(store),
       onInit: (store) {
-        store.dispatch(updateCurrentTabList(
-          query: store.state.newsState.categories[0].categoryID.toString(),
-        ));
+        // store.dispatch(updateCurrentTabList(
+        //   query: store.state.newsState.categories[0].categoryID.toString(),
+        // ));
         _scrollController.addListener(
           () {
-            if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent) {
+            if (_scrollController.position.pixels ==
+                _scrollController.position.maxScrollExtent) {
               store.dispatch(updateCurrentTabList(
                   page: _page,
-                  query:
-                      store.state.newsState.categories[store.state.newsState.currentTabIndex].categoryID.toString()));
+                  query: store
+                      .state
+                      .newsState
+                      .categories[store.state.newsState.currentTabIndex]
+                      .categoryID
+                      .toString()));
               _page++;
             }
           },
@@ -73,37 +78,3 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
     );
   }
 }
-
-// return RefreshIndicator(
-//           onRefresh: () async {},
-//           child: StaggeredGridView.countBuilder(
-//             crossAxisCount: 4,
-//             mainAxisSpacing: 10,
-//             crossAxisSpacing: 10,
-//             staggeredTileBuilder: (index) =>
-//                 StaggeredTile.fit(index.isEven ? 2 : 2),
-//             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-//             controller: _scrollController,
-//             itemCount: vm.articles.length,
-//             itemBuilder: (_, int index) {
-//               if (vm.articles.length - 1 == index) {
-//                 return Container(
-//                   height: 50,
-//                   child: Center(
-//                     child: CircularProgressIndicator(),
-//                   ),
-//                 );
-//               }
-//               return TestCard(
-//                 article: vm.articles[index],
-//               );
-//             },
-//             // separatorBuilder: (_, index) => Divider(
-//             //   indent: MediaQuery.of(context).size.width * 0.3,
-//             //   endIndent: MediaQuery.of(context).size.width * 0.3,
-//             //   height: 20,
-//             //   thickness: 2,
-//             //   color: Colors.grey[200],
-//             // ),
-//           ),
-//         );

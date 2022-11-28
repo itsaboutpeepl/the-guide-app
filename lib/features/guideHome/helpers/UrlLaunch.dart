@@ -1,4 +1,4 @@
-import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher.dart' as url_launcher;
 import 'package:html/parser.dart';
 
 class UrlLaunch {
@@ -7,21 +7,21 @@ class UrlLaunch {
   static Future<void> openMap(double latitude, double longitude) async {
     String googleUrl =
         'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude';
-    if (await canLaunch(googleUrl)) {
-      await launch(googleUrl);
+    if (await url_launcher.canLaunch(googleUrl)) {
+      await url_launcher.launch(googleUrl);
     } else {
       throw 'Could not open the map.';
     }
   }
 
   static void launchURL(String url) async {
-    final bool nativeAppLaunchSucceeded = await launch(
+    final bool nativeAppLaunchSucceeded = await url_launcher.launch(
       url,
       forceSafariVC: false,
       universalLinksOnly: true,
     );
     if (!nativeAppLaunchSucceeded) {
-      await launch(
+      await url_launcher.launch(
         url,
         forceSafariVC: true,
       );
@@ -29,17 +29,11 @@ class UrlLaunch {
   }
 
   static void launchPhone(String phone) async {
-    // canLaunch("tel:+2343").then(
-    //   (value) => print("Can Launch Phone $value"),
-    // );
-    await launch("tel:$phone");
+    await url_launcher.launch('tel:$phone');
   }
 
   static void launchEmail(String email) async {
-    // canLaunch("mailto:info@theguideliverpool.com").then(
-    //   (value) => print("Can Launch Email $value"),
-    // );
-    await launch("mailto:$email");
+    await url_launcher.launch('mailto:$email');
   }
 }
 

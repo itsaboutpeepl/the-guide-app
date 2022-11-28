@@ -1,202 +1,270 @@
+import 'dart:async';
 import 'dart:io';
-import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter_segment/flutter_segment.dart';
+import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
 import 'package:guide_liverpool/common/di/di.dart';
 import 'package:country_code_picker/country_code.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/constants/analytics_events.dart';
+import 'package:guide_liverpool/constants/analytics_props.dart';
 import 'package:guide_liverpool/constants/enums.dart';
-import 'package:guide_liverpool/constants/urls.dart';
-import 'package:guide_liverpool/constants/variables.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/user_state.dart';
-import 'package:guide_liverpool/models/wallet/wallet_modules.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
-import 'package:guide_liverpool/utils/addresses.dart';
-import 'package:guide_liverpool/utils/contacts.dart';
+import 'package:guide_liverpool/utils/analytics.dart';
+import 'package:guide_liverpool/utils/json_helpers.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
-import 'package:wallet_core/wallet_core.dart';
 import 'package:guide_liverpool/services.dart';
-import 'package:contacts_service/contacts_service.dart';
-import 'package:guide_liverpool/utils/phone.dart';
 import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 
-Future<bool> approvalCallback() async {
-  return true;
+class SetWalletConnectURI {
+  SetWalletConnectURI(this.wcURI);
+  final String wcURI;
+
+  @override
+  String toString() => 'SetWalletConnectURI : wcURI: $wcURI';
+}
+
+class ScrollToTop {
+  ScrollToTop({
+    required this.value,
+  });
+  final bool value;
+
+  @override
+  String toString() => 'ScrollToTop : value: $value';
+}
+
+class ToggleUpgrade {
+  ToggleUpgrade({
+    required this.value,
+  });
+  final bool value;
+
+  @override
+  String toString() => 'ToggleUpgrade : value: $value';
 }
 
 class UpdateCurrency {
-  final String currency;
   UpdateCurrency({required this.currency});
+  final String currency;
+
+  @override
+  String toString() => 'UpdateCurrency : currency: $currency';
 }
 
 class UpdateLocale {
-  final Locale locale;
   UpdateLocale({required this.locale});
+  final Locale locale;
+
+  @override
+  String toString() => 'UpdateLocale : locale: $locale';
 }
 
 class WarnSendDialogShowed {
+  WarnSendDialogShowed({
+    required this.value,
+  });
   final bool value;
-  WarnSendDialogShowed(
-    this.value,
-  );
-}
 
-class HomeBackupDialogShowed {
-  HomeBackupDialogShowed();
-}
-
-class ReceiveBackupDialogShowed {
-  ReceiveBackupDialogShowed();
-}
-
-class DepositBannerShowed {
-  DepositBannerShowed();
+  @override
+  String toString() => 'WarnSendDialogShowed : value: $value';
 }
 
 class SetSecurityType {
-  BiometricAuth biometricAuth;
   SetSecurityType({required this.biometricAuth});
+  BiometricAuth biometricAuth;
+
+  @override
+  String toString() => 'SetSecurityType : biometricAuth: $biometricAuth';
 }
 
 class CreateLocalAccountSuccess {
-  final List<String> mnemonic;
-  final String privateKey;
-  final String accountAddress;
   CreateLocalAccountSuccess(
     this.mnemonic,
     this.privateKey,
     this.accountAddress,
   );
+  final List<String> mnemonic;
+  final String privateKey;
+  final String accountAddress;
+
+  @override
+  String toString() => 'CreateLocalAccountSuccess : mnemonic: $mnemonic, '
+      'privateKey: $privateKey, accountAddress: $accountAddress';
 }
 
 class ReLogin {
   ReLogin();
+
+  @override
+  String toString() => 'ReLogin';
 }
 
 class LoginRequestSuccess {
-  final CountryCode countryCode;
-  final String phoneNumber;
-  final String? displayName;
-  final String? email;
   LoginRequestSuccess({
     required this.countryCode,
     required this.phoneNumber,
     this.displayName,
     this.email,
   });
+  final CountryCode countryCode;
+  final String phoneNumber;
+  final String? displayName;
+  final String? email;
+
+  @override
+  String toString() => 'LoginRequestSuccess : countryCode: $countryCode, '
+      'phoneNumber: $phoneNumber, displayName: $displayName, email: $email';
 }
 
 class LogoutRequestSuccess {
   LogoutRequestSuccess();
+
+  @override
+  String toString() => 'LogoutRequestSuccess';
 }
 
 class LoginVerifySuccess {
-  final String jwtToken;
   LoginVerifySuccess(this.jwtToken);
-}
+  final String jwtToken;
 
-class SyncContactsProgress {
-  List<String> contacts;
-  List<Map<String, dynamic>> newContacts;
-  SyncContactsProgress(this.contacts, this.newContacts);
-}
-
-class SyncContactsRejected {
-  SyncContactsRejected();
-}
-
-class SaveContacts {
-  List<Contact> contacts;
-  SaveContacts(this.contacts);
+  @override
+  String toString() => 'LoginVerifySuccess : jwtToken: $jwtToken,';
 }
 
 class SetPincodeSuccess {
-  String pincode;
   SetPincodeSuccess(this.pincode);
+  String pincode;
+
+  @override
+  String toString() => 'SetPincodeSuccess : pincode: $pincode';
 }
 
 class SetDisplayName {
-  String displayName;
   SetDisplayName(this.displayName);
+  String displayName;
+
+  @override
+  String toString() => 'SetDisplayName : displayName: $displayName';
+}
+
+class SetEmail {
+  SetEmail(this.email);
+  String email;
+
+  @override
+  String toString() => 'SetEmail : email: $email';
 }
 
 class SetUserAvatar {
-  String avatarUrl;
   SetUserAvatar(this.avatarUrl);
+  String avatarUrl;
+
+  @override
+  String toString() => 'SetUserAvatar : avatarUrl: $avatarUrl';
 }
 
 class BackupRequest {
   BackupRequest();
+
+  @override
+  String toString() => 'BackupRequest';
 }
 
 class BackupSuccess {
   BackupSuccess();
+
+  @override
+  String toString() => 'BackupSuccess';
 }
 
 class SetCredentials {
-  PhoneAuthCredential? credentials;
   SetCredentials(this.credentials);
+  PhoneAuthCredential? credentials;
+
+  @override
+  String toString() => 'SetCredentials : credentials: $credentials';
 }
 
 class SetVerificationId {
-  String verificationId;
   SetVerificationId(this.verificationId);
+  String verificationId;
+
+  @override
+  String toString() => 'SetVerificationId : verificationId: $verificationId';
 }
 
 class JustInstalled {
-  final DateTime installedAt;
   JustInstalled(this.installedAt);
+  final DateTime installedAt;
+
+  @override
+  String toString() => 'JustInstalled : installedAt: $installedAt';
 }
 
 class DeviceIdSuccess {
-  final String identifier;
   DeviceIdSuccess(this.identifier);
+  final String identifier;
+
+  @override
+  String toString() => 'DeviceIdSuccess : identifier: $identifier';
 }
 
-class GetWalletDataSuccess {
-  final List<String> networks;
-  final String walletAddress;
-  final bool backup;
-  final WalletModules walletModules;
+class SetShowSeedPhraseBanner {
+  SetShowSeedPhraseBanner({required this.showSeedPhraseBanner});
+  final bool showSeedPhraseBanner;
 
-  GetWalletDataSuccess({
-    required this.backup,
-    required this.networks,
-    required this.walletAddress,
-    required this.walletModules,
-  });
+  @override
+  String toString() =>
+      'SetShowSeedPhraseBanner : showSeedPhraseBanner: $showSeedPhraseBanner,';
+}
+
+class SetHasSavedSeedPhrase {
+  SetHasSavedSeedPhrase({required this.hasSavedSeedPhrase});
+  final bool hasSavedSeedPhrase;
+
+  @override
+  String toString() =>
+      'SetHasSavedSeedPhrase : hasSavedSeedPhrase: $hasSavedSeedPhrase';
 }
 
 class UpdateUserPostcode {
-  final String postcode;
-  UpdateUserPostcode(this.postcode);
+  UpdateUserPostcode({required this.postCode});
+  final String postCode;
+
+  @override
+  String toString() => 'UpdateUserPostcode : postCode: $postCode';
 }
 
-ThunkAction loginHandler(
+ThunkAction<AppState> loginHandler(
   CountryCode countryCode,
   PhoneNumber phoneNumber,
   Function onSuccess,
-  Function(dynamic error) onError,
+  void Function(String error) onError,
 ) {
-  return (Store store) async {
+  return (Store<AppState> store) async {
     try {
-      store.dispatch(setDeviceId());
-      Segment.alias(alias: phoneNumber.e164);
-      Segment.track(
-        eventName: 'Sign up: Phone_NextBtn_Press',
-      );
+      store.dispatch(setDeviceId(phoneNumber.e164));
+      await Analytics.setUserId(phoneNumber.e164);
       await onBoardStrategy.login(
         store,
         phoneNumber.e164,
         () {
+          Analytics.track(
+            eventName: AnalyticsEvents.loginWithPhone,
+            properties: {
+              AnalyticsProps.status: AnalyticsProps.success,
+            },
+          );
           store.dispatch(
             LoginRequestSuccess(
               countryCode: countryCode,
@@ -205,14 +273,15 @@ ThunkAction loginHandler(
           );
           onSuccess();
         },
-        (e) async {
-          Segment.track(
-            eventName: 'Sign up: FAILED - Phone_NextBtn_Press',
-            properties: Map.from({"error": e.toString()}),
+        (e) {
+          Analytics.track(
+            eventName: AnalyticsEvents.loginWithPhone,
+            properties: {
+              AnalyticsProps.status: AnalyticsProps.failed,
+              'error': e.toString(),
+            },
           );
           onError(e.toString());
-          await Sentry.captureMessage(
-              'Error in login with phone number: ${e.toString()}');
         },
       );
     } catch (e, s) {
@@ -221,10 +290,13 @@ ThunkAction loginHandler(
         error: e,
         stackTrace: s,
       );
-      onError(e);
-      Segment.track(
-        eventName: 'Sign up: FAILED - Phone_NextBtn_Press',
-        properties: Map.from({"error": e.toString()}),
+      onError(e.toString());
+      await Analytics.track(
+        eventName: AnalyticsEvents.loginWithPhone,
+        properties: {
+          AnalyticsProps.status: AnalyticsProps.failed,
+          'error': e.toString(),
+        },
       );
       await Sentry.captureException(
         Exception('Error in login with phone number: ${e.toString()}'),
@@ -235,37 +307,37 @@ ThunkAction loginHandler(
   };
 }
 
-ThunkAction verifyHandler(
+ThunkAction<AppState> verifyHandler(
   String verificationCode,
   Function onSuccess,
-  Function(dynamic error) onError,
+  void Function(String error) onError,
 ) {
-  return (Store store) async {
+  return (Store<AppState> store) async {
     try {
-      Segment.track(
-        eventName: 'Sign up: Verify phone code next button pressed',
-      );
       await onBoardStrategy.verify(
         store,
         verificationCode,
         (String jwtToken) {
-          log.info('jwtToken $jwtToken');
-          Segment.track(
-            eventName: 'Sign up: VerificationCode_NextBtn_Press',
+          Analytics.track(
+            eventName: AnalyticsEvents.verify,
+            properties: {
+              AnalyticsProps.status: AnalyticsProps.success,
+            },
           );
           store.dispatch(LoginVerifySuccess(jwtToken));
-          walletApi.setJwtToken(jwtToken);
+          chargeApi.setJwtToken(jwtToken);
           onSuccess();
           rootRouter.push(UserNameScreen());
         },
       );
     } catch (error, s) {
       onError(error.toString());
-      Segment.track(
-        eventName: 'Sign up: FAILED - VerificationCode_NextBtn_Press',
-        properties: Map.from({
-          "error": error.toString(),
-        }),
+      await Analytics.track(
+        eventName: AnalyticsEvents.verify,
+        properties: {
+          AnalyticsProps.status: AnalyticsProps.failed,
+          'error': error.toString(),
+        },
       );
       await Sentry.captureException(
         Exception('Error in verify phone number: ${error.toString()}'),
@@ -276,63 +348,42 @@ ThunkAction verifyHandler(
   };
 }
 
-ThunkAction backupWalletCall() {
-  return (Store store) async {
-    if (store.state.userState.backup) return;
-    try {
-      String communityAddress = store.state.cashWalletState.communityAddress;
-      store.dispatch(BackupRequest());
-      await walletApi.backupWallet(communityAddress: communityAddress);
-      store.dispatch(BackupSuccess());
-    } catch (e) {
-      store.dispatch(BackupSuccess());
-    }
-  };
-}
-
-ThunkAction restoreWalletCall(
-  List<String> _mnemonic,
+ThunkAction<AppState> restoreWalletCall(
+  List<String> mnemonic,
   VoidCallback successCallback,
   VoidCallback failureCallback,
 ) {
-  return (Store store) async {
+  return (Store<AppState> store) async {
     try {
-      log.info('restore wallet');
-      String mnemonic = _mnemonic.join(' ');
-      log.info('mnemonic: $mnemonic');
-      log.info('compute pk');
-      String privateKey = await compute(
-        Web3.privateKeyFromMnemonic,
-        mnemonic,
+      await Analytics.track(
+        eventName: AnalyticsEvents.restoreWallet,
       );
-      Credentials credentials = EthPrivateKey.fromHex(privateKey);
-      EthereumAddress accountAddress = await credentials.extractAddress();
-      log.info('privateKey: $privateKey');
-      log.info('accountAddress: ${accountAddress.toString()}');
+      log
+        ..info('restore wallet')
+        ..info('mnemonic: $mnemonic')
+        ..info('compute pk');
+      final String privateKey = await compute(
+        Web3.privateKeyFromMnemonic,
+        mnemonic.join(' '),
+      );
+      final Credentials credentials = EthPrivateKey.fromHex(privateKey);
+      final EthereumAddress accountAddress = await credentials.extractAddress();
+      log
+        ..info('privateKey: $privateKey')
+        ..info('accountAddress: ${accountAddress.toString()}');
       store.dispatch(
         CreateLocalAccountSuccess(
-          mnemonic.split(' '),
+          mnemonic,
           privateKey,
           accountAddress.toString(),
         ),
       );
-      store.dispatch(
-        SetDefaultCommunity(
-          defaultCommunityAddress.toLowerCase(),
-        ),
-      );
       successCallback();
-      Segment.track(
-        eventName: 'Existing User: Successful Restore wallet from backup',
-      );
     } catch (e, s) {
       log.error(
         'ERROR - restoreWalletCall',
         error: e,
         stackTrace: s,
-      );
-      Segment.track(
-        eventName: 'Existing User: Failed to restore wallet from backup',
       );
       failureCallback();
       await Sentry.captureException(
@@ -344,32 +395,34 @@ ThunkAction restoreWalletCall(
   };
 }
 
-ThunkAction setDeviceId() {
-  return (Store store) async {
-    String identifier = await FlutterUdid.udid;
-    log.info("device identifier: $identifier");
+ThunkAction<AppState> setDeviceId(String phoneNumber) {
+  return (Store<AppState> store) async {
+    final String identifier = await FlutterUdid.udid;
+    // mixpanel.alias(identifier, phoneNumber);
+    log.info('device identifier: $identifier');
     store.dispatch(DeviceIdSuccess(identifier));
   };
 }
 
-ThunkAction createLocalAccountCall(
+ThunkAction<AppState> createLocalAccountCall(
   VoidCallback successCallback,
-  VoidCallback errorCallback,
 ) {
-  return (Store store) async {
+  return (Store<AppState> store) async {
     try {
       log.info('create wallet');
-      String mnemonic = Web3.generateMnemonic();
-      log.info('mnemonic: $mnemonic');
-      log.info('compute pk');
-      String privateKey = await compute(
+      final String mnemonic = Web3.generateMnemonic();
+      log
+        ..info('mnemonic: $mnemonic')
+        ..info('compute pk');
+      final String privateKey = await compute(
         Web3.privateKeyFromMnemonic,
         mnemonic,
       );
-      Credentials credentials = EthPrivateKey.fromHex(privateKey);
-      EthereumAddress accountAddress = await credentials.extractAddress();
-      log.info('privateKey: $privateKey');
-      log.info('accountAddress: ${accountAddress.toString()}');
+      final Credentials credentials = EthPrivateKey.fromHex(privateKey);
+      final EthereumAddress accountAddress = await credentials.extractAddress();
+      log
+        ..info('privateKey: $privateKey')
+        ..info('accountAddress: ${accountAddress.toString()}');
       store.dispatch(
         CreateLocalAccountSuccess(
           mnemonic.split(' '),
@@ -377,10 +430,8 @@ ThunkAction createLocalAccountCall(
           accountAddress.toString(),
         ),
       );
-      store
-          .dispatch(SetDefaultCommunity(defaultCommunityAddress.toLowerCase()));
-      Segment.track(
-        eventName: 'New User: Create Wallet',
+      await Analytics.track(
+        eventName: AnalyticsEvents.createWallet,
       );
       successCallback();
     } catch (e, s) {
@@ -394,147 +445,77 @@ ThunkAction createLocalAccountCall(
         stackTrace: s,
         hint: 'ERROR while generate mnemonic',
       );
-      errorCallback();
     }
   };
 }
 
-ThunkAction logoutCall() {
-  return (Store store) async {
-    store.dispatch(LogoutRequestSuccess());
+ThunkAction<AppState> reLoginCall() {
+  return (Store<AppState> store) async {
+    store
+      ..dispatch(ReLogin())
+      ..dispatch(getWalletAddressesCall());
   };
 }
 
-ThunkAction reLoginCall() {
-  return (Store store) async {
-    store.dispatch(ReLogin());
-    store.dispatch(getWalletAddressesCall());
+ThunkAction<AppState> identifyCall({String? wallet}) {
+  return (Store<AppState> store) async {
+    final UserState userState = store.state.userState;
+    final String displayName = userState.displayName;
+
+    final String phoneNumber = userState.phoneNumber;
+    final String walletAddress = wallet ?? userState.walletAddress;
+    final String accountAddress = userState.accountAddress;
+    final String identifier = userState.identifier;
+
+    final Map<String, dynamic> properties = {
+      'identifier': identifier,
+      'phoneNumber': phoneNumber,
+      'walletAddress': walletAddress,
+      'accountAddress': accountAddress,
+      'language': userState.locale.toString(),
+      'displayName': displayName,
+    };
+    await Analytics.identify(properties);
+    await Analytics.setUserId(phoneNumber);
+    DateTime? installedAt = userState.installedAt;
+    if (installedAt == null) {
+      log.info('Identify - $phoneNumber');
+      installedAt = DateTime.now().toUtc();
+      store.dispatch(JustInstalled(installedAt));
+    }
   };
 }
 
-ThunkAction syncContactsCall() {
-  return (Store store) async {
+ThunkAction<AppState> saveUserProfile(String walletAddress) {
+  return (Store<AppState> store) async {
+    final String displayName = store.state.userState.displayName;
+    store.dispatch(storeUserContext());
     try {
-      List<Contact> contacts = List.from(await Contacts.getContacts());
-      store.dispatch(SaveContacts(contacts));
-      List<String> syncedContacts = store.state.userState.syncedContacts;
-      List<String> newPhones = <String>[];
-      String countryCode = store.state.userState.countryCode;
-      String isoCode = store.state.userState.isoCode;
-      for (Contact contact in contacts) {
-        Future<List<String>> phones = Future.wait(
-          contact.phones!.map(
-            (Item phone) async {
-              String value = clearNotNumbersAndPlusSymbol(phone.value!);
-              try {
-                PhoneNumber phoneNumber = await phoneNumberUtil.parse(value);
-                return phoneNumber.e164;
-              } catch (e) {
-                String formatted = formatPhoneNumber(value, countryCode);
-                bool isValid = await phoneNumberUtil
-                    .validate(formatted, regionCode: isoCode)
-                    .catchError(
-                      (erro) => false,
-                    );
-                if (isValid) {
-                  String phoneNum =
-                      await phoneNumberUtil.format(formatted, isoCode);
-                  PhoneNumber phoneNumber =
-                      await phoneNumberUtil.parse(phoneNum);
-                  return phoneNumber.e164;
-                }
-                return '';
-              }
-            },
-          ),
-        );
-        List<String> result = await phones;
-        result = result.toSet().toList()
-          ..removeWhere((element) => element == '');
-        for (String phone in result) {
-          if (!syncedContacts.contains(phone)) {
-            newPhones.add(phone);
-          }
+      final Map<String, dynamic> userProfile =
+          await chargeApi.getUserProfile(walletAddress);
+      if (userProfile.isNotEmpty) {
+        if (userProfile.containsKey('avatarHash')) {
+          store.dispatch(SetUserAvatar(userProfile['imageUri'] as String));
         }
       }
-      if (newPhones.length == 0) {
-        dynamic response = await walletApi.syncContacts(newPhones);
-        store.dispatch(SyncContactsProgress(newPhones,
-            List<Map<String, dynamic>>.from(response['newContacts'])));
-        await walletApi.ackSync(response['nonce']);
-      } else {
-        int limit = 100;
-        List<String> partial = newPhones.take(limit).toList();
-        while (partial.length > 0) {
-          dynamic response = await walletApi.syncContacts(partial);
-          store.dispatch(
-            SyncContactsProgress(
-              partial,
-              List<Map<String, dynamic>>.from(
-                response['newContacts'],
-              ),
-            ),
-          );
-
-          await walletApi.ackSync(response['nonce']);
-          newPhones = newPhones.sublist(partial.length);
-          partial = newPhones.take(limit).toList();
-        }
-      }
-    } catch (e, s) {
-      log.error(
-        'ERROR - syncContactsCall',
-        error: e,
-        stackTrace: s,
-      );
+    } catch (e) {
+      final Map<String, dynamic> user = {
+        'accountAddress': walletAddress,
+        'email': 'wallet-user@fuse.io',
+        'provider': 'HDWallet',
+        'subscribe': false,
+        'source': 'wallet-v2',
+        'displayName': displayName
+      };
+      await chargeApi.saveUserProfile(user);
     }
   };
 }
 
-ThunkAction identifyCall({String? wallet}) {
-  return (Store store) async {
-    UserState userState = store.state.userState;
-    String displayName = userState.displayName;
-    String phoneNumber = userState.phoneNumber;
-    String walletAddress = wallet ?? userState.walletAddress;
-    String accountAddress = userState.accountAddress;
-    String identifier = userState.identifier;
-    Sentry.configureScope((scope) {
-      scope.user = SentryUser(
-        id: phoneNumber,
-        username: displayName,
-      );
-      scope.setContexts(
-        'user',
-        Map.from({
-          'walletAddress': walletAddress,
-          'accountAddress': accountAddress,
-        }),
-      );
-    });
-
-    store.dispatch(segmentIdentifyCall(
-      Map<String, dynamic>.from({
-        "Phone Number": phoneNumber,
-        "Wallet Address": walletAddress,
-        "Account Address": accountAddress,
-        "Display Name": displayName,
-        "Identifier": identifier,
-      }),
-    ));
-    if (Platform.isAndroid) {
-      try {
-        final String token = (await getIt<FirebaseMessaging>().getToken())!;
-        log.info("Firebase messaging token $token");
-        await Segment.setContext({
-          'device': {'token': token},
-        });
-      } catch (e, s) {
-        log.error('Error in identifyCall: ${e.toString()} ${s.toString()}');
-      }
-    }
+ThunkAction<AppState> storeUserContext() {
+  return (Store<AppState> store) async {
     try {
-      await walletApi.addUserContext({
+      await chargeApi.addUserContext({
         'os': Platform.isAndroid
             ? 'android'
             : Platform.isIOS
@@ -551,87 +532,59 @@ ThunkAction identifyCall({String? wallet}) {
   };
 }
 
-ThunkAction saveUserProfile(walletAddress) {
-  return (Store store) async {
-    String displayName = store.state.userState.displayName;
+ThunkAction<AppState> web3Init({
+  WalletModules? modules,
+}) {
+  return (Store<AppState> store) async {
     try {
-      Map<String, dynamic> userProfile =
-          await walletApi.getUserProfile(walletAddress);
-      if (userProfile.isNotEmpty) {
-        if (userProfile.containsKey('avatarHash')) {
-          store.dispatch(SetUserAvatar(userProfile['imageUri']));
+      final UserState userState = store.state.userState;
+      final String privateKey = userState.privateKey;
+      final WalletModules? walletModules = modules ?? userState.walletModules;
+      if (walletModules != null) {
+        if (getIt.isRegistered<Web3>()) {
+          await getIt.unregister(instance: getIt<Web3>());
         }
-      }
-    } catch (e) {
-      Map user = {
-        "accountAddress": walletAddress,
-        "email": 'wallet-user@fuse.io',
-        "provider": 'HDWallet',
-        "subscribe": false,
-        "source": 'wallet-v2',
-        "displayName": displayName
-      };
-      await walletApi.saveUserProfile(user);
-    }
-  };
-}
-
-ThunkAction loadContacts() {
-  return (Store store) async {
-    try {
-      bool isPermitted = await Contacts.checkPermissions();
-      if (isPermitted) {
-        store.dispatch(syncContactsCall());
+        getIt.registerSingleton<Web3>(Web3());
+        await getIt<Web3>().setCredentials(privateKey);
+        getIt<Web3>().setModules(walletModules);
       }
     } catch (e, s) {
       log.error(
-        'ERROR - load contacts',
+        'ERROR - web3Init',
         error: e,
         stackTrace: s,
       );
       await Sentry.captureException(
-        Exception('Error in load contacts: ${e.toString()}'),
+        Exception('Error in initiate Web3: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR check Contacts Permissions',
+        hint: 'ERROR - web3Init',
       );
     }
   };
 }
 
-ThunkAction setupWalletCall(Map<String, dynamic> walletData) {
-  return (Store store) async {
+ThunkAction<AppState> setupWalletCall(Map<String, dynamic> walletData) {
+  return (Store<AppState> store) async {
     try {
-      final List<String> networks = List<String>.from(walletData['networks']);
-      final String walletAddress = walletData['walletAddress'];
-      final String privateKey = store.state.userState.privateKey;
-      final bool backup =
-          walletData.containsKey('backup') ? walletData['backup'] : false;
+      final List<String> networks =
+          List<String>.from(walletData['networks'] as Iterable);
+      final String? contractVersion = walletData['version'] as String?;
+      final String walletAddress = walletData['walletAddress'] as String;
+      final bool backup = walletData['backup'] as bool? ?? false;
       final WalletModules walletModules = WalletModules.fromJson(
-        walletData['walletModules'],
+        walletData['walletModules'] as Map<String, dynamic>,
       );
-      store.dispatch(
-        GetWalletDataSuccess(
-          backup: backup,
-          walletAddress: walletAddress,
-          networks: networks,
-          walletModules: walletModules,
-        ),
-      );
-      if (!getIt.isRegistered<Web3>(instanceName: 'fuseWeb3')) {
-        getIt.registerSingleton<Web3>(
-          Web3(
-            approveCb: approvalCallback,
-            url: UrlConstants.FUSE_RPC_URL,
-            networkId: Variables.FUSE_CHAIN_ID,
-            defaultCommunityAddress: defaultCommunityAddress,
-            communityManagerAddress: walletModules.communityManager,
-            transferManagerAddress: walletModules.transferManager,
-            daiPointsManagerAddress: walletModules.daiPointsManager,
+      store
+        ..dispatch(
+          GetWalletDataSuccess(
+            backup: backup,
+            walletAddress: walletAddress,
+            networks: networks,
+            contractVersion: contractVersion,
+            walletModules: walletModules,
           ),
-          instanceName: 'fuseWeb3',
-        );
-        await getIt<Web3>(instanceName: 'fuseWeb3').setCredentials(privateKey);
-      }
+        )
+        ..dispatch(web3Init(modules: walletModules));
     } catch (e, s) {
       log.error(
         'ERROR - setupWalletCall',
@@ -639,18 +592,19 @@ ThunkAction setupWalletCall(Map<String, dynamic> walletData) {
         stackTrace: s,
       );
       await Sentry.captureException(
-        e,
+        Exception('Error in setup wallet call: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR - setupWalletCall $e',
+        hint: 'ERROR - setupWalletCall',
       );
     }
   };
 }
 
-ThunkAction getWalletAddressesCall() {
-  return (Store store) async {
+ThunkAction<AppState> getWalletAddressesCall() {
+  return (Store<AppState> store) async {
     try {
-      final dynamic walletData = await walletApi.getWallet();
+      final Map<String, dynamic> walletData =
+          await chargeApi.getWallet() as Map<String, dynamic>;
       final Map<String, dynamic> data = Map<String, dynamic>.from({
         ...walletData,
       });
@@ -662,20 +616,20 @@ ThunkAction getWalletAddressesCall() {
         stackTrace: s,
       );
       await Sentry.captureException(
-        e,
+        Exception('Error in get wallet info: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR - getWalletAddressCall $e',
+        hint: 'ERROR - getWalletAddressCall',
       );
     }
   };
 }
 
-ThunkAction updateDisplayNameCall(String displayName) {
-  return (Store store) async {
+ThunkAction<AppState> updateDisplayNameCall(String displayName) {
+  return (Store<AppState> store) async {
     try {
-      String walletAddress = store.state.userState.walletAddress;
+      final String walletAddress = store.state.userState.walletAddress;
       if (walletAddress.isNotEmpty) {
-        await walletApi.updateDisplayName(walletAddress, displayName);
+        await chargeApi.updateDisplayName(walletAddress, displayName);
         store.dispatch(SetDisplayName(displayName));
       }
     } catch (e, s) {
@@ -684,66 +638,224 @@ ThunkAction updateDisplayNameCall(String displayName) {
         error: e,
         stackTrace: s,
       );
-      await Sentry.captureException(e, stackTrace: s);
-    }
-  };
-}
-
-ThunkAction updateUserAvatarCall(ImageSource source) {
-  return (Store store) async {
-    final file = await ImagePicker().pickImage(source: source);
-    try {
-      final uploadResponse = await api.uploadImage(File(file!.path));
-      String walletAddress = store.state.userState.walletAddress;
-      if (walletAddress.isNotEmpty) {
-        await walletApi.updateAvatar(walletAddress, uploadResponse['hash']);
-        store.dispatch(SetUserAvatar(uploadResponse['uri']));
-      }
-    } catch (e, s) {
-      log.error(
-        'ERROR - updateUserAvatarCall',
-        error: e,
+      await Sentry.captureException(
+        Exception('Error in update user profile name: ${e.toString()}'),
         stackTrace: s,
+        hint: 'Error in update user profile name',
       );
-      await Sentry.captureException(e, stackTrace: s);
     }
   };
 }
 
-ThunkAction setUpFuseWeb3() {
-  return (Store store) async {
-    try {
-      final String privateKey = store.state.userState.privateKey;
-
-      if (!getIt.isRegistered<Web3>(instanceName: 'fuseWeb3')) {
-        getIt.registerSingleton<Web3>(
-          Web3(
-            approveCb: approvalCallback,
-            url: UrlConstants.FUSE_RPC_URL,
-            networkId: Variables.FUSE_CHAIN_ID,
-            defaultCommunityAddress: defaultCommunityAddress,
-            communityManagerAddress:
-                store.state.userState.walletModules.communityManager,
-            transferManagerAddress:
-                store.state.userState.walletModules.transferManager,
-            daiPointsManagerAddress:
-                store.state.userState.walletModules.daiPointsManager,
-          ),
-          instanceName: 'fuseWeb3',
+ThunkAction<AppState> updateUserAvatarCall(ImageSource source) {
+  return (Store<AppState> store) async {
+    final file = await ImagePicker().pickImage(source: source);
+    if (file != null) {
+      try {
+        final Map<String, dynamic> uploadResponse = await chargeApi
+            .uploadImage(File(file.path)) as Map<String, dynamic>;
+        final String walletAddress = store.state.userState.walletAddress;
+        if (walletAddress.isNotEmpty) {
+          await chargeApi.updateAvatar(
+            walletAddress,
+            uploadResponse['hash'] as String,
+          );
+          store.dispatch(SetUserAvatar(uploadResponse['uri'] as String));
+        }
+      } catch (e, s) {
+        log.error(
+          'ERROR - updateUserAvatarCall',
+          error: e,
+          stackTrace: s,
         );
-        await getIt<Web3>(instanceName: 'fuseWeb3').setCredentials(privateKey);
+        await Sentry.captureException(
+          Exception('Error in update user profile image: ${e.toString()}'),
+          stackTrace: s,
+          hint: 'Error in update user profile image',
+        );
+      }
+    }
+  };
+}
+
+ThunkAction<AppState> checkWalletUpgrades() {
+  return (Store<AppState> store) async {
+    try {
+      final String walletAddress = store.state.userState.walletAddress;
+      if (walletAddress.isNotEmpty) {
+        final List<dynamic> response = await chargeApi.getAvailableUpgrades(
+          walletAddress,
+        );
+        final List<WalletUpgrade> walletUpgrades =
+            WalletUpgrade.walletUpgradesFromJson(
+          response,
+        );
+        if (walletUpgrades.isNotEmpty) {
+          store.dispatch(ToggleUpgrade(value: true));
+        }
       }
     } catch (e, s) {
       log.error(
-        'ERROR - setupWalletCall',
+        'ERROR - checkWalletUpgrades',
         error: e,
         stackTrace: s,
       );
       await Sentry.captureException(
-        e,
+        Exception('Error in check for new wallet upgrades: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR - setupWalletCall $e',
+        hint: 'Error in check for new wallet upgrades',
       );
+    }
+  };
+}
+
+ThunkAction<AppState> installWalletUpgrades(
+  VoidCallback onSuccess,
+  VoidCallback onError,
+) {
+  return (Store<AppState> store) async {
+    try {
+      final String walletAddress = store.state.userState.walletAddress;
+      final List<WalletUpgrade> walletUpgrades =
+          await chargeApi.getAvailableUpgrades(walletAddress);
+
+      if (walletUpgrades.isNotEmpty) {
+        final WalletUpgrade walletUpgrade = walletUpgrades.first;
+        if (store.state.userState.walletModules != null) {
+          final Map<String, dynamic> installUpgradeJob =
+              await chargeApi.installUpgrades(
+            getIt<Web3>(),
+            walletAddress,
+            store.state.userState.walletModules!.transferManager,
+            walletUpgrade.contractAddress,
+            walletUpgrade.id,
+          ) as Map<String, dynamic>;
+          store.dispatch(
+            fetchJobCall(
+              installUpgradeJob['_id'] as String,
+              (Map<String, dynamic> jobData) {
+                log.info('txHash ${jobData['data']['txHash']}');
+                store.dispatch(getWalletAddressesCall());
+                onSuccess();
+                store
+                  ..dispatch(ToggleUpgrade(value: false))
+                  ..dispatch(checkWalletUpgrades());
+              },
+              (dynamic error) {
+                store.dispatch(ToggleUpgrade(value: false));
+                onError();
+              },
+            ),
+          );
+        }
+      }
+    } catch (e, s) {
+      store.dispatch(ToggleUpgrade(value: false));
+      onError();
+      log.error(
+        'ERROR - installWalletUpgrades',
+        error: e,
+        stackTrace: s,
+      );
+      await Sentry.captureException(
+        Exception('Error in install wallet upgrades: ${e.toString()}'),
+        stackTrace: s,
+        hint: 'Error in install wallet upgrades',
+      );
+    }
+  };
+}
+
+ThunkAction<AppState> fetchJobCall(
+  String jobId,
+  void Function(Map<String, dynamic> jobData) successCallback,
+  void Function(dynamic jobData) failureCallback, {
+  bool untilDone = true,
+  int seconds = 5,
+  void Function(String txHash)? onTxCallback,
+}) {
+  //TODO: clean this shit up idk wtf is this
+  return (Store<AppState> store) {
+    Timer.periodic(Duration(seconds: seconds), (Timer timer) async {
+      try {
+        log.info('jobId $jobId');
+        final Map<String, dynamic> response =
+            await chargeApi.getJob(jobId) as Map<String, dynamic>;
+        if (untilDone) {
+          if (isJsonValEmpty(response, 'lastFinishedAt')) {
+            log.info('job not done');
+            return;
+          }
+        }
+        final Map<String, dynamic> jobData =
+            response['data'] as Map<String, dynamic>;
+        if (jobData.containsKey('transactionBody')) {
+          if ((jobData['transactionBody']['status'] != null &&
+                  jobData['transactionBody']['status'] == 'failed') ||
+              response['failReason'] != null) {
+            final String failReason = response['failReason'] as String? ??
+                jobData['transactionBody']['status'] as String;
+
+            log.info('JobId  $jobId failed, failReason: $failReason');
+            if (jobData['txHash'] == null) {
+              log.info('fetched job with txHash null');
+              return;
+            } else {
+              if (onTxCallback != null) {
+                onTxCallback(jobData['txHash'] as String);
+              }
+            }
+            failureCallback(failReason);
+            timer.cancel();
+          } else {
+            if (jobData['txHash'] == null) {
+              log.info('fetched job with txHash null');
+              return;
+            } else {
+              if (onTxCallback != null) {
+                onTxCallback(jobData['txHash'] as String);
+              }
+            }
+            successCallback(response);
+            timer.cancel();
+          }
+        } else {
+          if (jobData['txHash'] == null) {
+            log.info('fetched job with txHash null');
+            return;
+          } else {
+            if (onTxCallback != null) {
+              onTxCallback(jobData['txHash'] as String);
+            }
+          }
+          successCallback(response);
+          timer.cancel();
+        }
+      } catch (e) {
+        log.error('ERROR - fetchJobCall $e');
+        failureCallback(e.toString());
+        timer.cancel();
+      }
+    });
+  };
+}
+
+ThunkAction<AppState> checkForSavedSeedPhrase() {
+  return (Store<AppState> store) async {
+    if (store.state.userState.hasSavedSeedPhrase) return;
+    if (store.state.userState.initialLoginDateTime.isEmpty) return;
+    if (DateTime.now()
+            .difference(
+              DateTime.fromMillisecondsSinceEpoch(
+                int.parse(
+                  store.state.userState.initialLoginDateTime,
+                ),
+              ),
+            )
+            .inDays <
+        7) {
+      //show the banner
+      store.dispatch(SetShowSeedPhraseBanner(showSeedPhraseBanner: true));
     }
   };
 }

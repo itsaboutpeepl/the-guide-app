@@ -34,7 +34,7 @@ class _FeaturedVideosState extends State<FeaturedVideos> {
                 Divider(
                   thickness: 3,
                   endIndent: MediaQuery.of(context).size.width * 0.8,
-                  color: Theme.of(context).colorScheme.primaryVariant,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),

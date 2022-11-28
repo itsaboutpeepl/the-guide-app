@@ -4,9 +4,8 @@ import 'package:guide_liverpool/models/articles/categoryArticles.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
 import 'package:guide_liverpool/models/articles/events.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
-import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
+import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:guide_liverpool/services.dart';
-import 'package:guide_liverpool/utils/constants.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -16,40 +15,62 @@ class UpdateFeaturedPost {
   final List<BlogArticle> listOfFeaturedArticles;
 
   UpdateFeaturedPost({required this.listOfFeaturedArticles});
+
+  @override
+  String toString() =>
+      'UpdateFeaturedPost : listOfFeaturedArticles: $listOfFeaturedArticles';
 }
 
 class UpdateCategoryList {
   final List<CategoryArticles> categoryList;
 
   UpdateCategoryList({required this.categoryList});
+
+  @override
+  String toString() => 'UpdateCategoryList : categoryList: $categoryList';
 }
 
 class UpdateFeaturedVideos {
   final List<VideoArticle> featuredVideos;
 
   UpdateFeaturedVideos({required this.featuredVideos});
+
+  @override
+  String toString() => 'UpdateFeaturedVideos : featuredVideos: $featuredVideos';
 }
 
 class UpdateEventsList {
   final List<Events> eventsList;
 
   UpdateEventsList({required this.eventsList});
+
+  @override
+  String toString() => 'UpdateEventsList : eventsList: $eventsList';
 }
 
 class UpdateDirectoryList {
   final List<Directory> directoryList;
 
   UpdateDirectoryList({required this.directoryList});
+
+  @override
+  String toString() => 'UpdateDirectoryList : directoryList: $directoryList';
 }
 
 class UpdatePlayConfetti {
   final bool playConfetti;
   UpdatePlayConfetti({required this.playConfetti});
+
+  @override
+  String toString() => 'UpdatePlayConfetti : playConfetti: $playConfetti';
 }
 
 class UpdateIsLoading {
   final bool isLoading;
   UpdateIsLoading({required this.isLoading});
+
+  @override
+  String toString() => 'UpdateIsLoading : isLoading: $isLoading';
 }
 
 ThunkAction fetchFeaturedPosts() {
@@ -128,6 +149,7 @@ ThunkAction fetchHomePageData() {
       store.dispatch(fetchFeaturedVideos());
       store.dispatch(fetchEventsList());
       store.dispatch(fetchDirectoryList());
+      store.dispatch(fetchCategoryNames());
     } catch (e, s) {
       log.error('ERROR - fetchHomePageData $e');
       await Sentry.captureException(

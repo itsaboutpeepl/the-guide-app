@@ -1,8 +1,6 @@
 import 'package:decimal/decimal.dart';
 import 'package:equatable/equatable.dart';
 import 'package:guide_liverpool/models/app_state.dart';
-
-import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:redux/redux.dart';
 
 class DappPageViewModel extends Equatable {

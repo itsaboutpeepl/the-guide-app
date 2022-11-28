@@ -5,17 +5,18 @@ import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:redux/redux.dart';
 
 class VideoViewModel extends Equatable {
-  void Function(
+  final void Function(
     String videoID,
     void Function(int) onSuccess,
     VoidCallback onError,
   ) createNewVideoView;
 
-  VideoViewModel({required this.createNewVideoView});
+  const VideoViewModel({required this.createNewVideoView});
 
   static VideoViewModel fromStore(Store<AppState> store) {
     return VideoViewModel(
-      createNewVideoView: (videoID, onSuccess, onError) => store.dispatch(createVideoView(videoID, onSuccess, onError)),
+      createNewVideoView: (videoID, onSuccess, onError) =>
+          store.dispatch(createVideoView(videoID, onSuccess, onError)),
     );
   }
 

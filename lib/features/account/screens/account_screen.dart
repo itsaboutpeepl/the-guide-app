@@ -10,11 +10,13 @@ import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/account/widgets/avatar.dart';
 import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
+import 'package:guide_liverpool/features/shared/widgets/copy.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
+import 'package:guide_liverpool/services.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class AccountScreen extends StatefulWidget {
@@ -141,9 +143,18 @@ class _AccountScreenState extends State<AccountScreen> {
                               onTap: () {
                                 showBarModalBottomSheet(
                                     useRootNavigator: true,
-                                    backgroundColor: Colors.cyan,
+                                    backgroundColor: Colors.white,
                                     context: context,
                                     builder: (context) => aboutModal(context));
+                              },
+                            ),
+                            //TODO: remove
+                            MenuTile(
+                              label: "Copy FCM Token",
+                              menuIcon: 'info_black.svg',
+                              onTap: () {
+                                firebaseMessaging.getToken().then((value) =>
+                                    CopyToClipboard(content: value!));
                               },
                             ),
                             SizedBox(),
