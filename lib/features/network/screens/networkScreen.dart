@@ -15,8 +15,8 @@ import 'package:guide_liverpool/redux/viewsmodels/network_screen.dart';
 class NetworkScreen extends StatelessWidget {
   NetworkScreen({Key? key}) : super(key: key);
 
-  final _communityURI = //Uri.parse('https://itsaboutpeepl.com/community/');
-      Uri.parse('http://localhost:1234');
+  final _communityURI = Uri.parse('https://itsaboutpeepl.com/community/');
+  //Uri.parse('http://localhost:1234');
 
   @override
   Widget build(BuildContext context) {
