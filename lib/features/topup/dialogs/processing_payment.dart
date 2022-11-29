@@ -14,9 +14,9 @@ class _ProcessingPaymentViewModel extends Equatable {
 
   factory _ProcessingPaymentViewModel.fromStore(Store<AppState> store) {
     return _ProcessingPaymentViewModel(
-      isLoading: store.state.cartState.transferringTokens,
-      isError: store.state.cartState.errorCompletingPayment,
-      isSuccessful: store.state.cartState.confirmedPayment,
+      isLoading: store.state.networkTabState.transferringTokens,
+      isError: store.state.networkTabState.errorCompletingPayment,
+      isSuccessful: store.state.networkTabState.confirmedPayment,
     );
   }
   final bool isLoading;

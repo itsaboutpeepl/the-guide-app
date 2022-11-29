@@ -17,6 +17,7 @@ _$_VideoArticle _$$_VideoArticleFromJson(Map<String, dynamic> json) =>
       postID: json['postID'] as String,
       postURL: json['postURL'] as String,
       isUserWatched: json['isUserWatched'] as bool,
+      rewardsEndDate: DateTime.parse(json['rewardsEndDate'] as String),
     );
 
 Map<String, dynamic> _$$_VideoArticleToJson(_$_VideoArticle instance) =>
@@ -29,4 +30,5 @@ Map<String, dynamic> _$$_VideoArticleToJson(_$_VideoArticle instance) =>
       'postID': instance.postID,
       'postURL': instance.postURL,
       'isUserWatched': instance.isUserWatched,
+      'rewardsEndDate': instance.rewardsEndDate.toIso8601String(),
     };

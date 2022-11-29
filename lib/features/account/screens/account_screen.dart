@@ -1,7 +1,9 @@
 import 'dart:core';
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
@@ -11,6 +13,7 @@ import 'package:guide_liverpool/features/account/widgets/avatar.dart';
 import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/features/shared/widgets/copy.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
@@ -148,15 +151,17 @@ class _AccountScreenState extends State<AccountScreen> {
                                     builder: (context) => aboutModal(context));
                               },
                             ),
-                            //TODO: remove
-                            MenuTile(
-                              label: "Copy FCM Token",
-                              menuIcon: 'info_black.svg',
-                              onTap: () {
-                                firebaseMessaging.getToken().then((value) =>
-                                    CopyToClipboard(content: value!));
-                              },
-                            ),
+                            if (kDebugMode)
+                              MenuTile(
+                                label: "Copy FCM Token",
+                                menuIcon: 'info_black.svg',
+                                onTap: () async {
+                                  Clipboard.setData(ClipboardData(
+                                      text:
+                                          await firebaseMessaging.getToken()));
+                                  showCopiedFlushbar(context);
+                                },
+                              ),
                             SizedBox(),
                             Text.rich(
                               TextSpan(

@@ -1,17 +1,17 @@
 import 'package:guide_liverpool/models/vesting_state.dart';
-import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:redux/redux.dart';
 
 final VestingStateReducers = combineReducers<VestingState>(
   [
-    TypedReducer<VestingState, UpdateVestingSchedule>(_getScheduleByAddressAndIndex),
+    TypedReducer<VestingState, UpdateVestingSchedule>(
+        _getScheduleByAddressAndIndex),
     TypedReducer<VestingState, UpdateScheduleCount>(_getVestingCount),
     TypedReducer<VestingState, UpdateIsRevoked>(_updateVestingIsRevoked),
-    TypedReducer<VestingState, UpdateIsLoading>(_updateVestingIsLoading),
     TypedReducer<VestingState, UpdateVestedChecker>(_updateVestedChecker),
     TypedReducer<VestingState, UpdateVestingScheduleID>(_getScheduleIDs),
-    TypedReducer<VestingState, UpdateHasVestingSchedule>(_updateHasVestingSchedule),
+    TypedReducer<VestingState, UpdateHasVestingSchedule>(
+        _updateHasVestingSchedule),
     TypedReducer<VestingState, UpdateReleasableAmount>(_getReleasableAmount),
     TypedReducer<VestingState, UpdateScheduleStart>(_getScheduleStart),
     TypedReducer<VestingState, UpdateDisplayScheduleID>(_getDisplayScheduleID),
@@ -53,13 +53,6 @@ VestingState _updateVestingIsRevoked(
   return state.copyWith(isRevoked: action.isRevoked);
 }
 
-VestingState _updateVestingIsLoading(
-  VestingState state,
-  UpdateIsLoading action,
-) {
-  return state.copyWith(isLoading: action.isLoading);
-}
-
 VestingState _updateVestedChecker(
   VestingState state,
   UpdateVestedChecker action,
@@ -85,7 +78,8 @@ VestingState _getReleasableAmount(
   VestingState state,
   UpdateReleasableAmount action,
 ) {
-  return state.copyWith(currentAmountReleasable: action.currentAmountReleasable);
+  return state.copyWith(
+      currentAmountReleasable: action.currentAmountReleasable);
 }
 
 VestingState _getScheduleStart(

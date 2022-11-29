@@ -56,17 +56,17 @@ class _PostCodeDialogState extends State<PostCodeDialog>
       builder: (_, updatePostcode) => ScaleTransition(
         scale: scaleAnimation,
         child: AlertDialog(
-          buttonPadding: EdgeInsets.all(20),
+          buttonPadding: const EdgeInsets.all(20),
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20)),
           ),
-          title: Text(
+          title: const Text(
             'Please add your postcode to get personalized content!',
             textAlign: TextAlign.center,
           ),
           content: TextField(
             textCapitalization: TextCapitalization.words,
-            decoration: InputDecoration(
+            decoration: const InputDecoration(
               fillColor: Colors.transparent,
               labelText: 'Postcode',
               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -75,11 +75,12 @@ class _PostCodeDialogState extends State<PostCodeDialog>
           ),
           actions: [
             PrimaryButton(
-                onPressed: () {
-                  updatePostcode(_textController.text);
-                  context.router.pop();
-                },
-                label: 'Save')
+              onPressed: () {
+                updatePostcode(_textController.text.toUpperCase());
+                context.router.pop();
+              },
+              label: 'Save',
+            )
           ],
           actionsAlignment: MainAxisAlignment.center,
         ),

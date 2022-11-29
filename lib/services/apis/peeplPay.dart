@@ -1,23 +1,27 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:injectable/injectable.dart';
+import 'package:guide_liverpool/utils/log/log.dart';
 
 @lazySingleton
 class PeeplPayService {
-  final Dio dio;
-
   PeeplPayService(this.dio) {
     dio.options.baseUrl = dotenv.env['PEEPL_PAY_BACKEND']!;
-    dio.options.headers = Map.from({"Content-Type": 'application/json'});
+    dio.options.headers = Map.from({'Content-Type': 'application/json'});
   }
 
-  Future<Map<dynamic, dynamic>> requestPaymentIntentIdDetails(String paymentIntentID) async {
-    Response response = await dio.get("api/v1/payment_intents/$paymentIntentID");
+  final Dio dio;
 
-    Map<dynamic, dynamic> result = response.data;
+  Future<Map<String, dynamic>> checkOrderValidity(
+    String paymentIntentID,
+  ) async {
+    final Response<dynamic> response =
+        await dio.get('api/v1/payment_intents/$paymentIntentID');
 
-    print("Payment Intent Result $result");
+    final Map<String, dynamic> result = response.data as Map<String, dynamic>;
 
-    return result['paymentIntent'];
+    log.info('Payment Intent Result $result');
+
+    return result;
   }
 }

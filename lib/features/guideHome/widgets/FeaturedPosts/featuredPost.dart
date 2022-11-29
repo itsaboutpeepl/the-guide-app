@@ -6,7 +6,9 @@ import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:intl/intl.dart';
 
 class FeaturedPost extends StatefulWidget {
-  const FeaturedPost({Key? key, required this.index, required this.listOfArticles}) : super(key: key);
+  const FeaturedPost(
+      {Key? key, required this.index, required this.listOfArticles})
+      : super(key: key);
 
   final int index;
   final List<BlogArticle> listOfArticles;
@@ -28,7 +30,7 @@ class _FeaturedPostState extends State<FeaturedPost> {
         onTap: () => {
           showBarModalBottomSheet(
             useRootNavigator: true,
-            backgroundColor: Colors.cyan,
+            backgroundColor: Colors.white,
             context: context,
             builder: (context) => PagedViewDetailArticle(
               listOfArticles: widget.listOfArticles,
@@ -47,7 +49,9 @@ class _FeaturedPostState extends State<FeaturedPost> {
             mainAxisSize: MainAxisSize.min,
             children: [
               ClipRRect(
-                borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)),
                 child: Container(
                   height: 200,
                   width: double.infinity,
@@ -59,7 +63,8 @@ class _FeaturedPostState extends State<FeaturedPost> {
               ),
               SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Text(
                   article.title,
                   style: TextStyle(fontWeight: FontWeight.w900, fontSize: 23),
@@ -68,7 +73,8 @@ class _FeaturedPostState extends State<FeaturedPost> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
                 child: Row(
                   children: [
                     Text(
@@ -86,14 +92,16 @@ class _FeaturedPostState extends State<FeaturedPost> {
                       width: 5,
                     ),
                     Text(
-                      DateFormat("EEE, MMM d, ''yy").format(article.publishedAt),
+                      DateFormat("EEE, MMM d, ''yy")
+                          .format(article.publishedAt),
                       style: TextStyle(color: Colors.grey[500]),
                     )
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Text(
                   parseHtmlString(article.content),
                   style: TextStyle(fontSize: 15),

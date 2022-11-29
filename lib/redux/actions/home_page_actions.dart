@@ -93,7 +93,7 @@ ThunkAction fetchFeaturedPosts() {
 ThunkAction fetchFeaturedVideos() {
   return (Store store) async {
     try {
-      await peeplMediaService.loginToDashboard();
+      //await peeplMediaService.loginToDashboard();
       List<VideoArticle> videoArticles =
           await peeplMediaService.featuredVideos();
       store.dispatch(UpdateFeaturedVideos(featuredVideos: videoArticles));
@@ -145,6 +145,7 @@ ThunkAction fetchDirectoryList() {
 ThunkAction fetchHomePageData() {
   return (Store store) async {
     try {
+      store.dispatch(UpdateIsLoading(isLoading: true));
       store.dispatch(fetchFeaturedPosts());
       store.dispatch(fetchFeaturedVideos());
       store.dispatch(fetchEventsList());

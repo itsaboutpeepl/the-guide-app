@@ -27,9 +27,7 @@ class _DAppScreenState extends State<DAppScreen> {
       onInitialBuild: (viewModel) {
         // viewModel.onStart();
       },
-      onInit: (store) {
-        store.dispatch(UpdateIsLoading(isLoading: true));
-      },
+      onInit: (store) {},
       builder: (_, viewModel) => MyScaffold(
         title: "Token Vesting Schedule",
         body: SingleChildScrollView(
@@ -40,10 +38,10 @@ class _DAppScreenState extends State<DAppScreen> {
               children: [
                 Center(
                   child: Icon(
-                     PeeplIcons.ppl_circles_02,
-                      color: Color(0xFFFF344D),
-                      size: 60,
-                      ),
+                    PeeplIcons.ppl_circles_02,
+                    color: Color(0xFFFF344D),
+                    size: 60,
+                  ),
                 ),
                 SizedBox(
                   height: 20,

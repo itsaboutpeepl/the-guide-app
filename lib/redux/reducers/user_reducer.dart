@@ -6,7 +6,6 @@ import 'package:guide_liverpool/redux/actions/user_actions.dart';
 final userReducers = combineReducers<UserState>([
   TypedReducer<UserState, SetWalletConnectURI>(_setWalletConnectURI),
   TypedReducer<UserState, GetWalletDataSuccess>(_getWalletDataSuccess),
-  TypedReducer<UserState, ScrollToTop>(_scrollToTop),
   TypedReducer<UserState, ToggleUpgrade>(_toggleUpgrade),
   TypedReducer<UserState, CreateLocalAccountSuccess>(_createNewWalletSuccess),
   TypedReducer<UserState, LoginRequestSuccess>(_loginSuccess),
@@ -23,8 +22,6 @@ final userReducers = combineReducers<UserState>([
   TypedReducer<UserState, JustInstalled>(_justInstalled),
   TypedReducer<UserState, DeviceIdSuccess>(_deviceIdSuccess),
   TypedReducer<UserState, SetSecurityType>(_setSecurityType),
-  TypedReducer<UserState, WarnSendDialogShowed>(_warnSendDialogShowed),
-  TypedReducer<UserState, UpdateCurrency>(_updateCurrency),
   TypedReducer<UserState, UpdateLocale>(_updateLocale),
   TypedReducer<UserState, SetShowSeedPhraseBanner>(_setShowSeedPhraseBanner),
   TypedReducer<UserState, SetHasSavedSeedPhrase>(_setHasSavedSeedPhrase),
@@ -36,13 +33,6 @@ UserState _setWalletConnectURI(
   SetWalletConnectURI action,
 ) {
   return state.copyWith(wcURI: action.wcURI);
-}
-
-UserState _scrollToTop(
-  UserState state,
-  ScrollToTop action,
-) {
-  return state.copyWith(scrollToTop: action.value);
 }
 
 UserState _toggleUpgrade(
@@ -59,22 +49,6 @@ UserState _updateLocale(
   UpdateLocale action,
 ) {
   return state.copyWith(locale: action.locale);
-}
-
-UserState _updateCurrency(
-  UserState state,
-  UpdateCurrency action,
-) {
-  return state.copyWith(currency: action.currency);
-}
-
-UserState _warnSendDialogShowed(
-  UserState state,
-  WarnSendDialogShowed action,
-) {
-  return state.copyWith(
-    warnSendDialogShowed: action.value,
-  );
 }
 
 UserState _setSecurityType(

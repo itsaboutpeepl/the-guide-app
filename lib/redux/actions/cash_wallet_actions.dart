@@ -463,21 +463,8 @@ ThunkAction<AppState> sendNativeTokenCall(
       store.dispatch(
         fetchJobCall(
           jobId,
-          (Map jobData) {
-            Analytics.track(
-              eventName: AnalyticsEvents.send4Approve,
-              properties: {'status': 'success'},
-            );
-          },
-          (dynamic failReason) {
-            Analytics.track(
-              eventName: AnalyticsEvents.send4Approve,
-              properties: {
-                'status': 'failed',
-                'failReason': failReason,
-              },
-            );
-          },
+          (Map jobData) {},
+          (dynamic failReason) {},
         ),
       );
       log
@@ -539,21 +526,8 @@ ThunkAction<AppState> sendTokenCall(
         store.dispatch(
           fetchJobCall(
             jobId,
-            (Map jobData) {
-              Analytics.track(
-                eventName: AnalyticsEvents.send4Approve,
-                properties: {'status': 'success'},
-              );
-            },
-            (dynamic failReason) {
-              Analytics.track(
-                eventName: AnalyticsEvents.send4Approve,
-                properties: {
-                  'status': 'failed',
-                  'failReason': failReason,
-                },
-              );
-            },
+            (Map jobData) {},
+            (dynamic failReason) {},
           ),
         );
         sendSuccessCallback();

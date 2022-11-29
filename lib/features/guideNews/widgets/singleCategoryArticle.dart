@@ -15,7 +15,7 @@ class SingleCategoryArticle extends StatelessWidget {
       onTap: () => {
         showBarModalBottomSheet(
           useRootNavigator: true,
-          backgroundColor: Colors.cyan,
+          backgroundColor: Colors.white,
           context: context,
           builder: (context) => DetailArticleBottomModel(articleData: article),
         )

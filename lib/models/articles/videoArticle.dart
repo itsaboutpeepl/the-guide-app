@@ -17,7 +17,13 @@ class VideoArticle with _$VideoArticle {
     required String postID,
     required String postURL,
     required bool isUserWatched,
+    required DateTime rewardsEndDate,
   }) = _VideoArticle;
 
   factory VideoArticle.fromJson(dynamic json) => _$VideoArticleFromJson(json);
+
+  bool get hasRewardsEnded {
+    if (DateTime.now().difference(rewardsEndDate).isNegative) return false;
+    return true;
+  }
 }

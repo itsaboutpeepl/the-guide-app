@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:guide_liverpool/models/home_page_state.dart';
+import 'package:guide_liverpool/models/network_tab_state.dart';
 import 'package:guide_liverpool/models/news_state.dart';
 import 'package:guide_liverpool/models/user_cart_state.dart';
 import 'package:guide_liverpool/models/user_state.dart';
@@ -19,8 +20,8 @@ class AppState with _$AppState {
     @CashWalletStateConverter() required CashWalletState cashWalletState,
     @HomePageStateConverter() required HomePageState homePageState,
     @NewsStateConverter() required NewsState newsState,
-    @UserCartStateConverter() required UserCartState cartState,
     @VestingStateConverter() required VestingState vestingState,
+    @NetworkTabStateConverter() required NetworkTabState networkTabState,
   }) = _AppState;
 
   factory AppState.initial() {
@@ -29,8 +30,8 @@ class AppState with _$AppState {
       cashWalletState: CashWalletState.initial(),
       homePageState: HomePageState.initial(),
       newsState: NewsState.initial(),
-      cartState: UserCartState.initial(),
       vestingState: VestingState.initial(),
+      networkTabState: NetworkTabState.initial(),
     );
   }
 

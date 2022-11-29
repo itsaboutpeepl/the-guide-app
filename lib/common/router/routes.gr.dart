@@ -24,6 +24,7 @@ import '../../features/account/screens/show_mnemonic.dart' as _i18;
 import '../../features/account/screens/verify_mnemonic.dart' as _i19;
 import '../../features/guideHome/screens/guideHome.dart' as _i13;
 import '../../features/guideNews/screens/newsScreen.dart' as _i14;
+import '../../features/network/screens/networkScreen.dart' as _i25;
 import '../../features/onboard/screens/restore_wallet_screen.dart' as _i4;
 import '../../features/onboard/screens/security_screen.dart' as _i2;
 import '../../features/onboard/screens/signup_screen.dart' as _i6;
@@ -37,7 +38,6 @@ import '../../features/screens/splash_screen.dart' as _i1;
 import '../../features/screens/webview_screen.dart' as _i9;
 import '../../features/topup/screens/topup.dart' as _i15;
 import '../../features/topup/screens/topup_explained.dart' as _i16;
-import '../../features/webview/shopScreen.dart' as _i25;
 import 'route_guards.dart' as _i28;
 
 class RootRouter extends _i26.RootStackRouter {
@@ -131,7 +131,7 @@ class RootRouter extends _i26.RootStackRouter {
       return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i12.EmptyRouterPage());
     },
-    WebviewTab.name: (routeData) {
+    NetworkScreenTab.name: (routeData) {
       return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i12.EmptyRouterPage());
     },
@@ -179,9 +179,15 @@ class RootRouter extends _i26.RootStackRouter {
       return _i26.MaterialPageX<dynamic>(
           routeData: routeData, child: const _i24.DAppScreen());
     },
-    ShopScreen.name: (routeData) {
-      return _i26.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i25.ShopScreen());
+    NetworkScreen.name: (routeData) {
+      final args = routeData.argsAs<NetworkScreenArgs>(
+          orElse: () => const NetworkScreenArgs());
+      return _i26.CustomPage<dynamic>(
+          routeData: routeData,
+          child: _i25.NetworkScreen(key: args.key),
+          transitionsBuilder: _i26.TransitionsBuilders.slideRightWithFade,
+          opaque: true,
+          barrierDismissible: false);
     }
   };
 
@@ -289,12 +295,18 @@ class RootRouter extends _i26.RootStackRouter {
                     parent: AccountTab.name,
                     guards: [authGuard])
               ]),
-          _i26.RouteConfig(WebviewTab.name,
-              path: 'webview',
+          _i26.RouteConfig(NetworkScreenTab.name,
+              path: 'networkScreen',
               parent: MainScreen.name,
+              guards: [
+                authGuard
+              ],
               children: [
-                _i26.RouteConfig(ShopScreen.name,
-                    path: '', parent: WebviewTab.name, guards: [authGuard])
+                _i26.RouteConfig(NetworkScreen.name,
+                    path: '',
+                    parent: NetworkScreenTab.name,
+                    meta: <String, dynamic>{'hideBottomNav': true},
+                    guards: [authGuard])
               ])
         ]),
         _i26.RouteConfig('*#redirect',
@@ -517,11 +529,12 @@ class AccountTab extends _i26.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i12.EmptyRouterPage]
-class WebviewTab extends _i26.PageRouteInfo<void> {
-  const WebviewTab({List<_i26.PageRouteInfo>? children})
-      : super(WebviewTab.name, path: 'webview', initialChildren: children);
+class NetworkScreenTab extends _i26.PageRouteInfo<void> {
+  const NetworkScreenTab({List<_i26.PageRouteInfo>? children})
+      : super(NetworkScreenTab.name,
+            path: 'networkScreen', initialChildren: children);
 
-  static const String name = 'WebviewTab';
+  static const String name = 'NetworkScreenTab';
 }
 
 /// generated route for
@@ -632,9 +645,21 @@ class DAppScreen extends _i26.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i25.ShopScreen]
-class ShopScreen extends _i26.PageRouteInfo<void> {
-  const ShopScreen() : super(ShopScreen.name, path: '');
+/// [_i25.NetworkScreen]
+class NetworkScreen extends _i26.PageRouteInfo<NetworkScreenArgs> {
+  NetworkScreen({_i27.Key? key})
+      : super(NetworkScreen.name, path: '', args: NetworkScreenArgs(key: key));
 
-  static const String name = 'ShopScreen';
+  static const String name = 'NetworkScreen';
+}
+
+class NetworkScreenArgs {
+  const NetworkScreenArgs({this.key});
+
+  final _i27.Key? key;
+
+  @override
+  String toString() {
+    return 'NetworkScreenArgs{key: $key}';
+  }
 }

@@ -1,10 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:guide_liverpool/features/shared/payment/ppl_balance_card.dart';
+import 'package:guide_liverpool/features/shared/payment/ppl_slider_control.dart';
 import 'package:guide_liverpool/features/shared/widgets/ShimmerButton.dart';
-import 'package:guide_liverpool/features/shared/widgets/payment/ppl_balance_card.dart';
-import 'package:guide_liverpool/features/shared/widgets/payment/ppl_slider_control.dart';
 import 'package:guide_liverpool/models/app_state.dart';
-import 'package:guide_liverpool/redux/actions/cart_actions.dart';
+import 'package:guide_liverpool/redux/actions/network_tab_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/paymentSheet.dart';
 
 class PaymentSheet extends StatelessWidget {
@@ -20,10 +21,28 @@ class PaymentSheet extends StatelessWidget {
           ..dispatch(SetTransferringPayment(flag: false))
           ..dispatch(
             UpdateSelectedAmounts(
-              gbpxAmount: (store.state.cartState.cartTotal) / 100,
+              gbpxAmount: (store.state.networkTabState.cartTotal) / 100,
               pplAmount: 0,
             ),
           );
+      },
+      onWillChange: (prevVM, nextVM) {
+        if (nextVM.errorCompletingPayment) {
+          Future.delayed(
+            const Duration(seconds: 2),
+            () {
+              context.router.pop();
+            },
+          );
+        }
+        if (nextVM.confirmedPayment) {
+          Future.delayed(
+            const Duration(seconds: 2),
+            () {
+              context.router.pop();
+            },
+          );
+        }
       },
       builder: (_, viewmodel) {
         return FractionallySizedBox(

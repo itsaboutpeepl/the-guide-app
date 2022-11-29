@@ -24,7 +24,7 @@ final PeeplMediaService peeplMediaService = getIt<PeeplMediaService>();
 
 final StripePayService stripePayService = getIt<StripePayService>();
 
-final PeeplPayService peeplPaySerivce = getIt<PeeplPayService>();
+final PeeplPayService peeplPayService = getIt<PeeplPayService>();
 
 final Graph graph = getIt<Graph>();
 

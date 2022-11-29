@@ -200,7 +200,8 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                     )
                   : SizedBox.shrink(),
               widget.videoArticleItem.rewardAmount != 0 &&
-                      !widget.videoArticleItem.isUserWatched
+                      !widget.videoArticleItem.isUserWatched &&
+                      !widget.videoArticleItem.hasRewardsEnded
                   ? Positioned(
                       left: 0.0,
                       top: 0.0,

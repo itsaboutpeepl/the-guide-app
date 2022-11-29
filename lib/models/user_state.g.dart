@@ -15,10 +15,8 @@ _$_UserState _$$_UserStateFromJson(Map<String, dynamic> json) => _$_UserState(
       installedAt: json['installedAt'] == null
           ? null
           : DateTime.parse(json['installedAt'] as String),
-      isContactsSynced: json['isContactsSynced'] as bool?,
       isLoggedOut: json['isLoggedOut'] as bool? ?? false,
       backup: json['backup'] as bool? ?? false,
-      scrollToTop: json['scrollToTop'] as bool? ?? false,
       walletAddress: json['walletAddress'] as String? ?? '',
       networks: (json['networks'] as List<dynamic>?)
               ?.map((e) => e as String)
@@ -33,7 +31,6 @@ _$_UserState _$$_UserStateFromJson(Map<String, dynamic> json) => _$_UserState(
       accountAddress: json['accountAddress'] as String? ?? '',
       countryCode: json['countryCode'] as String? ?? '',
       phoneNumber: json['phoneNumber'] as String? ?? '',
-      warnSendDialogShowed: json['warnSendDialogShowed'] as bool? ?? false,
       isoCode: json['isoCode'] as String? ?? '',
       jwtToken: json['jwtToken'] as String? ?? '',
       displayName: json['displayName'] as String? ?? 'Anom',
@@ -41,15 +38,6 @@ _$_UserState _$$_UserStateFromJson(Map<String, dynamic> json) => _$_UserState(
       email: json['email'] as String? ?? '',
       verificationId: json['verificationId'] as String?,
       identifier: json['identifier'] as String? ?? '',
-      syncedContacts: (json['syncedContacts'] as List<dynamic>?)
-              ?.map((e) => e as String)
-              .toList() ??
-          const [],
-      reverseContacts: (json['reverseContacts'] as Map<String, dynamic>?)?.map(
-            (k, e) => MapEntry(k, e as String),
-          ) ??
-          const {},
-      currency: json['currency'] as String? ?? 'usd',
       authType: $enumDecodeNullable(_$BiometricAuthEnumMap, json['authType']) ??
           BiometricAuth.none,
       locale: localeFromJson(json['locale'] as Map<String, dynamic>?),
@@ -64,10 +52,8 @@ Map<String, dynamic> _$$_UserStateToJson(_$_UserState instance) =>
       'contractVersion': instance.contractVersion,
       'walletModules': instance.walletModules?.toJson(),
       'installedAt': instance.installedAt?.toIso8601String(),
-      'isContactsSynced': instance.isContactsSynced,
       'isLoggedOut': instance.isLoggedOut,
       'backup': instance.backup,
-      'scrollToTop': instance.scrollToTop,
       'walletAddress': instance.walletAddress,
       'networks': instance.networks,
       'mnemonic': instance.mnemonic,
@@ -76,7 +62,6 @@ Map<String, dynamic> _$$_UserStateToJson(_$_UserState instance) =>
       'accountAddress': instance.accountAddress,
       'countryCode': instance.countryCode,
       'phoneNumber': instance.phoneNumber,
-      'warnSendDialogShowed': instance.warnSendDialogShowed,
       'isoCode': instance.isoCode,
       'jwtToken': instance.jwtToken,
       'displayName': instance.displayName,
@@ -84,9 +69,6 @@ Map<String, dynamic> _$$_UserStateToJson(_$_UserState instance) =>
       'email': instance.email,
       'verificationId': instance.verificationId,
       'identifier': instance.identifier,
-      'syncedContacts': instance.syncedContacts,
-      'reverseContacts': instance.reverseContacts,
-      'currency': instance.currency,
       'authType': _$BiometricAuthEnumMap[instance.authType]!,
       'locale': localeToJson(instance.locale),
       'hasSavedSeedPhrase': instance.hasSavedSeedPhrase,

@@ -1,6 +1,10 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:guide_liverpool/constants/analytics_events.dart';
+import 'package:guide_liverpool/utils/analytics.dart';
 import 'package:guide_liverpool/utils/extensions.dart';
 import 'package:injectable/injectable.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -65,6 +69,14 @@ class StripeService {
     } on Exception catch (e, s) {
       if (e is StripeException) {
         if (e.error.code != FailureCode.Canceled) {
+          unawaited(
+            Analytics.track(
+              eventName: AnalyticsEvents.mint,
+              properties: {
+                'status': 'failure',
+              },
+            ),
+          );
           log.error(e.error.localizedMessage);
           await Sentry.captureException(
             e,

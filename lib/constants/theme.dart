@@ -11,3 +11,5 @@ final FlexColorScheme flexColorSchemeLight = FlexColorScheme.light(
     appBarColor: Color(0xFFFFFFFF),
   ),
 );
+
+const Color pplRed = Color(0xFFEA4953);

@@ -24,9 +24,10 @@ class _PPLSliderState extends State<PPLSlider> {
       converter: PeeplPaySheetViewModel.fromStore,
       distinct: true,
       onInit: (store) {
-        _amountToBePaid = store.state.cartState.cartTotal.toDouble(); //in pence
+        _amountToBePaid =
+            store.state.networkTabState.cartTotal.toDouble(); //in pence
         _gbpxSliderValue =
-            store.state.cartState.cartTotal.toDouble(); //in pence
+            store.state.networkTabState.cartTotal.toDouble(); //in pence
         _pplBalance =
             store.state.cashWalletState.tokens[pplToken.address]!.getAmount();
       },

@@ -15,10 +15,10 @@ _$_AppState _$$_AppStateFromJson(Map<String, dynamic> json) => _$_AppState(
           .fromJson(json['homePageState'] as Map<String, dynamic>?),
       newsState: const NewsStateConverter()
           .fromJson(json['newsState'] as Map<String, dynamic>?),
-      cartState: const UserCartStateConverter()
-          .fromJson(json['cartState'] as Map<String, dynamic>?),
       vestingState: const VestingStateConverter()
           .fromJson(json['vestingState'] as Map<String, dynamic>?),
+      networkTabState: const NetworkTabStateConverter()
+          .fromJson(json['networkTabState'] as Map<String, dynamic>?),
     );
 
 Map<String, dynamic> _$$_AppStateToJson(_$_AppState instance) =>
@@ -29,7 +29,8 @@ Map<String, dynamic> _$$_AppStateToJson(_$_AppState instance) =>
       'homePageState':
           const HomePageStateConverter().toJson(instance.homePageState),
       'newsState': const NewsStateConverter().toJson(instance.newsState),
-      'cartState': const UserCartStateConverter().toJson(instance.cartState),
       'vestingState':
           const VestingStateConverter().toJson(instance.vestingState),
+      'networkTabState':
+          const NetworkTabStateConverter().toJson(instance.networkTabState),
     };

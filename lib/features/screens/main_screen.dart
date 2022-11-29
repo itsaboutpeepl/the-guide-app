@@ -53,11 +53,13 @@ class _MainScreenState extends State<MainScreen> {
               GuideHomeTab(),
               NewsHomeTab(),
               AccountTab(),
-              WebviewTab(),
+              NetworkScreenTab(),
             ],
             bottomNavigationBuilder: (_, TabsRouter tabs) {
               _tabsRouter = tabs;
-              return BottomBar(tabs);
+              return context.topRouteMatch.meta['hideBottomNav'] == true
+                  ? const SizedBox.shrink()
+                  : BottomBar(tabs);
             },
           ),
         );
@@ -90,7 +92,7 @@ class _MainScreenState extends State<MainScreen> {
       newsService.getArticleByID(articleID).then(
             (article) => showBarModalBottomSheet(
               useRootNavigator: true,
-              backgroundColor: Colors.cyan,
+              backgroundColor: Colors.white,
               context: context,
               builder: (context) =>
                   DetailArticleBottomModel(articleData: article),

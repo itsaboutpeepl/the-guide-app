@@ -25,10 +25,8 @@ mixin _$UserState {
   String? get contractVersion => throw _privateConstructorUsedError;
   WalletModules? get walletModules => throw _privateConstructorUsedError;
   DateTime? get installedAt => throw _privateConstructorUsedError;
-  bool? get isContactsSynced => throw _privateConstructorUsedError;
   bool get isLoggedOut => throw _privateConstructorUsedError;
   bool get backup => throw _privateConstructorUsedError;
-  bool get scrollToTop => throw _privateConstructorUsedError;
   String get walletAddress => throw _privateConstructorUsedError;
   List<String> get networks => throw _privateConstructorUsedError;
   List<String> get mnemonic => throw _privateConstructorUsedError;
@@ -37,7 +35,6 @@ mixin _$UserState {
   String get accountAddress => throw _privateConstructorUsedError;
   String get countryCode => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
-  bool get warnSendDialogShowed => throw _privateConstructorUsedError;
   String get isoCode => throw _privateConstructorUsedError;
   String get jwtToken => throw _privateConstructorUsedError;
   String get displayName => throw _privateConstructorUsedError;
@@ -45,9 +42,6 @@ mixin _$UserState {
   String get email => throw _privateConstructorUsedError;
   String? get verificationId => throw _privateConstructorUsedError;
   String get identifier => throw _privateConstructorUsedError;
-  List<String> get syncedContacts => throw _privateConstructorUsedError;
-  Map<String, String> get reverseContacts => throw _privateConstructorUsedError;
-  String get currency => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   bool get hasUpgrade => throw _privateConstructorUsedError;
   BiometricAuth get authType => throw _privateConstructorUsedError;
@@ -75,10 +69,8 @@ abstract class $UserStateCopyWith<$Res> {
       String? contractVersion,
       WalletModules? walletModules,
       DateTime? installedAt,
-      bool? isContactsSynced,
       bool isLoggedOut,
       bool backup,
-      bool scrollToTop,
       String walletAddress,
       List<String> networks,
       List<String> mnemonic,
@@ -87,7 +79,6 @@ abstract class $UserStateCopyWith<$Res> {
       String accountAddress,
       String countryCode,
       String phoneNumber,
-      bool warnSendDialogShowed,
       String isoCode,
       String jwtToken,
       String displayName,
@@ -95,9 +86,6 @@ abstract class $UserStateCopyWith<$Res> {
       String email,
       String? verificationId,
       String identifier,
-      List<String> syncedContacts,
-      Map<String, String> reverseContacts,
-      String currency,
       @JsonKey(ignore: true) bool hasUpgrade,
       BiometricAuth authType,
       @JsonKey(fromJson: localeFromJson, toJson: localeToJson) Locale? locale,
@@ -124,10 +112,8 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
     Object? contractVersion = freezed,
     Object? walletModules = freezed,
     Object? installedAt = freezed,
-    Object? isContactsSynced = freezed,
     Object? isLoggedOut = freezed,
     Object? backup = freezed,
-    Object? scrollToTop = freezed,
     Object? walletAddress = freezed,
     Object? networks = freezed,
     Object? mnemonic = freezed,
@@ -136,7 +122,6 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
     Object? accountAddress = freezed,
     Object? countryCode = freezed,
     Object? phoneNumber = freezed,
-    Object? warnSendDialogShowed = freezed,
     Object? isoCode = freezed,
     Object? jwtToken = freezed,
     Object? displayName = freezed,
@@ -144,9 +129,6 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
     Object? email = freezed,
     Object? verificationId = freezed,
     Object? identifier = freezed,
-    Object? syncedContacts = freezed,
-    Object? reverseContacts = freezed,
-    Object? currency = freezed,
     Object? hasUpgrade = freezed,
     Object? authType = freezed,
     Object? locale = freezed,
@@ -173,10 +155,6 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
           ? _value.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isContactsSynced: isContactsSynced == freezed
-          ? _value.isContactsSynced
-          : isContactsSynced // ignore: cast_nullable_to_non_nullable
-              as bool?,
       isLoggedOut: isLoggedOut == freezed
           ? _value.isLoggedOut
           : isLoggedOut // ignore: cast_nullable_to_non_nullable
@@ -184,10 +162,6 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
       backup: backup == freezed
           ? _value.backup
           : backup // ignore: cast_nullable_to_non_nullable
-              as bool,
-      scrollToTop: scrollToTop == freezed
-          ? _value.scrollToTop
-          : scrollToTop // ignore: cast_nullable_to_non_nullable
               as bool,
       walletAddress: walletAddress == freezed
           ? _value.walletAddress
@@ -221,10 +195,6 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      warnSendDialogShowed: warnSendDialogShowed == freezed
-          ? _value.warnSendDialogShowed
-          : warnSendDialogShowed // ignore: cast_nullable_to_non_nullable
-              as bool,
       isoCode: isoCode == freezed
           ? _value.isoCode
           : isoCode // ignore: cast_nullable_to_non_nullable
@@ -252,18 +222,6 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
       identifier: identifier == freezed
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
-              as String,
-      syncedContacts: syncedContacts == freezed
-          ? _value.syncedContacts
-          : syncedContacts // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      reverseContacts: reverseContacts == freezed
-          ? _value.reverseContacts
-          : reverseContacts // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      currency: currency == freezed
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
               as String,
       hasUpgrade: hasUpgrade == freezed
           ? _value.hasUpgrade
@@ -323,10 +281,8 @@ abstract class _$$_UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
       String? contractVersion,
       WalletModules? walletModules,
       DateTime? installedAt,
-      bool? isContactsSynced,
       bool isLoggedOut,
       bool backup,
-      bool scrollToTop,
       String walletAddress,
       List<String> networks,
       List<String> mnemonic,
@@ -335,7 +291,6 @@ abstract class _$$_UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
       String accountAddress,
       String countryCode,
       String phoneNumber,
-      bool warnSendDialogShowed,
       String isoCode,
       String jwtToken,
       String displayName,
@@ -343,9 +298,6 @@ abstract class _$$_UserStateCopyWith<$Res> implements $UserStateCopyWith<$Res> {
       String email,
       String? verificationId,
       String identifier,
-      List<String> syncedContacts,
-      Map<String, String> reverseContacts,
-      String currency,
       @JsonKey(ignore: true) bool hasUpgrade,
       BiometricAuth authType,
       @JsonKey(fromJson: localeFromJson, toJson: localeToJson) Locale? locale,
@@ -375,10 +327,8 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
     Object? contractVersion = freezed,
     Object? walletModules = freezed,
     Object? installedAt = freezed,
-    Object? isContactsSynced = freezed,
     Object? isLoggedOut = freezed,
     Object? backup = freezed,
-    Object? scrollToTop = freezed,
     Object? walletAddress = freezed,
     Object? networks = freezed,
     Object? mnemonic = freezed,
@@ -387,7 +337,6 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
     Object? accountAddress = freezed,
     Object? countryCode = freezed,
     Object? phoneNumber = freezed,
-    Object? warnSendDialogShowed = freezed,
     Object? isoCode = freezed,
     Object? jwtToken = freezed,
     Object? displayName = freezed,
@@ -395,9 +344,6 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
     Object? email = freezed,
     Object? verificationId = freezed,
     Object? identifier = freezed,
-    Object? syncedContacts = freezed,
-    Object? reverseContacts = freezed,
-    Object? currency = freezed,
     Object? hasUpgrade = freezed,
     Object? authType = freezed,
     Object? locale = freezed,
@@ -424,10 +370,6 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
           ? _value.installedAt
           : installedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      isContactsSynced: isContactsSynced == freezed
-          ? _value.isContactsSynced
-          : isContactsSynced // ignore: cast_nullable_to_non_nullable
-              as bool?,
       isLoggedOut: isLoggedOut == freezed
           ? _value.isLoggedOut
           : isLoggedOut // ignore: cast_nullable_to_non_nullable
@@ -435,10 +377,6 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
       backup: backup == freezed
           ? _value.backup
           : backup // ignore: cast_nullable_to_non_nullable
-              as bool,
-      scrollToTop: scrollToTop == freezed
-          ? _value.scrollToTop
-          : scrollToTop // ignore: cast_nullable_to_non_nullable
               as bool,
       walletAddress: walletAddress == freezed
           ? _value.walletAddress
@@ -472,10 +410,6 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
-      warnSendDialogShowed: warnSendDialogShowed == freezed
-          ? _value.warnSendDialogShowed
-          : warnSendDialogShowed // ignore: cast_nullable_to_non_nullable
-              as bool,
       isoCode: isoCode == freezed
           ? _value.isoCode
           : isoCode // ignore: cast_nullable_to_non_nullable
@@ -503,18 +437,6 @@ class __$$_UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
       identifier: identifier == freezed
           ? _value.identifier
           : identifier // ignore: cast_nullable_to_non_nullable
-              as String,
-      syncedContacts: syncedContacts == freezed
-          ? _value.syncedContacts
-          : syncedContacts // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-      reverseContacts: reverseContacts == freezed
-          ? _value.reverseContacts
-          : reverseContacts // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      currency: currency == freezed
-          ? _value.currency
-          : currency // ignore: cast_nullable_to_non_nullable
               as String,
       hasUpgrade: hasUpgrade == freezed
           ? _value.hasUpgrade
@@ -561,10 +483,8 @@ class _$_UserState extends _UserState {
       this.contractVersion,
       this.walletModules,
       this.installedAt,
-      this.isContactsSynced,
       this.isLoggedOut = false,
       this.backup = false,
-      this.scrollToTop = false,
       this.walletAddress = '',
       this.networks = const [],
       this.mnemonic = const [],
@@ -573,7 +493,6 @@ class _$_UserState extends _UserState {
       this.accountAddress = '',
       this.countryCode = '',
       this.phoneNumber = '',
-      this.warnSendDialogShowed = false,
       this.isoCode = '',
       this.jwtToken = '',
       this.displayName = 'Anom',
@@ -581,9 +500,6 @@ class _$_UserState extends _UserState {
       this.email = '',
       this.verificationId,
       this.identifier = '',
-      this.syncedContacts = const [],
-      this.reverseContacts = const {},
-      this.currency = 'usd',
       @JsonKey(ignore: true) this.hasUpgrade = false,
       this.authType = BiometricAuth.none,
       @JsonKey(fromJson: localeFromJson, toJson: localeToJson) this.locale,
@@ -607,16 +523,11 @@ class _$_UserState extends _UserState {
   @override
   final DateTime? installedAt;
   @override
-  final bool? isContactsSynced;
-  @override
   @JsonKey()
   final bool isLoggedOut;
   @override
   @JsonKey()
   final bool backup;
-  @override
-  @JsonKey()
-  final bool scrollToTop;
   @override
   @JsonKey()
   final String walletAddress;
@@ -643,9 +554,6 @@ class _$_UserState extends _UserState {
   final String phoneNumber;
   @override
   @JsonKey()
-  final bool warnSendDialogShowed;
-  @override
-  @JsonKey()
   final String isoCode;
   @override
   @JsonKey()
@@ -664,15 +572,6 @@ class _$_UserState extends _UserState {
   @override
   @JsonKey()
   final String identifier;
-  @override
-  @JsonKey()
-  final List<String> syncedContacts;
-  @override
-  @JsonKey()
-  final Map<String, String> reverseContacts;
-  @override
-  @JsonKey()
-  final String currency;
   @override
   @JsonKey(ignore: true)
   final bool hasUpgrade;
@@ -700,7 +599,7 @@ class _$_UserState extends _UserState {
 
   @override
   String toString() {
-    return 'UserState(wcURI: $wcURI, contractVersion: $contractVersion, walletModules: $walletModules, installedAt: $installedAt, isContactsSynced: $isContactsSynced, isLoggedOut: $isLoggedOut, backup: $backup, scrollToTop: $scrollToTop, walletAddress: $walletAddress, networks: $networks, mnemonic: $mnemonic, privateKey: $privateKey, pincode: $pincode, accountAddress: $accountAddress, countryCode: $countryCode, phoneNumber: $phoneNumber, warnSendDialogShowed: $warnSendDialogShowed, isoCode: $isoCode, jwtToken: $jwtToken, displayName: $displayName, avatarUrl: $avatarUrl, email: $email, verificationId: $verificationId, identifier: $identifier, syncedContacts: $syncedContacts, reverseContacts: $reverseContacts, currency: $currency, hasUpgrade: $hasUpgrade, authType: $authType, locale: $locale, credentials: $credentials, hasSavedSeedPhrase: $hasSavedSeedPhrase, initialLoginDateTime: $initialLoginDateTime, showSeedPhraseBanner: $showSeedPhraseBanner, postCode: $postCode)';
+    return 'UserState(wcURI: $wcURI, contractVersion: $contractVersion, walletModules: $walletModules, installedAt: $installedAt, isLoggedOut: $isLoggedOut, backup: $backup, walletAddress: $walletAddress, networks: $networks, mnemonic: $mnemonic, privateKey: $privateKey, pincode: $pincode, accountAddress: $accountAddress, countryCode: $countryCode, phoneNumber: $phoneNumber, isoCode: $isoCode, jwtToken: $jwtToken, displayName: $displayName, avatarUrl: $avatarUrl, email: $email, verificationId: $verificationId, identifier: $identifier, hasUpgrade: $hasUpgrade, authType: $authType, locale: $locale, credentials: $credentials, hasSavedSeedPhrase: $hasSavedSeedPhrase, initialLoginDateTime: $initialLoginDateTime, showSeedPhraseBanner: $showSeedPhraseBanner, postCode: $postCode)';
   }
 
   @override
@@ -716,12 +615,8 @@ class _$_UserState extends _UserState {
             const DeepCollectionEquality()
                 .equals(other.installedAt, installedAt) &&
             const DeepCollectionEquality()
-                .equals(other.isContactsSynced, isContactsSynced) &&
-            const DeepCollectionEquality()
                 .equals(other.isLoggedOut, isLoggedOut) &&
             const DeepCollectionEquality().equals(other.backup, backup) &&
-            const DeepCollectionEquality()
-                .equals(other.scrollToTop, scrollToTop) &&
             const DeepCollectionEquality()
                 .equals(other.walletAddress, walletAddress) &&
             const DeepCollectionEquality().equals(other.networks, networks) &&
@@ -735,8 +630,6 @@ class _$_UserState extends _UserState {
                 .equals(other.countryCode, countryCode) &&
             const DeepCollectionEquality()
                 .equals(other.phoneNumber, phoneNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.warnSendDialogShowed, warnSendDialogShowed) &&
             const DeepCollectionEquality().equals(other.isoCode, isoCode) &&
             const DeepCollectionEquality().equals(other.jwtToken, jwtToken) &&
             const DeepCollectionEquality()
@@ -747,11 +640,6 @@ class _$_UserState extends _UserState {
                 .equals(other.verificationId, verificationId) &&
             const DeepCollectionEquality()
                 .equals(other.identifier, identifier) &&
-            const DeepCollectionEquality()
-                .equals(other.syncedContacts, syncedContacts) &&
-            const DeepCollectionEquality()
-                .equals(other.reverseContacts, reverseContacts) &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
             const DeepCollectionEquality()
                 .equals(other.hasUpgrade, hasUpgrade) &&
             const DeepCollectionEquality().equals(other.authType, authType) &&
@@ -775,10 +663,8 @@ class _$_UserState extends _UserState {
         const DeepCollectionEquality().hash(contractVersion),
         const DeepCollectionEquality().hash(walletModules),
         const DeepCollectionEquality().hash(installedAt),
-        const DeepCollectionEquality().hash(isContactsSynced),
         const DeepCollectionEquality().hash(isLoggedOut),
         const DeepCollectionEquality().hash(backup),
-        const DeepCollectionEquality().hash(scrollToTop),
         const DeepCollectionEquality().hash(walletAddress),
         const DeepCollectionEquality().hash(networks),
         const DeepCollectionEquality().hash(mnemonic),
@@ -787,7 +673,6 @@ class _$_UserState extends _UserState {
         const DeepCollectionEquality().hash(accountAddress),
         const DeepCollectionEquality().hash(countryCode),
         const DeepCollectionEquality().hash(phoneNumber),
-        const DeepCollectionEquality().hash(warnSendDialogShowed),
         const DeepCollectionEquality().hash(isoCode),
         const DeepCollectionEquality().hash(jwtToken),
         const DeepCollectionEquality().hash(displayName),
@@ -795,9 +680,6 @@ class _$_UserState extends _UserState {
         const DeepCollectionEquality().hash(email),
         const DeepCollectionEquality().hash(verificationId),
         const DeepCollectionEquality().hash(identifier),
-        const DeepCollectionEquality().hash(syncedContacts),
-        const DeepCollectionEquality().hash(reverseContacts),
-        const DeepCollectionEquality().hash(currency),
         const DeepCollectionEquality().hash(hasUpgrade),
         const DeepCollectionEquality().hash(authType),
         const DeepCollectionEquality().hash(locale),
@@ -828,10 +710,8 @@ abstract class _UserState extends UserState {
       final String? contractVersion,
       final WalletModules? walletModules,
       final DateTime? installedAt,
-      final bool? isContactsSynced,
       final bool isLoggedOut,
       final bool backup,
-      final bool scrollToTop,
       final String walletAddress,
       final List<String> networks,
       final List<String> mnemonic,
@@ -840,7 +720,6 @@ abstract class _UserState extends UserState {
       final String accountAddress,
       final String countryCode,
       final String phoneNumber,
-      final bool warnSendDialogShowed,
       final String isoCode,
       final String jwtToken,
       final String displayName,
@@ -848,9 +727,6 @@ abstract class _UserState extends UserState {
       final String email,
       final String? verificationId,
       final String identifier,
-      final List<String> syncedContacts,
-      final Map<String, String> reverseContacts,
-      final String currency,
       @JsonKey(ignore: true)
           final bool hasUpgrade,
       final BiometricAuth authType,
@@ -877,13 +753,9 @@ abstract class _UserState extends UserState {
   @override
   DateTime? get installedAt;
   @override
-  bool? get isContactsSynced;
-  @override
   bool get isLoggedOut;
   @override
   bool get backup;
-  @override
-  bool get scrollToTop;
   @override
   String get walletAddress;
   @override
@@ -901,8 +773,6 @@ abstract class _UserState extends UserState {
   @override
   String get phoneNumber;
   @override
-  bool get warnSendDialogShowed;
-  @override
   String get isoCode;
   @override
   String get jwtToken;
@@ -916,12 +786,6 @@ abstract class _UserState extends UserState {
   String? get verificationId;
   @override
   String get identifier;
-  @override
-  List<String> get syncedContacts;
-  @override
-  Map<String, String> get reverseContacts;
-  @override
-  String get currency;
   @override
   @JsonKey(ignore: true)
   bool get hasUpgrade;

@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_liverpool/models/app_state.dart';
-import 'package:guide_liverpool/redux/actions/cart_actions.dart';
+import 'package:guide_liverpool/redux/actions/network_tab_actions.dart';
 import 'package:guide_liverpool/utils/extensions.dart';
 import 'package:redux/redux.dart';
 
@@ -20,13 +20,14 @@ class PeeplPaySheetViewModel extends Equatable {
 
   factory PeeplPaySheetViewModel.fromStore(Store<AppState> store) {
     return PeeplPaySheetViewModel(
-      cartTotal: store.state.cartState.cartTotal.formattedPrice,
-      selectedGBPxAmount: store.state.cartState.selectedGBPxAmount,
-      selectedPPLAmount: store.state.cartState.selectedPPLAmount,
-      transferringTokens: store.state.cartState.transferringTokens,
-      errorCompletingPayment: store.state.cartState.errorCompletingPayment,
-      confirmedPayment: store.state.cartState.confirmedPayment,
-      restaurantName: store.state.cartState.restaurantName,
+      cartTotal: store.state.networkTabState.cartTotal.formattedPrice,
+      selectedGBPxAmount: store.state.networkTabState.selectedGBPxAmount,
+      selectedPPLAmount: store.state.networkTabState.selectedPPLAmount,
+      transferringTokens: store.state.networkTabState.transferringTokens,
+      errorCompletingPayment:
+          store.state.networkTabState.errorCompletingPayment,
+      confirmedPayment: store.state.networkTabState.confirmedPayment,
+      restaurantName: store.state.networkTabState.restaurantName,
       updateSelectedValues: (gbpxAmount, pplAmount) {
         store.dispatch(
           UpdateSelectedAmounts(

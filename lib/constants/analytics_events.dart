@@ -3,48 +3,62 @@ class AnalyticsEvents {
   static const String applicationOpened = 'application_opened';
   static const String requestReview = 'review_request';
 
+  //Auth
   static const String login = 'login';
   static const String logout = 'logout';
-  static const String createWallet = 'create_wallet';
-  static const String restoreWallet = 'restore_wallet';
-  static const String loginWithPhone = 'login_with_phone';
-  static const String verify = 'verify_phone';
-  static const String lockScreen = 'lock_screen';
-  static const String fillUserName = 'fill_user_name';
-  static const String onboardingCompleted = 'onboarding_completed';
 
-  static const String userFromCampaign = 'campaign_user';
+  //Onboarding
+  static const String createWallet = 'create_wallet'; //
+  static const String restoreWallet = 'restore_wallet'; //
+  static const String loginWithPhone = 'login_with_phone'; //
+  static const String verify = 'verify_phone'; //
+  static const String securityScreen = 'security_screen'; //
+  static const String pincodeScreen = 'pincode_screen'; //
+  static const String fillUserName = 'fill_user_name'; //
+  static const String onboardingCompleted = 'onboarding_completed'; //
 
-  static const String protectionBackUp1 = 'backup_step_1';
-  static const String protectionBackUp2 = 'backup_step_2';
-  static const String protectionBackUp3 = 'backup_step_3';
+  //Home Screen
+  static const String viewRestaurant = 'view_restaurant'; //
+  static const String switchFulfilmentMethod = 'switch_fulfilment_method'; //
+  static const String openDrawer = 'open_drawer'; //
+  static const String changeOutcode = 'change_outcode'; //
 
-  static const String send1MainButton = 'send_1_main';
-  static const String send2ChooseRecipient = 'send_2_choose_recepient';
-  static const String send3ChooseAmount = 'send_3_choose_amount';
-  static const String send4Approve = 'send_4_Approve';
+  //Drawer
+  static const String viewAllOrders = 'view_all_orders'; //
+  static const String viewSchOrders = 'view_sch_orders'; //
+  static const String viewAccount = 'view_account'; //
+  static const String viewFAQ = 'view_faq'; //
+  static const String viewAbout = 'view_about'; //
 
-  static const String inviteAFriend = 'invite_a_friend';
-  static const String inviteAFriendCopyLink = 'invite_a_friend_copy_link';
-  static const String referralProgram = 'referral_program';
+  //Restaurant Menu Screen
+  static const String viewItem = 'view_item'; //
+  static const String addItem = 'add_item'; //
 
-  static const String startEarnApr = 'start_earning_apr';
-  static const String claimApr = 'claim_apr';
+  //Checkout
+  static const String viewCheckout = 'view_checkout'; //
+  static const String clearCart = 'clear_cart'; //
+  static const String changeTimeSlot = 'change_timeslot'; //
+  static const String addInstructions = 'add_instructions'; //
+  static const String addDiscount = 'add_discount'; //
+  static const String changeAddress = 'change_address'; //
+  static const String changePaymentMethod = 'change_payment_method'; //
+  static const String placeOrder = 'place_order'; //
+  static const String updateQuantity = 'update_quantity'; //
+  static const String selectTip = 'select_tip';
 
-  static const String deposit = 'deposit';
-  static const String topUp = 'top_up';
-  static const String rampPurchaseCreated = 'ramp_purchase_created';
-  static const String rampWidgetFailed = 'ramp_widget_failed';
-  static const String rampWidgetClosed = 'ramp_widget_closed';
+  //Address
+  static const String addAddress = 'add_address'; //
+  static const String editAddress = 'edit_address'; //
+  static const String deleteAddress = 'delete_address'; //
+  static const String selectAddress = 'select_address'; //
 
-  static const String wcConnection = 'WC_connection';
-  static const String wcTransaction = 'WC_transaction';
-
-  static const String scanQRcode = 'scan_qr_code';
-  static const String scanQRcodeSuccess = 'scan_qr_code_success';
-
-  static const String reviewSwap = 'review_swap';
-  static const String swapApprove = 'swap_approve';
+  //Payment
+  static const String payStripe = 'pay_stripe';
+  static const String payPeepl = 'pay_peepl';
+  static const String payQRVegi = 'pay_QR_vegi';
+  static const String payment = 'payment';
+  static const String mint = 'mint';
+  static const String orderGen = 'order_generated';
 
   static const String getHelp = 'get_help';
 }

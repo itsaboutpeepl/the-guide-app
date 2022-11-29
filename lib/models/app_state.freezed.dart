@@ -28,10 +28,10 @@ mixin _$AppState {
   HomePageState get homePageState => throw _privateConstructorUsedError;
   @NewsStateConverter()
   NewsState get newsState => throw _privateConstructorUsedError;
-  @UserCartStateConverter()
-  UserCartState get cartState => throw _privateConstructorUsedError;
   @VestingStateConverter()
   VestingState get vestingState => throw _privateConstructorUsedError;
+  @NetworkTabStateConverter()
+  NetworkTabState get networkTabState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,15 +48,15 @@ abstract class $AppStateCopyWith<$Res> {
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState,
-      @UserCartStateConverter() UserCartState cartState,
-      @VestingStateConverter() VestingState vestingState});
+      @VestingStateConverter() VestingState vestingState,
+      @NetworkTabStateConverter() NetworkTabState networkTabState});
 
   $UserStateCopyWith<$Res> get userState;
   $CashWalletStateCopyWith<$Res> get cashWalletState;
   $HomePageStateCopyWith<$Res> get homePageState;
   $NewsStateCopyWith<$Res> get newsState;
-  $UserCartStateCopyWith<$Res> get cartState;
   $VestingStateCopyWith<$Res> get vestingState;
+  $NetworkTabStateCopyWith<$Res> get networkTabState;
 }
 
 /// @nodoc
@@ -73,8 +73,8 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
     Object? cashWalletState = freezed,
     Object? homePageState = freezed,
     Object? newsState = freezed,
-    Object? cartState = freezed,
     Object? vestingState = freezed,
+    Object? networkTabState = freezed,
   }) {
     return _then(_value.copyWith(
       userState: userState == freezed
@@ -93,14 +93,14 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
               as NewsState,
-      cartState: cartState == freezed
-          ? _value.cartState
-          : cartState // ignore: cast_nullable_to_non_nullable
-              as UserCartState,
       vestingState: vestingState == freezed
           ? _value.vestingState
           : vestingState // ignore: cast_nullable_to_non_nullable
               as VestingState,
+      networkTabState: networkTabState == freezed
+          ? _value.networkTabState
+          : networkTabState // ignore: cast_nullable_to_non_nullable
+              as NetworkTabState,
     ));
   }
 
@@ -133,16 +133,16 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
   }
 
   @override
-  $UserCartStateCopyWith<$Res> get cartState {
-    return $UserCartStateCopyWith<$Res>(_value.cartState, (value) {
-      return _then(_value.copyWith(cartState: value));
+  $VestingStateCopyWith<$Res> get vestingState {
+    return $VestingStateCopyWith<$Res>(_value.vestingState, (value) {
+      return _then(_value.copyWith(vestingState: value));
     });
   }
 
   @override
-  $VestingStateCopyWith<$Res> get vestingState {
-    return $VestingStateCopyWith<$Res>(_value.vestingState, (value) {
-      return _then(_value.copyWith(vestingState: value));
+  $NetworkTabStateCopyWith<$Res> get networkTabState {
+    return $NetworkTabStateCopyWith<$Res>(_value.networkTabState, (value) {
+      return _then(_value.copyWith(networkTabState: value));
     });
   }
 }
@@ -158,8 +158,8 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState,
-      @UserCartStateConverter() UserCartState cartState,
-      @VestingStateConverter() VestingState vestingState});
+      @VestingStateConverter() VestingState vestingState,
+      @NetworkTabStateConverter() NetworkTabState networkTabState});
 
   @override
   $UserStateCopyWith<$Res> get userState;
@@ -170,9 +170,9 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $NewsStateCopyWith<$Res> get newsState;
   @override
-  $UserCartStateCopyWith<$Res> get cartState;
-  @override
   $VestingStateCopyWith<$Res> get vestingState;
+  @override
+  $NetworkTabStateCopyWith<$Res> get networkTabState;
 }
 
 /// @nodoc
@@ -191,8 +191,8 @@ class __$$_AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     Object? cashWalletState = freezed,
     Object? homePageState = freezed,
     Object? newsState = freezed,
-    Object? cartState = freezed,
     Object? vestingState = freezed,
+    Object? networkTabState = freezed,
   }) {
     return _then(_$_AppState(
       userState: userState == freezed
@@ -211,14 +211,14 @@ class __$$_AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
               as NewsState,
-      cartState: cartState == freezed
-          ? _value.cartState
-          : cartState // ignore: cast_nullable_to_non_nullable
-              as UserCartState,
       vestingState: vestingState == freezed
           ? _value.vestingState
           : vestingState // ignore: cast_nullable_to_non_nullable
               as VestingState,
+      networkTabState: networkTabState == freezed
+          ? _value.networkTabState
+          : networkTabState // ignore: cast_nullable_to_non_nullable
+              as NetworkTabState,
     ));
   }
 }
@@ -232,8 +232,8 @@ class _$_AppState extends _AppState {
       @CashWalletStateConverter() required this.cashWalletState,
       @HomePageStateConverter() required this.homePageState,
       @NewsStateConverter() required this.newsState,
-      @UserCartStateConverter() required this.cartState,
-      @VestingStateConverter() required this.vestingState})
+      @VestingStateConverter() required this.vestingState,
+      @NetworkTabStateConverter() required this.networkTabState})
       : super._();
 
   factory _$_AppState.fromJson(Map<String, dynamic> json) =>
@@ -252,15 +252,15 @@ class _$_AppState extends _AppState {
   @NewsStateConverter()
   final NewsState newsState;
   @override
-  @UserCartStateConverter()
-  final UserCartState cartState;
-  @override
   @VestingStateConverter()
   final VestingState vestingState;
+  @override
+  @NetworkTabStateConverter()
+  final NetworkTabState networkTabState;
 
   @override
   String toString() {
-    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, homePageState: $homePageState, newsState: $newsState, cartState: $cartState, vestingState: $vestingState)';
+    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, homePageState: $homePageState, newsState: $newsState, vestingState: $vestingState, networkTabState: $networkTabState)';
   }
 
   @override
@@ -274,9 +274,10 @@ class _$_AppState extends _AppState {
             const DeepCollectionEquality()
                 .equals(other.homePageState, homePageState) &&
             const DeepCollectionEquality().equals(other.newsState, newsState) &&
-            const DeepCollectionEquality().equals(other.cartState, cartState) &&
             const DeepCollectionEquality()
-                .equals(other.vestingState, vestingState));
+                .equals(other.vestingState, vestingState) &&
+            const DeepCollectionEquality()
+                .equals(other.networkTabState, networkTabState));
   }
 
   @JsonKey(ignore: true)
@@ -287,8 +288,8 @@ class _$_AppState extends _AppState {
       const DeepCollectionEquality().hash(cashWalletState),
       const DeepCollectionEquality().hash(homePageState),
       const DeepCollectionEquality().hash(newsState),
-      const DeepCollectionEquality().hash(cartState),
-      const DeepCollectionEquality().hash(vestingState));
+      const DeepCollectionEquality().hash(vestingState),
+      const DeepCollectionEquality().hash(networkTabState));
 
   @JsonKey(ignore: true)
   @override
@@ -313,10 +314,10 @@ abstract class _AppState extends AppState {
           required final HomePageState homePageState,
       @NewsStateConverter()
           required final NewsState newsState,
-      @UserCartStateConverter()
-          required final UserCartState cartState,
       @VestingStateConverter()
-          required final VestingState vestingState}) = _$_AppState;
+          required final VestingState vestingState,
+      @NetworkTabStateConverter()
+          required final NetworkTabState networkTabState}) = _$_AppState;
   _AppState._() : super._();
 
   factory _AppState.fromJson(Map<String, dynamic> json) = _$_AppState.fromJson;
@@ -334,11 +335,11 @@ abstract class _AppState extends AppState {
   @NewsStateConverter()
   NewsState get newsState;
   @override
-  @UserCartStateConverter()
-  UserCartState get cartState;
-  @override
   @VestingStateConverter()
   VestingState get vestingState;
+  @override
+  @NetworkTabStateConverter()
+  NetworkTabState get networkTabState;
   @override
   @JsonKey(ignore: true)
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>
