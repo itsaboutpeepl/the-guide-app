@@ -90,6 +90,15 @@ class UpdateSelectedAmounts {
       'UpdateSelectedAmounts : gbpxAmount: $gbpxAmount, pplAmount: $pplAmount';
 }
 
+class UpdateCurrentUrl {
+  final String currentUrl;
+
+  UpdateCurrentUrl(this.currentUrl);
+
+  @override
+  String toString() => 'UpdateCurrentUrl : currentUrl: $currentUrl';
+}
+
 ThunkAction<AppState> queryOrderDetailsFromPaymentIntentID({
   required BuildContext context,
   required String selectedPaymentMethod,

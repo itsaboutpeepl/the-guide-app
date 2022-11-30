@@ -40,6 +40,7 @@ class NetworkScreen extends StatelessWidget {
             ),
             onJsAlert: onJsAlert,
             onLoadStart: (controller, url) {
+              viewmodel.updateCurrentUrl(url.toString());
               if (url == _communityURI) {
                 showDialog<void>(
                   context: context,
@@ -189,10 +190,19 @@ class _NetworkTabAppBarState extends State<NetworkTabAppBar> {
         transitionBuilder: (Widget child, Animation<double> animation) {
           return FadeTransition(opacity: animation, child: child);
         },
-        child: Image.asset(
-          'assets/Peepl-Logos/$_imageName.png',
-          height: kToolbarHeight + 5,
-          key: ValueKey<String>(_imageName),
+        child: StoreConnector<AppState, String>(
+          converter: (store) {
+            return store.state.networkTabState.currentUrl;
+          },
+          builder: (_, String currentUrl) {
+            return Image.asset(
+              currentUrl.contains('vegi')
+                  ? 'assets/images/Vegi-Logo-horizontal.png'
+                  : 'assets/Peepl-Logos/$_imageName.png',
+              height: kToolbarHeight - 10,
+              key: ValueKey<String>(_imageName),
+            );
+          },
         ),
       ),
     );

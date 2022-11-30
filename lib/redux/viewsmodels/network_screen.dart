@@ -20,6 +20,8 @@ class NetworkScreenViewModel extends Equatable {
     required this.currentPplBalance,
     required this.phoneNumber,
     required this.getSelectedPaymentAmounts,
+    required this.currentUrl,
+    required this.updateCurrentUrl,
   });
 
   factory NetworkScreenViewModel.fromStore(Store<AppState> store) {
@@ -28,6 +30,7 @@ class NetworkScreenViewModel extends Equatable {
       displayName: store.state.userState.displayName,
       postCode: store.state.userState.postCode,
       phoneNumber: store.state.userState.phoneNumber,
+      currentUrl: store.state.networkTabState.currentUrl,
       selectedGbpxAmount:
           store.state.networkTabState.selectedGBPxAmount.toStringAsFixed(2),
       selectedPplAmount:
@@ -57,6 +60,9 @@ class NetworkScreenViewModel extends Equatable {
           'pplAmount': store.state.networkTabState.selectedPPLAmount,
         };
       },
+      updateCurrentUrl: (String currentUrl) {
+        store.dispatch(UpdateCurrentUrl(currentUrl));
+      },
     );
   }
 
@@ -68,6 +74,7 @@ class NetworkScreenViewModel extends Equatable {
   final String selectedGbpxAmount;
   final String selectedPplAmount;
   final String phoneNumber;
+  final String currentUrl;
   final void Function(String paymentIntentId) updatePaymentIntentId;
   final void Function({
     required BuildContext context,
@@ -75,6 +82,7 @@ class NetworkScreenViewModel extends Equatable {
   }) getOrderDetails;
   final void Function(String postCode) storePostcode;
   final Map<String, dynamic> Function() getSelectedPaymentAmounts;
+  final void Function(String currentUrl) updateCurrentUrl;
 
   @override
   List<Object> get props => [
@@ -83,6 +91,7 @@ class NetworkScreenViewModel extends Equatable {
         selectedGbpxAmount,
         selectedPplAmount,
         currentGbpxBalance,
-        currentPplBalance
+        currentPplBalance,
+        currentUrl
       ];
 }

@@ -11,6 +11,7 @@ final networkTabReducers = combineReducers<NetworkTabState>([
   TypedReducer<NetworkTabState, UpdateSelectedAmounts>(_updateSelectedAmounts),
   TypedReducer<NetworkTabState, UpdateRestaurantName>(_updateRestaurantName),
   TypedReducer<NetworkTabState, UpdatePaymentIntentID>(_updatePaymentIntentId),
+  TypedReducer<NetworkTabState, UpdateCurrentUrl>(_updateCurrentUrl),
   TypedReducer<NetworkTabState, UpdateRestaurantWalletAddress>(
       _updateRestaurantWalletAddress),
 ]);
@@ -53,6 +54,13 @@ NetworkTabState _toggleConfirmed(
   SetConfirmed action,
 ) {
   return state.copyWith(confirmedPayment: action.flag);
+}
+
+NetworkTabState _updateCurrentUrl(
+  NetworkTabState state,
+  UpdateCurrentUrl action,
+) {
+  return state.copyWith(currentUrl: action.currentUrl);
 }
 
 NetworkTabState _updateSelectedAmounts(

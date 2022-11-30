@@ -38,6 +38,8 @@ mixin _$NetworkTabState {
   String get restaurantName => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   String get restaurantWalletAddress => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  String get currentUrl => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -59,7 +61,8 @@ abstract class $NetworkTabStateCopyWith<$Res> {
       @JsonKey(ignore: true) bool confirmedPayment,
       @JsonKey(ignore: true) int cartTotal,
       @JsonKey(ignore: true) String restaurantName,
-      @JsonKey(ignore: true) String restaurantWalletAddress});
+      @JsonKey(ignore: true) String restaurantWalletAddress,
+      @JsonKey(ignore: true) String currentUrl});
 }
 
 /// @nodoc
@@ -82,6 +85,7 @@ class _$NetworkTabStateCopyWithImpl<$Res>
     Object? cartTotal = freezed,
     Object? restaurantName = freezed,
     Object? restaurantWalletAddress = freezed,
+    Object? currentUrl = freezed,
   }) {
     return _then(_value.copyWith(
       paymentIntentID: paymentIntentID == freezed
@@ -120,6 +124,10 @@ class _$NetworkTabStateCopyWithImpl<$Res>
           ? _value.restaurantWalletAddress
           : restaurantWalletAddress // ignore: cast_nullable_to_non_nullable
               as String,
+      currentUrl: currentUrl == freezed
+          ? _value.currentUrl
+          : currentUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -140,7 +148,8 @@ abstract class _$$_NetworkTabStateCopyWith<$Res>
       @JsonKey(ignore: true) bool confirmedPayment,
       @JsonKey(ignore: true) int cartTotal,
       @JsonKey(ignore: true) String restaurantName,
-      @JsonKey(ignore: true) String restaurantWalletAddress});
+      @JsonKey(ignore: true) String restaurantWalletAddress,
+      @JsonKey(ignore: true) String currentUrl});
 }
 
 /// @nodoc
@@ -165,6 +174,7 @@ class __$$_NetworkTabStateCopyWithImpl<$Res>
     Object? cartTotal = freezed,
     Object? restaurantName = freezed,
     Object? restaurantWalletAddress = freezed,
+    Object? currentUrl = freezed,
   }) {
     return _then(_$_NetworkTabState(
       paymentIntentID: paymentIntentID == freezed
@@ -203,6 +213,10 @@ class __$$_NetworkTabStateCopyWithImpl<$Res>
           ? _value.restaurantWalletAddress
           : restaurantWalletAddress // ignore: cast_nullable_to_non_nullable
               as String,
+      currentUrl: currentUrl == freezed
+          ? _value.currentUrl
+          : currentUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -220,7 +234,8 @@ class _$_NetworkTabState extends _NetworkTabState {
       @JsonKey(ignore: true) this.confirmedPayment = false,
       @JsonKey(ignore: true) this.cartTotal = 0,
       @JsonKey(ignore: true) this.restaurantName = '',
-      @JsonKey(ignore: true) this.restaurantWalletAddress = ''})
+      @JsonKey(ignore: true) this.restaurantWalletAddress = '',
+      @JsonKey(ignore: true) this.currentUrl = ''})
       : super._();
 
   factory _$_NetworkTabState.fromJson(Map<String, dynamic> json) =>
@@ -253,10 +268,13 @@ class _$_NetworkTabState extends _NetworkTabState {
   @override
   @JsonKey(ignore: true)
   final String restaurantWalletAddress;
+  @override
+  @JsonKey(ignore: true)
+  final String currentUrl;
 
   @override
   String toString() {
-    return 'NetworkTabState(paymentIntentID: $paymentIntentID, selectedGBPxAmount: $selectedGBPxAmount, selectedPPLAmount: $selectedPPLAmount, transferringTokens: $transferringTokens, errorCompletingPayment: $errorCompletingPayment, confirmedPayment: $confirmedPayment, cartTotal: $cartTotal, restaurantName: $restaurantName, restaurantWalletAddress: $restaurantWalletAddress)';
+    return 'NetworkTabState(paymentIntentID: $paymentIntentID, selectedGBPxAmount: $selectedGBPxAmount, selectedPPLAmount: $selectedPPLAmount, transferringTokens: $transferringTokens, errorCompletingPayment: $errorCompletingPayment, confirmedPayment: $confirmedPayment, cartTotal: $cartTotal, restaurantName: $restaurantName, restaurantWalletAddress: $restaurantWalletAddress, currentUrl: $currentUrl)';
   }
 
   @override
@@ -280,7 +298,9 @@ class _$_NetworkTabState extends _NetworkTabState {
             const DeepCollectionEquality()
                 .equals(other.restaurantName, restaurantName) &&
             const DeepCollectionEquality().equals(
-                other.restaurantWalletAddress, restaurantWalletAddress));
+                other.restaurantWalletAddress, restaurantWalletAddress) &&
+            const DeepCollectionEquality()
+                .equals(other.currentUrl, currentUrl));
   }
 
   @JsonKey(ignore: true)
@@ -295,7 +315,8 @@ class _$_NetworkTabState extends _NetworkTabState {
       const DeepCollectionEquality().hash(confirmedPayment),
       const DeepCollectionEquality().hash(cartTotal),
       const DeepCollectionEquality().hash(restaurantName),
-      const DeepCollectionEquality().hash(restaurantWalletAddress));
+      const DeepCollectionEquality().hash(restaurantWalletAddress),
+      const DeepCollectionEquality().hash(currentUrl));
 
   @JsonKey(ignore: true)
   @override
@@ -312,16 +333,16 @@ class _$_NetworkTabState extends _NetworkTabState {
 
 abstract class _NetworkTabState extends NetworkTabState {
   factory _NetworkTabState(
-          {@JsonKey(ignore: true) final String paymentIntentID,
-          @JsonKey(ignore: true) final double selectedGBPxAmount,
-          @JsonKey(ignore: true) final double selectedPPLAmount,
-          @JsonKey(ignore: true) final bool transferringTokens,
-          @JsonKey(ignore: true) final bool errorCompletingPayment,
-          @JsonKey(ignore: true) final bool confirmedPayment,
-          @JsonKey(ignore: true) final int cartTotal,
-          @JsonKey(ignore: true) final String restaurantName,
-          @JsonKey(ignore: true) final String restaurantWalletAddress}) =
-      _$_NetworkTabState;
+      {@JsonKey(ignore: true) final String paymentIntentID,
+      @JsonKey(ignore: true) final double selectedGBPxAmount,
+      @JsonKey(ignore: true) final double selectedPPLAmount,
+      @JsonKey(ignore: true) final bool transferringTokens,
+      @JsonKey(ignore: true) final bool errorCompletingPayment,
+      @JsonKey(ignore: true) final bool confirmedPayment,
+      @JsonKey(ignore: true) final int cartTotal,
+      @JsonKey(ignore: true) final String restaurantName,
+      @JsonKey(ignore: true) final String restaurantWalletAddress,
+      @JsonKey(ignore: true) final String currentUrl}) = _$_NetworkTabState;
   _NetworkTabState._() : super._();
 
   factory _NetworkTabState.fromJson(Map<String, dynamic> json) =
@@ -354,6 +375,9 @@ abstract class _NetworkTabState extends NetworkTabState {
   @override
   @JsonKey(ignore: true)
   String get restaurantWalletAddress;
+  @override
+  @JsonKey(ignore: true)
+  String get currentUrl;
   @override
   @JsonKey(ignore: true)
   _$$_NetworkTabStateCopyWith<_$_NetworkTabState> get copyWith =>
