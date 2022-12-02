@@ -6,17 +6,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/constants/keys.dart';
 import 'package:guide_liverpool/constants/variables.dart';
 import 'package:guide_liverpool/features/network/dialogs/loading_dialog.dart';
 import 'package:guide_liverpool/features/network/dialogs/post_code_dialog.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/network_screen.dart';
 
-class NetworkScreen extends StatelessWidget {
+final _communityURI = //Uri.parse('https://itsaboutpeepl.com/community/');
+    Uri.parse('http://localhost:1234');
+
+class NetworkScreen extends StatefulWidget {
   NetworkScreen({Key? key}) : super(key: key);
 
-  final _communityURI = Uri.parse('https://itsaboutpeepl.com/community/');
-  //Uri.parse('http://localhost:1234');
+  @override
+  State<NetworkScreen> createState() => _NetworkScreenState();
+}
+
+class _NetworkScreenState extends State<NetworkScreen> {
+  InAppWebViewController? webViewController;
 
   @override
   Widget build(BuildContext context) {
@@ -26,10 +34,12 @@ class NetworkScreen extends StatelessWidget {
       builder: (_, viewmodel) {
         return Scaffold(
           resizeToAvoidBottomInset: false,
-          appBar: const NetworkTabAppBar(
+          appBar: NetworkTabAppBar(
             height: 50,
+            webViewController: webViewController,
           ),
           body: InAppWebView(
+            key: AppKeys.webViewKey,
             initialOptions: InAppWebViewGroupOptions(
               crossPlatform: InAppWebViewOptions(
                 clearCache: true,
@@ -39,9 +49,9 @@ class NetworkScreen extends StatelessWidget {
               url: _communityURI,
             ),
             onJsAlert: onJsAlert,
-            onLoadStart: (controller, url) {
+            onLoadStart: (controller, url) async {
               viewmodel.updateCurrentUrl(url.toString());
-              if (url == _communityURI) {
+              if (url == _communityURI && await controller.isLoading()) {
                 showDialog<void>(
                   context: context,
                   builder: (_) => const LoadingDialog(),
@@ -60,6 +70,7 @@ class NetworkScreen extends StatelessWidget {
               }
             },
             onWebViewCreated: (controller) {
+              webViewController = controller;
               controller
                 ..addJavaScriptHandler(
                   handlerName: 'getUserInformation',
@@ -118,9 +129,14 @@ Future<JsAlertResponse> onJsAlert(
 }
 
 class NetworkTabAppBar extends StatefulWidget implements PreferredSizeWidget {
-  const NetworkTabAppBar({Key? key, required this.height}) : super(key: key);
+  const NetworkTabAppBar({
+    Key? key,
+    required this.height,
+    required this.webViewController,
+  }) : super(key: key);
 
   final double height;
+  final InAppWebViewController? webViewController;
 
   @override
   State<NetworkTabAppBar> createState() => _NetworkTabAppBarState();
@@ -153,58 +169,86 @@ class _NetworkTabAppBarState extends State<NetworkTabAppBar> {
 
   @override
   Widget build(BuildContext context) {
-    return AppBar(
-      systemOverlayStyle: SystemUiOverlayStyle.dark,
-      iconTheme: IconThemeData(
-        color: Theme.of(context).colorScheme.onSurface, //change your color here
-      ),
-      leadingWidth: 150,
-      leading: OutlinedButton(
-        style: OutlinedButton.styleFrom(side: BorderSide.none),
-        onPressed: () {
-          context.router.navigate(const GuideHomeTab());
-        },
-        child: SizedBox(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const Icon(
-                Icons.arrow_back_ios,
-                size: 15,
-              ),
-              const Text(
-                'The Guide',
-                style: TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
+    return StoreConnector<AppState, String>(
+      converter: (store) {
+        return store.state.networkTabState.currentUrl;
+      },
+      builder: (_, String currentUrl) {
+        return AppBar(
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
+          iconTheme: IconThemeData(
+            color: Theme.of(context)
+                .colorScheme
+                .onSurface, //change your color here
           ),
-        ),
-      ),
-      backgroundColor: Colors.white,
-      centerTitle: true,
-      title: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 500),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          return FadeTransition(opacity: animation, child: child);
-        },
-        child: StoreConnector<AppState, String>(
-          converter: (store) {
-            return store.state.networkTabState.currentUrl;
-          },
-          builder: (_, String currentUrl) {
-            return Image.asset(
-              currentUrl.contains('vegi')
-                  ? 'assets/images/Vegi-Logo-horizontal.png'
-                  : 'assets/Peepl-Logos/$_imageName.png',
-              height: kToolbarHeight - 10,
-              key: ValueKey<String>(_imageName),
-            );
-          },
-        ),
-      ),
+          leadingWidth: 150,
+          leading: OutlinedButton(
+            style: OutlinedButton.styleFrom(side: BorderSide.none),
+            onPressed: () {
+              backButtonAction(currentUrl);
+            },
+            child: SizedBox(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  const Icon(
+                    Icons.arrow_back_ios,
+                    size: 15,
+                  ),
+                  Text(
+                    getBackButtonString(currentUrl),
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          title: SizedBox(
+            height: kToolbarHeight - 10,
+            width: MediaQuery.of(context).size.width * 0.2,
+            child: AnimatedSwitcher(
+              duration: const Duration(milliseconds: 500),
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(opacity: animation, child: child);
+              },
+              child: Image.asset(
+                getTitleImage(currentUrl),
+                height: kToolbarHeight - 10,
+                key: ValueKey<String>(_imageName),
+              ),
+            ),
+          ),
+        );
+      },
     );
+  }
+
+  String getBackButtonString(String url) {
+    if (url.contains('vegi') || url.contains('shocal')) {
+      return 'Peepl';
+    } else
+      return 'The Guide';
+  }
+
+  void backButtonAction(String url) async {
+    if (url.contains('vegi') || url.contains('shocal')) {
+      await widget.webViewController!
+          .loadUrl(urlRequest: URLRequest(url: _communityURI));
+    } else
+      await context.router.navigate(const GuideHomeTab());
+  }
+
+  String getTitleImage(String url) {
+    if (url.contains('vegi')) {
+      return 'assets/images/Vegi-Logo-horizontal.png';
+    } else if (url.contains('shocal')) {
+      return 'assets/images/shocal-logo.png';
+    } else
+      return 'assets/Peepl-Logos/$_imageName.png';
   }
 }
