@@ -321,7 +321,7 @@ ThunkAction<AppState> startPeeplPayProcess({
         await stripeService
             .handleStripe(
           walletAddress: store.state.userState.walletAddress,
-          amount: selectedGBPXAmount.toInt(), //TODO: fix
+          amount: selectedGBPXAmount.ceil(),
           context: context,
           shouldPushToHome: false,
         )
@@ -340,11 +340,11 @@ ThunkAction<AppState> startPeeplPayProcess({
         );
       }
     } catch (e, s) {
-      log.error('ERROR - sendOrderObject $e');
+      log.error('ERROR - startPeeplPayProcess $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - sendOrderObject $e',
+        hint: 'ERROR - startPeeplPayProcess $e',
       );
     }
   };
