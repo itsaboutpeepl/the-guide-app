@@ -25,7 +25,7 @@ class _FeaturedPostState extends State<FeaturedPost> {
 
   Widget featuredPost(BuildContext context, BlogArticle article) {
     return Padding(
-      padding: EdgeInsets.only(right: 15, left: 15, top: 15, bottom: 55),
+      padding: EdgeInsets.only(right: 15, left: 15, bottom: 55),
       child: InkWell(
         onTap: () => {
           showBarModalBottomSheet(

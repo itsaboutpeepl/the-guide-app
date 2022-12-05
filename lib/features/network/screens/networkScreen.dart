@@ -13,8 +13,8 @@ import 'package:guide_liverpool/features/network/dialogs/post_code_dialog.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/network_screen.dart';
 
-final _communityURI = //Uri.parse('https://itsaboutpeepl.com/community/');
-    Uri.parse('http://localhost:1234');
+final _communityURI = Uri.parse('https://itsaboutpeepl.com/community/');
+//Uri.parse('http://localhost:1234');
 
 class NetworkScreen extends StatefulWidget {
   NetworkScreen({Key? key}) : super(key: key);
