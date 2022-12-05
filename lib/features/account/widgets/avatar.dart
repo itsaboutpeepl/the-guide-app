@@ -20,7 +20,7 @@ class Avatar extends StatelessWidget {
     return StoreConnector<AppState, AccountViewModel>(
       distinct: true,
       converter: AccountViewModel.fromStore,
-      builder: (_, viewModel) {
+      builder: (_, viewmodel) {
         return Padding(
           padding: EdgeInsets.only(
             top: 20,
@@ -31,34 +31,42 @@ class Avatar extends StatelessWidget {
             },
             child: Column(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(50),
-                  child: Container(
-                    color: Colors.grey[400],
-                    child: CachedNetworkImage(
-                      width: 60,
-                      height: 60,
-                      imageUrl: viewModel.avatarUrl,
-                      placeholder: (context, url) =>
-                          CircularProgressIndicator(),
-                      errorWidget: (context, url, error) => CircleAvatar(
-                        backgroundImage: AssetImage('assets/images/anom.png'),
-                        radius: 30,
-                      ),
-                      imageBuilder: (context, imageProvider) => Image(
-                        image: imageProvider,
-                        fit: BoxFit.fill,
+                if (viewmodel.avatarUrl == '')
+                  const CircleAvatar(
+                    backgroundImage: AssetImage(
+                      'assets/images/anom.png',
+                    ),
+                    radius: 40,
+                  )
+                else
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Container(
+                      color: Colors.grey[400],
+                      child: CachedNetworkImage(
+                        width: 60,
+                        height: 60,
+                        imageUrl: viewmodel.avatarUrl,
+                        placeholder: (context, url) =>
+                            CircularProgressIndicator(),
+                        errorWidget: (context, url, error) => CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/anom.png'),
+                          radius: 30,
+                        ),
+                        imageBuilder: (context, imageProvider) => Image(
+                          image: imageProvider,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
                   ),
-                ),
                 SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      viewModel.displayName,
+                      viewmodel.displayName,
                       style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface,
                         fontSize: 22,
@@ -83,7 +91,7 @@ class Avatar extends StatelessWidget {
                         child: TextButton(
                           onPressed: () {
                             Clipboard.setData(
-                              ClipboardData(text: viewModel.walletAddress),
+                              ClipboardData(text: viewmodel.walletAddress),
                             );
                             showCopiedFlushbar(context);
                           },
@@ -113,7 +121,7 @@ class Avatar extends StatelessWidget {
                               Flexible(
                                 child: AutoSizeText(
                                   Formatter.formatEthAddress(
-                                      viewModel.walletAddress, 20),
+                                      viewmodel.walletAddress, 20),
                                   style: TextStyle(
                                     letterSpacing: 0.3,
                                     color:
@@ -141,7 +149,7 @@ class Avatar extends StatelessWidget {
                           // showDialog(
                           //   context: context,
                           //   builder: (BuildContext context) => ReceiveDialog(
-                          //     'fuse:${viewModel.walletAddress}',
+                          //     'fuse:${viewmodel.walletAddress}',
                           //   ),
                           // );
                           style: TextButton.styleFrom(
