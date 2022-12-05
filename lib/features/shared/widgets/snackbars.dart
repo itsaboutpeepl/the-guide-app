@@ -97,8 +97,8 @@ void showPlayBackCompletedFlushBar(context, int rewardAmount) {
     ),
     messageText: Text.rich(
       TextSpan(
-        text:
-            "$rewardAmount PPL tokens (£${getPPLValueFromPence(rewardAmount)}) will be in your wallet in seconds, happy ordering 🥳",
+        text: '$rewardAmount PPL tokens (${getPPLValueString(rewardAmount)}) '
+            'will be in your wallet in seconds, happy ordering 🥳',
       ),
       style: TextStyle(color: Colors.white),
       textAlign: TextAlign.center,
@@ -137,8 +137,9 @@ void showPlayBackCompletedFlushBarNoAcc(context) {
     ),
     messageText: Text.rich(
       TextSpan(
-        text:
-            "Please create an account to get rewarded for watching videos, and to order from your favorite local retailers!",
+        text: 'Please create an account to get rewarded '
+            'for watching videos, and to order '
+            'from your favorite local retailers!',
       ),
       style: TextStyle(color: Colors.white),
       textAlign: TextAlign.center,
