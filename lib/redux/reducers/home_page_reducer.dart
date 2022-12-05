@@ -26,7 +26,8 @@ HomePageState _getFeaturedVideos(
 }
 
 HomePageState _getEventsList(HomePageState state, UpdateEventsList action) {
-  return state.copyWith(eventList: action.eventsList);
+  state.eventList.addAll(action.eventsList);
+  return state.copyWith(eventList: state.eventList);
 }
 
 HomePageState _getDirectoryList(

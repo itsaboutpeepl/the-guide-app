@@ -1,6 +1,9 @@
+import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:guide_liverpool/models/articles/categoryArticles.dart';
+import 'package:guide_liverpool/models/articles/events.dart';
+import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux_thunk/redux_thunk.dart';
@@ -45,8 +48,8 @@ class UpdateNewsIsLoading {
   UpdateNewsIsLoading({required this.isLoading});
 }
 
-ThunkAction fetchCategoryNames() {
-  return (Store store) async {
+ThunkAction<AppState> fetchCategoryNames() {
+  return (Store<AppState> store) async {
     try {
       List<Category> categories = await newsService.getCategories();
       List<CategoryArticles> categoryArticles = [];
@@ -75,8 +78,8 @@ ThunkAction fetchCategoryNames() {
   };
 }
 
-ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
-  return (Store store) async {
+ThunkAction<AppState> refreshCurrentTabList({int page = 0, String query = ""}) {
+  return (Store<AppState> store) async {
     try {
       List<BlogArticle> newListOfArticles =
           await newsService.pagedArticlesByCategoryID(query);
@@ -95,8 +98,8 @@ ThunkAction refreshCurrentTabList({int page = 0, String query = ""}) {
   };
 }
 
-ThunkAction updateCurrentTabList({int page = 1, String query = ""}) {
-  return (Store store) async {
+ThunkAction<AppState> updateCurrentTabList({int page = 1, String query = ""}) {
+  return (Store<AppState> store) async {
     try {
       List<BlogArticle> newListOfArticles =
           await newsService.pagedArticlesByCategoryID(query, page: page);
@@ -116,8 +119,24 @@ ThunkAction updateCurrentTabList({int page = 1, String query = ""}) {
   };
 }
 
-ThunkAction fetchNewsScreenData() {
-  return (Store store) async {
+ThunkAction<AppState> updateEventList({int page = 1}) {
+  return (Store<AppState> store) async {
+    try {
+      List<Events> eventsList = await newsService.eventsList(page: page);
+      store.dispatch(UpdateEventsList(eventsList: eventsList));
+    } catch (e, s) {
+      log.error('ERROR - updateCurrentTabList $e');
+      await Sentry.captureException(
+        e,
+        stackTrace: s,
+        hint: 'ERROR - updateCurrentTabList $e',
+      );
+    }
+  };
+}
+
+ThunkAction<AppState> fetchNewsScreenData() {
+  return (Store<AppState> store) async {
     try {
       store.dispatch(UpdateCurrentTabIndex(currentTabIndex: 0));
       store.dispatch(fetchCategoryNames());

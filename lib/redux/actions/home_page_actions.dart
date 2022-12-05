@@ -111,7 +111,8 @@ ThunkAction fetchFeaturedVideos() {
 ThunkAction fetchEventsList() {
   return (Store store) async {
     try {
-      List<Events> eventsList = await newsService.eventsList();
+      List<Events> eventsList = await newsService.eventsList(page: 1);
+      eventsList.addAll(await newsService.eventsList(page: 2));
       store.dispatch(UpdateEventsList(eventsList: eventsList));
     } catch (e, s) {
       log.error('ERROR - fetchEventsList $e');

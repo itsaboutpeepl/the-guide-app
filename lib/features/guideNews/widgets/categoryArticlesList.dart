@@ -25,8 +25,7 @@ class _CategoryArticlesListState extends State<CategoryArticlesList> {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, CategoryArticleListViewModel>(
-      distinct: false,
-      converter: (store) => CategoryArticleListViewModel.fromStore(store),
+      converter: CategoryArticleListViewModel.fromStore,
       onInit: (store) {
         // store.dispatch(updateCurrentTabList(
         //   query: store.state.newsState.categories[0].categoryID.toString(),

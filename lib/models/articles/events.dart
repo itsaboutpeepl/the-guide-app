@@ -26,4 +26,9 @@ class Events with _$Events {
 
     return false;
   }
+
+  bool get isCompletedEvent {
+    if (startDate.difference(DateTime.now()).isNegative) return true;
+    return false;
+  }
 }

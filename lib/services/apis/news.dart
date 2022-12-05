@@ -111,12 +111,10 @@ class NewsService {
     return articles;
   }
 
-  Future<List<Events>> eventsList() async {
-    Response response = await dio.get('/events');
-    Response responsePage2 = await dio.get('/events?page=2');
+  Future<List<Events>> eventsList({required int page}) async {
+    Response response = await dio.get('/events?page=$page');
 
     List<dynamic> results = response.data as List;
-    List<dynamic> resultsPage2 = responsePage2.data as List;
     List<Events> events = [];
 
     results.forEach((element) {
@@ -133,27 +131,6 @@ class NewsService {
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
             bookingLink: element['book_link'] ?? element['link']);
-
-        events.add(event);
-      } catch (e) {
-        print(e);
-      }
-    });
-
-    resultsPage2.forEach((element) {
-      try {
-        Events event = Events(
-            startDate: DateTime.parse(element['start_date']),
-            endDate: DateTime.parse(element['end_date']),
-            eventTitle: parseHtmlString(element['title']),
-            location: element['location']['name'] ??
-                "UK" +
-                    ", " +
-                    (element['location']['street_name_short'] ?? "UK"),
-            description: parseHtmlString(element['description']),
-            latitude: element['location']['lat'].toString(),
-            longitude: element['location']['lng'].toString(),
-            bookingLink: element['link']);
 
         events.add(event);
       } catch (e) {

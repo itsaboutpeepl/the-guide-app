@@ -83,23 +83,23 @@ class _EventCalendarState extends State<EventCalendar> {
                       left: 6,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children:
-                            _buildPageIndicator(viewmodel.eventsList.length),
+                        children: _buildPageIndicator(8),
                       ),
                     ),
                     Container(
                       height: MediaQuery.of(context).size.height * 0.24,
                       child: PageView.builder(
-                          onPageChanged: (page) => setState(() {
-                                _currentIndex = page;
-                              }),
-                          controller: _pageController,
-                          scrollDirection: Axis.vertical,
-                          physics: PageScrollPhysics(),
-                          itemBuilder: (context, index) => SingleEventItem(
-                                eventItem: viewmodel.eventsList[index],
-                              ),
-                          itemCount: viewmodel.eventsList.length),
+                        onPageChanged: (page) => setState(() {
+                          _currentIndex = page;
+                        }),
+                        controller: _pageController,
+                        scrollDirection: Axis.vertical,
+                        physics: PageScrollPhysics(),
+                        itemBuilder: (context, index) => SingleEventItem(
+                          eventItem: viewmodel.eventsList[index],
+                        ),
+                        itemCount: 8,
+                      ),
                     ),
                   ],
                 ),

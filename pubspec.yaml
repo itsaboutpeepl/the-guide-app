@@ -1,5 +1,5 @@
 name: guide_liverpool
-version: 1.7.0+32
+version: 1.7.0+33
 publish_to: none
 description: The Guide Liverpool app is a blog reader application for local news and updates in Liverpool
 environment:
