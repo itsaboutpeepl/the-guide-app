@@ -102,4 +102,12 @@ extension DateTimeHelpers on DateTime {
         return '${day}th';
     }
   }
+
+  String get shortMonth {
+    return DateFormat.MMM().format(this);
+  }
+
+  String get hoursAndMinutes {
+    return DateFormat.Hm().format(this);
+  }
 }

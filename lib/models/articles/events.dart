@@ -20,4 +20,10 @@ class Events with _$Events {
   }) = _Events;
 
   factory Events.fromJson(dynamic json) => _$EventsFromJson(json);
+
+  bool get isSameDay {
+    if (startDate.difference(endDate).inHours <= 24) return true;
+
+    return false;
+  }
 }
