@@ -6,9 +6,13 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/constants/firebase_options.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/detailArticleBottomModal.dart';
+import 'package:guide_liverpool/features/guideHome/widgets/FeaturedVideos/featured_video_modal_sheet.dart';
 import 'package:guide_liverpool/features/shared/widgets/bottom_bar.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
+import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/models/articles/videoArticle.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
@@ -87,17 +91,41 @@ class _MainScreenState extends State<MainScreen> {
 
   Future<void> handleFCM(RemoteMessage? remoteMessage) async {
     if (remoteMessage != null) {
-      int articleID = int.parse(remoteMessage.data['postID']);
+      if (remoteMessage.data.containsKey('postID')) {
+        int articleID = int.parse(remoteMessage.data['postID']);
 
-      newsService.getArticleByID(articleID).then(
-            (article) => showBarModalBottomSheet(
-              useRootNavigator: true,
-              backgroundColor: Colors.white,
-              context: context,
-              builder: (context) =>
-                  DetailArticleBottomModel(articleData: article),
-            ),
-          );
+        newsService
+            .getArticleByID(articleID)
+            .then((BlogArticle article) => showBarModalBottomSheet(
+                  useRootNavigator: true,
+                  backgroundColor: Colors.white,
+                  context: context,
+                  builder: (context) =>
+                      DetailArticleBottomModel(articleData: article),
+                ));
+      } else if (remoteMessage.data.containsKey('videoID')) {
+        String videoID = remoteMessage.data['videoID'];
+
+        peeplMediaService.getVideoById(videoID).then(
+          (VideoArticle? video) {
+            if (video != null) {
+              showModalBottomSheet<Widget>(
+                isScrollControlled: true,
+                useRootNavigator: true,
+                backgroundColor: Colors.white,
+                context: context,
+                builder: (context) => FeaturedVideoModalSheet(video: video),
+              );
+            } else {
+              showErrorSnack(
+                context: context,
+                title: 'Sorry this video could not be found',
+                message: 'Please try again later',
+              );
+            }
+          },
+        );
+      }
     }
   }
 }

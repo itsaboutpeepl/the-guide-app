@@ -157,7 +157,7 @@ class EventListItem extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      'Click here to book',
+                      'Click here to learn more/book',
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
                         fontSize: 16,

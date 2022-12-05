@@ -41,6 +41,36 @@ class PeeplMediaService {
     return List.from(videos.reversed);
   }
 
+  Future<VideoArticle?> getVideoById(String videoId) async {
+    Response response = await dio
+        .get('/partners/${dotenv.env['GUIDE_PARTNER_PUBLIC_ID']}/videos');
+
+    List<dynamic> results = response.data['videos'] as List;
+    List<VideoArticle> videos = [];
+    results.forEach(
+      (element) {
+        videos.add(
+          VideoArticle(
+            title: parseHtmlString(element['name']),
+            placeholderImageURL: element['thumbnail'],
+            category: [""],
+            videoURL: element['url'],
+            postID: element['publicId'],
+            postURL: element['ctaLink'] ?? "",
+            rewardAmount: element['rewardsPerView'],
+            isUserWatched: element['viewed'] ?? false,
+            rewardsEndDate:
+                DateTime.fromMillisecondsSinceEpoch(element['rewardsEndDate']),
+          ),
+        );
+      },
+    );
+    if (videos.where((element) => element.postID == videoId).isEmpty)
+      return null;
+    else
+      return videos.firstWhere((element) => element.postID == videoId);
+  }
+
   Future<int> createVideoView(String videoID, String walletAddress) async {
     Response response = await dio.post(
       '/videos/$videoID/view',
