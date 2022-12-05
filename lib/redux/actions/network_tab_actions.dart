@@ -313,7 +313,7 @@ ThunkAction<AppState> startPeeplPayProcess({
           store.state.networkTabState.selectedGBPxAmount;
 
       final hasSufficientGbpxBalance =
-          selectedGBPXAmount.compareTo(currentGBPXAmount) < 0;
+          selectedGBPXAmount.compareTo(currentGBPXAmount) <= 0;
 
       if (hasSufficientGbpxBalance) {
         store.dispatch(startTokenPaymentToRestaurant(context: context));
@@ -321,7 +321,7 @@ ThunkAction<AppState> startPeeplPayProcess({
         await stripeService
             .handleStripe(
           walletAddress: store.state.userState.walletAddress,
-          amount: selectedGBPXAmount.ceil(),
+          amount: (selectedGBPXAmount * 100).toInt(),
           context: context,
           shouldPushToHome: false,
         )

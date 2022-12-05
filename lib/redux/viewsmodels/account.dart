@@ -17,7 +17,7 @@ class AccountViewModel extends Equatable {
       isBackup: store.state.userState.backup,
       displayName: store.state.userState.displayName,
       avatarUrl: store.state.userState.avatarUrl,
-      walletAddress: store.state.userState.walletAddress.replaceFirst('x', 'f'),
+      walletAddress: store.state.userState.walletAddress,
       firstName: store.state.userState.displayName.split(' ')[0],
       mnemonic: store.state.userState.mnemonic,
     );
