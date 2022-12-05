@@ -1,5 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:guide_liverpool/common/router/routes.gr.dart';
 import 'package:guide_liverpool/features/guideHome/widgets/EventsCalendar/singleEventItem.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/eventsCalendar.dart';
@@ -39,12 +41,28 @@ class _EventCalendarState extends State<EventCalendar> {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Upcoming Events",
-                style: TextStyle(fontWeight: FontWeight.w900, fontSize: 20),
-              ),
-              SizedBox(
-                height: 5,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Upcoming Events",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      fontSize: 20,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => context.router.push(EventsPage()),
+                    child: const Text(
+                      'View All',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 15,
+                      ),
+                    ),
+                  )
+                ],
               ),
               Divider(
                 thickness: 3,
@@ -65,7 +83,8 @@ class _EventCalendarState extends State<EventCalendar> {
                       left: 6,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: _buildPageIndicator(viewmodel.eventsList.length),
+                        children:
+                            _buildPageIndicator(viewmodel.eventsList.length),
                       ),
                     ),
                     Container(

@@ -132,7 +132,7 @@ class NewsService {
             description: parseHtmlString(element['description']),
             latitude: element['location']['lat'].toString(),
             longitude: element['location']['lng'].toString(),
-            bookingLink: element['link']);
+            bookingLink: element['book_link'] ?? element['link']);
 
         events.add(event);
       } catch (e) {

@@ -4,9 +4,12 @@ import 'package:guide_liverpool/models/articles/events.dart';
 import 'package:guide_liverpool/utils/extensions.dart';
 
 class SingleEventItem extends StatelessWidget {
-  final Events eventItem;
-  const SingleEventItem({Key? key, required this.eventItem}) : super(key: key);
+  const SingleEventItem({
+    Key? key,
+    required this.eventItem,
+  }) : super(key: key);
 
+  final Events eventItem;
   @override
   Widget build(BuildContext context) {
     return Padding(
