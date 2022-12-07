@@ -1,3 +1,4 @@
+import 'package:guide_liverpool/redux/actions/network_tab_actions.dart';
 import 'package:redux/redux.dart';
 import 'package:guide_liverpool/models/user_state.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
@@ -26,6 +27,7 @@ final userReducers = combineReducers<UserState>([
   TypedReducer<UserState, SetShowSeedPhraseBanner>(_setShowSeedPhraseBanner),
   TypedReducer<UserState, SetHasSavedSeedPhrase>(_setHasSavedSeedPhrase),
   TypedReducer<UserState, UpdateUserPostcode>(_setPostCode),
+  TypedReducer<UserState, UpdateUserEmail>(_updateUserEmail),
 ]);
 
 UserState _setWalletConnectURI(
@@ -203,4 +205,11 @@ UserState _setPostCode(
   UpdateUserPostcode action,
 ) {
   return state.copyWith(postCode: action.postCode);
+}
+
+UserState _updateUserEmail(
+  UserState state,
+  UpdateUserEmail action,
+) {
+  return state.copyWith(email: action.email);
 }

@@ -99,6 +99,15 @@ class UpdateCurrentUrl {
   String toString() => 'UpdateCurrentUrl : currentUrl: $currentUrl';
 }
 
+class UpdateUserEmail {
+  final String email;
+
+  UpdateUserEmail(this.email);
+
+  @override
+  String toString() => 'UpdateUserEmail : email: $email';
+}
+
 ThunkAction<AppState> queryOrderDetailsFromPaymentIntentID({
   required BuildContext context,
   required String selectedPaymentMethod,

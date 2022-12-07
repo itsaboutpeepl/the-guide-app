@@ -108,6 +108,10 @@ class _NetworkScreenState extends State<NetworkScreen> {
                   callback: (values) {
                     return viewmodel.postCode;
                   },
+                )
+                ..addJavaScriptHandler(
+                  handlerName: 'saveEmail',
+                  callback: (values) {},
                 );
             },
           ),

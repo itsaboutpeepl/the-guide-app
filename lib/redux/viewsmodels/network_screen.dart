@@ -22,6 +22,7 @@ class NetworkScreenViewModel extends Equatable {
     required this.getSelectedPaymentAmounts,
     required this.currentUrl,
     required this.updateCurrentUrl,
+    required this.updateUserEmail,
   });
 
   factory NetworkScreenViewModel.fromStore(Store<AppState> store) {
@@ -63,6 +64,9 @@ class NetworkScreenViewModel extends Equatable {
       updateCurrentUrl: (String currentUrl) {
         store.dispatch(UpdateCurrentUrl(currentUrl));
       },
+      updateUserEmail: (String email) {
+        store.dispatch(UpdateUserEmail(email));
+      },
     );
   }
 
@@ -83,6 +87,7 @@ class NetworkScreenViewModel extends Equatable {
   final void Function(String postCode) storePostcode;
   final Map<String, dynamic> Function() getSelectedPaymentAmounts;
   final void Function(String currentUrl) updateCurrentUrl;
+  final void Function(String email) updateUserEmail;
 
   @override
   List<Object> get props => [
