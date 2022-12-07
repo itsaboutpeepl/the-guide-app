@@ -172,8 +172,8 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                               viewModel.setSecurityType(
                                                 snapshot.requireData,
                                               );
-                                              context.router
-                                                  .replace(const MainScreen());
+                                              context.router.replaceAll(
+                                                  [const MainScreen()]);
                                             }
                                           },
                                         );
@@ -231,8 +231,8 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                             builder: (context) =>
                                                 SetUpPinCodeScreen(
                                               onSuccess: () {
-                                                context.router
-                                                    .push(const MainScreen());
+                                                context.router.replaceAll(
+                                                    [const MainScreen()]);
                                               },
                                             ),
                                           ),

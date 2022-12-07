@@ -368,7 +368,7 @@ ThunkAction<AppState> startTokenPaymentToRestaurant({
           store.state.cashWalletState.tokens[gbpxToken.address]!.amount;
 
       final BigInt currentPPLAmount =
-          store.state.cashWalletState.tokens[gbpxToken.address]!.amount;
+          store.state.cashWalletState.tokens[pplToken.address]!.amount;
 
       final BigInt selectedGBPXAmount =
           BigInt.from(store.state.networkTabState.selectedGBPxAmount);

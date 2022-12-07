@@ -35,8 +35,7 @@ class _NetworkScreenState extends State<NetworkScreen> {
         return Scaffold(
           resizeToAvoidBottomInset: false,
           appBar: NetworkTabAppBar(
-            height: 50,
-            webViewController: webViewController,
+            loadUrl: loadUrl,
           ),
           body: InAppWebView(
             key: AppKeys.webViewKey,
@@ -45,23 +44,22 @@ class _NetworkScreenState extends State<NetworkScreen> {
                 clearCache: true,
               ),
             ),
-            initialUrlRequest: URLRequest(
-              url: _communityURI,
-            ),
+            initialUrlRequest: URLRequest(url: _communityURI),
             onJsAlert: onJsAlert,
             onLoadStart: (controller, url) async {
               viewmodel.updateCurrentUrl(url.toString());
               if (url == _communityURI && await controller.isLoading()) {
                 showDialog<void>(
                   context: context,
-                  builder: (_) => const LoadingDialog(),
+                  builder: (_) => LoadingDialog(
+                    webViewController: controller,
+                  ),
                 );
               }
             },
-            onLoadStop: (controller, url) {
-              context.router.pop();
+            onLoadStop: (controller, url) async {
               if (viewmodel.postCode.isEmpty && url == _communityURI) {
-                Future.delayed(const Duration(milliseconds: 500), () {
+                Future.delayed(const Duration(seconds: 1), () {
                   showDialog<void>(
                     context: context,
                     builder: (_) => const PostCodeDialog(),
@@ -117,6 +115,12 @@ class _NetworkScreenState extends State<NetworkScreen> {
       },
     );
   }
+
+  Future<void> loadUrl({
+    required URLRequest urlRequest,
+  }) {
+    return webViewController!.loadUrl(urlRequest: urlRequest);
+  }
 }
 
 Future<JsAlertResponse> onJsAlert(
@@ -131,18 +135,16 @@ Future<JsAlertResponse> onJsAlert(
 class NetworkTabAppBar extends StatefulWidget implements PreferredSizeWidget {
   const NetworkTabAppBar({
     Key? key,
-    required this.height,
-    required this.webViewController,
+    required this.loadUrl,
   }) : super(key: key);
 
-  final double height;
-  final InAppWebViewController? webViewController;
+  final Future<void> Function({required URLRequest urlRequest}) loadUrl;
 
   @override
   State<NetworkTabAppBar> createState() => _NetworkTabAppBarState();
 
   @override
-  Size get preferredSize => Size.fromHeight(height);
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }
 
 class _NetworkTabAppBarState extends State<NetworkTabAppBar> {
@@ -171,6 +173,8 @@ class _NetworkTabAppBarState extends State<NetworkTabAppBar> {
   Widget build(BuildContext context) {
     return StoreConnector<AppState, String>(
       converter: (store) {
+        if (store.state.networkTabState.currentUrl.isEmpty)
+          return _communityURI.toString();
         return store.state.networkTabState.currentUrl;
       },
       builder: (_, String currentUrl) {
@@ -182,6 +186,8 @@ class _NetworkTabAppBarState extends State<NetworkTabAppBar> {
                 .onSurface, //change your color here
           ),
           leadingWidth: 150,
+          backgroundColor: Colors.white,
+          centerTitle: true,
           leading: OutlinedButton(
             style: OutlinedButton.styleFrom(side: BorderSide.none),
             onPressed: () {
@@ -206,8 +212,6 @@ class _NetworkTabAppBarState extends State<NetworkTabAppBar> {
               ),
             ),
           ),
-          backgroundColor: Colors.white,
-          centerTitle: true,
           title: SizedBox(
             height: kToolbarHeight - 10,
             width: MediaQuery.of(context).size.width * 0.2,
@@ -237,8 +241,7 @@ class _NetworkTabAppBarState extends State<NetworkTabAppBar> {
 
   void backButtonAction(String url) async {
     if (url.contains('vegi') || url.contains('shocal')) {
-      await widget.webViewController!
-          .loadUrl(urlRequest: URLRequest(url: _communityURI));
+      await widget.loadUrl(urlRequest: URLRequest(url: _communityURI));
     } else
       await context.router.navigate(const GuideHomeTab());
   }
