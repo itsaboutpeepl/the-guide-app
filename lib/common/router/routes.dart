@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
 import 'package:guide_liverpool/features/account/router/router.dart';
+import 'package:guide_liverpool/features/account/screens/settings_screen_no_acc.dart';
 import 'package:guide_liverpool/features/guideHome/router/router.dart';
 import 'package:guide_liverpool/features/guideNews/router/router.dart';
 import 'package:guide_liverpool/features/network/router/router.dart';
@@ -36,6 +37,10 @@ export 'routes.gr.dart';
       children: [
         guideHomeTab,
         newsTab,
+        AutoRoute(
+          page: SettingsScreenNoAccount,
+          name: 'settingsScreenNoAcc',
+        ),
       ],
     ),
     AutoRoute(

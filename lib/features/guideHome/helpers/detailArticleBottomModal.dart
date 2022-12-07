@@ -49,8 +49,8 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
       onLinkTap: (url, context, attributes, element) =>
           {UrlLaunch.launchURL(url!)},
       style: {
-        "p": Style(fontSize: FontSize(21.0)),
-        "h4": Style(fontSize: FontSize(21.0), fontWeight: FontWeight.w700)
+        "p": Style(fontSize: FontSize(18.0)),
+        "h4": Style(fontSize: FontSize(20.0), fontWeight: FontWeight.w700)
       },
       customRenders: {
         iframeYT(): CustomRender.widget(

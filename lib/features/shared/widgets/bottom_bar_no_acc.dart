@@ -66,6 +66,11 @@ class BottomBarNoAcc extends StatelessWidget {
             title: const Text('News'),
             selectedColor: Theme.of(context).primaryColor,
           ),
+          SalomonBottomBarItem(
+            icon: const Icon(Icons.person_rounded),
+            title: const Text('Account'),
+            selectedColor: Theme.of(context).primaryColor,
+          ),
         ],
       ),
     );

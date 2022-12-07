@@ -27,6 +27,7 @@ class _MainScreenNoAccState extends State<MainScreenNoAcc> {
         routes: [
           GuideHomeTab(),
           NewsHomeTab(),
+          SettingsScreenNoAcc(),
         ],
         bottomNavigationBuilder: (_, TabsRouter tabs) {
           _tabsRouter = tabs;
