@@ -373,20 +373,22 @@ ThunkAction<AppState> startTokenPaymentToRestaurant({
         ),
       );
 
-      final BigInt currentGBPXAmount =
-          store.state.cashWalletState.tokens[gbpxToken.address]!.amount;
+      final double currentGBPXAmount = store
+          .state.cashWalletState.tokens[gbpxToken.address]!.amount
+          .toDouble();
 
-      final BigInt currentPPLAmount =
-          store.state.cashWalletState.tokens[pplToken.address]!.amount;
+      final double currentPPLAmount = store
+          .state.cashWalletState.tokens[pplToken.address]!.amount
+          .toDouble();
 
-      final BigInt selectedGBPXAmount =
-          BigInt.from(store.state.networkTabState.selectedGBPxAmount);
+      final double selectedGBPXAmount =
+          store.state.networkTabState.selectedGBPxAmount;
 
-      final BigInt selectedPPLAmount =
-          BigInt.from(store.state.networkTabState.selectedPPLAmount);
+      final double selectedPPLAmount =
+          store.state.networkTabState.selectedPPLAmount;
 
-      final bool isGBPXSelected = selectedGBPXAmount.compareTo(BigInt.zero) > 0;
-      final bool isPPLSelected = selectedPPLAmount.compareTo(BigInt.zero) > 0;
+      final bool isGBPXSelected = selectedGBPXAmount.compareTo(0.0) > 0;
+      final bool isPPLSelected = selectedPPLAmount.compareTo(0.0) > 0;
 
       Map<String, dynamic> gbpxResponse = {};
       Map<String, dynamic> pplResponse = {};
