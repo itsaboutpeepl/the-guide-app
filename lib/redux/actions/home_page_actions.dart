@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:guide_liverpool/models/articles/categoryArticles.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
 import 'package:guide_liverpool/models/articles/events.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
+import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:guide_liverpool/services.dart';
+import 'package:guide_liverpool/utils/constants.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -163,16 +166,45 @@ ThunkAction fetchHomePageData() {
   };
 }
 
-ThunkAction createVideoView(
-    String videoID,
-    void Function(int rewardAmount) successCallback,
-    VoidCallback errorCallback) {
-  return (Store store) async {
+ThunkAction<AppState> createVideoView(
+  String videoID,
+  void Function(int rewardAmount) successCallback,
+  void Function() errorCallback,
+) {
+  return (Store<AppState> store) async {
     try {
       int rewardsIssued = await peeplMediaService.createVideoView(
-          videoID, store.state.userState.walletAddress);
+        videoID,
+        store.state.userState.walletAddress,
+      );
+
       if (rewardsIssued > 0) {
         successCallback(rewardsIssued);
+        Future.delayed(const Duration(seconds: 2), () {
+          pplToken.fetchBalance(
+            store.state.userState.walletAddress,
+            onDone: (balance) {
+              if (balance.compareTo(pplToken.amount) != 0) {
+                store.dispatch(
+                  GetTokenBalanceSuccess(
+                    tokenBalance: balance,
+                    tokenAddress: pplToken.address,
+                  ),
+                );
+              }
+            },
+            onError: (
+              Object e,
+              StackTrace s,
+            ) {
+              log.error(
+                'Error - createVideoView fetchBalance ${pplToken.name}',
+                error: e,
+                stackTrace: s,
+              );
+            },
+          );
+        });
       }
     } catch (e, s) {
       errorCallback();
