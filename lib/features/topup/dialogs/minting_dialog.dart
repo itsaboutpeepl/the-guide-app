@@ -81,7 +81,7 @@ class _MintingDialogState extends State<MintingDialog>
           });
 
           Future.delayed(
-            const Duration(seconds: 1),
+            const Duration(seconds: 5),
             () {
               context.router.pop();
 
