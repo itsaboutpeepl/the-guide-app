@@ -6,6 +6,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/guideHome/dialogs/playBackCompletedNoAcc.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/customControls.dart';
+import 'package:guide_liverpool/features/guideHome/helpers/order_helpers.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/youtubeToStream.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
@@ -224,7 +225,7 @@ class _SingleFeaturedVideoState extends State<SingleFeaturedVideo> {
                                 style: TextStyle(color: Color(0xFFEB4852)),
                               ),
                               Text(
-                                "+${widget.videoArticleItem.rewardAmount.toString()} PPL",
+                                "+${widget.videoArticleItem.rewardAmount.toString()} PPL (£${getPPLValueFromPence(widget.videoArticleItem.rewardAmount).toStringAsFixed(2)})",
                                 style: TextStyle(
                                   color: Color(0xFFEB4852),
                                   fontWeight: FontWeight.w900,
