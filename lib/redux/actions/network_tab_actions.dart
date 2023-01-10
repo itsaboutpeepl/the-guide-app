@@ -430,6 +430,9 @@ ThunkAction<AppState> startTokenPaymentToRestaurant({
       log
         ..info('gbpxResponse: $gbpxResponse')
         ..info('pplResponse: $pplResponse');
+      Sentry.captureMessage(
+          'PaymentIntentID: ${store.state.networkTabState.paymentIntentID}, '
+          'GBPxResponse: $gbpxResponse, PPLResponse: $pplResponse');
       store.dispatch(SetConfirmed(true));
     } catch (e, s) {
       store.dispatch(SetError(flag: true));
