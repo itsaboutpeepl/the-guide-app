@@ -14,7 +14,7 @@ class FeaturedVideoModalSheet extends StatelessWidget {
     return FractionallySizedBox(
       heightFactor: 0.5,
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(15.0),
         child: Column(
           children: [
             Text(
