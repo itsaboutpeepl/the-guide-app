@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:html/parser.dart' as html;
 
 extension DateTimeExtension on DateTime {
   DateTime next(int day) {
@@ -28,6 +29,14 @@ extension CapitalizeString on String {
         .split(' ')
         .map((str) => str.capitalize())
         .join(' ');
+  }
+
+  String parseHtmlString() {
+    final document = html.parse(this);
+    final String parsedString =
+        html.parse(document.body!.text).documentElement!.text;
+
+    return parsedString;
   }
 }
 

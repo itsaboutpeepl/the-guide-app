@@ -13,7 +13,6 @@ import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/homePageViewModel.dart';
-import 'package:guide_liverpool/services.dart';
 
 @RoutePage()
 class HomePage extends StatefulWidget {

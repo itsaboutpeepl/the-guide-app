@@ -380,7 +380,7 @@ ThunkAction<AppState> fetchTokenList() {
   return (Store<AppState> store) async {
     try {
       final String walletAddress = store.state.userState.walletAddress;
-      final TokenList tokensList = await getIt<FuseExplorer>().getTokenList(
+      final TokenList tokensList = await chargeApi.getTokenList(
         walletAddress,
       );
       final CashWalletState cashWalletState = store.state.cashWalletState;

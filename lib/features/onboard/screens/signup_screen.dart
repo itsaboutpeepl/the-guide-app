@@ -202,8 +202,9 @@ class _SignupPageState extends State<SignupPage> {
                                         ),
                                         hintText: 'Phone Number',
                                         border: InputBorder.none,
-                                        fillColor:
-                                            Theme.of(context).backgroundColor,
+                                        fillColor: Theme.of(context)
+                                            .colorScheme
+                                            .background,
                                         focusedBorder: OutlineInputBorder(
                                             borderSide: BorderSide.none),
                                         enabledBorder: OutlineInputBorder(

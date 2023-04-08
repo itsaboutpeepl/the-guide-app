@@ -110,7 +110,7 @@ class _TopupPageState extends State<TopupPage>
                               vertical: 5,
                             ),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).backgroundColor,
+                              color: Theme.of(context).colorScheme.background,
                               borderRadius: BorderRadius.circular(
                                 20,
                               ),

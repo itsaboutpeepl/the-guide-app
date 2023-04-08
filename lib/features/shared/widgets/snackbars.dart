@@ -29,7 +29,7 @@ void showErrorSnack({
           fontSize: 14.0,
         ),
       ),
-      backgroundColor: Theme.of(context).bottomAppBarColor,
+      backgroundColor: BottomAppBarTheme.of(context).color ?? Colors.white,
       margin: margin ?? EdgeInsets.only(top: 8, right: 8, left: 8, bottom: 80),
       borderRadius: BorderRadius.all(
         Radius.circular(8.0),
@@ -55,7 +55,7 @@ void showCopiedFlushbar(context) {
       'Copied to clipboard',
       textAlign: TextAlign.center,
     ),
-    backgroundColor: Theme.of(context).bottomAppBarColor,
+    backgroundColor: BottomAppBarTheme.of(context).color ?? Colors.white,
     margin: EdgeInsets.only(
       top: 8,
       right: 8,

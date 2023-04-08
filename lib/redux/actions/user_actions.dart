@@ -366,7 +366,7 @@ ThunkAction<AppState> restoreWalletCall(
         mnemonic.join(' '),
       );
       final Credentials credentials = EthPrivateKey.fromHex(privateKey);
-      final EthereumAddress accountAddress = await credentials.extractAddress();
+      final EthereumAddress accountAddress = await credentials.address;
       log
         ..info('privateKey: $privateKey')
         ..info('accountAddress: ${accountAddress.toString()}');
@@ -418,7 +418,7 @@ ThunkAction<AppState> createLocalAccountCall(
         mnemonic,
       );
       final Credentials credentials = EthPrivateKey.fromHex(privateKey);
-      final EthereumAddress accountAddress = await credentials.extractAddress();
+      final EthereumAddress accountAddress = await credentials.address;
       log
         ..info('privateKey: $privateKey')
         ..info('accountAddress: ${accountAddress.toString()}');

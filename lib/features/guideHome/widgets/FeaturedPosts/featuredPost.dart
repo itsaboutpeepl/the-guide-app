@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
+import 'package:guide_liverpool/utils/extensions.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/pageViewDetailArticle.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:intl/intl.dart';
@@ -77,7 +77,7 @@ class _FeaturedPostState extends State<FeaturedPost> {
                 child: Row(
                   children: [
                     Text(
-                      parseHtmlString(article.category[0]),
+                      article.category[0].parseHtmlString(),
                     ),
                     SizedBox(
                       width: 5,
@@ -102,7 +102,7 @@ class _FeaturedPostState extends State<FeaturedPost> {
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 child: Text(
-                  parseHtmlString(article.content),
+                  article.content.parseHtmlString(),
                   style: TextStyle(fontSize: 15),
                   overflow: TextOverflow.ellipsis,
                   maxLines: 4,

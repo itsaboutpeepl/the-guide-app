@@ -2,10 +2,8 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:guide_liverpool/models/home_page_state.dart';
 import 'package:guide_liverpool/models/network_tab_state.dart';
 import 'package:guide_liverpool/models/news_state.dart';
-import 'package:guide_liverpool/models/user_cart_state.dart';
 import 'package:guide_liverpool/models/user_state.dart';
 import 'package:guide_liverpool/models/cash_wallet_state.dart';
-import 'package:guide_liverpool/models/vesting_state.dart';
 
 part 'app_state.freezed.dart';
 part 'app_state.g.dart';

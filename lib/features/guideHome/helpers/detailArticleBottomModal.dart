@@ -8,7 +8,6 @@ import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:intl/intl.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
 class DetailArticleBottomModel extends StatefulWidget {
   const DetailArticleBottomModel({Key? key, required this.articleData})

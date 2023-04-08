@@ -1,12 +1,19 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 import 'package:guide_liverpool/constants/urls.dart';
-import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:injectable/injectable.dart';
 import 'package:guide_liverpool/models/articles/directory.dart';
 import 'package:guide_liverpool/models/articles/events.dart';
+import 'package:html/parser.dart';
+
+String parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body!.text).documentElement!.text;
+
+  return parsedString;
+}
 
 @lazySingleton
 class NewsService {

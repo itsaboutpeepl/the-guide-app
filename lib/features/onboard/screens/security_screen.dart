@@ -113,8 +113,10 @@ class _SecurityOptionPageState extends State<SecurityOptionPage> {
                                               children: <Widget>[
                                                 SvgPicture.asset(
                                                   'assets/images/${BiometricAuth.faceID.name == snapshot.requireData.name ? 'face_id' : 'fingerprint'}.svg',
-                                                  color: Theme.of(context)
-                                                      .canvasColor,
+                                                  colorFilter: ColorFilter.mode(
+                                                      Theme.of(context)
+                                                          .canvasColor,
+                                                      BlendMode.srcIn),
                                                 ),
                                                 const SizedBox(
                                                   width: 10,
@@ -138,8 +140,10 @@ class _SecurityOptionPageState extends State<SecurityOptionPage> {
                                               children: <Widget>[
                                                 SvgPicture.asset(
                                                   'assets/images/info_black.svg',
-                                                  color: Theme.of(context)
-                                                      .canvasColor,
+                                                  colorFilter: ColorFilter.mode(
+                                                      Theme.of(context)
+                                                          .canvasColor,
+                                                      BlendMode.srcIn),
                                                 ),
                                                 const SizedBox(
                                                   width: 3,

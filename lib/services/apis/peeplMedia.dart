@@ -1,9 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:guide_liverpool/constants/urls.dart';
-import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/models/articles/videoArticle.dart';
 import 'package:injectable/injectable.dart';
+import 'package:html/parser.dart';
+
+String parseHtmlString(String htmlString) {
+  final document = parse(htmlString);
+  final String parsedString = parse(document.body!.text).documentElement!.text;
+
+  return parsedString;
+}
 
 @lazySingleton
 class PeeplMediaService {

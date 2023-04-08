@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/detailArticleBottomModal.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
+import 'package:guide_liverpool/utils/extensions.dart';
 
 class SingleCategoryArticle extends StatelessWidget {
   final BlogArticle article;
@@ -58,7 +58,7 @@ class SingleCategoryArticle extends StatelessWidget {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          parseHtmlString(article.content),
+                          article.content.parseHtmlString(),
                           textAlign: TextAlign.justify,
                           maxLines: 5,
                           overflow: TextOverflow.ellipsis,

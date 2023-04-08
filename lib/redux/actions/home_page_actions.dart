@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:guide_liverpool/models/articles/categoryArticles.dart';

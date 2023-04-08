@@ -6,7 +6,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
     Key? key,
     required this.child,
     this.height = 350.0,
-    this.backgroundColor: Colors.white,
+    this.backgroundColor = Colors.white,
   }) : super(key: key);
 
   final double height;
@@ -15,9 +15,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemUiOverlayStyle _overlayStyle = ThemeData.estimateBrightnessForColor(backgroundColor) == Brightness.dark
-        ? SystemUiOverlayStyle.light
-        : SystemUiOverlayStyle.dark;
+    SystemUiOverlayStyle _overlayStyle =
+        ThemeData.estimateBrightnessForColor(backgroundColor) == Brightness.dark
+            ? SystemUiOverlayStyle.light
+            : SystemUiOverlayStyle.dark;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: _overlayStyle,
       sized: false,

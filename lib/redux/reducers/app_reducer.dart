@@ -4,7 +4,6 @@ import 'package:guide_liverpool/redux/reducers/network_tab_reducers.dart';
 import 'package:guide_liverpool/redux/reducers/news_reducers.dart';
 import 'package:guide_liverpool/redux/reducers/user_reducer.dart';
 import 'package:guide_liverpool/redux/reducers/cash_wallet_reducer.dart';
-import 'package:guide_liverpool/redux/reducers/vesting_reducer.dart';
 
 AppState appReducer(AppState state, dynamic action) {
   return AppState(

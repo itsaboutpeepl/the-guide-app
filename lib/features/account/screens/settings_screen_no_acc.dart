@@ -71,16 +71,16 @@ class _SettingsScreenNoAccountState extends State<SettingsScreenNoAccount> {
                                   text: "info@theguideliverpool.com \n",
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () => UrlLaunch.launchEmail(
-                                        "mailto:info@theguideliverpool.com")),
+                                        email: 'info@theguideliverpool.com')),
                               WidgetSpan(
                                   child: SizedBox(
                                 height: 23,
                               )),
                               TextSpan(
-                                  text: "+44 1517020143",
+                                  text: '+44 1517020143',
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () => UrlLaunch.launchPhone(
-                                        "tel:+441517020143"))
+                                        phone: '+441517020143'))
                             ],
                           ),
                           textAlign: TextAlign.center,
