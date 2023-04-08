@@ -9,7 +9,6 @@ import 'package:guide_liverpool/utils/biometric_local_auth.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 
 @RoutePage()
@@ -17,7 +16,7 @@ class ProtectWalletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).protect_wallet,
+      title: 'Protect Wallet',
       body: StoreConnector<AppState, SecurityViewModel>(
         distinct: true,
         converter: SecurityViewModel.fromStore,
@@ -48,7 +47,7 @@ class ProtectWalletPage extends StatelessWidget {
                         width: 20,
                       ),
                       Text(
-                        I10n.of(context).back_up,
+                        'Backup',
                         style: TextStyle(fontSize: 18),
                       ),
                     ],
@@ -87,7 +86,7 @@ class ProtectWalletPage extends StatelessWidget {
                     top: 20,
                     bottom: 20,
                   ),
-                  child: Text(I10n.of(context).please_choose_security),
+                  child: Text('Please choose a security option'),
                 ),
                 MenuTile(
                   label: BiometricUtils.getBiometricString(
@@ -107,8 +106,7 @@ class ProtectWalletPage extends StatelessWidget {
                       biometricAuth,
                     );
                     await BiometricUtils.showDefaultPopupCheckBiometricAuth(
-                      message:
-                          '${I10n.of(context).please_use} $biometric ${I10n.of(context).to_unlock}',
+                      message: 'Please use $biometric to unlock',
                       callback: (bool result) {
                         if (result) {
                           viewModel.setSecurityType(biometricAuth);
@@ -120,7 +118,7 @@ class ProtectWalletPage extends StatelessWidget {
                 ),
                 Divider(),
                 MenuTile(
-                  label: I10n.of(context).pincode,
+                  label: 'Pincode',
                   menuIcon: 'pincode.svg',
                   trailing: !isBiometric
                       ? SvgPicture.asset(

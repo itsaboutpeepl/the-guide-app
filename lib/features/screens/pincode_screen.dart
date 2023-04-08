@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/backup.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
@@ -65,7 +64,7 @@ class _PincodePageState extends State<PincodePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          I10n.of(context).enter_pincode,
+                          'Enter pincode',
                           style: TextStyle(
                             fontSize: 25,
                             color: Colors.white,
@@ -98,7 +97,7 @@ class _PincodePageState extends State<PincodePage> {
                                 validator: (String? value) =>
                                     value!.length != 6 &&
                                             value == viewModel.pincode
-                                        ? I10n.of(context).invalid_pincode
+                                        ? 'Invalid pincode'
                                         : null,
                                 textStyle: TextStyle(
                                   fontSize: 30,
@@ -124,9 +123,8 @@ class _PincodePageState extends State<PincodePage> {
                                     pincodeController.clear();
                                   } else {
                                     flush = Flushbar<bool>(
-                                      title: I10n.of(context).invalid_pincode,
-                                      message:
-                                          I10n.of(context).auth_failed_message,
+                                      title: 'Invalid pincode',
+                                      message: 'Authentication Failed',
                                       icon: Icon(
                                         Icons.info_outline,
                                         color: Theme.of(context)
@@ -138,7 +136,7 @@ class _PincodePageState extends State<PincodePage> {
                                           flush.dismiss(true);
                                         },
                                         child: Text(
-                                          I10n.of(context).try_again,
+                                          'Please try again',
                                           style: TextStyle(
                                               color: Theme.of(context)
                                                   .colorScheme

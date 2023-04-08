@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/profile.dart';
 import 'package:guide_liverpool/utils/format.dart';
@@ -37,7 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
       },
       builder: (_, viewModel) {
         return MyScaffold(
-          title: I10n.of(context).account,
+          title: 'Account',
           body: InkWell(
             focusColor: Theme.of(context).canvasColor,
             highlightColor: Theme.of(context).canvasColor,
@@ -101,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                                   .colorScheme
                                                   .onSurface,
                                               child: Text(
-                                                I10n.of(context).edit,
+                                                'Edit',
                                                 style: TextStyle(
                                                     color: Theme.of(context)
                                                         .canvasColor,
@@ -128,10 +127,12 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding:
                             EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                         child: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Text(I10n.of(context).name,
-                                style: TextStyle(
-                                    fontSize: 12, color: Colors.grey))),
+                          alignment: Alignment.centerLeft,
+                          child: Text(
+                            'Name',
+                            style: TextStyle(fontSize: 12, color: Colors.grey),
+                          ),
+                        ),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 0),
@@ -175,7 +176,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Divider(),
                       _buildGroup(
-                        I10n.of(context).wallet_address,
+                        'Wallet Address',
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -210,7 +211,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                       Divider(),
                       _buildGroup(
-                        I10n.of(context).phoneNumber,
+                        'Phone number',
                         Text(
                           viewModel.phone,
                           style: TextStyle(

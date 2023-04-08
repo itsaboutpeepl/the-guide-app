@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
@@ -41,7 +40,7 @@ class _SignupPageState extends State<SignupPage> {
   Widget build(BuildContext context) {
     return MyScaffold(
       resizeToAvoidBottomInset: false,
-      title: I10n.of(context).sign_up,
+      title: 'Sign up',
       body: InkWell(
         onTap: () {
           WidgetsBinding.instance.focusManager.primaryFocus?.unfocus();
@@ -54,7 +53,7 @@ class _SignupPageState extends State<SignupPage> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      I10n.of(context).enter_phone_number,
+                      'Enter phone number',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,
@@ -77,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
                         },
                         child: Center(
                           child: Text(
-                            I10n.of(context).why_do_we_need_this,
+                            'Why do we need this',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -201,7 +200,7 @@ class _SignupPageState extends State<SignupPage> {
                                           vertical: 20,
                                           horizontal: 10,
                                         ),
-                                        hintText: I10n.of(context).phoneNumber,
+                                        hintText: 'Phone Number',
                                         border: InputBorder.none,
                                         fillColor:
                                             Theme.of(context).backgroundColor,
@@ -236,7 +235,7 @@ class _SignupPageState extends State<SignupPage> {
                                 ),
                             builder: (_, signUp) => Center(
                               child: PrimaryButton(
-                                label: I10n.of(context).next_button,
+                                label: 'Next',
                                 preload: isPreloading,
                                 disabled: isPreloading,
                                 onPressed: () async {
@@ -263,10 +262,8 @@ class _SignupPageState extends State<SignupPage> {
                                           isPreloading = false;
                                         });
                                         showErrorSnack(
-                                          message:
-                                              I10n.of(context).invalid_number,
-                                          title: I10n.of(context)
-                                              .something_went_wrong,
+                                          message: 'Invalid number',
+                                          title: 'Something went wrong',
                                           context: context,
                                           margin: EdgeInsets.only(
                                             top: 8,
@@ -282,9 +279,8 @@ class _SignupPageState extends State<SignupPage> {
                                       isPreloading = false;
                                     });
                                     showErrorSnack(
-                                      message: I10n.of(context).invalid_number,
-                                      title:
-                                          I10n.of(context).something_went_wrong,
+                                      message: 'Invalid number',
+                                      title: 'Something went wrong',
                                       context: context,
                                       margin: EdgeInsets.only(
                                         top: 8,

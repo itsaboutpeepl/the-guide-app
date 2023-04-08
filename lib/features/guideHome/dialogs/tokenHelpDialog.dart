@@ -2,7 +2,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'dart:core';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 
@@ -96,7 +95,7 @@ class TokenHelpDialogState extends State<TokenHelpDialog>
                   SizedBox(height: 25.0),
                   Center(
                     child: PrimaryButton(
-                      label: I10n.of(context).close,
+                      label: 'Close',
                       onPressed: () async {
                         Navigator.of(context).pop();
                       },

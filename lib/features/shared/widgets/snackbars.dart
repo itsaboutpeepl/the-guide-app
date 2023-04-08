@@ -2,7 +2,6 @@ import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/order_helpers.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/utils/peepl_icons_icons.dart';
 
 void showErrorSnack({
@@ -21,7 +20,7 @@ void showErrorSnack({
       ],
       duration: Duration(seconds: duration),
       titleText: Text(
-        title ?? I10n.of(context).transaction_failed,
+        title ?? 'Transaction failed',
         style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
       ),
       messageText: Text(
@@ -53,7 +52,7 @@ void showCopiedFlushbar(context) {
       ),
     ],
     messageText: Text(
-      I10n.of(context).copied_to_clipboard,
+      'Copied to clipboard',
       textAlign: TextAlign.center,
     ),
     backgroundColor: Theme.of(context).bottomAppBarColor,

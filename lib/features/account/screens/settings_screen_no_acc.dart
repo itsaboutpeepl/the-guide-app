@@ -1,13 +1,9 @@
 import 'dart:core';
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/common/router/routes.dart';
-import 'package:guide_liverpool/common/router/routes.gr.dart';
 import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 
 class SettingsScreenNoAccount extends StatefulWidget {
@@ -41,7 +37,7 @@ class _SettingsScreenNoAccountState extends State<SettingsScreenNoAccount> {
                     child: Column(
                       children: [
                         MenuTile(
-                          label: I10n.of(context).legal,
+                          label: 'Legal',
                           menuIcon: 'legal_icon.svg',
                           onTap: () {
                             UrlLaunch.launchURL(

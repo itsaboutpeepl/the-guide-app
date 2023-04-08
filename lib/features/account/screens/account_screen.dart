@@ -12,11 +12,8 @@ import 'package:guide_liverpool/constants/theme.dart';
 import 'package:guide_liverpool/features/account/widgets/avatar.dart';
 import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
-import 'package:guide_liverpool/features/shared/widgets/copy.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
-import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/services.dart';
@@ -31,7 +28,7 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).account,
+      title: 'Account',
       body: StoreConnector<AppState, AccountViewModel>(
         distinct: true,
         onInit: (store) {
@@ -59,21 +56,21 @@ class _AccountPageState extends State<AccountPage> {
                         child: Column(
                           children: [
                             MenuTile(
-                              label: I10n.of(context).settings,
+                              label: 'Settings',
                               menuIcon: 'settings_icon.svg',
                               onTap: () {
                                 context.router.push(SettingsRoute());
                               },
                             ),
                             MenuTile(
-                              label: I10n.of(context).top_up,
+                              label: 'Topup',
                               menuIcon: 'top_up_icon.svg',
                               onTap: () {
                                 context.router.push(TopupRoute());
                               },
                             ),
                             MenuTile(
-                              label: I10n.of(context).protect_wallet,
+                              label: 'Protect Wallet',
                               menuIcon: 'protect_wallet.svg',
                               onTap: () {
                                 context.router.push(ProtectWalletRoute());
@@ -115,12 +112,12 @@ class _AccountPageState extends State<AccountPage> {
                             //   },
                             // ),
                             MenuTile(
-                              label: I10n.of(context).legal,
+                              label: 'Legal',
                               menuIcon: 'legal_icon.svg',
                               onTap: () {
                                 context.router.root.push(
                                   WebViewRoute(
-                                    title: I10n.of(context).legal,
+                                    title: 'Legal',
                                     url:
                                         'https://theguideliverpool.com/the-guide-liverpool-app-privacy-policy/',
                                   ),

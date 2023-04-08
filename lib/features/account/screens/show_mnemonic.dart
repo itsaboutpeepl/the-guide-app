@@ -2,7 +2,6 @@ import 'dart:core';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/redux/viewsmodels/backup.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/models/app_state.dart';
@@ -31,7 +30,7 @@ class MnemonicPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).back_up,
+      title: 'Backup',
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,10 +58,10 @@ class MnemonicPage extends StatelessWidget {
                             ),
                             children: [
                               TextSpan(
-                                text: I10n.of(context).important + ' ',
+                                text: 'Important' + ' ',
                               ),
                               TextSpan(
-                                text: I10n.of(context).write_words,
+                                text: 'Write Words',
                                 style: TextStyle(
                                   color: Color(0xFF777777),
                                 ),
@@ -176,7 +175,7 @@ class MnemonicPage extends StatelessWidget {
               children: [
                 Center(
                   child: PrimaryButton(
-                    label: I10n.of(context).next_button,
+                    label: 'Next Button',
                     onPressed: () {
                       context.router.push(VerifyMnemonicRoute());
                     },

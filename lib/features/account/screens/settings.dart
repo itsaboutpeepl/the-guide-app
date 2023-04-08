@@ -5,7 +5,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_liverpool/common/di/package_info.dart';
 import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
@@ -16,7 +15,7 @@ import 'package:guide_liverpool/services.dart';
 class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).settings,
+      title: 'Settings',
       body: StoreConnector<AppState, void Function()>(
         converter: (store) {
           return () => store.dispatch(LogoutRequestSuccess());
@@ -27,7 +26,7 @@ class SettingsPage extends StatelessWidget {
             children: <Widget>[
               Divider(),
               MenuTile(
-                label: I10n.of(context).version,
+                label: 'App Version',
                 menuIcon: 'app_version.svg',
                 trailing: Text(
                   "${packageInfo.version} ${(packageInfo.buildNumber)}",
@@ -81,7 +80,7 @@ class SettingsPage extends StatelessWidget {
                       width: 20,
                     ),
                     Text(
-                      I10n.of(context).logout,
+                      'Logout',
                       style: TextStyle(fontSize: 18),
                     ),
                   ],

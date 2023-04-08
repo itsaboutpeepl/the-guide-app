@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/constants/enums.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
@@ -42,7 +41,7 @@ class _SetUpPinCodeScreenState extends State<SetUpPinCodeScreen> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).pincode,
+      title: 'Pincode',
       body: Container(
         height: MediaQuery.of(context).size.height * .5,
         width: MediaQuery.of(context).size.height * .5,
@@ -57,7 +56,7 @@ class _SetUpPinCodeScreenState extends State<SetUpPinCodeScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                  isRetype ? I10n.of(context).re_type_passcode : I10n.of(context).create_passcode,
+                  isRetype ? 'Retype passcode' : 'Create passcode',
                   style: TextStyle(
                     fontSize: 25,
                   ),

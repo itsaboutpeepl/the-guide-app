@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/features/onboard/dialogs/warn_before_recreate.dart';
 import 'package:guide_liverpool/redux/viewsmodels/splash.dart';
@@ -62,8 +61,8 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                           ),
                           child: Text(
                             viewModel.isLoggedOut
-                                ? I10n.of(context).login
-                                : I10n.of(context).create_new_wallet,
+                                ? 'Login'
+                                : 'Create new wallet',
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.w800,
@@ -101,7 +100,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                   children: <Widget>[
                                     TransparentButton(
                                       fontSize: 14,
-                                      label: I10n.of(context).restore_backup,
+                                      label: 'Restore from backup',
                                       onPressed: () {
                                         context.router
                                             .push(RestoreFromBackupRoute());
@@ -109,7 +108,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                       textColor: Colors.grey[100]!,
                                     ),
                                     Text(
-                                      I10n.of(context).or,
+                                      'or',
                                       style: TextStyle(
                                         color: Colors.grey[100],
                                       ),
@@ -117,7 +116,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                     TransparentButton(
                                       fontSize: 14,
                                       textColor: Colors.grey[100]!,
-                                      label: I10n.of(context).create__wallet,
+                                      label: 'Create Wallet',
                                       preload: isTransparentPreloading,
                                       onPressed: () async {
                                         bool result = await showDialog(
@@ -142,7 +141,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                 )
                               : TransparentButton(
                                   fontSize: 18,
-                                  label: I10n.of(context).restore_from_backup,
+                                  label: 'Restore from backup',
                                   textColor: Colors.grey[100]!,
                                   onPressed: () {
                                     context.router

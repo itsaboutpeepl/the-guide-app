@@ -7,7 +7,6 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/common/di/di.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
 import 'package:guide_liverpool/constants/strings.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/services.dart';
@@ -90,13 +89,11 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
               localizationsDelegates: const [
-                I10n.delegate,
                 CountryLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
                 GlobalWidgetsLocalizations.delegate,
                 GlobalCupertinoLocalizations.delegate,
               ],
-              supportedLocales: I10n.delegate.supportedLocales,
               localeListResolutionCallback: (locales, supportedLocales) {
                 for (final Locale locale in locales!) {
                   if (supportedLocales.contains(locale)) {

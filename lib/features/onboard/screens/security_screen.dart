@@ -8,7 +8,6 @@ import 'package:guide_liverpool/utils/biometric_local_auth.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 
 @RoutePage()
@@ -29,7 +28,7 @@ class _SecurityOptionPageState extends State<SecurityOptionPage> {
           return Text('Error: ${snapshot.error}');
         } else if (snapshot.connectionState == ConnectionState.done) {
           return MyScaffold(
-            title: I10n.of(context).protect_wallet,
+            title: 'Protect Wallet',
             body: SizedBox(
               height: MediaQuery.of(context).size.height * .9,
               child: Column(
@@ -47,7 +46,7 @@ class _SecurityOptionPageState extends State<SecurityOptionPage> {
                       Container(
                         padding: const EdgeInsets.only(left: 10, right: 10),
                         child: Text(
-                          I10n.of(context).choose_lock_method,
+                          'Choose a lock method',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: Color(0xFF888888),
@@ -146,7 +145,7 @@ class _SecurityOptionPageState extends State<SecurityOptionPage> {
                                                   width: 3,
                                                 ),
                                                 Text(
-                                                  I10n.of(context).recommended,
+                                                  'Recommended',
                                                   style: TextStyle(
                                                     fontSize: 12,
                                                     color: Theme.of(context)
@@ -206,15 +205,18 @@ class _SecurityOptionPageState extends State<SecurityOptionPage> {
                                           children: [
                                             SvgPicture.asset(
                                               'assets/images/pincode.svg',
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .onSurface,
+                                              colorFilter: ColorFilter.mode(
+                                                Theme.of(context)
+                                                    .colorScheme
+                                                    .onSurface,
+                                                BlendMode.srcIn,
+                                              ),
                                             ),
                                             const SizedBox(
                                               width: 10,
                                             ),
                                             Text(
-                                              I10n.of(context).pincode,
+                                              'Pincode',
                                               style: TextStyle(
                                                 fontSize: 18,
                                                 color: Theme.of(context)

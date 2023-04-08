@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
@@ -19,7 +18,7 @@ class SelectUsernamePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).sign_up,
+      title: 'Sign up',
       body: StoreConnector<AppState, Function(String)>(
         distinct: true,
         converter: (store) => (String displayName) {
@@ -53,14 +52,14 @@ class SelectUsernamePage extends StatelessWidget {
                           ),
                           SizedBox(height: 20.0),
                           Text(
-                            I10n.of(context).pickup_display_name,
+                            'Pick display name',
                             style: TextStyle(
                               fontSize: 20,
                             ),
                           ),
                           SizedBox(height: 10.0),
                           Text(
-                            I10n.of(context).pickup_display_name_text,
+                            'Please pick a display name',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 16,
@@ -108,7 +107,7 @@ class SelectUsernamePage extends StatelessWidget {
                   children: [
                     Center(
                       child: PrimaryButton(
-                        label: I10n.of(context).next_button,
+                        label: 'Next',
                         onPressed: () {
                           if (displayNameController.text.isNotEmpty) {
                             setDisplayName(

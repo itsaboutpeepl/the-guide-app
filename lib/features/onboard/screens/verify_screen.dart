@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
@@ -31,7 +30,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).sign_up,
+      title: 'Sign up',
       body: StoreConnector<AppState, VerifyOnboardViewModel>(
         distinct: true,
         converter: VerifyOnboardViewModel.fromStore,
@@ -66,7 +65,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                   child: Column(
                     children: <Widget>[
                       Text(
-                        I10n.of(context).we_just_sent +
+                        "We've just sent a message to " +
                             viewModel.phoneNumber +
                             "\n",
                         textAlign: TextAlign.center,
@@ -76,7 +75,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                         ),
                       ),
                       Text(
-                        I10n.of(context).enter_verification_code,
+                        'Enter verfication code',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 15,
@@ -133,7 +132,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                       SizedBox(height: 30.0),
                       Center(
                         child: PrimaryButton(
-                          label: I10n.of(context).next_button,
+                          label: 'Next',
                           width: MediaQuery.of(context).size.width * .9,
                           preload: isPreloading,
                           disabled: isPreloading,
@@ -166,7 +165,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            I10n.of(context).didnt_get_message,
+                            "Didn't get a message?",
                             style: TextStyle(fontSize: 12),
                           ),
                           TextButton(
@@ -177,7 +176,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                               Navigator.of(context).pop();
                             },
                             child: Text(
-                              I10n.of(context).resend_code,
+                              'Resend code',
                               style: TextStyle(
                                 color: Colors.blue,
                                 fontSize: 12,

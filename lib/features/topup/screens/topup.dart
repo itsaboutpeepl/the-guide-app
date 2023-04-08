@@ -6,7 +6,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/numeric_keyboard.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/topup.dart';
 import 'package:guide_liverpool/services.dart';
@@ -180,7 +179,7 @@ class _TopupPageState extends State<TopupPage>
               builder: (_, viewModel) => Center(
                 child: PrimaryButton(
                   // labelFontWeight: FontWeight.normal,
-                  label: I10n.of(context).next_button,
+                  label: 'Next',
                   onPressed: () => stripeService.handleApplePay(
                     walletAddress: viewModel.walletAddress,
                     amount: int.parse(_amountText) * 100,

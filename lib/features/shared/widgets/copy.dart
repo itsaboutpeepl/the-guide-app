@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 
 class CopyToClipboard extends StatelessWidget {
@@ -17,7 +16,7 @@ class CopyToClipboard extends StatelessWidget {
       focusColor: Theme.of(context).canvasColor,
       highlightColor: Theme.of(context).canvasColor,
       child: Text(
-        I10n.of(context).copy_to_clipboard,
+        'Copy',
         style: TextStyle(
           color: this.textColor ?? Theme.of(context).colorScheme.onSurface,
           fontSize: 18,

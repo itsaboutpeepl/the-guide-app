@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 
 class WarnBeforeReCreation extends StatefulWidget {
   @override
@@ -49,7 +48,7 @@ class _WarnBeforeReCreationState extends State<WarnBeforeReCreation>
             height: 35,
           ),
         ),
-        content: Text(I10n.of(context).reset_account),
+        content: Text('Reset Account'),
         actions: <Widget>[
           TextButton(
             style: TextButton.styleFrom(
@@ -60,14 +59,14 @@ class _WarnBeforeReCreationState extends State<WarnBeforeReCreation>
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop(true);
             },
-            child: Text(I10n.of(context).yes, style: TextStyle(fontSize: 16)),
+            child: Text('Yes', style: TextStyle(fontSize: 16)),
           ),
           TextButton(
             onPressed: () {
               Navigator.of(context, rootNavigator: true).pop(false);
             },
             child: Text(
-              I10n.of(context).no,
+              'No',
               style: TextStyle(
                 fontSize: 16,
                 color: Theme.of(context).colorScheme.onSurface,

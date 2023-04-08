@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/guideHome/dialogs/tokenHelpDialog.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/order_helpers.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/redux/viewsmodels/balance.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 
@@ -41,7 +40,7 @@ class Balance extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      I10n.of(context).balance,
+                      'Balance',
                       style: TextStyle(
                         color: Theme.of(context).canvasColor,
                         fontSize: 13.0,

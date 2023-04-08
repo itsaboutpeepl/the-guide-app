@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/backup.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
@@ -23,7 +22,7 @@ class Word extends StatelessWidget {
       autofocus: false,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.all(0.0),
-        labelText: I10n.of(context).word + wordIndex.toString(),
+        labelText: 'Word' + wordIndex.toString(),
         border: UnderlineInputBorder(
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.onSurface,
@@ -50,7 +49,7 @@ class Word extends StatelessWidget {
       cursorColor: Theme.of(context).colorScheme.onSurface,
       validator: (String? value) {
         if (mnemonic[wordIndex - 1] != value?.trim()) {
-          return I10n.of(context).word_not_match;
+          return 'Words do not match';
         }
         return null;
       },
@@ -86,7 +85,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).back_up,
+      title: 'Backup',
       body: StoreConnector<AppState, BackupViewModel>(
         converter: BackupViewModel.fromStore,
         builder: (_, viewModel) {
@@ -106,8 +105,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
                       child: Column(
                         children: <Widget>[
                           Text(
-                            I10n.of(context).write_word +
-                                selectedWordsNum.join(", "),
+                            'Write Word' + selectedWordsNum.join(", "),
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 20,
@@ -156,7 +154,7 @@ class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
                       ),
                       child: Center(
                         child: PrimaryButton(
-                          label: I10n.of(context).next_button,
+                          label: 'Next',
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               context.router.push(BackupCompletedRoute());

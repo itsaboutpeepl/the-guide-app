@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'dart:core';
 
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
@@ -59,7 +58,7 @@ class SignUpDialogState extends State<SignUpDialog>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    I10n.of(context).why_do_we_need_this,
+                    'Why do we need this',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -67,7 +66,7 @@ class SignUpDialogState extends State<SignUpDialog>
                   ),
                   SizedBox(height: 20.0),
                   Text(
-                    I10n.of(context).stores_private,
+                    'Stores private information',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -75,7 +74,7 @@ class SignUpDialogState extends State<SignUpDialog>
                   ),
                   SizedBox(height: 20.0),
                   Text(
-                    I10n.of(context).will_never_share,
+                    'We will never share your information',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -83,7 +82,7 @@ class SignUpDialogState extends State<SignUpDialog>
                   ),
                   SizedBox(height: 20.0),
                   Text(
-                    I10n.of(context).for_more_info,
+                    'For more info, contact',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -101,7 +100,7 @@ class SignUpDialogState extends State<SignUpDialog>
                       // );
                     },
                     child: Text(
-                      I10n.of(context).privacy,
+                      'Privacy',
                       style: TextStyle(
                         color: Color(0xFF0076FF),
                         fontSize: 18,
@@ -112,7 +111,7 @@ class SignUpDialogState extends State<SignUpDialog>
                   SizedBox(height: 40.0),
                   Center(
                     child: PrimaryButton(
-                      label: I10n.of(context).ok_thanks,
+                      label: 'Okay',
                       onPressed: () async {
                         Navigator.of(context).pop();
                       },

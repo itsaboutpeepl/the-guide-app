@@ -5,7 +5,6 @@ import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
-import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/recovery.dart';
 
@@ -37,7 +36,7 @@ class _RestoreFromBackupPageState extends State<RestoreFromBackupPage> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: I10n.of(context).restore_from_backup,
+      title: 'Restore from backup',
       body: Container(
         padding: const EdgeInsets.only(
           bottom: 40,
@@ -55,7 +54,7 @@ class _RestoreFromBackupPageState extends State<RestoreFromBackupPage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
                         child: Text(
-                          I10n.of(context).restore_words,
+                          'Restore using seed phrase',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 20,
@@ -115,7 +114,7 @@ class _RestoreFromBackupPageState extends State<RestoreFromBackupPage> {
                     child: PrimaryButton(
                       preload: isPreloading,
                       disabled: isPreloading,
-                      label: I10n.of(context).next_button,
+                      label: 'Next',
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
                           setState(() {
@@ -133,8 +132,8 @@ class _RestoreFromBackupPageState extends State<RestoreFromBackupPage> {
                             });
                             showErrorSnack(
                               context: context,
-                              message: I10n.of(context).phrase_invaild,
-                              title: I10n.of(context).oops,
+                              message: 'Entered phrase seems to be invalid',
+                              title: 'Oops',
                             );
                           });
                         }
