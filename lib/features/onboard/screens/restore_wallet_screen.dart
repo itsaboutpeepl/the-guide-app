@@ -9,15 +9,15 @@ import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/recovery.dart';
 
-class RestoreFromBackupScreen extends StatefulWidget {
-  const RestoreFromBackupScreen({Key? key}) : super(key: key);
+@RoutePage()
+class RestoreFromBackupPage extends StatefulWidget {
+  const RestoreFromBackupPage({Key? key}) : super(key: key);
 
   @override
-  State<RestoreFromBackupScreen> createState() =>
-      _RestoreFromBackupScreenState();
+  State<RestoreFromBackupPage> createState() => _RestoreFromBackupPageState();
 }
 
-class _RestoreFromBackupScreenState extends State<RestoreFromBackupScreen> {
+class _RestoreFromBackupPageState extends State<RestoreFromBackupPage> {
   bool isLoading = false;
   final wordsController = TextEditingController(text: '');
   final _formKey = GlobalKey<FormState>();
@@ -126,7 +126,7 @@ class _RestoreFromBackupScreenState extends State<RestoreFromBackupScreen> {
                             setState(() {
                               isPreloading = false;
                             });
-                            context.router.push(const SignUpScreen());
+                            context.router.push(const SignupRoute());
                           }, () {
                             setState(() {
                               isPreloading = false;

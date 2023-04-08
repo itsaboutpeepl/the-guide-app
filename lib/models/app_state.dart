@@ -20,7 +20,6 @@ class AppState with _$AppState {
     @CashWalletStateConverter() required CashWalletState cashWalletState,
     @HomePageStateConverter() required HomePageState homePageState,
     @NewsStateConverter() required NewsState newsState,
-    @VestingStateConverter() required VestingState vestingState,
     @NetworkTabStateConverter() required NetworkTabState networkTabState,
   }) = _AppState;
 
@@ -30,7 +29,6 @@ class AppState with _$AppState {
       cashWalletState: CashWalletState.initial(),
       homePageState: HomePageState.initial(),
       newsState: NewsState.initial(),
-      vestingState: VestingState.initial(),
       networkTabState: NetworkTabState.initial(),
     );
   }

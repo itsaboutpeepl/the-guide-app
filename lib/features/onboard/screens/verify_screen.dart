@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
@@ -7,14 +8,15 @@ import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 import 'package:guide_liverpool/redux/viewsmodels/onboard.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class VerifyPhoneNumber extends StatefulWidget {
+@RoutePage()
+class VerifyPhonePage extends StatefulWidget {
   final String? verificationId;
-  VerifyPhoneNumber({this.verificationId});
+  VerifyPhonePage({this.verificationId});
   @override
-  _VerifyPhoneNumberState createState() => _VerifyPhoneNumberState();
+  _VerifyPhonePageState createState() => _VerifyPhonePageState();
 }
 
-class _VerifyPhoneNumberState extends State<VerifyPhoneNumber> {
+class _VerifyPhonePageState extends State<VerifyPhonePage> {
   String autoCode = "";
   TextEditingController codeController = TextEditingController(text: '');
   String currentText = "";
@@ -34,7 +36,8 @@ class _VerifyPhoneNumberState extends State<VerifyPhoneNumber> {
         distinct: true,
         converter: VerifyOnboardViewModel.fromStore,
         onInitialBuild: (viewModel) {
-          if (viewModel.credentials != null && viewModel.verificationId != null) {
+          if (viewModel.credentials != null &&
+              viewModel.verificationId != null) {
             autoCode = viewModel.credentials?.smsCode ?? "";
             setState(() {
               isPreloading = true;
@@ -63,7 +66,9 @@ class _VerifyPhoneNumberState extends State<VerifyPhoneNumber> {
                   child: Column(
                     children: <Widget>[
                       Text(
-                        I10n.of(context).we_just_sent + viewModel.phoneNumber + "\n",
+                        I10n.of(context).we_just_sent +
+                            viewModel.phoneNumber +
+                            "\n",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 20,
@@ -111,8 +116,10 @@ class _VerifyPhoneNumberState extends State<VerifyPhoneNumber> {
                               inactiveFillColor: Theme.of(context).canvasColor,
                               selectedFillColor: Theme.of(context).canvasColor,
                               disabledColor: Theme.of(context).primaryColor,
-                              selectedColor: Theme.of(context).colorScheme.onSurface,
-                              activeColor: Theme.of(context).colorScheme.onSurface,
+                              selectedColor:
+                                  Theme.of(context).colorScheme.onSurface,
+                              activeColor:
+                                  Theme.of(context).colorScheme.onSurface,
                               activeFillColor: Theme.of(context).canvasColor,
                             ),
                             onChanged: (value) {

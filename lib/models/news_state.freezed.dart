@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'news_state.dart';
 
@@ -35,7 +35,8 @@ mixin _$NewsState {
 /// @nodoc
 abstract class $NewsStateCopyWith<$Res> {
   factory $NewsStateCopyWith(NewsState value, $Res Function(NewsState) then) =
-      _$NewsStateCopyWithImpl<$Res>;
+      _$NewsStateCopyWithImpl<$Res, NewsState>;
+  @useResult
   $Res call(
       {List<Category> categories,
       List<CategoryArticles> articles,
@@ -45,43 +46,46 @@ abstract class $NewsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$NewsStateCopyWithImpl<$Res> implements $NewsStateCopyWith<$Res> {
+class _$NewsStateCopyWithImpl<$Res, $Val extends NewsState>
+    implements $NewsStateCopyWith<$Res> {
   _$NewsStateCopyWithImpl(this._value, this._then);
 
-  final NewsState _value;
   // ignore: unused_field
-  final $Res Function(NewsState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categories = freezed,
-    Object? articles = freezed,
-    Object? currentTabIndex = freezed,
-    Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? categories = null,
+    Object? articles = null,
+    Object? currentTabIndex = null,
+    Object? isLoading = null,
+    Object? isError = null,
   }) {
     return _then(_value.copyWith(
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      articles: articles == freezed
+      articles: null == articles
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<CategoryArticles>,
-      currentTabIndex: currentTabIndex == freezed
+      currentTabIndex: null == currentTabIndex
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
+      isError: null == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -91,6 +95,7 @@ abstract class _$$_NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
           _$_NewsState value, $Res Function(_$_NewsState) then) =
       __$$_NewsStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<Category> categories,
       List<CategoryArticles> articles,
@@ -100,41 +105,40 @@ abstract class _$$_NewsStateCopyWith<$Res> implements $NewsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_NewsStateCopyWithImpl<$Res> extends _$NewsStateCopyWithImpl<$Res>
+class __$$_NewsStateCopyWithImpl<$Res>
+    extends _$NewsStateCopyWithImpl<$Res, _$_NewsState>
     implements _$$_NewsStateCopyWith<$Res> {
   __$$_NewsStateCopyWithImpl(
       _$_NewsState _value, $Res Function(_$_NewsState) _then)
-      : super(_value, (v) => _then(v as _$_NewsState));
+      : super(_value, _then);
 
-  @override
-  _$_NewsState get _value => super._value as _$_NewsState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categories = freezed,
-    Object? articles = freezed,
-    Object? currentTabIndex = freezed,
-    Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? categories = null,
+    Object? articles = null,
+    Object? currentTabIndex = null,
+    Object? isLoading = null,
+    Object? isError = null,
   }) {
     return _then(_$_NewsState(
-      categories: categories == freezed
+      categories: null == categories
           ? _value.categories
           : categories // ignore: cast_nullable_to_non_nullable
               as List<Category>,
-      articles: articles == freezed
+      articles: null == articles
           ? _value.articles
           : articles // ignore: cast_nullable_to_non_nullable
               as List<CategoryArticles>,
-      currentTabIndex: currentTabIndex == freezed
+      currentTabIndex: null == currentTabIndex
           ? _value.currentTabIndex
           : currentTabIndex // ignore: cast_nullable_to_non_nullable
               as int,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
+      isError: null == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -181,10 +185,11 @@ class _$_NewsState extends _NewsState {
             const DeepCollectionEquality()
                 .equals(other.categories, categories) &&
             const DeepCollectionEquality().equals(other.articles, articles) &&
-            const DeepCollectionEquality()
-                .equals(other.currentTabIndex, currentTabIndex) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isError, isError));
+            (identical(other.currentTabIndex, currentTabIndex) ||
+                other.currentTabIndex == currentTabIndex) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isError, isError) || other.isError == isError));
   }
 
   @JsonKey(ignore: true)
@@ -193,12 +198,13 @@ class _$_NewsState extends _NewsState {
       runtimeType,
       const DeepCollectionEquality().hash(categories),
       const DeepCollectionEquality().hash(articles),
-      const DeepCollectionEquality().hash(currentTabIndex),
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isError));
+      currentTabIndex,
+      isLoading,
+      isError);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_NewsStateCopyWith<_$_NewsState> get copyWith =>
       __$$_NewsStateCopyWithImpl<_$_NewsState>(this, _$identity);
 

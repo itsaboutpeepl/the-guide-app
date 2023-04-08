@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -62,17 +62,17 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
             return Container(
               width: width ?? (height ?? 150) * 2,
               height: height ?? (width ?? 300) / 2,
-              child: WebView(
-                initialUrl: context.tree.attributes['src']!,
-                javascriptMode: JavascriptMode.unrestricted,
-                navigationDelegate: (NavigationRequest request) async {
-                  //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
-                  if (!request.url.contains("youtube.com/embed")) {
-                    return NavigationDecision.prevent;
-                  } else {
-                    return NavigationDecision.navigate;
-                  }
-                },
+              child: InAppWebView(
+                initialUrlRequest:
+                    URLRequest(url: Uri.parse(context.tree.attributes['src']!)),
+                // navigationDelegate: (NavigationRequest request) async {
+                //   //no need to load any url besides the embedded youtube url when displaying embedded youtube, so prevent url loading
+                //   if (!request.url.contains("youtube.com/embed")) {
+                //     return NavigationDecision.prevent;
+                //   } else {
+                //     return NavigationDecision.navigate;
+                //   }
+                // },
               ),
             );
           },
@@ -114,7 +114,6 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
           backgroundColor: Theme.of(context).primaryColor,
         ),
         body: SingleChildScrollView(
-          controller: ModalScrollController.of(context),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 //import 'package:guide_liverpool/features/onboard/widgets/flare_controller.dart';
 import 'package:guide_liverpool/features/onboard/widgets/on_boarding_page.dart';
@@ -5,12 +6,13 @@ import 'package:guide_liverpool/features/onboard/widgets/sign_up_buttons.dart';
 import 'package:guide_liverpool/features/screens/OnBoardingScreens/firstScreen.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class OnBoardScreen extends StatefulWidget {
+@RoutePage()
+class OnboardPage extends StatefulWidget {
   @override
-  _OnBoardScreenState createState() => _OnBoardScreenState();
+  _OnboardPageState createState() => _OnboardPageState();
 }
 
-class _OnBoardScreenState extends State<OnBoardScreen>
+class _OnboardPageState extends State<OnboardPage>
     with TickerProviderStateMixin {
   late PageController _pageController;
   static const _kDuration = Duration(milliseconds: 2000);

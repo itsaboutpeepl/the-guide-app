@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'categoryArticles.dart';
 
@@ -33,42 +33,46 @@ mixin _$CategoryArticles {
 abstract class $CategoryArticlesCopyWith<$Res> {
   factory $CategoryArticlesCopyWith(
           CategoryArticles value, $Res Function(CategoryArticles) then) =
-      _$CategoryArticlesCopyWithImpl<$Res>;
+      _$CategoryArticlesCopyWithImpl<$Res, CategoryArticles>;
+  @useResult
   $Res call({Category category, List<BlogArticle> articleList});
 
   $CategoryCopyWith<$Res> get category;
 }
 
 /// @nodoc
-class _$CategoryArticlesCopyWithImpl<$Res>
+class _$CategoryArticlesCopyWithImpl<$Res, $Val extends CategoryArticles>
     implements $CategoryArticlesCopyWith<$Res> {
   _$CategoryArticlesCopyWithImpl(this._value, this._then);
 
-  final CategoryArticles _value;
   // ignore: unused_field
-  final $Res Function(CategoryArticles) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = freezed,
-    Object? articleList = freezed,
+    Object? category = null,
+    Object? articleList = null,
   }) {
     return _then(_value.copyWith(
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category,
-      articleList: articleList == freezed
+      articleList: null == articleList
           ? _value.articleList
           : articleList // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CategoryCopyWith<$Res> get category {
     return $CategoryCopyWith<$Res>(_value.category, (value) {
-      return _then(_value.copyWith(category: value));
+      return _then(_value.copyWith(category: value) as $Val);
     });
   }
 }
@@ -80,6 +84,7 @@ abstract class _$$_CategoryArticlesCopyWith<$Res>
           _$_CategoryArticles value, $Res Function(_$_CategoryArticles) then) =
       __$$_CategoryArticlesCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({Category category, List<BlogArticle> articleList});
 
   @override
@@ -88,26 +93,24 @@ abstract class _$$_CategoryArticlesCopyWith<$Res>
 
 /// @nodoc
 class __$$_CategoryArticlesCopyWithImpl<$Res>
-    extends _$CategoryArticlesCopyWithImpl<$Res>
+    extends _$CategoryArticlesCopyWithImpl<$Res, _$_CategoryArticles>
     implements _$$_CategoryArticlesCopyWith<$Res> {
   __$$_CategoryArticlesCopyWithImpl(
       _$_CategoryArticles _value, $Res Function(_$_CategoryArticles) _then)
-      : super(_value, (v) => _then(v as _$_CategoryArticles));
+      : super(_value, _then);
 
-  @override
-  _$_CategoryArticles get _value => super._value as _$_CategoryArticles;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? category = freezed,
-    Object? articleList = freezed,
+    Object? category = null,
+    Object? articleList = null,
   }) {
     return _then(_$_CategoryArticles(
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as Category,
-      articleList: articleList == freezed
+      articleList: null == articleList
           ? _value.articleList
           : articleList // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
@@ -140,7 +143,8 @@ class _$_CategoryArticles extends _CategoryArticles {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_CategoryArticles &&
-            const DeepCollectionEquality().equals(other.category, category) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
             const DeepCollectionEquality()
                 .equals(other.articleList, articleList));
   }
@@ -148,12 +152,11 @@ class _$_CategoryArticles extends _CategoryArticles {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(articleList));
+      runtimeType, category, const DeepCollectionEquality().hash(articleList));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CategoryArticlesCopyWith<_$_CategoryArticles> get copyWith =>
       __$$_CategoryArticlesCopyWithImpl<_$_CategoryArticles>(this, _$identity);
 

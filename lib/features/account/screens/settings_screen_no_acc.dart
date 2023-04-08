@@ -9,7 +9,6 @@ import 'package:guide_liverpool/features/account/widgets/menu_tile.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class SettingsScreenNoAccount extends StatefulWidget {
   @override
@@ -61,7 +60,7 @@ class _SettingsScreenNoAccountState extends State<SettingsScreenNoAccount> {
                           label: "About",
                           menuIcon: 'info_black.svg',
                           onTap: () {
-                            showBarModalBottomSheet(
+                            showModalBottomSheet(
                                 useRootNavigator: true,
                                 backgroundColor: Colors.white,
                                 context: context,

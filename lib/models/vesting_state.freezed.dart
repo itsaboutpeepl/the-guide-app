@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'vesting_state.dart';
 
@@ -65,7 +65,8 @@ mixin _$VestingState {
 abstract class $VestingStateCopyWith<$Res> {
   factory $VestingStateCopyWith(
           VestingState value, $Res Function(VestingState) then) =
-      _$VestingStateCopyWithImpl<$Res>;
+      _$VestingStateCopyWithImpl<$Res, VestingState>;
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) List<Schedules> vestingSchedule,
       @JsonKey(ignore: true) List<dynamic> scheduleIDs,
@@ -87,103 +88,106 @@ abstract class $VestingStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VestingStateCopyWithImpl<$Res> implements $VestingStateCopyWith<$Res> {
+class _$VestingStateCopyWithImpl<$Res, $Val extends VestingState>
+    implements $VestingStateCopyWith<$Res> {
   _$VestingStateCopyWithImpl(this._value, this._then);
 
-  final VestingState _value;
   // ignore: unused_field
-  final $Res Function(VestingState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? vestingSchedule = freezed,
-    Object? scheduleIDs = freezed,
-    Object? hasVestingSchedule = freezed,
+    Object? vestingSchedule = null,
+    Object? scheduleIDs = null,
+    Object? hasVestingSchedule = null,
     Object? currentAmountReleasable = freezed,
     Object? scheduleEnd = freezed,
     Object? scheduleStart = freezed,
     Object? displayScheduleID = freezed,
     Object? scheduleCount = freezed,
-    Object? isContractFullyVested = freezed,
+    Object? isContractFullyVested = null,
     Object? withdrawableAmount = freezed,
-    Object? cliffEndDays = freezed,
-    Object? endTimeDays = freezed,
-    Object? vestedChecker = freezed,
-    Object? isLoading = freezed,
-    Object? isRevoked = freezed,
+    Object? cliffEndDays = null,
+    Object? endTimeDays = null,
+    Object? vestedChecker = null,
+    Object? isLoading = null,
+    Object? isRevoked = null,
     Object? cliff = freezed,
     Object? vestedTotal = freezed,
   }) {
     return _then(_value.copyWith(
-      vestingSchedule: vestingSchedule == freezed
+      vestingSchedule: null == vestingSchedule
           ? _value.vestingSchedule
           : vestingSchedule // ignore: cast_nullable_to_non_nullable
               as List<Schedules>,
-      scheduleIDs: scheduleIDs == freezed
+      scheduleIDs: null == scheduleIDs
           ? _value.scheduleIDs
           : scheduleIDs // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      hasVestingSchedule: hasVestingSchedule == freezed
+      hasVestingSchedule: null == hasVestingSchedule
           ? _value.hasVestingSchedule
           : hasVestingSchedule // ignore: cast_nullable_to_non_nullable
               as bool,
-      currentAmountReleasable: currentAmountReleasable == freezed
+      currentAmountReleasable: freezed == currentAmountReleasable
           ? _value.currentAmountReleasable
           : currentAmountReleasable // ignore: cast_nullable_to_non_nullable
               as Decimal?,
-      scheduleEnd: scheduleEnd == freezed
+      scheduleEnd: freezed == scheduleEnd
           ? _value.scheduleEnd
           : scheduleEnd // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      scheduleStart: scheduleStart == freezed
+      scheduleStart: freezed == scheduleStart
           ? _value.scheduleStart
           : scheduleStart // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      displayScheduleID: displayScheduleID == freezed
+      displayScheduleID: freezed == displayScheduleID
           ? _value.displayScheduleID
           : displayScheduleID // ignore: cast_nullable_to_non_nullable
               as String?,
-      scheduleCount: scheduleCount == freezed
+      scheduleCount: freezed == scheduleCount
           ? _value.scheduleCount
           : scheduleCount // ignore: cast_nullable_to_non_nullable
               as BigInt?,
-      isContractFullyVested: isContractFullyVested == freezed
+      isContractFullyVested: null == isContractFullyVested
           ? _value.isContractFullyVested
           : isContractFullyVested // ignore: cast_nullable_to_non_nullable
               as bool,
-      withdrawableAmount: withdrawableAmount == freezed
+      withdrawableAmount: freezed == withdrawableAmount
           ? _value.withdrawableAmount
           : withdrawableAmount // ignore: cast_nullable_to_non_nullable
               as BigInt?,
-      cliffEndDays: cliffEndDays == freezed
+      cliffEndDays: null == cliffEndDays
           ? _value.cliffEndDays
           : cliffEndDays // ignore: cast_nullable_to_non_nullable
               as int,
-      endTimeDays: endTimeDays == freezed
+      endTimeDays: null == endTimeDays
           ? _value.endTimeDays
           : endTimeDays // ignore: cast_nullable_to_non_nullable
               as int,
-      vestedChecker: vestedChecker == freezed
+      vestedChecker: null == vestedChecker
           ? _value.vestedChecker
           : vestedChecker // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isRevoked: isRevoked == freezed
+      isRevoked: null == isRevoked
           ? _value.isRevoked
           : isRevoked // ignore: cast_nullable_to_non_nullable
               as bool,
-      cliff: cliff == freezed
+      cliff: freezed == cliff
           ? _value.cliff
           : cliff // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      vestedTotal: vestedTotal == freezed
+      vestedTotal: freezed == vestedTotal
           ? _value.vestedTotal
           : vestedTotal // ignore: cast_nullable_to_non_nullable
               as Decimal?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -194,6 +198,7 @@ abstract class _$$_VestingStateCopyWith<$Res>
           _$_VestingState value, $Res Function(_$_VestingState) then) =
       __$$_VestingStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(ignore: true) List<Schedules> vestingSchedule,
       @JsonKey(ignore: true) List<dynamic> scheduleIDs,
@@ -216,101 +221,99 @@ abstract class _$$_VestingStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_VestingStateCopyWithImpl<$Res>
-    extends _$VestingStateCopyWithImpl<$Res>
+    extends _$VestingStateCopyWithImpl<$Res, _$_VestingState>
     implements _$$_VestingStateCopyWith<$Res> {
   __$$_VestingStateCopyWithImpl(
       _$_VestingState _value, $Res Function(_$_VestingState) _then)
-      : super(_value, (v) => _then(v as _$_VestingState));
+      : super(_value, _then);
 
-  @override
-  _$_VestingState get _value => super._value as _$_VestingState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? vestingSchedule = freezed,
-    Object? scheduleIDs = freezed,
-    Object? hasVestingSchedule = freezed,
+    Object? vestingSchedule = null,
+    Object? scheduleIDs = null,
+    Object? hasVestingSchedule = null,
     Object? currentAmountReleasable = freezed,
     Object? scheduleEnd = freezed,
     Object? scheduleStart = freezed,
     Object? displayScheduleID = freezed,
     Object? scheduleCount = freezed,
-    Object? isContractFullyVested = freezed,
+    Object? isContractFullyVested = null,
     Object? withdrawableAmount = freezed,
-    Object? cliffEndDays = freezed,
-    Object? endTimeDays = freezed,
-    Object? vestedChecker = freezed,
-    Object? isLoading = freezed,
-    Object? isRevoked = freezed,
+    Object? cliffEndDays = null,
+    Object? endTimeDays = null,
+    Object? vestedChecker = null,
+    Object? isLoading = null,
+    Object? isRevoked = null,
     Object? cliff = freezed,
     Object? vestedTotal = freezed,
   }) {
     return _then(_$_VestingState(
-      vestingSchedule: vestingSchedule == freezed
+      vestingSchedule: null == vestingSchedule
           ? _value.vestingSchedule
           : vestingSchedule // ignore: cast_nullable_to_non_nullable
               as List<Schedules>,
-      scheduleIDs: scheduleIDs == freezed
+      scheduleIDs: null == scheduleIDs
           ? _value.scheduleIDs
           : scheduleIDs // ignore: cast_nullable_to_non_nullable
               as List<dynamic>,
-      hasVestingSchedule: hasVestingSchedule == freezed
+      hasVestingSchedule: null == hasVestingSchedule
           ? _value.hasVestingSchedule
           : hasVestingSchedule // ignore: cast_nullable_to_non_nullable
               as bool,
-      currentAmountReleasable: currentAmountReleasable == freezed
+      currentAmountReleasable: freezed == currentAmountReleasable
           ? _value.currentAmountReleasable
           : currentAmountReleasable // ignore: cast_nullable_to_non_nullable
               as Decimal?,
-      scheduleEnd: scheduleEnd == freezed
+      scheduleEnd: freezed == scheduleEnd
           ? _value.scheduleEnd
           : scheduleEnd // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      scheduleStart: scheduleStart == freezed
+      scheduleStart: freezed == scheduleStart
           ? _value.scheduleStart
           : scheduleStart // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      displayScheduleID: displayScheduleID == freezed
+      displayScheduleID: freezed == displayScheduleID
           ? _value.displayScheduleID
           : displayScheduleID // ignore: cast_nullable_to_non_nullable
               as String?,
-      scheduleCount: scheduleCount == freezed
+      scheduleCount: freezed == scheduleCount
           ? _value.scheduleCount
           : scheduleCount // ignore: cast_nullable_to_non_nullable
               as BigInt?,
-      isContractFullyVested: isContractFullyVested == freezed
+      isContractFullyVested: null == isContractFullyVested
           ? _value.isContractFullyVested
           : isContractFullyVested // ignore: cast_nullable_to_non_nullable
               as bool,
-      withdrawableAmount: withdrawableAmount == freezed
+      withdrawableAmount: freezed == withdrawableAmount
           ? _value.withdrawableAmount
           : withdrawableAmount // ignore: cast_nullable_to_non_nullable
               as BigInt?,
-      cliffEndDays: cliffEndDays == freezed
+      cliffEndDays: null == cliffEndDays
           ? _value.cliffEndDays
           : cliffEndDays // ignore: cast_nullable_to_non_nullable
               as int,
-      endTimeDays: endTimeDays == freezed
+      endTimeDays: null == endTimeDays
           ? _value.endTimeDays
           : endTimeDays // ignore: cast_nullable_to_non_nullable
               as int,
-      vestedChecker: vestedChecker == freezed
+      vestedChecker: null == vestedChecker
           ? _value.vestedChecker
           : vestedChecker // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isRevoked: isRevoked == freezed
+      isRevoked: null == isRevoked
           ? _value.isRevoked
           : isRevoked // ignore: cast_nullable_to_non_nullable
               as bool,
-      cliff: cliff == freezed
+      cliff: freezed == cliff
           ? _value.cliff
           : cliff // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      vestedTotal: vestedTotal == freezed
+      vestedTotal: freezed == vestedTotal
           ? _value.vestedTotal
           : vestedTotal // ignore: cast_nullable_to_non_nullable
               as Decimal?,
@@ -411,33 +414,36 @@ class _$_VestingState extends _VestingState {
                 .equals(other.vestingSchedule, vestingSchedule) &&
             const DeepCollectionEquality()
                 .equals(other.scheduleIDs, scheduleIDs) &&
-            const DeepCollectionEquality()
-                .equals(other.hasVestingSchedule, hasVestingSchedule) &&
-            const DeepCollectionEquality().equals(
-                other.currentAmountReleasable, currentAmountReleasable) &&
-            const DeepCollectionEquality()
-                .equals(other.scheduleEnd, scheduleEnd) &&
-            const DeepCollectionEquality()
-                .equals(other.scheduleStart, scheduleStart) &&
-            const DeepCollectionEquality()
-                .equals(other.displayScheduleID, displayScheduleID) &&
-            const DeepCollectionEquality()
-                .equals(other.scheduleCount, scheduleCount) &&
-            const DeepCollectionEquality()
-                .equals(other.isContractFullyVested, isContractFullyVested) &&
-            const DeepCollectionEquality()
-                .equals(other.withdrawableAmount, withdrawableAmount) &&
-            const DeepCollectionEquality()
-                .equals(other.cliffEndDays, cliffEndDays) &&
-            const DeepCollectionEquality()
-                .equals(other.endTimeDays, endTimeDays) &&
-            const DeepCollectionEquality()
-                .equals(other.vestedChecker, vestedChecker) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isRevoked, isRevoked) &&
-            const DeepCollectionEquality().equals(other.cliff, cliff) &&
-            const DeepCollectionEquality()
-                .equals(other.vestedTotal, vestedTotal));
+            (identical(other.hasVestingSchedule, hasVestingSchedule) ||
+                other.hasVestingSchedule == hasVestingSchedule) &&
+            (identical(
+                    other.currentAmountReleasable, currentAmountReleasable) ||
+                other.currentAmountReleasable == currentAmountReleasable) &&
+            (identical(other.scheduleEnd, scheduleEnd) ||
+                other.scheduleEnd == scheduleEnd) &&
+            (identical(other.scheduleStart, scheduleStart) ||
+                other.scheduleStart == scheduleStart) &&
+            (identical(other.displayScheduleID, displayScheduleID) ||
+                other.displayScheduleID == displayScheduleID) &&
+            (identical(other.scheduleCount, scheduleCount) ||
+                other.scheduleCount == scheduleCount) &&
+            (identical(other.isContractFullyVested, isContractFullyVested) ||
+                other.isContractFullyVested == isContractFullyVested) &&
+            (identical(other.withdrawableAmount, withdrawableAmount) ||
+                other.withdrawableAmount == withdrawableAmount) &&
+            (identical(other.cliffEndDays, cliffEndDays) ||
+                other.cliffEndDays == cliffEndDays) &&
+            (identical(other.endTimeDays, endTimeDays) ||
+                other.endTimeDays == endTimeDays) &&
+            (identical(other.vestedChecker, vestedChecker) ||
+                other.vestedChecker == vestedChecker) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isRevoked, isRevoked) ||
+                other.isRevoked == isRevoked) &&
+            (identical(other.cliff, cliff) || other.cliff == cliff) &&
+            (identical(other.vestedTotal, vestedTotal) ||
+                other.vestedTotal == vestedTotal));
   }
 
   @JsonKey(ignore: true)
@@ -446,24 +452,25 @@ class _$_VestingState extends _VestingState {
       runtimeType,
       const DeepCollectionEquality().hash(vestingSchedule),
       const DeepCollectionEquality().hash(scheduleIDs),
-      const DeepCollectionEquality().hash(hasVestingSchedule),
-      const DeepCollectionEquality().hash(currentAmountReleasable),
-      const DeepCollectionEquality().hash(scheduleEnd),
-      const DeepCollectionEquality().hash(scheduleStart),
-      const DeepCollectionEquality().hash(displayScheduleID),
-      const DeepCollectionEquality().hash(scheduleCount),
-      const DeepCollectionEquality().hash(isContractFullyVested),
-      const DeepCollectionEquality().hash(withdrawableAmount),
-      const DeepCollectionEquality().hash(cliffEndDays),
-      const DeepCollectionEquality().hash(endTimeDays),
-      const DeepCollectionEquality().hash(vestedChecker),
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isRevoked),
-      const DeepCollectionEquality().hash(cliff),
-      const DeepCollectionEquality().hash(vestedTotal));
+      hasVestingSchedule,
+      currentAmountReleasable,
+      scheduleEnd,
+      scheduleStart,
+      displayScheduleID,
+      scheduleCount,
+      isContractFullyVested,
+      withdrawableAmount,
+      cliffEndDays,
+      endTimeDays,
+      vestedChecker,
+      isLoading,
+      isRevoked,
+      cliff,
+      vestedTotal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VestingStateCopyWith<_$_VestingState> get copyWith =>
       __$$_VestingStateCopyWithImpl<_$_VestingState>(this, _$identity);
 

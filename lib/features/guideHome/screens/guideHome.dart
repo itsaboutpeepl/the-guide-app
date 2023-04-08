@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/constants/theme.dart';
@@ -14,22 +15,22 @@ import 'package:guide_liverpool/redux/actions/home_page_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/homePageViewModel.dart';
 import 'package:guide_liverpool/services.dart';
 
-class GuideHomeScreen extends StatefulWidget {
-  const GuideHomeScreen({
+@RoutePage()
+class HomePage extends StatefulWidget {
+  const HomePage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<GuideHomeScreen> createState() => _GuideHomeScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _GuideHomeScreenState extends State<GuideHomeScreen> {
+class _HomePageState extends State<HomePage> {
   ScrollController? _scrollController;
 
   @override
   void initState() {
     super.initState();
-    vestingService.initAbi();
   }
 
   @override

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'videoArticle.dart';
 
@@ -40,7 +40,8 @@ mixin _$VideoArticle {
 abstract class $VideoArticleCopyWith<$Res> {
   factory $VideoArticleCopyWith(
           VideoArticle value, $Res Function(VideoArticle) then) =
-      _$VideoArticleCopyWithImpl<$Res>;
+      _$VideoArticleCopyWithImpl<$Res, VideoArticle>;
+  @useResult
   $Res call(
       {String title,
       String placeholderImageURL,
@@ -54,63 +55,66 @@ abstract class $VideoArticleCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$VideoArticleCopyWithImpl<$Res> implements $VideoArticleCopyWith<$Res> {
+class _$VideoArticleCopyWithImpl<$Res, $Val extends VideoArticle>
+    implements $VideoArticleCopyWith<$Res> {
   _$VideoArticleCopyWithImpl(this._value, this._then);
 
-  final VideoArticle _value;
   // ignore: unused_field
-  final $Res Function(VideoArticle) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? placeholderImageURL = freezed,
-    Object? videoURL = freezed,
-    Object? category = freezed,
-    Object? rewardAmount = freezed,
-    Object? postID = freezed,
-    Object? postURL = freezed,
-    Object? isUserWatched = freezed,
-    Object? rewardsEndDate = freezed,
+    Object? title = null,
+    Object? placeholderImageURL = null,
+    Object? videoURL = null,
+    Object? category = null,
+    Object? rewardAmount = null,
+    Object? postID = null,
+    Object? postURL = null,
+    Object? isUserWatched = null,
+    Object? rewardsEndDate = null,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      placeholderImageURL: placeholderImageURL == freezed
+      placeholderImageURL: null == placeholderImageURL
           ? _value.placeholderImageURL
           : placeholderImageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      videoURL: videoURL == freezed
+      videoURL: null == videoURL
           ? _value.videoURL
           : videoURL // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      rewardAmount: rewardAmount == freezed
+      rewardAmount: null == rewardAmount
           ? _value.rewardAmount
           : rewardAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      postID: postID == freezed
+      postID: null == postID
           ? _value.postID
           : postID // ignore: cast_nullable_to_non_nullable
               as String,
-      postURL: postURL == freezed
+      postURL: null == postURL
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
-      isUserWatched: isUserWatched == freezed
+      isUserWatched: null == isUserWatched
           ? _value.isUserWatched
           : isUserWatched // ignore: cast_nullable_to_non_nullable
               as bool,
-      rewardsEndDate: rewardsEndDate == freezed
+      rewardsEndDate: null == rewardsEndDate
           ? _value.rewardsEndDate
           : rewardsEndDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-    ));
+    ) as $Val);
   }
 }
 
@@ -121,6 +125,7 @@ abstract class _$$_VideoArticleCopyWith<$Res>
           _$_VideoArticle value, $Res Function(_$_VideoArticle) then) =
       __$$_VideoArticleCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String title,
       String placeholderImageURL,
@@ -135,61 +140,59 @@ abstract class _$$_VideoArticleCopyWith<$Res>
 
 /// @nodoc
 class __$$_VideoArticleCopyWithImpl<$Res>
-    extends _$VideoArticleCopyWithImpl<$Res>
+    extends _$VideoArticleCopyWithImpl<$Res, _$_VideoArticle>
     implements _$$_VideoArticleCopyWith<$Res> {
   __$$_VideoArticleCopyWithImpl(
       _$_VideoArticle _value, $Res Function(_$_VideoArticle) _then)
-      : super(_value, (v) => _then(v as _$_VideoArticle));
+      : super(_value, _then);
 
-  @override
-  _$_VideoArticle get _value => super._value as _$_VideoArticle;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? placeholderImageURL = freezed,
-    Object? videoURL = freezed,
-    Object? category = freezed,
-    Object? rewardAmount = freezed,
-    Object? postID = freezed,
-    Object? postURL = freezed,
-    Object? isUserWatched = freezed,
-    Object? rewardsEndDate = freezed,
+    Object? title = null,
+    Object? placeholderImageURL = null,
+    Object? videoURL = null,
+    Object? category = null,
+    Object? rewardAmount = null,
+    Object? postID = null,
+    Object? postURL = null,
+    Object? isUserWatched = null,
+    Object? rewardsEndDate = null,
   }) {
     return _then(_$_VideoArticle(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      placeholderImageURL: placeholderImageURL == freezed
+      placeholderImageURL: null == placeholderImageURL
           ? _value.placeholderImageURL
           : placeholderImageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      videoURL: videoURL == freezed
+      videoURL: null == videoURL
           ? _value.videoURL
           : videoURL // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      rewardAmount: rewardAmount == freezed
+      rewardAmount: null == rewardAmount
           ? _value.rewardAmount
           : rewardAmount // ignore: cast_nullable_to_non_nullable
               as int,
-      postID: postID == freezed
+      postID: null == postID
           ? _value.postID
           : postID // ignore: cast_nullable_to_non_nullable
               as String,
-      postURL: postURL == freezed
+      postURL: null == postURL
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
-      isUserWatched: isUserWatched == freezed
+      isUserWatched: null == isUserWatched
           ? _value.isUserWatched
           : isUserWatched // ignore: cast_nullable_to_non_nullable
               as bool,
-      rewardsEndDate: rewardsEndDate == freezed
+      rewardsEndDate: null == rewardsEndDate
           ? _value.rewardsEndDate
           : rewardsEndDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
@@ -245,37 +248,39 @@ class _$_VideoArticle extends _VideoArticle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VideoArticle &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality()
-                .equals(other.placeholderImageURL, placeholderImageURL) &&
-            const DeepCollectionEquality().equals(other.videoURL, videoURL) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.placeholderImageURL, placeholderImageURL) ||
+                other.placeholderImageURL == placeholderImageURL) &&
+            (identical(other.videoURL, videoURL) ||
+                other.videoURL == videoURL) &&
             const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality()
-                .equals(other.rewardAmount, rewardAmount) &&
-            const DeepCollectionEquality().equals(other.postID, postID) &&
-            const DeepCollectionEquality().equals(other.postURL, postURL) &&
-            const DeepCollectionEquality()
-                .equals(other.isUserWatched, isUserWatched) &&
-            const DeepCollectionEquality()
-                .equals(other.rewardsEndDate, rewardsEndDate));
+            (identical(other.rewardAmount, rewardAmount) ||
+                other.rewardAmount == rewardAmount) &&
+            (identical(other.postID, postID) || other.postID == postID) &&
+            (identical(other.postURL, postURL) || other.postURL == postURL) &&
+            (identical(other.isUserWatched, isUserWatched) ||
+                other.isUserWatched == isUserWatched) &&
+            (identical(other.rewardsEndDate, rewardsEndDate) ||
+                other.rewardsEndDate == rewardsEndDate));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(placeholderImageURL),
-      const DeepCollectionEquality().hash(videoURL),
+      title,
+      placeholderImageURL,
+      videoURL,
       const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(rewardAmount),
-      const DeepCollectionEquality().hash(postID),
-      const DeepCollectionEquality().hash(postURL),
-      const DeepCollectionEquality().hash(isUserWatched),
-      const DeepCollectionEquality().hash(rewardsEndDate));
+      rewardAmount,
+      postID,
+      postURL,
+      isUserWatched,
+      rewardsEndDate);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_VideoArticleCopyWith<_$_VideoArticle> get copyWith =>
       __$$_VideoArticleCopyWithImpl<_$_VideoArticle>(this, _$identity);
 

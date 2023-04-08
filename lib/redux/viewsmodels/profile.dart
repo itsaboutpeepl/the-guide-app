@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:redux/redux.dart';
 
 class ProfileViewModel extends Equatable {
@@ -10,13 +9,11 @@ class ProfileViewModel extends Equatable {
   final String avatarUrl;
   final String displayName;
   final void Function(String displayName) updateDisplayName;
-  final void Function(ImageSource source) editAvatar;
 
   ProfileViewModel({
     required this.phone,
     required this.walletAddress,
     required this.displayName,
-    required this.editAvatar,
     required this.avatarUrl,
     required this.updateDisplayName,
   });
@@ -27,9 +24,6 @@ class ProfileViewModel extends Equatable {
       phone: store.state.userState.phoneNumber,
       avatarUrl: store.state.userState.avatarUrl,
       walletAddress: store.state.userState.walletAddress,
-      editAvatar: (source) {
-        store.dispatch(updateUserAvatarCall(source));
-      },
       updateDisplayName: (displayName) {
         store.dispatch(updateDisplayNameCall(displayName));
       },

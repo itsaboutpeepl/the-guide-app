@@ -2,12 +2,11 @@ import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:guide_liverpool/common/di/di.dart';
-import 'package:guide_liverpool/common/router/routes.gr.dart';
+import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/services/apis/news.dart';
 import 'package:guide_liverpool/services/apis/peeplMedia.dart';
 import 'package:guide_liverpool/services/apis/peeplPay.dart';
 import 'package:guide_liverpool/services/apis/stripePay.dart';
-import 'package:guide_liverpool/services/apis/vesting.dart';
 import 'package:guide_liverpool/utils/onboard/Istrategy.dart';
 import 'package:guide_liverpool/utils/stripe.dart';
 import 'package:phone_number/phone_number.dart';
@@ -17,8 +16,6 @@ final RootRouter rootRouter = getIt<RootRouter>();
 final ChargeApi chargeApi = getIt<ChargeApi>();
 
 final NewsService newsService = getIt<NewsService>();
-
-final VestingService vestingService = getIt<VestingService>();
 
 final PeeplMediaService peeplMediaService = getIt<PeeplMediaService>();
 

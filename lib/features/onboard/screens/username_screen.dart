@@ -12,7 +12,8 @@ import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 import 'package:guide_liverpool/utils/extensions.dart';
 
-class UserNameScreen extends StatelessWidget {
+@RoutePage()
+class SelectUsernamePage extends StatelessWidget {
   final displayNameController = TextEditingController(text: "");
 
   @override
@@ -112,7 +113,7 @@ class UserNameScreen extends StatelessWidget {
                           if (displayNameController.text.isNotEmpty) {
                             setDisplayName(
                                 displayNameController.text.capitalize());
-                            context.router.push(ChooseSecurityOption());
+                            context.router.push(SecurityOptionRoute());
                           }
                         },
                       ),

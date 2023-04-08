@@ -9,18 +9,19 @@ import 'package:guide_liverpool/models/user_state.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/backup.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({
+@RoutePage()
+class SplashPage extends StatefulWidget {
+  const SplashPage({
     Key? key,
     this.onLoginResult,
   }) : super(key: key);
   final void Function(bool isLoggedIn)? onLoginResult;
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SplashPage> createState() => _SplashPageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashPageState extends State<SplashPage> {
   late Flushbar<bool> flush;
 
   @override
@@ -32,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
         final String jwtToken = store.state.userState.jwtToken;
         final bool isLoggedOut = store.state.userState.isLoggedOut;
         if (privateKey.isEmpty || jwtToken.isEmpty || isLoggedOut) {
-          context.router.replaceAll([const OnBoardScreen()]);
+          context.router.replaceAll([const OnboardRoute()]);
           widget.onLoginResult?.call(false);
         } else {
           final UserState userState = store.state.userState;
@@ -43,13 +44,13 @@ class _SplashScreenState extends State<SplashScreen> {
           }
           if (BiometricAuth.faceID == userState.authType ||
               BiometricAuth.touchID == userState.authType) {
-            context.router.replaceAll([const MainScreen()]);
+            context.router.replaceAll([const MainRoute()]);
             widget.onLoginResult?.call(true);
           } else if (userState.authType == BiometricAuth.pincode) {
-            context.router.replaceAll([const MainScreen()]);
+            context.router.replaceAll([const MainRoute()]);
             widget.onLoginResult?.call(true);
           } else {
-            context.router.replaceAll([const MainScreen()]);
+            context.router.replaceAll([const MainRoute()]);
             widget.onLoginResult?.call(true);
           }
         }

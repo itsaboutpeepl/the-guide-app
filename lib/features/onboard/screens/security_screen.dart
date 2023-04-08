@@ -11,14 +11,15 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 
-class ChooseSecurityOption extends StatefulWidget {
-  const ChooseSecurityOption({Key? key}) : super(key: key);
+@RoutePage()
+class SecurityOptionPage extends StatefulWidget {
+  const SecurityOptionPage({Key? key}) : super(key: key);
 
   @override
-  State<ChooseSecurityOption> createState() => _ChooseSecurityOptionState();
+  State<SecurityOptionPage> createState() => _SecurityOptionPageState();
 }
 
-class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
+class _SecurityOptionPageState extends State<SecurityOptionPage> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<BiometricAuth>(
@@ -173,7 +174,7 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                                 snapshot.requireData,
                                               );
                                               context.router.replaceAll(
-                                                  [const MainScreen()]);
+                                                  [const MainRoute()]);
                                             }
                                           },
                                         );
@@ -232,7 +233,7 @@ class _ChooseSecurityOptionState extends State<ChooseSecurityOption> {
                                                 SetUpPinCodeScreen(
                                               onSuccess: () {
                                                 context.router.replaceAll(
-                                                    [const MainScreen()]);
+                                                    [const MainRoute()]);
                                               },
                                             ),
                                           ),

@@ -9,7 +9,8 @@ import 'package:guide_liverpool/redux/viewsmodels/backup.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 
-class DoneBackup extends StatelessWidget {
+@RoutePage()
+class BackupCompletedPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(

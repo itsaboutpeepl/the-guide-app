@@ -28,7 +28,7 @@ class _CreateAccountAppBarState extends State<CreateAccountAppBar> {
                 ),
                 sliver: SliverToBoxAdapter(
                   child: GestureDetector(
-                    onTap: () => context.router.navigate(OnBoardScreen()),
+                    onTap: () => context.router.navigate(OnboardRoute()),
                     child: Card(
                       color: Theme.of(context).primaryColor,
                       shape: RoundedRectangleBorder(
@@ -39,7 +39,8 @@ class _CreateAccountAppBarState extends State<CreateAccountAppBar> {
                       child: SizedBox(
                         width: double.infinity,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10.0, vertical: 20.0),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

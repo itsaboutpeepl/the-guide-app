@@ -5,7 +5,6 @@ import 'package:collection/collection.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:guide_liverpool/common/di/di.dart';
-import 'package:guide_liverpool/constants/analytics_events.dart';
 import 'package:guide_liverpool/constants/analytics_props.dart';
 import 'package:guide_liverpool/constants/variables.dart';
 import 'package:guide_liverpool/models/actions/actions.dart';
@@ -250,7 +249,7 @@ ThunkAction<AppState> enablePushNotifications(String walletAddress) {
       await Sentry.captureException(
         Exception('ERROR - Enable push notifications: $e'),
         stackTrace: s,
-        hint: 'ERROR - Enable push notifications',
+        hint: Hint.withMap({'error': 'ERROR - Enable push notifications'}),
       );
     }
   };
@@ -312,7 +311,7 @@ ThunkAction<AppState> startFetchTokensBalances() {
                 await Sentry.captureException(
                   Exception('Error fetch tokens balances - $e'),
                   stackTrace: s,
-                  hint: 'Error fetch tokens balances',
+                  hint: Hint.withMap({'error': 'Error fetch tokens balances'}),
                 );
               }
             } else {
@@ -355,7 +354,7 @@ ThunkAction<AppState> createAccountWalletCall() {
       await Sentry.captureException(
         Exception('ERROR - createAccountWalletCal - $e'),
         stackTrace: s,
-        hint: 'ERROR - createAccountWalletCal',
+        hint: Hint.withMap({'error': 'ERROR - createAccountWalletCal'}),
       );
     }
   };
@@ -420,7 +419,7 @@ ThunkAction<AppState> fetchTokenList() {
       await Sentry.captureException(
         Exception('ERROR - fetchTokenList - $e'),
         stackTrace: s,
-        hint: 'ERROR - fetchTokenList',
+        hint: Hint.withMap({'error': 'ERROR - fetchTokenList'}),
       );
     }
   };
@@ -481,7 +480,7 @@ ThunkAction<AppState> sendNativeTokenCall(
       await Sentry.captureException(
         Exception('ERROR - sendNativeTokenCall - $e'),
         stackTrace: s,
-        hint: 'ERROR - sendNativeTokenCall',
+        hint: Hint.withMap({'error': 'ERROR - sendNativeTokenCall'}),
       );
     }
   };
@@ -541,7 +540,7 @@ ThunkAction<AppState> sendTokenCall(
       await Sentry.captureException(
         Exception('ERROR - sendTokenCall - $e'),
         stackTrace: s,
-        hint: 'ERROR - sendTokenCall',
+        hint: Hint.withMap({'error': 'ERROR - sendTokenCall'}),
       );
     }
   };
@@ -590,7 +589,7 @@ ThunkAction<AppState> getWalletActionsCall({
       await Sentry.captureException(
         Exception('ERROR - getWalletActionsCall - $e'),
         stackTrace: s,
-        hint: 'ERROR - getWalletActionsCall',
+        hint: Hint.withMap({'error': 'ERROR - getWalletActionsCall'}),
       );
     }
   };
@@ -640,7 +639,8 @@ ThunkAction<AppState> getTokenPriceCall(Token token) {
       await Sentry.captureException(
         Exception('Error getTokenPriceCall for ${token.name}'),
         stackTrace: s,
-        hint: 'Error getTokenPriceCall for ${token.name}',
+        hint: Hint.withMap(
+            {'error': 'Error getTokenPriceCall for ${token.name}'}),
       );
     }
   };
@@ -690,8 +690,10 @@ ThunkAction<AppState> getTokenIntervalStatsCall(
           'Error getTokenIntervalStatsCall - ${token.name} - ${e.toString()} ',
         ),
         stackTrace: s,
-        hint:
-            'Error getTokenIntervalStatsCall - ${token.name} - ${e.toString()} ',
+        hint: Hint.withMap({
+          'error':
+              'Error getTokenIntervalStatsCall - ${token.name} - ${e.toString()} '
+        }),
       );
     }
   };
@@ -739,7 +741,8 @@ ThunkAction<AppState> getTokenWalletActionsCall(Token token) {
       await Sentry.captureException(
         Exception('Error getTokenWalletActionsCall for ${token.name}'),
         stackTrace: s,
-        hint: 'Error getTokenWalletActionsCall for ${token.name}',
+        hint: Hint.withMap(
+            {'error': 'Error getTokenWalletActionsCall for ${token.name}'}),
       );
     }
   };

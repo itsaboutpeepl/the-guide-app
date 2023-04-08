@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/pageViewDetailArticle.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
 import 'package:intl/intl.dart';
 
@@ -28,7 +27,7 @@ class _FeaturedPostState extends State<FeaturedPost> {
       padding: EdgeInsets.only(right: 15, left: 15, bottom: 55),
       child: InkWell(
         onTap: () => {
-          showBarModalBottomSheet(
+          showModalBottomSheet(
             useRootNavigator: true,
             backgroundColor: Colors.white,
             context: context,

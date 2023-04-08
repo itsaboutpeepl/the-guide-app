@@ -1,60 +1,106 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
-import 'package:guide_liverpool/features/account/router/router.dart';
-import 'package:guide_liverpool/features/account/screens/settings_screen_no_acc.dart';
-import 'package:guide_liverpool/features/guideHome/router/router.dart';
-import 'package:guide_liverpool/features/guideNews/router/router.dart';
-import 'package:guide_liverpool/features/network/router/router.dart';
-import 'package:guide_liverpool/features/screens/main_screen.dart';
-import 'package:guide_liverpool/features/onboard/screens/security_screen.dart';
-import 'package:guide_liverpool/features/onboard/screens/restore_wallet_screen.dart';
-import 'package:guide_liverpool/features/onboard/screens/username_screen.dart';
-import 'package:guide_liverpool/features/onboard/screens/signup_screen.dart';
-import 'package:guide_liverpool/features/onboard/screens/verify_screen.dart';
-import 'package:guide_liverpool/features/screens/main_screen_no_acc.dart';
-import 'package:guide_liverpool/features/screens/on_board_screen.dart';
-import 'package:guide_liverpool/features/screens/pincode_screen.dart';
-import 'package:guide_liverpool/features/screens/splash_screen.dart';
-import 'package:guide_liverpool/features/screens/webview_screen.dart';
-import 'package:guide_liverpool/features/topup/router/topup_router.dart';
+import 'package:guide_liverpool/common/router/routes.gr.dart';
 
 export 'routes.gr.dart';
 
-@MaterialAutoRouter(
-  replaceInRouteName: 'Page,Route',
-  routes: <AutoRoute>[
-    AutoRoute(page: SplashScreen, initial: true),
-    AutoRoute(page: ChooseSecurityOption),
-    AutoRoute(page: PinCodeScreen),
-    AutoRoute(page: RestoreFromBackupScreen),
-    AutoRoute(page: OnBoardScreen),
-    AutoRoute(page: SignUpScreen),
-    AutoRoute(page: VerifyPhoneNumber),
-    AutoRoute(page: UserNameScreen),
-    AutoRoute(page: WebViewScreen, name: 'webview', fullscreenDialog: true),
+@AutoRouterConfig()
+class RootRouter extends $RootRouter {
+  @override
+  RouteType get defaultRouteType => RouteType.material();
+
+  @override
+  final List<AutoRoute> routes = [
+    AutoRoute(page: SplashRoute.page, path: '/'),
+    AutoRoute(page: SecurityOptionRoute.page),
+    AutoRoute(page: PincodeRoute.page),
+    AutoRoute(page: RestoreFromBackupRoute.page),
+    AutoRoute(page: OnboardRoute.page),
+    AutoRoute(page: SignupRoute.page),
+    AutoRoute(page: VerifyPhoneRoute.page),
+    AutoRoute(page: SelectUsernameRoute.page),
+    AutoRoute(page: WebViewRoute.page),
     AutoRoute(
-      page: MainScreenNoAcc,
+      page: MainRouteNoAccRoute.page,
       children: [
-        guideHomeTab,
-        newsTab,
         AutoRoute(
-          page: SettingsScreenNoAccount,
-          name: 'settingsScreenNoAcc',
+          page: HomeRoute.page,
+          children: [
+            AutoRoute(page: EventsRoute.page),
+          ],
+        ),
+        AutoRoute(page: NewsRoute.page),
+      ],
+    ),
+    AutoRoute(
+      page: MainRoute.page,
+      guards: [LoginAuthGuard()],
+      children: [
+        AutoRoute(
+          page: HomeRoute.page,
+          children: [
+            AutoRoute(page: EventsRoute.page),
+          ],
+        ),
+        AutoRoute(page: NewsRoute.page),
+        AutoRoute(
+          page: AccountRoute.page,
+          children: [
+            AutoRoute(
+              page: MnemonicRoute.page,
+            ),
+            AutoRoute(
+              page: VerifyMnemonicRoute.page,
+            ),
+            AutoRoute(
+              page: BackupCompletedRoute.page,
+            ),
+            AutoRoute(
+              page: SettingsRoute.page,
+            ),
+            AutoRoute(
+              page: ProtectWalletRoute.page,
+            ),
+            AutoRoute(
+              page: ProfileRoute.page,
+            ),
+            AutoRoute(
+              page: TopupRoute.page,
+            ),
+          ],
         ),
       ],
     ),
-    AutoRoute(
-      page: MainScreen,
-      guards: [AuthGuard],
-      children: [
-        guideHomeTab,
-        newsTab,
-        topupTab,
-        accountTab,
-        networkScreenTab,
-      ],
-    ),
-    RedirectRoute(path: '*', redirectTo: '/'),
-  ],
-)
-class $RootRouter {}
+    RedirectRoute(path: '*', redirectTo: '/')
+  ];
+}
+
+
+// @MaterialAutoRouter(
+//   replaceInRouteName: 'Route,Route',
+//   routes: <AutoRoute>[
+//     AutoRoute(
+//       page: MainScreenNoAcc,
+//       children: [
+//         guideHomeTab,
+//         newsTab,
+//         AutoRoute(
+//           page: SettingsScreenNoAccount,
+//           name: 'settingsScreenNoAcc',
+//         ),
+//       ],
+//     ),
+//     AutoRoute(
+//       page: MainScreen,
+//       guards: [AuthGuard],
+//       children: [
+//         guideHomeTab,
+//         newsTab,
+//         topupTab,
+//         accountTab,
+//         networkScreenTab,
+//       ],
+//     ),
+//     RedirectRoute(path: '*', redirectTo: '/'),
+//   ],
+// )

@@ -12,7 +12,8 @@ import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/services.dart';
 
-class SettingsScreen extends StatelessWidget {
+@RoutePage()
+class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MyScaffold(
       title: I10n.of(context).settings,
@@ -68,7 +69,7 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 onTap: () {
                   logout();
-                  context.router.replace(OnBoardScreen());
+                  context.router.replace(OnboardRoute());
                 },
                 title: Row(
                   children: <Widget>[

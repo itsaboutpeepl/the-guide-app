@@ -8,12 +8,13 @@ import 'package:guide_liverpool/redux/viewsmodels/backup.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class PinCodeScreen extends StatefulWidget {
+@RoutePage()
+class PincodePage extends StatefulWidget {
   @override
-  _PinCodeScreenState createState() => _PinCodeScreenState();
+  _PincodePageState createState() => _PincodePageState();
 }
 
-class _PinCodeScreenState extends State<PinCodeScreen> {
+class _PincodePageState extends State<PincodePage> {
   final pincodeController = TextEditingController(text: "");
   String currentText = "";
   late Flushbar flush;
@@ -119,7 +120,7 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                                 ),
                                 onCompleted: (value) {
                                   if (viewModel.pincode == value) {
-                                    context.router.replaceAll([MainScreen()]);
+                                    context.router.replaceAll([MainRoute()]);
                                     pincodeController.clear();
                                   } else {
                                     flush = Flushbar<bool>(

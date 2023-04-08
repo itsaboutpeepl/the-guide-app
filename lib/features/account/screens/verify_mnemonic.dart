@@ -58,12 +58,13 @@ class Word extends StatelessWidget {
   }
 }
 
-class VerifyMnemonic extends StatefulWidget {
+@RoutePage()
+class VerifyMnemonicPage extends StatefulWidget {
   @override
-  _VerifyMnemonicState createState() => _VerifyMnemonicState();
+  _VerifyMnemonicPageState createState() => _VerifyMnemonicPageState();
 }
 
-class _VerifyMnemonicState extends State<VerifyMnemonic> {
+class _VerifyMnemonicPageState extends State<VerifyMnemonicPage> {
   List<int> selectedWordsNum = <int>[];
   final _formKey = GlobalKey<FormState>();
 
@@ -158,7 +159,7 @@ class _VerifyMnemonicState extends State<VerifyMnemonic> {
                           label: I10n.of(context).next_button,
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              context.router.push(DoneBackup());
+                              context.router.push(BackupCompletedRoute());
                             }
                           },
                         ),

@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'cash_wallet_state.dart';
 
@@ -41,7 +41,8 @@ mixin _$CashWalletState {
 abstract class $CashWalletStateCopyWith<$Res> {
   factory $CashWalletStateCopyWith(
           CashWalletState value, $Res Function(CashWalletState) then) =
-      _$CashWalletStateCopyWithImpl<$Res>;
+      _$CashWalletStateCopyWithImpl<$Res, CashWalletState>;
+  @useResult
   $Res call(
       {@JsonKey(fromJson: tokensFromJson) Map<String, Token> tokens,
       @JsonKey(fromJson: walletActionsFromJson) WalletActions? walletActions,
@@ -53,54 +54,57 @@ abstract class $CashWalletStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CashWalletStateCopyWithImpl<$Res>
+class _$CashWalletStateCopyWithImpl<$Res, $Val extends CashWalletState>
     implements $CashWalletStateCopyWith<$Res> {
   _$CashWalletStateCopyWithImpl(this._value, this._then);
 
-  final CashWalletState _value;
   // ignore: unused_field
-  final $Res Function(CashWalletState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tokens = freezed,
+    Object? tokens = null,
     Object? walletActions = freezed,
-    Object? isTransfersFetchingStarted = freezed,
-    Object? isFetchingBalances = freezed,
-    Object? wcSessionStores = freezed,
+    Object? isTransfersFetchingStarted = null,
+    Object? isFetchingBalances = null,
+    Object? wcSessionStores = null,
   }) {
     return _then(_value.copyWith(
-      tokens: tokens == freezed
+      tokens: null == tokens
           ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
               as Map<String, Token>,
-      walletActions: walletActions == freezed
+      walletActions: freezed == walletActions
           ? _value.walletActions
           : walletActions // ignore: cast_nullable_to_non_nullable
               as WalletActions?,
-      isTransfersFetchingStarted: isTransfersFetchingStarted == freezed
+      isTransfersFetchingStarted: null == isTransfersFetchingStarted
           ? _value.isTransfersFetchingStarted
           : isTransfersFetchingStarted // ignore: cast_nullable_to_non_nullable
               as bool,
-      isFetchingBalances: isFetchingBalances == freezed
+      isFetchingBalances: null == isFetchingBalances
           ? _value.isFetchingBalances
           : isFetchingBalances // ignore: cast_nullable_to_non_nullable
               as bool,
-      wcSessionStores: wcSessionStores == freezed
+      wcSessionStores: null == wcSessionStores
           ? _value.wcSessionStores
           : wcSessionStores // ignore: cast_nullable_to_non_nullable
               as List<WCSessionStore>,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $WalletActionsCopyWith<$Res>? get walletActions {
     if (_value.walletActions == null) {
       return null;
     }
 
     return $WalletActionsCopyWith<$Res>(_value.walletActions!, (value) {
-      return _then(_value.copyWith(walletActions: value));
+      return _then(_value.copyWith(walletActions: value) as $Val);
     });
   }
 }
@@ -112,6 +116,7 @@ abstract class _$$_CashWalletStateCopyWith<$Res>
           _$_CashWalletState value, $Res Function(_$_CashWalletState) then) =
       __$$_CashWalletStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@JsonKey(fromJson: tokensFromJson) Map<String, Token> tokens,
       @JsonKey(fromJson: walletActionsFromJson) WalletActions? walletActions,
@@ -125,41 +130,39 @@ abstract class _$$_CashWalletStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_CashWalletStateCopyWithImpl<$Res>
-    extends _$CashWalletStateCopyWithImpl<$Res>
+    extends _$CashWalletStateCopyWithImpl<$Res, _$_CashWalletState>
     implements _$$_CashWalletStateCopyWith<$Res> {
   __$$_CashWalletStateCopyWithImpl(
       _$_CashWalletState _value, $Res Function(_$_CashWalletState) _then)
-      : super(_value, (v) => _then(v as _$_CashWalletState));
+      : super(_value, _then);
 
-  @override
-  _$_CashWalletState get _value => super._value as _$_CashWalletState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? tokens = freezed,
+    Object? tokens = null,
     Object? walletActions = freezed,
-    Object? isTransfersFetchingStarted = freezed,
-    Object? isFetchingBalances = freezed,
-    Object? wcSessionStores = freezed,
+    Object? isTransfersFetchingStarted = null,
+    Object? isFetchingBalances = null,
+    Object? wcSessionStores = null,
   }) {
     return _then(_$_CashWalletState(
-      tokens: tokens == freezed
+      tokens: null == tokens
           ? _value.tokens
           : tokens // ignore: cast_nullable_to_non_nullable
               as Map<String, Token>,
-      walletActions: walletActions == freezed
+      walletActions: freezed == walletActions
           ? _value.walletActions
           : walletActions // ignore: cast_nullable_to_non_nullable
               as WalletActions?,
-      isTransfersFetchingStarted: isTransfersFetchingStarted == freezed
+      isTransfersFetchingStarted: null == isTransfersFetchingStarted
           ? _value.isTransfersFetchingStarted
           : isTransfersFetchingStarted // ignore: cast_nullable_to_non_nullable
               as bool,
-      isFetchingBalances: isFetchingBalances == freezed
+      isFetchingBalances: null == isFetchingBalances
           ? _value.isFetchingBalances
           : isFetchingBalances // ignore: cast_nullable_to_non_nullable
               as bool,
-      wcSessionStores: wcSessionStores == freezed
+      wcSessionStores: null == wcSessionStores
           ? _value.wcSessionStores
           : wcSessionStores // ignore: cast_nullable_to_non_nullable
               as List<WCSessionStore>,
@@ -208,12 +211,14 @@ class _$_CashWalletState extends _CashWalletState {
         (other.runtimeType == runtimeType &&
             other is _$_CashWalletState &&
             const DeepCollectionEquality().equals(other.tokens, tokens) &&
-            const DeepCollectionEquality()
-                .equals(other.walletActions, walletActions) &&
-            const DeepCollectionEquality().equals(
-                other.isTransfersFetchingStarted, isTransfersFetchingStarted) &&
-            const DeepCollectionEquality()
-                .equals(other.isFetchingBalances, isFetchingBalances) &&
+            (identical(other.walletActions, walletActions) ||
+                other.walletActions == walletActions) &&
+            (identical(other.isTransfersFetchingStarted,
+                    isTransfersFetchingStarted) ||
+                other.isTransfersFetchingStarted ==
+                    isTransfersFetchingStarted) &&
+            (identical(other.isFetchingBalances, isFetchingBalances) ||
+                other.isFetchingBalances == isFetchingBalances) &&
             const DeepCollectionEquality()
                 .equals(other.wcSessionStores, wcSessionStores));
   }
@@ -223,13 +228,14 @@ class _$_CashWalletState extends _CashWalletState {
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(tokens),
-      const DeepCollectionEquality().hash(walletActions),
-      const DeepCollectionEquality().hash(isTransfersFetchingStarted),
-      const DeepCollectionEquality().hash(isFetchingBalances),
+      walletActions,
+      isTransfersFetchingStarted,
+      isFetchingBalances,
       const DeepCollectionEquality().hash(wcSessionStores));
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CashWalletStateCopyWith<_$_CashWalletState> get copyWith =>
       __$$_CashWalletStateCopyWithImpl<_$_CashWalletState>(this, _$identity);
 

@@ -12,7 +12,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 
-class ProtectYourWallet extends StatelessWidget {
+@RoutePage()
+class ProtectWalletPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
@@ -35,7 +36,7 @@ class ProtectYourWallet extends StatelessWidget {
                     bottom: 5,
                   ),
                   onTap: () {
-                    context.router.push(ShowMnemonic());
+                    context.router.push(MnemonicRoute());
                   },
                   title: Row(
                     children: <Widget>[

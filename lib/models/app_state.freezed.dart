@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'app_state.dart';
 
@@ -28,8 +28,6 @@ mixin _$AppState {
   HomePageState get homePageState => throw _privateConstructorUsedError;
   @NewsStateConverter()
   NewsState get newsState => throw _privateConstructorUsedError;
-  @VestingStateConverter()
-  VestingState get vestingState => throw _privateConstructorUsedError;
   @NetworkTabStateConverter()
   NetworkTabState get networkTabState => throw _privateConstructorUsedError;
 
@@ -42,107 +40,102 @@ mixin _$AppState {
 /// @nodoc
 abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
-      _$AppStateCopyWithImpl<$Res>;
+      _$AppStateCopyWithImpl<$Res, AppState>;
+  @useResult
   $Res call(
       {@UserStateConverter() UserState userState,
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState,
-      @VestingStateConverter() VestingState vestingState,
       @NetworkTabStateConverter() NetworkTabState networkTabState});
 
   $UserStateCopyWith<$Res> get userState;
   $CashWalletStateCopyWith<$Res> get cashWalletState;
   $HomePageStateCopyWith<$Res> get homePageState;
   $NewsStateCopyWith<$Res> get newsState;
-  $VestingStateCopyWith<$Res> get vestingState;
   $NetworkTabStateCopyWith<$Res> get networkTabState;
 }
 
 /// @nodoc
-class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
+class _$AppStateCopyWithImpl<$Res, $Val extends AppState>
+    implements $AppStateCopyWith<$Res> {
   _$AppStateCopyWithImpl(this._value, this._then);
 
-  final AppState _value;
   // ignore: unused_field
-  final $Res Function(AppState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userState = freezed,
-    Object? cashWalletState = freezed,
-    Object? homePageState = freezed,
-    Object? newsState = freezed,
-    Object? vestingState = freezed,
-    Object? networkTabState = freezed,
+    Object? userState = null,
+    Object? cashWalletState = null,
+    Object? homePageState = null,
+    Object? newsState = null,
+    Object? networkTabState = null,
   }) {
     return _then(_value.copyWith(
-      userState: userState == freezed
+      userState: null == userState
           ? _value.userState
           : userState // ignore: cast_nullable_to_non_nullable
               as UserState,
-      cashWalletState: cashWalletState == freezed
+      cashWalletState: null == cashWalletState
           ? _value.cashWalletState
           : cashWalletState // ignore: cast_nullable_to_non_nullable
               as CashWalletState,
-      homePageState: homePageState == freezed
+      homePageState: null == homePageState
           ? _value.homePageState
           : homePageState // ignore: cast_nullable_to_non_nullable
               as HomePageState,
-      newsState: newsState == freezed
+      newsState: null == newsState
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
               as NewsState,
-      vestingState: vestingState == freezed
-          ? _value.vestingState
-          : vestingState // ignore: cast_nullable_to_non_nullable
-              as VestingState,
-      networkTabState: networkTabState == freezed
+      networkTabState: null == networkTabState
           ? _value.networkTabState
           : networkTabState // ignore: cast_nullable_to_non_nullable
               as NetworkTabState,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $UserStateCopyWith<$Res> get userState {
     return $UserStateCopyWith<$Res>(_value.userState, (value) {
-      return _then(_value.copyWith(userState: value));
+      return _then(_value.copyWith(userState: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $CashWalletStateCopyWith<$Res> get cashWalletState {
     return $CashWalletStateCopyWith<$Res>(_value.cashWalletState, (value) {
-      return _then(_value.copyWith(cashWalletState: value));
+      return _then(_value.copyWith(cashWalletState: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $HomePageStateCopyWith<$Res> get homePageState {
     return $HomePageStateCopyWith<$Res>(_value.homePageState, (value) {
-      return _then(_value.copyWith(homePageState: value));
+      return _then(_value.copyWith(homePageState: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $NewsStateCopyWith<$Res> get newsState {
     return $NewsStateCopyWith<$Res>(_value.newsState, (value) {
-      return _then(_value.copyWith(newsState: value));
+      return _then(_value.copyWith(newsState: value) as $Val);
     });
   }
 
   @override
-  $VestingStateCopyWith<$Res> get vestingState {
-    return $VestingStateCopyWith<$Res>(_value.vestingState, (value) {
-      return _then(_value.copyWith(vestingState: value));
-    });
-  }
-
-  @override
+  @pragma('vm:prefer-inline')
   $NetworkTabStateCopyWith<$Res> get networkTabState {
     return $NetworkTabStateCopyWith<$Res>(_value.networkTabState, (value) {
-      return _then(_value.copyWith(networkTabState: value));
+      return _then(_value.copyWith(networkTabState: value) as $Val);
     });
   }
 }
@@ -153,12 +146,12 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
           _$_AppState value, $Res Function(_$_AppState) then) =
       __$$_AppStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {@UserStateConverter() UserState userState,
       @CashWalletStateConverter() CashWalletState cashWalletState,
       @HomePageStateConverter() HomePageState homePageState,
       @NewsStateConverter() NewsState newsState,
-      @VestingStateConverter() VestingState vestingState,
       @NetworkTabStateConverter() NetworkTabState networkTabState});
 
   @override
@@ -170,52 +163,44 @@ abstract class _$$_AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
   @override
   $NewsStateCopyWith<$Res> get newsState;
   @override
-  $VestingStateCopyWith<$Res> get vestingState;
-  @override
   $NetworkTabStateCopyWith<$Res> get networkTabState;
 }
 
 /// @nodoc
-class __$$_AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
+class __$$_AppStateCopyWithImpl<$Res>
+    extends _$AppStateCopyWithImpl<$Res, _$_AppState>
     implements _$$_AppStateCopyWith<$Res> {
   __$$_AppStateCopyWithImpl(
       _$_AppState _value, $Res Function(_$_AppState) _then)
-      : super(_value, (v) => _then(v as _$_AppState));
+      : super(_value, _then);
 
-  @override
-  _$_AppState get _value => super._value as _$_AppState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userState = freezed,
-    Object? cashWalletState = freezed,
-    Object? homePageState = freezed,
-    Object? newsState = freezed,
-    Object? vestingState = freezed,
-    Object? networkTabState = freezed,
+    Object? userState = null,
+    Object? cashWalletState = null,
+    Object? homePageState = null,
+    Object? newsState = null,
+    Object? networkTabState = null,
   }) {
     return _then(_$_AppState(
-      userState: userState == freezed
+      userState: null == userState
           ? _value.userState
           : userState // ignore: cast_nullable_to_non_nullable
               as UserState,
-      cashWalletState: cashWalletState == freezed
+      cashWalletState: null == cashWalletState
           ? _value.cashWalletState
           : cashWalletState // ignore: cast_nullable_to_non_nullable
               as CashWalletState,
-      homePageState: homePageState == freezed
+      homePageState: null == homePageState
           ? _value.homePageState
           : homePageState // ignore: cast_nullable_to_non_nullable
               as HomePageState,
-      newsState: newsState == freezed
+      newsState: null == newsState
           ? _value.newsState
           : newsState // ignore: cast_nullable_to_non_nullable
               as NewsState,
-      vestingState: vestingState == freezed
-          ? _value.vestingState
-          : vestingState // ignore: cast_nullable_to_non_nullable
-              as VestingState,
-      networkTabState: networkTabState == freezed
+      networkTabState: null == networkTabState
           ? _value.networkTabState
           : networkTabState // ignore: cast_nullable_to_non_nullable
               as NetworkTabState,
@@ -232,7 +217,6 @@ class _$_AppState extends _AppState {
       @CashWalletStateConverter() required this.cashWalletState,
       @HomePageStateConverter() required this.homePageState,
       @NewsStateConverter() required this.newsState,
-      @VestingStateConverter() required this.vestingState,
       @NetworkTabStateConverter() required this.networkTabState})
       : super._();
 
@@ -252,15 +236,12 @@ class _$_AppState extends _AppState {
   @NewsStateConverter()
   final NewsState newsState;
   @override
-  @VestingStateConverter()
-  final VestingState vestingState;
-  @override
   @NetworkTabStateConverter()
   final NetworkTabState networkTabState;
 
   @override
   String toString() {
-    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, homePageState: $homePageState, newsState: $newsState, vestingState: $vestingState, networkTabState: $networkTabState)';
+    return 'AppState(userState: $userState, cashWalletState: $cashWalletState, homePageState: $homePageState, newsState: $newsState, networkTabState: $networkTabState)';
   }
 
   @override
@@ -268,31 +249,26 @@ class _$_AppState extends _AppState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_AppState &&
-            const DeepCollectionEquality().equals(other.userState, userState) &&
-            const DeepCollectionEquality()
-                .equals(other.cashWalletState, cashWalletState) &&
-            const DeepCollectionEquality()
-                .equals(other.homePageState, homePageState) &&
-            const DeepCollectionEquality().equals(other.newsState, newsState) &&
-            const DeepCollectionEquality()
-                .equals(other.vestingState, vestingState) &&
-            const DeepCollectionEquality()
-                .equals(other.networkTabState, networkTabState));
+            (identical(other.userState, userState) ||
+                other.userState == userState) &&
+            (identical(other.cashWalletState, cashWalletState) ||
+                other.cashWalletState == cashWalletState) &&
+            (identical(other.homePageState, homePageState) ||
+                other.homePageState == homePageState) &&
+            (identical(other.newsState, newsState) ||
+                other.newsState == newsState) &&
+            (identical(other.networkTabState, networkTabState) ||
+                other.networkTabState == networkTabState));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(userState),
-      const DeepCollectionEquality().hash(cashWalletState),
-      const DeepCollectionEquality().hash(homePageState),
-      const DeepCollectionEquality().hash(newsState),
-      const DeepCollectionEquality().hash(vestingState),
-      const DeepCollectionEquality().hash(networkTabState));
+  int get hashCode => Object.hash(runtimeType, userState, cashWalletState,
+      homePageState, newsState, networkTabState);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_AppStateCopyWith<_$_AppState> get copyWith =>
       __$$_AppStateCopyWithImpl<_$_AppState>(this, _$identity);
 
@@ -314,8 +290,6 @@ abstract class _AppState extends AppState {
           required final HomePageState homePageState,
       @NewsStateConverter()
           required final NewsState newsState,
-      @VestingStateConverter()
-          required final VestingState vestingState,
       @NetworkTabStateConverter()
           required final NetworkTabState networkTabState}) = _$_AppState;
   _AppState._() : super._();
@@ -334,9 +308,6 @@ abstract class _AppState extends AppState {
   @override
   @NewsStateConverter()
   NewsState get newsState;
-  @override
-  @VestingStateConverter()
-  VestingState get vestingState;
   @override
   @NetworkTabStateConverter()
   NetworkTabState get networkTabState;

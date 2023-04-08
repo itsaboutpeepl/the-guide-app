@@ -150,7 +150,8 @@ ThunkAction<AppState> queryOrderDetailsFromPaymentIntentID({
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - queryOrderDetailsFromPaymentIntentID $e',
+        hint: Hint.withMap(
+            {'error': 'ERROR - queryOrderDetailsFromPaymentIntentID $e'}),
       );
     }
   };
@@ -170,6 +171,47 @@ ThunkAction<AppState> startPaymentProcess({
         );
         await stripeService
             .handleStripe(
+          walletAddress: store.state.userState.walletAddress,
+          amount: store.state.networkTabState.cartTotal,
+          context: context,
+          shouldPushToHome: false,
+        )
+            .then(
+          (value) {
+            if (!value) {
+              store.dispatch(SetTransferringPayment(flag: value));
+              return;
+            }
+            unawaited(
+              Analytics.track(
+                eventName: AnalyticsEvents.mint,
+                properties: {
+                  'status': 'success',
+                },
+              ),
+            );
+            store
+              ..dispatch(
+                UpdateSelectedAmounts(
+                  gbpxAmount: (store.state.networkTabState.cartTotal) / 100,
+                  pplAmount: 0,
+                ),
+              )
+              ..dispatch(
+                startTokenPaymentToRestaurant(
+                  context: context,
+                ),
+              );
+          },
+        );
+      } else if (selectedPaymentMethod == 'applePay') {
+        unawaited(
+          Analytics.track(
+            eventName: AnalyticsEvents.payApple,
+          ),
+        );
+        await stripeService
+            .handleApplePay(
           walletAddress: store.state.userState.walletAddress,
           amount: store.state.networkTabState.cartTotal,
           context: context,
@@ -227,7 +269,7 @@ ThunkAction<AppState> startPaymentProcess({
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - sendOrderObject $e',
+        hint: Hint.withMap({'error': 'ERROR - sendOrderObject $e'}),
       );
     }
   };
@@ -304,7 +346,8 @@ ThunkAction<AppState> startPaymentProcess({
 //       await Sentry.captureException(
 //         e,
 //         stackTrace: s,
-//         hint: 'ERROR - sendTokenPayment $e',
+//         hint: Hint.withMap(
+// {'error':'ERROR - sendTokenPayment $e',
 //       );
 //     }
 //   };
@@ -353,7 +396,7 @@ ThunkAction<AppState> startPeeplPayProcess({
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - startPeeplPayProcess $e',
+        hint: Hint.withMap({'error': 'ERROR - startPeeplPayProcess $e'}),
       );
     }
   };
@@ -440,7 +483,8 @@ ThunkAction<AppState> startTokenPaymentToRestaurant({
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - startTokenPaymentToRestaurant $e',
+        hint:
+            Hint.withMap({'error': 'ERROR - startTokenPaymentToRestaurant $e'}),
       );
     }
   };
@@ -465,7 +509,7 @@ ThunkAction<AppState> createVideoView(
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - createVideoView $e',
+        hint: Hint.withMap({'error': 'ERROR - createVideoView $e'}),
       );
     }
   };

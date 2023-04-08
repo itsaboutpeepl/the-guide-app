@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'blogArticle.dart';
 
@@ -40,7 +40,8 @@ mixin _$BlogArticle {
 abstract class $BlogArticleCopyWith<$Res> {
   factory $BlogArticleCopyWith(
           BlogArticle value, $Res Function(BlogArticle) then) =
-      _$BlogArticleCopyWithImpl<$Res>;
+      _$BlogArticleCopyWithImpl<$Res, BlogArticle>;
+  @useResult
   $Res call(
       {String title,
       String imageURL,
@@ -54,63 +55,66 @@ abstract class $BlogArticleCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$BlogArticleCopyWithImpl<$Res> implements $BlogArticleCopyWith<$Res> {
+class _$BlogArticleCopyWithImpl<$Res, $Val extends BlogArticle>
+    implements $BlogArticleCopyWith<$Res> {
   _$BlogArticleCopyWithImpl(this._value, this._then);
 
-  final BlogArticle _value;
   // ignore: unused_field
-  final $Res Function(BlogArticle) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? imageURL = freezed,
-    Object? category = freezed,
-    Object? postID = freezed,
-    Object? postURL = freezed,
-    Object? content = freezed,
-    Object? publishedAt = freezed,
-    Object? gallery = freezed,
-    Object? description = freezed,
+    Object? title = null,
+    Object? imageURL = null,
+    Object? category = null,
+    Object? postID = null,
+    Object? postURL = null,
+    Object? content = null,
+    Object? publishedAt = null,
+    Object? gallery = null,
+    Object? description = null,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageURL: imageURL == freezed
+      imageURL: null == imageURL
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      postID: postID == freezed
+      postID: null == postID
           ? _value.postID
           : postID // ignore: cast_nullable_to_non_nullable
               as int,
-      postURL: postURL == freezed
+      postURL: null == postURL
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      publishedAt: publishedAt == freezed
+      publishedAt: null == publishedAt
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      gallery: gallery == freezed
+      gallery: null == gallery
           ? _value.gallery
           : gallery // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -121,6 +125,7 @@ abstract class _$$_BlogArticleCopyWith<$Res>
           _$_BlogArticle value, $Res Function(_$_BlogArticle) then) =
       __$$_BlogArticleCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String title,
       String imageURL,
@@ -134,61 +139,60 @@ abstract class _$$_BlogArticleCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_BlogArticleCopyWithImpl<$Res> extends _$BlogArticleCopyWithImpl<$Res>
+class __$$_BlogArticleCopyWithImpl<$Res>
+    extends _$BlogArticleCopyWithImpl<$Res, _$_BlogArticle>
     implements _$$_BlogArticleCopyWith<$Res> {
   __$$_BlogArticleCopyWithImpl(
       _$_BlogArticle _value, $Res Function(_$_BlogArticle) _then)
-      : super(_value, (v) => _then(v as _$_BlogArticle));
+      : super(_value, _then);
 
-  @override
-  _$_BlogArticle get _value => super._value as _$_BlogArticle;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? imageURL = freezed,
-    Object? category = freezed,
-    Object? postID = freezed,
-    Object? postURL = freezed,
-    Object? content = freezed,
-    Object? publishedAt = freezed,
-    Object? gallery = freezed,
-    Object? description = freezed,
+    Object? title = null,
+    Object? imageURL = null,
+    Object? category = null,
+    Object? postID = null,
+    Object? postURL = null,
+    Object? content = null,
+    Object? publishedAt = null,
+    Object? gallery = null,
+    Object? description = null,
   }) {
     return _then(_$_BlogArticle(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      imageURL: imageURL == freezed
+      imageURL: null == imageURL
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      category: category == freezed
+      category: null == category
           ? _value.category
           : category // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      postID: postID == freezed
+      postID: null == postID
           ? _value.postID
           : postID // ignore: cast_nullable_to_non_nullable
               as int,
-      postURL: postURL == freezed
+      postURL: null == postURL
           ? _value.postURL
           : postURL // ignore: cast_nullable_to_non_nullable
               as String,
-      content: content == freezed
+      content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
-      publishedAt: publishedAt == freezed
+      publishedAt: null == publishedAt
           ? _value.publishedAt
           : publishedAt // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      gallery: gallery == freezed
+      gallery: null == gallery
           ? _value.gallery
           : gallery // ignore: cast_nullable_to_non_nullable
               as List<String>,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
@@ -244,35 +248,37 @@ class _$_BlogArticle extends _BlogArticle {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_BlogArticle &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.imageURL, imageURL) ||
+                other.imageURL == imageURL) &&
             const DeepCollectionEquality().equals(other.category, category) &&
-            const DeepCollectionEquality().equals(other.postID, postID) &&
-            const DeepCollectionEquality().equals(other.postURL, postURL) &&
-            const DeepCollectionEquality().equals(other.content, content) &&
-            const DeepCollectionEquality()
-                .equals(other.publishedAt, publishedAt) &&
+            (identical(other.postID, postID) || other.postID == postID) &&
+            (identical(other.postURL, postURL) || other.postURL == postURL) &&
+            (identical(other.content, content) || other.content == content) &&
+            (identical(other.publishedAt, publishedAt) ||
+                other.publishedAt == publishedAt) &&
             const DeepCollectionEquality().equals(other.gallery, gallery) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description));
+            (identical(other.description, description) ||
+                other.description == description));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(imageURL),
+      title,
+      imageURL,
       const DeepCollectionEquality().hash(category),
-      const DeepCollectionEquality().hash(postID),
-      const DeepCollectionEquality().hash(postURL),
-      const DeepCollectionEquality().hash(content),
-      const DeepCollectionEquality().hash(publishedAt),
+      postID,
+      postURL,
+      content,
+      publishedAt,
       const DeepCollectionEquality().hash(gallery),
-      const DeepCollectionEquality().hash(description));
+      description);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_BlogArticleCopyWith<_$_BlogArticle> get copyWith =>
       __$$_BlogArticleCopyWithImpl<_$_BlogArticle>(this, _$identity);
 

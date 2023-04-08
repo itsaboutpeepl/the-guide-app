@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'user_cart_state.dart';
 
@@ -40,7 +40,8 @@ mixin _$UserCartState {
 abstract class $UserCartStateCopyWith<$Res> {
   factory $UserCartStateCopyWith(
           UserCartState value, $Res Function(UserCartState) then) =
-      _$UserCartStateCopyWithImpl<$Res>;
+      _$UserCartStateCopyWithImpl<$Res, UserCartState>;
+  @useResult
   $Res call(
       {String paymentIntentID,
       double selectedGBPxAmount,
@@ -54,64 +55,66 @@ abstract class $UserCartStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$UserCartStateCopyWithImpl<$Res>
+class _$UserCartStateCopyWithImpl<$Res, $Val extends UserCartState>
     implements $UserCartStateCopyWith<$Res> {
   _$UserCartStateCopyWithImpl(this._value, this._then);
 
-  final UserCartState _value;
   // ignore: unused_field
-  final $Res Function(UserCartState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? paymentIntentID = freezed,
-    Object? selectedGBPxAmount = freezed,
-    Object? selectedPPLAmount = freezed,
-    Object? transferringTokens = freezed,
-    Object? errorCompletingPayment = freezed,
-    Object? confirmedPayment = freezed,
-    Object? restaurantName = freezed,
-    Object? cartTotal = freezed,
-    Object? restaurantWalletAddress = freezed,
+    Object? paymentIntentID = null,
+    Object? selectedGBPxAmount = null,
+    Object? selectedPPLAmount = null,
+    Object? transferringTokens = null,
+    Object? errorCompletingPayment = null,
+    Object? confirmedPayment = null,
+    Object? restaurantName = null,
+    Object? cartTotal = null,
+    Object? restaurantWalletAddress = null,
   }) {
     return _then(_value.copyWith(
-      paymentIntentID: paymentIntentID == freezed
+      paymentIntentID: null == paymentIntentID
           ? _value.paymentIntentID
           : paymentIntentID // ignore: cast_nullable_to_non_nullable
               as String,
-      selectedGBPxAmount: selectedGBPxAmount == freezed
+      selectedGBPxAmount: null == selectedGBPxAmount
           ? _value.selectedGBPxAmount
           : selectedGBPxAmount // ignore: cast_nullable_to_non_nullable
               as double,
-      selectedPPLAmount: selectedPPLAmount == freezed
+      selectedPPLAmount: null == selectedPPLAmount
           ? _value.selectedPPLAmount
           : selectedPPLAmount // ignore: cast_nullable_to_non_nullable
               as double,
-      transferringTokens: transferringTokens == freezed
+      transferringTokens: null == transferringTokens
           ? _value.transferringTokens
           : transferringTokens // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorCompletingPayment: errorCompletingPayment == freezed
+      errorCompletingPayment: null == errorCompletingPayment
           ? _value.errorCompletingPayment
           : errorCompletingPayment // ignore: cast_nullable_to_non_nullable
               as bool,
-      confirmedPayment: confirmedPayment == freezed
+      confirmedPayment: null == confirmedPayment
           ? _value.confirmedPayment
           : confirmedPayment // ignore: cast_nullable_to_non_nullable
               as bool,
-      restaurantName: restaurantName == freezed
+      restaurantName: null == restaurantName
           ? _value.restaurantName
           : restaurantName // ignore: cast_nullable_to_non_nullable
               as String,
-      cartTotal: cartTotal == freezed
+      cartTotal: null == cartTotal
           ? _value.cartTotal
           : cartTotal // ignore: cast_nullable_to_non_nullable
               as int,
-      restaurantWalletAddress: restaurantWalletAddress == freezed
+      restaurantWalletAddress: null == restaurantWalletAddress
           ? _value.restaurantWalletAddress
           : restaurantWalletAddress // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -122,6 +125,7 @@ abstract class _$$_UserCartStateCopyWith<$Res>
           _$_UserCartState value, $Res Function(_$_UserCartState) then) =
       __$$_UserCartStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String paymentIntentID,
       double selectedGBPxAmount,
@@ -136,61 +140,59 @@ abstract class _$$_UserCartStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_UserCartStateCopyWithImpl<$Res>
-    extends _$UserCartStateCopyWithImpl<$Res>
+    extends _$UserCartStateCopyWithImpl<$Res, _$_UserCartState>
     implements _$$_UserCartStateCopyWith<$Res> {
   __$$_UserCartStateCopyWithImpl(
       _$_UserCartState _value, $Res Function(_$_UserCartState) _then)
-      : super(_value, (v) => _then(v as _$_UserCartState));
+      : super(_value, _then);
 
-  @override
-  _$_UserCartState get _value => super._value as _$_UserCartState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? paymentIntentID = freezed,
-    Object? selectedGBPxAmount = freezed,
-    Object? selectedPPLAmount = freezed,
-    Object? transferringTokens = freezed,
-    Object? errorCompletingPayment = freezed,
-    Object? confirmedPayment = freezed,
-    Object? restaurantName = freezed,
-    Object? cartTotal = freezed,
-    Object? restaurantWalletAddress = freezed,
+    Object? paymentIntentID = null,
+    Object? selectedGBPxAmount = null,
+    Object? selectedPPLAmount = null,
+    Object? transferringTokens = null,
+    Object? errorCompletingPayment = null,
+    Object? confirmedPayment = null,
+    Object? restaurantName = null,
+    Object? cartTotal = null,
+    Object? restaurantWalletAddress = null,
   }) {
     return _then(_$_UserCartState(
-      paymentIntentID: paymentIntentID == freezed
+      paymentIntentID: null == paymentIntentID
           ? _value.paymentIntentID
           : paymentIntentID // ignore: cast_nullable_to_non_nullable
               as String,
-      selectedGBPxAmount: selectedGBPxAmount == freezed
+      selectedGBPxAmount: null == selectedGBPxAmount
           ? _value.selectedGBPxAmount
           : selectedGBPxAmount // ignore: cast_nullable_to_non_nullable
               as double,
-      selectedPPLAmount: selectedPPLAmount == freezed
+      selectedPPLAmount: null == selectedPPLAmount
           ? _value.selectedPPLAmount
           : selectedPPLAmount // ignore: cast_nullable_to_non_nullable
               as double,
-      transferringTokens: transferringTokens == freezed
+      transferringTokens: null == transferringTokens
           ? _value.transferringTokens
           : transferringTokens // ignore: cast_nullable_to_non_nullable
               as bool,
-      errorCompletingPayment: errorCompletingPayment == freezed
+      errorCompletingPayment: null == errorCompletingPayment
           ? _value.errorCompletingPayment
           : errorCompletingPayment // ignore: cast_nullable_to_non_nullable
               as bool,
-      confirmedPayment: confirmedPayment == freezed
+      confirmedPayment: null == confirmedPayment
           ? _value.confirmedPayment
           : confirmedPayment // ignore: cast_nullable_to_non_nullable
               as bool,
-      restaurantName: restaurantName == freezed
+      restaurantName: null == restaurantName
           ? _value.restaurantName
           : restaurantName // ignore: cast_nullable_to_non_nullable
               as String,
-      cartTotal: cartTotal == freezed
+      cartTotal: null == cartTotal
           ? _value.cartTotal
           : cartTotal // ignore: cast_nullable_to_non_nullable
               as int,
-      restaurantWalletAddress: restaurantWalletAddress == freezed
+      restaurantWalletAddress: null == restaurantWalletAddress
           ? _value.restaurantWalletAddress
           : restaurantWalletAddress // ignore: cast_nullable_to_non_nullable
               as String,
@@ -246,41 +248,44 @@ class _$_UserCartState extends _UserCartState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserCartState &&
-            const DeepCollectionEquality()
-                .equals(other.paymentIntentID, paymentIntentID) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedGBPxAmount, selectedGBPxAmount) &&
-            const DeepCollectionEquality()
-                .equals(other.selectedPPLAmount, selectedPPLAmount) &&
-            const DeepCollectionEquality()
-                .equals(other.transferringTokens, transferringTokens) &&
-            const DeepCollectionEquality()
-                .equals(other.errorCompletingPayment, errorCompletingPayment) &&
-            const DeepCollectionEquality()
-                .equals(other.confirmedPayment, confirmedPayment) &&
-            const DeepCollectionEquality()
-                .equals(other.restaurantName, restaurantName) &&
-            const DeepCollectionEquality().equals(other.cartTotal, cartTotal) &&
-            const DeepCollectionEquality().equals(
-                other.restaurantWalletAddress, restaurantWalletAddress));
+            (identical(other.paymentIntentID, paymentIntentID) ||
+                other.paymentIntentID == paymentIntentID) &&
+            (identical(other.selectedGBPxAmount, selectedGBPxAmount) ||
+                other.selectedGBPxAmount == selectedGBPxAmount) &&
+            (identical(other.selectedPPLAmount, selectedPPLAmount) ||
+                other.selectedPPLAmount == selectedPPLAmount) &&
+            (identical(other.transferringTokens, transferringTokens) ||
+                other.transferringTokens == transferringTokens) &&
+            (identical(other.errorCompletingPayment, errorCompletingPayment) ||
+                other.errorCompletingPayment == errorCompletingPayment) &&
+            (identical(other.confirmedPayment, confirmedPayment) ||
+                other.confirmedPayment == confirmedPayment) &&
+            (identical(other.restaurantName, restaurantName) ||
+                other.restaurantName == restaurantName) &&
+            (identical(other.cartTotal, cartTotal) ||
+                other.cartTotal == cartTotal) &&
+            (identical(
+                    other.restaurantWalletAddress, restaurantWalletAddress) ||
+                other.restaurantWalletAddress == restaurantWalletAddress));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(paymentIntentID),
-      const DeepCollectionEquality().hash(selectedGBPxAmount),
-      const DeepCollectionEquality().hash(selectedPPLAmount),
-      const DeepCollectionEquality().hash(transferringTokens),
-      const DeepCollectionEquality().hash(errorCompletingPayment),
-      const DeepCollectionEquality().hash(confirmedPayment),
-      const DeepCollectionEquality().hash(restaurantName),
-      const DeepCollectionEquality().hash(cartTotal),
-      const DeepCollectionEquality().hash(restaurantWalletAddress));
+      paymentIntentID,
+      selectedGBPxAmount,
+      selectedPPLAmount,
+      transferringTokens,
+      errorCompletingPayment,
+      confirmedPayment,
+      restaurantName,
+      cartTotal,
+      restaurantWalletAddress);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_UserCartStateCopyWith<_$_UserCartState> get copyWith =>
       __$$_UserCartStateCopyWithImpl<_$_UserCartState>(this, _$identity);
 

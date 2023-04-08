@@ -1,39 +1,24 @@
-import 'dart:io';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
-class WebViewScreen extends StatefulWidget {
+@RoutePage()
+class WebViewPage extends StatelessWidget {
   final String url;
   final String title;
-  final void Function(String)? onPageStarted;
 
-  const WebViewScreen(
+  const WebViewPage(
     this.url,
-    this.title, {
-    this.onPageStarted,
-  });
-
-  @override
-  _WebViewScreenState createState() => _WebViewScreenState();
-}
-
-class _WebViewScreenState extends State<WebViewScreen> {
-  @override
-  void initState() {
-    super.initState();
-    if (Platform.isAndroid) WebView.platform = SurfaceAndroidWebView();
-  }
+    this.title,
+  );
 
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
-      title: widget.title,
-      resizeToAvoidBottomInset: !Platform.isIOS,
-      body: WebView(
-        javascriptMode: JavascriptMode.unrestricted,
-        initialUrl: widget.url,
-        onPageStarted: widget.onPageStarted,
+      title: title,
+      body: InAppWebView(
+        initialUrlRequest: URLRequest(url: Uri.parse(url)),
       ),
     );
   }

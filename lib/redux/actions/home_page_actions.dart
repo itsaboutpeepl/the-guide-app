@@ -87,7 +87,7 @@ ThunkAction fetchFeaturedPosts() {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchFeaturedPost $e',
+        hint: Hint.withMap({'error': 'ERROR - fetchFeaturedPost $e'}),
       );
     }
   };
@@ -105,7 +105,7 @@ ThunkAction fetchFeaturedVideos() {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchFeaturedVideos $e',
+        hint: Hint.withMap({'error': 'ERROR - fetchFeaturedVideos $e'}),
       );
     }
   };
@@ -122,7 +122,7 @@ ThunkAction fetchEventsList() {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchEventsList $e',
+        hint: Hint.withMap({'error': 'ERROR - fetchEventsList $e'}),
       );
     }
   };
@@ -140,7 +140,7 @@ ThunkAction fetchDirectoryList() {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchDirectoryList $e',
+        hint: Hint.withMap({'error': 'ERROR - fetchDirectoryList $e'}),
       );
     }
   };
@@ -160,7 +160,7 @@ ThunkAction fetchHomePageData() {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchHomePageData $e',
+        hint: Hint.withMap({'error': 'ERROR - fetchHomePageData $e'}),
       );
     }
   };
@@ -212,7 +212,7 @@ ThunkAction<AppState> createVideoView(
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - createVideoView $e',
+        hint: Hint.withMap({'error': 'ERROR - createVideoView $e'}),
       );
     }
   };

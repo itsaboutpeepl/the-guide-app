@@ -29,7 +29,7 @@ class SimpleStrategy implements IOnBoardStrategy {
     log.info('jwtToken $jwtToken');
     store.dispatch(LoginVerifySuccess(jwtToken));
     chargeApi.setJwtToken(jwtToken);
-    await rootRouter.push(UserNameScreen());
+    await rootRouter.push(SelectUsernameRoute());
     onSuccess();
   }
 

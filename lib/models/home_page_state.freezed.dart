@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'home_page_state.dart';
 
@@ -38,7 +38,8 @@ mixin _$HomePageState {
 abstract class $HomePageStateCopyWith<$Res> {
   factory $HomePageStateCopyWith(
           HomePageState value, $Res Function(HomePageState) then) =
-      _$HomePageStateCopyWithImpl<$Res>;
+      _$HomePageStateCopyWithImpl<$Res, HomePageState>;
+  @useResult
   $Res call(
       {List<BlogArticle> featuredPosts,
       List<VideoArticle> featuredVideos,
@@ -50,54 +51,56 @@ abstract class $HomePageStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$HomePageStateCopyWithImpl<$Res>
+class _$HomePageStateCopyWithImpl<$Res, $Val extends HomePageState>
     implements $HomePageStateCopyWith<$Res> {
   _$HomePageStateCopyWithImpl(this._value, this._then);
 
-  final HomePageState _value;
   // ignore: unused_field
-  final $Res Function(HomePageState) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? featuredPosts = freezed,
-    Object? featuredVideos = freezed,
-    Object? eventList = freezed,
-    Object? directoryList = freezed,
-    Object? playConfetti = freezed,
-    Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? featuredPosts = null,
+    Object? featuredVideos = null,
+    Object? eventList = null,
+    Object? directoryList = null,
+    Object? playConfetti = null,
+    Object? isLoading = null,
+    Object? isError = null,
   }) {
     return _then(_value.copyWith(
-      featuredPosts: featuredPosts == freezed
+      featuredPosts: null == featuredPosts
           ? _value.featuredPosts
           : featuredPosts // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
-      featuredVideos: featuredVideos == freezed
+      featuredVideos: null == featuredVideos
           ? _value.featuredVideos
           : featuredVideos // ignore: cast_nullable_to_non_nullable
               as List<VideoArticle>,
-      eventList: eventList == freezed
+      eventList: null == eventList
           ? _value.eventList
           : eventList // ignore: cast_nullable_to_non_nullable
               as List<Events>,
-      directoryList: directoryList == freezed
+      directoryList: null == directoryList
           ? _value.directoryList
           : directoryList // ignore: cast_nullable_to_non_nullable
               as List<Directory>,
-      playConfetti: playConfetti == freezed
+      playConfetti: null == playConfetti
           ? _value.playConfetti
           : playConfetti // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
+      isError: null == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
-    ));
+    ) as $Val);
   }
 }
 
@@ -108,6 +111,7 @@ abstract class _$$_HomePageStateCopyWith<$Res>
           _$_HomePageState value, $Res Function(_$_HomePageState) then) =
       __$$_HomePageStateCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {List<BlogArticle> featuredPosts,
       List<VideoArticle> featuredVideos,
@@ -120,51 +124,49 @@ abstract class _$$_HomePageStateCopyWith<$Res>
 
 /// @nodoc
 class __$$_HomePageStateCopyWithImpl<$Res>
-    extends _$HomePageStateCopyWithImpl<$Res>
+    extends _$HomePageStateCopyWithImpl<$Res, _$_HomePageState>
     implements _$$_HomePageStateCopyWith<$Res> {
   __$$_HomePageStateCopyWithImpl(
       _$_HomePageState _value, $Res Function(_$_HomePageState) _then)
-      : super(_value, (v) => _then(v as _$_HomePageState));
+      : super(_value, _then);
 
-  @override
-  _$_HomePageState get _value => super._value as _$_HomePageState;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? featuredPosts = freezed,
-    Object? featuredVideos = freezed,
-    Object? eventList = freezed,
-    Object? directoryList = freezed,
-    Object? playConfetti = freezed,
-    Object? isLoading = freezed,
-    Object? isError = freezed,
+    Object? featuredPosts = null,
+    Object? featuredVideos = null,
+    Object? eventList = null,
+    Object? directoryList = null,
+    Object? playConfetti = null,
+    Object? isLoading = null,
+    Object? isError = null,
   }) {
     return _then(_$_HomePageState(
-      featuredPosts: featuredPosts == freezed
+      featuredPosts: null == featuredPosts
           ? _value.featuredPosts
           : featuredPosts // ignore: cast_nullable_to_non_nullable
               as List<BlogArticle>,
-      featuredVideos: featuredVideos == freezed
+      featuredVideos: null == featuredVideos
           ? _value.featuredVideos
           : featuredVideos // ignore: cast_nullable_to_non_nullable
               as List<VideoArticle>,
-      eventList: eventList == freezed
+      eventList: null == eventList
           ? _value.eventList
           : eventList // ignore: cast_nullable_to_non_nullable
               as List<Events>,
-      directoryList: directoryList == freezed
+      directoryList: null == directoryList
           ? _value.directoryList
           : directoryList // ignore: cast_nullable_to_non_nullable
               as List<Directory>,
-      playConfetti: playConfetti == freezed
+      playConfetti: null == playConfetti
           ? _value.playConfetti
           : playConfetti // ignore: cast_nullable_to_non_nullable
               as bool,
-      isLoading: isLoading == freezed
+      isLoading: null == isLoading
           ? _value.isLoading
           : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
-      isError: isError == freezed
+      isError: null == isError
           ? _value.isError
           : isError // ignore: cast_nullable_to_non_nullable
               as bool,
@@ -221,10 +223,11 @@ class _$_HomePageState extends _HomePageState {
             const DeepCollectionEquality().equals(other.eventList, eventList) &&
             const DeepCollectionEquality()
                 .equals(other.directoryList, directoryList) &&
-            const DeepCollectionEquality()
-                .equals(other.playConfetti, playConfetti) &&
-            const DeepCollectionEquality().equals(other.isLoading, isLoading) &&
-            const DeepCollectionEquality().equals(other.isError, isError));
+            (identical(other.playConfetti, playConfetti) ||
+                other.playConfetti == playConfetti) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isError, isError) || other.isError == isError));
   }
 
   @JsonKey(ignore: true)
@@ -235,12 +238,13 @@ class _$_HomePageState extends _HomePageState {
       const DeepCollectionEquality().hash(featuredVideos),
       const DeepCollectionEquality().hash(eventList),
       const DeepCollectionEquality().hash(directoryList),
-      const DeepCollectionEquality().hash(playConfetti),
-      const DeepCollectionEquality().hash(isLoading),
-      const DeepCollectionEquality().hash(isError));
+      playConfetti,
+      isLoading,
+      isError);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_HomePageStateCopyWith<_$_HomePageState> get copyWith =>
       __$$_HomePageStateCopyWithImpl<_$_HomePageState>(this, _$identity);
 

@@ -12,7 +12,7 @@ AppState appReducer(AppState state, dynamic action) {
     cashWalletState: cashWalletReducers(state.cashWalletState, action),
     homePageState: HomePageReducers(state.homePageState, action),
     newsState: NewsStateReducers(state.newsState, action),
-    vestingState: VestingStateReducers(state.vestingState, action),
+    //vestingState: VestingStateReducers(state.vestingState, action),
     networkTabState: networkTabReducers(state.networkTabState, action),
   );
 }

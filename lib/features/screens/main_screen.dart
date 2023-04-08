@@ -16,15 +16,15 @@ import 'package:guide_liverpool/models/articles/videoArticle.dart';
 import 'package:guide_liverpool/redux/actions/user_actions.dart';
 import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key? key}) : super(key: key);
+@RoutePage()
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
   @override
-  _MainScreenState createState() => _MainScreenState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _MainPageState extends State<MainPage> {
   late TabsRouter _tabsRouter;
 
   @override
@@ -54,10 +54,10 @@ class _MainScreenState extends State<MainScreen> {
           child: AutoTabsScaffold(
             animationDuration: Duration(milliseconds: 0),
             routes: [
-              GuideHomeTab(),
-              NewsHomeTab(),
-              AccountTab(),
-              NetworkScreenTab(),
+              HomeRoute(),
+              NewsRoute(),
+              //AccountTab(),
+              NetworkRoute(),
             ],
             bottomNavigationBuilder: (_, TabsRouter tabs) {
               _tabsRouter = tabs;
@@ -96,7 +96,7 @@ class _MainScreenState extends State<MainScreen> {
 
         newsService
             .getArticleByID(articleID)
-            .then((BlogArticle article) => showBarModalBottomSheet(
+            .then((BlogArticle article) => showModalBottomSheet(
                   useRootNavigator: true,
                   backgroundColor: Colors.white,
                   context: context,

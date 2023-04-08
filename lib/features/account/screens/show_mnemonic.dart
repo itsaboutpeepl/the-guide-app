@@ -11,7 +11,8 @@ import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/features/shared/widgets/preloader.dart';
 import 'package:guide_liverpool/features/shared/widgets/primary_button.dart';
 
-class ShowMnemonic extends StatelessWidget {
+@RoutePage()
+class MnemonicPage extends StatelessWidget {
   Widget wordWidget(
     BuildContext context,
     String word,
@@ -177,7 +178,7 @@ class ShowMnemonic extends StatelessWidget {
                   child: PrimaryButton(
                     label: I10n.of(context).next_button,
                     onPressed: () {
-                      context.router.push(VerifyMnemonic());
+                      context.router.push(VerifyMnemonicRoute());
                     },
                   ),
                 ),

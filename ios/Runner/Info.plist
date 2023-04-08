@@ -141,5 +141,7 @@
 	<string>izeqGK11dEvFjpsiEwlFEkmXRtrZgef8</string>
 	<key>io.flutter.embedded_views_preview</key>
 	<true/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

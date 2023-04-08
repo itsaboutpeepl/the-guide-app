@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:guide_liverpool/common/di/di.dart';
-import 'package:country_code_picker/country_code.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
@@ -14,7 +14,6 @@ import 'package:guide_liverpool/models/user_state.dart';
 import 'package:guide_liverpool/redux/actions/cash_wallet_actions.dart';
 import 'package:guide_liverpool/utils/analytics.dart';
 import 'package:guide_liverpool/utils/json_helpers.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:phone_number/phone_number.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_thunk/redux_thunk.dart';
@@ -301,7 +300,7 @@ ThunkAction<AppState> loginHandler(
       await Sentry.captureException(
         Exception('Error in login with phone number: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR in Login Request',
+        hint: Hint.withMap({'error': 'ERROR in Login Request'}),
       );
     }
   };
@@ -327,7 +326,7 @@ ThunkAction<AppState> verifyHandler(
           store.dispatch(LoginVerifySuccess(jwtToken));
           chargeApi.setJwtToken(jwtToken);
           onSuccess();
-          rootRouter.push(UserNameScreen());
+          rootRouter.push(SelectUsernameRoute());
         },
       );
     } catch (error, s) {
@@ -342,7 +341,7 @@ ThunkAction<AppState> verifyHandler(
       await Sentry.captureException(
         Exception('Error in verify phone number: ${error.toString()}'),
         stackTrace: s,
-        hint: 'Error while phone number verification',
+        hint: Hint.withMap({'error': 'Error while phone number verification'}),
       );
     }
   };
@@ -389,7 +388,7 @@ ThunkAction<AppState> restoreWalletCall(
       await Sentry.captureException(
         Exception('Error in restore mnemonic: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR in restore wallet',
+        hint: Hint.withMap({'error': 'ERROR in restore wallet'}),
       );
     }
   };
@@ -443,7 +442,7 @@ ThunkAction<AppState> createLocalAccountCall(
       await Sentry.captureException(
         Exception('Error in generate mnemonic: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR while generate mnemonic',
+        hint: Hint.withMap({'error': 'ERROR while generate mnemonic'}),
       );
     }
   };
@@ -557,7 +556,7 @@ ThunkAction<AppState> web3Init({
       await Sentry.captureException(
         Exception('Error in initiate Web3: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR - web3Init',
+        hint: Hint.withMap({'error': 'ERROR - web3Init'}),
       );
     }
   };
@@ -594,7 +593,7 @@ ThunkAction<AppState> setupWalletCall(Map<String, dynamic> walletData) {
       await Sentry.captureException(
         Exception('Error in setup wallet call: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR - setupWalletCall',
+        hint: Hint.withMap({'error': 'ERROR - setupWalletCall'}),
       );
     }
   };
@@ -618,7 +617,7 @@ ThunkAction<AppState> getWalletAddressesCall() {
       await Sentry.captureException(
         Exception('Error in get wallet info: ${e.toString()}'),
         stackTrace: s,
-        hint: 'ERROR - getWalletAddressCall',
+        hint: Hint.withMap({'error': 'ERROR - getWalletAddressCall'}),
       );
     }
   };
@@ -641,42 +640,42 @@ ThunkAction<AppState> updateDisplayNameCall(String displayName) {
       await Sentry.captureException(
         Exception('Error in update user profile name: ${e.toString()}'),
         stackTrace: s,
-        hint: 'Error in update user profile name',
+        hint: Hint.withMap({'error': 'Error in update user profile name'}),
       );
     }
   };
 }
 
-ThunkAction<AppState> updateUserAvatarCall(ImageSource source) {
-  return (Store<AppState> store) async {
-    final file = await ImagePicker().pickImage(source: source);
-    if (file != null) {
-      try {
-        final Map<String, dynamic> uploadResponse = await chargeApi
-            .uploadImage(File(file.path)) as Map<String, dynamic>;
-        final String walletAddress = store.state.userState.walletAddress;
-        if (walletAddress.isNotEmpty) {
-          await chargeApi.updateAvatar(
-            walletAddress,
-            uploadResponse['hash'] as String,
-          );
-          store.dispatch(SetUserAvatar(uploadResponse['uri'] as String));
-        }
-      } catch (e, s) {
-        log.error(
-          'ERROR - updateUserAvatarCall',
-          error: e,
-          stackTrace: s,
-        );
-        await Sentry.captureException(
-          Exception('Error in update user profile image: ${e.toString()}'),
-          stackTrace: s,
-          hint: 'Error in update user profile image',
-        );
-      }
-    }
-  };
-}
+// ThunkAction<AppState> updateUserAvatarCall(ImageSource source) {
+//   return (Store<AppState> store) async {
+//     final file = await ImagePicker().pickImage(source: source);
+//     if (file != null) {
+//       try {
+//         final Map<String, dynamic> uploadResponse = await chargeApi
+//             .uploadImage(File(file.path)) as Map<String, dynamic>;
+//         final String walletAddress = store.state.userState.walletAddress;
+//         if (walletAddress.isNotEmpty) {
+//           await chargeApi.updateAvatar(
+//             walletAddress,
+//             uploadResponse['hash'] as String,
+//           );
+//           store.dispatch(SetUserAvatar(uploadResponse['uri'] as String));
+//         }
+//       } catch (e, s) {
+//         log.error(
+//           'ERROR - updateUserAvatarCall',
+//           error: e,
+//           stackTrace: s,
+//         );
+//         await Sentry.captureException(
+//           Exception('Error in update user profile image: ${e.toString()}'),
+//           stackTrace: s,
+//           hint: Hint.withMap({'error': 'Error in update user profile image'}),
+//         );
+//       }
+//     }
+//   };
+// }
 
 ThunkAction<AppState> checkWalletUpgrades() {
   return (Store<AppState> store) async {
@@ -703,7 +702,7 @@ ThunkAction<AppState> checkWalletUpgrades() {
       await Sentry.captureException(
         Exception('Error in check for new wallet upgrades: ${e.toString()}'),
         stackTrace: s,
-        hint: 'Error in check for new wallet upgrades',
+        hint: Hint.withMap({'error': 'Error in check for new wallet upgrades'}),
       );
     }
   };
@@ -760,7 +759,7 @@ ThunkAction<AppState> installWalletUpgrades(
       await Sentry.captureException(
         Exception('Error in install wallet upgrades: ${e.toString()}'),
         stackTrace: s,
-        hint: 'Error in install wallet upgrades',
+        hint: Hint.withMap({'error': 'Error in install wallet upgrades'}),
       );
     }
   };

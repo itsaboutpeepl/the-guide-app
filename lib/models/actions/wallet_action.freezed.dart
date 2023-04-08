@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'wallet_action.dart';
 
@@ -121,25 +121,12 @@ mixin _$WalletAction {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -155,7 +142,7 @@ mixin _$WalletAction {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -170,7 +157,7 @@ mixin _$WalletAction {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -185,10 +172,10 @@ mixin _$WalletAction {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -197,7 +184,7 @@ mixin _$WalletAction {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -212,20 +199,7 @@ mixin _$WalletAction {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -303,20 +277,7 @@ mixin _$WalletAction {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -333,13 +294,13 @@ mixin _$WalletAction {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -364,7 +325,8 @@ mixin _$WalletAction {
 abstract class $WalletActionCopyWith<$Res> {
   factory $WalletActionCopyWith(
           WalletAction value, $Res Function(WalletAction) then) =
-      _$WalletActionCopyWithImpl<$Res>;
+      _$WalletActionCopyWithImpl<$Res, WalletAction>;
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -375,48 +337,51 @@ abstract class $WalletActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$WalletActionCopyWithImpl<$Res> implements $WalletActionCopyWith<$Res> {
+class _$WalletActionCopyWithImpl<$Res, $Val extends WalletAction>
+    implements $WalletActionCopyWith<$Res> {
   _$WalletActionCopyWithImpl(this._value, this._then);
 
-  final WalletAction _value;
   // ignore: unused_field
-  final $Res Function(WalletAction) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
   }) {
     return _then(_value.copyWith(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-    ));
+    ) as $Val);
   }
 }
 
@@ -425,6 +390,7 @@ abstract class _$$BonusCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
   factory _$$BonusCopyWith(_$Bonus value, $Res Function(_$Bonus) then) =
       __$$BonusCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -443,85 +409,84 @@ abstract class _$$BonusCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$BonusCopyWithImpl<$Res> extends _$WalletActionCopyWithImpl<$Res>
+class __$$BonusCopyWithImpl<$Res>
+    extends _$WalletActionCopyWithImpl<$Res, _$Bonus>
     implements _$$BonusCopyWith<$Res> {
   __$$BonusCopyWithImpl(_$Bonus _value, $Res Function(_$Bonus) _then)
-      : super(_value, (v) => _then(v as _$Bonus));
+      : super(_value, _then);
 
-  @override
-  _$Bonus get _value => super._value as _$Bonus;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
-    Object? tokenAddress = freezed,
+    Object? tokenAddress = null,
     Object? from = freezed,
-    Object? to = freezed,
-    Object? value = freezed,
-    Object? tokenName = freezed,
-    Object? tokenSymbol = freezed,
-    Object? tokenDecimal = freezed,
+    Object? to = null,
+    Object? value = null,
+    Object? tokenName = null,
+    Object? tokenSymbol = null,
+    Object? tokenDecimal = null,
     Object? bonusType = freezed,
   }) {
     return _then(_$Bonus(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-      tokenAddress: tokenAddress == freezed
+      tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      from: from == freezed
+      from: freezed == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
               as String?,
-      to: to == freezed
+      to: null == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      tokenName: tokenName == freezed
+      tokenName: null == tokenName
           ? _value.tokenName
           : tokenName // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenSymbol: tokenSymbol == freezed
+      tokenSymbol: null == tokenSymbol
           ? _value.tokenSymbol
           : tokenSymbol // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenDecimal: tokenDecimal == freezed
+      tokenDecimal: null == tokenDecimal
           ? _value.tokenDecimal
           : tokenDecimal // ignore: cast_nullable_to_non_nullable
               as int,
-      bonusType: bonusType == freezed
+      bonusType: freezed == bonusType
           ? _value.bonusType
           : bonusType // ignore: cast_nullable_to_non_nullable
               as String?,
@@ -594,47 +559,51 @@ class _$Bonus extends Bonus {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Bonus &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.txHash, txHash) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenAddress, tokenAddress) &&
-            const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.tokenName, tokenName) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenSymbol, tokenSymbol) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenDecimal, tokenDecimal) &&
-            const DeepCollectionEquality().equals(other.bonusType, bonusType));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.txHash, txHash) || other.txHash == txHash) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.tokenAddress, tokenAddress) ||
+                other.tokenAddress == tokenAddress) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.tokenName, tokenName) ||
+                other.tokenName == tokenName) &&
+            (identical(other.tokenSymbol, tokenSymbol) ||
+                other.tokenSymbol == tokenSymbol) &&
+            (identical(other.tokenDecimal, tokenDecimal) ||
+                other.tokenDecimal == tokenDecimal) &&
+            (identical(other.bonusType, bonusType) ||
+                other.bonusType == bonusType));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(txHash),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(blockNumber),
-      const DeepCollectionEquality().hash(tokenAddress),
-      const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(tokenName),
-      const DeepCollectionEquality().hash(tokenSymbol),
-      const DeepCollectionEquality().hash(tokenDecimal),
-      const DeepCollectionEquality().hash(bonusType));
+      timestamp,
+      id,
+      name,
+      txHash,
+      status,
+      blockNumber,
+      tokenAddress,
+      from,
+      to,
+      value,
+      tokenName,
+      tokenSymbol,
+      tokenDecimal,
+      bonusType);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$BonusCopyWith<_$Bonus> get copyWith =>
       __$$BonusCopyWithImpl<_$Bonus>(this, _$identity);
 
@@ -714,20 +683,7 @@ class _$Bonus extends Bonus {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) {
     return bonus(timestamp, id, name, txHash, status, blockNumber, tokenAddress,
         from, to, value, tokenName, tokenSymbol, tokenDecimal, bonusType);
@@ -736,7 +692,7 @@ class _$Bonus extends Bonus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -752,7 +708,7 @@ class _$Bonus extends Bonus {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -767,7 +723,7 @@ class _$Bonus extends Bonus {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -782,10 +738,10 @@ class _$Bonus extends Bonus {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -794,7 +750,7 @@ class _$Bonus extends Bonus {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -809,20 +765,7 @@ class _$Bonus extends Bonus {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) {
     return bonus?.call(
         timestamp,
@@ -917,20 +860,7 @@ class _$Bonus extends Bonus {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) {
     if (bonus != null) {
@@ -970,13 +900,13 @@ class _$Bonus extends Bonus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) {
     return bonus?.call(this);
   }
@@ -1058,6 +988,7 @@ abstract class _$$SendCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
   factory _$$SendCopyWith(_$Send value, $Res Function(_$Send) then) =
       __$$SendCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -1075,80 +1006,79 @@ abstract class _$$SendCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SendCopyWithImpl<$Res> extends _$WalletActionCopyWithImpl<$Res>
+class __$$SendCopyWithImpl<$Res>
+    extends _$WalletActionCopyWithImpl<$Res, _$Send>
     implements _$$SendCopyWith<$Res> {
   __$$SendCopyWithImpl(_$Send _value, $Res Function(_$Send) _then)
-      : super(_value, (v) => _then(v as _$Send));
+      : super(_value, _then);
 
-  @override
-  _$Send get _value => super._value as _$Send;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
-    Object? tokenAddress = freezed,
-    Object? from = freezed,
-    Object? to = freezed,
-    Object? value = freezed,
-    Object? tokenName = freezed,
-    Object? tokenSymbol = freezed,
-    Object? tokenDecimal = freezed,
+    Object? tokenAddress = null,
+    Object? from = null,
+    Object? to = null,
+    Object? value = null,
+    Object? tokenName = null,
+    Object? tokenSymbol = null,
+    Object? tokenDecimal = null,
   }) {
     return _then(_$Send(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-      tokenAddress: tokenAddress == freezed
+      tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      from: from == freezed
+      from: null == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
               as String,
-      to: to == freezed
+      to: null == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      tokenName: tokenName == freezed
+      tokenName: null == tokenName
           ? _value.tokenName
           : tokenName // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenSymbol: tokenSymbol == freezed
+      tokenSymbol: null == tokenSymbol
           ? _value.tokenSymbol
           : tokenSymbol // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenDecimal: tokenDecimal == freezed
+      tokenDecimal: null == tokenDecimal
           ? _value.tokenDecimal
           : tokenDecimal // ignore: cast_nullable_to_non_nullable
               as int,
@@ -1218,45 +1148,48 @@ class _$Send extends Send {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Send &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.txHash, txHash) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenAddress, tokenAddress) &&
-            const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.tokenName, tokenName) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenSymbol, tokenSymbol) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenDecimal, tokenDecimal));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.txHash, txHash) || other.txHash == txHash) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.tokenAddress, tokenAddress) ||
+                other.tokenAddress == tokenAddress) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.tokenName, tokenName) ||
+                other.tokenName == tokenName) &&
+            (identical(other.tokenSymbol, tokenSymbol) ||
+                other.tokenSymbol == tokenSymbol) &&
+            (identical(other.tokenDecimal, tokenDecimal) ||
+                other.tokenDecimal == tokenDecimal));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(txHash),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(blockNumber),
-      const DeepCollectionEquality().hash(tokenAddress),
-      const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(tokenName),
-      const DeepCollectionEquality().hash(tokenSymbol),
-      const DeepCollectionEquality().hash(tokenDecimal));
+      timestamp,
+      id,
+      name,
+      txHash,
+      status,
+      blockNumber,
+      tokenAddress,
+      from,
+      to,
+      value,
+      tokenName,
+      tokenSymbol,
+      tokenDecimal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$SendCopyWith<_$Send> get copyWith =>
       __$$SendCopyWithImpl<_$Send>(this, _$identity);
 
@@ -1336,20 +1269,7 @@ class _$Send extends Send {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) {
     return send(timestamp, id, name, txHash, status, blockNumber, tokenAddress,
         from, to, value, tokenName, tokenSymbol, tokenDecimal);
@@ -1358,7 +1278,7 @@ class _$Send extends Send {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -1374,7 +1294,7 @@ class _$Send extends Send {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -1389,7 +1309,7 @@ class _$Send extends Send {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -1404,10 +1324,10 @@ class _$Send extends Send {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -1416,7 +1336,7 @@ class _$Send extends Send {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -1431,20 +1351,7 @@ class _$Send extends Send {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) {
     return send?.call(timestamp, id, name, txHash, status, blockNumber,
         tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
@@ -1526,20 +1433,7 @@ class _$Send extends Send {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) {
     if (send != null) {
@@ -1566,13 +1460,13 @@ class _$Send extends Send {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) {
     return send?.call(this);
   }
@@ -1654,6 +1548,7 @@ abstract class _$$FiatDepositCopyWith<$Res>
           _$FiatDeposit value, $Res Function(_$FiatDeposit) then) =
       __$$FiatDepositCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -1671,81 +1566,80 @@ abstract class _$$FiatDepositCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FiatDepositCopyWithImpl<$Res> extends _$WalletActionCopyWithImpl<$Res>
+class __$$FiatDepositCopyWithImpl<$Res>
+    extends _$WalletActionCopyWithImpl<$Res, _$FiatDeposit>
     implements _$$FiatDepositCopyWith<$Res> {
   __$$FiatDepositCopyWithImpl(
       _$FiatDeposit _value, $Res Function(_$FiatDeposit) _then)
-      : super(_value, (v) => _then(v as _$FiatDeposit));
+      : super(_value, _then);
 
-  @override
-  _$FiatDeposit get _value => super._value as _$FiatDeposit;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
-    Object? tokenAddress = freezed,
+    Object? tokenAddress = null,
     Object? from = freezed,
-    Object? to = freezed,
-    Object? value = freezed,
-    Object? tokenName = freezed,
-    Object? tokenSymbol = freezed,
-    Object? tokenDecimal = freezed,
+    Object? to = null,
+    Object? value = null,
+    Object? tokenName = null,
+    Object? tokenSymbol = null,
+    Object? tokenDecimal = null,
   }) {
     return _then(_$FiatDeposit(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-      tokenAddress: tokenAddress == freezed
+      tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      from: from == freezed
+      from: freezed == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
               as String?,
-      to: to == freezed
+      to: null == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      tokenName: tokenName == freezed
+      tokenName: null == tokenName
           ? _value.tokenName
           : tokenName // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenSymbol: tokenSymbol == freezed
+      tokenSymbol: null == tokenSymbol
           ? _value.tokenSymbol
           : tokenSymbol // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenDecimal: tokenDecimal == freezed
+      tokenDecimal: null == tokenDecimal
           ? _value.tokenDecimal
           : tokenDecimal // ignore: cast_nullable_to_non_nullable
               as int,
@@ -1816,45 +1710,48 @@ class _$FiatDeposit extends FiatDeposit {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$FiatDeposit &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.txHash, txHash) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenAddress, tokenAddress) &&
-            const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.tokenName, tokenName) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenSymbol, tokenSymbol) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenDecimal, tokenDecimal));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.txHash, txHash) || other.txHash == txHash) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.tokenAddress, tokenAddress) ||
+                other.tokenAddress == tokenAddress) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.tokenName, tokenName) ||
+                other.tokenName == tokenName) &&
+            (identical(other.tokenSymbol, tokenSymbol) ||
+                other.tokenSymbol == tokenSymbol) &&
+            (identical(other.tokenDecimal, tokenDecimal) ||
+                other.tokenDecimal == tokenDecimal));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(txHash),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(blockNumber),
-      const DeepCollectionEquality().hash(tokenAddress),
-      const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(tokenName),
-      const DeepCollectionEquality().hash(tokenSymbol),
-      const DeepCollectionEquality().hash(tokenDecimal));
+      timestamp,
+      id,
+      name,
+      txHash,
+      status,
+      blockNumber,
+      tokenAddress,
+      from,
+      to,
+      value,
+      tokenName,
+      tokenSymbol,
+      tokenDecimal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$FiatDepositCopyWith<_$FiatDeposit> get copyWith =>
       __$$FiatDepositCopyWithImpl<_$FiatDeposit>(this, _$identity);
 
@@ -1934,20 +1831,7 @@ class _$FiatDeposit extends FiatDeposit {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) {
     return fiatDeposit(timestamp, id, name, txHash, status, blockNumber,
         tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
@@ -1956,7 +1840,7 @@ class _$FiatDeposit extends FiatDeposit {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -1972,7 +1856,7 @@ class _$FiatDeposit extends FiatDeposit {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -1987,7 +1871,7 @@ class _$FiatDeposit extends FiatDeposit {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2002,10 +1886,10 @@ class _$FiatDeposit extends FiatDeposit {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2014,7 +1898,7 @@ class _$FiatDeposit extends FiatDeposit {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2029,20 +1913,7 @@ class _$FiatDeposit extends FiatDeposit {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) {
     return fiatDeposit?.call(timestamp, id, name, txHash, status, blockNumber,
         tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
@@ -2124,20 +1995,7 @@ class _$FiatDeposit extends FiatDeposit {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) {
     if (fiatDeposit != null) {
@@ -2164,13 +2022,13 @@ class _$FiatDeposit extends FiatDeposit {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) {
     return fiatDeposit?.call(this);
   }
@@ -2254,6 +2112,7 @@ abstract class _$$CreateWalletCopyWith<$Res>
           _$CreateWallet value, $Res Function(_$CreateWallet) then) =
       __$$CreateWalletCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -2265,46 +2124,44 @@ abstract class _$$CreateWalletCopyWith<$Res>
 
 /// @nodoc
 class __$$CreateWalletCopyWithImpl<$Res>
-    extends _$WalletActionCopyWithImpl<$Res>
+    extends _$WalletActionCopyWithImpl<$Res, _$CreateWallet>
     implements _$$CreateWalletCopyWith<$Res> {
   __$$CreateWalletCopyWithImpl(
       _$CreateWallet _value, $Res Function(_$CreateWallet) _then)
-      : super(_value, (v) => _then(v as _$CreateWallet));
+      : super(_value, _then);
 
-  @override
-  _$CreateWallet get _value => super._value as _$CreateWallet;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
   }) {
     return _then(_$CreateWallet(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
@@ -2354,28 +2211,24 @@ class _$CreateWallet extends CreateWallet {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$CreateWallet &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.txHash, txHash) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.txHash, txHash) || other.txHash == txHash) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(txHash),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(blockNumber));
+      runtimeType, timestamp, id, name, txHash, status, blockNumber);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$CreateWalletCopyWith<_$CreateWallet> get copyWith =>
       __$$CreateWalletCopyWithImpl<_$CreateWallet>(this, _$identity);
 
@@ -2455,20 +2308,7 @@ class _$CreateWallet extends CreateWallet {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) {
     return createWallet(timestamp, id, name, txHash, status, blockNumber);
   }
@@ -2476,7 +2316,7 @@ class _$CreateWallet extends CreateWallet {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2492,7 +2332,7 @@ class _$CreateWallet extends CreateWallet {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2507,7 +2347,7 @@ class _$CreateWallet extends CreateWallet {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2522,10 +2362,10 @@ class _$CreateWallet extends CreateWallet {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2534,7 +2374,7 @@ class _$CreateWallet extends CreateWallet {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -2549,20 +2389,7 @@ class _$CreateWallet extends CreateWallet {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) {
     return createWallet?.call(timestamp, id, name, txHash, status, blockNumber);
   }
@@ -2643,20 +2470,7 @@ class _$CreateWallet extends CreateWallet {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) {
     if (createWallet != null) {
@@ -2682,13 +2496,13 @@ class _$CreateWallet extends CreateWallet {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) {
     return createWallet?.call(this);
   }
@@ -2756,6 +2570,7 @@ abstract class _$$SwapCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
   factory _$$SwapCopyWith(_$Swap value, $Res Function(_$Swap) then) =
       __$$SwapCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -2769,50 +2584,49 @@ abstract class _$$SwapCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SwapCopyWithImpl<$Res> extends _$WalletActionCopyWithImpl<$Res>
+class __$$SwapCopyWithImpl<$Res>
+    extends _$WalletActionCopyWithImpl<$Res, _$Swap>
     implements _$$SwapCopyWith<$Res> {
   __$$SwapCopyWithImpl(_$Swap _value, $Res Function(_$Swap) _then)
-      : super(_value, (v) => _then(v as _$Swap));
+      : super(_value, _then);
 
-  @override
-  _$Swap get _value => super._value as _$Swap;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
     Object? tradeInfo = freezed,
   }) {
     return _then(_$Swap(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-      tradeInfo: tradeInfo == freezed
+      tradeInfo: freezed == tradeInfo
           ? _value.tradeInfo
           : tradeInfo // ignore: cast_nullable_to_non_nullable
               as Trade?,
@@ -2820,6 +2634,7 @@ class __$$SwapCopyWithImpl<$Res> extends _$WalletActionCopyWithImpl<$Res>
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $TradeCopyWith<$Res>? get tradeInfo {
     if (_value.tradeInfo == null) {
       return null;
@@ -2876,30 +2691,26 @@ class _$Swap extends Swap {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Swap &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.txHash, txHash) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber) &&
-            const DeepCollectionEquality().equals(other.tradeInfo, tradeInfo));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.txHash, txHash) || other.txHash == txHash) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.tradeInfo, tradeInfo) ||
+                other.tradeInfo == tradeInfo));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(txHash),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(blockNumber),
-      const DeepCollectionEquality().hash(tradeInfo));
+      runtimeType, timestamp, id, name, txHash, status, blockNumber, tradeInfo);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$SwapCopyWith<_$Swap> get copyWith =>
       __$$SwapCopyWithImpl<_$Swap>(this, _$identity);
 
@@ -2979,20 +2790,7 @@ class _$Swap extends Swap {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) {
     return swap(timestamp, id, name, txHash, status, blockNumber, tradeInfo);
   }
@@ -3000,7 +2798,7 @@ class _$Swap extends Swap {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3016,7 +2814,7 @@ class _$Swap extends Swap {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3031,7 +2829,7 @@ class _$Swap extends Swap {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3046,10 +2844,10 @@ class _$Swap extends Swap {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3058,7 +2856,7 @@ class _$Swap extends Swap {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3073,20 +2871,7 @@ class _$Swap extends Swap {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) {
     return swap?.call(
         timestamp, id, name, txHash, status, blockNumber, tradeInfo);
@@ -3168,20 +2953,7 @@ class _$Swap extends Swap {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) {
     if (swap != null) {
@@ -3207,13 +2979,13 @@ class _$Swap extends Swap {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) {
     return swap?.call(this);
   }
@@ -3282,6 +3054,7 @@ abstract class _$$ReceiveCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
   factory _$$ReceiveCopyWith(_$Receive value, $Res Function(_$Receive) then) =
       __$$ReceiveCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -3299,80 +3072,79 @@ abstract class _$$ReceiveCopyWith<$Res> implements $WalletActionCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$ReceiveCopyWithImpl<$Res> extends _$WalletActionCopyWithImpl<$Res>
+class __$$ReceiveCopyWithImpl<$Res>
+    extends _$WalletActionCopyWithImpl<$Res, _$Receive>
     implements _$$ReceiveCopyWith<$Res> {
   __$$ReceiveCopyWithImpl(_$Receive _value, $Res Function(_$Receive) _then)
-      : super(_value, (v) => _then(v as _$Receive));
+      : super(_value, _then);
 
-  @override
-  _$Receive get _value => super._value as _$Receive;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
-    Object? tokenAddress = freezed,
-    Object? from = freezed,
-    Object? to = freezed,
-    Object? value = freezed,
-    Object? tokenName = freezed,
-    Object? tokenSymbol = freezed,
-    Object? tokenDecimal = freezed,
+    Object? tokenAddress = null,
+    Object? from = null,
+    Object? to = null,
+    Object? value = null,
+    Object? tokenName = null,
+    Object? tokenSymbol = null,
+    Object? tokenDecimal = null,
   }) {
     return _then(_$Receive(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-      tokenAddress: tokenAddress == freezed
+      tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      from: from == freezed
+      from: null == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
               as String,
-      to: to == freezed
+      to: null == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as String,
-      value: value == freezed
+      value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      tokenName: tokenName == freezed
+      tokenName: null == tokenName
           ? _value.tokenName
           : tokenName // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenSymbol: tokenSymbol == freezed
+      tokenSymbol: null == tokenSymbol
           ? _value.tokenSymbol
           : tokenSymbol // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenDecimal: tokenDecimal == freezed
+      tokenDecimal: null == tokenDecimal
           ? _value.tokenDecimal
           : tokenDecimal // ignore: cast_nullable_to_non_nullable
               as int,
@@ -3443,45 +3215,48 @@ class _$Receive extends Receive {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$Receive &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.txHash, txHash) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenAddress, tokenAddress) &&
-            const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other.value, value) &&
-            const DeepCollectionEquality().equals(other.tokenName, tokenName) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenSymbol, tokenSymbol) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenDecimal, tokenDecimal));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.txHash, txHash) || other.txHash == txHash) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.tokenAddress, tokenAddress) ||
+                other.tokenAddress == tokenAddress) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.value, value) || other.value == value) &&
+            (identical(other.tokenName, tokenName) ||
+                other.tokenName == tokenName) &&
+            (identical(other.tokenSymbol, tokenSymbol) ||
+                other.tokenSymbol == tokenSymbol) &&
+            (identical(other.tokenDecimal, tokenDecimal) ||
+                other.tokenDecimal == tokenDecimal));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(txHash),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(blockNumber),
-      const DeepCollectionEquality().hash(tokenAddress),
-      const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(value),
-      const DeepCollectionEquality().hash(tokenName),
-      const DeepCollectionEquality().hash(tokenSymbol),
-      const DeepCollectionEquality().hash(tokenDecimal));
+      timestamp,
+      id,
+      name,
+      txHash,
+      status,
+      blockNumber,
+      tokenAddress,
+      from,
+      to,
+      value,
+      tokenName,
+      tokenSymbol,
+      tokenDecimal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ReceiveCopyWith<_$Receive> get copyWith =>
       __$$ReceiveCopyWithImpl<_$Receive>(this, _$identity);
 
@@ -3561,20 +3336,7 @@ class _$Receive extends Receive {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) {
     return receive(timestamp, id, name, txHash, status, blockNumber,
         tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
@@ -3583,7 +3345,7 @@ class _$Receive extends Receive {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3599,7 +3361,7 @@ class _$Receive extends Receive {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3614,7 +3376,7 @@ class _$Receive extends Receive {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3629,10 +3391,10 @@ class _$Receive extends Receive {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3641,7 +3403,7 @@ class _$Receive extends Receive {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -3656,20 +3418,7 @@ class _$Receive extends Receive {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) {
     return receive?.call(timestamp, id, name, txHash, status, blockNumber,
         tokenAddress, from, to, value, tokenName, tokenSymbol, tokenDecimal);
@@ -3751,20 +3500,7 @@ class _$Receive extends Receive {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) {
     if (receive != null) {
@@ -3791,13 +3527,13 @@ class _$Receive extends Receive {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) {
     return receive?.call(this);
   }
@@ -3880,6 +3616,7 @@ abstract class _$$ReceiveNFTCopyWith<$Res>
           _$ReceiveNFT value, $Res Function(_$ReceiveNFT) then) =
       __$$ReceiveNFTCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {int timestamp,
       @JsonKey(name: '_id') String id,
@@ -3896,76 +3633,75 @@ abstract class _$$ReceiveNFTCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ReceiveNFTCopyWithImpl<$Res> extends _$WalletActionCopyWithImpl<$Res>
+class __$$ReceiveNFTCopyWithImpl<$Res>
+    extends _$WalletActionCopyWithImpl<$Res, _$ReceiveNFT>
     implements _$$ReceiveNFTCopyWith<$Res> {
   __$$ReceiveNFTCopyWithImpl(
       _$ReceiveNFT _value, $Res Function(_$ReceiveNFT) _then)
-      : super(_value, (v) => _then(v as _$ReceiveNFT));
+      : super(_value, _then);
 
-  @override
-  _$ReceiveNFT get _value => super._value as _$ReceiveNFT;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? timestamp = freezed,
-    Object? id = freezed,
-    Object? name = freezed,
+    Object? timestamp = null,
+    Object? id = null,
+    Object? name = null,
     Object? txHash = freezed,
-    Object? status = freezed,
+    Object? status = null,
     Object? blockNumber = freezed,
-    Object? tokenAddress = freezed,
-    Object? from = freezed,
-    Object? to = freezed,
-    Object? tokenName = freezed,
-    Object? tokenSymbol = freezed,
-    Object? tokenDecimal = freezed,
+    Object? tokenAddress = null,
+    Object? from = null,
+    Object? to = null,
+    Object? tokenName = null,
+    Object? tokenSymbol = null,
+    Object? tokenDecimal = null,
   }) {
     return _then(_$ReceiveNFT(
-      timestamp: timestamp == freezed
+      timestamp: null == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int,
-      id: id == freezed
+      id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      txHash: txHash == freezed
+      txHash: freezed == txHash
           ? _value.txHash
           : txHash // ignore: cast_nullable_to_non_nullable
               as String?,
-      status: status == freezed
+      status: null == status
           ? _value.status
           : status // ignore: cast_nullable_to_non_nullable
               as String,
-      blockNumber: blockNumber == freezed
+      blockNumber: freezed == blockNumber
           ? _value.blockNumber
           : blockNumber // ignore: cast_nullable_to_non_nullable
               as int?,
-      tokenAddress: tokenAddress == freezed
+      tokenAddress: null == tokenAddress
           ? _value.tokenAddress
           : tokenAddress // ignore: cast_nullable_to_non_nullable
               as String,
-      from: from == freezed
+      from: null == from
           ? _value.from
           : from // ignore: cast_nullable_to_non_nullable
               as String,
-      to: to == freezed
+      to: null == to
           ? _value.to
           : to // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenName: tokenName == freezed
+      tokenName: null == tokenName
           ? _value.tokenName
           : tokenName // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenSymbol: tokenSymbol == freezed
+      tokenSymbol: null == tokenSymbol
           ? _value.tokenSymbol
           : tokenSymbol // ignore: cast_nullable_to_non_nullable
               as String,
-      tokenDecimal: tokenDecimal == freezed
+      tokenDecimal: null == tokenDecimal
           ? _value.tokenDecimal
           : tokenDecimal // ignore: cast_nullable_to_non_nullable
               as int,
@@ -4033,43 +3769,46 @@ class _$ReceiveNFT extends ReceiveNFT {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ReceiveNFT &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.id, id) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.txHash, txHash) &&
-            const DeepCollectionEquality().equals(other.status, status) &&
-            const DeepCollectionEquality()
-                .equals(other.blockNumber, blockNumber) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenAddress, tokenAddress) &&
-            const DeepCollectionEquality().equals(other.from, from) &&
-            const DeepCollectionEquality().equals(other.to, to) &&
-            const DeepCollectionEquality().equals(other.tokenName, tokenName) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenSymbol, tokenSymbol) &&
-            const DeepCollectionEquality()
-                .equals(other.tokenDecimal, tokenDecimal));
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.txHash, txHash) || other.txHash == txHash) &&
+            (identical(other.status, status) || other.status == status) &&
+            (identical(other.blockNumber, blockNumber) ||
+                other.blockNumber == blockNumber) &&
+            (identical(other.tokenAddress, tokenAddress) ||
+                other.tokenAddress == tokenAddress) &&
+            (identical(other.from, from) || other.from == from) &&
+            (identical(other.to, to) || other.to == to) &&
+            (identical(other.tokenName, tokenName) ||
+                other.tokenName == tokenName) &&
+            (identical(other.tokenSymbol, tokenSymbol) ||
+                other.tokenSymbol == tokenSymbol) &&
+            (identical(other.tokenDecimal, tokenDecimal) ||
+                other.tokenDecimal == tokenDecimal));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(id),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(txHash),
-      const DeepCollectionEquality().hash(status),
-      const DeepCollectionEquality().hash(blockNumber),
-      const DeepCollectionEquality().hash(tokenAddress),
-      const DeepCollectionEquality().hash(from),
-      const DeepCollectionEquality().hash(to),
-      const DeepCollectionEquality().hash(tokenName),
-      const DeepCollectionEquality().hash(tokenSymbol),
-      const DeepCollectionEquality().hash(tokenDecimal));
+      timestamp,
+      id,
+      name,
+      txHash,
+      status,
+      blockNumber,
+      tokenAddress,
+      from,
+      to,
+      tokenName,
+      tokenSymbol,
+      tokenDecimal);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$ReceiveNFTCopyWith<_$ReceiveNFT> get copyWith =>
       __$$ReceiveNFTCopyWithImpl<_$ReceiveNFT>(this, _$identity);
 
@@ -4149,20 +3888,7 @@ class _$ReceiveNFT extends ReceiveNFT {
             String tokenSymbol,
             int tokenDecimal)
         receive,
-    required TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)
-        receiveNFT,
+    required TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal) receiveNFT,
   }) {
     return receiveNFT(timestamp, id, name, txHash, status, blockNumber,
         tokenAddress, from, to, tokenName, tokenSymbol, tokenDecimal);
@@ -4171,7 +3897,7 @@ class _$ReceiveNFT extends ReceiveNFT {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -4187,7 +3913,7 @@ class _$ReceiveNFT extends ReceiveNFT {
             int tokenDecimal,
             String? bonusType)?
         bonus,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -4202,7 +3928,7 @@ class _$ReceiveNFT extends ReceiveNFT {
             String tokenSymbol,
             int tokenDecimal)?
         send,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -4217,10 +3943,10 @@ class _$ReceiveNFT extends ReceiveNFT {
             String tokenSymbol,
             int tokenDecimal)?
         fiatDeposit,
-    TResult Function(int timestamp, @JsonKey(name: '_id') String id,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id,
             String name, String? txHash, String status, int? blockNumber)?
         createWallet,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -4229,7 +3955,7 @@ class _$ReceiveNFT extends ReceiveNFT {
             int? blockNumber,
             @JsonKey(name: 'metadata') Trade? tradeInfo)?
         swap,
-    TResult Function(
+    TResult? Function(
             int timestamp,
             @JsonKey(name: '_id') String id,
             String name,
@@ -4244,20 +3970,7 @@ class _$ReceiveNFT extends ReceiveNFT {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult? Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
   }) {
     return receiveNFT?.call(timestamp, id, name, txHash, status, blockNumber,
         tokenAddress, from, to, tokenName, tokenSymbol, tokenDecimal);
@@ -4339,20 +4052,7 @@ class _$ReceiveNFT extends ReceiveNFT {
             String tokenSymbol,
             int tokenDecimal)?
         receive,
-    TResult Function(
-            int timestamp,
-            @JsonKey(name: '_id') String id,
-            String name,
-            String? txHash,
-            String status,
-            int? blockNumber,
-            String tokenAddress,
-            String from,
-            String to,
-            String tokenName,
-            String tokenSymbol,
-            int tokenDecimal)?
-        receiveNFT,
+    TResult Function(int timestamp, @JsonKey(name: '_id') String id, String name, String? txHash, String status, int? blockNumber, String tokenAddress, String from, String to, String tokenName, String tokenSymbol, int tokenDecimal)? receiveNFT,
     required TResult orElse(),
   }) {
     if (receiveNFT != null) {
@@ -4379,13 +4079,13 @@ class _$ReceiveNFT extends ReceiveNFT {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Bonus value)? bonus,
-    TResult Function(Send value)? send,
-    TResult Function(FiatDeposit value)? fiatDeposit,
-    TResult Function(CreateWallet value)? createWallet,
-    TResult Function(Swap value)? swap,
-    TResult Function(Receive value)? receive,
-    TResult Function(ReceiveNFT value)? receiveNFT,
+    TResult? Function(Bonus value)? bonus,
+    TResult? Function(Send value)? send,
+    TResult? Function(FiatDeposit value)? fiatDeposit,
+    TResult? Function(CreateWallet value)? createWallet,
+    TResult? Function(Swap value)? swap,
+    TResult? Function(Receive value)? receive,
+    TResult? Function(ReceiveNFT value)? receiveNFT,
   }) {
     return receiveNFT?.call(this);
   }

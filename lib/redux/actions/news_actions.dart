@@ -72,7 +72,7 @@ ThunkAction<AppState> fetchCategoryNames() {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchCategoryNames $e',
+        hint: Hint.withMap({'error': 'ERROR - fetchCategoryNames $e'}),
       );
     }
   };
@@ -92,7 +92,7 @@ ThunkAction<AppState> refreshCurrentTabList({int page = 0, String query = ""}) {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - updateCurrentTabList $e',
+        hint: Hint.withMap({'error': 'ERROR - updateCurrentTabList $e'}),
       );
     }
   };
@@ -113,7 +113,7 @@ ThunkAction<AppState> updateCurrentTabList({int page = 1, String query = ""}) {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - updateCurrentTabList $e',
+        hint: Hint.withMap({'error': 'ERROR - updateCurrentTabList $e'}),
       );
     }
   };
@@ -129,7 +129,7 @@ ThunkAction<AppState> updateEventList({int page = 1}) {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - updateCurrentTabList $e',
+        hint: Hint.withMap({'error': 'ERROR - updateCurrentTabList $e'}),
       );
     }
   };
@@ -151,7 +151,7 @@ ThunkAction<AppState> fetchNewsScreenData() {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'ERROR - fetchNewsScreenData $e',
+        hint: Hint.withMap({'error': 'ERROR - fetchNewsScreenData $e'}),
       );
     }
   };

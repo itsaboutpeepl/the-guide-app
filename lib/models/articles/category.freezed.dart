@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'category.dart';
 
@@ -32,33 +32,37 @@ mixin _$Category {
 /// @nodoc
 abstract class $CategoryCopyWith<$Res> {
   factory $CategoryCopyWith(Category value, $Res Function(Category) then) =
-      _$CategoryCopyWithImpl<$Res>;
+      _$CategoryCopyWithImpl<$Res, Category>;
+  @useResult
   $Res call({int categoryID, String categoryName});
 }
 
 /// @nodoc
-class _$CategoryCopyWithImpl<$Res> implements $CategoryCopyWith<$Res> {
+class _$CategoryCopyWithImpl<$Res, $Val extends Category>
+    implements $CategoryCopyWith<$Res> {
   _$CategoryCopyWithImpl(this._value, this._then);
 
-  final Category _value;
   // ignore: unused_field
-  final $Res Function(Category) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categoryID = freezed,
-    Object? categoryName = freezed,
+    Object? categoryID = null,
+    Object? categoryName = null,
   }) {
     return _then(_value.copyWith(
-      categoryID: categoryID == freezed
+      categoryID: null == categoryID
           ? _value.categoryID
           : categoryID // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryName: categoryName == freezed
+      categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -68,30 +72,30 @@ abstract class _$$_CategoryCopyWith<$Res> implements $CategoryCopyWith<$Res> {
           _$_Category value, $Res Function(_$_Category) then) =
       __$$_CategoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({int categoryID, String categoryName});
 }
 
 /// @nodoc
-class __$$_CategoryCopyWithImpl<$Res> extends _$CategoryCopyWithImpl<$Res>
+class __$$_CategoryCopyWithImpl<$Res>
+    extends _$CategoryCopyWithImpl<$Res, _$_Category>
     implements _$$_CategoryCopyWith<$Res> {
   __$$_CategoryCopyWithImpl(
       _$_Category _value, $Res Function(_$_Category) _then)
-      : super(_value, (v) => _then(v as _$_Category));
+      : super(_value, _then);
 
-  @override
-  _$_Category get _value => super._value as _$_Category;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categoryID = freezed,
-    Object? categoryName = freezed,
+    Object? categoryID = null,
+    Object? categoryName = null,
   }) {
     return _then(_$_Category(
-      categoryID: categoryID == freezed
+      categoryID: null == categoryID
           ? _value.categoryID
           : categoryID // ignore: cast_nullable_to_non_nullable
               as int,
-      categoryName: categoryName == freezed
+      categoryName: null == categoryName
           ? _value.categoryName
           : categoryName // ignore: cast_nullable_to_non_nullable
               as String,
@@ -124,21 +128,19 @@ class _$_Category extends _Category {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Category &&
-            const DeepCollectionEquality()
-                .equals(other.categoryID, categoryID) &&
-            const DeepCollectionEquality()
-                .equals(other.categoryName, categoryName));
+            (identical(other.categoryID, categoryID) ||
+                other.categoryID == categoryID) &&
+            (identical(other.categoryName, categoryName) ||
+                other.categoryName == categoryName));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(categoryID),
-      const DeepCollectionEquality().hash(categoryName));
+  int get hashCode => Object.hash(runtimeType, categoryID, categoryName);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_CategoryCopyWith<_$_Category> get copyWith =>
       __$$_CategoryCopyWithImpl<_$_Category>(this, _$identity);
 

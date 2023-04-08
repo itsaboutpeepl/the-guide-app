@@ -1,9 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:country_code_picker/country_localizations.dart';
+import 'package:country_code_picker/country_code_picker.dart';
 import 'package:guide_liverpool/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_localized_locales/flutter_localized_locales.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/common/di/di.dart';
 import 'package:guide_liverpool/common/router/route_guards.dart';
@@ -66,17 +65,17 @@ class _MyAppState extends State<MyApp> {
           return StoreProvider<AppState>(
             store: widget.store,
             child: MaterialApp.router(
-              debugShowCheckedModeBanner: false,
-              locale: _locale,
-              title: Strings.appName,
-              routeInformationParser: rootRouter.defaultRouteParser(),
-              theme: flexColorSchemeLight.toTheme,
-              routerDelegate: rootRouter.delegate(
+              routerConfig: rootRouter.config(
                 navigatorObservers: () => [
                   AutoRouteObserver(),
                   SentryNavigatorObserver(),
+                  RouteObserver(),
                 ],
               ),
+              debugShowCheckedModeBanner: false,
+              locale: _locale,
+              title: Strings.appName,
+              theme: flexColorSchemeLight.toTheme,
               builder: (_, router) => ResponsiveWrapper.builder(
                 router,
                 maxWidth: 1200,
@@ -91,7 +90,6 @@ class _MyAppState extends State<MyApp> {
                 ],
               ),
               localizationsDelegates: const [
-                LocaleNamesLocalizationsDelegate(),
                 I10n.delegate,
                 CountryLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,

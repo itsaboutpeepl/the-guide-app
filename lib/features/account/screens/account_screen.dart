@@ -20,14 +20,14 @@ import 'package:guide_liverpool/redux/actions/vesting_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/account.dart';
 import 'package:guide_liverpool/features/shared/widgets/my_scaffold.dart';
 import 'package:guide_liverpool/services.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
-class AccountScreen extends StatefulWidget {
+@RoutePage()
+class AccountPage extends StatefulWidget {
   @override
-  _AccountScreenState createState() => _AccountScreenState();
+  _AccountPageState createState() => _AccountPageState();
 }
 
-class _AccountScreenState extends State<AccountScreen> {
+class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return MyScaffold(
@@ -35,7 +35,7 @@ class _AccountScreenState extends State<AccountScreen> {
       body: StoreConnector<AppState, AccountViewModel>(
         distinct: true,
         onInit: (store) {
-          store.dispatch(getUserVestingCount());
+          //store.dispatch(getUserVestingCount());
         },
         converter: AccountViewModel.fromStore,
         builder: (_, viewModel) {
@@ -62,21 +62,21 @@ class _AccountScreenState extends State<AccountScreen> {
                               label: I10n.of(context).settings,
                               menuIcon: 'settings_icon.svg',
                               onTap: () {
-                                context.router.push(SettingsScreen());
+                                context.router.push(SettingsRoute());
                               },
                             ),
                             MenuTile(
                               label: I10n.of(context).top_up,
                               menuIcon: 'top_up_icon.svg',
                               onTap: () {
-                                context.router.push(TopupScreen());
+                                context.router.push(TopupRoute());
                               },
                             ),
                             MenuTile(
                               label: I10n.of(context).protect_wallet,
                               menuIcon: 'protect_wallet.svg',
                               onTap: () {
-                                context.router.push(ProtectYourWallet());
+                                context.router.push(ProtectWalletRoute());
                               },
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
@@ -119,7 +119,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               menuIcon: 'legal_icon.svg',
                               onTap: () {
                                 context.router.root.push(
-                                  Webview(
+                                  WebViewRoute(
                                     title: I10n.of(context).legal,
                                     url:
                                         'https://theguideliverpool.com/the-guide-liverpool-app-privacy-policy/',
@@ -132,7 +132,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               menuIcon: 'contact_us_icon.svg',
                               onTap: () {
                                 context.router.root.push(
-                                  Webview(
+                                  WebViewRoute(
                                     title: "Contact",
                                     url:
                                         'https://theguideliverpool.com/contact-us/',
@@ -144,7 +144,7 @@ class _AccountScreenState extends State<AccountScreen> {
                               label: "About",
                               menuIcon: 'info_black.svg',
                               onTap: () {
-                                showBarModalBottomSheet(
+                                showModalBottomSheet(
                                     useRootNavigator: true,
                                     backgroundColor: Colors.white,
                                     context: context,

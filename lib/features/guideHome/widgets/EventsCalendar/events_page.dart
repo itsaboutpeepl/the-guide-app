@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
@@ -8,6 +9,7 @@ import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/eventsCalendar.dart';
 import 'package:guide_liverpool/utils/extensions.dart';
 
+@RoutePage()
 class EventsPage extends StatefulWidget {
   const EventsPage({Key? key}) : super(key: key);
 

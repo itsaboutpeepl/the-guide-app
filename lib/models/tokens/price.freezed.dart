@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'price.dart';
 
@@ -31,33 +31,37 @@ mixin _$Price {
 /// @nodoc
 abstract class $PriceCopyWith<$Res> {
   factory $PriceCopyWith(Price value, $Res Function(Price) then) =
-      _$PriceCopyWithImpl<$Res>;
+      _$PriceCopyWithImpl<$Res, Price>;
+  @useResult
   $Res call({String currency, String quote});
 }
 
 /// @nodoc
-class _$PriceCopyWithImpl<$Res> implements $PriceCopyWith<$Res> {
+class _$PriceCopyWithImpl<$Res, $Val extends Price>
+    implements $PriceCopyWith<$Res> {
   _$PriceCopyWithImpl(this._value, this._then);
 
-  final Price _value;
   // ignore: unused_field
-  final $Res Function(Price) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currency = freezed,
-    Object? quote = freezed,
+    Object? currency = null,
+    Object? quote = null,
   }) {
     return _then(_value.copyWith(
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      quote: quote == freezed
+      quote: null == quote
           ? _value.quote
           : quote // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -66,29 +70,28 @@ abstract class _$$_PriceCopyWith<$Res> implements $PriceCopyWith<$Res> {
   factory _$$_PriceCopyWith(_$_Price value, $Res Function(_$_Price) then) =
       __$$_PriceCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({String currency, String quote});
 }
 
 /// @nodoc
-class __$$_PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res>
+class __$$_PriceCopyWithImpl<$Res> extends _$PriceCopyWithImpl<$Res, _$_Price>
     implements _$$_PriceCopyWith<$Res> {
   __$$_PriceCopyWithImpl(_$_Price _value, $Res Function(_$_Price) _then)
-      : super(_value, (v) => _then(v as _$_Price));
+      : super(_value, _then);
 
-  @override
-  _$_Price get _value => super._value as _$_Price;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currency = freezed,
-    Object? quote = freezed,
+    Object? currency = null,
+    Object? quote = null,
   }) {
     return _then(_$_Price(
-      currency: currency == freezed
+      currency: null == currency
           ? _value.currency
           : currency // ignore: cast_nullable_to_non_nullable
               as String,
-      quote: quote == freezed
+      quote: null == quote
           ? _value.quote
           : quote // ignore: cast_nullable_to_non_nullable
               as String,
@@ -121,19 +124,18 @@ class _$_Price extends _Price {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Price &&
-            const DeepCollectionEquality().equals(other.currency, currency) &&
-            const DeepCollectionEquality().equals(other.quote, quote));
+            (identical(other.currency, currency) ||
+                other.currency == currency) &&
+            (identical(other.quote, quote) || other.quote == quote));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(currency),
-      const DeepCollectionEquality().hash(quote));
+  int get hashCode => Object.hash(runtimeType, currency, quote);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_PriceCopyWith<_$_Price> get copyWith =>
       __$$_PriceCopyWithImpl<_$_Price>(this, _$identity);
 

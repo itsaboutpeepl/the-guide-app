@@ -27,7 +27,7 @@ class Avatar extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              context.router.push(ProfileScreen());
+              context.router.push(ProfileRoute());
             },
             child: Column(
               children: [
@@ -145,7 +145,7 @@ class Avatar extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 9,
                         height: MediaQuery.of(context).size.height * .06,
                         child: TextButton(
-                          onPressed: () => context.router.push(DAppScreen()),
+                          onPressed: () {},
                           // showDialog(
                           //   context: context,
                           //   builder: (BuildContext context) => ReceiveDialog(

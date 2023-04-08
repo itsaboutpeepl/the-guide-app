@@ -76,7 +76,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                               if (context.router.canPop()) {
                                 context.router.popUntilRoot();
                               }
-                              context.router.replace(MainScreen());
+                              context.router.replace(MainRoute());
                             } else {
                               setState(() {
                                 isPrimaryPreloading = true;
@@ -86,7 +86,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                   setState(() {
                                     isPrimaryPreloading = false;
                                   });
-                                  context.router.push(SignUpScreen());
+                                  context.router.push(SignupRoute());
                                 },
                               );
                             }
@@ -104,7 +104,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                       label: I10n.of(context).restore_backup,
                                       onPressed: () {
                                         context.router
-                                            .push(RestoreFromBackupScreen());
+                                            .push(RestoreFromBackupRoute());
                                       },
                                       textColor: Colors.grey[100]!,
                                     ),
@@ -132,7 +132,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                           viewModel.createLocalAccount(
                                             () {
                                               context.router
-                                                  .push(SignUpScreen());
+                                                  .push(SignupRoute());
                                             },
                                           );
                                         }
@@ -146,7 +146,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                   textColor: Colors.grey[100]!,
                                   onPressed: () {
                                     context.router
-                                        .push(RestoreFromBackupScreen());
+                                        .push(RestoreFromBackupRoute());
                                   },
                                 ),
                         ),
@@ -157,7 +157,7 @@ class _SignUpButtonsState extends State<SignUpButtons> {
                                 label: "Use without account",
                                 textColor: Colors.grey[100]!,
                                 onPressed: () {
-                                  context.router.push(MainScreenNoAcc());
+                                  context.router.push(MainRouteNoAccRoute());
                                 },
                               ),
                       ],

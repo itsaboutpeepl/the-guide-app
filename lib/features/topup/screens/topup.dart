@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -10,14 +11,15 @@ import 'package:guide_liverpool/models/app_state.dart';
 import 'package:guide_liverpool/redux/viewsmodels/topup.dart';
 import 'package:guide_liverpool/services.dart';
 
-class TopupScreen extends StatefulWidget {
-  const TopupScreen({Key? key}) : super(key: key);
+@RoutePage()
+class TopupPage extends StatefulWidget {
+  const TopupPage({Key? key}) : super(key: key);
 
   @override
-  State<TopupScreen> createState() => _TopupScreenState();
+  State<TopupPage> createState() => _TopupPageState();
 }
 
-class _TopupScreenState extends State<TopupScreen>
+class _TopupPageState extends State<TopupPage>
     with SingleTickerProviderStateMixin {
   String _amountText = '25';
   final bool _isPreloading = false;
@@ -54,7 +56,6 @@ class _TopupScreenState extends State<TopupScreen>
         _amountText = _amountText + value;
       }
       // Prevent deposits greater than 250
-
     }
     setState(() {});
   }
@@ -180,7 +181,7 @@ class _TopupScreenState extends State<TopupScreen>
                 child: PrimaryButton(
                   // labelFontWeight: FontWeight.normal,
                   label: I10n.of(context).next_button,
-                  onPressed: () => stripeService.handleStripe(
+                  onPressed: () => stripeService.handleApplePay(
                     walletAddress: viewModel.walletAddress,
                     amount: int.parse(_amountText) * 100,
                     context: context,

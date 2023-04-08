@@ -29,7 +29,8 @@ class StripePayService {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'Error: startPaymentIntentCheck ${e.toString()}',
+        hint: Hint.withMap(
+            {'error': 'Error: startPaymentIntentCheck ${e.toString()}'}),
       );
       return {};
     }
@@ -56,7 +57,8 @@ class StripePayService {
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: 'Error createStripePaymentIntent ${e.toString()}',
+        hint: Hint.withMap(
+            {'error': 'Error createStripePaymentIntent ${e.toString()}'}),
       );
       return e.toString();
     }

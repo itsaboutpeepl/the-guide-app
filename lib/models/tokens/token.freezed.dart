@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'token.dart';
 
@@ -44,7 +44,8 @@ mixin _$Token {
 /// @nodoc
 abstract class $TokenCopyWith<$Res> {
   factory $TokenCopyWith(Token value, $Res Function(Token) then) =
-      _$TokenCopyWithImpl<$Res>;
+      _$TokenCopyWithImpl<$Res, Token>;
+  @useResult
   $Res call(
       {String address,
       String name,
@@ -66,109 +67,114 @@ abstract class $TokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$TokenCopyWithImpl<$Res> implements $TokenCopyWith<$Res> {
+class _$TokenCopyWithImpl<$Res, $Val extends Token>
+    implements $TokenCopyWith<$Res> {
   _$TokenCopyWithImpl(this._value, this._then);
 
-  final Token _value;
   // ignore: unused_field
-  final $Res Function(Token) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? name = freezed,
-    Object? symbol = freezed,
-    Object? amount = freezed,
-    Object? decimals = freezed,
-    Object? isNative = freezed,
+    Object? address = null,
+    Object? name = null,
+    Object? symbol = null,
+    Object? amount = null,
+    Object? decimals = null,
+    Object? isNative = null,
     Object? imageUrl = freezed,
     Object? timestamp = freezed,
     Object? priceInfo = freezed,
     Object? communityAddress = freezed,
-    Object? timeFrame = freezed,
-    Object? priceChange = freezed,
-    Object? intervalStats = freezed,
+    Object? timeFrame = null,
+    Object? priceChange = null,
+    Object? intervalStats = null,
     Object? walletActions = freezed,
   }) {
     return _then(_value.copyWith(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      symbol: symbol == freezed
+      symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      decimals: decimals == freezed
+      decimals: null == decimals
           ? _value.decimals
           : decimals // ignore: cast_nullable_to_non_nullable
               as int,
-      isNative: isNative == freezed
+      isNative: null == isNative
           ? _value.isNative
           : isNative // ignore: cast_nullable_to_non_nullable
               as bool,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      timestamp: timestamp == freezed
+      timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int?,
-      priceInfo: priceInfo == freezed
+      priceInfo: freezed == priceInfo
           ? _value.priceInfo
           : priceInfo // ignore: cast_nullable_to_non_nullable
               as Price?,
-      communityAddress: communityAddress == freezed
+      communityAddress: freezed == communityAddress
           ? _value.communityAddress
           : communityAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      timeFrame: timeFrame == freezed
+      timeFrame: null == timeFrame
           ? _value.timeFrame
           : timeFrame // ignore: cast_nullable_to_non_nullable
               as TimeFrame,
-      priceChange: priceChange == freezed
+      priceChange: null == priceChange
           ? _value.priceChange
           : priceChange // ignore: cast_nullable_to_non_nullable
               as num,
-      intervalStats: intervalStats == freezed
+      intervalStats: null == intervalStats
           ? _value.intervalStats
           : intervalStats // ignore: cast_nullable_to_non_nullable
               as List<IntervalStats>,
-      walletActions: walletActions == freezed
+      walletActions: freezed == walletActions
           ? _value.walletActions
           : walletActions // ignore: cast_nullable_to_non_nullable
               as WalletActions?,
-    ));
+    ) as $Val);
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $PriceCopyWith<$Res>? get priceInfo {
     if (_value.priceInfo == null) {
       return null;
     }
 
     return $PriceCopyWith<$Res>(_value.priceInfo!, (value) {
-      return _then(_value.copyWith(priceInfo: value));
+      return _then(_value.copyWith(priceInfo: value) as $Val);
     });
   }
 
   @override
+  @pragma('vm:prefer-inline')
   $WalletActionsCopyWith<$Res>? get walletActions {
     if (_value.walletActions == null) {
       return null;
     }
 
     return $WalletActionsCopyWith<$Res>(_value.walletActions!, (value) {
-      return _then(_value.copyWith(walletActions: value));
+      return _then(_value.copyWith(walletActions: value) as $Val);
     });
   }
 }
@@ -178,6 +184,7 @@ abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
   factory _$$_TokenCopyWith(_$_Token value, $Res Function(_$_Token) then) =
       __$$_TokenCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String address,
       String name,
@@ -201,85 +208,83 @@ abstract class _$$_TokenCopyWith<$Res> implements $TokenCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res>
+class __$$_TokenCopyWithImpl<$Res> extends _$TokenCopyWithImpl<$Res, _$_Token>
     implements _$$_TokenCopyWith<$Res> {
   __$$_TokenCopyWithImpl(_$_Token _value, $Res Function(_$_Token) _then)
-      : super(_value, (v) => _then(v as _$_Token));
+      : super(_value, _then);
 
-  @override
-  _$_Token get _value => super._value as _$_Token;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? address = freezed,
-    Object? name = freezed,
-    Object? symbol = freezed,
-    Object? amount = freezed,
-    Object? decimals = freezed,
-    Object? isNative = freezed,
+    Object? address = null,
+    Object? name = null,
+    Object? symbol = null,
+    Object? amount = null,
+    Object? decimals = null,
+    Object? isNative = null,
     Object? imageUrl = freezed,
     Object? timestamp = freezed,
     Object? priceInfo = freezed,
     Object? communityAddress = freezed,
-    Object? timeFrame = freezed,
-    Object? priceChange = freezed,
-    Object? intervalStats = freezed,
+    Object? timeFrame = null,
+    Object? priceChange = null,
+    Object? intervalStats = null,
     Object? walletActions = freezed,
   }) {
     return _then(_$_Token(
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      name: name == freezed
+      name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      symbol: symbol == freezed
+      symbol: null == symbol
           ? _value.symbol
           : symbol // ignore: cast_nullable_to_non_nullable
               as String,
-      amount: amount == freezed
+      amount: null == amount
           ? _value.amount
           : amount // ignore: cast_nullable_to_non_nullable
               as BigInt,
-      decimals: decimals == freezed
+      decimals: null == decimals
           ? _value.decimals
           : decimals // ignore: cast_nullable_to_non_nullable
               as int,
-      isNative: isNative == freezed
+      isNative: null == isNative
           ? _value.isNative
           : isNative // ignore: cast_nullable_to_non_nullable
               as bool,
-      imageUrl: imageUrl == freezed
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
               as String?,
-      timestamp: timestamp == freezed
+      timestamp: freezed == timestamp
           ? _value.timestamp
           : timestamp // ignore: cast_nullable_to_non_nullable
               as int?,
-      priceInfo: priceInfo == freezed
+      priceInfo: freezed == priceInfo
           ? _value.priceInfo
           : priceInfo // ignore: cast_nullable_to_non_nullable
               as Price?,
-      communityAddress: communityAddress == freezed
+      communityAddress: freezed == communityAddress
           ? _value.communityAddress
           : communityAddress // ignore: cast_nullable_to_non_nullable
               as String?,
-      timeFrame: timeFrame == freezed
+      timeFrame: null == timeFrame
           ? _value.timeFrame
           : timeFrame // ignore: cast_nullable_to_non_nullable
               as TimeFrame,
-      priceChange: priceChange == freezed
+      priceChange: null == priceChange
           ? _value.priceChange
           : priceChange // ignore: cast_nullable_to_non_nullable
               as num,
-      intervalStats: intervalStats == freezed
+      intervalStats: null == intervalStats
           ? _value.intervalStats
           : intervalStats // ignore: cast_nullable_to_non_nullable
               as List<IntervalStats>,
-      walletActions: walletActions == freezed
+      walletActions: freezed == walletActions
           ? _value.walletActions
           : walletActions // ignore: cast_nullable_to_non_nullable
               as WalletActions?,
@@ -354,47 +359,54 @@ class _$_Token extends _Token {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Token &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality().equals(other.name, name) &&
-            const DeepCollectionEquality().equals(other.symbol, symbol) &&
-            const DeepCollectionEquality().equals(other.amount, amount) &&
-            const DeepCollectionEquality().equals(other.decimals, decimals) &&
-            const DeepCollectionEquality().equals(other.isNative, isNative) &&
-            const DeepCollectionEquality().equals(other.imageUrl, imageUrl) &&
-            const DeepCollectionEquality().equals(other.timestamp, timestamp) &&
-            const DeepCollectionEquality().equals(other.priceInfo, priceInfo) &&
-            const DeepCollectionEquality()
-                .equals(other.communityAddress, communityAddress) &&
-            const DeepCollectionEquality().equals(other.timeFrame, timeFrame) &&
-            const DeepCollectionEquality()
-                .equals(other.priceChange, priceChange) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.symbol, symbol) || other.symbol == symbol) &&
+            (identical(other.amount, amount) || other.amount == amount) &&
+            (identical(other.decimals, decimals) ||
+                other.decimals == decimals) &&
+            (identical(other.isNative, isNative) ||
+                other.isNative == isNative) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.timestamp, timestamp) ||
+                other.timestamp == timestamp) &&
+            (identical(other.priceInfo, priceInfo) ||
+                other.priceInfo == priceInfo) &&
+            (identical(other.communityAddress, communityAddress) ||
+                other.communityAddress == communityAddress) &&
+            (identical(other.timeFrame, timeFrame) ||
+                other.timeFrame == timeFrame) &&
+            (identical(other.priceChange, priceChange) ||
+                other.priceChange == priceChange) &&
             const DeepCollectionEquality()
                 .equals(other.intervalStats, intervalStats) &&
-            const DeepCollectionEquality()
-                .equals(other.walletActions, walletActions));
+            (identical(other.walletActions, walletActions) ||
+                other.walletActions == walletActions));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(name),
-      const DeepCollectionEquality().hash(symbol),
-      const DeepCollectionEquality().hash(amount),
-      const DeepCollectionEquality().hash(decimals),
-      const DeepCollectionEquality().hash(isNative),
-      const DeepCollectionEquality().hash(imageUrl),
-      const DeepCollectionEquality().hash(timestamp),
-      const DeepCollectionEquality().hash(priceInfo),
-      const DeepCollectionEquality().hash(communityAddress),
-      const DeepCollectionEquality().hash(timeFrame),
-      const DeepCollectionEquality().hash(priceChange),
+      address,
+      name,
+      symbol,
+      amount,
+      decimals,
+      isNative,
+      imageUrl,
+      timestamp,
+      priceInfo,
+      communityAddress,
+      timeFrame,
+      priceChange,
       const DeepCollectionEquality().hash(intervalStats),
-      const DeepCollectionEquality().hash(walletActions));
+      walletActions);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_TokenCopyWith<_$_Token> get copyWith =>
       __$$_TokenCopyWithImpl<_$_Token>(this, _$identity);
 

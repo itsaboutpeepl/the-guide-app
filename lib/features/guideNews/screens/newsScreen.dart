@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/constants/theme.dart';
@@ -7,12 +8,13 @@ import 'package:guide_liverpool/models/articles/category.dart';
 import 'package:guide_liverpool/redux/actions/news_actions.dart';
 import 'package:guide_liverpool/redux/viewsmodels/newsScreen.dart';
 
-class NewsScreen extends StatefulWidget {
+@RoutePage()
+class NewsPage extends StatefulWidget {
   @override
-  State<NewsScreen> createState() => _NewsScreenState();
+  State<NewsPage> createState() => _NewsPageState();
 }
 
-class _NewsScreenState extends State<NewsScreen>
+class _NewsPageState extends State<NewsPage>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 

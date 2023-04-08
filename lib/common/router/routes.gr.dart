@@ -1,700 +1,644 @@
-// **************************************************************************
-// AutoRouteGenerator
-// **************************************************************************
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
-// AutoRouteGenerator
+// AutoRouterGenerator
 // **************************************************************************
-//
+
 // ignore_for_file: type=lint
+// coverage:ignore-file
 
-import 'package:auto_route/auto_route.dart' as _i28;
-import 'package:auto_route/empty_router_widgets.dart' as _i12;
-import 'package:flutter/material.dart' as _i29;
+// ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:auto_route/auto_route.dart' as _i24;
+import 'package:flutter/material.dart' as _i25;
+import 'package:guide_liverpool/features/account/screens/account_screen.dart'
+    as _i18;
+import 'package:guide_liverpool/features/account/screens/done_backup_screen.dart'
+    as _i20;
+import 'package:guide_liverpool/features/account/screens/profile.dart' as _i17;
+import 'package:guide_liverpool/features/account/screens/protect_your_wallet.dart'
+    as _i22;
+import 'package:guide_liverpool/features/account/screens/settings.dart' as _i23;
+import 'package:guide_liverpool/features/account/screens/show_mnemonic.dart'
+    as _i21;
+import 'package:guide_liverpool/features/account/screens/verify_mnemonic.dart'
+    as _i19;
+import 'package:guide_liverpool/features/guideHome/screens/guideHome.dart'
+    as _i1;
+import 'package:guide_liverpool/features/guideHome/widgets/EventsCalendar/events_page.dart'
+    as _i2;
+import 'package:guide_liverpool/features/guideNews/screens/newsScreen.dart'
+    as _i16;
+import 'package:guide_liverpool/features/network/screens/networkScreen.dart'
+    as _i4;
+import 'package:guide_liverpool/features/onboard/screens/restore_wallet_screen.dart'
+    as _i9;
+import 'package:guide_liverpool/features/onboard/screens/security_screen.dart'
+    as _i5;
+import 'package:guide_liverpool/features/onboard/screens/signup_screen.dart'
+    as _i8;
+import 'package:guide_liverpool/features/onboard/screens/username_screen.dart'
+    as _i7;
+import 'package:guide_liverpool/features/onboard/screens/verify_screen.dart'
+    as _i6;
+import 'package:guide_liverpool/features/screens/main_screen.dart' as _i14;
+import 'package:guide_liverpool/features/screens/main_screen_no_acc.dart'
+    as _i12;
+import 'package:guide_liverpool/features/screens/on_board_screen.dart' as _i11;
+import 'package:guide_liverpool/features/screens/pincode_screen.dart' as _i10;
+import 'package:guide_liverpool/features/screens/splash_screen.dart' as _i15;
+import 'package:guide_liverpool/features/screens/webview_screen.dart' as _i13;
+import 'package:guide_liverpool/features/topup/screens/topup.dart' as _i3;
 
-import '../../features/account/screens/account_screen.dart' as _i19;
-import '../../features/account/screens/dAppScreen.dart' as _i26;
-import '../../features/account/screens/done_backup_screen.dart' as _i22;
-import '../../features/account/screens/profile.dart' as _i25;
-import '../../features/account/screens/protect_your_wallet.dart' as _i24;
-import '../../features/account/screens/settings.dart' as _i23;
-import '../../features/account/screens/settings_screen_no_acc.dart' as _i13;
-import '../../features/account/screens/show_mnemonic.dart' as _i20;
-import '../../features/account/screens/verify_mnemonic.dart' as _i21;
-import '../../features/guideHome/screens/guideHome.dart' as _i14;
-import '../../features/guideHome/widgets/EventsCalendar/events_page.dart'
-    as _i15;
-import '../../features/guideNews/screens/newsScreen.dart' as _i16;
-import '../../features/network/screens/networkScreen.dart' as _i27;
-import '../../features/onboard/screens/restore_wallet_screen.dart' as _i4;
-import '../../features/onboard/screens/security_screen.dart' as _i2;
-import '../../features/onboard/screens/signup_screen.dart' as _i6;
-import '../../features/onboard/screens/username_screen.dart' as _i8;
-import '../../features/onboard/screens/verify_screen.dart' as _i7;
-import '../../features/screens/main_screen.dart' as _i11;
-import '../../features/screens/main_screen_no_acc.dart' as _i10;
-import '../../features/screens/on_board_screen.dart' as _i5;
-import '../../features/screens/pincode_screen.dart' as _i3;
-import '../../features/screens/splash_screen.dart' as _i1;
-import '../../features/screens/webview_screen.dart' as _i9;
-import '../../features/topup/screens/topup.dart' as _i17;
-import '../../features/topup/screens/topup_explained.dart' as _i18;
-import 'route_guards.dart' as _i30;
-
-class RootRouter extends _i28.RootStackRouter {
-  RootRouter(
-      {_i29.GlobalKey<_i29.NavigatorState>? navigatorKey,
-      required this.authGuard})
+abstract class $RootRouter extends _i24.RootStackRouter {
+  $RootRouter([_i25.GlobalKey<_i25.NavigatorState>? navigatorKey])
       : super(navigatorKey);
 
-  final _i30.AuthGuard authGuard;
-
   @override
-  final Map<String, _i28.PageFactory> pagesMap = {
-    SplashScreen.name: (routeData) {
-      final args = routeData.argsAs<SplashScreenArgs>(
-          orElse: () => const SplashScreenArgs());
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i1.SplashScreen(
-              key: args.key, onLoginResult: args.onLoginResult));
+  final Map<String, _i24.PageFactory> pagesMap = {
+    HomeRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i1.HomePage(),
+      );
     },
-    ChooseSecurityOption.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i2.ChooseSecurityOption());
+    EventsRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i2.EventsPage(),
+      );
     },
-    PinCodeScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i3.PinCodeScreen());
+    TopupRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i3.TopupPage(),
+      );
     },
-    RestoreFromBackupScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i4.RestoreFromBackupScreen());
+    NetworkRoute.name: (routeData) {
+      final args = routeData.argsAs<NetworkRouteArgs>(
+          orElse: () => const NetworkRouteArgs());
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i4.NetworkPage(key: args.key),
+      );
     },
-    OnBoardScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i5.OnBoardScreen());
+    SecurityOptionRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i5.SecurityOptionPage(),
+      );
     },
-    SignUpScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i6.SignUpScreen());
+    VerifyPhoneRoute.name: (routeData) {
+      final args = routeData.argsAs<VerifyPhoneRouteArgs>(
+          orElse: () => const VerifyPhoneRouteArgs());
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i6.VerifyPhonePage(verificationId: args.verificationId),
+      );
     },
-    VerifyPhoneNumber.name: (routeData) {
-      final args = routeData.argsAs<VerifyPhoneNumberArgs>(
-          orElse: () => const VerifyPhoneNumberArgs());
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i7.VerifyPhoneNumber(verificationId: args.verificationId));
+    SelectUsernameRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i7.SelectUsernamePage(),
+      );
     },
-    UserNameScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i8.UserNameScreen());
+    SignupRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i8.SignupPage(),
+      );
     },
-    Webview.name: (routeData) {
-      final args = routeData.argsAs<WebviewArgs>();
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData,
-          child: _i9.WebViewScreen(args.url, args.title,
-              onPageStarted: args.onPageStarted),
-          fullscreenDialog: true);
+    RestoreFromBackupRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i9.RestoreFromBackupPage(),
+      );
     },
-    MainScreenNoAcc.name: (routeData) {
-      final args = routeData.argsAs<MainScreenNoAccArgs>(
-          orElse: () => const MainScreenNoAccArgs());
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i10.MainScreenNoAcc(key: args.key));
+    PincodeRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i10.PincodePage(),
+      );
     },
-    MainScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i11.MainScreen());
+    OnboardRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i11.OnboardPage(),
+      );
     },
-    GuideHomeTab.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.EmptyRouterPage());
+    MainRouteNoAccRoute.name: (routeData) {
+      final args = routeData.argsAs<MainRouteNoAccRouteArgs>(
+          orElse: () => const MainRouteNoAccRouteArgs());
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i12.MainScreenNoAccPage(key: args.key),
+      );
     },
-    NewsHomeTab.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.EmptyRouterPage());
+    WebViewRoute.name: (routeData) {
+      final args = routeData.argsAs<WebViewRouteArgs>();
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i13.WebViewPage(
+          args.url,
+          args.title,
+        ),
+      );
     },
-    SettingsScreenNoAcc.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i13.SettingsScreenNoAccount());
+    MainRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const _i14.MainPage(),
+      );
     },
-    GuideHomeScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i14.GuideHomeScreen());
+    SplashRoute.name: (routeData) {
+      final args = routeData.argsAs<SplashRouteArgs>(
+          orElse: () => const SplashRouteArgs());
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i15.SplashPage(
+          key: args.key,
+          onLoginResult: args.onLoginResult,
+        ),
+      );
     },
-    EventsPage.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i15.EventsPage());
+    NewsRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i16.NewsPage(),
+      );
     },
-    NewsHomeScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i16.NewsScreen());
+    ProfileRoute.name: (routeData) {
+      final args = routeData.argsAs<ProfileRouteArgs>(
+          orElse: () => const ProfileRouteArgs());
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i17.ProfilePage(key: args.key),
+      );
     },
-    TopupTab.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.EmptyRouterPage());
+    AccountRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i18.AccountPage(),
+      );
     },
-    AccountTab.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.EmptyRouterPage());
+    VerifyMnemonicRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i19.VerifyMnemonicPage(),
+      );
     },
-    NetworkScreenTab.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i12.EmptyRouterPage());
+    BackupCompletedRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i20.BackupCompletedPage(),
+      );
     },
-    TopupScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i17.TopupScreen());
+    MnemonicRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i21.MnemonicPage(),
+      );
     },
-    TopupExplained.name: (routeData) {
-      final args = routeData.argsAs<TopupExplainedArgs>(
-          orElse: () => const TopupExplainedArgs());
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i18.TopupExplained(key: args.key));
+    ProtectWalletRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i22.ProtectWalletPage(),
+      );
     },
-    AccountScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i19.AccountScreen());
+    SettingsRoute.name: (routeData) {
+      return _i24.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i23.SettingsPage(),
+      );
     },
-    ShowMnemonic.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i20.ShowMnemonic());
-    },
-    VerifyMnemonic.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i21.VerifyMnemonic());
-    },
-    DoneBackup.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i22.DoneBackup());
-    },
-    SettingsScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i23.SettingsScreen());
-    },
-    ProtectYourWallet.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i24.ProtectYourWallet());
-    },
-    ProfileScreen.name: (routeData) {
-      final args = routeData.argsAs<ProfileScreenArgs>(
-          orElse: () => const ProfileScreenArgs());
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: _i25.ProfileScreen(key: args.key));
-    },
-    DAppScreen.name: (routeData) {
-      return _i28.MaterialPageX<dynamic>(
-          routeData: routeData, child: const _i26.DAppScreen());
-    },
-    NetworkScreen.name: (routeData) {
-      final args = routeData.argsAs<NetworkScreenArgs>(
-          orElse: () => const NetworkScreenArgs());
-      return _i28.CustomPage<dynamic>(
-          routeData: routeData,
-          child: _i27.NetworkScreen(key: args.key),
-          transitionsBuilder: _i28.TransitionsBuilders.slideRightWithFade,
-          opaque: true,
-          barrierDismissible: false);
-    }
   };
-
-  @override
-  List<_i28.RouteConfig> get routes => [
-        _i28.RouteConfig(SplashScreen.name, path: '/'),
-        _i28.RouteConfig(ChooseSecurityOption.name,
-            path: '/choose-security-option'),
-        _i28.RouteConfig(PinCodeScreen.name, path: '/pin-code-screen'),
-        _i28.RouteConfig(RestoreFromBackupScreen.name,
-            path: '/restore-from-backup-screen'),
-        _i28.RouteConfig(OnBoardScreen.name, path: '/on-board-screen'),
-        _i28.RouteConfig(SignUpScreen.name, path: '/sign-up-screen'),
-        _i28.RouteConfig(VerifyPhoneNumber.name, path: '/verify-phone-number'),
-        _i28.RouteConfig(UserNameScreen.name, path: '/user-name-screen'),
-        _i28.RouteConfig(Webview.name, path: '/web-view-screen'),
-        _i28.RouteConfig(MainScreenNoAcc.name,
-            path: '/main-screen-no-acc',
-            children: [
-              _i28.RouteConfig(GuideHomeTab.name,
-                  path: 'guideHome',
-                  parent: MainScreenNoAcc.name,
-                  children: [
-                    _i28.RouteConfig(GuideHomeScreen.name,
-                        path: '', parent: GuideHomeTab.name),
-                    _i28.RouteConfig(EventsPage.name,
-                        path: 'events-page', parent: GuideHomeTab.name)
-                  ]),
-              _i28.RouteConfig(NewsHomeTab.name,
-                  path: 'newsHome',
-                  parent: MainScreenNoAcc.name,
-                  children: [
-                    _i28.RouteConfig(NewsHomeScreen.name,
-                        path: '', parent: NewsHomeTab.name)
-                  ]),
-              _i28.RouteConfig(SettingsScreenNoAcc.name,
-                  path: 'settings-screen-no-account',
-                  parent: MainScreenNoAcc.name)
-            ]),
-        _i28.RouteConfig(MainScreen.name, path: '/main-screen', guards: [
-          authGuard
-        ], children: [
-          _i28.RouteConfig(GuideHomeTab.name,
-              path: 'guideHome',
-              parent: MainScreen.name,
-              children: [
-                _i28.RouteConfig(GuideHomeScreen.name,
-                    path: '', parent: GuideHomeTab.name),
-                _i28.RouteConfig(EventsPage.name,
-                    path: 'events-page', parent: GuideHomeTab.name)
-              ]),
-          _i28.RouteConfig(NewsHomeTab.name,
-              path: 'newsHome',
-              parent: MainScreen.name,
-              children: [
-                _i28.RouteConfig(NewsHomeScreen.name,
-                    path: '', parent: NewsHomeTab.name)
-              ]),
-          _i28.RouteConfig(TopupTab.name,
-              path: 'topup',
-              parent: MainScreen.name,
-              children: [
-                _i28.RouteConfig('#redirect',
-                    path: '',
-                    parent: TopupTab.name,
-                    redirectTo: 'topUp',
-                    fullMatch: true),
-                _i28.RouteConfig(TopupScreen.name,
-                    path: 'topUp', parent: TopupTab.name),
-                _i28.RouteConfig(TopupExplained.name,
-                    path: 'topup-explained', parent: TopupTab.name)
-              ]),
-          _i28.RouteConfig(AccountTab.name,
-              path: 'account',
-              parent: MainScreen.name,
-              guards: [
-                authGuard
-              ],
-              children: [
-                _i28.RouteConfig(AccountScreen.name,
-                    path: '', parent: AccountTab.name, guards: [authGuard]),
-                _i28.RouteConfig(ShowMnemonic.name,
-                    path: 'show-mnemonic',
-                    parent: AccountTab.name,
-                    guards: [authGuard]),
-                _i28.RouteConfig(VerifyMnemonic.name,
-                    path: 'verify-mnemonic',
-                    parent: AccountTab.name,
-                    guards: [authGuard]),
-                _i28.RouteConfig(DoneBackup.name,
-                    path: 'done-backup',
-                    parent: AccountTab.name,
-                    guards: [authGuard]),
-                _i28.RouteConfig(SettingsScreen.name,
-                    path: 'settings-screen',
-                    parent: AccountTab.name,
-                    guards: [authGuard]),
-                _i28.RouteConfig(ProtectYourWallet.name,
-                    path: 'protect-your-wallet',
-                    parent: AccountTab.name,
-                    guards: [authGuard]),
-                _i28.RouteConfig(ProfileScreen.name,
-                    path: 'profile-screen',
-                    parent: AccountTab.name,
-                    guards: [authGuard]),
-                _i28.RouteConfig(TopupScreen.name,
-                    path: 'topUp',
-                    parent: AccountTab.name,
-                    guards: [authGuard]),
-                _i28.RouteConfig(DAppScreen.name,
-                    path: 'd-app-screen',
-                    parent: AccountTab.name,
-                    guards: [authGuard])
-              ]),
-          _i28.RouteConfig(NetworkScreenTab.name,
-              path: 'networkScreen',
-              parent: MainScreen.name,
-              guards: [
-                authGuard
-              ],
-              children: [
-                _i28.RouteConfig(NetworkScreen.name,
-                    path: '',
-                    parent: NetworkScreenTab.name,
-                    meta: <String, dynamic>{'hideBottomNav': true},
-                    guards: [authGuard])
-              ])
-        ]),
-        _i28.RouteConfig('*#redirect',
-            path: '*', redirectTo: '/', fullMatch: true)
-      ];
 }
 
 /// generated route for
-/// [_i1.SplashScreen]
-class SplashScreen extends _i28.PageRouteInfo<SplashScreenArgs> {
-  SplashScreen({_i29.Key? key, void Function(bool)? onLoginResult})
-      : super(SplashScreen.name,
-            path: '/',
-            args: SplashScreenArgs(key: key, onLoginResult: onLoginResult));
+/// [_i1.HomePage]
+class HomeRoute extends _i24.PageRouteInfo<void> {
+  const HomeRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          HomeRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'SplashScreen';
+  static const String name = 'HomeRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
-class SplashScreenArgs {
-  const SplashScreenArgs({this.key, this.onLoginResult});
+/// generated route for
+/// [_i2.EventsPage]
+class EventsRoute extends _i24.PageRouteInfo<void> {
+  const EventsRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          EventsRoute.name,
+          initialChildren: children,
+        );
 
-  final _i29.Key? key;
+  static const String name = 'EventsRoute';
 
-  final void Function(bool)? onLoginResult;
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i3.TopupPage]
+class TopupRoute extends _i24.PageRouteInfo<void> {
+  const TopupRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          TopupRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'TopupRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i4.NetworkPage]
+class NetworkRoute extends _i24.PageRouteInfo<NetworkRouteArgs> {
+  NetworkRoute({
+    _i25.Key? key,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          NetworkRoute.name,
+          args: NetworkRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'NetworkRoute';
+
+  static const _i24.PageInfo<NetworkRouteArgs> page =
+      _i24.PageInfo<NetworkRouteArgs>(name);
+}
+
+class NetworkRouteArgs {
+  const NetworkRouteArgs({this.key});
+
+  final _i25.Key? key;
 
   @override
   String toString() {
-    return 'SplashScreenArgs{key: $key, onLoginResult: $onLoginResult}';
+    return 'NetworkRouteArgs{key: $key}';
   }
 }
 
 /// generated route for
-/// [_i2.ChooseSecurityOption]
-class ChooseSecurityOption extends _i28.PageRouteInfo<void> {
-  const ChooseSecurityOption()
-      : super(ChooseSecurityOption.name, path: '/choose-security-option');
+/// [_i5.SecurityOptionPage]
+class SecurityOptionRoute extends _i24.PageRouteInfo<void> {
+  const SecurityOptionRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          SecurityOptionRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'ChooseSecurityOption';
+  static const String name = 'SecurityOptionRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i3.PinCodeScreen]
-class PinCodeScreen extends _i28.PageRouteInfo<void> {
-  const PinCodeScreen() : super(PinCodeScreen.name, path: '/pin-code-screen');
+/// [_i6.VerifyPhonePage]
+class VerifyPhoneRoute extends _i24.PageRouteInfo<VerifyPhoneRouteArgs> {
+  VerifyPhoneRoute({
+    String? verificationId,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          VerifyPhoneRoute.name,
+          args: VerifyPhoneRouteArgs(verificationId: verificationId),
+          initialChildren: children,
+        );
 
-  static const String name = 'PinCodeScreen';
+  static const String name = 'VerifyPhoneRoute';
+
+  static const _i24.PageInfo<VerifyPhoneRouteArgs> page =
+      _i24.PageInfo<VerifyPhoneRouteArgs>(name);
 }
 
-/// generated route for
-/// [_i4.RestoreFromBackupScreen]
-class RestoreFromBackupScreen extends _i28.PageRouteInfo<void> {
-  const RestoreFromBackupScreen()
-      : super(RestoreFromBackupScreen.name,
-            path: '/restore-from-backup-screen');
-
-  static const String name = 'RestoreFromBackupScreen';
-}
-
-/// generated route for
-/// [_i5.OnBoardScreen]
-class OnBoardScreen extends _i28.PageRouteInfo<void> {
-  const OnBoardScreen() : super(OnBoardScreen.name, path: '/on-board-screen');
-
-  static const String name = 'OnBoardScreen';
-}
-
-/// generated route for
-/// [_i6.SignUpScreen]
-class SignUpScreen extends _i28.PageRouteInfo<void> {
-  const SignUpScreen() : super(SignUpScreen.name, path: '/sign-up-screen');
-
-  static const String name = 'SignUpScreen';
-}
-
-/// generated route for
-/// [_i7.VerifyPhoneNumber]
-class VerifyPhoneNumber extends _i28.PageRouteInfo<VerifyPhoneNumberArgs> {
-  VerifyPhoneNumber({String? verificationId})
-      : super(VerifyPhoneNumber.name,
-            path: '/verify-phone-number',
-            args: VerifyPhoneNumberArgs(verificationId: verificationId));
-
-  static const String name = 'VerifyPhoneNumber';
-}
-
-class VerifyPhoneNumberArgs {
-  const VerifyPhoneNumberArgs({this.verificationId});
+class VerifyPhoneRouteArgs {
+  const VerifyPhoneRouteArgs({this.verificationId});
 
   final String? verificationId;
 
   @override
   String toString() {
-    return 'VerifyPhoneNumberArgs{verificationId: $verificationId}';
+    return 'VerifyPhoneRouteArgs{verificationId: $verificationId}';
   }
 }
 
 /// generated route for
-/// [_i8.UserNameScreen]
-class UserNameScreen extends _i28.PageRouteInfo<void> {
-  const UserNameScreen()
-      : super(UserNameScreen.name, path: '/user-name-screen');
+/// [_i7.SelectUsernamePage]
+class SelectUsernameRoute extends _i24.PageRouteInfo<void> {
+  const SelectUsernameRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          SelectUsernameRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'UserNameScreen';
+  static const String name = 'SelectUsernameRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i9.WebViewScreen]
-class Webview extends _i28.PageRouteInfo<WebviewArgs> {
-  Webview(
-      {required String url,
-      required String title,
-      void Function(String)? onPageStarted})
-      : super(Webview.name,
-            path: '/web-view-screen',
-            args: WebviewArgs(
-                url: url, title: title, onPageStarted: onPageStarted));
+/// [_i8.SignupPage]
+class SignupRoute extends _i24.PageRouteInfo<void> {
+  const SignupRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          SignupRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'Webview';
+  static const String name = 'SignupRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
-class WebviewArgs {
-  const WebviewArgs(
-      {required this.url, required this.title, this.onPageStarted});
+/// generated route for
+/// [_i9.RestoreFromBackupPage]
+class RestoreFromBackupRoute extends _i24.PageRouteInfo<void> {
+  const RestoreFromBackupRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          RestoreFromBackupRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'RestoreFromBackupRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i10.PincodePage]
+class PincodeRoute extends _i24.PageRouteInfo<void> {
+  const PincodeRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          PincodeRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'PincodeRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i11.OnboardPage]
+class OnboardRoute extends _i24.PageRouteInfo<void> {
+  const OnboardRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          OnboardRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'OnboardRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i12.MainScreenNoAccPage]
+class MainRouteNoAccRoute extends _i24.PageRouteInfo<MainRouteNoAccRouteArgs> {
+  MainRouteNoAccRoute({
+    _i25.Key? key,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          MainRouteNoAccRoute.name,
+          args: MainRouteNoAccRouteArgs(key: key),
+          initialChildren: children,
+        );
+
+  static const String name = 'MainRouteNoAccRoute';
+
+  static const _i24.PageInfo<MainRouteNoAccRouteArgs> page =
+      _i24.PageInfo<MainRouteNoAccRouteArgs>(name);
+}
+
+class MainRouteNoAccRouteArgs {
+  const MainRouteNoAccRouteArgs({this.key});
+
+  final _i25.Key? key;
+
+  @override
+  String toString() {
+    return 'MainRouteNoAccRouteArgs{key: $key}';
+  }
+}
+
+/// generated route for
+/// [_i13.WebViewPage]
+class WebViewRoute extends _i24.PageRouteInfo<WebViewRouteArgs> {
+  WebViewRoute({
+    required String url,
+    required String title,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          WebViewRoute.name,
+          args: WebViewRouteArgs(
+            url: url,
+            title: title,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'WebViewRoute';
+
+  static const _i24.PageInfo<WebViewRouteArgs> page =
+      _i24.PageInfo<WebViewRouteArgs>(name);
+}
+
+class WebViewRouteArgs {
+  const WebViewRouteArgs({
+    required this.url,
+    required this.title,
+  });
 
   final String url;
 
   final String title;
 
-  final void Function(String)? onPageStarted;
-
   @override
   String toString() {
-    return 'WebviewArgs{url: $url, title: $title, onPageStarted: $onPageStarted}';
+    return 'WebViewRouteArgs{url: $url, title: $title}';
   }
 }
 
 /// generated route for
-/// [_i10.MainScreenNoAcc]
-class MainScreenNoAcc extends _i28.PageRouteInfo<MainScreenNoAccArgs> {
-  MainScreenNoAcc({_i29.Key? key, List<_i28.PageRouteInfo>? children})
-      : super(MainScreenNoAcc.name,
-            path: '/main-screen-no-acc',
-            args: MainScreenNoAccArgs(key: key),
-            initialChildren: children);
+/// [_i14.MainPage]
+class MainRoute extends _i24.PageRouteInfo<void> {
+  const MainRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          MainRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'MainScreenNoAcc';
+  static const String name = 'MainRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
-class MainScreenNoAccArgs {
-  const MainScreenNoAccArgs({this.key});
+/// generated route for
+/// [_i15.SplashPage]
+class SplashRoute extends _i24.PageRouteInfo<SplashRouteArgs> {
+  SplashRoute({
+    _i25.Key? key,
+    void Function(bool)? onLoginResult,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          SplashRoute.name,
+          args: SplashRouteArgs(
+            key: key,
+            onLoginResult: onLoginResult,
+          ),
+          initialChildren: children,
+        );
 
-  final _i29.Key? key;
+  static const String name = 'SplashRoute';
+
+  static const _i24.PageInfo<SplashRouteArgs> page =
+      _i24.PageInfo<SplashRouteArgs>(name);
+}
+
+class SplashRouteArgs {
+  const SplashRouteArgs({
+    this.key,
+    this.onLoginResult,
+  });
+
+  final _i25.Key? key;
+
+  final void Function(bool)? onLoginResult;
 
   @override
   String toString() {
-    return 'MainScreenNoAccArgs{key: $key}';
+    return 'SplashRouteArgs{key: $key, onLoginResult: $onLoginResult}';
   }
 }
 
 /// generated route for
-/// [_i11.MainScreen]
-class MainScreen extends _i28.PageRouteInfo<void> {
-  const MainScreen({List<_i28.PageRouteInfo>? children})
-      : super(MainScreen.name, path: '/main-screen', initialChildren: children);
+/// [_i16.NewsPage]
+class NewsRoute extends _i24.PageRouteInfo<void> {
+  const NewsRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          NewsRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'MainScreen';
+  static const String name = 'NewsRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i12.EmptyRouterPage]
-class GuideHomeTab extends _i28.PageRouteInfo<void> {
-  const GuideHomeTab({List<_i28.PageRouteInfo>? children})
-      : super(GuideHomeTab.name, path: 'guideHome', initialChildren: children);
+/// [_i17.ProfilePage]
+class ProfileRoute extends _i24.PageRouteInfo<ProfileRouteArgs> {
+  ProfileRoute({
+    _i25.Key? key,
+    List<_i24.PageRouteInfo>? children,
+  }) : super(
+          ProfileRoute.name,
+          args: ProfileRouteArgs(key: key),
+          initialChildren: children,
+        );
 
-  static const String name = 'GuideHomeTab';
+  static const String name = 'ProfileRoute';
+
+  static const _i24.PageInfo<ProfileRouteArgs> page =
+      _i24.PageInfo<ProfileRouteArgs>(name);
 }
 
-/// generated route for
-/// [_i12.EmptyRouterPage]
-class NewsHomeTab extends _i28.PageRouteInfo<void> {
-  const NewsHomeTab({List<_i28.PageRouteInfo>? children})
-      : super(NewsHomeTab.name, path: 'newsHome', initialChildren: children);
+class ProfileRouteArgs {
+  const ProfileRouteArgs({this.key});
 
-  static const String name = 'NewsHomeTab';
-}
-
-/// generated route for
-/// [_i13.SettingsScreenNoAccount]
-class SettingsScreenNoAcc extends _i28.PageRouteInfo<void> {
-  const SettingsScreenNoAcc()
-      : super(SettingsScreenNoAcc.name, path: 'settings-screen-no-account');
-
-  static const String name = 'SettingsScreenNoAcc';
-}
-
-/// generated route for
-/// [_i14.GuideHomeScreen]
-class GuideHomeScreen extends _i28.PageRouteInfo<void> {
-  const GuideHomeScreen() : super(GuideHomeScreen.name, path: '');
-
-  static const String name = 'GuideHomeScreen';
-}
-
-/// generated route for
-/// [_i15.EventsPage]
-class EventsPage extends _i28.PageRouteInfo<void> {
-  const EventsPage() : super(EventsPage.name, path: 'events-page');
-
-  static const String name = 'EventsPage';
-}
-
-/// generated route for
-/// [_i16.NewsScreen]
-class NewsHomeScreen extends _i28.PageRouteInfo<void> {
-  const NewsHomeScreen() : super(NewsHomeScreen.name, path: '');
-
-  static const String name = 'NewsHomeScreen';
-}
-
-/// generated route for
-/// [_i12.EmptyRouterPage]
-class TopupTab extends _i28.PageRouteInfo<void> {
-  const TopupTab({List<_i28.PageRouteInfo>? children})
-      : super(TopupTab.name, path: 'topup', initialChildren: children);
-
-  static const String name = 'TopupTab';
-}
-
-/// generated route for
-/// [_i12.EmptyRouterPage]
-class AccountTab extends _i28.PageRouteInfo<void> {
-  const AccountTab({List<_i28.PageRouteInfo>? children})
-      : super(AccountTab.name, path: 'account', initialChildren: children);
-
-  static const String name = 'AccountTab';
-}
-
-/// generated route for
-/// [_i12.EmptyRouterPage]
-class NetworkScreenTab extends _i28.PageRouteInfo<void> {
-  const NetworkScreenTab({List<_i28.PageRouteInfo>? children})
-      : super(NetworkScreenTab.name,
-            path: 'networkScreen', initialChildren: children);
-
-  static const String name = 'NetworkScreenTab';
-}
-
-/// generated route for
-/// [_i17.TopupScreen]
-class TopupScreen extends _i28.PageRouteInfo<void> {
-  const TopupScreen() : super(TopupScreen.name, path: 'topUp');
-
-  static const String name = 'TopupScreen';
-}
-
-/// generated route for
-/// [_i18.TopupExplained]
-class TopupExplained extends _i28.PageRouteInfo<TopupExplainedArgs> {
-  TopupExplained({_i29.Key? key})
-      : super(TopupExplained.name,
-            path: 'topup-explained', args: TopupExplainedArgs(key: key));
-
-  static const String name = 'TopupExplained';
-}
-
-class TopupExplainedArgs {
-  const TopupExplainedArgs({this.key});
-
-  final _i29.Key? key;
+  final _i25.Key? key;
 
   @override
   String toString() {
-    return 'TopupExplainedArgs{key: $key}';
+    return 'ProfileRouteArgs{key: $key}';
   }
 }
 
 /// generated route for
-/// [_i19.AccountScreen]
-class AccountScreen extends _i28.PageRouteInfo<void> {
-  const AccountScreen() : super(AccountScreen.name, path: '');
+/// [_i18.AccountPage]
+class AccountRoute extends _i24.PageRouteInfo<void> {
+  const AccountRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          AccountRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'AccountScreen';
+  static const String name = 'AccountRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i20.ShowMnemonic]
-class ShowMnemonic extends _i28.PageRouteInfo<void> {
-  const ShowMnemonic() : super(ShowMnemonic.name, path: 'show-mnemonic');
+/// [_i19.VerifyMnemonicPage]
+class VerifyMnemonicRoute extends _i24.PageRouteInfo<void> {
+  const VerifyMnemonicRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          VerifyMnemonicRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'ShowMnemonic';
+  static const String name = 'VerifyMnemonicRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i21.VerifyMnemonic]
-class VerifyMnemonic extends _i28.PageRouteInfo<void> {
-  const VerifyMnemonic() : super(VerifyMnemonic.name, path: 'verify-mnemonic');
+/// [_i20.BackupCompletedPage]
+class BackupCompletedRoute extends _i24.PageRouteInfo<void> {
+  const BackupCompletedRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          BackupCompletedRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'VerifyMnemonic';
+  static const String name = 'BackupCompletedRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i22.DoneBackup]
-class DoneBackup extends _i28.PageRouteInfo<void> {
-  const DoneBackup() : super(DoneBackup.name, path: 'done-backup');
+/// [_i21.MnemonicPage]
+class MnemonicRoute extends _i24.PageRouteInfo<void> {
+  const MnemonicRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          MnemonicRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'DoneBackup';
+  static const String name = 'MnemonicRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i23.SettingsScreen]
-class SettingsScreen extends _i28.PageRouteInfo<void> {
-  const SettingsScreen() : super(SettingsScreen.name, path: 'settings-screen');
+/// [_i22.ProtectWalletPage]
+class ProtectWalletRoute extends _i24.PageRouteInfo<void> {
+  const ProtectWalletRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          ProtectWalletRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'SettingsScreen';
+  static const String name = 'ProtectWalletRoute';
+
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }
 
 /// generated route for
-/// [_i24.ProtectYourWallet]
-class ProtectYourWallet extends _i28.PageRouteInfo<void> {
-  const ProtectYourWallet()
-      : super(ProtectYourWallet.name, path: 'protect-your-wallet');
+/// [_i23.SettingsPage]
+class SettingsRoute extends _i24.PageRouteInfo<void> {
+  const SettingsRoute({List<_i24.PageRouteInfo>? children})
+      : super(
+          SettingsRoute.name,
+          initialChildren: children,
+        );
 
-  static const String name = 'ProtectYourWallet';
-}
+  static const String name = 'SettingsRoute';
 
-/// generated route for
-/// [_i25.ProfileScreen]
-class ProfileScreen extends _i28.PageRouteInfo<ProfileScreenArgs> {
-  ProfileScreen({_i29.Key? key})
-      : super(ProfileScreen.name,
-            path: 'profile-screen', args: ProfileScreenArgs(key: key));
-
-  static const String name = 'ProfileScreen';
-}
-
-class ProfileScreenArgs {
-  const ProfileScreenArgs({this.key});
-
-  final _i29.Key? key;
-
-  @override
-  String toString() {
-    return 'ProfileScreenArgs{key: $key}';
-  }
-}
-
-/// generated route for
-/// [_i26.DAppScreen]
-class DAppScreen extends _i28.PageRouteInfo<void> {
-  const DAppScreen() : super(DAppScreen.name, path: 'd-app-screen');
-
-  static const String name = 'DAppScreen';
-}
-
-/// generated route for
-/// [_i27.NetworkScreen]
-class NetworkScreen extends _i28.PageRouteInfo<NetworkScreenArgs> {
-  NetworkScreen({_i29.Key? key})
-      : super(NetworkScreen.name, path: '', args: NetworkScreenArgs(key: key));
-
-  static const String name = 'NetworkScreen';
-}
-
-class NetworkScreenArgs {
-  const NetworkScreenArgs({this.key});
-
-  final _i29.Key? key;
-
-  @override
-  String toString() {
-    return 'NetworkScreenArgs{key: $key}';
-  }
+  static const _i24.PageInfo<void> page = _i24.PageInfo<void>(name);
 }

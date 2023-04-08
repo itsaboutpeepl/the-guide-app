@@ -3,13 +3,14 @@ import 'package:guide_liverpool/common/router/routes.dart';
 import 'package:guide_liverpool/features/shared/widgets/bottom_bar_no_acc.dart';
 import 'package:auto_route/auto_route.dart';
 
-class MainScreenNoAcc extends StatefulWidget {
-  MainScreenNoAcc({Key? key}) : super(key: key);
+@RoutePage()
+class MainScreenNoAccPage extends StatefulWidget {
+  MainScreenNoAccPage({Key? key}) : super(key: key);
   @override
-  _MainScreenNoAccState createState() => _MainScreenNoAccState();
+  _MainScreenNoAccPageState createState() => _MainScreenNoAccPageState();
 }
 
-class _MainScreenNoAccState extends State<MainScreenNoAcc> {
+class _MainScreenNoAccPageState extends State<MainScreenNoAccPage> {
   late TabsRouter _tabsRouter;
 
   @override
@@ -25,9 +26,9 @@ class _MainScreenNoAccState extends State<MainScreenNoAcc> {
       child: AutoTabsScaffold(
         animationDuration: Duration(milliseconds: 0),
         routes: [
-          GuideHomeTab(),
-          NewsHomeTab(),
-          SettingsScreenNoAcc(),
+          HomeRoute(),
+          NewsRoute(),
+          //SettingsScreenNoAcc(),
         ],
         bottomNavigationBuilder: (_, TabsRouter tabs) {
           _tabsRouter = tabs;

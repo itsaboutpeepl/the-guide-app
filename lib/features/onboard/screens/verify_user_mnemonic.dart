@@ -45,7 +45,8 @@ class _VerifyUserMnemonicState extends State<VerifyUserMnemonic> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
                 child: Text(
                   "Please enter the correct words below",
                   textAlign: TextAlign.center,
@@ -89,7 +90,7 @@ class _VerifyUserMnemonicState extends State<VerifyUserMnemonic> {
                   label: "Next",
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      context.router.push(SignUpScreen());
+                      context.router.push(SignupRoute());
                     }
                   },
                 ),

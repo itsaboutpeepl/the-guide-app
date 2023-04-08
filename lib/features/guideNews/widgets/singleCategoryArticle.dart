@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/UrlLaunch.dart';
 import 'package:guide_liverpool/features/guideHome/helpers/detailArticleBottomModal.dart';
 import 'package:guide_liverpool/models/articles/blogArticle.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class SingleCategoryArticle extends StatelessWidget {
   final BlogArticle article;
@@ -13,7 +12,7 @@ class SingleCategoryArticle extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => {
-        showBarModalBottomSheet(
+        showModalBottomSheet(
           useRootNavigator: true,
           backgroundColor: Colors.white,
           context: context,

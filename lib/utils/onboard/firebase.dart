@@ -45,7 +45,7 @@ class FirebaseStrategy implements IOnBoardStrategy {
         );
         onSuccess();
         store.dispatch(LoginVerifySuccess(jwtToken));
-        await rootRouter.push(UserNameScreen());
+        await rootRouter.push(SelectUsernameRoute());
       } catch (e) {
         onError(e.toString());
       }
@@ -68,7 +68,7 @@ class FirebaseStrategy implements IOnBoardStrategy {
       store
         ..dispatch(SetCredentials(null))
         ..dispatch(SetVerificationId(verificationId));
-      rootRouter.push(VerifyPhoneNumber(verificationId: verificationId));
+      rootRouter.push(VerifyPhoneRoute(verificationId: verificationId));
       onSuccess();
     }
 

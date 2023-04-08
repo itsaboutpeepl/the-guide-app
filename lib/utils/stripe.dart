@@ -30,6 +30,7 @@ class StripeService {
   void init() {
     Stripe.publishableKey =
         dotenv.env['STRIPE_API_KEY']!; //TODO: Add kDebugMode check
+    Stripe.merchantIdentifier = "merchant.com.theguideliverpool";
   }
 
   Future<bool> handleStripe({
@@ -81,7 +82,9 @@ class StripeService {
           await Sentry.captureException(
             e,
             stackTrace: s,
-            hint: 'ERROR - Stripe Exception: ${e.error.localizedMessage}',
+            hint: Hint.withMap({
+              'error': 'ERROR - Stripe Exception: ${e.error.localizedMessage}'
+            }),
           );
           await showDialog<void>(
             context: context,
@@ -98,7 +101,7 @@ class StripeService {
         await Sentry.captureException(
           e,
           stackTrace: s,
-          hint: 'ERROR - Stripe Exception: $e',
+          hint: Hint.withMap({'error': 'ERROR - Stripe Exception: $e'}),
         );
         await showDialog<void>(
           context: context,
@@ -108,6 +111,48 @@ class StripeService {
         );
         return false;
       }
+    }
+  }
+
+  Future<bool> handleApplePay({
+    required String walletAddress,
+    required int amount,
+    required BuildContext context,
+    required bool shouldPushToHome,
+  }) async {
+    try {
+      final paymentIntentClientSecret =
+          await stripePayService.createStripePaymentIntent(
+        amount: amount,
+        currency: 'gbp',
+        walletAddress: walletAddress,
+      );
+
+      await instance.presentApplePay(
+        params: ApplePayPresentParams(
+          cartItems: [
+            ApplePayCartSummaryItem.immediate(
+              label: 'Product Test',
+              amount: '25.0',
+            ),
+          ],
+          country: 'GB',
+          currency: 'GBP',
+        ),
+      );
+
+      await Stripe.instance.confirmApplePayPayment(paymentIntentClientSecret);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text('Apple Pay payment succesfully completed')),
+      );
+      return true;
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: $e')),
+      );
+      return false;
     }
   }
 }

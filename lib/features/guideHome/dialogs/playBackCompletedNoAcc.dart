@@ -77,7 +77,7 @@ class _PlayBackCompletedNoAccState extends State<PlayBackCompletedNoAcc>
             ),
             SizedBox(height: 20.0),
             PrimaryButton(
-                onPressed: () => context.router.navigate(OnBoardScreen()),
+                onPressed: () => context.router.navigate(OnboardRoute()),
                 label: "Create an account"),
             SizedBox(height: 10.0),
             TextButton(

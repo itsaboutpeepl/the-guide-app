@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:guide_liverpool/generated/l10n.dart';
@@ -18,12 +19,13 @@ typedef SignUp = void Function(
   Function(dynamic error) onError,
 );
 
-class SignUpScreen extends StatefulWidget {
+@RoutePage()
+class SignupPage extends StatefulWidget {
   @override
-  _SignUpScreenState createState() => _SignUpScreenState();
+  _SignupPageState createState() => _SignupPageState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
+class _SignupPageState extends State<SignupPage> {
   final fullNameController = TextEditingController(text: "");
   final phoneController = TextEditingController(text: "");
   final _formKey = GlobalKey<FormState>();
@@ -102,7 +104,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               decoration: BoxDecoration(
                                 border: Border(
                                   bottom: BorderSide(
-                                    color: Theme.of(context).colorScheme.onSurface,
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
                                     width: 2.0,
                                   ),
                                 ),
@@ -119,37 +122,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       searchDecoration: InputDecoration(
                                         border: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Theme.of(context).colorScheme.onSurface,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface,
                                           ),
                                         ),
-                                        fillColor: Theme.of(context).canvasColor,
+                                        fillColor:
+                                            Theme.of(context).canvasColor,
                                         enabledBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Theme.of(context).colorScheme.onSurface,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface,
                                           ),
                                         ),
                                         focusedBorder: UnderlineInputBorder(
                                           borderSide: BorderSide(
-                                            color: Theme.of(context).colorScheme.onSurface,
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .onSurface,
                                           ),
                                         ),
                                       ),
-                                      dialogSize: Size(MediaQuery.of(context).size.width * .9,
-                                          MediaQuery.of(context).size.height * 0.85),
+                                      dialogSize: Size(
+                                          MediaQuery.of(context).size.width *
+                                              .9,
+                                          MediaQuery.of(context).size.height *
+                                              0.85),
                                       searchStyle: TextStyle(
                                         fontSize: 18,
-                                        color: Theme.of(context).colorScheme.onSurface,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface,
                                       ),
                                       showFlag: true,
                                       initialSelection: countryCode.code,
                                       showCountryOnly: false,
                                       dialogTextStyle: TextStyle(
                                         fontSize: 18,
-                                        color: Theme.of(context).colorScheme.onSurface,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface,
                                       ),
                                       textStyle: TextStyle(
                                         fontSize: 18,
-                                        color: Theme.of(context).colorScheme.onSurface,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onSurface,
                                       ),
                                       alignLeft: false,
                                     ),
@@ -158,8 +177,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   Container(
                                     height: 35,
                                     width: 1,
-                                    color: Theme.of(context).colorScheme.onSurface,
-                                    margin: EdgeInsets.only(left: 5.0, right: 5.0),
+                                    color:
+                                        Theme.of(context).colorScheme.onSurface,
+                                    margin:
+                                        EdgeInsets.only(left: 5.0, right: 5.0),
                                   ),
                                   Expanded(
                                     child: TextFormField(
@@ -167,8 +188,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                       keyboardType: TextInputType.number,
                                       autofocus: true,
                                       validator: (String? value) =>
-                                          value!.isEmpty ? "Please enter mobile number" : null,
-                                      style: TextStyle(fontSize: 18, color: Theme.of(context).colorScheme.onSurface),
+                                          value!.isEmpty
+                                              ? "Please enter mobile number"
+                                              : null,
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Theme.of(context)
+                                              .colorScheme
+                                              .onSurface),
                                       decoration: InputDecoration(
                                         contentPadding: EdgeInsets.symmetric(
                                           vertical: 20,
@@ -176,8 +203,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                         ),
                                         hintText: I10n.of(context).phoneNumber,
                                         border: InputBorder.none,
-                                        fillColor: Theme.of(context).backgroundColor,
-                                        focusedBorder: OutlineInputBorder(borderSide: BorderSide.none),
+                                        fillColor:
+                                            Theme.of(context).backgroundColor,
+                                        focusedBorder: OutlineInputBorder(
+                                            borderSide: BorderSide.none),
                                         enabledBorder: OutlineInputBorder(
                                           borderSide: BorderSide.none,
                                         ),
@@ -211,12 +240,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 preload: isPreloading,
                                 disabled: isPreloading,
                                 onPressed: () async {
-                                  final String phoneNumber = '${countryCode.dialCode}${phoneController.text}';
+                                  final String phoneNumber =
+                                      '${countryCode.dialCode}${phoneController.text}';
                                   setState(() {
                                     isPreloading = true;
                                   });
                                   try {
-                                    PhoneNumber value = await phoneNumberUtil.parse(
+                                    PhoneNumber value =
+                                        await phoneNumberUtil.parse(
                                       phoneNumber,
                                     );
                                     signUp(
@@ -232,8 +263,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                           isPreloading = false;
                                         });
                                         showErrorSnack(
-                                          message: I10n.of(context).invalid_number,
-                                          title: I10n.of(context).something_went_wrong,
+                                          message:
+                                              I10n.of(context).invalid_number,
+                                          title: I10n.of(context)
+                                              .something_went_wrong,
                                           context: context,
                                           margin: EdgeInsets.only(
                                             top: 8,
@@ -250,7 +283,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                     });
                                     showErrorSnack(
                                       message: I10n.of(context).invalid_number,
-                                      title: I10n.of(context).something_went_wrong,
+                                      title:
+                                          I10n.of(context).something_went_wrong,
                                       context: context,
                                       margin: EdgeInsets.only(
                                         top: 8,

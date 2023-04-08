@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'events.dart';
 
@@ -37,7 +37,8 @@ mixin _$Events {
 /// @nodoc
 abstract class $EventsCopyWith<$Res> {
   factory $EventsCopyWith(Events value, $Res Function(Events) then) =
-      _$EventsCopyWithImpl<$Res>;
+      _$EventsCopyWithImpl<$Res, Events>;
+  @useResult
   $Res call(
       {DateTime startDate,
       DateTime endDate,
@@ -50,58 +51,61 @@ abstract class $EventsCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EventsCopyWithImpl<$Res> implements $EventsCopyWith<$Res> {
+class _$EventsCopyWithImpl<$Res, $Val extends Events>
+    implements $EventsCopyWith<$Res> {
   _$EventsCopyWithImpl(this._value, this._then);
 
-  final Events _value;
   // ignore: unused_field
-  final $Res Function(Events) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-    Object? eventTitle = freezed,
-    Object? location = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? description = freezed,
-    Object? bookingLink = freezed,
+    Object? startDate = null,
+    Object? endDate = null,
+    Object? eventTitle = null,
+    Object? location = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? description = null,
+    Object? bookingLink = null,
   }) {
     return _then(_value.copyWith(
-      startDate: startDate == freezed
+      startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      endDate: endDate == freezed
+      endDate: null == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      eventTitle: eventTitle == freezed
+      eventTitle: null == eventTitle
           ? _value.eventTitle
           : eventTitle // ignore: cast_nullable_to_non_nullable
               as String,
-      location: location == freezed
+      location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: latitude == freezed
+      latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      longitude: longitude == freezed
+      longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      bookingLink: bookingLink == freezed
+      bookingLink: null == bookingLink
           ? _value.bookingLink
           : bookingLink // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -110,6 +114,7 @@ abstract class _$$_EventsCopyWith<$Res> implements $EventsCopyWith<$Res> {
   factory _$$_EventsCopyWith(_$_Events value, $Res Function(_$_Events) then) =
       __$$_EventsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {DateTime startDate,
       DateTime endDate,
@@ -122,55 +127,54 @@ abstract class _$$_EventsCopyWith<$Res> implements $EventsCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_EventsCopyWithImpl<$Res> extends _$EventsCopyWithImpl<$Res>
+class __$$_EventsCopyWithImpl<$Res>
+    extends _$EventsCopyWithImpl<$Res, _$_Events>
     implements _$$_EventsCopyWith<$Res> {
   __$$_EventsCopyWithImpl(_$_Events _value, $Res Function(_$_Events) _then)
-      : super(_value, (v) => _then(v as _$_Events));
+      : super(_value, _then);
 
-  @override
-  _$_Events get _value => super._value as _$_Events;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? startDate = freezed,
-    Object? endDate = freezed,
-    Object? eventTitle = freezed,
-    Object? location = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? description = freezed,
-    Object? bookingLink = freezed,
+    Object? startDate = null,
+    Object? endDate = null,
+    Object? eventTitle = null,
+    Object? location = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? description = null,
+    Object? bookingLink = null,
   }) {
     return _then(_$_Events(
-      startDate: startDate == freezed
+      startDate: null == startDate
           ? _value.startDate
           : startDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      endDate: endDate == freezed
+      endDate: null == endDate
           ? _value.endDate
           : endDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      eventTitle: eventTitle == freezed
+      eventTitle: null == eventTitle
           ? _value.eventTitle
           : eventTitle // ignore: cast_nullable_to_non_nullable
               as String,
-      location: location == freezed
+      location: null == location
           ? _value.location
           : location // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: latitude == freezed
+      latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      longitude: longitude == freezed
+      longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      bookingLink: bookingLink == freezed
+      bookingLink: null == bookingLink
           ? _value.bookingLink
           : bookingLink // ignore: cast_nullable_to_non_nullable
               as String,
@@ -223,34 +227,31 @@ class _$_Events extends _Events {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Events &&
-            const DeepCollectionEquality().equals(other.startDate, startDate) &&
-            const DeepCollectionEquality().equals(other.endDate, endDate) &&
-            const DeepCollectionEquality()
-                .equals(other.eventTitle, eventTitle) &&
-            const DeepCollectionEquality().equals(other.location, location) &&
-            const DeepCollectionEquality().equals(other.latitude, latitude) &&
-            const DeepCollectionEquality().equals(other.longitude, longitude) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality()
-                .equals(other.bookingLink, bookingLink));
+            (identical(other.startDate, startDate) ||
+                other.startDate == startDate) &&
+            (identical(other.endDate, endDate) || other.endDate == endDate) &&
+            (identical(other.eventTitle, eventTitle) ||
+                other.eventTitle == eventTitle) &&
+            (identical(other.location, location) ||
+                other.location == location) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.bookingLink, bookingLink) ||
+                other.bookingLink == bookingLink));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(startDate),
-      const DeepCollectionEquality().hash(endDate),
-      const DeepCollectionEquality().hash(eventTitle),
-      const DeepCollectionEquality().hash(location),
-      const DeepCollectionEquality().hash(latitude),
-      const DeepCollectionEquality().hash(longitude),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(bookingLink));
+  int get hashCode => Object.hash(runtimeType, startDate, endDate, eventTitle,
+      location, latitude, longitude, description, bookingLink);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_EventsCopyWith<_$_Events> get copyWith =>
       __$$_EventsCopyWithImpl<_$_Events>(this, _$identity);
 

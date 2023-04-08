@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'directory.dart';
 
@@ -41,7 +41,8 @@ mixin _$Directory {
 /// @nodoc
 abstract class $DirectoryCopyWith<$Res> {
   factory $DirectoryCopyWith(Directory value, $Res Function(Directory) then) =
-      _$DirectoryCopyWithImpl<$Res>;
+      _$DirectoryCopyWithImpl<$Res, Directory>;
+  @useResult
   $Res call(
       {String title,
       String latitude,
@@ -57,73 +58,76 @@ abstract class $DirectoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$DirectoryCopyWithImpl<$Res> implements $DirectoryCopyWith<$Res> {
+class _$DirectoryCopyWithImpl<$Res, $Val extends Directory>
+    implements $DirectoryCopyWith<$Res> {
   _$DirectoryCopyWithImpl(this._value, this._then);
 
-  final Directory _value;
   // ignore: unused_field
-  final $Res Function(Directory) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? website = freezed,
-    Object? twitterLink = freezed,
-    Object? instaLink = freezed,
-    Object? facebookLink = freezed,
-    Object? imageURL = freezed,
-    Object? description = freezed,
-    Object? address = freezed,
-    Object? guideWebLink = freezed,
+    Object? title = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? website = null,
+    Object? twitterLink = null,
+    Object? instaLink = null,
+    Object? facebookLink = null,
+    Object? imageURL = null,
+    Object? description = null,
+    Object? address = null,
+    Object? guideWebLink = null,
   }) {
     return _then(_value.copyWith(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: latitude == freezed
+      latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      longitude: longitude == freezed
+      longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String,
-      website: website == freezed
+      website: null == website
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
               as String,
-      twitterLink: twitterLink == freezed
+      twitterLink: null == twitterLink
           ? _value.twitterLink
           : twitterLink // ignore: cast_nullable_to_non_nullable
               as String,
-      instaLink: instaLink == freezed
+      instaLink: null == instaLink
           ? _value.instaLink
           : instaLink // ignore: cast_nullable_to_non_nullable
               as String,
-      facebookLink: facebookLink == freezed
+      facebookLink: null == facebookLink
           ? _value.facebookLink
           : facebookLink // ignore: cast_nullable_to_non_nullable
               as String,
-      imageURL: imageURL == freezed
+      imageURL: null == imageURL
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      guideWebLink: guideWebLink == freezed
+      guideWebLink: null == guideWebLink
           ? _value.guideWebLink
           : guideWebLink // ignore: cast_nullable_to_non_nullable
               as String,
-    ));
+    ) as $Val);
   }
 }
 
@@ -133,6 +137,7 @@ abstract class _$$_DirectoryCopyWith<$Res> implements $DirectoryCopyWith<$Res> {
           _$_Directory value, $Res Function(_$_Directory) then) =
       __$$_DirectoryCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call(
       {String title,
       String latitude,
@@ -148,71 +153,70 @@ abstract class _$$_DirectoryCopyWith<$Res> implements $DirectoryCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_DirectoryCopyWithImpl<$Res> extends _$DirectoryCopyWithImpl<$Res>
+class __$$_DirectoryCopyWithImpl<$Res>
+    extends _$DirectoryCopyWithImpl<$Res, _$_Directory>
     implements _$$_DirectoryCopyWith<$Res> {
   __$$_DirectoryCopyWithImpl(
       _$_Directory _value, $Res Function(_$_Directory) _then)
-      : super(_value, (v) => _then(v as _$_Directory));
+      : super(_value, _then);
 
-  @override
-  _$_Directory get _value => super._value as _$_Directory;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? title = freezed,
-    Object? latitude = freezed,
-    Object? longitude = freezed,
-    Object? website = freezed,
-    Object? twitterLink = freezed,
-    Object? instaLink = freezed,
-    Object? facebookLink = freezed,
-    Object? imageURL = freezed,
-    Object? description = freezed,
-    Object? address = freezed,
-    Object? guideWebLink = freezed,
+    Object? title = null,
+    Object? latitude = null,
+    Object? longitude = null,
+    Object? website = null,
+    Object? twitterLink = null,
+    Object? instaLink = null,
+    Object? facebookLink = null,
+    Object? imageURL = null,
+    Object? description = null,
+    Object? address = null,
+    Object? guideWebLink = null,
   }) {
     return _then(_$_Directory(
-      title: title == freezed
+      title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
-      latitude: latitude == freezed
+      latitude: null == latitude
           ? _value.latitude
           : latitude // ignore: cast_nullable_to_non_nullable
               as String,
-      longitude: longitude == freezed
+      longitude: null == longitude
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as String,
-      website: website == freezed
+      website: null == website
           ? _value.website
           : website // ignore: cast_nullable_to_non_nullable
               as String,
-      twitterLink: twitterLink == freezed
+      twitterLink: null == twitterLink
           ? _value.twitterLink
           : twitterLink // ignore: cast_nullable_to_non_nullable
               as String,
-      instaLink: instaLink == freezed
+      instaLink: null == instaLink
           ? _value.instaLink
           : instaLink // ignore: cast_nullable_to_non_nullable
               as String,
-      facebookLink: facebookLink == freezed
+      facebookLink: null == facebookLink
           ? _value.facebookLink
           : facebookLink // ignore: cast_nullable_to_non_nullable
               as String,
-      imageURL: imageURL == freezed
+      imageURL: null == imageURL
           ? _value.imageURL
           : imageURL // ignore: cast_nullable_to_non_nullable
               as String,
-      description: description == freezed
+      description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      address: address == freezed
+      address: null == address
           ? _value.address
           : address // ignore: cast_nullable_to_non_nullable
               as String,
-      guideWebLink: guideWebLink == freezed
+      guideWebLink: null == guideWebLink
           ? _value.guideWebLink
           : guideWebLink // ignore: cast_nullable_to_non_nullable
               as String,
@@ -274,41 +278,46 @@ class _$_Directory extends _Directory {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Directory &&
-            const DeepCollectionEquality().equals(other.title, title) &&
-            const DeepCollectionEquality().equals(other.latitude, latitude) &&
-            const DeepCollectionEquality().equals(other.longitude, longitude) &&
-            const DeepCollectionEquality().equals(other.website, website) &&
-            const DeepCollectionEquality()
-                .equals(other.twitterLink, twitterLink) &&
-            const DeepCollectionEquality().equals(other.instaLink, instaLink) &&
-            const DeepCollectionEquality()
-                .equals(other.facebookLink, facebookLink) &&
-            const DeepCollectionEquality().equals(other.imageURL, imageURL) &&
-            const DeepCollectionEquality()
-                .equals(other.description, description) &&
-            const DeepCollectionEquality().equals(other.address, address) &&
-            const DeepCollectionEquality()
-                .equals(other.guideWebLink, guideWebLink));
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.website, website) || other.website == website) &&
+            (identical(other.twitterLink, twitterLink) ||
+                other.twitterLink == twitterLink) &&
+            (identical(other.instaLink, instaLink) ||
+                other.instaLink == instaLink) &&
+            (identical(other.facebookLink, facebookLink) ||
+                other.facebookLink == facebookLink) &&
+            (identical(other.imageURL, imageURL) ||
+                other.imageURL == imageURL) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.address, address) || other.address == address) &&
+            (identical(other.guideWebLink, guideWebLink) ||
+                other.guideWebLink == guideWebLink));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(title),
-      const DeepCollectionEquality().hash(latitude),
-      const DeepCollectionEquality().hash(longitude),
-      const DeepCollectionEquality().hash(website),
-      const DeepCollectionEquality().hash(twitterLink),
-      const DeepCollectionEquality().hash(instaLink),
-      const DeepCollectionEquality().hash(facebookLink),
-      const DeepCollectionEquality().hash(imageURL),
-      const DeepCollectionEquality().hash(description),
-      const DeepCollectionEquality().hash(address),
-      const DeepCollectionEquality().hash(guideWebLink));
+      title,
+      latitude,
+      longitude,
+      website,
+      twitterLink,
+      instaLink,
+      facebookLink,
+      imageURL,
+      description,
+      address,
+      guideWebLink);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_DirectoryCopyWith<_$_Directory> get copyWith =>
       __$$_DirectoryCopyWithImpl<_$_Directory>(this, _$identity);
 

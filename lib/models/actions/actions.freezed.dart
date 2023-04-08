@@ -1,7 +1,7 @@
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
-// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
+// ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
 part of 'actions.dart';
 
@@ -34,39 +34,42 @@ mixin _$WalletActions {
 abstract class $WalletActionsCopyWith<$Res> {
   factory $WalletActionsCopyWith(
           WalletActions value, $Res Function(WalletActions) then) =
-      _$WalletActionsCopyWithImpl<$Res>;
+      _$WalletActionsCopyWithImpl<$Res, WalletActions>;
+  @useResult
   $Res call({List<WalletAction> list, num updatedAt, int currentPage});
 }
 
 /// @nodoc
-class _$WalletActionsCopyWithImpl<$Res>
+class _$WalletActionsCopyWithImpl<$Res, $Val extends WalletActions>
     implements $WalletActionsCopyWith<$Res> {
   _$WalletActionsCopyWithImpl(this._value, this._then);
 
-  final WalletActions _value;
   // ignore: unused_field
-  final $Res Function(WalletActions) _then;
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
 
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = freezed,
-    Object? updatedAt = freezed,
-    Object? currentPage = freezed,
+    Object? list = null,
+    Object? updatedAt = null,
+    Object? currentPage = null,
   }) {
     return _then(_value.copyWith(
-      list: list == freezed
+      list: null == list
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<WalletAction>,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as num,
-      currentPage: currentPage == freezed
+      currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
-    ));
+    ) as $Val);
   }
 }
 
@@ -77,36 +80,35 @@ abstract class _$$_WalletActionsCopyWith<$Res>
           _$_WalletActions value, $Res Function(_$_WalletActions) then) =
       __$$_WalletActionsCopyWithImpl<$Res>;
   @override
+  @useResult
   $Res call({List<WalletAction> list, num updatedAt, int currentPage});
 }
 
 /// @nodoc
 class __$$_WalletActionsCopyWithImpl<$Res>
-    extends _$WalletActionsCopyWithImpl<$Res>
+    extends _$WalletActionsCopyWithImpl<$Res, _$_WalletActions>
     implements _$$_WalletActionsCopyWith<$Res> {
   __$$_WalletActionsCopyWithImpl(
       _$_WalletActions _value, $Res Function(_$_WalletActions) _then)
-      : super(_value, (v) => _then(v as _$_WalletActions));
+      : super(_value, _then);
 
-  @override
-  _$_WalletActions get _value => super._value as _$_WalletActions;
-
+  @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? list = freezed,
-    Object? updatedAt = freezed,
-    Object? currentPage = freezed,
+    Object? list = null,
+    Object? updatedAt = null,
+    Object? currentPage = null,
   }) {
     return _then(_$_WalletActions(
-      list: list == freezed
+      list: null == list
           ? _value.list
           : list // ignore: cast_nullable_to_non_nullable
               as List<WalletAction>,
-      updatedAt: updatedAt == freezed
+      updatedAt: null == updatedAt
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as num,
-      currentPage: currentPage == freezed
+      currentPage: null == currentPage
           ? _value.currentPage
           : currentPage // ignore: cast_nullable_to_non_nullable
               as int,
@@ -147,21 +149,20 @@ class _$_WalletActions extends _WalletActions {
         (other.runtimeType == runtimeType &&
             other is _$_WalletActions &&
             const DeepCollectionEquality().equals(other.list, list) &&
-            const DeepCollectionEquality().equals(other.updatedAt, updatedAt) &&
-            const DeepCollectionEquality()
-                .equals(other.currentPage, currentPage));
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.currentPage, currentPage) ||
+                other.currentPage == currentPage));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(list),
-      const DeepCollectionEquality().hash(updatedAt),
-      const DeepCollectionEquality().hash(currentPage));
+  int get hashCode => Object.hash(runtimeType,
+      const DeepCollectionEquality().hash(list), updatedAt, currentPage);
 
   @JsonKey(ignore: true)
   @override
+  @pragma('vm:prefer-inline')
   _$$_WalletActionsCopyWith<_$_WalletActions> get copyWith =>
       __$$_WalletActionsCopyWithImpl<_$_WalletActions>(this, _$identity);
 
