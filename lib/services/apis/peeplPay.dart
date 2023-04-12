@@ -22,6 +22,6 @@ class PeeplPayService {
 
     log.info('Payment Intent Result $result');
 
-    return result;
+    return result['paymentIntent'] as Map<String, dynamic>;
   }
 }

@@ -115,12 +115,14 @@ class StripeService {
   }
 
   Future<bool> handleApplePay({
+    required String productName,
     required String walletAddress,
     required int amount,
     required BuildContext context,
     required bool shouldPushToHome,
   }) async {
     try {
+      // 1. fetch Intent Client Secret from backend
       final paymentIntentClientSecret =
           await stripePayService.createStripePaymentIntent(
         amount: amount,
@@ -128,31 +130,77 @@ class StripeService {
         walletAddress: walletAddress,
       );
 
-      await instance.presentApplePay(
-        params: ApplePayPresentParams(
-          cartItems: [
-            ApplePayCartSummaryItem.immediate(
-              label: 'Product Test',
-              amount: '25.0',
-            ),
-          ],
-          country: 'GB',
-          currency: 'GBP',
+      // 2. Confirm apple pay payment
+      await Stripe.instance.confirmPlatformPayPaymentIntent(
+        clientSecret: paymentIntentClientSecret,
+        confirmParams: PlatformPayConfirmParams.applePay(
+          applePay: ApplePayParams(
+            cartItems: [
+              ApplePayCartSummaryItem.immediate(
+                label: productName,
+                amount: (amount / 100).toString(),
+              )
+            ],
+            merchantCountryCode: 'gb',
+            currencyCode: 'gbp',
+          ),
         ),
       );
-
-      await Stripe.instance.confirmApplePayPayment(paymentIntentClientSecret);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text('Apple Pay payment succesfully completed')),
+      await showDialog<void>(
+        context: context,
+        builder: (context) {
+          return MintingDialog(
+            amountText: amount.formattedPrice,
+            shouldPushToHome: shouldPushToHome,
+          );
+        },
+        barrierDismissible: false,
       );
       return true;
-    } catch (e) {
-      print(e);
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
-      );
-      return false;
+    } on Exception catch (e, s) {
+      if (e is StripeException) {
+        if (e.error.code != FailureCode.Canceled) {
+          unawaited(
+            Analytics.track(
+              eventName: AnalyticsEvents.mint,
+              properties: {
+                'status': 'failure',
+              },
+            ),
+          );
+          log.error(e.error.localizedMessage);
+          await Sentry.captureException(
+            e,
+            stackTrace: s,
+            hint: Hint.withMap({
+              'error': 'ERROR - Stripe Exception: ${e.error.localizedMessage}'
+            }),
+          );
+          await showDialog<void>(
+            context: context,
+            builder: (context) => const TopUpFailed(
+              isFailed: true,
+            ),
+          );
+          return false;
+        } else {
+          return false;
+        }
+      } else {
+        log.error(e);
+        await Sentry.captureException(
+          e,
+          stackTrace: s,
+          hint: Hint.withMap({'error': 'ERROR - Stripe Exception: $e'}),
+        );
+        await showDialog<void>(
+          context: context,
+          builder: (context) => const TopUpFailed(
+            isFailed: true,
+          ),
+        );
+        return false;
+      }
     }
   }
 }

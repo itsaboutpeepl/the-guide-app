@@ -53,7 +53,11 @@ class _EventCalendarState extends State<EventCalendar> {
                     ),
                   ),
                   TextButton(
-                    onPressed: () => context.router.push(EventsRoute()),
+                    onPressed: () {
+                      print(context.router.stack);
+                      print(context.router.currentPath);
+                      context.router.navigate(EventsRoute());
+                    },
                     child: const Text(
                       'View All',
                       style: TextStyle(

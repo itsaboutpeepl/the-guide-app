@@ -101,8 +101,8 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
 
   @override
   Widget build(BuildContext context) {
-    return FractionallySizedBox(
-      heightFactor: 0.975,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.8,
       child: Scaffold(
         floatingActionButton: FloatingActionButton(
           onPressed: () => {Share.share(widget.articleData.postURL)},
@@ -113,8 +113,7 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
           backgroundColor: Theme.of(context).primaryColor,
         ),
         body: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Wrap(
             children: [
               Container(
                 width: double.infinity,
@@ -122,12 +121,16 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
                 child: CarouselSlider(
                   items: widget.articleData.gallery
                       .map(
-                        (item) => CachedNetworkImage(
-                          memCacheHeight: 300,
-                          width: MediaQuery.of(context).size.width,
-                          height: 300,
-                          imageUrl: item,
-                          fit: BoxFit.cover,
+                        (item) => ClipRRect(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(20)),
+                          child: CachedNetworkImage(
+                            memCacheHeight: 300,
+                            width: MediaQuery.of(context).size.width,
+                            height: 300,
+                            imageUrl: item,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       )
                       .toList(),

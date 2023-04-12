@@ -75,7 +75,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                         ),
                       ),
                       Text(
-                        'Enter verfication code',
+                        'Please enter the 6 digit verification code you have recieved.',
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontSize: 15,
@@ -165,7 +165,7 @@ class _VerifyPhonePageState extends State<VerifyPhonePage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            "Didn't get a message?",
+                            "Didn't get a message? ",
                             style: TextStyle(fontSize: 12),
                           ),
                           TextButton(

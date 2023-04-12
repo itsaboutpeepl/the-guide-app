@@ -11,9 +11,10 @@ final networkTabReducers = combineReducers<NetworkTabState>([
   TypedReducer<NetworkTabState, UpdateSelectedAmounts>(_updateSelectedAmounts),
   TypedReducer<NetworkTabState, UpdateRestaurantName>(_updateRestaurantName),
   TypedReducer<NetworkTabState, UpdatePaymentIntentID>(_updatePaymentIntentId),
-  TypedReducer<NetworkTabState, UpdateCurrentUrl>(_updateCurrentUrl),
   TypedReducer<NetworkTabState, UpdateRestaurantWalletAddress>(
       _updateRestaurantWalletAddress),
+  TypedReducer<NetworkTabState, SetShouldShowPaymentSheet>(
+      _setShouldShowPaymentSheet),
 ]);
 
 NetworkTabState _clearCart(
@@ -56,13 +57,6 @@ NetworkTabState _toggleConfirmed(
   return state.copyWith(confirmedPayment: action.flag);
 }
 
-NetworkTabState _updateCurrentUrl(
-  NetworkTabState state,
-  UpdateCurrentUrl action,
-) {
-  return state.copyWith(currentUrl: action.currentUrl);
-}
-
 NetworkTabState _updateSelectedAmounts(
   NetworkTabState state,
   UpdateSelectedAmounts action,
@@ -87,4 +81,11 @@ NetworkTabState _updateRestaurantWalletAddress(
     NetworkTabState state, UpdateRestaurantWalletAddress action) {
   return state.copyWith(
       restaurantWalletAddress: action.restaurantWalletAddress);
+}
+
+NetworkTabState _setShouldShowPaymentSheet(
+    NetworkTabState state, SetShouldShowPaymentSheet action) {
+  return state.copyWith(
+    shouldShowPaymentSheet: action.flag,
+  );
 }

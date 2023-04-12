@@ -54,7 +54,7 @@ class _RestoreFromBackupPageState extends State<RestoreFromBackupPage> {
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
                         child: Text(
-                          'Restore using seed phrase',
+                          'This is a 12 word phrase you were given when you created your previous wallet',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             fontSize: 20,

@@ -176,20 +176,39 @@ class _TopupPageState extends State<TopupPage>
             StoreConnector<AppState, TopUpViewModel>(
               distinct: true,
               converter: TopUpViewModel.fromStore,
-              builder: (_, viewModel) => Center(
-                child: PrimaryButton(
-                  // labelFontWeight: FontWeight.normal,
-                  label: 'Next',
-                  onPressed: () => stripeService.handleApplePay(
-                    walletAddress: viewModel.walletAddress,
-                    amount: int.parse(_amountText) * 100,
-                    context: context,
-                    shouldPushToHome: true,
+              builder: (_, viewModel) => Column(
+                children: [
+                  PrimaryButton(
+                    // labelFontWeight: FontWeight.normal,
+                    label: 'Credit/Debit Card',
+                    onPressed: () => stripeService.handleStripe(
+                      walletAddress: viewModel.walletAddress,
+                      amount: int.parse(_amountText) * 100,
+                      context: context,
+                      shouldPushToHome: true,
+                    ),
+                    preload: _isPreloading,
+                    disabled: _isPreloading,
+                    width: 300,
                   ),
-                  preload: _isPreloading,
-                  disabled: _isPreloading,
-                  width: 300,
-                ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  PrimaryButton(
+                    // labelFontWeight: FontWeight.normal,
+                    label: 'Apple Pay',
+                    onPressed: () => stripeService.handleApplePay(
+                      productName: 'Wallet Topup',
+                      walletAddress: viewModel.walletAddress,
+                      amount: int.parse(_amountText) * 100,
+                      context: context,
+                      shouldPushToHome: true,
+                    ),
+                    preload: _isPreloading,
+                    disabled: _isPreloading,
+                    width: 300,
+                  ),
+                ],
               ),
             ),
           ],

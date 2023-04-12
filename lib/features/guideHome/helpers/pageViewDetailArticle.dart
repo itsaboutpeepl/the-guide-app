@@ -25,11 +25,14 @@ class _PagedViewDetailArticleState extends State<PagedViewDetailArticle> {
 
   @override
   Widget build(BuildContext context) {
-    return PageView.builder(
-      itemBuilder: (context, index) =>
-          DetailArticleBottomModel(articleData: widget.listOfArticles[index]),
-      itemCount: widget.listOfArticles.length,
-      controller: _pageController,
+    return SizedBox(
+      height: MediaQuery.of(context).size.height * 0.8,
+      child: PageView.builder(
+        itemBuilder: (context, index) =>
+            DetailArticleBottomModel(articleData: widget.listOfArticles[index]),
+        itemCount: widget.listOfArticles.length,
+        controller: _pageController,
+      ),
     );
   }
 }

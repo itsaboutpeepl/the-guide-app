@@ -58,7 +58,7 @@ class SignUpDialogState extends State<SignUpDialog>
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    'Why do we need this',
+                    'Why do we need this?',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -66,7 +66,7 @@ class SignUpDialogState extends State<SignUpDialog>
                   ),
                   SizedBox(height: 20.0),
                   Text(
-                    'Stores private information',
+                    'Our wallet stores private information locally on the device. Only the phone number is used to be able to verify your identity and reduce friction when sending money to phone contacts.',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -74,7 +74,7 @@ class SignUpDialogState extends State<SignUpDialog>
                   ),
                   SizedBox(height: 20.0),
                   Text(
-                    'We will never share your information',
+                    'We will never share your information with a 3rd party.',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.normal,
@@ -82,7 +82,7 @@ class SignUpDialogState extends State<SignUpDialog>
                   ),
                   SizedBox(height: 20.0),
                   Text(
-                    'For more info, contact',
+                    'For more info:',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.normal,

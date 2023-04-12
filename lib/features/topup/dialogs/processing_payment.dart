@@ -1,8 +1,11 @@
+import 'dart:async';
+
 import 'package:auto_route/auto_route.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:guide_liverpool/features/shared/widgets/snackbars.dart';
 import 'package:guide_liverpool/models/app_state.dart';
 
 class _ProcessingPaymentViewModel extends Equatable {
@@ -70,7 +73,7 @@ class _ProcessingPaymentState extends State<ProcessingPayment>
     return StoreConnector<AppState, _ProcessingPaymentViewModel>(
       distinct: true,
       converter: _ProcessingPaymentViewModel.fromStore,
-      onWillChange: (prevVM, nextVM) {
+      onDidChange: (prevVM, nextVM) {
         if (nextVM.isError) {
           setState(() {
             _valueKey = 1;
@@ -88,7 +91,8 @@ class _ProcessingPaymentState extends State<ProcessingPayment>
           Future.delayed(
             const Duration(seconds: 2),
             () {
-              context.router.pop();
+              Navigator.pop(context);
+              showOrderCreatedFlushBar(context);
               //..navigate(const OrderConfirmedScreen());
             },
           );

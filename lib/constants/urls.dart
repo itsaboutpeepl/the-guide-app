@@ -15,4 +15,6 @@ class UrlConstants {
 
   // APIs
   static const String COINGECKO_BASE_URL = 'https://api.coingecko.com/api/v3';
+  static const String PEEPL_MARKET_API =
+      "https://peepl-marketplace.herokuapp.com/api/v1";
 }

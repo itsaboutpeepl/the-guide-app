@@ -54,10 +54,10 @@ class _MainPageState extends State<MainPage> {
           child: AutoTabsScaffold(
             animationDuration: Duration(milliseconds: 0),
             routes: [
-              HomeRoute(),
-              NewsRoute(),
-              //AccountTab(),
-              NetworkRoute(),
+              HomeTab(),
+              NewsTab(),
+              AccountTab(),
+              NetworkTab(),
             ],
             bottomNavigationBuilder: (_, TabsRouter tabs) {
               _tabsRouter = tabs;
@@ -97,6 +97,7 @@ class _MainPageState extends State<MainPage> {
         newsService
             .getArticleByID(articleID)
             .then((BlogArticle article) => showModalBottomSheet(
+                  isScrollControlled: true,
                   useRootNavigator: true,
                   backgroundColor: Colors.white,
                   context: context,

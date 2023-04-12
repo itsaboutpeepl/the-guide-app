@@ -53,7 +53,7 @@ class _SignupPageState extends State<SignupPage> {
                 child: Column(
                   children: <Widget>[
                     Text(
-                      'Enter phone number',
+                      'Please enter your phone number so we can setup your account',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20,
@@ -76,7 +76,7 @@ class _SignupPageState extends State<SignupPage> {
                         },
                         child: Center(
                           child: Text(
-                            'Why do we need this',
+                            'Why do we need this?',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,

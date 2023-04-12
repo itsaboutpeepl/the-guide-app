@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:country_code_picker/country_code_picker.dart';
+import 'package:guide_liverpool/common/router/route_logger.dart';
 import 'package:guide_liverpool/constants/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -68,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                 navigatorObservers: () => [
                   AutoRouteObserver(),
                   SentryNavigatorObserver(),
-                  RouteObserver(),
+                  RouteLogger(),
                 ],
               ),
               debugShowCheckedModeBanner: false,

@@ -29,237 +29,233 @@ class _SecurityOptionPageState extends State<SecurityOptionPage> {
         } else if (snapshot.connectionState == ConnectionState.done) {
           return MyScaffold(
             title: 'Protect Wallet',
-            body: SizedBox(
-              height: MediaQuery.of(context).size.height * .9,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    children: <Widget>[
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      SvgPicture.asset('assets/images/lock.svg'),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Text(
-                          'Choose a lock method',
-                          textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Color(0xFF888888),
-                            fontSize: 18,
-                            fontWeight: FontWeight.normal,
-                          ),
+            body: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    SvgPicture.asset('assets/images/lock.svg'),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Container(
+                      padding: const EdgeInsets.only(left: 10, right: 10),
+                      child: Text(
+                        'Choose a lock method',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Color(0xFF888888),
+                          fontSize: 18,
+                          fontWeight: FontWeight.normal,
                         ),
-                      )
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      StoreConnector<AppState, SecurityViewModel>(
-                        distinct: true,
-                        converter: SecurityViewModel.fromStore,
-                        builder: (_, viewModel) {
-                          return Container(
-                            padding: const EdgeInsets.only(top: 20, bottom: 20),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                const SizedBox(height: 20),
-                                Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: <Widget>[
-                                    InkWell(
-                                      focusColor: Theme.of(context).canvasColor,
-                                      highlightColor:
-                                          Theme.of(context).canvasColor,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 20,
-                                          vertical: 10,
+                      ),
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    StoreConnector<AppState, SecurityViewModel>(
+                      distinct: true,
+                      converter: SecurityViewModel.fromStore,
+                      builder: (_, viewModel) {
+                        return Container(
+                          width: MediaQuery.of(context).size.width,
+                          padding: const EdgeInsets.only(top: 20, bottom: 20),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              const SizedBox(height: 20),
+                              Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  InkWell(
+                                    focusColor: Theme.of(context).canvasColor,
+                                    highlightColor:
+                                        Theme.of(context).canvasColor,
+                                    child: Container(
+                                      height: 60,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 10,
+                                      ),
+                                      width: MediaQuery.of(context).size.width *
+                                          .8,
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          begin: Alignment.topLeft,
+                                          end: Alignment.bottomRight,
+                                          colors: [
+                                            Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                            Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                          ],
                                         ),
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                .8,
-                                        decoration: BoxDecoration(
-                                          gradient: LinearGradient(
-                                            begin: Alignment.topLeft,
-                                            end: Alignment.bottomRight,
-                                            colors: [
-                                              Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
-                                              Theme.of(context)
-                                                  .colorScheme
-                                                  .primary,
+                                        borderRadius: const BorderRadius.all(
+                                          Radius.circular(11),
+                                        ),
+                                      ),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: <Widget>[
+                                          Row(
+                                            children: <Widget>[
+                                              SvgPicture.asset(
+                                                'assets/images/${BiometricAuth.faceID.name == snapshot.requireData.name ? 'face_id' : 'fingerprint'}.svg',
+                                                colorFilter: ColorFilter.mode(
+                                                    Theme.of(context)
+                                                        .canvasColor,
+                                                    BlendMode.srcIn),
+                                              ),
+                                              const SizedBox(
+                                                width: 10,
+                                              ),
+                                              Text(
+                                                BiometricUtils
+                                                    .getBiometricString(
+                                                  snapshot.requireData,
+                                                ),
+                                                style: TextStyle(
+                                                  fontSize: 18,
+                                                  color: Theme.of(context)
+                                                      .canvasColor,
+                                                ),
+                                              )
                                             ],
                                           ),
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(11),
-                                          ),
-                                        ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: <Widget>[
-                                            Row(
-                                              children: <Widget>[
-                                                SvgPicture.asset(
-                                                  'assets/images/${BiometricAuth.faceID.name == snapshot.requireData.name ? 'face_id' : 'fingerprint'}.svg',
-                                                  colorFilter: ColorFilter.mode(
-                                                      Theme.of(context)
-                                                          .canvasColor,
-                                                      BlendMode.srcIn),
-                                                ),
-                                                const SizedBox(
-                                                  width: 10,
-                                                ),
-                                                Text(
-                                                  BiometricUtils
-                                                      .getBiometricString(
-                                                    snapshot.requireData,
-                                                  ),
-                                                  style: TextStyle(
-                                                    fontSize: 18,
-                                                    color: Theme.of(context)
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              SvgPicture.asset(
+                                                'assets/images/info_black.svg',
+                                                colorFilter: ColorFilter.mode(
+                                                    Theme.of(context)
                                                         .canvasColor,
-                                                  ),
-                                                )
-                                              ],
-                                            ),
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: <Widget>[
-                                                SvgPicture.asset(
-                                                  'assets/images/info_black.svg',
-                                                  colorFilter: ColorFilter.mode(
-                                                      Theme.of(context)
-                                                          .canvasColor,
-                                                      BlendMode.srcIn),
+                                                    BlendMode.srcIn),
+                                              ),
+                                              const SizedBox(
+                                                width: 3,
+                                              ),
+                                              Text(
+                                                'Recommended',
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Theme.of(context)
+                                                      .canvasColor,
                                                 ),
-                                                const SizedBox(
-                                                  width: 3,
-                                                ),
-                                                Text(
-                                                  'Recommended',
-                                                  style: TextStyle(
-                                                    fontSize: 12,
-                                                    color: Theme.of(context)
-                                                        .canvasColor,
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          ],
-                                        ),
+                                              ),
+                                            ],
+                                          )
+                                        ],
                                       ),
-                                      onTap: () async {
-                                        final String biometric =
-                                            BiometricUtils.getBiometricString(
-                                          snapshot.requireData,
-                                        );
+                                    ),
+                                    onTap: () async {
+                                      final String biometric =
+                                          BiometricUtils.getBiometricString(
+                                        snapshot.requireData,
+                                      );
 
-                                        await BiometricUtils
-                                            .showDefaultPopupCheckBiometricAuth(
-                                          message:
-                                              'Please use $biometric to unlock!',
-                                          callback: (bool result) {
-                                            if (result) {
-                                              viewModel.setSecurityType(
-                                                snapshot.requireData,
-                                              );
+                                      await BiometricUtils
+                                          .showDefaultPopupCheckBiometricAuth(
+                                        message:
+                                            'Please use $biometric to unlock!',
+                                        callback: (bool result) {
+                                          if (result) {
+                                            viewModel.setSecurityType(
+                                              snapshot.requireData,
+                                            );
+                                            context.router.replaceAll(
+                                                [const MainRoute()]);
+                                          }
+                                        },
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                  InkWell(
+                                    focusColor: Theme.of(context).canvasColor,
+                                    highlightColor:
+                                        Theme.of(context).canvasColor,
+                                    child: Container(
+                                      height: 60,
+                                      padding: const EdgeInsets.symmetric(
+                                        horizontal: 20,
+                                        vertical: 10,
+                                      ),
+                                      width: MediaQuery.of(context).size.width *
+                                          .8,
+                                      decoration: const BoxDecoration(
+                                        borderRadius: BorderRadius.all(
+                                          Radius.circular(11),
+                                        ),
+                                        color: Color(0xFFF7F7F7),
+                                      ),
+                                      child: Row(
+                                        children: [
+                                          SvgPicture.asset(
+                                            'assets/images/pincode.svg',
+                                            colorFilter: ColorFilter.mode(
+                                              Theme.of(context)
+                                                  .colorScheme
+                                                  .onSurface,
+                                              BlendMode.srcIn,
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                          Text(
+                                            'Pincode',
+                                            style: TextStyle(
+                                              fontSize: 18,
+                                              color: Theme.of(context)
+                                                  .colorScheme
+                                                  .onSurface,
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute<SetUpPinCodeScreen>(
+                                          builder: (context) =>
+                                              SetUpPinCodeScreen(
+                                            onSuccess: () {
                                               context.router.replaceAll(
                                                   [const MainRoute()]);
-                                            }
-                                          },
-                                        );
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                    InkWell(
-                                      focusColor: Theme.of(context).canvasColor,
-                                      highlightColor:
-                                          Theme.of(context).canvasColor,
-                                      child: Container(
-                                        height: 60,
-                                        padding: const EdgeInsets.symmetric(
-                                          horizontal: 20,
-                                          vertical: 10,
-                                        ),
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                .8,
-                                        decoration: const BoxDecoration(
-                                          borderRadius: BorderRadius.all(
-                                            Radius.circular(11),
+                                            },
                                           ),
-                                          color: Color(0xFFF7F7F7),
                                         ),
-                                        child: Row(
-                                          children: [
-                                            SvgPicture.asset(
-                                              'assets/images/pincode.svg',
-                                              colorFilter: ColorFilter.mode(
-                                                Theme.of(context)
-                                                    .colorScheme
-                                                    .onSurface,
-                                                BlendMode.srcIn,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              width: 10,
-                                            ),
-                                            Text(
-                                              'Pincode',
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .onSurface,
-                                              ),
-                                            )
-                                          ],
-                                        ),
-                                      ),
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute<SetUpPinCodeScreen>(
-                                            builder: (context) =>
-                                                SetUpPinCodeScreen(
-                                              onSuccess: () {
-                                                context.router.replaceAll(
-                                                    [const MainRoute()]);
-                                              },
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                    const SizedBox(
-                                      height: 30,
-                                    ),
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    ],
-                  )
-                ],
-              ),
+                                      );
+                                    },
+                                  ),
+                                  const SizedBox(
+                                    height: 30,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+                  ],
+                )
+              ],
             ),
           );
         } else {

@@ -1,9 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'dart:async';
 
 import 'package:charge_wallet_sdk/charge_wallet_sdk.dart';
 import 'package:flutter/material.dart';
-import 'package:guide_liverpool/constants/analytics_events.dart';
-import 'package:guide_liverpool/utils/analytics.dart';
 import 'package:redux_thunk/redux_thunk.dart';
 import 'package:redux/redux.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -15,6 +15,11 @@ import 'package:guide_liverpool/services.dart';
 import 'package:guide_liverpool/utils/constants.dart';
 import 'package:guide_liverpool/utils/log/log.dart';
 
+// class UpdateFeaturedVideos {
+//   UpdateFeaturedVideos({required this.featuredVideos});
+//   final List<VideoArticle> featuredVideos;
+// }
+
 class ClearCart {
   ClearCart();
 
@@ -23,24 +28,24 @@ class ClearCart {
 }
 
 class UpdateCartTotal {
-  int cartTotal;
   UpdateCartTotal(this.cartTotal);
+  int cartTotal;
 
   @override
   String toString() => 'UpdateCartTotal : cartTotal: $cartTotal';
 }
 
 class UpdateRestaurantName {
-  String restaurantName;
   UpdateRestaurantName(this.restaurantName);
+  String restaurantName;
 
   @override
   String toString() => 'UpdateRestaurantName : restaurantName: $restaurantName';
 }
 
 class UpdateRestaurantWalletAddress {
-  String restaurantWalletAddress;
   UpdateRestaurantWalletAddress(this.restaurantWalletAddress);
+  String restaurantWalletAddress;
 
   @override
   String toString() =>
@@ -48,32 +53,40 @@ class UpdateRestaurantWalletAddress {
 }
 
 class SetTransferringPayment {
-  bool flag;
   SetTransferringPayment({required this.flag});
+  bool flag;
 
   @override
   String toString() => 'SetTransferringPayment : flag: $flag';
 }
 
 class SetError {
-  bool flag;
   SetError({required this.flag});
+  bool flag;
 
   @override
   String toString() => 'SetError : flag: $flag';
 }
 
 class SetConfirmed {
+  SetConfirmed({required this.flag});
   bool flag;
-  SetConfirmed(this.flag);
 
   @override
   String toString() => 'SetConfirmed : flag: $flag';
 }
 
+class SetShouldShowPaymentSheet {
+  SetShouldShowPaymentSheet(this.flag);
+  bool flag;
+
+  @override
+  String toString() => 'SetShouldShowPaymentSheet : flag: $flag';
+}
+
 class UpdatePaymentIntentID {
-  String paymentIntentID;
   UpdatePaymentIntentID(this.paymentIntentID);
+  String paymentIntentID;
 
   @override
   String toString() =>
@@ -81,178 +94,54 @@ class UpdatePaymentIntentID {
 }
 
 class UpdateSelectedAmounts {
+  UpdateSelectedAmounts({required this.gbpxAmount, required this.pplAmount});
   final double gbpxAmount;
   final double pplAmount;
-  UpdateSelectedAmounts({required this.gbpxAmount, required this.pplAmount});
 
   @override
   String toString() =>
       'UpdateSelectedAmounts : gbpxAmount: $gbpxAmount, pplAmount: $pplAmount';
 }
 
-class UpdateCurrentUrl {
-  final String currentUrl;
-
-  UpdateCurrentUrl(this.currentUrl);
-
-  @override
-  String toString() => 'UpdateCurrentUrl : currentUrl: $currentUrl';
-}
-
-class UpdateUserEmail {
-  final String email;
-
-  UpdateUserEmail(this.email);
-
-  @override
-  String toString() => 'UpdateUserEmail : email: $email';
-}
-
-ThunkAction<AppState> queryOrderDetailsFromPaymentIntentID({
-  required BuildContext context,
-  required String selectedPaymentMethod,
-}) {
+ThunkAction<AppState> createOrder(String productId, BuildContext context) {
   return (Store<AppState> store) async {
-    try {
-      final Map<dynamic, dynamic> result = await peeplPayService
-          .checkOrderValidity(store.state.networkTabState.paymentIntentID);
+    final String? paymentIntent = await marketService.createMarketOrder(
+      walletAddress: store.state.userState.walletAddress,
+      productId: productId,
+      email: store.state.userState.email,
+      phone: store.state.userState.phoneNumber,
+    );
 
-      final Map<String, dynamic> paymentIntentDetails = result['paymentIntent'];
-
-      if (paymentIntentDetails.containsKey('vendorDisplayName') &&
-          paymentIntentDetails.containsKey('amount') &&
-          paymentIntentDetails.containsKey('recipientWalletAddress')) {
-        store
-          ..dispatch(
-            UpdateRestaurantName(
-                paymentIntentDetails['vendorDisplayName'] as String? ?? ''),
-          )
-          ..dispatch(
-            UpdateCartTotal(
-              paymentIntentDetails['amount'] as int? ?? 0,
-            ),
-          )
-          ..dispatch(
-            UpdateRestaurantWalletAddress(
-              paymentIntentDetails['recipientWalletAddress'] as String? ?? '',
-            ),
-          );
-        store.dispatch(startPaymentProcess(
-          context: context,
-          selectedPaymentMethod: selectedPaymentMethod,
-        ));
-      } else {
-        throw Exception('Payment Intent failed');
-      }
-    } catch (e, s) {
-      store.dispatch(SetError(flag: true));
-      log.error('ERROR - queryOrderDetailsFromPaymentIntentID $e');
-      await Sentry.captureException(
-        e,
-        stackTrace: s,
-        hint: Hint.withMap(
-            {'error': 'ERROR - queryOrderDetailsFromPaymentIntentID $e'}),
-      );
+    if (paymentIntent != null) {
+      store
+        ..dispatch(UpdatePaymentIntentID(paymentIntent))
+        ..dispatch(queryOrderDetailsFromPaymentIntentID(context));
     }
   };
 }
 
-ThunkAction<AppState> startPaymentProcess({
-  required BuildContext context,
-  required String selectedPaymentMethod,
-}) {
+ThunkAction<AppState> queryOrderDetailsFromPaymentIntentID(
+    BuildContext context) {
   return (Store<AppState> store) async {
     try {
-      if (selectedPaymentMethod == 'stripe') {
-        unawaited(
-          Analytics.track(
-            eventName: AnalyticsEvents.payStripe,
-          ),
-        );
-        await stripeService
-            .handleStripe(
-          walletAddress: store.state.userState.walletAddress,
-          amount: store.state.networkTabState.cartTotal,
-          context: context,
-          shouldPushToHome: false,
-        )
-            .then(
-          (value) {
-            if (!value) {
-              store.dispatch(SetTransferringPayment(flag: value));
-              return;
-            }
-            unawaited(
-              Analytics.track(
-                eventName: AnalyticsEvents.mint,
-                properties: {
-                  'status': 'success',
-                },
-              ),
-            );
-            store
-              ..dispatch(
-                UpdateSelectedAmounts(
-                  gbpxAmount: (store.state.networkTabState.cartTotal) / 100,
-                  pplAmount: 0,
-                ),
-              )
-              ..dispatch(
-                startTokenPaymentToRestaurant(
-                  context: context,
-                ),
-              );
-          },
-        );
-      } else if (selectedPaymentMethod == 'applePay') {
-        unawaited(
-          Analytics.track(
-            eventName: AnalyticsEvents.payApple,
-          ),
-        );
-        await stripeService
-            .handleApplePay(
-          walletAddress: store.state.userState.walletAddress,
-          amount: store.state.networkTabState.cartTotal,
-          context: context,
-          shouldPushToHome: false,
-        )
-            .then(
-          (value) {
-            if (!value) {
-              store.dispatch(SetTransferringPayment(flag: value));
-              return;
-            }
-            unawaited(
-              Analytics.track(
-                eventName: AnalyticsEvents.mint,
-                properties: {
-                  'status': 'success',
-                },
-              ),
-            );
-            store
-              ..dispatch(
-                UpdateSelectedAmounts(
-                  gbpxAmount: (store.state.networkTabState.cartTotal) / 100,
-                  pplAmount: 0,
-                ),
-              )
-              ..dispatch(
-                startTokenPaymentToRestaurant(
-                  context: context,
-                ),
-              );
-          },
-        );
-      } else if (selectedPaymentMethod == 'peeplPay') {
-        unawaited(
-          Analytics.track(
-            eventName: AnalyticsEvents.payPeepl,
-          ),
-        );
+      final Map<dynamic, dynamic> details = await peeplPayService
+          .checkOrderValidity(store.state.networkTabState.paymentIntentID);
+
+      if (details.containsKey('amount') &&
+          details.containsKey('recipientWalletAddress')) {
+        store
+          ..dispatch(
+            UpdateCartTotal(
+              details['amount'] as int? ?? 0,
+            ),
+          )
+          ..dispatch(
+            UpdateRestaurantWalletAddress(
+              details['recipientWalletAddress'] as String? ?? '',
+            ),
+          );
         await showModalBottomSheet<Widget>(
-          isScrollControlled: true,
+          useRootNavigator: true,
           backgroundColor: Colors.grey[900],
           shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
@@ -263,13 +152,15 @@ ThunkAction<AppState> startPaymentProcess({
           context: context,
           builder: (context) => const PaymentSheet(),
         );
+      } else {
+        throw Exception('Payment Intent failed');
       }
     } catch (e, s) {
-      log.error('ERROR - sendOrderObject $e');
+      store.dispatch(SetError(flag: true));
+      log.error('ERROR - queryOrderDetailsFromPaymentIntentID $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: Hint.withMap({'error': 'ERROR - sendOrderObject $e'}),
       );
     }
   };
@@ -346,8 +237,7 @@ ThunkAction<AppState> startPaymentProcess({
 //       await Sentry.captureException(
 //         e,
 //         stackTrace: s,
-//         hint: Hint.withMap(
-// {'error':'ERROR - sendTokenPayment $e',
+//         hint: 'ERROR - sendTokenPayment $e',
 //       );
 //     }
 //   };
@@ -368,12 +258,12 @@ ThunkAction<AppState> startPeeplPayProcess({
           selectedGBPXAmount.compareTo(currentGBPXAmount) <= 0;
 
       if (hasSufficientGbpxBalance) {
-        store.dispatch(startTokenPaymentToRestaurant(context: context));
+        store.dispatch(startTokenPaymentToRestaurant());
       } else {
         await stripeService
             .handleStripe(
           walletAddress: store.state.userState.walletAddress,
-          amount: (selectedGBPXAmount * 100).toInt(),
+          amount: (selectedGBPXAmount * 100).ceil(),
           context: context,
           shouldPushToHome: false,
         )
@@ -384,57 +274,46 @@ ThunkAction<AppState> startPeeplPayProcess({
               return;
             }
             store.dispatch(
-              startTokenPaymentToRestaurant(
-                context: context,
-              ),
+              startTokenPaymentToRestaurant(),
             );
           },
         );
       }
     } catch (e, s) {
-      log.error('ERROR - startPeeplPayProcess $e');
+      log.error('ERROR - sendOrderObject $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint: Hint.withMap({'error': 'ERROR - startPeeplPayProcess $e'}),
       );
     }
   };
 }
 
-ThunkAction<AppState> startTokenPaymentToRestaurant({
-  required BuildContext context,
-}) {
+ThunkAction<AppState> startTokenPaymentToRestaurant() {
   return (Store<AppState> store) async {
     try {
       //Set loading to true
       store.dispatch(SetTransferringPayment(flag: true));
-      unawaited(
-        showDialog<void>(
-          context: context,
-          builder: (context) => const ProcessingPayment(),
-        ),
-      );
 
-      final double currentGBPXAmount = store
-          .state.cashWalletState.tokens[gbpxToken.address]!.amount
-          .toDouble();
+      final BigInt currentGBPXAmount =
+          store.state.cashWalletState.tokens[gbpxToken.address]!.amount;
 
-      final double currentPPLAmount = store
-          .state.cashWalletState.tokens[pplToken.address]!.amount
-          .toDouble();
+      final BigInt currentPPLAmount =
+          store.state.cashWalletState.tokens[gbpxToken.address]!.amount;
 
-      final double selectedGBPXAmount =
-          store.state.networkTabState.selectedGBPxAmount;
+      final BigInt selectedGBPXAmount =
+          BigInt.from(store.state.networkTabState.selectedGBPxAmount);
 
-      final double selectedPPLAmount =
-          store.state.networkTabState.selectedPPLAmount;
+      final BigInt selectedPPLAmount =
+          BigInt.from(store.state.networkTabState.selectedPPLAmount);
 
-      final bool isGBPXSelected = selectedGBPXAmount.compareTo(0.0) > 0;
-      final bool isPPLSelected = selectedPPLAmount.compareTo(0.0) > 0;
+      final bool isGBPXSelected = selectedGBPXAmount.compareTo(BigInt.zero) > 0;
+      final bool isPPLSelected = selectedPPLAmount.compareTo(BigInt.zero) > 0;
 
       Map<String, dynamic> gbpxResponse = {};
       Map<String, dynamic> pplResponse = {};
+      bool isGBPxConfirmed = false;
+      bool isPPLConfirmed = false;
 
       if (isGBPXSelected) {
         if (currentGBPXAmount.compareTo(selectedGBPXAmount) > 0) {
@@ -464,53 +343,165 @@ ThunkAction<AppState> startTokenPaymentToRestaurant({
         }
       }
 
-      if (isGBPXSelected && gbpxResponse.isEmpty) {
-        throw Exception('Error transferring GBPX token: $gbpxResponse');
+      if (isGBPXSelected) {
+        if (gbpxResponse.isEmpty) {
+          throw Exception('Error transferring GBPX token: $gbpxResponse');
+        } else {
+          log.info(gbpxResponse);
+          final jobId = gbpxResponse['job']['_id'];
+
+          final Timer timer =
+              Timer.periodic(const Duration(seconds: 1), (timer) async {
+            final jobInfo = await chargeApi.getJob(jobId as String);
+            if (jobInfo['status'] == 'succeeded') {
+              isGBPxConfirmed = true;
+              timer.cancel();
+            }
+          });
+        }
       }
-      if (isPPLSelected && pplResponse.isEmpty) {
-        throw Exception('Error transferring PPL token: $pplResponse');
+
+      if (isPPLSelected) {
+        if (pplResponse.isEmpty) {
+          throw Exception('Error transferring PPL token: $pplResponse');
+        } else {
+          log.info(pplResponse);
+          final jobId = pplResponse['job']['_id'];
+
+          final Timer timer =
+              Timer.periodic(const Duration(seconds: 1), (timer) async {
+            final jobInfo = await chargeApi.getJob(jobId as String);
+            if (jobInfo['status'] == 'succeeded') {
+              isPPLConfirmed = true;
+              timer.cancel();
+              return;
+            }
+          });
+        }
       }
-      log
-        ..info('gbpxResponse: $gbpxResponse')
-        ..info('pplResponse: $pplResponse');
-      Sentry.captureMessage(
-          'PaymentIntentID: ${store.state.networkTabState.paymentIntentID}, '
-          'GBPxResponse: $gbpxResponse, PPLResponse: $pplResponse');
-      store.dispatch(SetConfirmed(true));
+
+      Timer timer = Timer.periodic(const Duration(seconds: 2), (timer) {
+        if (isGBPXSelected && isPPLSelected) {
+          if (isGBPxConfirmed && isPPLConfirmed) {
+            store.dispatch(SetConfirmed(flag: true));
+            timer.cancel();
+            return;
+          }
+        } else if (isGBPXSelected) {
+          if (isGBPxConfirmed) {
+            store.dispatch(SetConfirmed(flag: true));
+            timer.cancel();
+            return;
+          }
+        } else if (isPPLSelected) {
+          if (isPPLSelected) {
+            store.dispatch(SetConfirmed(flag: true));
+            timer.cancel();
+            return;
+          }
+        }
+      });
+
+      // final jobId = gbpxResponse['job']['_id'];
+
+      // final jobInfo = await chargeApi.getJob(jobId as String);
+
+      // print(jobInfo);
+
+      // store.dispatch(SetConfirmed(flag: true));
     } catch (e, s) {
       store.dispatch(SetError(flag: true));
       log.error('ERROR - startTokenPaymentToRestaurant $e');
       await Sentry.captureException(
         e,
         stackTrace: s,
-        hint:
-            Hint.withMap({'error': 'ERROR - startTokenPaymentToRestaurant $e'}),
       );
     }
   };
 }
 
-ThunkAction<AppState> createVideoView(
-    String videoID,
-    void Function(int rewardAmount) successCallback,
-    VoidCallback errorCallback) {
-  return (Store<AppState> store) async {
-    try {
-      final int rewardsIssued = await peeplMediaService.createVideoView(
-        videoID,
-        store.state.userState.walletAddress,
-      );
-      if (rewardsIssued > 0) {
-        successCallback(rewardsIssued);
-      }
-    } catch (e, s) {
-      errorCallback();
-      log.error('ERROR - createVideoView $e');
-      await Sentry.captureException(
-        e,
-        stackTrace: s,
-        hint: Hint.withMap({'error': 'ERROR - createVideoView $e'}),
-      );
-    }
-  };
-}
+// ThunkAction<AppState> startPaymentConfirmationCheck() {
+//   return (Store<AppState> store) async {
+//     int counter = 0;
+//     Timer.periodic(
+//       const Duration(seconds: 4),
+//       (timer) async {
+//         try {
+//           final Future<Map<dynamic, dynamic>> checkOrderResponse =
+//               marketService.checkOrderStatus(store.state.cartState.orderID);
+
+//           await checkOrderResponse.then(
+//             (completedValue) {
+//               counter++;
+//               log.info(
+//                 'PaymentStatus: ${completedValue["paymentStatus"]}, '
+//                 'counter: $counter',
+//               );
+//               if (completedValue['paymentStatus'] == 'paid') {
+//                 store
+//                   ..dispatch(SetTransferringPayment(flag: false))
+//                   ..dispatch(SetConfirmed(flag: true));
+//                 timer.cancel();
+//               }
+//             },
+//           );
+
+//           if (counter > 15) {
+//             timer.cancel();
+//             throw Exception('Payment checks exceeded time limit: '
+//                 'orderID: ${store.state.cartState.orderID}');
+//           }
+//         } catch (e, s) {
+//           timer.cancel();
+//           store.dispatch(SetError(flag: true));
+//           log.error('ERROR - startPaymentConfirmationCheck $e');
+//           await Sentry.captureException(
+//             e,
+//             stackTrace: s,
+//           );
+//         }
+//       },
+//     );
+//   };
+// }
+
+// ThunkAction<AppState> fetchFeaturedVideos() {
+//   return (Store<AppState> store) async {
+//     try {
+//       await peeplMediaService.loginToDashboard();
+//       final List<VideoArticle> videoArticles =
+//           await peeplMediaService.featuredVideos();
+//       store.dispatch(UpdateFeaturedVideos(featuredVideos: videoArticles));
+//     } catch (e, s) {
+//       log.error('ERROR - fetchFeaturedVideos $e');
+//       await Sentry.captureException(
+//         e,
+//         stackTrace: s,
+//       );
+//     }
+//   };
+// }
+
+// ThunkAction<AppState> createVideoView(
+//     String videoID,
+//     void Function(int rewardAmount) successCallback,
+//     VoidCallback errorCallback) {
+//   return (Store<AppState> store) async {
+//     try {
+//       final int rewardsIssued = await peeplMediaService.createVideoView(
+//         videoID,
+//         store.state.userState.walletAddress,
+//       );
+//       if (rewardsIssued > 0) {
+//         successCallback(rewardsIssued);
+//       }
+//     } catch (e, s) {
+//       errorCallback();
+//       log.error('ERROR - createVideoView $e');
+//       await Sentry.captureException(
+//         e,
+//         stackTrace: s,
+//       );
+//     }
+//   };
+// }

@@ -28,9 +28,16 @@ class _FeaturedPostState extends State<FeaturedPost> {
       child: InkWell(
         onTap: () => {
           showModalBottomSheet(
+            isScrollControlled: true,
             useRootNavigator: true,
             backgroundColor: Colors.white,
             context: context,
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(20),
+              ),
+            ),
             builder: (context) => PagedViewDetailArticle(
               listOfArticles: widget.listOfArticles,
               currentIndex: widget.index,

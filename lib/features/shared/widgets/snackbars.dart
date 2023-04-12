@@ -154,3 +154,51 @@ void showPlayBackCompletedFlushBarNoAcc(context) {
     ),
   )..show(context);
 }
+
+void showOrderCreatedFlushBar(BuildContext context) {
+  Flushbar<void>(
+    duration: const Duration(seconds: 3),
+    boxShadows: const [
+      BoxShadow(
+        offset: Offset(0.5, 0.5),
+        blurRadius: 5,
+      ),
+    ],
+    titleText: const Text.rich(
+      TextSpan(
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 25,
+          fontWeight: FontWeight.w900,
+        ),
+        children: [
+          WidgetSpan(
+            child: Icon(
+              PeeplIcons.ppl_circles_02,
+              size: 35,
+              color: Color(0xFFEB4953),
+            ),
+          ),
+          TextSpan(text: '\nThank you for ordering')
+        ],
+      ),
+      textAlign: TextAlign.center,
+    ),
+    messageText: Text.rich(
+      TextSpan(
+        text: 'You will recieve an email with your confirmation details',
+      ),
+      style: const TextStyle(color: Colors.white),
+      textAlign: TextAlign.center,
+    ),
+    backgroundColor: const Color(0xFF333333),
+    margin: const EdgeInsets.only(
+      right: 20,
+      left: 20,
+      bottom: 50,
+    ),
+    borderRadius: const BorderRadius.all(
+      Radius.circular(8),
+    ),
+  ).show(context);
+}

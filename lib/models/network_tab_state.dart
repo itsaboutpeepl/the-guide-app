@@ -16,7 +16,7 @@ class NetworkTabState with _$NetworkTabState {
     @JsonKey(ignore: true) @Default(0) int cartTotal,
     @JsonKey(ignore: true) @Default('') String restaurantName,
     @JsonKey(ignore: true) @Default('') String restaurantWalletAddress,
-    @JsonKey(ignore: true) @Default('') String currentUrl,
+    @JsonKey(ignore: true) @Default(false) bool shouldShowPaymentSheet,
   }) = _NetworkTabState;
 
   const NetworkTabState._();

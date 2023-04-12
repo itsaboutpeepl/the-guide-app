@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:guide_liverpool/common/di/di.dart';
 import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/services/apis/market.dart';
 import 'package:guide_liverpool/services/apis/news.dart';
 import 'package:guide_liverpool/services/apis/peeplMedia.dart';
 import 'package:guide_liverpool/services/apis/peeplPay.dart';
@@ -34,3 +35,5 @@ final PhoneNumberUtil phoneNumberUtil = getIt<PhoneNumberUtil>();
 final IOnBoardStrategy onBoardStrategy = getIt<IOnBoardStrategy>();
 
 final StripeService stripeService = getIt<StripeService>();
+
+final MarketApi marketService = getIt<MarketApi>();

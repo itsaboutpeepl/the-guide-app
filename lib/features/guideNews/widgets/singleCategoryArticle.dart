@@ -13,6 +13,7 @@ class SingleCategoryArticle extends StatelessWidget {
     return InkWell(
       onTap: () => {
         showModalBottomSheet(
+          isScrollControlled: true,
           useRootNavigator: true,
           backgroundColor: Colors.white,
           context: context,

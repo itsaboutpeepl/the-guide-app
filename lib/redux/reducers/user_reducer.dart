@@ -27,7 +27,6 @@ final userReducers = combineReducers<UserState>([
   TypedReducer<UserState, SetShowSeedPhraseBanner>(_setShowSeedPhraseBanner),
   TypedReducer<UserState, SetHasSavedSeedPhrase>(_setHasSavedSeedPhrase),
   TypedReducer<UserState, UpdateUserPostcode>(_setPostCode),
-  TypedReducer<UserState, UpdateUserEmail>(_updateUserEmail),
 ]);
 
 UserState _setWalletConnectURI(
@@ -205,11 +204,4 @@ UserState _setPostCode(
   UpdateUserPostcode action,
 ) {
   return state.copyWith(postCode: action.postCode);
-}
-
-UserState _updateUserEmail(
-  UserState state,
-  UpdateUserEmail action,
-) {
-  return state.copyWith(email: action.email);
 }
