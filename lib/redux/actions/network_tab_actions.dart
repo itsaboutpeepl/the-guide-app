@@ -60,6 +60,14 @@ class SetTransferringPayment {
   String toString() => 'SetTransferringPayment : flag: $flag';
 }
 
+class SetLoadingPaymentButton {
+  SetLoadingPaymentButton({required this.flag});
+  bool flag;
+
+  @override
+  String toString() => 'SetLoadingPaymentButton : flag: $flag';
+}
+
 class SetError {
   SetError({required this.flag});
   bool flag;
@@ -245,9 +253,11 @@ ThunkAction<AppState> queryOrderDetailsFromPaymentIntentID(
 
 ThunkAction<AppState> startPeeplPayProcess({
   required BuildContext context,
+  required bool isPlatformPay,
 }) {
   return (Store<AppState> store) async {
     try {
+      store.dispatch(SetLoadingPaymentButton(flag: true));
       final double currentGBPXAmount =
           store.state.cashWalletState.tokens[gbpxToken.address]!.getAmount();
 
@@ -260,24 +270,47 @@ ThunkAction<AppState> startPeeplPayProcess({
       if (hasSufficientGbpxBalance) {
         store.dispatch(startTokenPaymentToRestaurant());
       } else {
-        await stripeService
-            .handleStripe(
-          walletAddress: store.state.userState.walletAddress,
-          amount: (selectedGBPXAmount * 100).ceil(),
-          context: context,
-          shouldPushToHome: false,
-        )
-            .then(
-          (value) {
-            if (!value) {
-              store.dispatch(SetTransferringPayment(flag: value));
-              return;
-            }
-            store.dispatch(
-              startTokenPaymentToRestaurant(),
-            );
-          },
-        );
+        if (isPlatformPay) {
+          await stripeService
+              .handleApplePay(
+                  walletAddress: store.state.userState.walletAddress,
+                  amount: (selectedGBPXAmount * 100).ceil(),
+                  context: context,
+                  shouldPushToHome: false,
+                  productName: 'Peepl Market')
+              .then(
+            (value) {
+              if (!value) {
+                store.dispatch(SetLoadingPaymentButton(flag: false));
+                store.dispatch(SetTransferringPayment(flag: false));
+                return;
+              } else {
+                store.dispatch(SetTransferringPayment(flag: true));
+                store.dispatch(startTokenPaymentToRestaurant());
+              }
+            },
+          );
+        } else {
+          await stripeService
+              .handleStripe(
+            walletAddress: store.state.userState.walletAddress,
+            amount: (selectedGBPXAmount * 100).ceil(),
+            context: context,
+            shouldPushToHome: false,
+          )
+              .then(
+            (value) {
+              if (!value) {
+                store.dispatch(SetLoadingPaymentButton(flag: false));
+                store.dispatch(SetTransferringPayment(flag: false));
+                return;
+              } else {
+                store.dispatch(SetTransferringPayment(flag: true));
+                store.dispatch(startTokenPaymentToRestaurant());
+              }
+            },
+          );
+        }
       }
     } catch (e, s) {
       log.error('ERROR - sendOrderObject $e');
@@ -384,17 +417,20 @@ ThunkAction<AppState> startTokenPaymentToRestaurant() {
         if (isGBPXSelected && isPPLSelected) {
           if (isGBPxConfirmed && isPPLConfirmed) {
             store.dispatch(SetConfirmed(flag: true));
+            store.dispatch(SetLoadingPaymentButton(flag: false));
             timer.cancel();
             return;
           }
         } else if (isGBPXSelected) {
           if (isGBPxConfirmed) {
+            store.dispatch(SetLoadingPaymentButton(flag: false));
             store.dispatch(SetConfirmed(flag: true));
             timer.cancel();
             return;
           }
         } else if (isPPLSelected) {
-          if (isPPLSelected) {
+          if (isPPLConfirmed) {
+            store.dispatch(SetLoadingPaymentButton(flag: false));
             store.dispatch(SetConfirmed(flag: true));
             timer.cancel();
             return;

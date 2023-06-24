@@ -17,6 +17,7 @@ class NetworkTabState with _$NetworkTabState {
     @JsonKey(ignore: true) @Default('') String restaurantName,
     @JsonKey(ignore: true) @Default('') String restaurantWalletAddress,
     @JsonKey(ignore: true) @Default(false) bool shouldShowPaymentSheet,
+    @JsonKey(ignore: true) @Default(false) bool loadingPaymentButton,
   }) = _NetworkTabState;
 
   const NetworkTabState._();
@@ -31,6 +32,7 @@ class NetworkTabState with _$NetworkTabState {
       confirmedPayment: false,
       cartTotal: 0,
       restaurantName: '',
+      loadingPaymentButton: false,
     );
   }
 

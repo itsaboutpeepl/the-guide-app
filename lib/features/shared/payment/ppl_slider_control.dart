@@ -95,7 +95,7 @@ class _PPLSliderState extends State<PPLSlider> {
                 height: 20,
               ),
               Text(
-                'Pay ${viewmodel.restaurantName}',
+                'Pay ${viewmodel.cartTotal}',
                 style: TextStyle(
                   color: Colors.grey[300],
                   fontSize: 14,
@@ -123,28 +123,28 @@ class _PPLSliderState extends State<PPLSlider> {
               const SizedBox(
                 height: 5,
               ),
-              Text.rich(
-                TextSpan(
-                  text: 'Total ${viewmodel.cartTotal} | ',
-                  children: [
-                    TextSpan(
-                      text:
-                          'Earn ${getPPLRewardsFromPence(_gbpxSliderValue).toStringAsFixed(2)} ',
-                    ),
-                    WidgetSpan(
-                      child: Image.asset(
-                        'assets/images/avatar-ppl-red.png',
-                        width: 25,
-                      ),
-                    )
-                  ],
-                ),
-                style: TextStyle(
-                  color: Colors.grey[300],
-                  fontSize: 16,
-                  fontWeight: FontWeight.w200,
-                ),
-              ),
+              // Text.rich(
+              //   TextSpan(
+              //     text: 'Total ${viewmodel.cartTotal}',
+              //     children: [
+              //       // TextSpan(
+              //       //   text:
+              //       //       'Earn ${getPPLRewardsFromPence(_gbpxSliderValue).toStringAsFixed(2)} ',
+              //       // ),
+              //       // WidgetSpan(
+              //       //   child: Image.asset(
+              //       //     'assets/images/avatar-ppl-red.png',
+              //       //     width: 25,
+              //       //   ),
+              //       // )
+              //     ],
+              //   ),
+              //   style: TextStyle(
+              //     color: Colors.grey[300],
+              //     fontSize: 16,
+              //     fontWeight: FontWeight.w200,
+              //   ),
+              // ),
               const SizedBox(
                 height: 10,
               ),

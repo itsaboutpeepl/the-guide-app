@@ -247,9 +247,8 @@ class _SignupPageState extends State<SignupPage> {
                                   });
                                   try {
                                     PhoneNumber value =
-                                        await phoneNumberUtil.parse(
-                                      phoneNumber,
-                                    );
+                                        await phoneNumberUtil.parse(phoneNumber,
+                                            regionCode: countryCode.code);
                                     signUp(
                                       countryCode,
                                       value,

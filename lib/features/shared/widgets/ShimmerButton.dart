@@ -37,7 +37,7 @@ class _ShimmerButtonState extends State<ShimmerButton> {
                 highlightColor: widget.highlightColor,
                 child: Container(
                   width: MediaQuery.of(context).size.width,
-                  height: 60,
+                  height: 50,
                   decoration: BoxDecoration(
                     color: Theme.of(context).primaryColor,
                     boxShadow: [

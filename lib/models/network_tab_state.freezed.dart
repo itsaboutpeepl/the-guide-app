@@ -40,6 +40,8 @@ mixin _$NetworkTabState {
   String get restaurantWalletAddress => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   bool get shouldShowPaymentSheet => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  bool get loadingPaymentButton => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -63,7 +65,8 @@ abstract class $NetworkTabStateCopyWith<$Res> {
       @JsonKey(ignore: true) int cartTotal,
       @JsonKey(ignore: true) String restaurantName,
       @JsonKey(ignore: true) String restaurantWalletAddress,
-      @JsonKey(ignore: true) bool shouldShowPaymentSheet});
+      @JsonKey(ignore: true) bool shouldShowPaymentSheet,
+      @JsonKey(ignore: true) bool loadingPaymentButton});
 }
 
 /// @nodoc
@@ -89,6 +92,7 @@ class _$NetworkTabStateCopyWithImpl<$Res, $Val extends NetworkTabState>
     Object? restaurantName = null,
     Object? restaurantWalletAddress = null,
     Object? shouldShowPaymentSheet = null,
+    Object? loadingPaymentButton = null,
   }) {
     return _then(_value.copyWith(
       paymentIntentID: null == paymentIntentID
@@ -131,6 +135,10 @@ class _$NetworkTabStateCopyWithImpl<$Res, $Val extends NetworkTabState>
           ? _value.shouldShowPaymentSheet
           : shouldShowPaymentSheet // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadingPaymentButton: null == loadingPaymentButton
+          ? _value.loadingPaymentButton
+          : loadingPaymentButton // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -153,7 +161,8 @@ abstract class _$$_NetworkTabStateCopyWith<$Res>
       @JsonKey(ignore: true) int cartTotal,
       @JsonKey(ignore: true) String restaurantName,
       @JsonKey(ignore: true) String restaurantWalletAddress,
-      @JsonKey(ignore: true) bool shouldShowPaymentSheet});
+      @JsonKey(ignore: true) bool shouldShowPaymentSheet,
+      @JsonKey(ignore: true) bool loadingPaymentButton});
 }
 
 /// @nodoc
@@ -177,6 +186,7 @@ class __$$_NetworkTabStateCopyWithImpl<$Res>
     Object? restaurantName = null,
     Object? restaurantWalletAddress = null,
     Object? shouldShowPaymentSheet = null,
+    Object? loadingPaymentButton = null,
   }) {
     return _then(_$_NetworkTabState(
       paymentIntentID: null == paymentIntentID
@@ -219,6 +229,10 @@ class __$$_NetworkTabStateCopyWithImpl<$Res>
           ? _value.shouldShowPaymentSheet
           : shouldShowPaymentSheet // ignore: cast_nullable_to_non_nullable
               as bool,
+      loadingPaymentButton: null == loadingPaymentButton
+          ? _value.loadingPaymentButton
+          : loadingPaymentButton // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -237,7 +251,8 @@ class _$_NetworkTabState extends _NetworkTabState {
       @JsonKey(ignore: true) this.cartTotal = 0,
       @JsonKey(ignore: true) this.restaurantName = '',
       @JsonKey(ignore: true) this.restaurantWalletAddress = '',
-      @JsonKey(ignore: true) this.shouldShowPaymentSheet = false})
+      @JsonKey(ignore: true) this.shouldShowPaymentSheet = false,
+      @JsonKey(ignore: true) this.loadingPaymentButton = false})
       : super._();
 
   factory _$_NetworkTabState.fromJson(Map<String, dynamic> json) =>
@@ -273,10 +288,13 @@ class _$_NetworkTabState extends _NetworkTabState {
   @override
   @JsonKey(ignore: true)
   final bool shouldShowPaymentSheet;
+  @override
+  @JsonKey(ignore: true)
+  final bool loadingPaymentButton;
 
   @override
   String toString() {
-    return 'NetworkTabState(paymentIntentID: $paymentIntentID, selectedGBPxAmount: $selectedGBPxAmount, selectedPPLAmount: $selectedPPLAmount, transferringTokens: $transferringTokens, errorCompletingPayment: $errorCompletingPayment, confirmedPayment: $confirmedPayment, cartTotal: $cartTotal, restaurantName: $restaurantName, restaurantWalletAddress: $restaurantWalletAddress, shouldShowPaymentSheet: $shouldShowPaymentSheet)';
+    return 'NetworkTabState(paymentIntentID: $paymentIntentID, selectedGBPxAmount: $selectedGBPxAmount, selectedPPLAmount: $selectedPPLAmount, transferringTokens: $transferringTokens, errorCompletingPayment: $errorCompletingPayment, confirmedPayment: $confirmedPayment, cartTotal: $cartTotal, restaurantName: $restaurantName, restaurantWalletAddress: $restaurantWalletAddress, shouldShowPaymentSheet: $shouldShowPaymentSheet, loadingPaymentButton: $loadingPaymentButton)';
   }
 
   @override
@@ -304,7 +322,9 @@ class _$_NetworkTabState extends _NetworkTabState {
                     other.restaurantWalletAddress, restaurantWalletAddress) ||
                 other.restaurantWalletAddress == restaurantWalletAddress) &&
             (identical(other.shouldShowPaymentSheet, shouldShowPaymentSheet) ||
-                other.shouldShowPaymentSheet == shouldShowPaymentSheet));
+                other.shouldShowPaymentSheet == shouldShowPaymentSheet) &&
+            (identical(other.loadingPaymentButton, loadingPaymentButton) ||
+                other.loadingPaymentButton == loadingPaymentButton));
   }
 
   @JsonKey(ignore: true)
@@ -320,7 +340,8 @@ class _$_NetworkTabState extends _NetworkTabState {
       cartTotal,
       restaurantName,
       restaurantWalletAddress,
-      shouldShowPaymentSheet);
+      shouldShowPaymentSheet,
+      loadingPaymentButton);
 
   @JsonKey(ignore: true)
   @override
@@ -347,7 +368,8 @@ abstract class _NetworkTabState extends NetworkTabState {
           @JsonKey(ignore: true) final int cartTotal,
           @JsonKey(ignore: true) final String restaurantName,
           @JsonKey(ignore: true) final String restaurantWalletAddress,
-          @JsonKey(ignore: true) final bool shouldShowPaymentSheet}) =
+          @JsonKey(ignore: true) final bool shouldShowPaymentSheet,
+          @JsonKey(ignore: true) final bool loadingPaymentButton}) =
       _$_NetworkTabState;
   _NetworkTabState._() : super._();
 
@@ -384,6 +406,9 @@ abstract class _NetworkTabState extends NetworkTabState {
   @override
   @JsonKey(ignore: true)
   bool get shouldShowPaymentSheet;
+  @override
+  @JsonKey(ignore: true)
+  bool get loadingPaymentButton;
   @override
   @JsonKey(ignore: true)
   _$$_NetworkTabStateCopyWith<_$_NetworkTabState> get copyWith =>

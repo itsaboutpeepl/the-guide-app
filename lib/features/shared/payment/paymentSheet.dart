@@ -1,9 +1,8 @@
 import 'dart:async';
-
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:guide_liverpool/common/router/routes.dart';
+import 'package:guide_liverpool/features/shared/payment/apple_pay_button.dart';
+import 'package:guide_liverpool/features/shared/payment/card_pay_button.dart';
 import 'package:guide_liverpool/features/shared/payment/ppl_balance_card.dart';
 import 'package:guide_liverpool/features/shared/payment/ppl_slider_control.dart';
 import 'package:guide_liverpool/features/shared/widgets/ShimmerButton.dart';
@@ -22,6 +21,7 @@ class PaymentSheet extends StatelessWidget {
       converter: PeeplPaySheetViewModel.fromStore,
       onInit: (store) {
         store
+          ..dispatch(SetLoadingPaymentButton(flag: false))
           ..dispatch(SetShouldShowPaymentSheet(false))
           ..dispatch(SetTransferringPayment(flag: false))
           ..dispatch(SetError(flag: false))
@@ -65,7 +65,7 @@ class PaymentSheet extends StatelessWidget {
                     'Peepl Pay',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 32,
+                      fontSize: 28,
                       fontWeight: FontWeight.w800,
                     ),
                   ),
@@ -96,32 +96,38 @@ class PaymentSheet extends StatelessWidget {
             const Spacer(),
             const PPLSlider(),
             const Spacer(),
-            if (viewmodel.transferringTokens)
-              const CircularProgressIndicator(
-                color: Colors.white,
-              )
-            else
-              SizedBox(
-                width: MediaQuery.of(context).size.width * 0.4,
-                child: ShimmerButton(
-                  buttonContent: const Center(
-                    child: Text(
-                      'Pay Now',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
+            viewmodel.loadingPaymentButton
+                ? CircularProgressIndicator(
+                    color: Colors.white,
+                  )
+                : Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: ShimmerButton(
+                          buttonContent: const Center(child: CardPayButton()),
+                          buttonAction: () =>
+                              viewmodel.startPaymentProcess(context: context),
+                          baseColor: Colors.grey[100]!,
+                          highlightColor: Colors.white,
+                        ),
                       ),
-                    ),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.4,
+                        child: ShimmerButton(
+                          buttonContent: const Center(child: ApplePayButton()),
+                          buttonAction: () => viewmodel.startPaymentProcess(
+                              context: context, isPlatFormPay: true),
+                          baseColor: Colors.grey[100]!,
+                          highlightColor: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
-                  buttonAction: () => viewmodel.startPaymentProcess(
-                    context: context,
-                  ),
-                  baseColor: Colors.grey[800]!,
-                  highlightColor: Colors.grey[850]!,
-                ),
-              ),
-            const Spacer()
+            const SizedBox(
+              height: 30,
+            )
           ],
         );
       },

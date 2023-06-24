@@ -152,7 +152,7 @@ class _ProcessingPaymentState extends State<ProcessingPayment>
                   duration: const Duration(milliseconds: 500),
                   child: Text(
                     viewmodel.isLoading
-                        ? 'Processing your payment'
+                        ? 'Nearly there!'
                         : viewmodel.isError
                             ? 'Something went wrong!'
                             : 'Payment completed successfully',
@@ -169,9 +169,9 @@ class _ProcessingPaymentState extends State<ProcessingPayment>
                   duration: const Duration(milliseconds: 500),
                   child: Text(
                     viewmodel.isLoading
-                        ? 'Sorry if this is taking too long'
+                        ? 'Confirming everythings ok with the payment, product & marketplace...'
                         : viewmodel.isError
-                            ? 'Please contact us at help@vegi.co.uk'
+                            ? 'Please contact us at hello@itsaboutpeepl.com'
                             : 'Thank you for your order!',
                     key: ValueKey(_valueKey),
                     textAlign: TextAlign.center,

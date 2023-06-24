@@ -16,10 +16,12 @@ class PeeplPaySheetViewModel extends Equatable {
     required this.confirmedPayment,
     required this.restaurantName,
     required this.cartTotal,
+    required this.loadingPaymentButton,
   });
 
   factory PeeplPaySheetViewModel.fromStore(Store<AppState> store) {
     return PeeplPaySheetViewModel(
+      loadingPaymentButton: store.state.networkTabState.loadingPaymentButton,
       cartTotal: store.state.networkTabState.cartTotal.formattedPrice,
       selectedGBPxAmount: store.state.networkTabState.selectedGBPxAmount,
       selectedPPLAmount: store.state.networkTabState.selectedPPLAmount,
@@ -36,8 +38,10 @@ class PeeplPaySheetViewModel extends Equatable {
           ),
         );
       },
-      startPaymentProcess: ({required BuildContext context}) {
-        store.dispatch(startPeeplPayProcess(context: context));
+      startPaymentProcess: (
+          {required BuildContext context, bool isPlatFormPay = false}) {
+        store.dispatch(startPeeplPayProcess(
+            context: context, isPlatformPay: isPlatFormPay));
       },
     );
   }
@@ -48,8 +52,10 @@ class PeeplPaySheetViewModel extends Equatable {
   final bool errorCompletingPayment;
   final bool confirmedPayment;
   final String restaurantName;
+  final bool loadingPaymentButton;
   final void Function(double gbpxAmount, double pplAmount) updateSelectedValues;
-  final void Function({required BuildContext context}) startPaymentProcess;
+  final void Function({required BuildContext context, bool isPlatFormPay})
+      startPaymentProcess;
 
   @override
   List<Object> get props => [
@@ -58,5 +64,6 @@ class PeeplPaySheetViewModel extends Equatable {
         transferringTokens,
         errorCompletingPayment,
         confirmedPayment,
+        loadingPaymentButton,
       ];
 }

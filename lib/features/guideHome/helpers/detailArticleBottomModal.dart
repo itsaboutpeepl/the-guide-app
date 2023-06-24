@@ -31,6 +31,8 @@ class _DetailArticleBottomModelState extends State<DetailArticleBottomModel> {
   void initState() {
     super.initState();
 
+    print(widget.articleData.content);
+
     _timer = Timer.periodic(Duration(seconds: 5), (timer) async {
       if (mounted) {
         setState(() {

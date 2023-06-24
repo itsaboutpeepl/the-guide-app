@@ -152,6 +152,7 @@ ThunkAction fetchHomePageData() {
       store.dispatch(fetchFeaturedPosts());
       store.dispatch(fetchFeaturedVideos());
       store.dispatch(fetchEventsList());
+      store.dispatch(fetchNetworkTabData());
       store.dispatch(fetchDirectoryList());
       store.dispatch(fetchCategoryNames());
     } catch (e, s) {
@@ -160,6 +161,21 @@ ThunkAction fetchHomePageData() {
         e,
         stackTrace: s,
         hint: Hint.withMap({'error': 'ERROR - fetchHomePageData $e'}),
+      );
+    }
+  };
+}
+
+ThunkAction fetchNetworkTabData() {
+  return (Store store) async {
+    try {
+      await marketService.getProductPhotos();
+    } catch (e, s) {
+      log.error('ERROR - fetchNetworkTabData $e');
+      await Sentry.captureException(
+        e,
+        stackTrace: s,
+        hint: Hint.withMap({'error': 'ERROR - fetchNetworkTabData $e'}),
       );
     }
   };

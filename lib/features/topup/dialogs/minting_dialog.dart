@@ -140,8 +140,8 @@ class _MintingDialogState extends State<MintingDialog>
                   duration: const Duration(milliseconds: 500),
                   child: Text(
                     _isMinting
-                        ? "Adding balance to your wallet, won't be long"
-                        : 'Token minting complete!',
+                        ? "Processing your payment now!"
+                        : 'Just checking in with the local retailers...',
                     key: ValueKey(_isMinting),
                     textAlign: TextAlign.center,
                     style: const TextStyle(
@@ -154,10 +154,7 @@ class _MintingDialogState extends State<MintingDialog>
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 500),
                   child: Text(
-                    _isMinting
-                        ? "We're hooking up some extra lemons "
-                            'to make this go faster!'
-                        : 'Thanks for topping up your Peepl Wallet!',
+                    _isMinting ? "Won't be long..." : '',
                     key: ValueKey(_isMinting),
                     textAlign: TextAlign.center,
                     style: const TextStyle(

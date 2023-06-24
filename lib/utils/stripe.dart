@@ -33,6 +33,10 @@ class StripeService {
     Stripe.merchantIdentifier = "merchant.com.theguideliverpool";
   }
 
+  Future<bool> isPlatformPaySupported() {
+    return instance.isPlatformPaySupported();
+  }
+
   Future<bool> handleStripe({
     required String walletAddress,
     required int amount,

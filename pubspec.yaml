@@ -1,5 +1,5 @@
 name: guide_liverpool
-version: 1.13.0+39
+version: 1.13.0+44
 publish_to: none
 description: The Guide Liverpool app is a blog reader application for local news and updates in Liverpool
 environment:
@@ -27,7 +27,7 @@ dependencies:
   firebase_messaging: ^14.4.0
   flex_color_scheme: ^7.0.1
   flutter_dotenv: ^5.0.0
-  flutter_html: ^3.0.0-alpha.3
+  flutter_html: 3.0.0-alpha.6
   flutter_inappwebview: ^5.7.1
   flutter_redux: ^0.10.0
   flutter_secure_storage: ^8.0.0
@@ -45,16 +45,16 @@ dependencies:
   logger: ^1.0.0
   number_display: ^3.0.0
   package_info: ^2.0.2
-  phone_number: ^1.0.0
-  pin_code_fields: ^7.2.0
+  phone_number: 1.0.0
+  pin_code_fields: ^8.0.1
   redux_dev_tools: ^0.7.0
   redux_logging: ^0.5.0
   redux_persist: ^0.9.0
   redux_thunk: ^0.4.0
-  responsive_framework: ^0.2.0
+  responsive_framework: ^1.1.0
   sentry_flutter: ^7.4.1
   share_plus: ^6.3.1
-  shimmer: ^2.0.0
+  shimmer: ^3.0.0
   smooth_page_indicator: ^1.0.0+2
   url_launcher: ^6.0.9
   web3dart: ^2.6.1
@@ -66,14 +66,12 @@ dependencies:
       ref: master
   flutter:
     sdk: flutter
-  flutter_localizations:
-    sdk: flutter
   internet_connection_checker: ^1.0.0+1
   wallet_connect: ^1.0.4
   marketing_cards:
     path: ../../MarketingCards/marketing_cards
-  flutter_form_builder: ^7.8.0
-  form_builder_validators: ^8.5.0
+  flutter_form_builder: ^9.0.0
+  form_builder_validators: ^9.0.0
 dependency_overrides:
   dio: ^5.1.1
 

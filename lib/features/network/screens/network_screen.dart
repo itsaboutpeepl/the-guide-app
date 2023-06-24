@@ -12,6 +12,7 @@ class NetworkPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, NetworkScreenViewModel>(
+      distinct: true,
       converter: NetworkScreenViewModel.fromStore,
       onInit: (store) {},
       builder: (_, viewmodel) => MarketingCards(

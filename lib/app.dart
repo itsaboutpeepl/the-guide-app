@@ -76,17 +76,14 @@ class _MyAppState extends State<MyApp> {
               locale: _locale,
               title: Strings.appName,
               theme: flexColorSchemeLight.toTheme,
-              builder: (_, router) => ResponsiveWrapper.builder(
-                router,
-                maxWidth: 1200,
-                minWidth: 400,
-                defaultScale: true,
+              builder: (_, router) => ResponsiveBreakpoints.builder(
+                child: router!,
                 breakpoints: [
-                  const ResponsiveBreakpoint.resize(480, name: MOBILE),
-                  const ResponsiveBreakpoint.autoScale(800, name: TABLET),
-                  const ResponsiveBreakpoint.autoScale(1000, name: TABLET),
-                  const ResponsiveBreakpoint.resize(1200, name: DESKTOP),
-                  const ResponsiveBreakpoint.autoScale(2460, name: '4K'),
+                  const Breakpoint(start: 0, end: 480, name: MOBILE),
+                  const Breakpoint(start: 480, end: 800, name: TABLET),
+                  const Breakpoint(start: 800, end: 1000, name: TABLET),
+                  const Breakpoint(start: 1000, end: 1200, name: DESKTOP),
+                  const Breakpoint(start: 1200, end: 2460, name: '4K'),
                 ],
               ),
               localizationsDelegates: const [

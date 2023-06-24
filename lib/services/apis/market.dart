@@ -3,6 +3,7 @@ import 'package:guide_liverpool/constants/urls.dart';
 import 'package:injectable/injectable.dart';
 import 'package:marketing_cards/model/marketing_card.dart';
 import 'package:marketing_cards/repo/marketing_repo.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 @lazySingleton
 class MarketApi {
@@ -22,24 +23,37 @@ class MarketApi {
     String? addressCity,
     String? postcode,
   }) async {
-    final Response<dynamic> response = await dio.post(
-      '/orders',
-      data: {
-        'userWallet': walletAddress,
-        'addressLineOne': addressLineOne ?? '',
-        'addressCity': addressCity ?? '',
-        'addressPostCode': postcode ?? '',
-        'email': email,
-        'phone': phone,
-        'productId': productId
-      },
-    );
+    try {
+      final Response<dynamic> response = await dio.post(
+        '/orders',
+        data: {
+          'userWallet': walletAddress,
+          'addressLineOne': addressLineOne ?? '',
+          'addressCity': addressCity ?? '',
+          'addressPostCode': postcode ?? '',
+          'email': email,
+          'phone': phone,
+          'productId': productId
+        },
+      );
 
-    if (response.statusCode == 201) {
-      final String paymentIntent = response.data['peepl_payment_id'] as String;
+      if (response.statusCode == 201) {
+        final String paymentIntent =
+            response.data['peepl_payment_id'] as String;
 
-      return paymentIntent;
-    } else {
+        return paymentIntent;
+      } else {
+        return null;
+      }
+    } on DioError catch (e, s) {
+      await Sentry.captureException(e,
+          stackTrace: s,
+          hint: Hint.withMap({
+            "RequestOptions": e.requestOptions.toString(),
+            "response": e.response.toString(),
+            "error": e.error.toString(),
+            "message": e.message.toString(),
+          }));
       return null;
     }
   }

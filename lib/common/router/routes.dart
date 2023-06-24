@@ -21,18 +21,18 @@ class RootRouter extends $RootRouter {
     AutoRoute(page: VerifyPhoneRoute.page),
     AutoRoute(page: SelectUsernameRoute.page),
     AutoRoute(page: WebViewRoute.page),
-    // AutoRoute(
-    //   page: MainRouteNoAccRoute.page,
-    //   children: [
-    //     AutoRoute(
-    //       page: HomeRoute.page,
-    //       children: [
-    //         AutoRoute(page: EventsRoute.page),
-    //       ],
-    //     ),
-    //     AutoRoute(page: NewsRoute.page),
-    //   ],
-    // ),
+    AutoRoute(
+      page: MainRouteNoAccRoute.page,
+      children: [
+        AutoRoute(
+          page: HomeRoute.page,
+          children: [
+            AutoRoute(page: EventsRoute.page),
+          ],
+        ),
+        AutoRoute(page: NewsRoute.page),
+      ],
+    ),
     AutoRoute(
       page: MainRoute.page,
       guards: [LoginAuthGuard()],

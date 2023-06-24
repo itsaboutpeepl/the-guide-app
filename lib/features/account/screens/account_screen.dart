@@ -153,9 +153,12 @@ class _AccountPageState extends State<AccountPage> {
                                 label: "Copy FCM Token",
                                 menuIcon: 'info_black.svg',
                                 onTap: () async {
-                                  Clipboard.setData(ClipboardData(
-                                      text:
-                                          await firebaseMessaging.getToken()));
+                                  Clipboard.setData(
+                                    ClipboardData(
+                                        text: await firebaseMessaging
+                                                .getToken() ??
+                                            ''),
+                                  );
                                   showCopiedFlushbar(context);
                                 },
                               ),

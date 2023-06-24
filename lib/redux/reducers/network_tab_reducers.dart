@@ -15,6 +15,8 @@ final networkTabReducers = combineReducers<NetworkTabState>([
       _updateRestaurantWalletAddress),
   TypedReducer<NetworkTabState, SetShouldShowPaymentSheet>(
       _setShouldShowPaymentSheet),
+  TypedReducer<NetworkTabState, SetLoadingPaymentButton>(
+      _setLoadingPaymentButton),
 ]);
 
 NetworkTabState _clearCart(
@@ -87,5 +89,12 @@ NetworkTabState _setShouldShowPaymentSheet(
     NetworkTabState state, SetShouldShowPaymentSheet action) {
   return state.copyWith(
     shouldShowPaymentSheet: action.flag,
+  );
+}
+
+NetworkTabState _setLoadingPaymentButton(
+    NetworkTabState state, SetLoadingPaymentButton action) {
+  return state.copyWith(
+    loadingPaymentButton: action.flag,
   );
 }
